@@ -70,7 +70,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
@@ -78,7 +79,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(defaultGetZones.zones()[0].id())
  *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
@@ -96,7 +97,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -104,12 +105,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
  *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut("10")
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .internetMaxBandwidthOut(10)
+ *             .availabilityZone(defaultGetZones.zones()[0].id())
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultSwitch.id())
@@ -124,7 +125,7 @@ import javax.annotation.Nullable;
  *             .operationMetadata(NestServiceInstanceOperationMetadataArgs.builder()
  *                 .operationStartTime("1681281179000")
  *                 .operationEndTime("1681367579000")
- *                 .resources(defaultInstance.id().applyValue(id -> """
+ *                 .resources(defaultInstance.id().applyValue(_id -> """
  *     {
  *       "Type": "ResourceIds",
  *       "RegionId": "cn-hangzhou",
@@ -134,7 +135,7 @@ import javax.annotation.Nullable;
  *         ]
  *       } 
  *     }
- * ", id)))
+ * ", _id)))
  *                 .build())
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),

@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *         var default_ = new BackupPolicy("default", BackupPolicyArgs.builder()
  *             .preferredBackupPeriod("Monday")
  *             .preferredBackupTime("04:00Z-05:00Z")
- *             .backupRetentionPeriod("7")
+ *             .backupRetentionPeriod(7)
  *             .dbInstanceId(default1tTLwe.id())
  *             .build());
  * 

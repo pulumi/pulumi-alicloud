@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.Policy;
@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  *                 .ruleType("BACKUP")
  *                 .backupType("COMPLETE")
  *                 .schedule("I|1631685600|P1D")
- *                 .retention("7")
- *                 .archiveDays("0")
+ *                 .retention(7)
+ *                 .archiveDays(0)
  *                 .vaultId(defaultyk84Hc.id())
  *                 .build())
  *             .policyDescription("policy example")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultPolicyBinding = new PolicyBinding("defaultPolicyBinding", PolicyBindingArgs.builder()
  *             .sourceType("OSS")
- *             .disabled("false")
+ *             .disabled(false)
  *             .policyId(defaultoqWvHQ.id())
  *             .dataSourceId(defaultKtt2XY.bucket())
  *             .policyBindingDescription("policy binding example (update)")

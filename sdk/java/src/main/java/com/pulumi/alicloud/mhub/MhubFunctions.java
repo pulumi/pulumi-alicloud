@@ -61,14 +61,15 @@ public final class MhubFunctions {
      *             .type("2")
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getApps();
+     *         final var ids = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.apps()[0].id());
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
      *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.apps()[0].id());
      *     }
      * }
      * }
@@ -122,14 +123,15 @@ public final class MhubFunctions {
      *             .type("2")
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getApps();
+     *         final var ids = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.apps()[0].id());
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
      *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.apps()[0].id());
      *     }
      * }
      * }
@@ -183,14 +185,15 @@ public final class MhubFunctions {
      *             .type("2")
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getApps();
+     *         final var ids = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.apps()[0].id());
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
      *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.apps()[0].id());
      *     }
      * }
      * }
@@ -244,14 +247,15 @@ public final class MhubFunctions {
      *             .type("2")
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getApps();
+     *         final var ids = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.apps()[0].id());
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
      *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.apps()[0].id());
      *     }
      * }
      * }
@@ -305,14 +309,15 @@ public final class MhubFunctions {
      *             .type("2")
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getApps();
+     *         final var ids = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.apps()[0].id());
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
      *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.apps()[0].id());
      *     }
      * }
      * }
@@ -363,14 +368,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -421,14 +427,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -479,14 +486,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -537,14 +545,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -595,14 +604,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -653,14 +663,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }
@@ -711,14 +722,15 @@ public final class MhubFunctions {
      *             .productName(name)
      *             .build());
      * 
-     *         final var ids = MhubFunctions.getProducts();
+     *         final var ids = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.products()[0].id());
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
      *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.products()[0].id());
      *     }
      * }
      * }

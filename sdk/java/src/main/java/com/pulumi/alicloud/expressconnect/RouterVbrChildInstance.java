@@ -62,25 +62,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultydbbk3 = new VirtualBorderRouter("defaultydbbk3", VirtualBorderRouterArgs.builder()
- *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
- *             .vlanId("1000")
+ *             .physicalConnectionId(nameRegex.connections()[0].id())
+ *             .vlanId(1000)
  *             .peerGatewayIp("192.168.254.2")
  *             .peeringSubnetMask("255.255.255.0")
  *             .localGatewayIp("192.168.254.1")
  *             .build());
  * 
  *         var defaultAAlhUy = new RouterExpressConnectRouter("defaultAAlhUy", RouterExpressConnectRouterArgs.builder()
- *             .alibabaSideAsn("65532")
+ *             .alibabaSideAsn(65532)
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new RouterVbrChildInstance("default", RouterVbrChildInstanceArgs.builder()
  *             .childInstanceId(defaultydbbk3.id())
  *             .childInstanceRegionId("cn-hangzhou")
  *             .ecrId(defaultAAlhUy.id())
  *             .childInstanceType("VBR")
- *             .childInstanceOwnerId(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .childInstanceOwnerId(current.id())
  *             .build());
  * 
  *     }

@@ -71,14 +71,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -121,14 +122,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -171,14 +173,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -221,14 +224,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -271,14 +275,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -321,14 +326,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -371,14 +377,15 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
+     *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.syncs()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
      *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.syncs()[0].id());
      *     }
      * }
      * }
@@ -428,13 +435,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.volumes()[0].id());
      *     }
      * }
      * }
@@ -484,13 +491,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.volumes()[0].id());
      *     }
      * }
      * }
@@ -540,13 +547,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.volumes()[0].id());
      *     }
      * }
      * }
@@ -596,13 +603,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.volumes()[0].id());
      *     }
      * }
      * }
@@ -652,13 +659,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.volumes()[0].id());
      *     }
      * }
      * }
@@ -708,16 +715,16 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks()[0].id());
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
      *             .gatewayId("example_value")
      *             .ids(            
      *                 "example_value-1",
      *                 "example_value-2")
-     *             .status("0")
+     *             .status(0)
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks()[0].id());
      *     }
      * }
      * }
@@ -767,16 +774,16 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks()[0].id());
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
      *             .gatewayId("example_value")
      *             .ids(            
      *                 "example_value-1",
      *                 "example_value-2")
-     *             .status("0")
+     *             .status(0)
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks()[0].id());
      *     }
      * }
      * }
@@ -826,16 +833,16 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks()[0].id());
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
      *             .gatewayId("example_value")
      *             .ids(            
      *                 "example_value-1",
      *                 "example_value-2")
-     *             .status("0")
+     *             .status(0)
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks()[0].id());
      *     }
      * }
      * }
@@ -885,16 +892,16 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks()[0].id());
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
      *             .gatewayId("example_value")
      *             .ids(            
      *                 "example_value-1",
      *                 "example_value-2")
-     *             .status("0")
+     *             .status(0)
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks()[0].id());
      *     }
      * }
      * }
@@ -944,16 +951,16 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks()[0].id());
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
      *             .gatewayId("example_value")
      *             .ids(            
      *                 "example_value-1",
      *                 "example_value-2")
-     *             .status("0")
+     *             .status(0)
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks()[0].id());
      *     }
      * }
      * }
@@ -1003,13 +1010,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.shares()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.shares()[0].id());
      *     }
      * }
      * }
@@ -1059,13 +1066,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.shares()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.shares()[0].id());
      *     }
      * }
      * }
@@ -1115,13 +1122,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.shares()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.shares()[0].id());
      *     }
      * }
      * }
@@ -1171,13 +1178,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.shares()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.shares()[0].id());
      *     }
      * }
      * }
@@ -1227,13 +1234,13 @@ public final class CloudstoragegatewayFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.shares()[0].id());
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
      *             .gatewayId("example_value")
      *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.shares()[0].id());
      *     }
      * }
      * }
@@ -1302,7 +1309,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass("Standard")
      *             .type("File")
      *             .paymentType("PayAsYouGo")
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1321,7 +1328,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1390,7 +1397,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass("Standard")
      *             .type("File")
      *             .paymentType("PayAsYouGo")
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1409,7 +1416,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1478,7 +1485,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass("Standard")
      *             .type("File")
      *             .paymentType("PayAsYouGo")
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1497,7 +1504,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1566,7 +1573,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass("Standard")
      *             .type("File")
      *             .paymentType("PayAsYouGo")
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1585,7 +1592,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1654,7 +1661,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass("Standard")
      *             .type("File")
      *             .paymentType("PayAsYouGo")
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1673,7 +1680,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1727,7 +1734,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
      *     }
      * }
      * }
@@ -1781,7 +1788,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
      *     }
      * }
      * }
@@ -1835,7 +1842,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
      *     }
      * }
      * }
@@ -1889,7 +1896,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
      *     }
      * }
      * }
@@ -1943,7 +1950,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
      *     }
      * }
      * }

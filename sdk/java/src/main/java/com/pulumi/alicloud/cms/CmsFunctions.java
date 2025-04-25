@@ -769,7 +769,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -838,7 +838,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -907,7 +907,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -976,7 +976,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -1045,7 +1045,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -1114,7 +1114,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -1183,7 +1183,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -1230,12 +1230,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1282,12 +1282,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1334,12 +1334,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1386,12 +1386,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1438,12 +1438,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1490,12 +1490,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1542,12 +1542,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.rules()[0].id());
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
      *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1595,7 +1595,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1643,7 +1643,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1691,7 +1691,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1739,7 +1739,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1787,7 +1787,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1835,7 +1835,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -1883,7 +1883,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2180,7 +2180,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2227,7 +2227,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2274,7 +2274,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2321,7 +2321,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2368,7 +2368,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2415,7 +2415,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2462,7 +2462,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2509,7 +2509,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2556,7 +2556,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2603,7 +2603,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2650,7 +2650,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2697,7 +2697,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2744,7 +2744,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -2791,7 +2791,7 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.tasks()[0].id());
      *     }
      * }
      * }
@@ -3167,22 +3167,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3229,22 +3229,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3291,22 +3291,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3353,22 +3353,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3415,22 +3415,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3477,22 +3477,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3539,22 +3539,22 @@ public final class CmsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.templates()[0].id());
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.templates()[0].id());
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
      *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -3617,7 +3617,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3665,7 +3665,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3713,7 +3713,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3761,7 +3761,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3809,7 +3809,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3857,7 +3857,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3905,7 +3905,7 @@ public final class CmsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -3952,7 +3952,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -3999,7 +3999,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4046,7 +4046,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4093,7 +4093,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4140,7 +4140,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4187,7 +4187,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4234,7 +4234,7 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.namespaces()[0].id());
      *     }
      * }
      * }
@@ -4597,7 +4597,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4656,7 +4656,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -4683,7 +4683,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4742,7 +4742,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -4769,7 +4769,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4828,7 +4828,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -4855,7 +4855,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4914,7 +4914,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -4941,7 +4941,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -5000,7 +5000,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -5027,7 +5027,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -5086,7 +5086,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -5113,7 +5113,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -5172,7 +5172,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
      *     }
      * }
      * }
@@ -5219,12 +5219,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5271,12 +5271,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5323,12 +5323,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5375,12 +5375,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5427,12 +5427,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5479,12 +5479,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5531,12 +5531,12 @@ public final class CmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
      *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }

@@ -56,10 +56,10 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Policy("default", PolicyArgs.builder()
  *             .policyGroupName("NewPolicyName")
- *             .resolutionWidth("720")
+ *             .resolutionWidth(720)
  *             .lockResolution("on")
  *             .cameraRedirect("on")
- *             .resolutionHeight("1280")
+ *             .resolutionHeight(1280)
  *             .clipboard("read")
  *             .netRedirectPolicy(PolicyNetRedirectPolicyArgs.builder()
  *                 .netRedirect("on")

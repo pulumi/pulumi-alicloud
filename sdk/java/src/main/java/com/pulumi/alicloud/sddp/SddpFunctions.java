@@ -60,7 +60,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -68,7 +68,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -115,7 +115,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -123,7 +123,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -170,7 +170,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -178,7 +178,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -225,7 +225,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -233,7 +233,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -280,7 +280,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -288,7 +288,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -335,7 +335,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -343,7 +343,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -390,7 +390,7 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
-     *             .value(10)
+     *             .value("10")
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
@@ -398,7 +398,7 @@ public final class SddpFunctions {
      *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(_default_ -> _default_.ids()));
      *     }
      * }
      * }
@@ -441,9 +441,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -486,9 +487,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -531,9 +533,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -576,9 +579,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -621,9 +625,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -666,9 +671,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -711,9 +717,10 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SddpFunctions.getDataLimits();
+     *         final var ids = SddpFunctions.getDataLimits(GetDataLimitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.limits()[0].id());
      *     }
      * }
      * }
@@ -756,7 +763,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -801,7 +809,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -846,7 +855,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -891,7 +901,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -936,7 +947,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -981,7 +993,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -1026,7 +1039,8 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SddpFunctions.getInstances();
+     *         final var default = SddpFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
@@ -1074,7 +1088,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1085,7 +1099,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1131,7 +1145,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1142,7 +1156,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1188,7 +1202,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1199,7 +1213,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1245,7 +1259,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1256,7 +1270,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1302,7 +1316,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1313,7 +1327,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1359,7 +1373,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1370,7 +1384,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }
@@ -1416,7 +1430,7 @@ public final class SddpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
-     *             .category("0")
+     *             .category(0)
      *             .content("content")
      *             .ruleName("rule_name")
      *             .riskLevelId("4")
@@ -1427,7 +1441,7 @@ public final class SddpFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(_default_ -> _default_.id()));
      *     }
      * }
      * }

@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.dcdn.WafPolicy;
  * import com.pulumi.alicloud.dcdn.WafPolicyArgs;
  * import com.pulumi.alicloud.dcdn.WafRule;
@@ -91,12 +91,12 @@ import javax.annotation.Nullable;
  *             .action("monitor")
  *             .rateLimit(WafRuleRateLimitArgs.builder()
  *                 .target("IP")
- *                 .interval("5")
- *                 .threshold("5")
- *                 .ttl("1800")
+ *                 .interval(5)
+ *                 .threshold(5)
+ *                 .ttl(1800)
  *                 .status(WafRuleRateLimitStatusArgs.builder()
  *                     .code("200")
- *                     .ratio("60")
+ *                     .ratio(60)
  *                     .build())
  *                 .build())
  *             .build());

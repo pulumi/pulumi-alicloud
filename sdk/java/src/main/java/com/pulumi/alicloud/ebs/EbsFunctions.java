@@ -382,7 +382,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -429,7 +429,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -476,7 +476,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -523,7 +523,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -570,7 +570,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -617,7 +617,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -664,7 +664,7 @@ public final class EbsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }

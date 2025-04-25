@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.arms.Prometheus;
  * import com.pulumi.alicloud.arms.PrometheusArgs;
  * import com.pulumi.alicloud.arms.PrometheusAlertRule;
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new PrometheusAlertRule("example", PrometheusAlertRuleArgs.builder()
  *             .clusterId(defaultPrometheus.clusterId())
- *             .duration(1)
+ *             .duration("1")
  *             .expression("node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10")
  *             .message("node available memory is less than 10%")
  *             .prometheusAlertRuleName(name)

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     fileSystemType: "extreme",
  * });
  * const countSize = _default.then(_default => _default.zones).length;
- * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const zoneId = pulumi.all([_default, countSize]).apply(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
  * const example = new alicloud.vpc.Network("example", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",

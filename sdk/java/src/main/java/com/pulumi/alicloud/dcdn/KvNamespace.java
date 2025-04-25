@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.dcdn.KvNamespace;
  * import com.pulumi.alicloud.dcdn.KvNamespaceArgs;
  * import java.util.List;
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * Dcdn Kv Namespace can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example
+ * $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example 
  * ```
  * 
  */

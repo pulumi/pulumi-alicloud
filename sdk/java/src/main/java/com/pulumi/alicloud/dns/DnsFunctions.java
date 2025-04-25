@@ -101,7 +101,7 @@ public final class DnsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.strategies()[0].id());
      *     }
      * }
      * }
@@ -153,7 +153,7 @@ public final class DnsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.strategies()[0].id());
      *     }
      * }
      * }
@@ -205,7 +205,7 @@ public final class DnsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.strategies()[0].id());
      *     }
      * }
      * }
@@ -257,7 +257,7 @@ public final class DnsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.strategies()[0].id());
      *     }
      * }
      * }
@@ -309,7 +309,7 @@ public final class DnsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.strategies()[0].id());
      *     }
      * }
      * }
@@ -359,13 +359,13 @@ public final class DnsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -415,13 +415,13 @@ public final class DnsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -471,13 +471,13 @@ public final class DnsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -527,13 +527,13 @@ public final class DnsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -583,13 +583,13 @@ public final class DnsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -634,7 +634,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -679,7 +679,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -724,7 +724,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -769,7 +769,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -814,7 +814,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -859,7 +859,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -904,7 +904,7 @@ public final class DnsFunctions {
      *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -950,7 +950,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -996,7 +996,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1042,7 +1042,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1088,7 +1088,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1134,7 +1134,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1180,7 +1180,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1226,7 +1226,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -1271,7 +1271,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1316,7 +1316,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1361,7 +1361,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1406,7 +1406,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1451,7 +1451,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1496,7 +1496,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1541,7 +1541,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1589,7 +1589,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }
      * }
      * }
@@ -1637,7 +1637,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }
      * }
      * }
@@ -1685,7 +1685,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }
      * }
      * }
@@ -1733,7 +1733,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }
      * }
      * }
@@ -1781,7 +1781,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }
      * }
      * }
@@ -1829,7 +1829,7 @@ public final class DnsFunctions {
      *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.lines()[0].id());
      *     }
      * }
      * }
@@ -1877,7 +1877,7 @@ public final class DnsFunctions {
      *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.lines()[0].id());
      *     }
      * }
      * }
@@ -1925,7 +1925,7 @@ public final class DnsFunctions {
      *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.lines()[0].id());
      *     }
      * }
      * }
@@ -1973,7 +1973,7 @@ public final class DnsFunctions {
      *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.lines()[0].id());
      *     }
      * }
      * }
@@ -2021,7 +2021,7 @@ public final class DnsFunctions {
      *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.lines()[0].id());
      *     }
      * }
      * }
@@ -2386,7 +2386,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2432,7 +2432,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2478,7 +2478,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2524,7 +2524,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2570,7 +2570,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2616,7 +2616,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2662,7 +2662,7 @@ public final class DnsFunctions {
      *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.domains()[0].domainId());
      *     }
      * }
      * }
@@ -2706,7 +2706,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2750,7 +2750,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2794,7 +2794,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2838,7 +2838,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2882,7 +2882,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2926,7 +2926,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -2970,7 +2970,7 @@ public final class DnsFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].groupName());
      *     }
      * }
      * }
@@ -3013,9 +3013,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3058,9 +3059,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3103,9 +3105,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3148,9 +3151,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3193,9 +3197,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3238,9 +3243,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3283,9 +3289,10 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DnsFunctions.getGtmInstances();
+     *         final var ids = DnsFunctions.getGtmInstances(GetGtmInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -3332,7 +3339,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3379,7 +3386,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3426,7 +3433,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3473,7 +3480,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3520,7 +3527,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3567,7 +3574,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3614,7 +3621,7 @@ public final class DnsFunctions {
      *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -3663,7 +3670,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }}{@code
      * }}{@code
      * }
@@ -3712,7 +3719,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }}{@code
      * }}{@code
      * }
@@ -3761,7 +3768,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }}{@code
      * }}{@code
      * }
@@ -3810,7 +3817,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }}{@code
      * }}{@code
      * }
@@ -3859,7 +3866,7 @@ public final class DnsFunctions {
      *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].recordId());
      *     }}{@code
      * }}{@code
      * }
@@ -3905,7 +3912,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -3951,7 +3958,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -3997,7 +4004,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -4043,7 +4050,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -4089,7 +4096,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -4135,7 +4142,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }
@@ -4181,7 +4188,7 @@ public final class DnsFunctions {
      *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.lines()[0].lineCode());
      *     }
      * }
      * }

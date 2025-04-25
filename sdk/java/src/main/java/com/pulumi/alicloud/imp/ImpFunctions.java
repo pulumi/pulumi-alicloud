@@ -47,14 +47,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -97,14 +98,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -147,14 +149,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -197,14 +200,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -247,14 +251,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -297,14 +302,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -347,14 +353,15 @@ public final class ImpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ImpFunctions.getAppTemplates();
+     *         final var ids = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
      *             .nameRegex("^my_AppTemplate")
      *             .build());
      * 
-     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         ctx.export("impAppTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }

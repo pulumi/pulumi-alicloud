@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  *             .qosId(default_.id())
  *             .name(name)
  *             .description(name)
- *             .priority("1")
+ *             .priority(1)
  *             .limitType("Absolute")
- *             .minBandwidthAbs("10")
- *             .maxBandwidthAbs("20")
+ *             .minBandwidthAbs(10)
+ *             .maxBandwidthAbs(20)
  *             .percentSourceType("InternetUpBandwidth")
  *             .build());
  * 

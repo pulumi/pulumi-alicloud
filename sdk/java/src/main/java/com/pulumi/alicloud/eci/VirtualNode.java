@@ -67,7 +67,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = EciFunctions.getZones();
+ *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -95,7 +96,8 @@ import javax.annotation.Nullable;
  *             .paymentType("PayAsYouGo")
  *             .build());
  * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultVirtualNode = new VirtualNode("defaultVirtualNode", VirtualNodeArgs.builder()
  *             .securityGroupId(defaultSecurityGroup.id())
@@ -103,7 +105,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .enablePublicNetwork(false)
  *             .eipInstanceId(defaultEipAddress.id())
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
  *             .kubeConfig("kube_config")
  *             .tags(Map.of("Created", "TF"))
  *             .taints(VirtualNodeTaintArgs.builder()

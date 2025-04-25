@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(defaultGetZones.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -107,13 +107,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(defaultGetZones.zones()[0].id())
  *             .instanceName(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .internetMaxBandwidthOut("10")
+ *             .internetMaxBandwidthOut(10)
  *             .internetChargeType("PayByTraffic")
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
@@ -121,8 +121,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterName(name)
- *             .clusterType("2")
- *             .networkMode("2")
+ *             .clusterType(2)
+ *             .networkMode(2)
  *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());

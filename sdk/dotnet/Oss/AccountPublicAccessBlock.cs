@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Oss
     /// OSS Account Public Access Block can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example
+    /// $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock")]

@@ -107,8 +107,8 @@ import javax.annotation.Nullable;
  *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .diskName("terraform-example")
  *             .description("terraform-example")
  *             .category("cloud_essd")
- *             .size("30")
+ *             .size(30)
  *             .build());
  * 
  *         var defaultDiskAttachment = new DiskAttachment("defaultDiskAttachment", DiskAttachmentArgs.builder()

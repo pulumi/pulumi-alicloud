@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterName(name)
- *             .clusterType("2")
- *             .networkMode("2")
+ *             .clusterType(2)
+ *             .networkMode(2)
  *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());

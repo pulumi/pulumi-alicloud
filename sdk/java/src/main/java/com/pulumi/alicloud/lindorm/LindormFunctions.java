@@ -47,14 +47,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -97,14 +98,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -147,14 +149,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -197,14 +200,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -247,14 +251,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -297,14 +302,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -347,14 +353,15 @@ public final class LindormFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = LindormFunctions.getInstances();
+     *         final var ids = LindormFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }

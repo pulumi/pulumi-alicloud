@@ -73,7 +73,8 @@ import javax.annotation.Nullable;
  *             .category("HighAvailability")
  *             .build());
  * 
- *         final var regions = RdsFunctions.getCrossRegions();
+ *         final var regions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -90,8 +91,8 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .instanceChargeType("Postpaid")
  *             .category("HighAvailability")
  *             .instanceName(name)
@@ -101,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRdsInstanceCrossBackupPolicy = new RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", RdsInstanceCrossBackupPolicyArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .crossBackupRegion(regions.applyValue(getCrossRegionsResult -> getCrossRegionsResult.ids()[0]))
+ *             .crossBackupRegion(regions.ids()[0])
  *             .build());
  * 
  *     }

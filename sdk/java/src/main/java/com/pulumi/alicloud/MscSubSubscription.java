@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new MscSubSubscription("example", MscSubSubscriptionArgs.builder()
  *             .itemName("Notifications of Product Expiration")
- *             .smsStatus("1")
- *             .emailStatus("1")
- *             .pmsgStatus("1")
- *             .ttsStatus("1")
- *             .webhookStatus("0")
+ *             .smsStatus(1)
+ *             .emailStatus(1)
+ *             .pmsgStatus(1)
+ *             .ttsStatus(1)
+ *             .webhookStatus(0)
  *             .build());
  * 
  *     }

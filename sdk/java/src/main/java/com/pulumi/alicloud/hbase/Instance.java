@@ -68,22 +68,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = HbaseFunctions.getZones();
+ *         final var default = HbaseFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[1].id())
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(name)
  *             .zoneId(default_.zones()[1].id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .engine("hbaseue")
  *             .engineVersion("2.0")
  *             .masterInstanceType("hbase.sn2.2xlarge")
@@ -93,7 +94,7 @@ import javax.annotation.Nullable;
  *             .coreDiskSize(400)
  *             .payType("PostPaid")
  *             .coldStorageSize(0)
- *             .deletionProtection("false")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *     }

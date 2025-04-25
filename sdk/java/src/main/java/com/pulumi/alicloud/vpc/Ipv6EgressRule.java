@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
- *             .enableIpv6("true")
+ *             .enableIpv6(true)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
- *             .ipv6CidrBlockMask("64")
+ *             .ipv6CidrBlockMask(64)
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -109,9 +109,9 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .systemDiskCategory("cloud_efficiency")
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .instanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .internetMaxBandwidthOut(10)
@@ -129,10 +129,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()
- *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -> defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id())))
+ *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(_defaultGetIpv6Addresses -> _defaultGetIpv6Addresses.addresses()[0].id()))
  *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
  *             .internetChargeType("PayByBandwidth")
- *             .bandwidth("20")
+ *             .bandwidth(20)
  *             .build());
  * 
  *         var defaultIpv6EgressRule = new Ipv6EgressRule("defaultIpv6EgressRule", Ipv6EgressRuleArgs.builder()

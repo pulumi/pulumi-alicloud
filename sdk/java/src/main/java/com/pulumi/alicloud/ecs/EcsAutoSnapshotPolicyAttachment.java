@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
  *             .description("terraform-example")
- *             .pendingWindowInDays("7")
+ *             .pendingWindowInDays(7)
  *             .status("Enabled")
  *             .build());
  * 
@@ -79,11 +79,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleEcsDisk = new EcsDisk("exampleEcsDisk", EcsDiskArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .diskName("terraform-example")
  *             .description("Hello ecs disk.")
  *             .category("cloud_efficiency")
- *             .size("30")
+ *             .size(30)
  *             .encrypted(true)
  *             .kmsKeyId(exampleKey.id())
  *             .tags(Map.of("Name", "terraform-example"))
