@@ -75,7 +75,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var createVpc = new Network("createVpc", NetworkArgs.builder()
  *             .cidrBlock("192.168.0.0/16")
@@ -98,10 +99,10 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterDescription("cluster-resource-example")
- *             .openEniJumboFrame("false")
+ *             .openEniJumboFrame(false)
  *             .hpnZone("B1")
  *             .nimizVswitches("1111")
- *             .ignoreFailedNodeTasks("true")
+ *             .ignoreFailedNodeTasks(true)
  *             .resourceGroupId(default_.ids()[1])
  *             .nodeGroups(ClusterNodeGroupArgs.builder()
  *                 .imageId("i198448731735114628708")
@@ -162,7 +163,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNode = new Node("defaultNode", NodeArgs.builder()
- *             .period("36")
+ *             .period(36)
  *             .discountLevel("36")
  *             .billingCycle("1month")
  *             .classify("gpuserver")
@@ -174,7 +175,7 @@ import javax.annotation.Nullable;
  *             .computingServer("efg1.nvga1n")
  *             .stageNum("36")
  *             .renewalStatus("AutoRenewal")
- *             .renewPeriod("36")
+ *             .renewPeriod(36)
  *             .status("Unused")
  *             .build());
  * 
@@ -186,7 +187,7 @@ import javax.annotation.Nullable;
  *                 .hostname("jxyhostname")
  *                 .loginPassword("Alibaba}{@literal @}{@code 2025")
  *                 .build())
- *             .ignoreFailedNodeTasks("true")
+ *             .ignoreFailedNodeTasks(true)
  *             .clusterId(defaultCluster.id())
  *             .imageId("i195048661660874208657")
  *             .zoneId("cn-hangzhou-b")

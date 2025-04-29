@@ -36,13 +36,15 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if pulumi.Float64(len(_default.Accelerators)) > 0 {
+//			if length > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
 //			}
 //			var defaultAccelerator []*ga.Accelerator
-//			for index := 0; index < tmp0; index++ {
+//			for index := 0; index < float64(len(_default.Accelerators).ApplyT(func(length int) (float64, error) {
+//				return tmp0, nil
+//			}).(pulumi.Float64Output)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := ga.NewAccelerator(ctx, fmt.Sprintf("default-%v", key0), &ga.AcceleratorArgs{
@@ -56,12 +58,16 @@ import (
 //				defaultAccelerator = append(defaultAccelerator, __res)
 //			}
 //			var tmp1 *string
-//			if pulumi.Float64(len(_default.Accelerators)) > 0 {
+//			if length > 0 {
 //				tmp1 = _default.Accelerators[0].Id
 //			} else {
-//				tmp1 = defaultAccelerator[0].ID()
+//				tmp1 = id
 //			}
-//			_ := tmp1
+//			_ = pulumi.All(len(_default.Accelerators), defaultAccelerator[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//				length := _args[0].(int)
+//				id := _args[1].(string)
+//				return &tmp1, nil
+//			}).(pulumi.StringPtrOutput)
 //			defaultGetDomains, err := ga.GetDomains(ctx, &ga.GetDomainsArgs{
 //				AcceleratorId: pulumi.StringRef(acceleratorIdLocals),
 //				Domain:        pulumi.StringRef("your_domain"),

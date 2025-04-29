@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *             .lang("zh")
  *             .proxyName("CFW-example")
  *             .vswitchId(defaultAKE43g.sourceVswitchId())
- *             .strictMode("0")
+ *             .strictMode(0)
  *             .vpcId(defaultikZ0gD.id())
  *             .vswitchCidr("172.16.5.0/24")
  *             .build());

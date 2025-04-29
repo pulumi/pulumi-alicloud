@@ -57,9 +57,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var anotherUid = config.get("anotherUid").orElse("xxxx");
- *         final var yourAccount = AlicloudFunctions.getAccount();
+ *         final var yourAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         final var childAccount = AlicloudFunctions.getAccount();
+ *         final var childAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var childAccountInstanceGrant = new InstanceGrant("childAccountInstanceGrant", InstanceGrantArgs.builder()
  *             .cenId(example.id())
  *             .childInstanceId(childAccountNetwork.id())
- *             .cenOwnerId(yourAccount.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .cenOwnerId(yourAccount.id())
  *             .build());
  * 
  *     }

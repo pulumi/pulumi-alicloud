@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -71,9 +71,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default1LI9we = new Store("default1LI9we", StoreArgs.builder()
- *             .hotTtl("8")
- *             .retentionPeriod("30")
- *             .shardCount("2")
+ *             .hotTtl(8)
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
  *             .projectName(defaultKIe4KV.projectName())
  *             .logstoreName(String.format("%s-%s", name,default_.result()))
  *             .build());
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .schedule(ScheduledSqlScheduleArgs.builder()
  *                 .type("Cron")
  *                 .timeZone("+0700")
- *                 .delay("20")
+ *                 .delay(20)
  *                 .cronExpression("0 0/1 * * *")
  *                 .build())
  *             .displayName("example-tf-scheduled-sql-0006")
@@ -98,11 +98,11 @@ import javax.annotation.Nullable;
  *                 .destRoleArn("acs:ram::1395894005868720:role/aliyunlogetlrole")
  *                 .fromTimeExpr("}{@literal @}{@code m-1m")
  *                 .toTimeExpr("}{@literal @}{@code m")
- *                 .maxRunTimeInSeconds("1800")
+ *                 .maxRunTimeInSeconds(1800)
  *                 .resourcePool("enhanced")
- *                 .maxRetries("5")
- *                 .fromTime("1713196800")
- *                 .toTime("0")
+ *                 .maxRetries(5)
+ *                 .fromTime(1713196800)
+ *                 .toTime(0)
  *                 .dataFormat("log2log")
  *                 .build())
  *             .scheduledSqlName(name)

@@ -438,10 +438,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -486,10 +487,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -534,10 +536,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -582,10 +585,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -630,10 +634,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -678,10 +683,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -726,10 +732,11 @@ public final class HbaseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zonesIds = HbaseFunctions.getZones();
+     *         final var zonesIds = HbaseFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }

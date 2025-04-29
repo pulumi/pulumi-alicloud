@@ -70,7 +70,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -79,9 +79,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -96,7 +96,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -159,7 +159,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -168,9 +168,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -185,7 +185,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -248,7 +248,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -257,9 +257,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -274,7 +274,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -337,7 +337,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -346,9 +346,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -363,7 +363,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -426,7 +426,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -435,9 +435,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -452,7 +452,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -515,7 +515,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -524,9 +524,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -541,7 +541,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -604,7 +604,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -613,9 +613,9 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -630,7 +630,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult).applyValue(defaultGetDbClusters -> defaultGetDbClusters.applyValue(getDbClustersResult -> getDbClustersResult.ids()[0])));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
      *     }
      * }
      * }
@@ -691,7 +691,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -700,16 +700,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -770,7 +770,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -779,16 +779,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -849,7 +849,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -858,16 +858,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -928,7 +928,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -937,16 +937,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -1007,7 +1007,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -1016,16 +1016,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -1086,7 +1086,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -1095,16 +1095,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }
@@ -1165,7 +1165,7 @@ public final class SelectdbFunctions {
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
@@ -1174,16 +1174,16 @@ public final class SelectdbFunctions {
      *             .dbInstanceDescription(name)
      *             .cacheSize(200)
      *             .paymentType("PayAsYouGo")
-     *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
-     *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+     *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+     *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
      *             .build());
      * 
      *         final var defaultGetDbInstances = SelectdbFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult).applyValue(defaultGetDbInstances -> defaultGetDbInstances.applyValue(getDbInstancesResult -> getDbInstancesResult.ids()[0])));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
      *     }
      * }
      * }

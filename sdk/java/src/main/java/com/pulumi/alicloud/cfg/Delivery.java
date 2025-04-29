@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-sls");
- *         final var this = AlicloudFunctions.getAccount();
+ *         final var this = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var thisGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .deliveryChannelTargetArn(Output.tuple(default_.projectName(), defaultStore.logstoreName()).applyValue(values -> {
  *                 var projectName = values.t1;
  *                 var logstoreName = values.t2;
- *                 return String.format("acs:log:%s:%s:project/%s/logstore/%s", thisGetRegions.applyValue(getRegionsResult -> getRegionsResult.ids()[0]),this_.id(),projectName,logstoreName);
+ *                 return String.format("acs:log:%s:%s:project/%s/logstore/%s", thisGetRegions.ids()[0],this_.id(),projectName,logstoreName);
  *             }))
  *             .deliveryChannelType("SLS")
  *             .description(name)

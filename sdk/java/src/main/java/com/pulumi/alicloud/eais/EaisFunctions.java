@@ -25,42 +25,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,42 +41,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,42 +57,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -181,42 +73,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -233,42 +89,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,42 +105,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -337,42 +121,6 @@ public final class EaisFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.eais.EaisFunctions;
-     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .id("example_id")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("eaisInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

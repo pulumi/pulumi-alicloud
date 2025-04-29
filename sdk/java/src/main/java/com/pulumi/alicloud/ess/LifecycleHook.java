@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -96,8 +96,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
- *             .minSize("1")
- *             .maxSize("1")
+ *             .minSize(1)
+ *             .maxSize(1)
  *             .scalingGroupName(myName)
  *             .defaultCooldown(200)
  *             .removalPolicies(            

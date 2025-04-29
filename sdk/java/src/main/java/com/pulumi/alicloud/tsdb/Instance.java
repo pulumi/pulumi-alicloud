@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = TsdbFunctions.getZones();
+ *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .cidrBlock("192.168.0.0/16")
@@ -64,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .availabilityZone(example.ids()[0])
  *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .build());

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .build());
  * 
  *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()

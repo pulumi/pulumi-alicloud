@@ -66,7 +66,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = CddcFunctions.getZones();
+ *         final var default = CddcFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -101,7 +102,7 @@ import javax.annotation.Nullable;
  *         var defaultDedicatedHost = new DedicatedHost("defaultDedicatedHost", DedicatedHostArgs.builder()
  *             .hostName(name)
  *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
- *             .hostClass(defaultGetHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -> getHostEcsLevelInfosResult.infos()[0].resClassCode()))
+ *             .hostClass(defaultGetHostEcsLevelInfos.infos()[0].resClassCode())
  *             .zoneId(default_.ids()[0])
  *             .vswitchId(defaultSwitch.id())
  *             .paymentType("Subscription")

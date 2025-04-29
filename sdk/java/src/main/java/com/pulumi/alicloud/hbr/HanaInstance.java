@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.HanaInstance;
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .host("1.1.1.1")
  *             .instanceNumber(1)
  *             .password("YouPassword123")
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.groups()[0].id())
  *             .sid("HXE")
  *             .useSsl(false)
  *             .userName("admin")

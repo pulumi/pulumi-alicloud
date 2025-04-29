@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleGetZones.zones()[0].id())
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceChargeType("PostPaid")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleGetZones.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
@@ -111,12 +111,12 @@ import javax.annotation.Nullable;
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod("60")
+ *             .monitoringPeriod(60)
  *             .dbInstanceStorageType("cloud_essd")
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *             .dtsJobName(name)
  *             .paymentType("PayAsYouGo")
  *             .sourceEndpointEngineName("MySQL")
- *             .sourceEndpointRegion(example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .sourceEndpointRegion(example.regions()[0].id())
  *             .sourceEndpointInstanceType("RDS")
  *             .sourceEndpointInstanceId(exampleInstance.id())
  *             .sourceEndpointDatabaseName(exampleDatabase.name())

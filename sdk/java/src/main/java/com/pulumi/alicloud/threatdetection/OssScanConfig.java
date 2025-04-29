@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.threatdetection.OssScanConfig;
@@ -90,15 +90,15 @@ import javax.annotation.Nullable;
  *                 ".php",
  *                 ".k")
  *             .scanDayLists(            
- *                 "2",
- *                 "5",
- *                 "4",
- *                 "3")
+ *                 2,
+ *                 5,
+ *                 4,
+ *                 3)
  *             .ossScanConfigName(name)
  *             .endTime("00:00:02")
  *             .startTime("00:00:01")
- *             .enable("1")
- *             .allKeyPrefix("false")
+ *             .enable(1)
+ *             .allKeyPrefix(false)
  *             .bucketNameLists(            
  *                 default8j4t1R.bucket(),
  *                 default9HMqfT.bucket(),

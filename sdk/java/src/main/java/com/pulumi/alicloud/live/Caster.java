@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Caster("default", CasterArgs.builder()
  *             .casterName(name)
  *             .paymentType("PayAsYouGo")
- *             .normType("1")
+ *             .normType(1)
  *             .build());
  * 
  *     }

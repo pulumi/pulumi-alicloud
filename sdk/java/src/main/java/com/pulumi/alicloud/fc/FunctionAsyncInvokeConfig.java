@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.Policy;
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.10")
  *             .handler("hello.handler")
  *             .build());
@@ -179,10 +179,10 @@ import javax.annotation.Nullable;
  *             .functionName(defaultFunction.name())
  *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()
  *                 .onFailure(FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
- *                     .destination(defaultQueue.name().applyValue(name -> String.format("acs:mns:%s:%s:/queues/%s/messages", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *                     .destination(defaultQueue.name().applyValue(_name -> String.format("acs:mns:%s:%s:/queues/%s/messages", defaultGetRegions.regions()[0].id(),default_.id(),_name)))
  *                     .build())
  *                 .onSuccess(FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
- *                     .destination(defaultTopic.name().applyValue(name -> String.format("acs:mns:%s:%s:/topics/%s/messages", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *                     .destination(defaultTopic.name().applyValue(_name -> String.format("acs:mns:%s:%s:/topics/%s/messages", defaultGetRegions.regions()[0].id(),default_.id(),_name)))
  *                     .build())
  *                 .build())
  *             .maximumEventAgeInSeconds(60)

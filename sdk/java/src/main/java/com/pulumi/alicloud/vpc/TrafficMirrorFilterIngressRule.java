@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleTrafficMirrorFilterIngressRule = new TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule", TrafficMirrorFilterIngressRuleArgs.builder()
  *             .trafficMirrorFilterId(example.id())
- *             .priority("1")
+ *             .priority(1)
  *             .action("accept")
  *             .protocol("UDP")
  *             .destinationCidrBlock("10.0.0.0/24")

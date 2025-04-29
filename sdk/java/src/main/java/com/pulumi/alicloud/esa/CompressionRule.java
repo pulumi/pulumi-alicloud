@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .gzip("off")
  *             .brotli("off")
  *             .rule("http.host eq \"video.example.com\"")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .ruleName("rule_example")
  *             .siteId(example.id())
  *             .zstd("off")

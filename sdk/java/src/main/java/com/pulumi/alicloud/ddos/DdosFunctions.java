@@ -75,7 +75,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -134,7 +134,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -193,7 +193,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -252,7 +252,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -311,7 +311,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -370,7 +370,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -429,7 +429,7 @@ public final class DdosFunctions {
      *             .nameRegex("ddosbgp")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getDdosBgpInstancesResult -> getDdosBgpInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -479,7 +479,7 @@ public final class DdosFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -529,7 +529,7 @@ public final class DdosFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -579,7 +579,7 @@ public final class DdosFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -629,7 +629,7 @@ public final class DdosFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -679,7 +679,7 @@ public final class DdosFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -726,7 +726,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -773,7 +773,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -820,7 +820,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -867,7 +867,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -914,7 +914,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -961,7 +961,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -1008,7 +1008,7 @@ public final class DdosFunctions {
      *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -1385,7 +1385,7 @@ public final class DdosFunctions {
      *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.ports()[0].id());
      *     }
      * }
      * }
@@ -1433,7 +1433,7 @@ public final class DdosFunctions {
      *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.ports()[0].id());
      *     }
      * }
      * }
@@ -1481,7 +1481,7 @@ public final class DdosFunctions {
      *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.ports()[0].id());
      *     }
      * }
      * }
@@ -1529,7 +1529,7 @@ public final class DdosFunctions {
      *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.ports()[0].id());
      *     }
      * }
      * }
@@ -1577,7 +1577,7 @@ public final class DdosFunctions {
      *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.ports()[0].id());
      *     }
      * }
      * }

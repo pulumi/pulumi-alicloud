@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.fc.Service;
  * import com.pulumi.alicloud.fc.ServiceArgs;
  * import com.pulumi.alicloud.fc.Alias;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", default_.result()))
  *             .description("example-value")
- *             .publish("true")
+ *             .publish(true)
  *             .build());
  * 
  *         var example = new Alias("example", AliasArgs.builder()

@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * export = async () => {
- *     const _default = await alicloud.resourcemanager.getResourceDirectories({});
- *     const defaultResourceDirectory: alicloud.resourcemanager.ResourceDirectory[] = [];
- *     for (const range = {value: 0}; range.value < (_default.directories.length > 0 ? 0 : 1); range.value++) {
+ * const _default = alicloud.resourcemanager.getResourceDirectories({});
+ * const defaultResourceDirectory: alicloud.resourcemanager.ResourceDirectory[] = [];
+ * _default.then(_default => _default.directories).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
  *         defaultResourceDirectory.push(new alicloud.resourcemanager.ResourceDirectory(`default-${range.value}`, {status: "Enabled"}));
  *     }
- * }
+ * });
  * ```
  *
  * ## Import

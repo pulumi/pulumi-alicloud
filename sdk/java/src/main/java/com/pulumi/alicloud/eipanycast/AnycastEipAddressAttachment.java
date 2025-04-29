@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", AnycastEipAddressAttachmentArgs.builder()
  *             .bindInstanceId(defaultApplicationLoadBalancer.id())
  *             .bindInstanceType("SlbInstance")
- *             .bindInstanceRegionId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .bindInstanceRegionId(defaultGetRegions.regions()[0].id())
  *             .anycastId(defaultAnycastEipAddress.id())
  *             .build());
  * 
@@ -190,8 +190,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default9KDlN7 = new Instance("default9KDlN7", InstanceArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI.id())
  *             .availabilityZone(defaultVsw.zoneId())
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var default2GetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default2.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default2.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *         var defaultdsVsw2 = new Switch("defaultdsVsw2", SwitchArgs.builder()
  *             .vpcId(defaultVpc2.id())
  *             .cidrBlock("192.168.0.0/24")
- *             .zoneId(default2.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
+ *             .zoneId(default2.zones()[1].id())
  *             .build());
  * 
  *         var defaultuBsECI2 = new SecurityGroup("defaultuBsECI2", SecurityGroupArgs.builder()
@@ -237,8 +237,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEcs2 = new Instance("defaultEcs2", InstanceArgs.builder()
- *             .imageId(default2GetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(default2GetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(default2GetImages.images()[0].id())
+ *             .instanceType(default2GetInstanceTypes.instanceTypes()[0].id())
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI2.id())
  *             .availabilityZone(defaultdsVsw2.zoneId())

@@ -43,37 +43,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -98,37 +67,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -153,37 +91,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -208,37 +115,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -263,37 +139,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -318,37 +163,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -373,37 +187,6 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
-     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType("system")
-     *             .build());
-     * 
-     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -454,12 +237,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -506,12 +289,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -558,12 +341,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -610,12 +393,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -662,12 +445,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -714,12 +497,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -766,12 +549,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -818,12 +601,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -870,12 +653,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -922,12 +705,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -974,12 +757,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -1026,12 +809,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -1078,12 +861,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -1130,12 +913,12 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.images()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
      *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.images()[0].id());
      *     }
      * }
      * }
@@ -1182,27 +965,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1249,27 +1032,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1316,27 +1099,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1383,27 +1166,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1450,27 +1233,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1517,27 +1300,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1584,27 +1367,27 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.disks()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.disks()[0].id());
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.disks()[0].id());
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.disks()[0].id());
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
      *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.disks()[0].id());
      *     }
      * }
      * }
@@ -1654,7 +1437,7 @@ public final class SimpleapplicationserverFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -1704,7 +1487,7 @@ public final class SimpleapplicationserverFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -1754,7 +1537,7 @@ public final class SimpleapplicationserverFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -1804,7 +1587,7 @@ public final class SimpleapplicationserverFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -1854,7 +1637,7 @@ public final class SimpleapplicationserverFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -2258,24 +2041,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2322,24 +2105,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2386,24 +2169,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2450,24 +2233,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2514,24 +2297,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2578,24 +2361,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2642,24 +2425,24 @@ public final class SimpleapplicationserverFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.snapshots()[0].id());
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
      *             .ids("example_id")
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.snapshots()[0].id());
      *     }
      * }
      * }

@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.oos.Application;
@@ -60,7 +60,8 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .resourceGroupId(default_.groups()[0].id())

@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Disk("default", DiskArgs.builder()
- *             .size("20")
+ *             .size(20)
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .paymentType("PayAsYouGo")
  *             .category("cloud_efficiency")
@@ -64,20 +64,20 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .systemDisk(InstanceSystemDiskArgs.builder()
- *                 .size("20")
+ *                 .size(20)
  *                 .build())
  *             .imageId("centos_6_08_64_20G_alibase_20171208")
  *             .paymentType("Subscription")
  *             .instanceType("ens.sn1.stiny")
  *             .password("12345678ABCabc")
- *             .amount("1")
- *             .internetMaxBandwidthOut("10")
+ *             .amount(1)
+ *             .internetMaxBandwidthOut(10)
  *             .uniqueSuffix(true)
  *             .publicIpIdentification(true)
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .scheduleAreaLevel("Region")
  *             .periodUnit("Month")
- *             .period("1")
+ *             .period(1)
  *             .build());
  * 
  *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment("defaultDiskInstanceAttachment", DiskInstanceAttachmentArgs.builder()

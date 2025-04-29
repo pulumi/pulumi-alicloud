@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.9")
  *             .handler("hello.handler")
  *             .build());

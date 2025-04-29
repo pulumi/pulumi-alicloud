@@ -67,7 +67,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -112,7 +112,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -157,7 +157,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -202,7 +202,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -247,7 +247,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -292,7 +292,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -337,7 +337,7 @@ public final class DcdnFunctions {
      *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.domains()[0].id());
      *     }
      * }
      * }
@@ -387,12 +387,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -442,12 +442,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -497,12 +497,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -552,12 +552,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -607,12 +607,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -662,12 +662,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -717,12 +717,12 @@ public final class DcdnFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.domains()[0].id());
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
      *             .status("online")
      *             .build());
      * 
-     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.domains()[0].id());
      *     }
      * }
      * }
@@ -1395,9 +1395,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1440,9 +1441,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1485,9 +1487,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1530,9 +1533,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1575,9 +1579,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1620,9 +1625,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1665,9 +1671,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafDomains();
+     *         final var ids = DcdnFunctions.getWafDomains(GetWafDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.domains()[0].id());
      *     }
      * }
      * }
@@ -1710,9 +1717,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1755,9 +1763,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1800,9 +1809,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1845,9 +1855,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1890,9 +1901,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1935,9 +1947,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1980,9 +1993,10 @@ public final class DcdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DcdnFunctions.getWafPolicies();
+     *         final var ids = DcdnFunctions.getWafPolicies(GetWafPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }

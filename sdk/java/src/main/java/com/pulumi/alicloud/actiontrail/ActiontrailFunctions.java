@@ -74,7 +74,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.consumerIds()[0]);
      *     }
      * }
      * }
@@ -121,7 +121,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.consumerIds()[0]);
      *     }
      * }
      * }
@@ -168,7 +168,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.consumerIds()[0]);
      *     }
      * }
      * }
@@ -215,7 +215,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.consumerIds()[0]);
      *     }
      * }
      * }
@@ -262,7 +262,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.consumerIds()[0]);
      *     }
      * }
      * }
@@ -304,7 +304,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -348,7 +348,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -392,7 +392,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -436,7 +436,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -480,7 +480,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -524,7 +524,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -568,7 +568,7 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
@@ -617,13 +617,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -670,13 +670,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -723,13 +723,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -776,13 +776,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -829,13 +829,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -882,13 +882,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -935,13 +935,13 @@ public final class ActiontrailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.jobs()[0].id());
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
      *             .ids("example_id")
-     *             .status("2")
+     *             .status(2)
      *             .build());
      * 
-     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.jobs()[0].id());
      *     }
      * }
      * }
@@ -1008,11 +1008,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1021,7 +1021,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1088,11 +1088,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1101,7 +1101,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1168,11 +1168,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1181,7 +1181,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1248,11 +1248,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1261,7 +1261,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1328,11 +1328,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1341,7 +1341,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1408,11 +1408,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1421,7 +1421,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1488,11 +1488,11 @@ public final class ActiontrailFunctions {
      * 
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
-     *             .partitionNum("50")
-     *             .diskType("1")
-     *             .diskSize("500")
-     *             .deployType("4")
-     *             .ioMax("20")
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(4)
+     *             .ioMax(20)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1501,7 +1501,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.instances()[0].name());
      *     }
      * }
      * }
@@ -1550,7 +1550,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.acls()[0].username());
      *     }
      * }
      * }
@@ -1599,7 +1599,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.acls()[0].username());
      *     }
      * }
      * }
@@ -1648,7 +1648,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.acls()[0].username());
      *     }
      * }
      * }
@@ -1697,7 +1697,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.acls()[0].username());
      *     }
      * }
      * }
@@ -1746,7 +1746,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.acls()[0].username());
      *     }
      * }
      * }
@@ -1793,7 +1793,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
      *     }
      * }
      * }
@@ -1840,7 +1840,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
      *     }
      * }
      * }
@@ -1887,7 +1887,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
      *     }
      * }
      * }
@@ -1934,7 +1934,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
      *     }
      * }
      * }
@@ -1981,7 +1981,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
      *     }
      * }
      * }
@@ -2028,7 +2028,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.topics()[0].topic());
      *     }
      * }
      * }
@@ -2075,7 +2075,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.topics()[0].topic());
      *     }
      * }
      * }
@@ -2122,7 +2122,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.topics()[0].topic());
      *     }
      * }
      * }
@@ -2169,7 +2169,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.topics()[0].topic());
      *     }
      * }
      * }
@@ -2216,7 +2216,7 @@ public final class ActiontrailFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.topics()[0].topic());
      *     }
      * }
      * }

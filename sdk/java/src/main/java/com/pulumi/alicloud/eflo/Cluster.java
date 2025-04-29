@@ -70,7 +70,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var createVpc = new Network("createVpc", NetworkArgs.builder()
  *             .cidrBlock("192.168.0.0/16")
@@ -93,10 +94,10 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterDescription("cluster-resource-example")
- *             .openEniJumboFrame("false")
+ *             .openEniJumboFrame(false)
  *             .hpnZone("B1")
  *             .nimizVswitches("1111")
- *             .ignoreFailedNodeTasks("true")
+ *             .ignoreFailedNodeTasks(true)
  *             .resourceGroupId(default_.ids()[1])
  *             .nodeGroups(ClusterNodeGroupArgs.builder()
  *                 .imageId("i198448731735114628708")
