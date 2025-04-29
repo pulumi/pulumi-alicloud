@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .paymentType("Subscription")
  *             .sddpVersion("version_company")
  *             .sdCbool("yes")
- *             .period("1")
+ *             .period(1)
  *             .sdc("3")
  *             .udCbool("yes")
  *             .udc("2000")

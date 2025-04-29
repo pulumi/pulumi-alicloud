@@ -45,7 +45,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -88,7 +89,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -131,7 +133,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -174,7 +177,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -217,7 +221,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -260,7 +265,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }
@@ -303,7 +309,8 @@ public final class GwlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = GwlbFunctions.getZones();
+     *         final var default = GwlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudGwlbZoneExampleId", default_.zones()[0].id());
      *     }

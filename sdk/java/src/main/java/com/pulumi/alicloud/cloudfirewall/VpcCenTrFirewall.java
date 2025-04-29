@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
  * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -82,7 +82,8 @@ import javax.annotation.Nullable;
  *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
  *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
  *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
- *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
@@ -145,7 +146,7 @@ import javax.annotation.Nullable;
  *         var wait10Minutes = new Sleep("wait10Minutes", SleepArgs.builder()
  *             .createDuration("10m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(tr_vpc1)
+ *                 .dependsOn(List.of(tr_vpc1))
  *                 .build());
  * 
  *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()

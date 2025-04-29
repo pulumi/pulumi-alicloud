@@ -75,7 +75,7 @@ public final class SaeFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -125,7 +125,7 @@ public final class SaeFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -175,7 +175,7 @@ public final class SaeFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -225,7 +225,7 @@ public final class SaeFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -275,7 +275,7 @@ public final class SaeFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -360,16 +360,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -454,16 +454,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -548,16 +548,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -642,16 +642,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -736,16 +736,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -830,16 +830,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -924,16 +924,16 @@ public final class SaeFunctions {
      *             .packageType("Image")
      *             .vswitchId(vsw.id())
      *             .timezone("Asia/Beijing")
-     *             .replicas("5")
-     *             .cpu("500")
-     *             .memory("2048")
+     *             .replicas(5)
+     *             .cpu(500)
+     *             .memory(2048)
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1004,7 +1004,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
      *     }
      * }
      * }
@@ -1075,7 +1075,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
      *     }
      * }
      * }
@@ -1146,7 +1146,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
      *     }
      * }
      * }
@@ -1217,7 +1217,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
      *     }
      * }
      * }
@@ -1288,7 +1288,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
      *     }
      * }
      * }
@@ -1336,7 +1336,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.routes()[0].id());
      *     }
      * }
      * }
@@ -1384,7 +1384,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.routes()[0].id());
      *     }
      * }
      * }
@@ -1432,7 +1432,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.routes()[0].id());
      *     }
      * }
      * }
@@ -1480,7 +1480,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.routes()[0].id());
      *     }
      * }
      * }
@@ -1528,7 +1528,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.routes()[0].id());
      *     }
      * }
      * }
@@ -1616,9 +1616,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1661,9 +1662,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1706,9 +1708,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1751,9 +1754,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1796,9 +1800,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1841,9 +1846,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1886,9 +1892,10 @@ public final class SaeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SaeFunctions.getInstanceSpecifications();
+     *         final var ids = SaeFunctions.getInstanceSpecifications(GetInstanceSpecificationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.specifications()[0].id());
      *     }
      * }
      * }
@@ -1935,7 +1942,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -1982,7 +1989,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -2029,7 +2036,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -2076,7 +2083,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -2123,7 +2130,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -2170,7 +2177,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -2217,7 +2224,7 @@ public final class SaeFunctions {
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }

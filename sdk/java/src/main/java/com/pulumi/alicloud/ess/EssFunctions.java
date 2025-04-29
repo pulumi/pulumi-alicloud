@@ -131,7 +131,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -177,7 +177,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -223,7 +223,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -269,7 +269,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -315,7 +315,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -361,7 +361,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -407,7 +407,7 @@ public final class EssFunctions {
      *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.hooks()[0].id());
      *     }
      * }
      * }
@@ -452,7 +452,7 @@ public final class EssFunctions {
      *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.notifications()[0].id());
      *     }
      * }
      * }
@@ -497,7 +497,7 @@ public final class EssFunctions {
      *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.notifications()[0].id());
      *     }
      * }
      * }
@@ -542,7 +542,7 @@ public final class EssFunctions {
      *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.notifications()[0].id());
      *     }
      * }
      * }
@@ -587,7 +587,7 @@ public final class EssFunctions {
      *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.notifications()[0].id());
      *     }
      * }
      * }
@@ -632,7 +632,7 @@ public final class EssFunctions {
      *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.notifications()[0].id());
      *     }
      * }
      * }
@@ -659,7 +659,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -758,8 +758,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -772,7 +772,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -799,7 +799,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -898,8 +898,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -912,7 +912,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -939,7 +939,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -1038,8 +1038,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -1052,7 +1052,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -1079,7 +1079,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -1178,8 +1178,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -1192,7 +1192,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -1219,7 +1219,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -1318,8 +1318,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -1332,7 +1332,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -1359,7 +1359,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -1458,8 +1458,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -1472,7 +1472,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -1499,7 +1499,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -1598,8 +1598,8 @@ public final class EssFunctions {
      * 
      *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
      *             .scalingGroupId(defaultScalingGroup.id())
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .forceDelete(true)
      *             .active(true)
@@ -1612,7 +1612,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
      *     }
      * }
      * }
@@ -1639,7 +1639,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -1704,7 +1704,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -1731,7 +1731,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -1796,7 +1796,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -1823,7 +1823,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -1888,7 +1888,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -1915,7 +1915,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -1980,7 +1980,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -2007,7 +2007,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2072,7 +2072,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -2099,7 +2099,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2164,7 +2164,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -2191,7 +2191,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2256,7 +2256,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult).applyValue(scalinggroupsDs -> scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id())));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -2283,7 +2283,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2358,7 +2358,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2385,7 +2385,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2460,7 +2460,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2487,7 +2487,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2562,7 +2562,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2589,7 +2589,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2664,7 +2664,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2691,7 +2691,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2766,7 +2766,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2793,7 +2793,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2868,7 +2868,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -2895,7 +2895,7 @@ public final class EssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
@@ -2970,7 +2970,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult).applyValue(scalingrulesDs -> scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id())));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
      *     }
      * }
      * }
@@ -3016,7 +3016,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3062,7 +3062,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3108,7 +3108,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3154,7 +3154,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3200,7 +3200,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3246,7 +3246,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }
@@ -3292,7 +3292,7 @@ public final class EssFunctions {
      *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.tasks()[0].id());
      *     }
      * }
      * }

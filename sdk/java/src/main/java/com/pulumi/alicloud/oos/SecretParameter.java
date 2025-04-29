@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = ResourcemanagerFunctions.getResourceGroups();
+ *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
  *             .description("terraform-example")
@@ -72,7 +73,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "OosSecretParameter")
  *             ))
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.groups()[0].id())
  *             .build());
  * 
  *     }

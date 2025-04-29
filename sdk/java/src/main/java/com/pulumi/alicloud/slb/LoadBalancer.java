@@ -82,16 +82,16 @@ import javax.annotation.Nullable;
  *             .loadBalancerSpec("slb.s2.small")
  *             .vswitchId(defaultSwitch.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry("tag_a", 1),
- *                 Map.entry("tag_b", 2),
- *                 Map.entry("tag_c", 3),
- *                 Map.entry("tag_d", 4),
- *                 Map.entry("tag_e", 5),
- *                 Map.entry("tag_f", 6),
- *                 Map.entry("tag_g", 7),
- *                 Map.entry("tag_h", 8),
- *                 Map.entry("tag_i", 9),
- *                 Map.entry("tag_j", 10)
+ *                 Map.entry("tag_a", "1"),
+ *                 Map.entry("tag_b", "2"),
+ *                 Map.entry("tag_c", "3"),
+ *                 Map.entry("tag_d", "4"),
+ *                 Map.entry("tag_e", "5"),
+ *                 Map.entry("tag_f", "6"),
+ *                 Map.entry("tag_g", "7"),
+ *                 Map.entry("tag_h", "8"),
+ *                 Map.entry("tag_i", "9"),
+ *                 Map.entry("tag_j", "10")
  *             ))
  *             .build());
  * 

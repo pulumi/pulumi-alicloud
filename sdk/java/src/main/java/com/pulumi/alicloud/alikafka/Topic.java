@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -91,11 +91,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(String.format("%s-%s", instanceName,defaultInteger.result()))
- *             .partitionNum("50")
- *             .diskType("1")
- *             .diskSize("500")
- *             .deployType("5")
- *             .ioMax("20")
+ *             .partitionNum(50)
+ *             .diskType(1)
+ *             .diskSize(500)
+ *             .deployType(5)
+ *             .ioMax(20)
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
@@ -103,9 +103,9 @@ import javax.annotation.Nullable;
  *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .topic("example-topic")
- *             .localTopic("false")
- *             .compactTopic("false")
- *             .partitionNum("12")
+ *             .localTopic(false)
+ *             .compactTopic(false)
+ *             .partitionNum(12)
  *             .remark("dafault_kafka_topic_remark")
  *             .build());
  * 

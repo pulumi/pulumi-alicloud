@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *                 .minVersion("TLSv1.0")
  *                 .build())
  *             .wafConfig(V3CustomDomainWafConfigArgs.builder()
- *                 .enableWaf("false")
+ *                 .enableWaf(false)
  *                 .build())
  *             .build());
  * 

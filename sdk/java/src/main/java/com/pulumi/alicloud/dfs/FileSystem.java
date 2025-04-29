@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .fileSystemName(name)
  *             .throughputMode("Provisioned")
- *             .spaceCapacity("1024")
- *             .provisionedThroughputInMiBps("512")
+ *             .spaceCapacity(1024)
+ *             .provisionedThroughputInMiBps(512)
  *             .build());
  * 
  *     }

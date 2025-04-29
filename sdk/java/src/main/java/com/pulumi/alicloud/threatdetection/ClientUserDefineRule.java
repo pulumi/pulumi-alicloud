@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ClientUserDefineRule("default", ClientUserDefineRuleArgs.builder()
- *             .actionType("0")
+ *             .actionType(0)
  *             .platform("windows")
  *             .registryContent("123")
  *             .clientUserDefineRuleName(name)
  *             .parentProcPath("/root/bash")
- *             .type("5")
+ *             .type(5)
  *             .cmdline("bash")
  *             .procPath("/root/bash")
  *             .parentCmdline("bash")

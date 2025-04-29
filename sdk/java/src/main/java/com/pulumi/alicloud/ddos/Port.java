@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .serviceBandwidth("100")
  *             .portCount("50")
  *             .domainCount("50")
- *             .period("1")
+ *             .period(1)
  *             .productType("ddoscoo")
  *             .build());
  * 

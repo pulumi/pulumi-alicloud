@@ -47,7 +47,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			last := pulumi.Float64(len(_default.Accounts)) - 1
+//			last := len(_default.Accounts).ApplyT(func(length int) (float64, error) {
+//				return length - 1, nil
+//			}).(pulumi.Float64Output)
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{

@@ -84,16 +84,16 @@ import javax.annotation.Nullable;
  * 
  *         var defaultTrafficQosRule = new TrafficQosRule("defaultTrafficQosRule", TrafficQosRuleArgs.builder()
  *             .ruleDescription("terraform-example")
- *             .priority("1")
+ *             .priority(1)
  *             .protocol("ALL")
  *             .srcPortRange("-1/-1")
  *             .dstIpv6Cidr("2001:db8:1234:5678::/64")
  *             .srcIpv6Cidr("2001:db8:1234:5678::/64")
  *             .dstPortRange("-1/-1")
- *             .remarkingDscp("-1")
+ *             .remarkingDscp(-1)
  *             .queueId(createQosQueue.queueId())
  *             .qosId(createQos.id())
- *             .matchDscp("-1")
+ *             .matchDscp(-1)
  *             .ruleName(name)
  *             .build());
  * 

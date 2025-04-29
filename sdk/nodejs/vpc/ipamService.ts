@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Vpc Ipam Service can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:vpc/ipamService:IpamService example
+ * $ pulumi import alicloud:vpc/ipamService:IpamService example 
  * ```
  */
 export class IpamService extends pulumi.CustomResource {

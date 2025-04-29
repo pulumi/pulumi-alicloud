@@ -70,7 +70,7 @@ public final class MongodbFunctions {
      *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -118,7 +118,7 @@ public final class MongodbFunctions {
      *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -166,7 +166,7 @@ public final class MongodbFunctions {
      *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -214,7 +214,7 @@ public final class MongodbFunctions {
      *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -262,7 +262,7 @@ public final class MongodbFunctions {
      *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -309,7 +309,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -356,7 +356,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -403,7 +403,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -450,7 +450,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -497,7 +497,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -878,7 +878,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -937,7 +937,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -996,7 +996,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1055,7 +1055,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1114,7 +1114,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1173,7 +1173,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1232,7 +1232,7 @@ public final class MongodbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.instances()[0].id());
      *     }
      * }
      * }
@@ -1326,7 +1326,7 @@ public final class MongodbFunctions {
      *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1375,7 +1375,7 @@ public final class MongodbFunctions {
      *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1424,7 +1424,7 @@ public final class MongodbFunctions {
      *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1473,7 +1473,7 @@ public final class MongodbFunctions {
      *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1522,7 +1522,7 @@ public final class MongodbFunctions {
      *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1566,11 +1566,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1616,11 +1617,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1666,11 +1668,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1716,11 +1719,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1766,11 +1770,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1816,11 +1821,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }
@@ -1866,11 +1872,12 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = MongodbFunctions.getZones();
+     *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
-     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(zonesIds.zones()[0].id())
      *             .build());
      * 
      *     }

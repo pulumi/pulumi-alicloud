@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = DatabasefilesystemFunctions.getInstances();
+ *         final var default = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
+ *             .build());
  * 
  *         var example = new Snapshot("example", SnapshotArgs.builder()
  *             .instanceId(default_.instances()[0].id())

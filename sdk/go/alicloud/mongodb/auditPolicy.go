@@ -45,7 +45,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			index := pulumi.Float64(len(_default.Zones)) - 1
+//			index := len(_default.Zones).ApplyT(func(length int) (float64, error) {
+//				return length - 1, nil
+//			}).(pulumi.Float64Output)
 //			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),

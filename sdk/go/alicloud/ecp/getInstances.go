@@ -42,9 +42,17 @@ import (
 //				return err
 //			}
 //			countSize := len(_default.Zones)
-//			zoneId := _default.Zones[countSize-1].ZoneId
+//			zoneId := countSize.ApplyT(func(countSize int) (ecp.GetZonesZone, error) {
+//				return ecp.GetZonesZone(_default.Zones[countSize-1]), nil
+//			}).(ecp.GetZonesZoneOutput).ApplyT(func(obj ecp.GetZonesZone) (*string, error) {
+//				return obj.ZoneId, nil
+//			}).(pulumi.StringPtrOutput)
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
-//			_ := defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType
+//			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
+//				return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1]), nil
+//			}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
+//				return obj.InstanceType, nil
+//			}).(pulumi.StringPtrOutput)
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
@@ -79,8 +87,12 @@ import (
 //				KeyPairName:  defaultKeyPair.KeyPairName,
 //				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
 //				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
-//				InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType),
-//				PaymentType:  pulumi.String("PayAsYouGo"),
+//				InstanceType: pulumi.String(instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
+//					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1]), nil
+//				}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
+//					return obj.InstanceType, nil
+//				}).(pulumi.StringPtrOutput)),
+//				PaymentType: pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err

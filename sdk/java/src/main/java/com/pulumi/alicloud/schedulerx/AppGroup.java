@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new AppGroup("default", AppGroupArgs.builder()
- *             .maxJobs("100")
+ *             .maxJobs(100)
  *             .monitorContactsJson(serializeJson(
  *                 jsonArray(
  *                     jsonObject(
@@ -73,8 +73,8 @@ import javax.annotation.Nullable;
  *                         jsonProperty("ding", "http://www.example.com")
  *                     )
  *                 )))
- *             .deleteJobs("false")
- *             .appType("1")
+ *             .deleteJobs(false)
+ *             .appType(1)
  *             .namespaceSource("schedulerx")
  *             .groupId("example-appgroup-pop-autoexample")
  *             .namespaceName("default")
@@ -86,8 +86,8 @@ import javax.annotation.Nullable;
  *             .appVersion("1")
  *             .appName("example-appgroup-pop-autoexample")
  *             .namespace(createNameSpace.namespaceUid())
- *             .enableLog("false")
- *             .scheduleBusyWorkers("false")
+ *             .enableLog(false)
+ *             .scheduleBusyWorkers(false)
  *             .build());
  * 
  *     }

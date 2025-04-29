@@ -68,7 +68,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-chengdu");
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)

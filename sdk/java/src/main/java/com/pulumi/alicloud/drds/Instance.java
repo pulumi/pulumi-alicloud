@@ -67,14 +67,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description("drds instance")
  *             .instanceChargeType("PostPaid")
- *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+ *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+ *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
  *             .instanceSeries(instanceSeries)
  *             .specification("drds.sn1.4c8g.8C16G")
  *             .build());

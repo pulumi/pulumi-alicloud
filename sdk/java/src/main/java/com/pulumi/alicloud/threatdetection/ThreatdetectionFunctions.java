@@ -93,12 +93,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -151,12 +151,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -209,12 +209,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -267,12 +267,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -325,12 +325,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -383,12 +383,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -441,12 +441,12 @@ public final class ThreatdetectionFunctions {
      *             .span(10)
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
-     *             .ids(defaultAntiBruteForceRule.id())
+     *         final var default = defaultAntiBruteForceRule.id().applyValue(_id -> ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultAntiBruteForceRule.name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
      *     }
      * }
      * }
@@ -487,7 +487,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -530,7 +531,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -573,7 +575,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -616,7 +619,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -659,7 +663,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -702,7 +707,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -745,7 +751,8 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ThreatdetectionFunctions.getAssets();
+     *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
@@ -794,12 +801,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -846,12 +853,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -898,12 +905,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -950,12 +957,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1002,12 +1009,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1054,12 +1061,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1106,12 +1113,12 @@ public final class ThreatdetectionFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.policies()[0].id());
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1164,11 +1171,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1223,11 +1230,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1282,11 +1289,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1341,11 +1348,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1400,11 +1407,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1459,11 +1466,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -1518,11 +1525,11 @@ public final class ThreatdetectionFunctions {
      *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
-     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
-     *             .ids(defaultBaselineStrategy.id())
+     *         final var default = defaultBaselineStrategy.id().applyValue(_id -> ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(_id)
      *             .nameRegex(defaultBaselineStrategy.name())
      *             .customType("custom")
-     *             .build());
+     *             .build()));
      * 
      *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
@@ -2909,7 +2916,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -2978,7 +2985,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -3047,7 +3054,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -3116,7 +3123,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -3185,7 +3192,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -3254,7 +3261,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }
@@ -3323,7 +3330,7 @@ public final class ThreatdetectionFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(_default_ -> _default_.probes()[0].id()));
      *     }
      * }
      * }

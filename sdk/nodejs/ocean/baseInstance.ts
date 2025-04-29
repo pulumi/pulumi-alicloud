@@ -26,9 +26,9 @@ import * as utilities from "../utilities";
  * const defaultBaseInstance = new alicloud.ocean.BaseInstance("default", {
  *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
  *     zones: [
- *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 2]),
- *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 3]),
- *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 4]),
+ *         pulumi.all([_default, _default.then(_default => _default.ids).length]).apply(([_default, length]) => _default.ids[length - 2]),
+ *         pulumi.all([_default, _default.then(_default => _default.ids).length]).apply(([_default, length]) => _default.ids[length - 3]),
+ *         pulumi.all([_default, _default.then(_default => _default.ids).length]).apply(([_default, length]) => _default.ids[length - 4]),
  *     ],
  *     autoRenew: false,
  *     diskSize: 100,

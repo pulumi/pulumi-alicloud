@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.hbr.HbrFunctions;
  * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.ReplicationVault;
@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var sourceRegion = config.get("sourceRegion").orElse("cn-hangzhou");
- *         final var default = HbrFunctions.getReplicationVaultRegions();
+ *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+ *             .build());
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)

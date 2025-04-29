@@ -102,21 +102,21 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *         var defaultMetricRuleBlackList = new MetricRuleBlackList("defaultMetricRuleBlackList", MetricRuleBlackListArgs.builder()
- *             .instances(defaultInstance.id().applyValue(id -> String.format("{{\"instancceId\":\"%s\"}}", id)))
+ *             .instances(defaultInstance.id().applyValue(_id -> String.format("{{\"instancceId\":\"%s\"}}", _id)))
  *             .metrics(MetricRuleBlackListMetricArgs.builder()
  *                 .metricName("disk_utilization")
  *                 .build())
  *             .category("ecs")
- *             .enableEndTime(1799443209000)
+ *             .enableEndTime("1799443209000")
  *             .namespace("acs_ecs_dashboard")
- *             .enableStartTime(1689243209000)
+ *             .enableStartTime("1689243209000")
  *             .metricRuleBlackListName(name)
  *             .build());
  * 

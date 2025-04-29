@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var ruleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(rule.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *         var ruleSwitch = new Switch("ruleSwitch", SwitchArgs.builder()
  *             .vpcId(ruleNetwork.id())
  *             .cidrBlock("172.16.0.0/16")
- *             .zoneId(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(rule.zones()[0].id())
  *             .vswitchName(slbRuleName)
  *             .build());
  * 
@@ -117,12 +117,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ruleInstance = new Instance("ruleInstance", InstanceArgs.builder()
- *             .imageId(ruleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(ruleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(ruleGetImages.images()[0].id())
+ *             .instanceType(ruleGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(ruleSecurityGroup.stream().map(element -> element.id()).collect(toList()))
  *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut("10")
- *             .availabilityZone(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .internetMaxBandwidthOut(10)
+ *             .availabilityZone(rule.zones()[0].id())
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(ruleSwitch.id())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .frontendPort(22)
  *             .protocol("http")
  *             .bandwidth(5)
- *             .healthCheckConnectPort("20")
+ *             .healthCheckConnectPort(20)
  *             .build());
  * 
  *         var ruleServerGroup = new ServerGroup("ruleServerGroup", ServerGroupArgs.builder()
