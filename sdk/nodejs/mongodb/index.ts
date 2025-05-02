@@ -60,6 +60,16 @@ export type PrivateSrvNetworkAddress = import("./privateSrvNetworkAddress").Priv
 export const PrivateSrvNetworkAddress: typeof import("./privateSrvNetworkAddress").PrivateSrvNetworkAddress = null as any;
 utilities.lazyLoad(exports, ["PrivateSrvNetworkAddress"], () => require("./privateSrvNetworkAddress"));
 
+export { PublicNetworkAddressArgs, PublicNetworkAddressState } from "./publicNetworkAddress";
+export type PublicNetworkAddress = import("./publicNetworkAddress").PublicNetworkAddress;
+export const PublicNetworkAddress: typeof import("./publicNetworkAddress").PublicNetworkAddress = null as any;
+utilities.lazyLoad(exports, ["PublicNetworkAddress"], () => require("./publicNetworkAddress"));
+
+export { ReplicaSetRoleArgs, ReplicaSetRoleState } from "./replicaSetRole";
+export type ReplicaSetRole = import("./replicaSetRole").ReplicaSetRole;
+export const ReplicaSetRole: typeof import("./replicaSetRole").ReplicaSetRole = null as any;
+utilities.lazyLoad(exports, ["ReplicaSetRole"], () => require("./replicaSetRole"));
+
 export { ServerlessInstanceArgs, ServerlessInstanceState } from "./serverlessInstance";
 export type ServerlessInstance = import("./serverlessInstance").ServerlessInstance;
 export const ServerlessInstance: typeof import("./serverlessInstance").ServerlessInstance = null as any;
@@ -93,6 +103,10 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
                 return new PrivateSrvNetworkAddress(name, <any>undefined, { urn })
+            case "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress":
+                return new PublicNetworkAddress(name, <any>undefined, { urn })
+            case "alicloud:mongodb/replicaSetRole:ReplicaSetRole":
+                return new ReplicaSetRole(name, <any>undefined, { urn })
             case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
                 return new ServerlessInstance(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingInstance:ShardingInstance":
@@ -110,6 +124,8 @@ pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/privateSrvNetworkAddress", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/publicNetworkAddress", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/replicaSetRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/serverlessInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingNetworkPrivateAddress", _module)

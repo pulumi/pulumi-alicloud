@@ -776,14 +776,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * @return The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     public Output<String> tdeStatus() {

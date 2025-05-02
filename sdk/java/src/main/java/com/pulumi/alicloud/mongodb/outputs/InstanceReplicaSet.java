@@ -32,6 +32,11 @@ public final class InstanceReplicaSet {
      */
     private @Nullable String replicaSetRole;
     /**
+     * @return The id of the role.
+     * 
+     */
+    private @Nullable String roleId;
+    /**
      * @return VPC instance ID.
      * 
      */
@@ -77,6 +82,13 @@ public final class InstanceReplicaSet {
         return Optional.ofNullable(this.replicaSetRole);
     }
     /**
+     * @return The id of the role.
+     * 
+     */
+    public Optional<String> roleId() {
+        return Optional.ofNullable(this.roleId);
+    }
+    /**
      * @return VPC instance ID.
      * 
      */
@@ -111,6 +123,7 @@ public final class InstanceReplicaSet {
         private @Nullable String connectionPort;
         private @Nullable String networkType;
         private @Nullable String replicaSetRole;
+        private @Nullable String roleId;
         private @Nullable String vpcCloudInstanceId;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
@@ -121,6 +134,7 @@ public final class InstanceReplicaSet {
     	      this.connectionPort = defaults.connectionPort;
     	      this.networkType = defaults.networkType;
     	      this.replicaSetRole = defaults.replicaSetRole;
+    	      this.roleId = defaults.roleId;
     	      this.vpcCloudInstanceId = defaults.vpcCloudInstanceId;
     	      this.vpcId = defaults.vpcId;
     	      this.vswitchId = defaults.vswitchId;
@@ -151,6 +165,12 @@ public final class InstanceReplicaSet {
             return this;
         }
         @CustomType.Setter
+        public Builder roleId(@Nullable String roleId) {
+
+            this.roleId = roleId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcCloudInstanceId(@Nullable String vpcCloudInstanceId) {
 
             this.vpcCloudInstanceId = vpcCloudInstanceId;
@@ -174,6 +194,7 @@ public final class InstanceReplicaSet {
             _resultValue.connectionPort = connectionPort;
             _resultValue.networkType = networkType;
             _resultValue.replicaSetRole = replicaSetRole;
+            _resultValue.roleId = roleId;
             _resultValue.vpcCloudInstanceId = vpcCloudInstanceId;
             _resultValue.vpcId = vpcId;
             _resultValue.vswitchId = vswitchId;

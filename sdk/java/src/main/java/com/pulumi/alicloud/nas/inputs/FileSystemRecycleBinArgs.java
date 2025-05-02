@@ -17,14 +17,14 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
     public static final FileSystemRecycleBinArgs Empty = new FileSystemRecycleBinArgs();
 
     /**
-     * The time at which the recycle bin was enabled.
+     * Recycle Bin open time
      * 
      */
     @Import(name="enableTime")
     private @Nullable Output<String> enableTime;
 
     /**
-     * @return The time at which the recycle bin was enabled.
+     * @return Recycle Bin open time
      * 
      */
     public Optional<Output<String>> enableTime() {
@@ -32,14 +32,14 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+     * Retention time of files in the Recycle Bin. Unit: days.
      * 
      */
     @Import(name="reservedDays")
     private @Nullable Output<Integer> reservedDays;
 
     /**
-     * @return The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+     * @return Retention time of files in the Recycle Bin. Unit: days.
      * 
      */
     public Optional<Output<Integer>> reservedDays() {
@@ -47,14 +47,14 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+     * Amount of low-frequency data stored in the recycle bin. Unit: Byte.
      * 
      */
     @Import(name="secondarySize")
     private @Nullable Output<Integer> secondarySize;
 
     /**
-     * @return The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+     * @return Amount of low-frequency data stored in the recycle bin. Unit: Byte.
      * 
      */
     public Optional<Output<Integer>> secondarySize() {
@@ -62,14 +62,14 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The size of the files that are dumped to the recycle bin.
+     * The amount of files stored in the Recycle Bin. Unit: Byte.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the files that are dumped to the recycle bin.
+     * @return The amount of files stored in the Recycle Bin. Unit: Byte.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -77,14 +77,14 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+     * Recycle Bin Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+     * @return Recycle Bin Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -120,7 +120,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enableTime The time at which the recycle bin was enabled.
+         * @param enableTime Recycle Bin open time
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enableTime The time at which the recycle bin was enabled.
+         * @param enableTime Recycle Bin open time
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param reservedDays The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+         * @param reservedDays Retention time of files in the Recycle Bin. Unit: days.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param reservedDays The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+         * @param reservedDays Retention time of files in the Recycle Bin. Unit: days.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secondarySize The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+         * @param secondarySize Amount of low-frequency data stored in the recycle bin. Unit: Byte.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secondarySize The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+         * @param secondarySize Amount of low-frequency data stored in the recycle bin. Unit: Byte.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param size The size of the files that are dumped to the recycle bin.
+         * @param size The amount of files stored in the Recycle Bin. Unit: Byte.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param size The size of the files that are dumped to the recycle bin.
+         * @param size The amount of files stored in the Recycle Bin. Unit: Byte.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+         * @param status Recycle Bin Status
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class FileSystemRecycleBinArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+         * @param status Recycle Bin Status
          * 
          * @return builder
          * 

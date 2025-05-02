@@ -3479,6 +3479,418 @@ func (o CollectionPolicyResourceDirectoryPtrOutput) Members() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+type EtlConfiguration struct {
+	// The beginning of the time range for transformation.
+	FromTime int `pulumi:"fromTime"`
+	// Data processing syntax type.
+	Lang string `pulumi:"lang"`
+	// Destination Logstore Name.
+	Logstore string `pulumi:"logstore"`
+	// Advanced parameter configuration.
+	Parameters map[string]string `pulumi:"parameters"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn string `pulumi:"roleArn"`
+	// Processing script.
+	Script string `pulumi:"script"`
+	// Processing result output target list See `sink` below.
+	Sinks []EtlConfigurationSink `pulumi:"sinks"`
+	// The end of the time range for transformation.
+	ToTime int `pulumi:"toTime"`
+}
+
+// EtlConfigurationInput is an input type that accepts EtlConfigurationArgs and EtlConfigurationOutput values.
+// You can construct a concrete instance of `EtlConfigurationInput` via:
+//
+//	EtlConfigurationArgs{...}
+type EtlConfigurationInput interface {
+	pulumi.Input
+
+	ToEtlConfigurationOutput() EtlConfigurationOutput
+	ToEtlConfigurationOutputWithContext(context.Context) EtlConfigurationOutput
+}
+
+type EtlConfigurationArgs struct {
+	// The beginning of the time range for transformation.
+	FromTime pulumi.IntInput `pulumi:"fromTime"`
+	// Data processing syntax type.
+	Lang pulumi.StringInput `pulumi:"lang"`
+	// Destination Logstore Name.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// Advanced parameter configuration.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// Processing script.
+	Script pulumi.StringInput `pulumi:"script"`
+	// Processing result output target list See `sink` below.
+	Sinks EtlConfigurationSinkArrayInput `pulumi:"sinks"`
+	// The end of the time range for transformation.
+	ToTime pulumi.IntInput `pulumi:"toTime"`
+}
+
+func (EtlConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlConfiguration)(nil)).Elem()
+}
+
+func (i EtlConfigurationArgs) ToEtlConfigurationOutput() EtlConfigurationOutput {
+	return i.ToEtlConfigurationOutputWithContext(context.Background())
+}
+
+func (i EtlConfigurationArgs) ToEtlConfigurationOutputWithContext(ctx context.Context) EtlConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlConfigurationOutput)
+}
+
+func (i EtlConfigurationArgs) ToEtlConfigurationPtrOutput() EtlConfigurationPtrOutput {
+	return i.ToEtlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i EtlConfigurationArgs) ToEtlConfigurationPtrOutputWithContext(ctx context.Context) EtlConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlConfigurationOutput).ToEtlConfigurationPtrOutputWithContext(ctx)
+}
+
+// EtlConfigurationPtrInput is an input type that accepts EtlConfigurationArgs, EtlConfigurationPtr and EtlConfigurationPtrOutput values.
+// You can construct a concrete instance of `EtlConfigurationPtrInput` via:
+//
+//	        EtlConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EtlConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToEtlConfigurationPtrOutput() EtlConfigurationPtrOutput
+	ToEtlConfigurationPtrOutputWithContext(context.Context) EtlConfigurationPtrOutput
+}
+
+type etlConfigurationPtrType EtlConfigurationArgs
+
+func EtlConfigurationPtr(v *EtlConfigurationArgs) EtlConfigurationPtrInput {
+	return (*etlConfigurationPtrType)(v)
+}
+
+func (*etlConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EtlConfiguration)(nil)).Elem()
+}
+
+func (i *etlConfigurationPtrType) ToEtlConfigurationPtrOutput() EtlConfigurationPtrOutput {
+	return i.ToEtlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *etlConfigurationPtrType) ToEtlConfigurationPtrOutputWithContext(ctx context.Context) EtlConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlConfigurationPtrOutput)
+}
+
+type EtlConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EtlConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlConfiguration)(nil)).Elem()
+}
+
+func (o EtlConfigurationOutput) ToEtlConfigurationOutput() EtlConfigurationOutput {
+	return o
+}
+
+func (o EtlConfigurationOutput) ToEtlConfigurationOutputWithContext(ctx context.Context) EtlConfigurationOutput {
+	return o
+}
+
+func (o EtlConfigurationOutput) ToEtlConfigurationPtrOutput() EtlConfigurationPtrOutput {
+	return o.ToEtlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o EtlConfigurationOutput) ToEtlConfigurationPtrOutputWithContext(ctx context.Context) EtlConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EtlConfiguration) *EtlConfiguration {
+		return &v
+	}).(EtlConfigurationPtrOutput)
+}
+
+// The beginning of the time range for transformation.
+func (o EtlConfigurationOutput) FromTime() pulumi.IntOutput {
+	return o.ApplyT(func(v EtlConfiguration) int { return v.FromTime }).(pulumi.IntOutput)
+}
+
+// Data processing syntax type.
+func (o EtlConfigurationOutput) Lang() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfiguration) string { return v.Lang }).(pulumi.StringOutput)
+}
+
+// Destination Logstore Name.
+func (o EtlConfigurationOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfiguration) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Advanced parameter configuration.
+func (o EtlConfigurationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EtlConfiguration) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// The ARN role that authorizes writing to the target Logstore.
+func (o EtlConfigurationOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Processing script.
+func (o EtlConfigurationOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfiguration) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Processing result output target list See `sink` below.
+func (o EtlConfigurationOutput) Sinks() EtlConfigurationSinkArrayOutput {
+	return o.ApplyT(func(v EtlConfiguration) []EtlConfigurationSink { return v.Sinks }).(EtlConfigurationSinkArrayOutput)
+}
+
+// The end of the time range for transformation.
+func (o EtlConfigurationOutput) ToTime() pulumi.IntOutput {
+	return o.ApplyT(func(v EtlConfiguration) int { return v.ToTime }).(pulumi.IntOutput)
+}
+
+type EtlConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (EtlConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EtlConfiguration)(nil)).Elem()
+}
+
+func (o EtlConfigurationPtrOutput) ToEtlConfigurationPtrOutput() EtlConfigurationPtrOutput {
+	return o
+}
+
+func (o EtlConfigurationPtrOutput) ToEtlConfigurationPtrOutputWithContext(ctx context.Context) EtlConfigurationPtrOutput {
+	return o
+}
+
+func (o EtlConfigurationPtrOutput) Elem() EtlConfigurationOutput {
+	return o.ApplyT(func(v *EtlConfiguration) EtlConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EtlConfiguration
+		return ret
+	}).(EtlConfigurationOutput)
+}
+
+// The beginning of the time range for transformation.
+func (o EtlConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FromTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Data processing syntax type.
+func (o EtlConfigurationPtrOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Lang
+	}).(pulumi.StringPtrOutput)
+}
+
+// Destination Logstore Name.
+func (o EtlConfigurationPtrOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Logstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Advanced parameter configuration.
+func (o EtlConfigurationPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EtlConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// The ARN role that authorizes writing to the target Logstore.
+func (o EtlConfigurationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Processing script.
+func (o EtlConfigurationPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Processing result output target list See `sink` below.
+func (o EtlConfigurationPtrOutput) Sinks() EtlConfigurationSinkArrayOutput {
+	return o.ApplyT(func(v *EtlConfiguration) []EtlConfigurationSink {
+		if v == nil {
+			return nil
+		}
+		return v.Sinks
+	}).(EtlConfigurationSinkArrayOutput)
+}
+
+// The end of the time range for transformation.
+func (o EtlConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EtlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ToTime
+	}).(pulumi.IntPtrOutput)
+}
+
+type EtlConfigurationSink struct {
+	// Write Result Set.
+	Datasets []string `pulumi:"datasets"`
+	// The endpoint of the region where the target Project is located.
+	Endpoint string `pulumi:"endpoint"`
+	// Destination Logstore Name.
+	Logstore string `pulumi:"logstore"`
+	// Output Destination Name.
+	Name string `pulumi:"name"`
+	// Project Name.
+	Project string `pulumi:"project"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// EtlConfigurationSinkInput is an input type that accepts EtlConfigurationSinkArgs and EtlConfigurationSinkOutput values.
+// You can construct a concrete instance of `EtlConfigurationSinkInput` via:
+//
+//	EtlConfigurationSinkArgs{...}
+type EtlConfigurationSinkInput interface {
+	pulumi.Input
+
+	ToEtlConfigurationSinkOutput() EtlConfigurationSinkOutput
+	ToEtlConfigurationSinkOutputWithContext(context.Context) EtlConfigurationSinkOutput
+}
+
+type EtlConfigurationSinkArgs struct {
+	// Write Result Set.
+	Datasets pulumi.StringArrayInput `pulumi:"datasets"`
+	// The endpoint of the region where the target Project is located.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Destination Logstore Name.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// Output Destination Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project Name.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (EtlConfigurationSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlConfigurationSink)(nil)).Elem()
+}
+
+func (i EtlConfigurationSinkArgs) ToEtlConfigurationSinkOutput() EtlConfigurationSinkOutput {
+	return i.ToEtlConfigurationSinkOutputWithContext(context.Background())
+}
+
+func (i EtlConfigurationSinkArgs) ToEtlConfigurationSinkOutputWithContext(ctx context.Context) EtlConfigurationSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlConfigurationSinkOutput)
+}
+
+// EtlConfigurationSinkArrayInput is an input type that accepts EtlConfigurationSinkArray and EtlConfigurationSinkArrayOutput values.
+// You can construct a concrete instance of `EtlConfigurationSinkArrayInput` via:
+//
+//	EtlConfigurationSinkArray{ EtlConfigurationSinkArgs{...} }
+type EtlConfigurationSinkArrayInput interface {
+	pulumi.Input
+
+	ToEtlConfigurationSinkArrayOutput() EtlConfigurationSinkArrayOutput
+	ToEtlConfigurationSinkArrayOutputWithContext(context.Context) EtlConfigurationSinkArrayOutput
+}
+
+type EtlConfigurationSinkArray []EtlConfigurationSinkInput
+
+func (EtlConfigurationSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EtlConfigurationSink)(nil)).Elem()
+}
+
+func (i EtlConfigurationSinkArray) ToEtlConfigurationSinkArrayOutput() EtlConfigurationSinkArrayOutput {
+	return i.ToEtlConfigurationSinkArrayOutputWithContext(context.Background())
+}
+
+func (i EtlConfigurationSinkArray) ToEtlConfigurationSinkArrayOutputWithContext(ctx context.Context) EtlConfigurationSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlConfigurationSinkArrayOutput)
+}
+
+type EtlConfigurationSinkOutput struct{ *pulumi.OutputState }
+
+func (EtlConfigurationSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlConfigurationSink)(nil)).Elem()
+}
+
+func (o EtlConfigurationSinkOutput) ToEtlConfigurationSinkOutput() EtlConfigurationSinkOutput {
+	return o
+}
+
+func (o EtlConfigurationSinkOutput) ToEtlConfigurationSinkOutputWithContext(ctx context.Context) EtlConfigurationSinkOutput {
+	return o
+}
+
+// Write Result Set.
+func (o EtlConfigurationSinkOutput) Datasets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) []string { return v.Datasets }).(pulumi.StringArrayOutput)
+}
+
+// The endpoint of the region where the target Project is located.
+func (o EtlConfigurationSinkOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Destination Logstore Name.
+func (o EtlConfigurationSinkOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Output Destination Name.
+func (o EtlConfigurationSinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project Name.
+func (o EtlConfigurationSinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The ARN role that authorizes writing to the target Logstore.
+func (o EtlConfigurationSinkOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlConfigurationSink) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type EtlConfigurationSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (EtlConfigurationSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EtlConfigurationSink)(nil)).Elem()
+}
+
+func (o EtlConfigurationSinkArrayOutput) ToEtlConfigurationSinkArrayOutput() EtlConfigurationSinkArrayOutput {
+	return o
+}
+
+func (o EtlConfigurationSinkArrayOutput) ToEtlConfigurationSinkArrayOutputWithContext(ctx context.Context) EtlConfigurationSinkArrayOutput {
+	return o
+}
+
+func (o EtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) EtlConfigurationSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EtlConfigurationSink {
+		return vs[0].([]EtlConfigurationSink)[vs[1].(int)]
+	}).(EtlConfigurationSinkOutput)
+}
+
 type OssExportSinkConfiguration struct {
 	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
 	FromTime int `pulumi:"fromTime"`
@@ -4908,6 +5320,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyPolicyConfigPtrInput)(nil)).Elem(), CollectionPolicyPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryPtrInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationInput)(nil)).Elem(), EtlConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationPtrInput)(nil)).Elem(), EtlConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkInput)(nil)).Elem(), EtlConfigurationSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkArrayInput)(nil)).Elem(), EtlConfigurationSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationPtrInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationSinkInput)(nil)).Elem(), OssExportSinkConfigurationSinkArgs{})
@@ -4954,6 +5370,10 @@ func init() {
 	pulumi.RegisterOutputType(CollectionPolicyPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryOutput{})
 	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(EtlConfigurationOutput{})
+	pulumi.RegisterOutputType(EtlConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(EtlConfigurationSinkOutput{})
+	pulumi.RegisterOutputType(EtlConfigurationSinkArrayOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationSinkOutput{})

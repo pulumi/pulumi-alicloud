@@ -45,6 +45,8 @@ namespace Pulumi.AliCloud.Nlb
     ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         ServerGroupName = name,
     ///         ServerGroupType = "Ip",
+    ///         ConnectionDrainTimeout = 10,
+    ///         ConnectionDrainEnabled = true,
     ///         VpcId = defaultNetwork.Id,
     ///         Scheduler = "Wrr",
     ///         Protocol = "TCP",

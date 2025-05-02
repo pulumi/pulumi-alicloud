@@ -10079,11 +10079,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10194,11 +10194,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10309,11 +10309,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10424,11 +10424,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10539,11 +10539,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10654,11 +10654,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 
@@ -10769,11 +10769,11 @@ public final class EcsFunctions {
     /**
      * This data source provides the ECS instance types of Alibaba Cloud.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-     * 
-     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * 

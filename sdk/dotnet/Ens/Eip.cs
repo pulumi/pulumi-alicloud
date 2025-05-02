@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ens
 {
     /// <summary>
-    /// Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+    /// Provides a ENS Eip resource.
+    /// 
+    /// Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
     /// 
     /// For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
     /// 
@@ -56,7 +58,7 @@ namespace Pulumi.AliCloud.Ens
     public partial class Eip : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -74,7 +76,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the EIP instance.
+        /// The name of the EIP.
         /// </summary>
         [Output("eipName")]
         public Output<string?> EipName { get; private set; } = null!;
@@ -86,25 +88,25 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Internet service provider, if not filled in, it will be assigned according to the default rules.
+        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
 
         /// <summary>
-        /// The billing type of the EIP instanceValue: PayAsYouGo.
+        /// The billing method of the EIP. Valid value: `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        /// The status of the EIP.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -156,7 +158,7 @@ namespace Pulumi.AliCloud.Ens
     public sealed class EipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -168,7 +170,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the EIP instance.
+        /// The name of the EIP.
         /// </summary>
         [Input("eipName")]
         public Input<string>? EipName { get; set; }
@@ -180,19 +182,19 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> EnsRegionId { get; set; } = null!;
 
         /// <summary>
-        /// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         /// </summary>
         [Input("internetChargeType", required: true)]
         public Input<string> InternetChargeType { get; set; } = null!;
 
         /// <summary>
-        /// Internet service provider, if not filled in, it will be assigned according to the default rules.
+        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The billing type of the EIP instanceValue: PayAsYouGo.
+        /// The billing method of the EIP. Valid value: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -206,7 +208,7 @@ namespace Pulumi.AliCloud.Ens
     public sealed class EipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -224,7 +226,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the EIP instance.
+        /// The name of the EIP.
         /// </summary>
         [Input("eipName")]
         public Input<string>? EipName { get; set; }
@@ -236,25 +238,25 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Internet service provider, if not filled in, it will be assigned according to the default rules.
+        /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The billing type of the EIP instanceValue: PayAsYouGo.
+        /// The billing method of the EIP. Valid value: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        /// The status of the EIP.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

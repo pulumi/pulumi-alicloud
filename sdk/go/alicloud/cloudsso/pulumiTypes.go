@@ -128,11 +128,683 @@ func (o AccessConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput)
 	}).(AccessConfigurationPermissionPolicyOutput)
 }
 
+type DirectoryLoginPreference struct {
+	// Whether the user can obtain the program access credential in the portal after logging in.
+	AllowUserToGetCredentials *bool `pulumi:"allowUserToGetCredentials"`
+	// IP address whitelist
+	LoginNetworkMasks *string `pulumi:"loginNetworkMasks"`
+}
+
+// DirectoryLoginPreferenceInput is an input type that accepts DirectoryLoginPreferenceArgs and DirectoryLoginPreferenceOutput values.
+// You can construct a concrete instance of `DirectoryLoginPreferenceInput` via:
+//
+//	DirectoryLoginPreferenceArgs{...}
+type DirectoryLoginPreferenceInput interface {
+	pulumi.Input
+
+	ToDirectoryLoginPreferenceOutput() DirectoryLoginPreferenceOutput
+	ToDirectoryLoginPreferenceOutputWithContext(context.Context) DirectoryLoginPreferenceOutput
+}
+
+type DirectoryLoginPreferenceArgs struct {
+	// Whether the user can obtain the program access credential in the portal after logging in.
+	AllowUserToGetCredentials pulumi.BoolPtrInput `pulumi:"allowUserToGetCredentials"`
+	// IP address whitelist
+	LoginNetworkMasks pulumi.StringPtrInput `pulumi:"loginNetworkMasks"`
+}
+
+func (DirectoryLoginPreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryLoginPreference)(nil)).Elem()
+}
+
+func (i DirectoryLoginPreferenceArgs) ToDirectoryLoginPreferenceOutput() DirectoryLoginPreferenceOutput {
+	return i.ToDirectoryLoginPreferenceOutputWithContext(context.Background())
+}
+
+func (i DirectoryLoginPreferenceArgs) ToDirectoryLoginPreferenceOutputWithContext(ctx context.Context) DirectoryLoginPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLoginPreferenceOutput)
+}
+
+func (i DirectoryLoginPreferenceArgs) ToDirectoryLoginPreferencePtrOutput() DirectoryLoginPreferencePtrOutput {
+	return i.ToDirectoryLoginPreferencePtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryLoginPreferenceArgs) ToDirectoryLoginPreferencePtrOutputWithContext(ctx context.Context) DirectoryLoginPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLoginPreferenceOutput).ToDirectoryLoginPreferencePtrOutputWithContext(ctx)
+}
+
+// DirectoryLoginPreferencePtrInput is an input type that accepts DirectoryLoginPreferenceArgs, DirectoryLoginPreferencePtr and DirectoryLoginPreferencePtrOutput values.
+// You can construct a concrete instance of `DirectoryLoginPreferencePtrInput` via:
+//
+//	        DirectoryLoginPreferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryLoginPreferencePtrInput interface {
+	pulumi.Input
+
+	ToDirectoryLoginPreferencePtrOutput() DirectoryLoginPreferencePtrOutput
+	ToDirectoryLoginPreferencePtrOutputWithContext(context.Context) DirectoryLoginPreferencePtrOutput
+}
+
+type directoryLoginPreferencePtrType DirectoryLoginPreferenceArgs
+
+func DirectoryLoginPreferencePtr(v *DirectoryLoginPreferenceArgs) DirectoryLoginPreferencePtrInput {
+	return (*directoryLoginPreferencePtrType)(v)
+}
+
+func (*directoryLoginPreferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryLoginPreference)(nil)).Elem()
+}
+
+func (i *directoryLoginPreferencePtrType) ToDirectoryLoginPreferencePtrOutput() DirectoryLoginPreferencePtrOutput {
+	return i.ToDirectoryLoginPreferencePtrOutputWithContext(context.Background())
+}
+
+func (i *directoryLoginPreferencePtrType) ToDirectoryLoginPreferencePtrOutputWithContext(ctx context.Context) DirectoryLoginPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLoginPreferencePtrOutput)
+}
+
+type DirectoryLoginPreferenceOutput struct{ *pulumi.OutputState }
+
+func (DirectoryLoginPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryLoginPreference)(nil)).Elem()
+}
+
+func (o DirectoryLoginPreferenceOutput) ToDirectoryLoginPreferenceOutput() DirectoryLoginPreferenceOutput {
+	return o
+}
+
+func (o DirectoryLoginPreferenceOutput) ToDirectoryLoginPreferenceOutputWithContext(ctx context.Context) DirectoryLoginPreferenceOutput {
+	return o
+}
+
+func (o DirectoryLoginPreferenceOutput) ToDirectoryLoginPreferencePtrOutput() DirectoryLoginPreferencePtrOutput {
+	return o.ToDirectoryLoginPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryLoginPreferenceOutput) ToDirectoryLoginPreferencePtrOutputWithContext(ctx context.Context) DirectoryLoginPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryLoginPreference) *DirectoryLoginPreference {
+		return &v
+	}).(DirectoryLoginPreferencePtrOutput)
+}
+
+// Whether the user can obtain the program access credential in the portal after logging in.
+func (o DirectoryLoginPreferenceOutput) AllowUserToGetCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryLoginPreference) *bool { return v.AllowUserToGetCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// IP address whitelist
+func (o DirectoryLoginPreferenceOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectoryLoginPreference) *string { return v.LoginNetworkMasks }).(pulumi.StringPtrOutput)
+}
+
+type DirectoryLoginPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryLoginPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryLoginPreference)(nil)).Elem()
+}
+
+func (o DirectoryLoginPreferencePtrOutput) ToDirectoryLoginPreferencePtrOutput() DirectoryLoginPreferencePtrOutput {
+	return o
+}
+
+func (o DirectoryLoginPreferencePtrOutput) ToDirectoryLoginPreferencePtrOutputWithContext(ctx context.Context) DirectoryLoginPreferencePtrOutput {
+	return o
+}
+
+func (o DirectoryLoginPreferencePtrOutput) Elem() DirectoryLoginPreferenceOutput {
+	return o.ApplyT(func(v *DirectoryLoginPreference) DirectoryLoginPreference {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryLoginPreference
+		return ret
+	}).(DirectoryLoginPreferenceOutput)
+}
+
+// Whether the user can obtain the program access credential in the portal after logging in.
+func (o DirectoryLoginPreferencePtrOutput) AllowUserToGetCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryLoginPreference) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowUserToGetCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IP address whitelist
+func (o DirectoryLoginPreferencePtrOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryLoginPreference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginNetworkMasks
+	}).(pulumi.StringPtrOutput)
+}
+
+type DirectoryMfaAuthenticationSettingInfo struct {
+	// Global MFA validation policy
+	MfaAuthenticationAdvanceSettings *string `pulumi:"mfaAuthenticationAdvanceSettings"`
+	// MFA verification policy for abnormal logon.
+	OperationForRiskLogin *string `pulumi:"operationForRiskLogin"`
+}
+
+// DirectoryMfaAuthenticationSettingInfoInput is an input type that accepts DirectoryMfaAuthenticationSettingInfoArgs and DirectoryMfaAuthenticationSettingInfoOutput values.
+// You can construct a concrete instance of `DirectoryMfaAuthenticationSettingInfoInput` via:
+//
+//	DirectoryMfaAuthenticationSettingInfoArgs{...}
+type DirectoryMfaAuthenticationSettingInfoInput interface {
+	pulumi.Input
+
+	ToDirectoryMfaAuthenticationSettingInfoOutput() DirectoryMfaAuthenticationSettingInfoOutput
+	ToDirectoryMfaAuthenticationSettingInfoOutputWithContext(context.Context) DirectoryMfaAuthenticationSettingInfoOutput
+}
+
+type DirectoryMfaAuthenticationSettingInfoArgs struct {
+	// Global MFA validation policy
+	MfaAuthenticationAdvanceSettings pulumi.StringPtrInput `pulumi:"mfaAuthenticationAdvanceSettings"`
+	// MFA verification policy for abnormal logon.
+	OperationForRiskLogin pulumi.StringPtrInput `pulumi:"operationForRiskLogin"`
+}
+
+func (DirectoryMfaAuthenticationSettingInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryMfaAuthenticationSettingInfo)(nil)).Elem()
+}
+
+func (i DirectoryMfaAuthenticationSettingInfoArgs) ToDirectoryMfaAuthenticationSettingInfoOutput() DirectoryMfaAuthenticationSettingInfoOutput {
+	return i.ToDirectoryMfaAuthenticationSettingInfoOutputWithContext(context.Background())
+}
+
+func (i DirectoryMfaAuthenticationSettingInfoArgs) ToDirectoryMfaAuthenticationSettingInfoOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryMfaAuthenticationSettingInfoOutput)
+}
+
+func (i DirectoryMfaAuthenticationSettingInfoArgs) ToDirectoryMfaAuthenticationSettingInfoPtrOutput() DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return i.ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryMfaAuthenticationSettingInfoArgs) ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryMfaAuthenticationSettingInfoOutput).ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(ctx)
+}
+
+// DirectoryMfaAuthenticationSettingInfoPtrInput is an input type that accepts DirectoryMfaAuthenticationSettingInfoArgs, DirectoryMfaAuthenticationSettingInfoPtr and DirectoryMfaAuthenticationSettingInfoPtrOutput values.
+// You can construct a concrete instance of `DirectoryMfaAuthenticationSettingInfoPtrInput` via:
+//
+//	        DirectoryMfaAuthenticationSettingInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryMfaAuthenticationSettingInfoPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryMfaAuthenticationSettingInfoPtrOutput() DirectoryMfaAuthenticationSettingInfoPtrOutput
+	ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(context.Context) DirectoryMfaAuthenticationSettingInfoPtrOutput
+}
+
+type directoryMfaAuthenticationSettingInfoPtrType DirectoryMfaAuthenticationSettingInfoArgs
+
+func DirectoryMfaAuthenticationSettingInfoPtr(v *DirectoryMfaAuthenticationSettingInfoArgs) DirectoryMfaAuthenticationSettingInfoPtrInput {
+	return (*directoryMfaAuthenticationSettingInfoPtrType)(v)
+}
+
+func (*directoryMfaAuthenticationSettingInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryMfaAuthenticationSettingInfo)(nil)).Elem()
+}
+
+func (i *directoryMfaAuthenticationSettingInfoPtrType) ToDirectoryMfaAuthenticationSettingInfoPtrOutput() DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return i.ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *directoryMfaAuthenticationSettingInfoPtrType) ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryMfaAuthenticationSettingInfoPtrOutput)
+}
+
+type DirectoryMfaAuthenticationSettingInfoOutput struct{ *pulumi.OutputState }
+
+func (DirectoryMfaAuthenticationSettingInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryMfaAuthenticationSettingInfo)(nil)).Elem()
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoOutput) ToDirectoryMfaAuthenticationSettingInfoOutput() DirectoryMfaAuthenticationSettingInfoOutput {
+	return o
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoOutput) ToDirectoryMfaAuthenticationSettingInfoOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoOutput {
+	return o
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoOutput) ToDirectoryMfaAuthenticationSettingInfoPtrOutput() DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return o.ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoOutput) ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryMfaAuthenticationSettingInfo) *DirectoryMfaAuthenticationSettingInfo {
+		return &v
+	}).(DirectoryMfaAuthenticationSettingInfoPtrOutput)
+}
+
+// Global MFA validation policy
+func (o DirectoryMfaAuthenticationSettingInfoOutput) MfaAuthenticationAdvanceSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectoryMfaAuthenticationSettingInfo) *string { return v.MfaAuthenticationAdvanceSettings }).(pulumi.StringPtrOutput)
+}
+
+// MFA verification policy for abnormal logon.
+func (o DirectoryMfaAuthenticationSettingInfoOutput) OperationForRiskLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectoryMfaAuthenticationSettingInfo) *string { return v.OperationForRiskLogin }).(pulumi.StringPtrOutput)
+}
+
+type DirectoryMfaAuthenticationSettingInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryMfaAuthenticationSettingInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryMfaAuthenticationSettingInfo)(nil)).Elem()
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoPtrOutput) ToDirectoryMfaAuthenticationSettingInfoPtrOutput() DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return o
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoPtrOutput) ToDirectoryMfaAuthenticationSettingInfoPtrOutputWithContext(ctx context.Context) DirectoryMfaAuthenticationSettingInfoPtrOutput {
+	return o
+}
+
+func (o DirectoryMfaAuthenticationSettingInfoPtrOutput) Elem() DirectoryMfaAuthenticationSettingInfoOutput {
+	return o.ApplyT(func(v *DirectoryMfaAuthenticationSettingInfo) DirectoryMfaAuthenticationSettingInfo {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryMfaAuthenticationSettingInfo
+		return ret
+	}).(DirectoryMfaAuthenticationSettingInfoOutput)
+}
+
+// Global MFA validation policy
+func (o DirectoryMfaAuthenticationSettingInfoPtrOutput) MfaAuthenticationAdvanceSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryMfaAuthenticationSettingInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MfaAuthenticationAdvanceSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// MFA verification policy for abnormal logon.
+func (o DirectoryMfaAuthenticationSettingInfoPtrOutput) OperationForRiskLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryMfaAuthenticationSettingInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationForRiskLogin
+	}).(pulumi.StringPtrOutput)
+}
+
+type DirectoryPasswordPolicy struct {
+	// Whether to restrict login after Password Expiration
+	HardExpire *bool `pulumi:"hardExpire"`
+	// Number of password retries.
+	MaxLoginAttempts *int `pulumi:"maxLoginAttempts"`
+	// Password validity period.
+	MaxPasswordAge *int `pulumi:"maxPasswordAge"`
+	// Maximum password length.
+	MaxPasswordLength *int `pulumi:"maxPasswordLength"`
+	// The minimum number of different characters in a password.
+	MinPasswordDifferentChars *int `pulumi:"minPasswordDifferentChars"`
+	// Minimum password length.
+	MinPasswordLength *int `pulumi:"minPasswordLength"`
+	// Whether the user name is not allowed in the password.
+	PasswordNotContainUsername *bool `pulumi:"passwordNotContainUsername"`
+	// Historical password check policy.
+	PasswordReusePrevention *int `pulumi:"passwordReusePrevention"`
+	// Whether lowercase letters are required in the password.
+	RequireLowerCaseChars *bool `pulumi:"requireLowerCaseChars"`
+	// Whether numbers are required in the password.
+	RequireNumbers *bool `pulumi:"requireNumbers"`
+	// Whether symbols are required in the password.
+	RequireSymbols *bool `pulumi:"requireSymbols"`
+	// Whether uppercase letters are required in the password.
+	RequireUpperCaseChars *bool `pulumi:"requireUpperCaseChars"`
+}
+
+// DirectoryPasswordPolicyInput is an input type that accepts DirectoryPasswordPolicyArgs and DirectoryPasswordPolicyOutput values.
+// You can construct a concrete instance of `DirectoryPasswordPolicyInput` via:
+//
+//	DirectoryPasswordPolicyArgs{...}
+type DirectoryPasswordPolicyInput interface {
+	pulumi.Input
+
+	ToDirectoryPasswordPolicyOutput() DirectoryPasswordPolicyOutput
+	ToDirectoryPasswordPolicyOutputWithContext(context.Context) DirectoryPasswordPolicyOutput
+}
+
+type DirectoryPasswordPolicyArgs struct {
+	// Whether to restrict login after Password Expiration
+	HardExpire pulumi.BoolPtrInput `pulumi:"hardExpire"`
+	// Number of password retries.
+	MaxLoginAttempts pulumi.IntPtrInput `pulumi:"maxLoginAttempts"`
+	// Password validity period.
+	MaxPasswordAge pulumi.IntPtrInput `pulumi:"maxPasswordAge"`
+	// Maximum password length.
+	MaxPasswordLength pulumi.IntPtrInput `pulumi:"maxPasswordLength"`
+	// The minimum number of different characters in a password.
+	MinPasswordDifferentChars pulumi.IntPtrInput `pulumi:"minPasswordDifferentChars"`
+	// Minimum password length.
+	MinPasswordLength pulumi.IntPtrInput `pulumi:"minPasswordLength"`
+	// Whether the user name is not allowed in the password.
+	PasswordNotContainUsername pulumi.BoolPtrInput `pulumi:"passwordNotContainUsername"`
+	// Historical password check policy.
+	PasswordReusePrevention pulumi.IntPtrInput `pulumi:"passwordReusePrevention"`
+	// Whether lowercase letters are required in the password.
+	RequireLowerCaseChars pulumi.BoolPtrInput `pulumi:"requireLowerCaseChars"`
+	// Whether numbers are required in the password.
+	RequireNumbers pulumi.BoolPtrInput `pulumi:"requireNumbers"`
+	// Whether symbols are required in the password.
+	RequireSymbols pulumi.BoolPtrInput `pulumi:"requireSymbols"`
+	// Whether uppercase letters are required in the password.
+	RequireUpperCaseChars pulumi.BoolPtrInput `pulumi:"requireUpperCaseChars"`
+}
+
+func (DirectoryPasswordPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryPasswordPolicy)(nil)).Elem()
+}
+
+func (i DirectoryPasswordPolicyArgs) ToDirectoryPasswordPolicyOutput() DirectoryPasswordPolicyOutput {
+	return i.ToDirectoryPasswordPolicyOutputWithContext(context.Background())
+}
+
+func (i DirectoryPasswordPolicyArgs) ToDirectoryPasswordPolicyOutputWithContext(ctx context.Context) DirectoryPasswordPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryPasswordPolicyOutput)
+}
+
+func (i DirectoryPasswordPolicyArgs) ToDirectoryPasswordPolicyPtrOutput() DirectoryPasswordPolicyPtrOutput {
+	return i.ToDirectoryPasswordPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryPasswordPolicyArgs) ToDirectoryPasswordPolicyPtrOutputWithContext(ctx context.Context) DirectoryPasswordPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryPasswordPolicyOutput).ToDirectoryPasswordPolicyPtrOutputWithContext(ctx)
+}
+
+// DirectoryPasswordPolicyPtrInput is an input type that accepts DirectoryPasswordPolicyArgs, DirectoryPasswordPolicyPtr and DirectoryPasswordPolicyPtrOutput values.
+// You can construct a concrete instance of `DirectoryPasswordPolicyPtrInput` via:
+//
+//	        DirectoryPasswordPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryPasswordPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryPasswordPolicyPtrOutput() DirectoryPasswordPolicyPtrOutput
+	ToDirectoryPasswordPolicyPtrOutputWithContext(context.Context) DirectoryPasswordPolicyPtrOutput
+}
+
+type directoryPasswordPolicyPtrType DirectoryPasswordPolicyArgs
+
+func DirectoryPasswordPolicyPtr(v *DirectoryPasswordPolicyArgs) DirectoryPasswordPolicyPtrInput {
+	return (*directoryPasswordPolicyPtrType)(v)
+}
+
+func (*directoryPasswordPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryPasswordPolicy)(nil)).Elem()
+}
+
+func (i *directoryPasswordPolicyPtrType) ToDirectoryPasswordPolicyPtrOutput() DirectoryPasswordPolicyPtrOutput {
+	return i.ToDirectoryPasswordPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *directoryPasswordPolicyPtrType) ToDirectoryPasswordPolicyPtrOutputWithContext(ctx context.Context) DirectoryPasswordPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryPasswordPolicyPtrOutput)
+}
+
+type DirectoryPasswordPolicyOutput struct{ *pulumi.OutputState }
+
+func (DirectoryPasswordPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryPasswordPolicy)(nil)).Elem()
+}
+
+func (o DirectoryPasswordPolicyOutput) ToDirectoryPasswordPolicyOutput() DirectoryPasswordPolicyOutput {
+	return o
+}
+
+func (o DirectoryPasswordPolicyOutput) ToDirectoryPasswordPolicyOutputWithContext(ctx context.Context) DirectoryPasswordPolicyOutput {
+	return o
+}
+
+func (o DirectoryPasswordPolicyOutput) ToDirectoryPasswordPolicyPtrOutput() DirectoryPasswordPolicyPtrOutput {
+	return o.ToDirectoryPasswordPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryPasswordPolicyOutput) ToDirectoryPasswordPolicyPtrOutputWithContext(ctx context.Context) DirectoryPasswordPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryPasswordPolicy) *DirectoryPasswordPolicy {
+		return &v
+	}).(DirectoryPasswordPolicyPtrOutput)
+}
+
+// Whether to restrict login after Password Expiration
+func (o DirectoryPasswordPolicyOutput) HardExpire() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.HardExpire }).(pulumi.BoolPtrOutput)
+}
+
+// Number of password retries.
+func (o DirectoryPasswordPolicyOutput) MaxLoginAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.MaxLoginAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Password validity period.
+func (o DirectoryPasswordPolicyOutput) MaxPasswordAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.MaxPasswordAge }).(pulumi.IntPtrOutput)
+}
+
+// Maximum password length.
+func (o DirectoryPasswordPolicyOutput) MaxPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.MaxPasswordLength }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of different characters in a password.
+func (o DirectoryPasswordPolicyOutput) MinPasswordDifferentChars() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.MinPasswordDifferentChars }).(pulumi.IntPtrOutput)
+}
+
+// Minimum password length.
+func (o DirectoryPasswordPolicyOutput) MinPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.MinPasswordLength }).(pulumi.IntPtrOutput)
+}
+
+// Whether the user name is not allowed in the password.
+func (o DirectoryPasswordPolicyOutput) PasswordNotContainUsername() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.PasswordNotContainUsername }).(pulumi.BoolPtrOutput)
+}
+
+// Historical password check policy.
+func (o DirectoryPasswordPolicyOutput) PasswordReusePrevention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *int { return v.PasswordReusePrevention }).(pulumi.IntPtrOutput)
+}
+
+// Whether lowercase letters are required in the password.
+func (o DirectoryPasswordPolicyOutput) RequireLowerCaseChars() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.RequireLowerCaseChars }).(pulumi.BoolPtrOutput)
+}
+
+// Whether numbers are required in the password.
+func (o DirectoryPasswordPolicyOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether symbols are required in the password.
+func (o DirectoryPasswordPolicyOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
+}
+
+// Whether uppercase letters are required in the password.
+func (o DirectoryPasswordPolicyOutput) RequireUpperCaseChars() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryPasswordPolicy) *bool { return v.RequireUpperCaseChars }).(pulumi.BoolPtrOutput)
+}
+
+type DirectoryPasswordPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryPasswordPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryPasswordPolicy)(nil)).Elem()
+}
+
+func (o DirectoryPasswordPolicyPtrOutput) ToDirectoryPasswordPolicyPtrOutput() DirectoryPasswordPolicyPtrOutput {
+	return o
+}
+
+func (o DirectoryPasswordPolicyPtrOutput) ToDirectoryPasswordPolicyPtrOutputWithContext(ctx context.Context) DirectoryPasswordPolicyPtrOutput {
+	return o
+}
+
+func (o DirectoryPasswordPolicyPtrOutput) Elem() DirectoryPasswordPolicyOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) DirectoryPasswordPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryPasswordPolicy
+		return ret
+	}).(DirectoryPasswordPolicyOutput)
+}
+
+// Whether to restrict login after Password Expiration
+func (o DirectoryPasswordPolicyPtrOutput) HardExpire() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HardExpire
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of password retries.
+func (o DirectoryPasswordPolicyPtrOutput) MaxLoginAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLoginAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Password validity period.
+func (o DirectoryPasswordPolicyPtrOutput) MaxPasswordAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPasswordAge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum password length.
+func (o DirectoryPasswordPolicyPtrOutput) MaxPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPasswordLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of different characters in a password.
+func (o DirectoryPasswordPolicyPtrOutput) MinPasswordDifferentChars() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinPasswordDifferentChars
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum password length.
+func (o DirectoryPasswordPolicyPtrOutput) MinPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinPasswordLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the user name is not allowed in the password.
+func (o DirectoryPasswordPolicyPtrOutput) PasswordNotContainUsername() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordNotContainUsername
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Historical password check policy.
+func (o DirectoryPasswordPolicyPtrOutput) PasswordReusePrevention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordReusePrevention
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether lowercase letters are required in the password.
+func (o DirectoryPasswordPolicyPtrOutput) RequireLowerCaseChars() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireLowerCaseChars
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether numbers are required in the password.
+func (o DirectoryPasswordPolicyPtrOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNumbers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether symbols are required in the password.
+func (o DirectoryPasswordPolicyPtrOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireSymbols
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether uppercase letters are required in the password.
+func (o DirectoryPasswordPolicyPtrOutput) RequireUpperCaseChars() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireUpperCaseChars
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DirectorySamlIdentityProviderConfiguration struct {
-	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+	// The Binding method for initiating a SAML request.
+	BindingType *string `pulumi:"bindingType"`
+	// Certificate ID list
+	CertificateIds []string `pulumi:"certificateIds"`
+	// CreateTime
+	CreateTime *string `pulumi:"createTime"`
+	// EncodedMetadataDocument
 	EncodedMetadataDocument *string `pulumi:"encodedMetadataDocument"`
-	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// EntityId
+	EntityId *string `pulumi:"entityId"`
+	// LoginUrl
+	LoginUrl *string `pulumi:"loginUrl"`
+	// SSOStatus
 	SsoStatus *string `pulumi:"ssoStatus"`
+	// UpdateTime
+	UpdateTime *string `pulumi:"updateTime"`
+	// SP Request whether the signature is required
+	WantRequestSigned *bool `pulumi:"wantRequestSigned"`
 }
 
 // DirectorySamlIdentityProviderConfigurationInput is an input type that accepts DirectorySamlIdentityProviderConfigurationArgs and DirectorySamlIdentityProviderConfigurationOutput values.
@@ -147,10 +819,24 @@ type DirectorySamlIdentityProviderConfigurationInput interface {
 }
 
 type DirectorySamlIdentityProviderConfigurationArgs struct {
-	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+	// The Binding method for initiating a SAML request.
+	BindingType pulumi.StringPtrInput `pulumi:"bindingType"`
+	// Certificate ID list
+	CertificateIds pulumi.StringArrayInput `pulumi:"certificateIds"`
+	// CreateTime
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// EncodedMetadataDocument
 	EncodedMetadataDocument pulumi.StringPtrInput `pulumi:"encodedMetadataDocument"`
-	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// EntityId
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// LoginUrl
+	LoginUrl pulumi.StringPtrInput `pulumi:"loginUrl"`
+	// SSOStatus
 	SsoStatus pulumi.StringPtrInput `pulumi:"ssoStatus"`
+	// UpdateTime
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// SP Request whether the signature is required
+	WantRequestSigned pulumi.BoolPtrInput `pulumi:"wantRequestSigned"`
 }
 
 func (DirectorySamlIdentityProviderConfigurationArgs) ElementType() reflect.Type {
@@ -230,14 +916,49 @@ func (o DirectorySamlIdentityProviderConfigurationOutput) ToDirectorySamlIdentit
 	}).(DirectorySamlIdentityProviderConfigurationPtrOutput)
 }
 
-// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+// The Binding method for initiating a SAML request.
+func (o DirectorySamlIdentityProviderConfigurationOutput) BindingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.BindingType }).(pulumi.StringPtrOutput)
+}
+
+// Certificate ID list
+func (o DirectorySamlIdentityProviderConfigurationOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
+}
+
+// CreateTime
+func (o DirectorySamlIdentityProviderConfigurationOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// EncodedMetadataDocument
 func (o DirectorySamlIdentityProviderConfigurationOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.EncodedMetadataDocument }).(pulumi.StringPtrOutput)
 }
 
-// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+// EntityId
+func (o DirectorySamlIdentityProviderConfigurationOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// LoginUrl
+func (o DirectorySamlIdentityProviderConfigurationOutput) LoginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.LoginUrl }).(pulumi.StringPtrOutput)
+}
+
+// SSOStatus
 func (o DirectorySamlIdentityProviderConfigurationOutput) SsoStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.SsoStatus }).(pulumi.StringPtrOutput)
+}
+
+// UpdateTime
+func (o DirectorySamlIdentityProviderConfigurationOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// SP Request whether the signature is required
+func (o DirectorySamlIdentityProviderConfigurationOutput) WantRequestSigned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *bool { return v.WantRequestSigned }).(pulumi.BoolPtrOutput)
 }
 
 type DirectorySamlIdentityProviderConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -264,7 +985,37 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) Elem() DirectorySam
 	}).(DirectorySamlIdentityProviderConfigurationOutput)
 }
 
-// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+// The Binding method for initiating a SAML request.
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) BindingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate ID list
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// CreateTime
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// EncodedMetadataDocument
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
 		if v == nil {
@@ -274,13 +1025,441 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) EncodedMetadataDocu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+// EntityId
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// LoginUrl
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) LoginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSOStatus
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) SsoStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SsoStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// UpdateTime
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// SP Request whether the signature is required
+func (o DirectorySamlIdentityProviderConfigurationPtrOutput) WantRequestSigned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WantRequestSigned
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DirectorySamlServiceProvider struct {
+	// ACS URL of SP.
+	AcsUrl *string `pulumi:"acsUrl"`
+	// Signature algorithms supported by AuthNRequest
+	AuthnSignAlgo *string `pulumi:"authnSignAlgo"`
+	// Type of certificate used for signing in the SSO process
+	CertificateType *string `pulumi:"certificateType"`
+	// SP metadata document (Base64 encoding).
+	EncodedMetadataDocument *string `pulumi:"encodedMetadataDocument"`
+	// SP identity.
+	EntityId *string `pulumi:"entityId"`
+	// Whether IdP-side encryption of Assertion is supported.
+	SupportEncryptedAssertion *bool `pulumi:"supportEncryptedAssertion"`
+}
+
+// DirectorySamlServiceProviderInput is an input type that accepts DirectorySamlServiceProviderArgs and DirectorySamlServiceProviderOutput values.
+// You can construct a concrete instance of `DirectorySamlServiceProviderInput` via:
+//
+//	DirectorySamlServiceProviderArgs{...}
+type DirectorySamlServiceProviderInput interface {
+	pulumi.Input
+
+	ToDirectorySamlServiceProviderOutput() DirectorySamlServiceProviderOutput
+	ToDirectorySamlServiceProviderOutputWithContext(context.Context) DirectorySamlServiceProviderOutput
+}
+
+type DirectorySamlServiceProviderArgs struct {
+	// ACS URL of SP.
+	AcsUrl pulumi.StringPtrInput `pulumi:"acsUrl"`
+	// Signature algorithms supported by AuthNRequest
+	AuthnSignAlgo pulumi.StringPtrInput `pulumi:"authnSignAlgo"`
+	// Type of certificate used for signing in the SSO process
+	CertificateType pulumi.StringPtrInput `pulumi:"certificateType"`
+	// SP metadata document (Base64 encoding).
+	EncodedMetadataDocument pulumi.StringPtrInput `pulumi:"encodedMetadataDocument"`
+	// SP identity.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// Whether IdP-side encryption of Assertion is supported.
+	SupportEncryptedAssertion pulumi.BoolPtrInput `pulumi:"supportEncryptedAssertion"`
+}
+
+func (DirectorySamlServiceProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySamlServiceProvider)(nil)).Elem()
+}
+
+func (i DirectorySamlServiceProviderArgs) ToDirectorySamlServiceProviderOutput() DirectorySamlServiceProviderOutput {
+	return i.ToDirectorySamlServiceProviderOutputWithContext(context.Background())
+}
+
+func (i DirectorySamlServiceProviderArgs) ToDirectorySamlServiceProviderOutputWithContext(ctx context.Context) DirectorySamlServiceProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySamlServiceProviderOutput)
+}
+
+func (i DirectorySamlServiceProviderArgs) ToDirectorySamlServiceProviderPtrOutput() DirectorySamlServiceProviderPtrOutput {
+	return i.ToDirectorySamlServiceProviderPtrOutputWithContext(context.Background())
+}
+
+func (i DirectorySamlServiceProviderArgs) ToDirectorySamlServiceProviderPtrOutputWithContext(ctx context.Context) DirectorySamlServiceProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySamlServiceProviderOutput).ToDirectorySamlServiceProviderPtrOutputWithContext(ctx)
+}
+
+// DirectorySamlServiceProviderPtrInput is an input type that accepts DirectorySamlServiceProviderArgs, DirectorySamlServiceProviderPtr and DirectorySamlServiceProviderPtrOutput values.
+// You can construct a concrete instance of `DirectorySamlServiceProviderPtrInput` via:
+//
+//	        DirectorySamlServiceProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectorySamlServiceProviderPtrInput interface {
+	pulumi.Input
+
+	ToDirectorySamlServiceProviderPtrOutput() DirectorySamlServiceProviderPtrOutput
+	ToDirectorySamlServiceProviderPtrOutputWithContext(context.Context) DirectorySamlServiceProviderPtrOutput
+}
+
+type directorySamlServiceProviderPtrType DirectorySamlServiceProviderArgs
+
+func DirectorySamlServiceProviderPtr(v *DirectorySamlServiceProviderArgs) DirectorySamlServiceProviderPtrInput {
+	return (*directorySamlServiceProviderPtrType)(v)
+}
+
+func (*directorySamlServiceProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectorySamlServiceProvider)(nil)).Elem()
+}
+
+func (i *directorySamlServiceProviderPtrType) ToDirectorySamlServiceProviderPtrOutput() DirectorySamlServiceProviderPtrOutput {
+	return i.ToDirectorySamlServiceProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *directorySamlServiceProviderPtrType) ToDirectorySamlServiceProviderPtrOutputWithContext(ctx context.Context) DirectorySamlServiceProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySamlServiceProviderPtrOutput)
+}
+
+type DirectorySamlServiceProviderOutput struct{ *pulumi.OutputState }
+
+func (DirectorySamlServiceProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySamlServiceProvider)(nil)).Elem()
+}
+
+func (o DirectorySamlServiceProviderOutput) ToDirectorySamlServiceProviderOutput() DirectorySamlServiceProviderOutput {
+	return o
+}
+
+func (o DirectorySamlServiceProviderOutput) ToDirectorySamlServiceProviderOutputWithContext(ctx context.Context) DirectorySamlServiceProviderOutput {
+	return o
+}
+
+func (o DirectorySamlServiceProviderOutput) ToDirectorySamlServiceProviderPtrOutput() DirectorySamlServiceProviderPtrOutput {
+	return o.ToDirectorySamlServiceProviderPtrOutputWithContext(context.Background())
+}
+
+func (o DirectorySamlServiceProviderOutput) ToDirectorySamlServiceProviderPtrOutputWithContext(ctx context.Context) DirectorySamlServiceProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectorySamlServiceProvider) *DirectorySamlServiceProvider {
+		return &v
+	}).(DirectorySamlServiceProviderPtrOutput)
+}
+
+// ACS URL of SP.
+func (o DirectorySamlServiceProviderOutput) AcsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *string { return v.AcsUrl }).(pulumi.StringPtrOutput)
+}
+
+// Signature algorithms supported by AuthNRequest
+func (o DirectorySamlServiceProviderOutput) AuthnSignAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *string { return v.AuthnSignAlgo }).(pulumi.StringPtrOutput)
+}
+
+// Type of certificate used for signing in the SSO process
+func (o DirectorySamlServiceProviderOutput) CertificateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *string { return v.CertificateType }).(pulumi.StringPtrOutput)
+}
+
+// SP metadata document (Base64 encoding).
+func (o DirectorySamlServiceProviderOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *string { return v.EncodedMetadataDocument }).(pulumi.StringPtrOutput)
+}
+
+// SP identity.
+func (o DirectorySamlServiceProviderOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// Whether IdP-side encryption of Assertion is supported.
+func (o DirectorySamlServiceProviderOutput) SupportEncryptedAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySamlServiceProvider) *bool { return v.SupportEncryptedAssertion }).(pulumi.BoolPtrOutput)
+}
+
+type DirectorySamlServiceProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectorySamlServiceProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectorySamlServiceProvider)(nil)).Elem()
+}
+
+func (o DirectorySamlServiceProviderPtrOutput) ToDirectorySamlServiceProviderPtrOutput() DirectorySamlServiceProviderPtrOutput {
+	return o
+}
+
+func (o DirectorySamlServiceProviderPtrOutput) ToDirectorySamlServiceProviderPtrOutputWithContext(ctx context.Context) DirectorySamlServiceProviderPtrOutput {
+	return o
+}
+
+func (o DirectorySamlServiceProviderPtrOutput) Elem() DirectorySamlServiceProviderOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) DirectorySamlServiceProvider {
+		if v != nil {
+			return *v
+		}
+		var ret DirectorySamlServiceProvider
+		return ret
+	}).(DirectorySamlServiceProviderOutput)
+}
+
+// ACS URL of SP.
+func (o DirectorySamlServiceProviderPtrOutput) AcsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signature algorithms supported by AuthNRequest
+func (o DirectorySamlServiceProviderPtrOutput) AuthnSignAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthnSignAlgo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of certificate used for signing in the SSO process
+func (o DirectorySamlServiceProviderPtrOutput) CertificateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateType
+	}).(pulumi.StringPtrOutput)
+}
+
+// SP metadata document (Base64 encoding).
+func (o DirectorySamlServiceProviderPtrOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedMetadataDocument
+	}).(pulumi.StringPtrOutput)
+}
+
+// SP identity.
+func (o DirectorySamlServiceProviderPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether IdP-side encryption of Assertion is supported.
+func (o DirectorySamlServiceProviderPtrOutput) SupportEncryptedAssertion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectorySamlServiceProvider) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportEncryptedAssertion
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DirectoryUserProvisioningConfiguration struct {
+	// The duration of the Session after the user logs in.
+	DefaultLandingPage *string `pulumi:"defaultLandingPage"`
+	// The duration of the Session after the user logs in.
+	SessionDuration *string `pulumi:"sessionDuration"`
+}
+
+// DirectoryUserProvisioningConfigurationInput is an input type that accepts DirectoryUserProvisioningConfigurationArgs and DirectoryUserProvisioningConfigurationOutput values.
+// You can construct a concrete instance of `DirectoryUserProvisioningConfigurationInput` via:
+//
+//	DirectoryUserProvisioningConfigurationArgs{...}
+type DirectoryUserProvisioningConfigurationInput interface {
+	pulumi.Input
+
+	ToDirectoryUserProvisioningConfigurationOutput() DirectoryUserProvisioningConfigurationOutput
+	ToDirectoryUserProvisioningConfigurationOutputWithContext(context.Context) DirectoryUserProvisioningConfigurationOutput
+}
+
+type DirectoryUserProvisioningConfigurationArgs struct {
+	// The duration of the Session after the user logs in.
+	DefaultLandingPage pulumi.StringPtrInput `pulumi:"defaultLandingPage"`
+	// The duration of the Session after the user logs in.
+	SessionDuration pulumi.StringPtrInput `pulumi:"sessionDuration"`
+}
+
+func (DirectoryUserProvisioningConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryUserProvisioningConfiguration)(nil)).Elem()
+}
+
+func (i DirectoryUserProvisioningConfigurationArgs) ToDirectoryUserProvisioningConfigurationOutput() DirectoryUserProvisioningConfigurationOutput {
+	return i.ToDirectoryUserProvisioningConfigurationOutputWithContext(context.Background())
+}
+
+func (i DirectoryUserProvisioningConfigurationArgs) ToDirectoryUserProvisioningConfigurationOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryUserProvisioningConfigurationOutput)
+}
+
+func (i DirectoryUserProvisioningConfigurationArgs) ToDirectoryUserProvisioningConfigurationPtrOutput() DirectoryUserProvisioningConfigurationPtrOutput {
+	return i.ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryUserProvisioningConfigurationArgs) ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryUserProvisioningConfigurationOutput).ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(ctx)
+}
+
+// DirectoryUserProvisioningConfigurationPtrInput is an input type that accepts DirectoryUserProvisioningConfigurationArgs, DirectoryUserProvisioningConfigurationPtr and DirectoryUserProvisioningConfigurationPtrOutput values.
+// You can construct a concrete instance of `DirectoryUserProvisioningConfigurationPtrInput` via:
+//
+//	        DirectoryUserProvisioningConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryUserProvisioningConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryUserProvisioningConfigurationPtrOutput() DirectoryUserProvisioningConfigurationPtrOutput
+	ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(context.Context) DirectoryUserProvisioningConfigurationPtrOutput
+}
+
+type directoryUserProvisioningConfigurationPtrType DirectoryUserProvisioningConfigurationArgs
+
+func DirectoryUserProvisioningConfigurationPtr(v *DirectoryUserProvisioningConfigurationArgs) DirectoryUserProvisioningConfigurationPtrInput {
+	return (*directoryUserProvisioningConfigurationPtrType)(v)
+}
+
+func (*directoryUserProvisioningConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryUserProvisioningConfiguration)(nil)).Elem()
+}
+
+func (i *directoryUserProvisioningConfigurationPtrType) ToDirectoryUserProvisioningConfigurationPtrOutput() DirectoryUserProvisioningConfigurationPtrOutput {
+	return i.ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *directoryUserProvisioningConfigurationPtrType) ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryUserProvisioningConfigurationPtrOutput)
+}
+
+type DirectoryUserProvisioningConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DirectoryUserProvisioningConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryUserProvisioningConfiguration)(nil)).Elem()
+}
+
+func (o DirectoryUserProvisioningConfigurationOutput) ToDirectoryUserProvisioningConfigurationOutput() DirectoryUserProvisioningConfigurationOutput {
+	return o
+}
+
+func (o DirectoryUserProvisioningConfigurationOutput) ToDirectoryUserProvisioningConfigurationOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationOutput {
+	return o
+}
+
+func (o DirectoryUserProvisioningConfigurationOutput) ToDirectoryUserProvisioningConfigurationPtrOutput() DirectoryUserProvisioningConfigurationPtrOutput {
+	return o.ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryUserProvisioningConfigurationOutput) ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryUserProvisioningConfiguration) *DirectoryUserProvisioningConfiguration {
+		return &v
+	}).(DirectoryUserProvisioningConfigurationPtrOutput)
+}
+
+// The duration of the Session after the user logs in.
+func (o DirectoryUserProvisioningConfigurationOutput) DefaultLandingPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectoryUserProvisioningConfiguration) *string { return v.DefaultLandingPage }).(pulumi.StringPtrOutput)
+}
+
+// The duration of the Session after the user logs in.
+func (o DirectoryUserProvisioningConfigurationOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DirectoryUserProvisioningConfiguration) *string { return v.SessionDuration }).(pulumi.StringPtrOutput)
+}
+
+type DirectoryUserProvisioningConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryUserProvisioningConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryUserProvisioningConfiguration)(nil)).Elem()
+}
+
+func (o DirectoryUserProvisioningConfigurationPtrOutput) ToDirectoryUserProvisioningConfigurationPtrOutput() DirectoryUserProvisioningConfigurationPtrOutput {
+	return o
+}
+
+func (o DirectoryUserProvisioningConfigurationPtrOutput) ToDirectoryUserProvisioningConfigurationPtrOutputWithContext(ctx context.Context) DirectoryUserProvisioningConfigurationPtrOutput {
+	return o
+}
+
+func (o DirectoryUserProvisioningConfigurationPtrOutput) Elem() DirectoryUserProvisioningConfigurationOutput {
+	return o.ApplyT(func(v *DirectoryUserProvisioningConfiguration) DirectoryUserProvisioningConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryUserProvisioningConfiguration
+		return ret
+	}).(DirectoryUserProvisioningConfigurationOutput)
+}
+
+// The duration of the Session after the user logs in.
+func (o DirectoryUserProvisioningConfigurationPtrOutput) DefaultLandingPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryUserProvisioningConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultLandingPage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration of the Session after the user logs in.
+func (o DirectoryUserProvisioningConfigurationPtrOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryUserProvisioningConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1947,8 +3126,18 @@ func (o GetUsersUserMfaDeviceArrayOutput) Index(i pulumi.IntInput) GetUsersUserM
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPermissionPolicyInput)(nil)).Elem(), AccessConfigurationPermissionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPermissionPolicyArrayInput)(nil)).Elem(), AccessConfigurationPermissionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryLoginPreferenceInput)(nil)).Elem(), DirectoryLoginPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryLoginPreferencePtrInput)(nil)).Elem(), DirectoryLoginPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryMfaAuthenticationSettingInfoInput)(nil)).Elem(), DirectoryMfaAuthenticationSettingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryMfaAuthenticationSettingInfoPtrInput)(nil)).Elem(), DirectoryMfaAuthenticationSettingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryPasswordPolicyInput)(nil)).Elem(), DirectoryPasswordPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryPasswordPolicyPtrInput)(nil)).Elem(), DirectoryPasswordPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationPtrInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlServiceProviderInput)(nil)).Elem(), DirectorySamlServiceProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlServiceProviderPtrInput)(nil)).Elem(), DirectorySamlServiceProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryUserProvisioningConfigurationInput)(nil)).Elem(), DirectoryUserProvisioningConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryUserProvisioningConfigurationPtrInput)(nil)).Elem(), DirectoryUserProvisioningConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentArrayInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArgs{})
@@ -1971,8 +3160,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserMfaDeviceArrayInput)(nil)).Elem(), GetUsersUserMfaDeviceArray{})
 	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(DirectoryLoginPreferenceOutput{})
+	pulumi.RegisterOutputType(DirectoryLoginPreferencePtrOutput{})
+	pulumi.RegisterOutputType(DirectoryMfaAuthenticationSettingInfoOutput{})
+	pulumi.RegisterOutputType(DirectoryMfaAuthenticationSettingInfoPtrOutput{})
+	pulumi.RegisterOutputType(DirectoryPasswordPolicyOutput{})
+	pulumi.RegisterOutputType(DirectoryPasswordPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DirectorySamlServiceProviderOutput{})
+	pulumi.RegisterOutputType(DirectorySamlServiceProviderPtrOutput{})
+	pulumi.RegisterOutputType(DirectoryUserProvisioningConfigurationOutput{})
+	pulumi.RegisterOutputType(DirectoryUserProvisioningConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentOutput{})
 	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationOutput{})

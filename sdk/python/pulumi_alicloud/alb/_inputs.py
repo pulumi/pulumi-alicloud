@@ -3876,8 +3876,9 @@ if not MYPY:
         """
         weight: NotRequired[pulumi.Input[builtins.int]]
         """
-        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
+        > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
         > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
 elif False:
@@ -3920,8 +3921,9 @@ class ServerGroupServerArgs:
                
                > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         :param pulumi.Input[builtins.str] status: The status of the resource
-        :param pulumi.Input[builtins.int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+        :param pulumi.Input[builtins.int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
                
+               > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
                > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
@@ -4057,8 +4059,9 @@ class ServerGroupServerArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
+        > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
         > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "weight")

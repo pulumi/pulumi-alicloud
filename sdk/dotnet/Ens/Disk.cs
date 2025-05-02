@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ens
 {
     /// <summary>
-    /// Provides a ENS Disk resource. The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+    /// Provides a ENS Disk resource.
+    /// 
+    /// The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
     /// 
     /// For information about ENS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createdisk).
     /// 
@@ -53,43 +55,43 @@ namespace Pulumi.AliCloud.Ens
     public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Types of disk instancesValues: cloud_efficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
-        /// Disk instance creation time.
+        /// The time when the disk was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the disk instance.
+        /// The name of the disk.
         /// </summary>
         [Output("diskName")]
         public Output<string?> DiskName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// Ens node IDExample value: cn-chengdu-telecom.
+        /// The ID of the edge node.
         /// </summary>
         [Output("ensRegionId")]
         public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// Billing type of the disk instanceValue: PayAsYouGo.
+        /// The billing method of the instance. Valid values: `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -104,17 +106,23 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+        /// The status of the disk.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The label to which the instance is bound.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,37 +171,37 @@ namespace Pulumi.AliCloud.Ens
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Types of disk instancesValues: cloud_efficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
         /// </summary>
         [Input("category", required: true)]
         public Input<string> Category { get; set; } = null!;
 
         /// <summary>
-        /// Name of the disk instance.
+        /// The name of the disk.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// Ens node IDExample value: cn-chengdu-telecom.
+        /// The ID of the edge node.
         /// </summary>
         [Input("ensRegionId", required: true)]
         public Input<string> EnsRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// Billing type of the disk instanceValue: PayAsYouGo.
+        /// The billing method of the instance. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -208,11 +216,23 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The label to which the instance is bound.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskArgs()
         {
@@ -223,43 +243,43 @@ namespace Pulumi.AliCloud.Ens
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Types of disk instancesValues: cloud_efficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+        /// The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Disk instance creation time.
+        /// The time when the disk was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Name of the disk instance.
+        /// The name of the disk.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+        /// Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// Ens node IDExample value: cn-chengdu-telecom.
+        /// The ID of the edge node.
         /// </summary>
         [Input("ensRegionId")]
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+        /// The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// Billing type of the disk instanceValue: PayAsYouGo.
+        /// The billing method of the instance. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -274,17 +294,29 @@ namespace Pulumi.AliCloud.Ens
         /// The ID of the snapshot used to create the cloud disk.
         /// 
         /// The SnapshotId and Size parameters have the following limitations:
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-        /// - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+        /// - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+        /// The status of the disk.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The label to which the instance is bound.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskState()
         {

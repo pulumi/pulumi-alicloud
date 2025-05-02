@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? ReplicaSetRole;
         /// <summary>
+        /// The id of the role.
+        /// </summary>
+        public readonly string? RoleId;
+        /// <summary>
         /// VPC instance ID.
         /// </summary>
         public readonly string? VpcCloudInstanceId;
@@ -52,6 +56,8 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             string? replicaSetRole,
 
+            string? roleId,
+
             string? vpcCloudInstanceId,
 
             string? vpcId,
@@ -62,6 +68,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
             ConnectionPort = connectionPort;
             NetworkType = networkType;
             ReplicaSetRole = replicaSetRole;
+            RoleId = roleId;
             VpcCloudInstanceId = vpcCloudInstanceId;
             VpcId = vpcId;
             VswitchId = vswitchId;

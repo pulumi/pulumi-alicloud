@@ -2150,6 +2150,277 @@ func (o ClusterNodeGroupNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeGro
 	}).(ClusterNodeGroupNodeOutput)
 }
 
+type ExperimentPlanTemplateTemplatePipeline struct {
+	// Contains a series of parameters related to the environment. See `envParams` below.
+	EnvParams ExperimentPlanTemplateTemplatePipelineEnvParams `pulumi:"envParams"`
+	// Indicates the sequence number of the pipeline node.
+	PipelineOrder int `pulumi:"pipelineOrder"`
+	// The use of the template scenario. It can have the following optional parameters:
+	// - baseline: benchmark evaluation
+	Scene string `pulumi:"scene"`
+	// Represents additional parameters for the run.
+	SettingParams map[string]string `pulumi:"settingParams"`
+	// Used to uniquely identify a specific payload.
+	WorkloadId int `pulumi:"workloadId"`
+	// The name used to represent a specific payload.
+	WorkloadName string `pulumi:"workloadName"`
+}
+
+// ExperimentPlanTemplateTemplatePipelineInput is an input type that accepts ExperimentPlanTemplateTemplatePipelineArgs and ExperimentPlanTemplateTemplatePipelineOutput values.
+// You can construct a concrete instance of `ExperimentPlanTemplateTemplatePipelineInput` via:
+//
+//	ExperimentPlanTemplateTemplatePipelineArgs{...}
+type ExperimentPlanTemplateTemplatePipelineInput interface {
+	pulumi.Input
+
+	ToExperimentPlanTemplateTemplatePipelineOutput() ExperimentPlanTemplateTemplatePipelineOutput
+	ToExperimentPlanTemplateTemplatePipelineOutputWithContext(context.Context) ExperimentPlanTemplateTemplatePipelineOutput
+}
+
+type ExperimentPlanTemplateTemplatePipelineArgs struct {
+	// Contains a series of parameters related to the environment. See `envParams` below.
+	EnvParams ExperimentPlanTemplateTemplatePipelineEnvParamsInput `pulumi:"envParams"`
+	// Indicates the sequence number of the pipeline node.
+	PipelineOrder pulumi.IntInput `pulumi:"pipelineOrder"`
+	// The use of the template scenario. It can have the following optional parameters:
+	// - baseline: benchmark evaluation
+	Scene pulumi.StringInput `pulumi:"scene"`
+	// Represents additional parameters for the run.
+	SettingParams pulumi.StringMapInput `pulumi:"settingParams"`
+	// Used to uniquely identify a specific payload.
+	WorkloadId pulumi.IntInput `pulumi:"workloadId"`
+	// The name used to represent a specific payload.
+	WorkloadName pulumi.StringInput `pulumi:"workloadName"`
+}
+
+func (ExperimentPlanTemplateTemplatePipelineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentPlanTemplateTemplatePipeline)(nil)).Elem()
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineArgs) ToExperimentPlanTemplateTemplatePipelineOutput() ExperimentPlanTemplateTemplatePipelineOutput {
+	return i.ToExperimentPlanTemplateTemplatePipelineOutputWithContext(context.Background())
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineArgs) ToExperimentPlanTemplateTemplatePipelineOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentPlanTemplateTemplatePipelineOutput)
+}
+
+// ExperimentPlanTemplateTemplatePipelineArrayInput is an input type that accepts ExperimentPlanTemplateTemplatePipelineArray and ExperimentPlanTemplateTemplatePipelineArrayOutput values.
+// You can construct a concrete instance of `ExperimentPlanTemplateTemplatePipelineArrayInput` via:
+//
+//	ExperimentPlanTemplateTemplatePipelineArray{ ExperimentPlanTemplateTemplatePipelineArgs{...} }
+type ExperimentPlanTemplateTemplatePipelineArrayInput interface {
+	pulumi.Input
+
+	ToExperimentPlanTemplateTemplatePipelineArrayOutput() ExperimentPlanTemplateTemplatePipelineArrayOutput
+	ToExperimentPlanTemplateTemplatePipelineArrayOutputWithContext(context.Context) ExperimentPlanTemplateTemplatePipelineArrayOutput
+}
+
+type ExperimentPlanTemplateTemplatePipelineArray []ExperimentPlanTemplateTemplatePipelineInput
+
+func (ExperimentPlanTemplateTemplatePipelineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExperimentPlanTemplateTemplatePipeline)(nil)).Elem()
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineArray) ToExperimentPlanTemplateTemplatePipelineArrayOutput() ExperimentPlanTemplateTemplatePipelineArrayOutput {
+	return i.ToExperimentPlanTemplateTemplatePipelineArrayOutputWithContext(context.Background())
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineArray) ToExperimentPlanTemplateTemplatePipelineArrayOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentPlanTemplateTemplatePipelineArrayOutput)
+}
+
+type ExperimentPlanTemplateTemplatePipelineOutput struct{ *pulumi.OutputState }
+
+func (ExperimentPlanTemplateTemplatePipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentPlanTemplateTemplatePipeline)(nil)).Elem()
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineOutput) ToExperimentPlanTemplateTemplatePipelineOutput() ExperimentPlanTemplateTemplatePipelineOutput {
+	return o
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineOutput) ToExperimentPlanTemplateTemplatePipelineOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineOutput {
+	return o
+}
+
+// Contains a series of parameters related to the environment. See `envParams` below.
+func (o ExperimentPlanTemplateTemplatePipelineOutput) EnvParams() ExperimentPlanTemplateTemplatePipelineEnvParamsOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) ExperimentPlanTemplateTemplatePipelineEnvParams {
+		return v.EnvParams
+	}).(ExperimentPlanTemplateTemplatePipelineEnvParamsOutput)
+}
+
+// Indicates the sequence number of the pipeline node.
+func (o ExperimentPlanTemplateTemplatePipelineOutput) PipelineOrder() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) int { return v.PipelineOrder }).(pulumi.IntOutput)
+}
+
+// The use of the template scenario. It can have the following optional parameters:
+// - baseline: benchmark evaluation
+func (o ExperimentPlanTemplateTemplatePipelineOutput) Scene() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) string { return v.Scene }).(pulumi.StringOutput)
+}
+
+// Represents additional parameters for the run.
+func (o ExperimentPlanTemplateTemplatePipelineOutput) SettingParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) map[string]string { return v.SettingParams }).(pulumi.StringMapOutput)
+}
+
+// Used to uniquely identify a specific payload.
+func (o ExperimentPlanTemplateTemplatePipelineOutput) WorkloadId() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) int { return v.WorkloadId }).(pulumi.IntOutput)
+}
+
+// The name used to represent a specific payload.
+func (o ExperimentPlanTemplateTemplatePipelineOutput) WorkloadName() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipeline) string { return v.WorkloadName }).(pulumi.StringOutput)
+}
+
+type ExperimentPlanTemplateTemplatePipelineArrayOutput struct{ *pulumi.OutputState }
+
+func (ExperimentPlanTemplateTemplatePipelineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExperimentPlanTemplateTemplatePipeline)(nil)).Elem()
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineArrayOutput) ToExperimentPlanTemplateTemplatePipelineArrayOutput() ExperimentPlanTemplateTemplatePipelineArrayOutput {
+	return o
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineArrayOutput) ToExperimentPlanTemplateTemplatePipelineArrayOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineArrayOutput {
+	return o
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineArrayOutput) Index(i pulumi.IntInput) ExperimentPlanTemplateTemplatePipelineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExperimentPlanTemplateTemplatePipeline {
+		return vs[0].([]ExperimentPlanTemplateTemplatePipeline)[vs[1].(int)]
+	}).(ExperimentPlanTemplateTemplatePipelineOutput)
+}
+
+type ExperimentPlanTemplateTemplatePipelineEnvParams struct {
+	// Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+	CpuPerWorker int `pulumi:"cpuPerWorker"`
+	// The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+	CudaVersion *string `pulumi:"cudaVersion"`
+	// The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+	GpuDriverVersion *string `pulumi:"gpuDriverVersion"`
+	// Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+	GpuPerWorker int `pulumi:"gpuPerWorker"`
+	// The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+	MemoryPerWorker int `pulumi:"memoryPerWorker"`
+	// The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+	NcclVersion *string `pulumi:"ncclVersion"`
+	// The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+	PyTorchVersion *string `pulumi:"pyTorchVersion"`
+	// Shared memory GB allocation
+	ShareMemory int `pulumi:"shareMemory"`
+	// The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+	WorkerNum int `pulumi:"workerNum"`
+}
+
+// ExperimentPlanTemplateTemplatePipelineEnvParamsInput is an input type that accepts ExperimentPlanTemplateTemplatePipelineEnvParamsArgs and ExperimentPlanTemplateTemplatePipelineEnvParamsOutput values.
+// You can construct a concrete instance of `ExperimentPlanTemplateTemplatePipelineEnvParamsInput` via:
+//
+//	ExperimentPlanTemplateTemplatePipelineEnvParamsArgs{...}
+type ExperimentPlanTemplateTemplatePipelineEnvParamsInput interface {
+	pulumi.Input
+
+	ToExperimentPlanTemplateTemplatePipelineEnvParamsOutput() ExperimentPlanTemplateTemplatePipelineEnvParamsOutput
+	ToExperimentPlanTemplateTemplatePipelineEnvParamsOutputWithContext(context.Context) ExperimentPlanTemplateTemplatePipelineEnvParamsOutput
+}
+
+type ExperimentPlanTemplateTemplatePipelineEnvParamsArgs struct {
+	// Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+	CpuPerWorker pulumi.IntInput `pulumi:"cpuPerWorker"`
+	// The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+	CudaVersion pulumi.StringPtrInput `pulumi:"cudaVersion"`
+	// The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+	GpuDriverVersion pulumi.StringPtrInput `pulumi:"gpuDriverVersion"`
+	// Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+	GpuPerWorker pulumi.IntInput `pulumi:"gpuPerWorker"`
+	// The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+	MemoryPerWorker pulumi.IntInput `pulumi:"memoryPerWorker"`
+	// The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+	NcclVersion pulumi.StringPtrInput `pulumi:"ncclVersion"`
+	// The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+	PyTorchVersion pulumi.StringPtrInput `pulumi:"pyTorchVersion"`
+	// Shared memory GB allocation
+	ShareMemory pulumi.IntInput `pulumi:"shareMemory"`
+	// The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+	WorkerNum pulumi.IntInput `pulumi:"workerNum"`
+}
+
+func (ExperimentPlanTemplateTemplatePipelineEnvParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineEnvParams)(nil)).Elem()
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineEnvParamsArgs) ToExperimentPlanTemplateTemplatePipelineEnvParamsOutput() ExperimentPlanTemplateTemplatePipelineEnvParamsOutput {
+	return i.ToExperimentPlanTemplateTemplatePipelineEnvParamsOutputWithContext(context.Background())
+}
+
+func (i ExperimentPlanTemplateTemplatePipelineEnvParamsArgs) ToExperimentPlanTemplateTemplatePipelineEnvParamsOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineEnvParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentPlanTemplateTemplatePipelineEnvParamsOutput)
+}
+
+type ExperimentPlanTemplateTemplatePipelineEnvParamsOutput struct{ *pulumi.OutputState }
+
+func (ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineEnvParams)(nil)).Elem()
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) ToExperimentPlanTemplateTemplatePipelineEnvParamsOutput() ExperimentPlanTemplateTemplatePipelineEnvParamsOutput {
+	return o
+}
+
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) ToExperimentPlanTemplateTemplatePipelineEnvParamsOutputWithContext(ctx context.Context) ExperimentPlanTemplateTemplatePipelineEnvParamsOutput {
+	return o
+}
+
+// Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) CpuPerWorker() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.CpuPerWorker }).(pulumi.IntOutput)
+}
+
+// The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) CudaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) *string { return v.CudaVersion }).(pulumi.StringPtrOutput)
+}
+
+// The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) GpuDriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) *string { return v.GpuDriverVersion }).(pulumi.StringPtrOutput)
+}
+
+// Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) GpuPerWorker() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.GpuPerWorker }).(pulumi.IntOutput)
+}
+
+// The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) MemoryPerWorker() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.MemoryPerWorker }).(pulumi.IntOutput)
+}
+
+// The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) NcclVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) *string { return v.NcclVersion }).(pulumi.StringPtrOutput)
+}
+
+// The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) PyTorchVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) *string { return v.PyTorchVersion }).(pulumi.StringPtrOutput)
+}
+
+// Shared memory GB allocation
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) ShareMemory() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.ShareMemory }).(pulumi.IntOutput)
+}
+
+// The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) WorkerNum() pulumi.IntOutput {
+	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.WorkerNum }).(pulumi.IntOutput)
+}
+
 type NodeGroupIpAllocationPolicy struct {
 	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
 	BondPolicy *NodeGroupIpAllocationPolicyBondPolicy `pulumi:"bondPolicy"`
@@ -3089,6 +3360,508 @@ func (o NodeGroupNodeArrayOutput) Index(i pulumi.IntInput) NodeGroupNodeOutput {
 	}).(NodeGroupNodeOutput)
 }
 
+type ResourceMachineTypes struct {
+	// This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+	BondNum *int `pulumi:"bondNum"`
+	// Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+	CpuInfo string `pulumi:"cpuInfo"`
+	// Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+	DiskInfo *string `pulumi:"diskInfo"`
+	// Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+	GpuInfo string `pulumi:"gpuInfo"`
+	// This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+	MemoryInfo *string `pulumi:"memoryInfo"`
+	// Specification Name.
+	Name *string `pulumi:"name"`
+	// Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+	NetworkInfo *string `pulumi:"networkInfo"`
+	// Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+	NetworkMode *string `pulumi:"networkMode"`
+	// Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+	Type *string `pulumi:"type"`
+}
+
+// ResourceMachineTypesInput is an input type that accepts ResourceMachineTypesArgs and ResourceMachineTypesOutput values.
+// You can construct a concrete instance of `ResourceMachineTypesInput` via:
+//
+//	ResourceMachineTypesArgs{...}
+type ResourceMachineTypesInput interface {
+	pulumi.Input
+
+	ToResourceMachineTypesOutput() ResourceMachineTypesOutput
+	ToResourceMachineTypesOutputWithContext(context.Context) ResourceMachineTypesOutput
+}
+
+type ResourceMachineTypesArgs struct {
+	// This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+	BondNum pulumi.IntPtrInput `pulumi:"bondNum"`
+	// Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+	CpuInfo pulumi.StringInput `pulumi:"cpuInfo"`
+	// Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+	DiskInfo pulumi.StringPtrInput `pulumi:"diskInfo"`
+	// Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+	GpuInfo pulumi.StringInput `pulumi:"gpuInfo"`
+	// This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+	MemoryInfo pulumi.StringPtrInput `pulumi:"memoryInfo"`
+	// Specification Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+	NetworkInfo pulumi.StringPtrInput `pulumi:"networkInfo"`
+	// Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+	NetworkMode pulumi.StringPtrInput `pulumi:"networkMode"`
+	// Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ResourceMachineTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceMachineTypes)(nil)).Elem()
+}
+
+func (i ResourceMachineTypesArgs) ToResourceMachineTypesOutput() ResourceMachineTypesOutput {
+	return i.ToResourceMachineTypesOutputWithContext(context.Background())
+}
+
+func (i ResourceMachineTypesArgs) ToResourceMachineTypesOutputWithContext(ctx context.Context) ResourceMachineTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMachineTypesOutput)
+}
+
+func (i ResourceMachineTypesArgs) ToResourceMachineTypesPtrOutput() ResourceMachineTypesPtrOutput {
+	return i.ToResourceMachineTypesPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceMachineTypesArgs) ToResourceMachineTypesPtrOutputWithContext(ctx context.Context) ResourceMachineTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMachineTypesOutput).ToResourceMachineTypesPtrOutputWithContext(ctx)
+}
+
+// ResourceMachineTypesPtrInput is an input type that accepts ResourceMachineTypesArgs, ResourceMachineTypesPtr and ResourceMachineTypesPtrOutput values.
+// You can construct a concrete instance of `ResourceMachineTypesPtrInput` via:
+//
+//	        ResourceMachineTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceMachineTypesPtrInput interface {
+	pulumi.Input
+
+	ToResourceMachineTypesPtrOutput() ResourceMachineTypesPtrOutput
+	ToResourceMachineTypesPtrOutputWithContext(context.Context) ResourceMachineTypesPtrOutput
+}
+
+type resourceMachineTypesPtrType ResourceMachineTypesArgs
+
+func ResourceMachineTypesPtr(v *ResourceMachineTypesArgs) ResourceMachineTypesPtrInput {
+	return (*resourceMachineTypesPtrType)(v)
+}
+
+func (*resourceMachineTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceMachineTypes)(nil)).Elem()
+}
+
+func (i *resourceMachineTypesPtrType) ToResourceMachineTypesPtrOutput() ResourceMachineTypesPtrOutput {
+	return i.ToResourceMachineTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceMachineTypesPtrType) ToResourceMachineTypesPtrOutputWithContext(ctx context.Context) ResourceMachineTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceMachineTypesPtrOutput)
+}
+
+type ResourceMachineTypesOutput struct{ *pulumi.OutputState }
+
+func (ResourceMachineTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceMachineTypes)(nil)).Elem()
+}
+
+func (o ResourceMachineTypesOutput) ToResourceMachineTypesOutput() ResourceMachineTypesOutput {
+	return o
+}
+
+func (o ResourceMachineTypesOutput) ToResourceMachineTypesOutputWithContext(ctx context.Context) ResourceMachineTypesOutput {
+	return o
+}
+
+func (o ResourceMachineTypesOutput) ToResourceMachineTypesPtrOutput() ResourceMachineTypesPtrOutput {
+	return o.ToResourceMachineTypesPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceMachineTypesOutput) ToResourceMachineTypesPtrOutputWithContext(ctx context.Context) ResourceMachineTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMachineTypes) *ResourceMachineTypes {
+		return &v
+	}).(ResourceMachineTypesPtrOutput)
+}
+
+// This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+func (o ResourceMachineTypesOutput) BondNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *int { return v.BondNum }).(pulumi.IntPtrOutput)
+}
+
+// Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+func (o ResourceMachineTypesOutput) CpuInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) string { return v.CpuInfo }).(pulumi.StringOutput)
+}
+
+// Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+func (o ResourceMachineTypesOutput) DiskInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.DiskInfo }).(pulumi.StringPtrOutput)
+}
+
+// Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+func (o ResourceMachineTypesOutput) GpuInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) string { return v.GpuInfo }).(pulumi.StringOutput)
+}
+
+// This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+func (o ResourceMachineTypesOutput) MemoryInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.MemoryInfo }).(pulumi.StringPtrOutput)
+}
+
+// Specification Name.
+func (o ResourceMachineTypesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+func (o ResourceMachineTypesOutput) NetworkInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.NetworkInfo }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+func (o ResourceMachineTypesOutput) NetworkMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.NetworkMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+func (o ResourceMachineTypesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+func (o ResourceMachineTypesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMachineTypes) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ResourceMachineTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceMachineTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceMachineTypes)(nil)).Elem()
+}
+
+func (o ResourceMachineTypesPtrOutput) ToResourceMachineTypesPtrOutput() ResourceMachineTypesPtrOutput {
+	return o
+}
+
+func (o ResourceMachineTypesPtrOutput) ToResourceMachineTypesPtrOutputWithContext(ctx context.Context) ResourceMachineTypesPtrOutput {
+	return o
+}
+
+func (o ResourceMachineTypesPtrOutput) Elem() ResourceMachineTypesOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) ResourceMachineTypes {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceMachineTypes
+		return ret
+	}).(ResourceMachineTypesOutput)
+}
+
+// This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+func (o ResourceMachineTypesPtrOutput) BondNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BondNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+func (o ResourceMachineTypesPtrOutput) CpuInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+func (o ResourceMachineTypesPtrOutput) DiskInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+func (o ResourceMachineTypesPtrOutput) GpuInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+func (o ResourceMachineTypesPtrOutput) MemoryInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification Name.
+func (o ResourceMachineTypesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+func (o ResourceMachineTypesPtrOutput) NetworkInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+func (o ResourceMachineTypesPtrOutput) NetworkMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+func (o ResourceMachineTypesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+func (o ResourceMachineTypesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMachineTypes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceUserAccessParam struct {
+	// Access keys are important credentials for authentication.
+	AccessId string `pulumi:"accessId"`
+	// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+	AccessKey string `pulumi:"accessKey"`
+	// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+	Endpoint string `pulumi:"endpoint"`
+	// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// ResourceUserAccessParamInput is an input type that accepts ResourceUserAccessParamArgs and ResourceUserAccessParamOutput values.
+// You can construct a concrete instance of `ResourceUserAccessParamInput` via:
+//
+//	ResourceUserAccessParamArgs{...}
+type ResourceUserAccessParamInput interface {
+	pulumi.Input
+
+	ToResourceUserAccessParamOutput() ResourceUserAccessParamOutput
+	ToResourceUserAccessParamOutputWithContext(context.Context) ResourceUserAccessParamOutput
+}
+
+type ResourceUserAccessParamArgs struct {
+	// Access keys are important credentials for authentication.
+	AccessId pulumi.StringInput `pulumi:"accessId"`
+	// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (ResourceUserAccessParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceUserAccessParam)(nil)).Elem()
+}
+
+func (i ResourceUserAccessParamArgs) ToResourceUserAccessParamOutput() ResourceUserAccessParamOutput {
+	return i.ToResourceUserAccessParamOutputWithContext(context.Background())
+}
+
+func (i ResourceUserAccessParamArgs) ToResourceUserAccessParamOutputWithContext(ctx context.Context) ResourceUserAccessParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceUserAccessParamOutput)
+}
+
+func (i ResourceUserAccessParamArgs) ToResourceUserAccessParamPtrOutput() ResourceUserAccessParamPtrOutput {
+	return i.ToResourceUserAccessParamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceUserAccessParamArgs) ToResourceUserAccessParamPtrOutputWithContext(ctx context.Context) ResourceUserAccessParamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceUserAccessParamOutput).ToResourceUserAccessParamPtrOutputWithContext(ctx)
+}
+
+// ResourceUserAccessParamPtrInput is an input type that accepts ResourceUserAccessParamArgs, ResourceUserAccessParamPtr and ResourceUserAccessParamPtrOutput values.
+// You can construct a concrete instance of `ResourceUserAccessParamPtrInput` via:
+//
+//	        ResourceUserAccessParamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceUserAccessParamPtrInput interface {
+	pulumi.Input
+
+	ToResourceUserAccessParamPtrOutput() ResourceUserAccessParamPtrOutput
+	ToResourceUserAccessParamPtrOutputWithContext(context.Context) ResourceUserAccessParamPtrOutput
+}
+
+type resourceUserAccessParamPtrType ResourceUserAccessParamArgs
+
+func ResourceUserAccessParamPtr(v *ResourceUserAccessParamArgs) ResourceUserAccessParamPtrInput {
+	return (*resourceUserAccessParamPtrType)(v)
+}
+
+func (*resourceUserAccessParamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceUserAccessParam)(nil)).Elem()
+}
+
+func (i *resourceUserAccessParamPtrType) ToResourceUserAccessParamPtrOutput() ResourceUserAccessParamPtrOutput {
+	return i.ToResourceUserAccessParamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceUserAccessParamPtrType) ToResourceUserAccessParamPtrOutputWithContext(ctx context.Context) ResourceUserAccessParamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceUserAccessParamPtrOutput)
+}
+
+type ResourceUserAccessParamOutput struct{ *pulumi.OutputState }
+
+func (ResourceUserAccessParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceUserAccessParam)(nil)).Elem()
+}
+
+func (o ResourceUserAccessParamOutput) ToResourceUserAccessParamOutput() ResourceUserAccessParamOutput {
+	return o
+}
+
+func (o ResourceUserAccessParamOutput) ToResourceUserAccessParamOutputWithContext(ctx context.Context) ResourceUserAccessParamOutput {
+	return o
+}
+
+func (o ResourceUserAccessParamOutput) ToResourceUserAccessParamPtrOutput() ResourceUserAccessParamPtrOutput {
+	return o.ToResourceUserAccessParamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceUserAccessParamOutput) ToResourceUserAccessParamPtrOutputWithContext(ctx context.Context) ResourceUserAccessParamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceUserAccessParam) *ResourceUserAccessParam {
+		return &v
+	}).(ResourceUserAccessParamPtrOutput)
+}
+
+// Access keys are important credentials for authentication.
+func (o ResourceUserAccessParamOutput) AccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceUserAccessParam) string { return v.AccessId }).(pulumi.StringOutput)
+}
+
+// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+func (o ResourceUserAccessParamOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceUserAccessParam) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+func (o ResourceUserAccessParamOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceUserAccessParam) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+func (o ResourceUserAccessParamOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceUserAccessParam) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type ResourceUserAccessParamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceUserAccessParamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceUserAccessParam)(nil)).Elem()
+}
+
+func (o ResourceUserAccessParamPtrOutput) ToResourceUserAccessParamPtrOutput() ResourceUserAccessParamPtrOutput {
+	return o
+}
+
+func (o ResourceUserAccessParamPtrOutput) ToResourceUserAccessParamPtrOutputWithContext(ctx context.Context) ResourceUserAccessParamPtrOutput {
+	return o
+}
+
+func (o ResourceUserAccessParamPtrOutput) Elem() ResourceUserAccessParamOutput {
+	return o.ApplyT(func(v *ResourceUserAccessParam) ResourceUserAccessParam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceUserAccessParam
+		return ret
+	}).(ResourceUserAccessParamOutput)
+}
+
+// Access keys are important credentials for authentication.
+func (o ResourceUserAccessParamPtrOutput) AccessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceUserAccessParam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+func (o ResourceUserAccessParamPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceUserAccessParam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+func (o ResourceUserAccessParamPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceUserAccessParam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+func (o ResourceUserAccessParamPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceUserAccessParam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSubnetsSubnet struct {
 	// Network segment
 	Cidr string `pulumi:"cidr"`
@@ -3485,6 +4258,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupArrayInput)(nil)).Elem(), ClusterNodeGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupNodeInput)(nil)).Elem(), ClusterNodeGroupNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupNodeArrayInput)(nil)).Elem(), ClusterNodeGroupNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineArrayInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineEnvParamsInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineEnvParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyArgs{})
@@ -3501,6 +4277,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBondArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyBondArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeInput)(nil)).Elem(), NodeGroupNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeArrayInput)(nil)).Elem(), NodeGroupNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceMachineTypesInput)(nil)).Elem(), ResourceMachineTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceMachineTypesPtrInput)(nil)).Elem(), ResourceMachineTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUserAccessParamInput)(nil)).Elem(), ResourceUserAccessParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUserAccessParamPtrInput)(nil)).Elem(), ResourceUserAccessParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetInput)(nil)).Elem(), GetSubnetsSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetArrayInput)(nil)).Elem(), GetSubnetsSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpdsVpdInput)(nil)).Elem(), GetVpdsVpdArgs{})
@@ -3535,6 +4315,9 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupNodeOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupNodeArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineOutput{})
+	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineEnvParamsOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyOutput{})
@@ -3551,6 +4334,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupNodeOutput{})
 	pulumi.RegisterOutputType(NodeGroupNodeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceMachineTypesOutput{})
+	pulumi.RegisterOutputType(ResourceMachineTypesPtrOutput{})
+	pulumi.RegisterOutputType(ResourceUserAccessParamOutput{})
+	pulumi.RegisterOutputType(ResourceUserAccessParamPtrOutput{})
 	pulumi.RegisterOutputType(GetSubnetsSubnetOutput{})
 	pulumi.RegisterOutputType(GetSubnetsSubnetArrayOutput{})
 	pulumi.RegisterOutputType(GetVpdsVpdOutput{})

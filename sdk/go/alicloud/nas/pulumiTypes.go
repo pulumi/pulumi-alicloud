@@ -364,7 +364,7 @@ func (o AccessPointRootPathPermissionPtrOutput) Permission() pulumi.StringPtrOut
 }
 
 type FileSystemNfsAcl struct {
-	// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+	// Whether the NFS ACL function is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -380,7 +380,7 @@ type FileSystemNfsAclInput interface {
 }
 
 type FileSystemNfsAclArgs struct {
-	// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+	// Whether the NFS ACL function is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -461,7 +461,7 @@ func (o FileSystemNfsAclOutput) ToFileSystemNfsAclPtrOutputWithContext(ctx conte
 	}).(FileSystemNfsAclPtrOutput)
 }
 
-// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+// Whether the NFS ACL function is enabled.
 func (o FileSystemNfsAclOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileSystemNfsAcl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -490,7 +490,7 @@ func (o FileSystemNfsAclPtrOutput) Elem() FileSystemNfsAclOutput {
 	}).(FileSystemNfsAclOutput)
 }
 
-// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+// Whether the NFS ACL function is enabled.
 func (o FileSystemNfsAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileSystemNfsAcl) *bool {
 		if v == nil {
@@ -500,16 +500,169 @@ func (o FileSystemNfsAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type FileSystemOptions struct {
+	// Whether to enable the OpLock function. Value:
+	// - true: On.
+	// - false: does not turn on.
+	//
+	// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+	EnableOplock *bool `pulumi:"enableOplock"`
+}
+
+// FileSystemOptionsInput is an input type that accepts FileSystemOptionsArgs and FileSystemOptionsOutput values.
+// You can construct a concrete instance of `FileSystemOptionsInput` via:
+//
+//	FileSystemOptionsArgs{...}
+type FileSystemOptionsInput interface {
+	pulumi.Input
+
+	ToFileSystemOptionsOutput() FileSystemOptionsOutput
+	ToFileSystemOptionsOutputWithContext(context.Context) FileSystemOptionsOutput
+}
+
+type FileSystemOptionsArgs struct {
+	// Whether to enable the OpLock function. Value:
+	// - true: On.
+	// - false: does not turn on.
+	//
+	// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+	EnableOplock pulumi.BoolPtrInput `pulumi:"enableOplock"`
+}
+
+func (FileSystemOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemOptions)(nil)).Elem()
+}
+
+func (i FileSystemOptionsArgs) ToFileSystemOptionsOutput() FileSystemOptionsOutput {
+	return i.ToFileSystemOptionsOutputWithContext(context.Background())
+}
+
+func (i FileSystemOptionsArgs) ToFileSystemOptionsOutputWithContext(ctx context.Context) FileSystemOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOptionsOutput)
+}
+
+func (i FileSystemOptionsArgs) ToFileSystemOptionsPtrOutput() FileSystemOptionsPtrOutput {
+	return i.ToFileSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemOptionsArgs) ToFileSystemOptionsPtrOutputWithContext(ctx context.Context) FileSystemOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOptionsOutput).ToFileSystemOptionsPtrOutputWithContext(ctx)
+}
+
+// FileSystemOptionsPtrInput is an input type that accepts FileSystemOptionsArgs, FileSystemOptionsPtr and FileSystemOptionsPtrOutput values.
+// You can construct a concrete instance of `FileSystemOptionsPtrInput` via:
+//
+//	        FileSystemOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemOptionsPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemOptionsPtrOutput() FileSystemOptionsPtrOutput
+	ToFileSystemOptionsPtrOutputWithContext(context.Context) FileSystemOptionsPtrOutput
+}
+
+type fileSystemOptionsPtrType FileSystemOptionsArgs
+
+func FileSystemOptionsPtr(v *FileSystemOptionsArgs) FileSystemOptionsPtrInput {
+	return (*fileSystemOptionsPtrType)(v)
+}
+
+func (*fileSystemOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemOptions)(nil)).Elem()
+}
+
+func (i *fileSystemOptionsPtrType) ToFileSystemOptionsPtrOutput() FileSystemOptionsPtrOutput {
+	return i.ToFileSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemOptionsPtrType) ToFileSystemOptionsPtrOutputWithContext(ctx context.Context) FileSystemOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOptionsPtrOutput)
+}
+
+type FileSystemOptionsOutput struct{ *pulumi.OutputState }
+
+func (FileSystemOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemOptions)(nil)).Elem()
+}
+
+func (o FileSystemOptionsOutput) ToFileSystemOptionsOutput() FileSystemOptionsOutput {
+	return o
+}
+
+func (o FileSystemOptionsOutput) ToFileSystemOptionsOutputWithContext(ctx context.Context) FileSystemOptionsOutput {
+	return o
+}
+
+func (o FileSystemOptionsOutput) ToFileSystemOptionsPtrOutput() FileSystemOptionsPtrOutput {
+	return o.ToFileSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemOptionsOutput) ToFileSystemOptionsPtrOutputWithContext(ctx context.Context) FileSystemOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemOptions) *FileSystemOptions {
+		return &v
+	}).(FileSystemOptionsPtrOutput)
+}
+
+// Whether to enable the OpLock function. Value:
+// - true: On.
+// - false: does not turn on.
+//
+// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+func (o FileSystemOptionsOutput) EnableOplock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemOptions) *bool { return v.EnableOplock }).(pulumi.BoolPtrOutput)
+}
+
+type FileSystemOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemOptions)(nil)).Elem()
+}
+
+func (o FileSystemOptionsPtrOutput) ToFileSystemOptionsPtrOutput() FileSystemOptionsPtrOutput {
+	return o
+}
+
+func (o FileSystemOptionsPtrOutput) ToFileSystemOptionsPtrOutputWithContext(ctx context.Context) FileSystemOptionsPtrOutput {
+	return o
+}
+
+func (o FileSystemOptionsPtrOutput) Elem() FileSystemOptionsOutput {
+	return o.ApplyT(func(v *FileSystemOptions) FileSystemOptions {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemOptions
+		return ret
+	}).(FileSystemOptionsOutput)
+}
+
+// Whether to enable the OpLock function. Value:
+// - true: On.
+// - false: does not turn on.
+//
+// > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+func (o FileSystemOptionsPtrOutput) EnableOplock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOplock
+	}).(pulumi.BoolPtrOutput)
+}
+
 type FileSystemRecycleBin struct {
-	// The time at which the recycle bin was enabled.
+	// Recycle Bin open time
 	EnableTime *string `pulumi:"enableTime"`
-	// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+	// Retention time of files in the Recycle Bin. Unit: days.
 	ReservedDays *int `pulumi:"reservedDays"`
-	// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+	// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
 	SecondarySize *int `pulumi:"secondarySize"`
-	// The size of the files that are dumped to the recycle bin.
+	// The amount of files stored in the Recycle Bin. Unit: Byte.
 	Size *int `pulumi:"size"`
-	// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+	// Recycle Bin Status
 	Status *string `pulumi:"status"`
 }
 
@@ -525,15 +678,15 @@ type FileSystemRecycleBinInput interface {
 }
 
 type FileSystemRecycleBinArgs struct {
-	// The time at which the recycle bin was enabled.
+	// Recycle Bin open time
 	EnableTime pulumi.StringPtrInput `pulumi:"enableTime"`
-	// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+	// Retention time of files in the Recycle Bin. Unit: days.
 	ReservedDays pulumi.IntPtrInput `pulumi:"reservedDays"`
-	// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+	// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
 	SecondarySize pulumi.IntPtrInput `pulumi:"secondarySize"`
-	// The size of the files that are dumped to the recycle bin.
+	// The amount of files stored in the Recycle Bin. Unit: Byte.
 	Size pulumi.IntPtrInput `pulumi:"size"`
-	// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+	// Recycle Bin Status
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -614,27 +767,27 @@ func (o FileSystemRecycleBinOutput) ToFileSystemRecycleBinPtrOutputWithContext(c
 	}).(FileSystemRecycleBinPtrOutput)
 }
 
-// The time at which the recycle bin was enabled.
+// Recycle Bin open time
 func (o FileSystemRecycleBinOutput) EnableTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemRecycleBin) *string { return v.EnableTime }).(pulumi.StringPtrOutput)
 }
 
-// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+// Retention time of files in the Recycle Bin. Unit: days.
 func (o FileSystemRecycleBinOutput) ReservedDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.ReservedDays }).(pulumi.IntPtrOutput)
 }
 
-// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
 func (o FileSystemRecycleBinOutput) SecondarySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.SecondarySize }).(pulumi.IntPtrOutput)
 }
 
-// The size of the files that are dumped to the recycle bin.
+// The amount of files stored in the Recycle Bin. Unit: Byte.
 func (o FileSystemRecycleBinOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+// Recycle Bin Status
 func (o FileSystemRecycleBinOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemRecycleBin) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -663,7 +816,7 @@ func (o FileSystemRecycleBinPtrOutput) Elem() FileSystemRecycleBinOutput {
 	}).(FileSystemRecycleBinOutput)
 }
 
-// The time at which the recycle bin was enabled.
+// Recycle Bin open time
 func (o FileSystemRecycleBinPtrOutput) EnableTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystemRecycleBin) *string {
 		if v == nil {
@@ -673,7 +826,7 @@ func (o FileSystemRecycleBinPtrOutput) EnableTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+// Retention time of files in the Recycle Bin. Unit: days.
 func (o FileSystemRecycleBinPtrOutput) ReservedDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
 		if v == nil {
@@ -683,7 +836,7 @@ func (o FileSystemRecycleBinPtrOutput) ReservedDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
 func (o FileSystemRecycleBinPtrOutput) SecondarySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
 		if v == nil {
@@ -693,7 +846,7 @@ func (o FileSystemRecycleBinPtrOutput) SecondarySize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the files that are dumped to the recycle bin.
+// The amount of files stored in the Recycle Bin. Unit: Byte.
 func (o FileSystemRecycleBinPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
 		if v == nil {
@@ -703,13 +856,317 @@ func (o FileSystemRecycleBinPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+// Recycle Bin Status
 func (o FileSystemRecycleBinPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystemRecycleBin) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type FileSystemSmbAcl struct {
+	// Whether to allow anonymous access.
+	// - true: Allow anonymous access.
+	// - false (default): Anonymous access is not allowed.
+	EnableAnonymousAccess *bool `pulumi:"enableAnonymousAccess"`
+	// Whether SMB ACL is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Whether transmission encryption is enabled.
+	// - true: Enables encryption in transit.
+	// - false (default): Transport encryption is not enabled.
+	EncryptData *bool `pulumi:"encryptData"`
+	// The user directory home path for each user. The file path format is as follows:
+	// - A forward slash (/) or backslash (\) as a separator.
+	// - Each paragraph cannot contain ":|? *.
+	// - The length of each segment ranges from 0 to 255.
+	// - The total length range is 0~32767.
+	//
+	// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+	//
+	// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+	HomeDirPath *string `pulumi:"homeDirPath"`
+	// Whether to reject non-encrypted clients.
+	// - true: Deny non-encrypted clients.
+	// - false (default): Non-encrypted clients are not rejected.
+	RejectUnencryptedAccess *bool `pulumi:"rejectUnencryptedAccess"`
+	// The ID of the Super User. The ID rules are as follows:
+	// - Must start with S and no other letters can appear after the S at the beginning.
+	// - At least three dashes (-) apart.
+	//
+	// Such as S-1-5-22 or S-1-5-22-23.
+	SuperAdminSid *string `pulumi:"superAdminSid"`
+}
+
+// FileSystemSmbAclInput is an input type that accepts FileSystemSmbAclArgs and FileSystemSmbAclOutput values.
+// You can construct a concrete instance of `FileSystemSmbAclInput` via:
+//
+//	FileSystemSmbAclArgs{...}
+type FileSystemSmbAclInput interface {
+	pulumi.Input
+
+	ToFileSystemSmbAclOutput() FileSystemSmbAclOutput
+	ToFileSystemSmbAclOutputWithContext(context.Context) FileSystemSmbAclOutput
+}
+
+type FileSystemSmbAclArgs struct {
+	// Whether to allow anonymous access.
+	// - true: Allow anonymous access.
+	// - false (default): Anonymous access is not allowed.
+	EnableAnonymousAccess pulumi.BoolPtrInput `pulumi:"enableAnonymousAccess"`
+	// Whether SMB ACL is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether transmission encryption is enabled.
+	// - true: Enables encryption in transit.
+	// - false (default): Transport encryption is not enabled.
+	EncryptData pulumi.BoolPtrInput `pulumi:"encryptData"`
+	// The user directory home path for each user. The file path format is as follows:
+	// - A forward slash (/) or backslash (\) as a separator.
+	// - Each paragraph cannot contain ":|? *.
+	// - The length of each segment ranges from 0 to 255.
+	// - The total length range is 0~32767.
+	//
+	// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+	//
+	// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+	HomeDirPath pulumi.StringPtrInput `pulumi:"homeDirPath"`
+	// Whether to reject non-encrypted clients.
+	// - true: Deny non-encrypted clients.
+	// - false (default): Non-encrypted clients are not rejected.
+	RejectUnencryptedAccess pulumi.BoolPtrInput `pulumi:"rejectUnencryptedAccess"`
+	// The ID of the Super User. The ID rules are as follows:
+	// - Must start with S and no other letters can appear after the S at the beginning.
+	// - At least three dashes (-) apart.
+	//
+	// Such as S-1-5-22 or S-1-5-22-23.
+	SuperAdminSid pulumi.StringPtrInput `pulumi:"superAdminSid"`
+}
+
+func (FileSystemSmbAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemSmbAcl)(nil)).Elem()
+}
+
+func (i FileSystemSmbAclArgs) ToFileSystemSmbAclOutput() FileSystemSmbAclOutput {
+	return i.ToFileSystemSmbAclOutputWithContext(context.Background())
+}
+
+func (i FileSystemSmbAclArgs) ToFileSystemSmbAclOutputWithContext(ctx context.Context) FileSystemSmbAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemSmbAclOutput)
+}
+
+func (i FileSystemSmbAclArgs) ToFileSystemSmbAclPtrOutput() FileSystemSmbAclPtrOutput {
+	return i.ToFileSystemSmbAclPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemSmbAclArgs) ToFileSystemSmbAclPtrOutputWithContext(ctx context.Context) FileSystemSmbAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemSmbAclOutput).ToFileSystemSmbAclPtrOutputWithContext(ctx)
+}
+
+// FileSystemSmbAclPtrInput is an input type that accepts FileSystemSmbAclArgs, FileSystemSmbAclPtr and FileSystemSmbAclPtrOutput values.
+// You can construct a concrete instance of `FileSystemSmbAclPtrInput` via:
+//
+//	        FileSystemSmbAclArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemSmbAclPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemSmbAclPtrOutput() FileSystemSmbAclPtrOutput
+	ToFileSystemSmbAclPtrOutputWithContext(context.Context) FileSystemSmbAclPtrOutput
+}
+
+type fileSystemSmbAclPtrType FileSystemSmbAclArgs
+
+func FileSystemSmbAclPtr(v *FileSystemSmbAclArgs) FileSystemSmbAclPtrInput {
+	return (*fileSystemSmbAclPtrType)(v)
+}
+
+func (*fileSystemSmbAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemSmbAcl)(nil)).Elem()
+}
+
+func (i *fileSystemSmbAclPtrType) ToFileSystemSmbAclPtrOutput() FileSystemSmbAclPtrOutput {
+	return i.ToFileSystemSmbAclPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemSmbAclPtrType) ToFileSystemSmbAclPtrOutputWithContext(ctx context.Context) FileSystemSmbAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemSmbAclPtrOutput)
+}
+
+type FileSystemSmbAclOutput struct{ *pulumi.OutputState }
+
+func (FileSystemSmbAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemSmbAcl)(nil)).Elem()
+}
+
+func (o FileSystemSmbAclOutput) ToFileSystemSmbAclOutput() FileSystemSmbAclOutput {
+	return o
+}
+
+func (o FileSystemSmbAclOutput) ToFileSystemSmbAclOutputWithContext(ctx context.Context) FileSystemSmbAclOutput {
+	return o
+}
+
+func (o FileSystemSmbAclOutput) ToFileSystemSmbAclPtrOutput() FileSystemSmbAclPtrOutput {
+	return o.ToFileSystemSmbAclPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemSmbAclOutput) ToFileSystemSmbAclPtrOutputWithContext(ctx context.Context) FileSystemSmbAclPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemSmbAcl) *FileSystemSmbAcl {
+		return &v
+	}).(FileSystemSmbAclPtrOutput)
+}
+
+// Whether to allow anonymous access.
+// - true: Allow anonymous access.
+// - false (default): Anonymous access is not allowed.
+func (o FileSystemSmbAclOutput) EnableAnonymousAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *bool { return v.EnableAnonymousAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Whether SMB ACL is enabled
+func (o FileSystemSmbAclOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether transmission encryption is enabled.
+// - true: Enables encryption in transit.
+// - false (default): Transport encryption is not enabled.
+func (o FileSystemSmbAclOutput) EncryptData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *bool { return v.EncryptData }).(pulumi.BoolPtrOutput)
+}
+
+// The user directory home path for each user. The file path format is as follows:
+// - A forward slash (/) or backslash (\) as a separator.
+// - Each paragraph cannot contain ":|? *.
+// - The length of each segment ranges from 0 to 255.
+// - The total length range is 0~32767.
+//
+// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+//
+// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+func (o FileSystemSmbAclOutput) HomeDirPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *string { return v.HomeDirPath }).(pulumi.StringPtrOutput)
+}
+
+// Whether to reject non-encrypted clients.
+// - true: Deny non-encrypted clients.
+// - false (default): Non-encrypted clients are not rejected.
+func (o FileSystemSmbAclOutput) RejectUnencryptedAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *bool { return v.RejectUnencryptedAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Super User. The ID rules are as follows:
+// - Must start with S and no other letters can appear after the S at the beginning.
+// - At least three dashes (-) apart.
+//
+// Such as S-1-5-22 or S-1-5-22-23.
+func (o FileSystemSmbAclOutput) SuperAdminSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileSystemSmbAcl) *string { return v.SuperAdminSid }).(pulumi.StringPtrOutput)
+}
+
+type FileSystemSmbAclPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemSmbAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemSmbAcl)(nil)).Elem()
+}
+
+func (o FileSystemSmbAclPtrOutput) ToFileSystemSmbAclPtrOutput() FileSystemSmbAclPtrOutput {
+	return o
+}
+
+func (o FileSystemSmbAclPtrOutput) ToFileSystemSmbAclPtrOutputWithContext(ctx context.Context) FileSystemSmbAclPtrOutput {
+	return o
+}
+
+func (o FileSystemSmbAclPtrOutput) Elem() FileSystemSmbAclOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) FileSystemSmbAcl {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemSmbAcl
+		return ret
+	}).(FileSystemSmbAclOutput)
+}
+
+// Whether to allow anonymous access.
+// - true: Allow anonymous access.
+// - false (default): Anonymous access is not allowed.
+func (o FileSystemSmbAclPtrOutput) EnableAnonymousAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAnonymousAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether SMB ACL is enabled
+func (o FileSystemSmbAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether transmission encryption is enabled.
+// - true: Enables encryption in transit.
+// - false (default): Transport encryption is not enabled.
+func (o FileSystemSmbAclPtrOutput) EncryptData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptData
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user directory home path for each user. The file path format is as follows:
+// - A forward slash (/) or backslash (\) as a separator.
+// - Each paragraph cannot contain ":|? *.
+// - The length of each segment ranges from 0 to 255.
+// - The total length range is 0~32767.
+//
+// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+//
+// > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+func (o FileSystemSmbAclPtrOutput) HomeDirPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HomeDirPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to reject non-encrypted clients.
+// - true: Deny non-encrypted clients.
+// - false (default): Non-encrypted clients are not rejected.
+func (o FileSystemSmbAclPtrOutput) RejectUnencryptedAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RejectUnencryptedAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Super User. The ID rules are as follows:
+// - Must start with S and no other letters can appear after the S at the beginning.
+// - At least three dashes (-) apart.
+//
+// Such as S-1-5-22 or S-1-5-22-23.
+func (o FileSystemSmbAclPtrOutput) SuperAdminSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystemSmbAcl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuperAdminSid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2492,8 +2949,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionPtrInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclInput)(nil)).Elem(), FileSystemNfsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclPtrInput)(nil)).Elem(), FileSystemNfsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemOptionsInput)(nil)).Elem(), FileSystemOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemOptionsPtrInput)(nil)).Elem(), FileSystemOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemRecycleBinInput)(nil)).Elem(), FileSystemRecycleBinArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemRecycleBinPtrInput)(nil)).Elem(), FileSystemRecycleBinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemSmbAclInput)(nil)).Elem(), FileSystemSmbAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemSmbAclPtrInput)(nil)).Elem(), FileSystemSmbAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupInput)(nil)).Elem(), GetAccessGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
@@ -2522,8 +2983,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessPointRootPathPermissionPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemNfsAclOutput{})
 	pulumi.RegisterOutputType(FileSystemNfsAclPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemOptionsOutput{})
+	pulumi.RegisterOutputType(FileSystemOptionsPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemRecycleBinOutput{})
 	pulumi.RegisterOutputType(FileSystemRecycleBinPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemSmbAclOutput{})
+	pulumi.RegisterOutputType(FileSystemSmbAclPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})

@@ -10,6 +10,16 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ExperimentPlanArgs, ExperimentPlanState } from "./experimentPlan";
+export type ExperimentPlan = import("./experimentPlan").ExperimentPlan;
+export const ExperimentPlan: typeof import("./experimentPlan").ExperimentPlan = null as any;
+utilities.lazyLoad(exports, ["ExperimentPlan"], () => require("./experimentPlan"));
+
+export { ExperimentPlanTemplateArgs, ExperimentPlanTemplateState } from "./experimentPlanTemplate";
+export type ExperimentPlanTemplate = import("./experimentPlanTemplate").ExperimentPlanTemplate;
+export const ExperimentPlanTemplate: typeof import("./experimentPlanTemplate").ExperimentPlanTemplate = null as any;
+utilities.lazyLoad(exports, ["ExperimentPlanTemplate"], () => require("./experimentPlanTemplate"));
+
 export { GetSubnetsArgs, GetSubnetsResult, GetSubnetsOutputArgs } from "./getSubnets";
 export const getSubnets: typeof import("./getSubnets").getSubnets = null as any;
 export const getSubnetsOutput: typeof import("./getSubnets").getSubnetsOutput = null as any;
@@ -35,6 +45,11 @@ export type NodeGroup = import("./nodeGroup").NodeGroup;
 export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
 utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
 
+export { ResourceArgs, ResourceState } from "./resource";
+export type Resource = import("./resource").Resource;
+export const Resource: typeof import("./resource").Resource = null as any;
+utilities.lazyLoad(exports, ["Resource"], () => require("./resource"));
+
 export { SubnetArgs, SubnetState } from "./subnet";
 export type Subnet = import("./subnet").Subnet;
 export const Subnet: typeof import("./subnet").Subnet = null as any;
@@ -52,12 +67,18 @@ const _module = {
         switch (type) {
             case "alicloud:eflo/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:eflo/experimentPlan:ExperimentPlan":
+                return new ExperimentPlan(name, <any>undefined, { urn })
+            case "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate":
+                return new ExperimentPlanTemplate(name, <any>undefined, { urn })
             case "alicloud:eflo/invocation:Invocation":
                 return new Invocation(name, <any>undefined, { urn })
             case "alicloud:eflo/node:Node":
                 return new Node(name, <any>undefined, { urn })
             case "alicloud:eflo/nodeGroup:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
+            case "alicloud:eflo/resource:Resource":
+                return new Resource(name, <any>undefined, { urn })
             case "alicloud:eflo/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
             case "alicloud:eflo/vpd:Vpd":
@@ -68,8 +89,11 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eflo/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlanTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/invocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/node", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/resource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/vpd", _module)

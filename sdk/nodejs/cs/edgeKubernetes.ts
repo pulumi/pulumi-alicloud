@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     installCloudMonitor: true,
  *     slbInternetEnabled: true,
  *     isEnterpriseSecurityGroup: true,
+ *     skipSetCertificateAuthority: true,
  *     workerDataDisks: [{
  *         category: "cloud_ssd",
  *         size: "200",
@@ -121,6 +122,7 @@ import * as utilities from "../utilities";
  *     installCloudMonitor: true,
  *     slbInternetEnabled: true,
  *     isEnterpriseSecurityGroup: true,
+ *     skipSetCertificateAuthority: true,
  *     workerDataDisks: [{
  *         category: "cloud_ssd",
  *         size: "200",
@@ -171,26 +173,32 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly addons!: pulumi.Output<outputs.cs.EdgeKubernetesAddon[] | undefined>;
     /**
      * The ID of availability zone.
-     *
-     * *Network params*
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     *
+     * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     *
+     * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
     public readonly clientCert!: pulumi.Output<string | undefined>;
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     *
+     * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
     public readonly clientKey!: pulumi.Output<string | undefined>;
     /**
-     * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * *Removed params*
+     *
+     * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
     /**
@@ -208,10 +216,6 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
-    /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
@@ -224,9 +228,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
     /**
-     * The path of kube config, like `~/.kube/config`.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
-     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
@@ -292,6 +296,12 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    /**
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
+     *
+     * *Network params*
+     */
+    public readonly skipSetCertificateAuthority!: pulumi.Output<boolean | undefined>;
     /**
      * The public ip of load balancer.
      */
@@ -391,7 +401,6 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             resourceInputs["connections"] = state ? state.connections : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             resourceInputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
@@ -412,6 +421,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["runtime"] = state ? state.runtime : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
+            resourceInputs["skipSetCertificateAuthority"] = state ? state.skipSetCertificateAuthority : undefined;
             resourceInputs["slbInternet"] = state ? state.slbInternet : undefined;
             resourceInputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
             resourceInputs["slbIntranet"] = state ? state.slbIntranet : undefined;
@@ -448,7 +458,6 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             resourceInputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             resourceInputs["keyName"] = args ? args.keyName : undefined;
@@ -468,6 +477,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
+            resourceInputs["skipSetCertificateAuthority"] = args ? args.skipSetCertificateAuthority : undefined;
             resourceInputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
@@ -507,26 +517,32 @@ export interface EdgeKubernetesState {
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
-     *
-     * *Network params*
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     *
+     * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     *
+     * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
     clientCert?: pulumi.Input<string>;
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     *
+     * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
     clientKey?: pulumi.Input<string>;
     /**
-     * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * *Removed params*
+     *
+     * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
@@ -544,10 +560,6 @@ export interface EdgeKubernetesState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    forceUpdate?: pulumi.Input<boolean>;
-    /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
     installCloudMonitor?: pulumi.Input<boolean>;
@@ -560,9 +572,9 @@ export interface EdgeKubernetesState {
      */
     keyName?: pulumi.Input<string>;
     /**
-     * The path of kube config, like `~/.kube/config`.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
-     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -628,6 +640,12 @@ export interface EdgeKubernetesState {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     serviceCidr?: pulumi.Input<string>;
+    /**
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
+     *
+     * *Network params*
+     */
+    skipSetCertificateAuthority?: pulumi.Input<boolean>;
     /**
      * The public ip of load balancer.
      */
@@ -716,22 +734,26 @@ export interface EdgeKubernetesArgs {
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
-     *
-     * *Network params*
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     *
+     * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
     clientCert?: pulumi.Input<string>;
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     *
+     * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
     clientKey?: pulumi.Input<string>;
     /**
-     * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * *Removed params*
+     *
+     * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
@@ -745,10 +767,6 @@ export interface EdgeKubernetesArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    forceUpdate?: pulumi.Input<boolean>;
-    /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
     installCloudMonitor?: pulumi.Input<boolean>;
@@ -761,9 +779,9 @@ export interface EdgeKubernetesArgs {
      */
     keyName?: pulumi.Input<string>;
     /**
-     * The path of kube config, like `~/.kube/config`.
+     * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
-     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -825,6 +843,12 @@ export interface EdgeKubernetesArgs {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     serviceCidr?: pulumi.Input<string>;
+    /**
+     * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
+     *
+     * *Network params*
+     */
+    skipSetCertificateAuthority?: pulumi.Input<boolean>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      */

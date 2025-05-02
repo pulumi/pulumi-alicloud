@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceDescription(name)
  *             .cacheSize(200)
  *             .paymentType("PayAsYouGo")
+ *             .engineMinorVersion("3.0.12")
  *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
  *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
  *             .vswitchId(defaultGetSwitches.vswitches()[0].id())

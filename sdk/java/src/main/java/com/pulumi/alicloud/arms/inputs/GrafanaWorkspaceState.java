@@ -41,14 +41,18 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Language environment (if not filled in, default is zh): zh, en.
+     * Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      * 
      */
     @Import(name="aliyunLang")
     private @Nullable Output<String> aliyunLang;
 
     /**
-     * @return Language environment (if not filled in, default is zh): zh, en.
+     * @return Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      * 
      */
     public Optional<Output<String>> aliyunLang() {
@@ -162,14 +166,22 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Edition
+     * The edition. **Valid values:**
+     * - standard: ` Beta Edition(For internal testing only)  `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      * 
      */
     @Import(name="grafanaWorkspaceEdition")
     private @Nullable Output<String> grafanaWorkspaceEdition;
 
     /**
-     * @return Edition
+     * @return The edition. **Valid values:**
+     * - standard: ` Beta Edition(For internal testing only)  `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      * 
      */
     public Optional<Output<String>> grafanaWorkspaceEdition() {
@@ -350,7 +362,9 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aliyunLang Language environment (if not filled in, default is zh): zh, en.
+         * @param aliyunLang Language environment (if not filled in, default is zh):
+         * - zh
+         * - en
          * 
          * @return builder
          * 
@@ -361,7 +375,9 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aliyunLang Language environment (if not filled in, default is zh): zh, en.
+         * @param aliyunLang Language environment (if not filled in, default is zh):
+         * - zh
+         * - en
          * 
          * @return builder
          * 
@@ -513,7 +529,11 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceEdition Edition
+         * @param grafanaWorkspaceEdition The edition. **Valid values:**
+         * - standard: ` Beta Edition(For internal testing only)  `
+         * - personal_edition: Developer Edition
+         * - experts_edition: Pro Edition
+         * - advanced_edition: Advanced Edition
          * 
          * @return builder
          * 
@@ -524,7 +544,11 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceEdition Edition
+         * @param grafanaWorkspaceEdition The edition. **Valid values:**
+         * - standard: ` Beta Edition(For internal testing only)  `
+         * - personal_edition: Developer Edition
+         * - experts_edition: Pro Edition
+         * - advanced_edition: Advanced Edition
          * 
          * @return builder
          * 

@@ -39,10 +39,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DdosCoo instance can be imported using the id, e.g.
+ * DdosCoo Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+ * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example <id>
  * ```
  *
  * @deprecated alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance
@@ -93,6 +93,10 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly baseBandwidth!: pulumi.Output<string>;
     /**
+     * (Available since v1.248.0) The time when the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
     public readonly domainCount!: pulumi.Output<string>;
@@ -105,19 +109,23 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly functionVersion!: pulumi.Output<string>;
     /**
-     * (Available since v1.212.0) The IP address of the instance.
+     * (Available since v1.212.0) The IP address of the Instance.
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
+    /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     */
+    public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
     public readonly normalBandwidth!: pulumi.Output<string>;
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
     public readonly normalQps!: pulumi.Output<string>;
     /**
@@ -140,6 +148,14 @@ export class DdosCooInstance extends pulumi.CustomResource {
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     public readonly serviceBandwidth!: pulumi.Output<string>;
+    /**
+     * (Available since v1.248.0) The status of the instance.
+     */
+    public /*out*/ readonly status!: pulumi.Output<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DdosCooInstance resource with the given unique name, arguments, and options.
@@ -161,10 +177,12 @@ export class DdosCooInstance extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["bandwidthMode"] = state ? state.bandwidthMode : undefined;
             resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["domainCount"] = state ? state.domainCount : undefined;
             resourceInputs["editionSale"] = state ? state.editionSale : undefined;
             resourceInputs["functionVersion"] = state ? state.functionVersion : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["normalBandwidth"] = state ? state.normalBandwidth : undefined;
             resourceInputs["normalQps"] = state ? state.normalQps : undefined;
@@ -173,6 +191,8 @@ export class DdosCooInstance extends pulumi.CustomResource {
             resourceInputs["productPlan"] = state ? state.productPlan : undefined;
             resourceInputs["productType"] = state ? state.productType : undefined;
             resourceInputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
             if ((!args || args.domainCount === undefined) && !opts.urn) {
@@ -188,6 +208,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
             resourceInputs["domainCount"] = args ? args.domainCount : undefined;
             resourceInputs["editionSale"] = args ? args.editionSale : undefined;
             resourceInputs["functionVersion"] = args ? args.functionVersion : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["normalBandwidth"] = args ? args.normalBandwidth : undefined;
             resourceInputs["normalQps"] = args ? args.normalQps : undefined;
@@ -196,7 +217,10 @@ export class DdosCooInstance extends pulumi.CustomResource {
             resourceInputs["productPlan"] = args ? args.productPlan : undefined;
             resourceInputs["productType"] = args ? args.productType : undefined;
             resourceInputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DdosCooInstance.__pulumiType, name, resourceInputs, opts);
@@ -224,6 +248,10 @@ export interface DdosCooInstanceState {
      */
     baseBandwidth?: pulumi.Input<string>;
     /**
+     * (Available since v1.248.0) The time when the instance was created.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
     domainCount?: pulumi.Input<string>;
@@ -236,19 +264,23 @@ export interface DdosCooInstanceState {
      */
     functionVersion?: pulumi.Input<string>;
     /**
-     * (Available since v1.212.0) The IP address of the instance.
+     * (Available since v1.212.0) The IP address of the Instance.
      */
     ip?: pulumi.Input<string>;
+    /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     */
+    modifyType?: pulumi.Input<string>;
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
     normalBandwidth?: pulumi.Input<string>;
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
     normalQps?: pulumi.Input<string>;
     /**
@@ -271,6 +303,14 @@ export interface DdosCooInstanceState {
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     serviceBandwidth?: pulumi.Input<string>;
+    /**
+     * (Available since v1.248.0) The status of the instance.
+     */
+    status?: pulumi.Input<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -306,15 +346,19 @@ export interface DdosCooInstanceArgs {
      */
     functionVersion?: pulumi.Input<string>;
     /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     */
+    modifyType?: pulumi.Input<string>;
+    /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
     normalBandwidth?: pulumi.Input<string>;
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
     normalQps?: pulumi.Input<string>;
     /**
@@ -337,4 +381,8 @@ export interface DdosCooInstanceArgs {
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     serviceBandwidth?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

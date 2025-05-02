@@ -14,22 +14,71 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     public sealed class DirectorySamlIdentityProviderConfiguration
     {
         /// <summary>
-        /// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+        /// The Binding method for initiating a SAML request.
+        /// </summary>
+        public readonly string? BindingType;
+        /// <summary>
+        /// Certificate ID list
+        /// </summary>
+        public readonly ImmutableArray<string> CertificateIds;
+        /// <summary>
+        /// CreateTime
+        /// </summary>
+        public readonly string? CreateTime;
+        /// <summary>
+        /// EncodedMetadataDocument
         /// </summary>
         public readonly string? EncodedMetadataDocument;
         /// <summary>
-        /// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// EntityId
+        /// </summary>
+        public readonly string? EntityId;
+        /// <summary>
+        /// LoginUrl
+        /// </summary>
+        public readonly string? LoginUrl;
+        /// <summary>
+        /// SSOStatus
         /// </summary>
         public readonly string? SsoStatus;
+        /// <summary>
+        /// UpdateTime
+        /// </summary>
+        public readonly string? UpdateTime;
+        /// <summary>
+        /// SP Request whether the signature is required
+        /// </summary>
+        public readonly bool? WantRequestSigned;
 
         [OutputConstructor]
         private DirectorySamlIdentityProviderConfiguration(
+            string? bindingType,
+
+            ImmutableArray<string> certificateIds,
+
+            string? createTime,
+
             string? encodedMetadataDocument,
 
-            string? ssoStatus)
+            string? entityId,
+
+            string? loginUrl,
+
+            string? ssoStatus,
+
+            string? updateTime,
+
+            bool? wantRequestSigned)
         {
+            BindingType = bindingType;
+            CertificateIds = certificateIds;
+            CreateTime = createTime;
             EncodedMetadataDocument = encodedMetadataDocument;
+            EntityId = entityId;
+            LoginUrl = loginUrl;
             SsoStatus = ssoStatus;
+            UpdateTime = updateTime;
+            WantRequestSigned = wantRequestSigned;
         }
     }
 }

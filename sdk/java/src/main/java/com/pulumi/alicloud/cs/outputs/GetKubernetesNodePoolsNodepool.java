@@ -134,7 +134,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String nodeNameMode;
     /**
-     * @return The ID of node pool.
+     * @return The first ID of the resource.
      * 
      */
     private String nodePoolId;
@@ -500,7 +500,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.nodeNameMode;
     }
     /**
-     * @return The ID of node pool.
+     * @return The first ID of the resource.
      * 
      */
     public String nodePoolId() {

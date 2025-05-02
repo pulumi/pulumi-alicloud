@@ -32,7 +32,6 @@ class EdgeKubernetesArgs:
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_spec: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[builtins.bool]] = None,
                  key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -52,6 +51,7 @@ class EdgeKubernetesArgs:
                  runtime: Optional[pulumi.Input['EdgeKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_cidr: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_set_certificate_authority: Optional[pulumi.Input[builtins.bool]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -69,22 +69,19 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] worker_vswitch_ids: The vswitches used by workers.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[builtins.str] availability_zone: The ID of availability zone.
-               
-               *Network params*
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[builtins.bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[builtins.str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
@@ -101,6 +98,9 @@ class EdgeKubernetesArgs:
         :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+               
+               *Network params*
         :param pulumi.Input[builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[builtins.str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -124,17 +124,24 @@ class EdgeKubernetesArgs:
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if client_cert is not None:
+            warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
+        if client_cert is not None:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
+            warnings.warn("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_key is deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
+        if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_cert is not None:
+            warnings.warn("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_ca_cert is deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
             pulumi.set(__self__, "cluster_spec", cluster_spec)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
-        if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
         if install_cloud_monitor is not None:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
@@ -142,8 +149,8 @@ class EdgeKubernetesArgs:
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if kube_config is not None:
-            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
@@ -179,6 +186,8 @@ class EdgeKubernetesArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
+        if skip_set_certificate_authority is not None:
+            pulumi.set(__self__, "skip_set_certificate_authority", skip_set_certificate_authority)
         if slb_internet_enabled is not None:
             pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
         if tags is not None:
@@ -253,8 +262,6 @@ class EdgeKubernetesArgs:
     def availability_zone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of availability zone.
-
-        *Network params*
         """
         return pulumi.get(self, "availability_zone")
 
@@ -264,9 +271,10 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -276,9 +284,10 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -288,9 +297,10 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
         *Removed params*
         """
@@ -325,18 +335,6 @@ class EdgeKubernetesArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
-
-    @property
-    @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
-        """
-        return pulumi.get(self, "force_update")
-
-    @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "force_update", value)
 
     @property
     @pulumi.getter(name="installCloudMonitor")
@@ -376,10 +374,10 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 
@@ -566,6 +564,20 @@ class EdgeKubernetesArgs:
         pulumi.set(self, "service_cidr", value)
 
     @property
+    @pulumi.getter(name="skipSetCertificateAuthority")
+    def skip_set_certificate_authority(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+
+        *Network params*
+        """
+        return pulumi.get(self, "skip_set_certificate_authority")
+
+    @skip_set_certificate_authority.setter
+    def skip_set_certificate_authority(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "skip_set_certificate_authority", value)
+
+    @property
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -702,7 +714,6 @@ class _EdgeKubernetesState:
                  cluster_spec: Optional[pulumi.Input[builtins.str]] = None,
                  connections: Optional[pulumi.Input['EdgeKubernetesConnectionsArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[builtins.bool]] = None,
                  key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -723,6 +734,7 @@ class _EdgeKubernetesState:
                  runtime: Optional[pulumi.Input['EdgeKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_cidr: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_set_certificate_authority: Optional[pulumi.Input[builtins.bool]] = None,
                  slb_internet: Optional[pulumi.Input[builtins.str]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  slb_intranet: Optional[pulumi.Input[builtins.str]] = None,
@@ -745,12 +757,10 @@ class _EdgeKubernetesState:
         Input properties used for looking up and filtering EdgeKubernetes resources.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[builtins.str] availability_zone: The ID of availability zone.
-               
-               *Network params*
-        :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
@@ -758,11 +768,10 @@ class _EdgeKubernetesState:
                * ack.pro.small : Professional edge clusters.
         :param pulumi.Input['EdgeKubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[builtins.bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[builtins.str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
@@ -780,6 +789,9 @@ class _EdgeKubernetesState:
         :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+               
+               *Network params*
         :param pulumi.Input[builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
@@ -808,11 +820,23 @@ class _EdgeKubernetesState:
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if certificate_authority is not None:
+            warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
+            pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
+        if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if client_cert is not None:
+            warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
         if client_cert is not None:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
+            warnings.warn("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_key is deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
+        if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_cert is not None:
+            warnings.warn("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_ca_cert is deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
@@ -821,8 +845,6 @@ class _EdgeKubernetesState:
             pulumi.set(__self__, "connections", connections)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
-        if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
         if install_cloud_monitor is not None:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
@@ -830,8 +852,8 @@ class _EdgeKubernetesState:
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if kube_config is not None:
-            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
@@ -869,6 +891,8 @@ class _EdgeKubernetesState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
+        if skip_set_certificate_authority is not None:
+            pulumi.set(__self__, "skip_set_certificate_authority", skip_set_certificate_authority)
         if slb_internet is not None:
             pulumi.set(__self__, "slb_internet", slb_internet)
         if slb_internet_enabled is not None:
@@ -923,8 +947,6 @@ class _EdgeKubernetesState:
     def availability_zone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of availability zone.
-
-        *Network params*
         """
         return pulumi.get(self, "availability_zone")
 
@@ -934,9 +956,10 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="certificateAuthority")
+    @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def certificate_authority(self) -> Optional[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]:
         """
-        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -946,9 +969,10 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -958,9 +982,10 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -970,9 +995,10 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
         *Removed params*
         """
@@ -1021,18 +1047,6 @@ class _EdgeKubernetesState:
         pulumi.set(self, "deletion_protection", value)
 
     @property
-    @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
-        """
-        return pulumi.get(self, "force_update")
-
-    @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "force_update", value)
-
-    @property
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -1070,10 +1084,10 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 
@@ -1270,6 +1284,20 @@ class _EdgeKubernetesState:
     @service_cidr.setter
     def service_cidr(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "service_cidr", value)
+
+    @property
+    @pulumi.getter(name="skipSetCertificateAuthority")
+    def skip_set_certificate_authority(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+
+        *Network params*
+        """
+        return pulumi.get(self, "skip_set_certificate_authority")
+
+    @skip_set_certificate_authority.setter
+    def skip_set_certificate_authority(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "skip_set_certificate_authority", value)
 
     @property
     @pulumi.getter(name="slbInternet")
@@ -1507,7 +1535,6 @@ class EdgeKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_spec: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[builtins.bool]] = None,
                  key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1527,6 +1554,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_cidr: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_set_certificate_authority: Optional[pulumi.Input[builtins.bool]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -1601,6 +1629,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
+            skip_set_certificate_authority=True,
             worker_data_disks=[{
                 "category": "cloud_ssd",
                 "size": "200",
@@ -1647,6 +1676,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
+            skip_set_certificate_authority=True,
             worker_data_disks=[{
                 "category": "cloud_ssd",
                 "size": "200",
@@ -1666,22 +1696,19 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[builtins.str] availability_zone: The ID of availability zone.
-               
-               *Network params*
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[builtins.bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[builtins.str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
@@ -1698,6 +1725,9 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+               
+               *Network params*
         :param pulumi.Input[builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[builtins.str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -1782,6 +1812,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
+            skip_set_certificate_authority=True,
             worker_data_disks=[{
                 "category": "cloud_ssd",
                 "size": "200",
@@ -1828,6 +1859,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
+            skip_set_certificate_authority=True,
             worker_data_disks=[{
                 "category": "cloud_ssd",
                 "size": "200",
@@ -1865,7 +1897,6 @@ class EdgeKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_spec: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[builtins.bool]] = None,
                  key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1885,6 +1916,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_cidr: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_set_certificate_authority: Optional[pulumi.Input[builtins.bool]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -1914,7 +1946,6 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_spec"] = cluster_spec
             __props__.__dict__["deletion_protection"] = deletion_protection
-            __props__.__dict__["force_update"] = force_update
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
             __props__.__dict__["key_name"] = key_name
@@ -1934,6 +1965,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr
+            __props__.__dict__["skip_set_certificate_authority"] = skip_set_certificate_authority
             __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
@@ -1982,7 +2014,6 @@ class EdgeKubernetes(pulumi.CustomResource):
             cluster_spec: Optional[pulumi.Input[builtins.str]] = None,
             connections: Optional[pulumi.Input[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict']]] = None,
             deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
-            force_update: Optional[pulumi.Input[builtins.bool]] = None,
             install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
             is_enterprise_security_group: Optional[pulumi.Input[builtins.bool]] = None,
             key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2003,6 +2034,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
             security_group_id: Optional[pulumi.Input[builtins.str]] = None,
             service_cidr: Optional[pulumi.Input[builtins.str]] = None,
+            skip_set_certificate_authority: Optional[pulumi.Input[builtins.bool]] = None,
             slb_internet: Optional[pulumi.Input[builtins.str]] = None,
             slb_internet_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             slb_intranet: Optional[pulumi.Input[builtins.str]] = None,
@@ -2030,12 +2062,10 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[builtins.str] availability_zone: The ID of availability zone.
-               
-               *Network params*
-        :param pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
@@ -2043,11 +2073,10 @@ class EdgeKubernetes(pulumi.CustomResource):
                * ack.pro.small : Professional edge clusters.
         :param pulumi.Input[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict']] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[builtins.bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
         :param pulumi.Input[builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[builtins.str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
@@ -2065,6 +2094,9 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+               
+               *Network params*
         :param pulumi.Input[builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
@@ -2101,7 +2133,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__.__dict__["cluster_spec"] = cluster_spec
         __props__.__dict__["connections"] = connections
         __props__.__dict__["deletion_protection"] = deletion_protection
-        __props__.__dict__["force_update"] = force_update
         __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
         __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__.__dict__["key_name"] = key_name
@@ -2122,6 +2153,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_cidr"] = service_cidr
+        __props__.__dict__["skip_set_certificate_authority"] = skip_set_certificate_authority
         __props__.__dict__["slb_internet"] = slb_internet
         __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
         __props__.__dict__["slb_intranet"] = slb_intranet
@@ -2155,40 +2187,42 @@ class EdgeKubernetes(pulumi.CustomResource):
     def availability_zone(self) -> pulumi.Output[builtins.str]:
         """
         The ID of availability zone.
-
-        *Network params*
         """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="certificateAuthority")
+    @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def certificate_authority(self) -> pulumi.Output['outputs.EdgeKubernetesCertificateAuthority']:
         """
-        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "certificate_authority")
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
         *Removed params*
         """
@@ -2221,14 +2255,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "deletion_protection")
 
     @property
-    @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
-        """
-        return pulumi.get(self, "force_update")
-
-    @property
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
@@ -2254,10 +2280,10 @@ class EdgeKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 
@@ -2386,6 +2412,16 @@ class EdgeKubernetes(pulumi.CustomResource):
         The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         """
         return pulumi.get(self, "service_cidr")
+
+    @property
+    @pulumi.getter(name="skipSetCertificateAuthority")
+    def skip_set_certificate_authority(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+
+        *Network params*
+        """
+        return pulumi.get(self, "skip_set_certificate_authority")
 
     @property
     @pulumi.getter(name="slbInternet")

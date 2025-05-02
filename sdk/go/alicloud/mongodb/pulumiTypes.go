@@ -128,6 +128,8 @@ type InstanceReplicaSet struct {
 	NetworkType *string `pulumi:"networkType"`
 	// The role of the node.
 	ReplicaSetRole *string `pulumi:"replicaSetRole"`
+	// The id of the role.
+	RoleId *string `pulumi:"roleId"`
 	// VPC instance ID.
 	VpcCloudInstanceId *string `pulumi:"vpcCloudInstanceId"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -156,6 +158,8 @@ type InstanceReplicaSetArgs struct {
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The role of the node.
 	ReplicaSetRole pulumi.StringPtrInput `pulumi:"replicaSetRole"`
+	// The id of the role.
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 	// VPC instance ID.
 	VpcCloudInstanceId pulumi.StringPtrInput `pulumi:"vpcCloudInstanceId"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -235,6 +239,11 @@ func (o InstanceReplicaSetOutput) ReplicaSetRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ReplicaSetRole }).(pulumi.StringPtrOutput)
 }
 
+// The id of the role.
+func (o InstanceReplicaSetOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
 // VPC instance ID.
 func (o InstanceReplicaSetOutput) VpcCloudInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VpcCloudInstanceId }).(pulumi.StringPtrOutput)
@@ -268,6 +277,148 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReplicaSet {
 		return vs[0].([]InstanceReplicaSet)[vs[1].(int)]
 	}).(InstanceReplicaSetOutput)
+}
+
+type PublicNetworkAddressReplicaSet struct {
+	// The connection address of the node.
+	ConnectionDomain *string `pulumi:"connectionDomain"`
+	// The connection port of the node.
+	ConnectionPort *string `pulumi:"connectionPort"`
+	// The connection type.
+	ConnectionType *string `pulumi:"connectionType"`
+	// The network type, should be always "Public".
+	NetworkType *string `pulumi:"networkType"`
+	// The role of the node.
+	ReplicaSetRole *string `pulumi:"replicaSetRole"`
+	// The id of the role.
+	RoleId *string `pulumi:"roleId"`
+}
+
+// PublicNetworkAddressReplicaSetInput is an input type that accepts PublicNetworkAddressReplicaSetArgs and PublicNetworkAddressReplicaSetOutput values.
+// You can construct a concrete instance of `PublicNetworkAddressReplicaSetInput` via:
+//
+//	PublicNetworkAddressReplicaSetArgs{...}
+type PublicNetworkAddressReplicaSetInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAddressReplicaSetOutput() PublicNetworkAddressReplicaSetOutput
+	ToPublicNetworkAddressReplicaSetOutputWithContext(context.Context) PublicNetworkAddressReplicaSetOutput
+}
+
+type PublicNetworkAddressReplicaSetArgs struct {
+	// The connection address of the node.
+	ConnectionDomain pulumi.StringPtrInput `pulumi:"connectionDomain"`
+	// The connection port of the node.
+	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
+	// The connection type.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// The network type, should be always "Public".
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The role of the node.
+	ReplicaSetRole pulumi.StringPtrInput `pulumi:"replicaSetRole"`
+	// The id of the role.
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+}
+
+func (PublicNetworkAddressReplicaSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAddressReplicaSet)(nil)).Elem()
+}
+
+func (i PublicNetworkAddressReplicaSetArgs) ToPublicNetworkAddressReplicaSetOutput() PublicNetworkAddressReplicaSetOutput {
+	return i.ToPublicNetworkAddressReplicaSetOutputWithContext(context.Background())
+}
+
+func (i PublicNetworkAddressReplicaSetArgs) ToPublicNetworkAddressReplicaSetOutputWithContext(ctx context.Context) PublicNetworkAddressReplicaSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicNetworkAddressReplicaSetOutput)
+}
+
+// PublicNetworkAddressReplicaSetArrayInput is an input type that accepts PublicNetworkAddressReplicaSetArray and PublicNetworkAddressReplicaSetArrayOutput values.
+// You can construct a concrete instance of `PublicNetworkAddressReplicaSetArrayInput` via:
+//
+//	PublicNetworkAddressReplicaSetArray{ PublicNetworkAddressReplicaSetArgs{...} }
+type PublicNetworkAddressReplicaSetArrayInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAddressReplicaSetArrayOutput() PublicNetworkAddressReplicaSetArrayOutput
+	ToPublicNetworkAddressReplicaSetArrayOutputWithContext(context.Context) PublicNetworkAddressReplicaSetArrayOutput
+}
+
+type PublicNetworkAddressReplicaSetArray []PublicNetworkAddressReplicaSetInput
+
+func (PublicNetworkAddressReplicaSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicNetworkAddressReplicaSet)(nil)).Elem()
+}
+
+func (i PublicNetworkAddressReplicaSetArray) ToPublicNetworkAddressReplicaSetArrayOutput() PublicNetworkAddressReplicaSetArrayOutput {
+	return i.ToPublicNetworkAddressReplicaSetArrayOutputWithContext(context.Background())
+}
+
+func (i PublicNetworkAddressReplicaSetArray) ToPublicNetworkAddressReplicaSetArrayOutputWithContext(ctx context.Context) PublicNetworkAddressReplicaSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicNetworkAddressReplicaSetArrayOutput)
+}
+
+type PublicNetworkAddressReplicaSetOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAddressReplicaSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAddressReplicaSet)(nil)).Elem()
+}
+
+func (o PublicNetworkAddressReplicaSetOutput) ToPublicNetworkAddressReplicaSetOutput() PublicNetworkAddressReplicaSetOutput {
+	return o
+}
+
+func (o PublicNetworkAddressReplicaSetOutput) ToPublicNetworkAddressReplicaSetOutputWithContext(ctx context.Context) PublicNetworkAddressReplicaSetOutput {
+	return o
+}
+
+// The connection address of the node.
+func (o PublicNetworkAddressReplicaSetOutput) ConnectionDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.ConnectionDomain }).(pulumi.StringPtrOutput)
+}
+
+// The connection port of the node.
+func (o PublicNetworkAddressReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.ConnectionPort }).(pulumi.StringPtrOutput)
+}
+
+// The connection type.
+func (o PublicNetworkAddressReplicaSetOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// The network type, should be always "Public".
+func (o PublicNetworkAddressReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The role of the node.
+func (o PublicNetworkAddressReplicaSetOutput) ReplicaSetRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.ReplicaSetRole }).(pulumi.StringPtrOutput)
+}
+
+// The id of the role.
+func (o PublicNetworkAddressReplicaSetOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicNetworkAddressReplicaSet) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAddressReplicaSetArrayOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAddressReplicaSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicNetworkAddressReplicaSet)(nil)).Elem()
+}
+
+func (o PublicNetworkAddressReplicaSetArrayOutput) ToPublicNetworkAddressReplicaSetArrayOutput() PublicNetworkAddressReplicaSetArrayOutput {
+	return o
+}
+
+func (o PublicNetworkAddressReplicaSetArrayOutput) ToPublicNetworkAddressReplicaSetArrayOutputWithContext(ctx context.Context) PublicNetworkAddressReplicaSetArrayOutput {
+	return o
+}
+
+func (o PublicNetworkAddressReplicaSetArrayOutput) Index(i pulumi.IntInput) PublicNetworkAddressReplicaSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicNetworkAddressReplicaSet {
+		return vs[0].([]PublicNetworkAddressReplicaSet)[vs[1].(int)]
+	}).(PublicNetworkAddressReplicaSetOutput)
 }
 
 type ServerlessInstanceSecurityIpGroup struct {
@@ -2852,6 +3003,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicNetworkAddressReplicaSetInput)(nil)).Elem(), PublicNetworkAddressReplicaSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicNetworkAddressReplicaSetArrayInput)(nil)).Elem(), PublicNetworkAddressReplicaSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupArrayInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListInput)(nil)).Elem(), ShardingInstanceConfigServerListArgs{})
@@ -2888,6 +3041,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAddressReplicaSetOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAddressReplicaSetArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceConfigServerListOutput{})

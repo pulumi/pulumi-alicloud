@@ -359,8 +359,8 @@ type Instance struct {
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrOutput `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
 	// It supports to setting a base64-encoded value, and it is the recommended usage.
@@ -368,8 +368,8 @@ type Instance struct {
 	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags pulumi.StringMapOutput `pulumi:"volumeTags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -635,8 +635,8 @@ type instanceState struct {
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
 	// It supports to setting a base64-encoded value, and it is the recommended usage.
@@ -644,8 +644,8 @@ type instanceState struct {
 	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags map[string]string `pulumi:"volumeTags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -875,8 +875,8 @@ type InstanceState struct {
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
 	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
 	// It supports to setting a base64-encoded value, and it is the recommended usage.
@@ -884,8 +884,8 @@ type InstanceState struct {
 	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
@@ -1095,8 +1095,8 @@ type instanceArgs struct {
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
 	// It supports to setting a base64-encoded value, and it is the recommended usage.
@@ -1104,8 +1104,8 @@ type instanceArgs struct {
 	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags map[string]string `pulumi:"volumeTags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -1312,8 +1312,8 @@ type InstanceArgs struct {
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
 	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
 	// It supports to setting a base64-encoded value, and it is the recommended usage.
@@ -1321,8 +1321,8 @@ type InstanceArgs struct {
 	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
-	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
@@ -1887,8 +1887,8 @@ func (o InstanceOutput) SystemDiskStorageClusterId() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1902,8 +1902,8 @@ func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the devices created by the instance at launch time.
-// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+// - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 func (o InstanceOutput) VolumeTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.VolumeTags }).(pulumi.StringMapOutput)
 }

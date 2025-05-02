@@ -189,6 +189,14 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public readonly restoreType!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the secondary zone.
+     */
+    public readonly secondaryVswitchId!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch.
+     */
+    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -259,6 +267,8 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["restoreToTime"] = state ? state.restoreToTime : undefined;
             resourceInputs["restoreType"] = state ? state.restoreType : undefined;
+            resourceInputs["secondaryVswitchId"] = state ? state.secondaryVswitchId : undefined;
+            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["sourceDbClusterId"] = state ? state.sourceDbClusterId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -300,6 +310,8 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["restoreToTime"] = args ? args.restoreToTime : undefined;
             resourceInputs["restoreType"] = args ? args.restoreType : undefined;
+            resourceInputs["secondaryVswitchId"] = args ? args.secondaryVswitchId : undefined;
+            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["sourceDbClusterId"] = args ? args.sourceDbClusterId : undefined;
             resourceInputs["storageResource"] = args ? args.storageResource : undefined;
@@ -441,6 +453,14 @@ export interface DBClusterLakeVersionState {
      */
     restoreType?: pulumi.Input<string>;
     /**
+     * The ID of the secondary zone.
+     */
+    secondaryVswitchId?: pulumi.Input<string>;
+    /**
+     * The ID of the secondary vSwitch.
+     */
+    secondaryZoneId?: pulumi.Input<string>;
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -549,6 +569,14 @@ export interface DBClusterLakeVersionArgs {
      * The method that you want to use to restore data. Valid values:
      */
     restoreType?: pulumi.Input<string>;
+    /**
+     * The ID of the secondary zone.
+     */
+    secondaryVswitchId?: pulumi.Input<string>;
+    /**
+     * The ID of the secondary vSwitch.
+     */
+    secondaryZoneId?: pulumi.Input<string>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.

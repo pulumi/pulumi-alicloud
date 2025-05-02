@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
 		r = &PrivateSrvNetworkAddress{}
+	case "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress":
+		r = &PublicNetworkAddress{}
+	case "alicloud:mongodb/replicaSetRole:ReplicaSetRole":
+		r = &ReplicaSetRole{}
 	case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
 		r = &ServerlessInstance{}
 	case "alicloud:mongodb/shardingInstance:ShardingInstance":
@@ -68,6 +72,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/privateSrvNetworkAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/publicNetworkAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/replicaSetRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

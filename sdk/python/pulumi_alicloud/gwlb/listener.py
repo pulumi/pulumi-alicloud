@@ -248,7 +248,7 @@ class Listener(pulumi.CustomResource):
         """
         Provides a GWLB Listener resource.
 
-        For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/).
+        For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createlistener).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -279,7 +279,7 @@ class Listener(pulumi.CustomResource):
         """
         Provides a GWLB Listener resource.
 
-        For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/).
+        For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createlistener).
 
         > **NOTE:** Available since v1.234.0.
 

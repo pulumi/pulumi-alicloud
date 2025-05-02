@@ -28,7 +28,7 @@ class GetKubernetesNodePoolsResult:
     """
     A collection of values returned by getKubernetesNodePools.
     """
-    def __init__(__self__, cluster_id=None, id=None, ids=None, nodepools=None, output_file=None):
+    def __init__(__self__, cluster_id=None, id=None, ids=None, node_pool_name=None, nodepools=None, output_file=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -38,6 +38,9 @@ class GetKubernetesNodePoolsResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if node_pool_name and not isinstance(node_pool_name, str):
+            raise TypeError("Expected argument 'node_pool_name' to be a str")
+        pulumi.set(__self__, "node_pool_name", node_pool_name)
         if nodepools and not isinstance(nodepools, list):
             raise TypeError("Expected argument 'nodepools' to be a list")
         pulumi.set(__self__, "nodepools", nodepools)
@@ -67,6 +70,14 @@ class GetKubernetesNodePoolsResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> Optional[builtins.str]:
+        """
+        The name of node pool.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @property
     @pulumi.getter
     def nodepools(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolResult']:
         """
@@ -89,12 +100,14 @@ class AwaitableGetKubernetesNodePoolsResult(GetKubernetesNodePoolsResult):
             cluster_id=self.cluster_id,
             id=self.id,
             ids=self.ids,
+            node_pool_name=self.node_pool_name,
             nodepools=self.nodepools,
             output_file=self.output_file)
 
 
 def get_kubernetes_node_pools(cluster_id: Optional[builtins.str] = None,
                               ids: Optional[Sequence[builtins.str]] = None,
+                              node_pool_name: Optional[builtins.str] = None,
                               output_file: Optional[builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesNodePoolsResult:
     """
@@ -105,11 +118,13 @@ def get_kubernetes_node_pools(cluster_id: Optional[builtins.str] = None,
 
     :param builtins.str cluster_id: The id of kubernetes cluster.
     :param Sequence[builtins.str] ids: A list of Nodepool IDs.
+    :param builtins.str node_pool_name: The name of node pool.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
+    __args__['nodePoolName'] = node_pool_name
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesNodePools:getKubernetesNodePools', __args__, opts=opts, typ=GetKubernetesNodePoolsResult).value
@@ -118,10 +133,12 @@ def get_kubernetes_node_pools(cluster_id: Optional[builtins.str] = None,
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        node_pool_name=pulumi.get(__ret__, 'node_pool_name'),
         nodepools=pulumi.get(__ret__, 'nodepools'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
+                                     node_pool_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesNodePoolsResult]:
     """
@@ -132,11 +149,13 @@ def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[builtins.
 
     :param builtins.str cluster_id: The id of kubernetes cluster.
     :param Sequence[builtins.str] ids: A list of Nodepool IDs.
+    :param builtins.str node_pool_name: The name of node pool.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
+    __args__['nodePoolName'] = node_pool_name
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesNodePools:getKubernetesNodePools', __args__, opts=opts, typ=GetKubernetesNodePoolsResult)
@@ -144,5 +163,6 @@ def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[builtins.
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        node_pool_name=pulumi.get(__response__, 'node_pool_name'),
         nodepools=pulumi.get(__response__, 'nodepools'),
         output_file=pulumi.get(__response__, 'output_file')))

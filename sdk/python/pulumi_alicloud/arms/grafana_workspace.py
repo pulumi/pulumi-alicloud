@@ -41,7 +41,9 @@ class GrafanaWorkspaceArgs:
                GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
                The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
                The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
-        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh):
+               - zh
+               - en
         :param pulumi.Input[builtins.bool] auto_renew: Whether to automatically renew. Value range:
                - true: Automatic renewal. Default value: true.
                - false: Do not renew automatically.
@@ -55,7 +57,11 @@ class GrafanaWorkspaceArgs:
                - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[builtins.str] grafana_version: Grafana version
-        :param pulumi.Input[builtins.str] grafana_workspace_edition: Edition
+        :param pulumi.Input[builtins.str] grafana_workspace_edition: The edition. **Valid values:**
+               - standard: `Beta Edition(For internal testing only) `
+               - personal_edition: Developer Edition
+               - experts_edition: Pro Edition
+               - advanced_edition: Advanced Edition
         :param pulumi.Input[builtins.str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         :param pulumi.Input[builtins.str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
@@ -119,7 +125,9 @@ class GrafanaWorkspaceArgs:
     @pulumi.getter(name="aliyunLang")
     def aliyun_lang(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Language environment (if not filled in, default is zh): zh, en.
+        Language environment (if not filled in, default is zh):
+        - zh
+        - en
         """
         return pulumi.get(self, "aliyun_lang")
 
@@ -199,7 +207,11 @@ class GrafanaWorkspaceArgs:
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Edition
+        The edition. **Valid values:**
+        - standard: `Beta Edition(For internal testing only) `
+        - personal_edition: Developer Edition
+        - experts_edition: Pro Edition
+        - advanced_edition: Advanced Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 
@@ -282,7 +294,9 @@ class _GrafanaWorkspaceState:
                GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
                The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
                The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
-        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh):
+               - zh
+               - en
         :param pulumi.Input[builtins.bool] auto_renew: Whether to automatically renew. Value range:
                - true: Automatic renewal. Default value: true.
                - false: Do not renew automatically.
@@ -297,7 +311,11 @@ class _GrafanaWorkspaceState:
                - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[builtins.str] grafana_version: Grafana version
-        :param pulumi.Input[builtins.str] grafana_workspace_edition: Edition
+        :param pulumi.Input[builtins.str] grafana_workspace_edition: The edition. **Valid values:**
+               - standard: `Beta Edition(For internal testing only) `
+               - personal_edition: Developer Edition
+               - experts_edition: Pro Edition
+               - advanced_edition: Advanced Edition
         :param pulumi.Input[builtins.str] grafana_workspace_name: The name of the resource
         :param pulumi.Input[builtins.str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         :param pulumi.Input[builtins.str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
@@ -359,7 +377,9 @@ class _GrafanaWorkspaceState:
     @pulumi.getter(name="aliyunLang")
     def aliyun_lang(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Language environment (if not filled in, default is zh): zh, en.
+        Language environment (if not filled in, default is zh):
+        - zh
+        - en
         """
         return pulumi.get(self, "aliyun_lang")
 
@@ -451,7 +471,11 @@ class _GrafanaWorkspaceState:
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Edition
+        The edition. **Valid values:**
+        - standard: `Beta Edition(For internal testing only) `
+        - personal_edition: Developer Edition
+        - experts_edition: Pro Edition
+        - advanced_edition: Advanced Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 
@@ -613,7 +637,9 @@ class GrafanaWorkspace(pulumi.CustomResource):
                GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
                The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
                The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
-        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh):
+               - zh
+               - en
         :param pulumi.Input[builtins.bool] auto_renew: Whether to automatically renew. Value range:
                - true: Automatic renewal. Default value: true.
                - false: Do not renew automatically.
@@ -627,7 +653,11 @@ class GrafanaWorkspace(pulumi.CustomResource):
                - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[builtins.str] grafana_version: Grafana version
-        :param pulumi.Input[builtins.str] grafana_workspace_edition: Edition
+        :param pulumi.Input[builtins.str] grafana_workspace_edition: The edition. **Valid values:**
+               - standard: `Beta Edition(For internal testing only) `
+               - personal_edition: Developer Edition
+               - experts_edition: Pro Edition
+               - advanced_edition: Advanced Edition
         :param pulumi.Input[builtins.str] grafana_workspace_name: The name of the resource
         :param pulumi.Input[builtins.str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         :param pulumi.Input[builtins.str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
@@ -773,7 +803,9 @@ class GrafanaWorkspace(pulumi.CustomResource):
                GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
                The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
                The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
-        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[builtins.str] aliyun_lang: Language environment (if not filled in, default is zh):
+               - zh
+               - en
         :param pulumi.Input[builtins.bool] auto_renew: Whether to automatically renew. Value range:
                - true: Automatic renewal. Default value: true.
                - false: Do not renew automatically.
@@ -788,7 +820,11 @@ class GrafanaWorkspace(pulumi.CustomResource):
                - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[builtins.str] grafana_version: Grafana version
-        :param pulumi.Input[builtins.str] grafana_workspace_edition: Edition
+        :param pulumi.Input[builtins.str] grafana_workspace_edition: The edition. **Valid values:**
+               - standard: `Beta Edition(For internal testing only) `
+               - personal_edition: Developer Edition
+               - experts_edition: Pro Edition
+               - advanced_edition: Advanced Edition
         :param pulumi.Input[builtins.str] grafana_workspace_name: The name of the resource
         :param pulumi.Input[builtins.str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         :param pulumi.Input[builtins.str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
@@ -835,7 +871,9 @@ class GrafanaWorkspace(pulumi.CustomResource):
     @pulumi.getter(name="aliyunLang")
     def aliyun_lang(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Language environment (if not filled in, default is zh): zh, en.
+        Language environment (if not filled in, default is zh):
+        - zh
+        - en
         """
         return pulumi.get(self, "aliyun_lang")
 
@@ -899,7 +937,11 @@ class GrafanaWorkspace(pulumi.CustomResource):
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Edition
+        The edition. **Valid values:**
+        - standard: `Beta Edition(For internal testing only) `
+        - personal_edition: Developer Edition
+        - experts_edition: Pro Edition
+        - advanced_edition: Advanced Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 

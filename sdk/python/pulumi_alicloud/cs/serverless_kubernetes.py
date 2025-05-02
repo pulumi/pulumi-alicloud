@@ -56,9 +56,9 @@ class ServerlessKubernetesArgs:
         """
         The set of arguments for constructing a ServerlessKubernetes resource.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
@@ -70,7 +70,7 @@ class ServerlessKubernetesArgs:
                - false: Disable deletion protection.
         :param pulumi.Input[builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         :param pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -95,9 +95,18 @@ class ServerlessKubernetesArgs:
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if client_cert is not None:
+            warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
+        if client_cert is not None:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
+            warnings.warn("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_key is deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
+        if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_cert is not None:
+            warnings.warn("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_ca_cert is deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
@@ -113,8 +122,8 @@ class ServerlessKubernetesArgs:
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if kube_config is not None:
-            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
@@ -184,9 +193,10 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -196,9 +206,10 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -208,9 +219,10 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -297,10 +309,10 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 
@@ -587,9 +599,9 @@ class _ServerlessKubernetesState:
         """
         Input properties used for looking up and filtering ServerlessKubernetes resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
@@ -601,7 +613,7 @@ class _ServerlessKubernetesState:
                - false: Disable deletion protection.
         :param pulumi.Input[builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         :param pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -627,9 +639,18 @@ class _ServerlessKubernetesState:
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if client_cert is not None:
+            warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
+        if client_cert is not None:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
+            warnings.warn("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""client_key is deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
+        if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_cert is not None:
+            warnings.warn("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_ca_cert is deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
@@ -645,8 +666,8 @@ class _ServerlessKubernetesState:
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if kube_config is not None:
-            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
@@ -718,9 +739,10 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -730,9 +752,10 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -742,9 +765,10 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -831,10 +855,10 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 
@@ -1187,29 +1211,12 @@ class ServerlessKubernetes(pulumi.CustomResource):
             new_nat_gateway=True,
             endpoint_public_access_enabled=True,
             deletion_protection=False,
-            load_balancer_spec="slb.s2.small",
             time_zone="Asia/Shanghai",
             service_cidr="172.21.0.0/20",
-            service_discovery_types=["PrivateZone"],
-            logging_type="SLS",
             tags={
                 "k-aa": "v-aa",
-                "k-bb": "v-aa",
-            },
-            addons=[
-                {
-                    "name": "alb-ingress-controller",
-                },
-                {
-                    "name": "metrics-server",
-                },
-                {
-                    "name": "knative",
-                },
-                {
-                    "name": "arms-prometheus",
-                },
-            ])
+                "k-bb": "v-bb",
+            })
         ```
 
         ## Import
@@ -1223,9 +1230,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
@@ -1237,7 +1244,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - false: Disable deletion protection.
         :param pulumi.Input[builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -1317,29 +1324,12 @@ class ServerlessKubernetes(pulumi.CustomResource):
             new_nat_gateway=True,
             endpoint_public_access_enabled=True,
             deletion_protection=False,
-            load_balancer_spec="slb.s2.small",
             time_zone="Asia/Shanghai",
             service_cidr="172.21.0.0/20",
-            service_discovery_types=["PrivateZone"],
-            logging_type="SLS",
             tags={
                 "k-aa": "v-aa",
-                "k-bb": "v-aa",
-            },
-            addons=[
-                {
-                    "name": "alb-ingress-controller",
-                },
-                {
-                    "name": "metrics-server",
-                },
-                {
-                    "name": "knative",
-                },
-                {
-                    "name": "arms-prometheus",
-                },
-            ])
+                "k-bb": "v-bb",
+            })
         ```
 
         ## Import
@@ -1487,9 +1477,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        :param pulumi.Input[builtins.str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param pulumi.Input[builtins.str] client_key: The path of client key, like `~/.kube/client-key.pem`.
-        :param pulumi.Input[builtins.str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+        :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
@@ -1501,7 +1491,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - false: Disable deletion protection.
         :param pulumi.Input[builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
-        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         :param pulumi.Input[builtins.str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -1572,25 +1562,28 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientCert")
+    @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
+    @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
     def client_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clusterCaCert")
+    @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
     def cluster_ca_cert(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -1649,10 +1642,10 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The path of kube config, like `~/.kube/config`.
+        The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "kube_config")
 

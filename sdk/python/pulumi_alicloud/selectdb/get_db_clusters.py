@@ -110,6 +110,7 @@ def get_db_clusters(ids: Optional[Sequence[builtins.str]] = None,
         db_instance_description=name,
         cache_size=200,
         payment_type="PayAsYouGo",
+        engine_minor_version="3.0.12",
         vpc_id=default_get_switches.vswitches[0].vpc_id,
         zone_id=default_get_switches.vswitches[0].zone_id,
         vswitch_id=default_get_switches.vswitches[0].id)
@@ -167,6 +168,7 @@ def get_db_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[builtins
         db_instance_description=name,
         cache_size=200,
         payment_type="PayAsYouGo",
+        engine_minor_version="3.0.12",
         vpc_id=default_get_switches.vswitches[0].vpc_id,
         zone_id=default_get_switches.vswitches[0].zone_id,
         vswitch_id=default_get_switches.vswitches[0].id)

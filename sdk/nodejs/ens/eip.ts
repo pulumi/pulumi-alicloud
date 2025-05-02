@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a ENS Eip resource.
+ *
+ * Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
  *
  * For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
  *
@@ -69,7 +71,7 @@ export class Eip extends pulumi.CustomResource {
     }
 
     /**
-     * The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
     public readonly bandwidth!: pulumi.Output<number>;
     /**
@@ -81,7 +83,7 @@ export class Eip extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the EIP instance.
+     * The name of the EIP.
      */
     public readonly eipName!: pulumi.Output<string | undefined>;
     /**
@@ -89,19 +91,19 @@ export class Eip extends pulumi.CustomResource {
      */
     public readonly ensRegionId!: pulumi.Output<string>;
     /**
-     * Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
-     * Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
     public readonly isp!: pulumi.Output<string>;
     /**
-     * The billing type of the EIP instanceValue: PayAsYouGo.
+     * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+     * The status of the EIP.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -158,7 +160,7 @@ export class Eip extends pulumi.CustomResource {
  */
 export interface EipState {
     /**
-     * The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -170,7 +172,7 @@ export interface EipState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Name of the EIP instance.
+     * The name of the EIP.
      */
     eipName?: pulumi.Input<string>;
     /**
@@ -178,19 +180,19 @@ export interface EipState {
      */
     ensRegionId?: pulumi.Input<string>;
     /**
-     * Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The billing type of the EIP instanceValue: PayAsYouGo.
+     * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+     * The status of the EIP.
      */
     status?: pulumi.Input<string>;
 }
@@ -200,7 +202,7 @@ export interface EipState {
  */
 export interface EipArgs {
     /**
-     * The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -208,7 +210,7 @@ export interface EipArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Name of the EIP instance.
+     * The name of the EIP.
      */
     eipName?: pulumi.Input<string>;
     /**
@@ -216,15 +218,15 @@ export interface EipArgs {
      */
     ensRegionId: pulumi.Input<string>;
     /**
-     * Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      */
     internetChargeType: pulumi.Input<string>;
     /**
-     * Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The billing type of the EIP instanceValue: PayAsYouGo.
+     * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
 }

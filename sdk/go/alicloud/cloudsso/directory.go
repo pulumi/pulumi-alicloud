@@ -17,8 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.135.0.
 //
-// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-//
 // ## Example Usage
 //
 // # Basic Usage
@@ -41,29 +39,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{}, nil)
+//			_, err := cloudsso.NewDirectory(ctx, "default", &cloudsso.DirectoryArgs{
+//				DirectoryName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
-//			}
-//			var tmp0 float64
-//			if length > 0 {
-//				tmp0 = 0
-//			} else {
-//				tmp0 = 1
-//			}
-//			var defaultDirectory []*cloudsso.Directory
-//			for index := 0; index < float64(len(_default.Ids).ApplyT(func(length int) (float64, error) {
-//				return tmp0, nil
-//			}).(pulumi.Float64Output)); index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
-//					DirectoryName: pulumi.String(name),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultDirectory = append(defaultDirectory, __res)
 //			}
 //			return nil
 //		})
@@ -81,16 +61,28 @@ import (
 type Directory struct {
 	pulumi.CustomResourceState
 
-	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+	// CreateTime
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Directory Global Acceleration activation status
+	DirectoryGlobalAccessStatus pulumi.StringOutput `pulumi:"directoryGlobalAccessStatus"`
+	// DirectoryName
 	DirectoryName pulumi.StringPtrOutput `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+	// Login preferences See `loginPreference` below.
+	LoginPreference DirectoryLoginPreferenceOutput `pulumi:"loginPreference"`
+	// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+	MfaAuthenticationSettingInfo DirectoryMfaAuthenticationSettingInfoOutput `pulumi:"mfaAuthenticationSettingInfo"`
+	// MFA Authentication Status
 	MfaAuthenticationStatus pulumi.StringOutput `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+	// Password policy See `passwordPolicy` below.
+	PasswordPolicy DirectoryPasswordPolicyOutput `pulumi:"passwordPolicy"`
+	// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationOutput `pulumi:"samlIdentityProviderConfiguration"`
-	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// SP information. See `samlServiceProvider` below.
+	SamlServiceProvider DirectorySamlServiceProviderOutput `pulumi:"samlServiceProvider"`
+	// SCIM Synchronization Status
 	ScimSynchronizationStatus pulumi.StringOutput `pulumi:"scimSynchronizationStatus"`
+	// User Provisioning configuration See `userProvisioningConfiguration` below.
+	UserProvisioningConfiguration DirectoryUserProvisioningConfigurationOutput `pulumi:"userProvisioningConfiguration"`
 }
 
 // NewDirectory registers a new resource with the given unique name, arguments, and options.
@@ -123,29 +115,53 @@ func GetDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Directory resources.
 type directoryState struct {
-	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+	// CreateTime
+	CreateTime *string `pulumi:"createTime"`
+	// Directory Global Acceleration activation status
+	DirectoryGlobalAccessStatus *string `pulumi:"directoryGlobalAccessStatus"`
+	// DirectoryName
 	DirectoryName *string `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+	// Login preferences See `loginPreference` below.
+	LoginPreference *DirectoryLoginPreference `pulumi:"loginPreference"`
+	// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+	MfaAuthenticationSettingInfo *DirectoryMfaAuthenticationSettingInfo `pulumi:"mfaAuthenticationSettingInfo"`
+	// MFA Authentication Status
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+	// Password policy See `passwordPolicy` below.
+	PasswordPolicy *DirectoryPasswordPolicy `pulumi:"passwordPolicy"`
+	// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
-	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// SP information. See `samlServiceProvider` below.
+	SamlServiceProvider *DirectorySamlServiceProvider `pulumi:"samlServiceProvider"`
+	// SCIM Synchronization Status
 	ScimSynchronizationStatus *string `pulumi:"scimSynchronizationStatus"`
+	// User Provisioning configuration See `userProvisioningConfiguration` below.
+	UserProvisioningConfiguration *DirectoryUserProvisioningConfiguration `pulumi:"userProvisioningConfiguration"`
 }
 
 type DirectoryState struct {
-	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+	// CreateTime
+	CreateTime pulumi.StringPtrInput
+	// Directory Global Acceleration activation status
+	DirectoryGlobalAccessStatus pulumi.StringPtrInput
+	// DirectoryName
 	DirectoryName pulumi.StringPtrInput
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+	// Login preferences See `loginPreference` below.
+	LoginPreference DirectoryLoginPreferencePtrInput
+	// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+	MfaAuthenticationSettingInfo DirectoryMfaAuthenticationSettingInfoPtrInput
+	// MFA Authentication Status
 	MfaAuthenticationStatus pulumi.StringPtrInput
-	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+	// Password policy See `passwordPolicy` below.
+	PasswordPolicy DirectoryPasswordPolicyPtrInput
+	// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput
-	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// SP information. See `samlServiceProvider` below.
+	SamlServiceProvider DirectorySamlServiceProviderPtrInput
+	// SCIM Synchronization Status
 	ScimSynchronizationStatus pulumi.StringPtrInput
+	// User Provisioning configuration See `userProvisioningConfiguration` below.
+	UserProvisioningConfiguration DirectoryUserProvisioningConfigurationPtrInput
 }
 
 func (DirectoryState) ElementType() reflect.Type {
@@ -153,30 +169,50 @@ func (DirectoryState) ElementType() reflect.Type {
 }
 
 type directoryArgs struct {
-	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+	// Directory Global Acceleration activation status
+	DirectoryGlobalAccessStatus *string `pulumi:"directoryGlobalAccessStatus"`
+	// DirectoryName
 	DirectoryName *string `pulumi:"directoryName"`
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+	// Login preferences See `loginPreference` below.
+	LoginPreference *DirectoryLoginPreference `pulumi:"loginPreference"`
+	// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+	MfaAuthenticationSettingInfo *DirectoryMfaAuthenticationSettingInfo `pulumi:"mfaAuthenticationSettingInfo"`
+	// MFA Authentication Status
 	MfaAuthenticationStatus *string `pulumi:"mfaAuthenticationStatus"`
-	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+	// Password policy See `passwordPolicy` below.
+	PasswordPolicy *DirectoryPasswordPolicy `pulumi:"passwordPolicy"`
+	// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 	SamlIdentityProviderConfiguration *DirectorySamlIdentityProviderConfiguration `pulumi:"samlIdentityProviderConfiguration"`
-	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// SP information. See `samlServiceProvider` below.
+	SamlServiceProvider *DirectorySamlServiceProvider `pulumi:"samlServiceProvider"`
+	// SCIM Synchronization Status
 	ScimSynchronizationStatus *string `pulumi:"scimSynchronizationStatus"`
+	// User Provisioning configuration See `userProvisioningConfiguration` below.
+	UserProvisioningConfiguration *DirectoryUserProvisioningConfiguration `pulumi:"userProvisioningConfiguration"`
 }
 
 // The set of arguments for constructing a Directory resource.
 type DirectoryArgs struct {
-	// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+	// Directory Global Acceleration activation status
+	DirectoryGlobalAccessStatus pulumi.StringPtrInput
+	// DirectoryName
 	DirectoryName pulumi.StringPtrInput
-	// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+	// Login preferences See `loginPreference` below.
+	LoginPreference DirectoryLoginPreferencePtrInput
+	// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+	MfaAuthenticationSettingInfo DirectoryMfaAuthenticationSettingInfoPtrInput
+	// MFA Authentication Status
 	MfaAuthenticationStatus pulumi.StringPtrInput
-	// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-	//
-	// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+	// Password policy See `passwordPolicy` below.
+	PasswordPolicy DirectoryPasswordPolicyPtrInput
+	// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 	SamlIdentityProviderConfiguration DirectorySamlIdentityProviderConfigurationPtrInput
-	// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	// SP information. See `samlServiceProvider` below.
+	SamlServiceProvider DirectorySamlServiceProviderPtrInput
+	// SCIM Synchronization Status
 	ScimSynchronizationStatus pulumi.StringPtrInput
+	// User Provisioning configuration See `userProvisioningConfiguration` below.
+	UserProvisioningConfiguration DirectoryUserProvisioningConfigurationPtrInput
 }
 
 func (DirectoryArgs) ElementType() reflect.Type {
@@ -266,28 +302,63 @@ func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) Direc
 	return o
 }
 
-// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+// CreateTime
+func (o DirectoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Directory Global Acceleration activation status
+func (o DirectoryOutput) DirectoryGlobalAccessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.DirectoryGlobalAccessStatus }).(pulumi.StringOutput)
+}
+
+// DirectoryName
 func (o DirectoryOutput) DirectoryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringPtrOutput { return v.DirectoryName }).(pulumi.StringPtrOutput)
 }
 
-// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+// Login preferences See `loginPreference` below.
+func (o DirectoryOutput) LoginPreference() DirectoryLoginPreferenceOutput {
+	return o.ApplyT(func(v *Directory) DirectoryLoginPreferenceOutput { return v.LoginPreference }).(DirectoryLoginPreferenceOutput)
+}
+
+// Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+func (o DirectoryOutput) MfaAuthenticationSettingInfo() DirectoryMfaAuthenticationSettingInfoOutput {
+	return o.ApplyT(func(v *Directory) DirectoryMfaAuthenticationSettingInfoOutput { return v.MfaAuthenticationSettingInfo }).(DirectoryMfaAuthenticationSettingInfoOutput)
+}
+
+// MFA Authentication Status
 func (o DirectoryOutput) MfaAuthenticationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.MfaAuthenticationStatus }).(pulumi.StringOutput)
 }
 
-// The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-//
-// > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+// Password policy See `passwordPolicy` below.
+func (o DirectoryOutput) PasswordPolicy() DirectoryPasswordPolicyOutput {
+	return o.ApplyT(func(v *Directory) DirectoryPasswordPolicyOutput { return v.PasswordPolicy }).(DirectoryPasswordPolicyOutput)
+}
+
+// Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
 func (o DirectoryOutput) SamlIdentityProviderConfiguration() DirectorySamlIdentityProviderConfigurationOutput {
 	return o.ApplyT(func(v *Directory) DirectorySamlIdentityProviderConfigurationOutput {
 		return v.SamlIdentityProviderConfiguration
 	}).(DirectorySamlIdentityProviderConfigurationOutput)
 }
 
-// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+// SP information. See `samlServiceProvider` below.
+func (o DirectoryOutput) SamlServiceProvider() DirectorySamlServiceProviderOutput {
+	return o.ApplyT(func(v *Directory) DirectorySamlServiceProviderOutput { return v.SamlServiceProvider }).(DirectorySamlServiceProviderOutput)
+}
+
+// SCIM Synchronization Status
 func (o DirectoryOutput) ScimSynchronizationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.ScimSynchronizationStatus }).(pulumi.StringOutput)
+}
+
+// User Provisioning configuration See `userProvisioningConfiguration` below.
+func (o DirectoryOutput) UserProvisioningConfiguration() DirectoryUserProvisioningConfigurationOutput {
+	return o.ApplyT(func(v *Directory) DirectoryUserProvisioningConfigurationOutput {
+		return v.UserProvisioningConfiguration
+	}).(DirectoryUserProvisioningConfigurationOutput)
 }
 
 type DirectoryArrayOutput struct{ *pulumi.OutputState }

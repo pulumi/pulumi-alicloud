@@ -22,33 +22,67 @@ __all__ = ['DirectoryArgs', 'Directory']
 @pulumi.input_type
 class DirectoryArgs:
     def __init__(__self__, *,
+                 directory_global_access_status: Optional[pulumi.Input[builtins.str]] = None,
                  directory_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_preference: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']] = None,
+                 mfa_authentication_setting_info: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
                  mfa_authentication_status: Optional[pulumi.Input[builtins.str]] = None,
+                 password_policy: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']] = None,
                  saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None):
+                 saml_service_provider: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']] = None,
+                 scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None,
+                 user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
-        :param pulumi.Input[builtins.str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[builtins.str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-               
-               > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
-        :param pulumi.Input[builtins.str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[builtins.str] directory_global_access_status: Directory Global Acceleration activation status
+        :param pulumi.Input[builtins.str] directory_name: DirectoryName
+        :param pulumi.Input['DirectoryLoginPreferenceArgs'] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs'] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[builtins.str] mfa_authentication_status: MFA Authentication Status
+        :param pulumi.Input['DirectoryPasswordPolicyArgs'] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input['DirectorySamlServiceProviderArgs'] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[builtins.str] scim_synchronization_status: SCIM Synchronization Status
+        :param pulumi.Input['DirectoryUserProvisioningConfigurationArgs'] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
+        if directory_global_access_status is not None:
+            pulumi.set(__self__, "directory_global_access_status", directory_global_access_status)
         if directory_name is not None:
             pulumi.set(__self__, "directory_name", directory_name)
+        if login_preference is not None:
+            pulumi.set(__self__, "login_preference", login_preference)
+        if mfa_authentication_setting_info is not None:
+            pulumi.set(__self__, "mfa_authentication_setting_info", mfa_authentication_setting_info)
         if mfa_authentication_status is not None:
             pulumi.set(__self__, "mfa_authentication_status", mfa_authentication_status)
+        if password_policy is not None:
+            pulumi.set(__self__, "password_policy", password_policy)
         if saml_identity_provider_configuration is not None:
             pulumi.set(__self__, "saml_identity_provider_configuration", saml_identity_provider_configuration)
+        if saml_service_provider is not None:
+            pulumi.set(__self__, "saml_service_provider", saml_service_provider)
         if scim_synchronization_status is not None:
             pulumi.set(__self__, "scim_synchronization_status", scim_synchronization_status)
+        if user_provisioning_configuration is not None:
+            pulumi.set(__self__, "user_provisioning_configuration", user_provisioning_configuration)
+
+    @property
+    @pulumi.getter(name="directoryGlobalAccessStatus")
+    def directory_global_access_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Directory Global Acceleration activation status
+        """
+        return pulumi.get(self, "directory_global_access_status")
+
+    @directory_global_access_status.setter
+    def directory_global_access_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "directory_global_access_status", value)
 
     @property
     @pulumi.getter(name="directoryName")
     def directory_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        DirectoryName
         """
         return pulumi.get(self, "directory_name")
 
@@ -57,10 +91,34 @@ class DirectoryArgs:
         pulumi.set(self, "directory_name", value)
 
     @property
+    @pulumi.getter(name="loginPreference")
+    def login_preference(self) -> Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]:
+        """
+        Login preferences See `login_preference` below.
+        """
+        return pulumi.get(self, "login_preference")
+
+    @login_preference.setter
+    def login_preference(self, value: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]):
+        pulumi.set(self, "login_preference", value)
+
+    @property
+    @pulumi.getter(name="mfaAuthenticationSettingInfo")
+    def mfa_authentication_setting_info(self) -> Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]:
+        """
+        Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        """
+        return pulumi.get(self, "mfa_authentication_setting_info")
+
+    @mfa_authentication_setting_info.setter
+    def mfa_authentication_setting_info(self, value: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]):
+        pulumi.set(self, "mfa_authentication_setting_info", value)
+
+    @property
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        MFA Authentication Status
         """
         return pulumi.get(self, "mfa_authentication_status")
 
@@ -69,12 +127,22 @@ class DirectoryArgs:
         pulumi.set(self, "mfa_authentication_status", value)
 
     @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]:
+        """
+        Password policy See `password_policy` below.
+        """
+        return pulumi.get(self, "password_policy")
+
+    @password_policy.setter
+    def password_policy(self, value: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]):
+        pulumi.set(self, "password_policy", value)
+
+    @property
     @pulumi.getter(name="samlIdentityProviderConfiguration")
     def saml_identity_provider_configuration(self) -> Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]:
         """
-        The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-
-        > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         """
         return pulumi.get(self, "saml_identity_provider_configuration")
 
@@ -83,48 +151,122 @@ class DirectoryArgs:
         pulumi.set(self, "saml_identity_provider_configuration", value)
 
     @property
+    @pulumi.getter(name="samlServiceProvider")
+    def saml_service_provider(self) -> Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]:
+        """
+        SP information. See `saml_service_provider` below.
+        """
+        return pulumi.get(self, "saml_service_provider")
+
+    @saml_service_provider.setter
+    def saml_service_provider(self, value: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]):
+        pulumi.set(self, "saml_service_provider", value)
+
+    @property
     @pulumi.getter(name="scimSynchronizationStatus")
     def scim_synchronization_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        SCIM Synchronization Status
         """
         return pulumi.get(self, "scim_synchronization_status")
 
     @scim_synchronization_status.setter
     def scim_synchronization_status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "scim_synchronization_status", value)
+
+    @property
+    @pulumi.getter(name="userProvisioningConfiguration")
+    def user_provisioning_configuration(self) -> Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]:
+        """
+        User Provisioning configuration See `user_provisioning_configuration` below.
+        """
+        return pulumi.get(self, "user_provisioning_configuration")
+
+    @user_provisioning_configuration.setter
+    def user_provisioning_configuration(self, value: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]):
+        pulumi.set(self, "user_provisioning_configuration", value)
 
 
 @pulumi.input_type
 class _DirectoryState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 directory_global_access_status: Optional[pulumi.Input[builtins.str]] = None,
                  directory_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_preference: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']] = None,
+                 mfa_authentication_setting_info: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
                  mfa_authentication_status: Optional[pulumi.Input[builtins.str]] = None,
+                 password_policy: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']] = None,
                  saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None):
+                 saml_service_provider: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']] = None,
+                 scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None,
+                 user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering Directory resources.
-        :param pulumi.Input[builtins.str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[builtins.str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-               
-               > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
-        :param pulumi.Input[builtins.str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[builtins.str] create_time: CreateTime
+        :param pulumi.Input[builtins.str] directory_global_access_status: Directory Global Acceleration activation status
+        :param pulumi.Input[builtins.str] directory_name: DirectoryName
+        :param pulumi.Input['DirectoryLoginPreferenceArgs'] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs'] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[builtins.str] mfa_authentication_status: MFA Authentication Status
+        :param pulumi.Input['DirectoryPasswordPolicyArgs'] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs'] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input['DirectorySamlServiceProviderArgs'] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[builtins.str] scim_synchronization_status: SCIM Synchronization Status
+        :param pulumi.Input['DirectoryUserProvisioningConfigurationArgs'] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if directory_global_access_status is not None:
+            pulumi.set(__self__, "directory_global_access_status", directory_global_access_status)
         if directory_name is not None:
             pulumi.set(__self__, "directory_name", directory_name)
+        if login_preference is not None:
+            pulumi.set(__self__, "login_preference", login_preference)
+        if mfa_authentication_setting_info is not None:
+            pulumi.set(__self__, "mfa_authentication_setting_info", mfa_authentication_setting_info)
         if mfa_authentication_status is not None:
             pulumi.set(__self__, "mfa_authentication_status", mfa_authentication_status)
+        if password_policy is not None:
+            pulumi.set(__self__, "password_policy", password_policy)
         if saml_identity_provider_configuration is not None:
             pulumi.set(__self__, "saml_identity_provider_configuration", saml_identity_provider_configuration)
+        if saml_service_provider is not None:
+            pulumi.set(__self__, "saml_service_provider", saml_service_provider)
         if scim_synchronization_status is not None:
             pulumi.set(__self__, "scim_synchronization_status", scim_synchronization_status)
+        if user_provisioning_configuration is not None:
+            pulumi.set(__self__, "user_provisioning_configuration", user_provisioning_configuration)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        CreateTime
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="directoryGlobalAccessStatus")
+    def directory_global_access_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Directory Global Acceleration activation status
+        """
+        return pulumi.get(self, "directory_global_access_status")
+
+    @directory_global_access_status.setter
+    def directory_global_access_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "directory_global_access_status", value)
 
     @property
     @pulumi.getter(name="directoryName")
     def directory_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        DirectoryName
         """
         return pulumi.get(self, "directory_name")
 
@@ -133,10 +275,34 @@ class _DirectoryState:
         pulumi.set(self, "directory_name", value)
 
     @property
+    @pulumi.getter(name="loginPreference")
+    def login_preference(self) -> Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]:
+        """
+        Login preferences See `login_preference` below.
+        """
+        return pulumi.get(self, "login_preference")
+
+    @login_preference.setter
+    def login_preference(self, value: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]):
+        pulumi.set(self, "login_preference", value)
+
+    @property
+    @pulumi.getter(name="mfaAuthenticationSettingInfo")
+    def mfa_authentication_setting_info(self) -> Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]:
+        """
+        Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        """
+        return pulumi.get(self, "mfa_authentication_setting_info")
+
+    @mfa_authentication_setting_info.setter
+    def mfa_authentication_setting_info(self, value: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]):
+        pulumi.set(self, "mfa_authentication_setting_info", value)
+
+    @property
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        MFA Authentication Status
         """
         return pulumi.get(self, "mfa_authentication_status")
 
@@ -145,12 +311,22 @@ class _DirectoryState:
         pulumi.set(self, "mfa_authentication_status", value)
 
     @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]:
+        """
+        Password policy See `password_policy` below.
+        """
+        return pulumi.get(self, "password_policy")
+
+    @password_policy.setter
+    def password_policy(self, value: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]):
+        pulumi.set(self, "password_policy", value)
+
+    @property
     @pulumi.getter(name="samlIdentityProviderConfiguration")
     def saml_identity_provider_configuration(self) -> Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]:
         """
-        The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-
-        > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         """
         return pulumi.get(self, "saml_identity_provider_configuration")
 
@@ -159,16 +335,40 @@ class _DirectoryState:
         pulumi.set(self, "saml_identity_provider_configuration", value)
 
     @property
+    @pulumi.getter(name="samlServiceProvider")
+    def saml_service_provider(self) -> Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]:
+        """
+        SP information. See `saml_service_provider` below.
+        """
+        return pulumi.get(self, "saml_service_provider")
+
+    @saml_service_provider.setter
+    def saml_service_provider(self, value: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]):
+        pulumi.set(self, "saml_service_provider", value)
+
+    @property
     @pulumi.getter(name="scimSynchronizationStatus")
     def scim_synchronization_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        SCIM Synchronization Status
         """
         return pulumi.get(self, "scim_synchronization_status")
 
     @scim_synchronization_status.setter
     def scim_synchronization_status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "scim_synchronization_status", value)
+
+    @property
+    @pulumi.getter(name="userProvisioningConfiguration")
+    def user_provisioning_configuration(self) -> Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]:
+        """
+        User Provisioning configuration See `user_provisioning_configuration` below.
+        """
+        return pulumi.get(self, "user_provisioning_configuration")
+
+    @user_provisioning_configuration.setter
+    def user_provisioning_configuration(self, value: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]):
+        pulumi.set(self, "user_provisioning_configuration", value)
 
 
 class Directory(pulumi.CustomResource):
@@ -179,10 +379,16 @@ class Directory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 directory_global_access_status: Optional[pulumi.Input[builtins.str]] = None,
                  directory_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+                 mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
                  mfa_authentication_status: Optional[pulumi.Input[builtins.str]] = None,
+                 password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
                  saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
+                 saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
                  scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None,
+                 user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Directory resource.
@@ -190,8 +396,6 @@ class Directory(pulumi.CustomResource):
         For information about Cloud SSO Directory and how to use it, see [What is Directory](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createdirectory).
 
         > **NOTE:** Available since v1.135.0.
-
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
         ## Example Usage
 
@@ -205,13 +409,7 @@ class Directory(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.cloudsso.get_directories()
-        default_directory = []
-        def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
-
-        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default = alicloud.cloudsso.Directory("default", directory_name=name)
         ```
 
         ## Import
@@ -224,12 +422,16 @@ class Directory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[builtins.str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-               
-               > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
-        :param pulumi.Input[builtins.str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[builtins.str] directory_global_access_status: Directory Global Acceleration activation status
+        :param pulumi.Input[builtins.str] directory_name: DirectoryName
+        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[builtins.str] mfa_authentication_status: MFA Authentication Status
+        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[builtins.str] scim_synchronization_status: SCIM Synchronization Status
+        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
         ...
     @overload
@@ -244,8 +446,6 @@ class Directory(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-
         ## Example Usage
 
         Basic Usage
@@ -258,13 +458,7 @@ class Directory(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.cloudsso.get_directories()
-        default_directory = []
-        def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
-
-        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default = alicloud.cloudsso.Directory("default", directory_name=name)
         ```
 
         ## Import
@@ -290,10 +484,16 @@ class Directory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 directory_global_access_status: Optional[pulumi.Input[builtins.str]] = None,
                  directory_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+                 mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
                  mfa_authentication_status: Optional[pulumi.Input[builtins.str]] = None,
+                 password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
                  saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
+                 saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
                  scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None,
+                 user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,10 +503,17 @@ class Directory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DirectoryArgs.__new__(DirectoryArgs)
 
+            __props__.__dict__["directory_global_access_status"] = directory_global_access_status
             __props__.__dict__["directory_name"] = directory_name
+            __props__.__dict__["login_preference"] = login_preference
+            __props__.__dict__["mfa_authentication_setting_info"] = mfa_authentication_setting_info
             __props__.__dict__["mfa_authentication_status"] = mfa_authentication_status
+            __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["saml_identity_provider_configuration"] = saml_identity_provider_configuration
+            __props__.__dict__["saml_service_provider"] = saml_service_provider
             __props__.__dict__["scim_synchronization_status"] = scim_synchronization_status
+            __props__.__dict__["user_provisioning_configuration"] = user_provisioning_configuration
+            __props__.__dict__["create_time"] = None
         super(Directory, __self__).__init__(
             'alicloud:cloudsso/directory:Directory',
             resource_name,
@@ -317,10 +524,17 @@ class Directory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[builtins.str]] = None,
+            directory_global_access_status: Optional[pulumi.Input[builtins.str]] = None,
             directory_name: Optional[pulumi.Input[builtins.str]] = None,
+            login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+            mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
             mfa_authentication_status: Optional[pulumi.Input[builtins.str]] = None,
+            password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
             saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-            scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None) -> 'Directory':
+            saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+            scim_synchronization_status: Optional[pulumi.Input[builtins.str]] = None,
+            user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -328,54 +542,120 @@ class Directory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
-        :param pulumi.Input[builtins.str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-               
-               > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
-        :param pulumi.Input[builtins.str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param pulumi.Input[builtins.str] create_time: CreateTime
+        :param pulumi.Input[builtins.str] directory_global_access_status: Directory Global Acceleration activation status
+        :param pulumi.Input[builtins.str] directory_name: DirectoryName
+        :param pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']] login_preference: Login preferences See `login_preference` below.
+        :param pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']] mfa_authentication_setting_info: Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        :param pulumi.Input[builtins.str] mfa_authentication_status: MFA Authentication Status
+        :param pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']] password_policy: Password policy See `password_policy` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: Identity Provider (IDP) See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']] saml_service_provider: SP information. See `saml_service_provider` below.
+        :param pulumi.Input[builtins.str] scim_synchronization_status: SCIM Synchronization Status
+        :param pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']] user_provisioning_configuration: User Provisioning configuration See `user_provisioning_configuration` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DirectoryState.__new__(_DirectoryState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["directory_global_access_status"] = directory_global_access_status
         __props__.__dict__["directory_name"] = directory_name
+        __props__.__dict__["login_preference"] = login_preference
+        __props__.__dict__["mfa_authentication_setting_info"] = mfa_authentication_setting_info
         __props__.__dict__["mfa_authentication_status"] = mfa_authentication_status
+        __props__.__dict__["password_policy"] = password_policy
         __props__.__dict__["saml_identity_provider_configuration"] = saml_identity_provider_configuration
+        __props__.__dict__["saml_service_provider"] = saml_service_provider
         __props__.__dict__["scim_synchronization_status"] = scim_synchronization_status
+        __props__.__dict__["user_provisioning_configuration"] = user_provisioning_configuration
         return Directory(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[builtins.str]:
+        """
+        CreateTime
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="directoryGlobalAccessStatus")
+    def directory_global_access_status(self) -> pulumi.Output[builtins.str]:
+        """
+        Directory Global Acceleration activation status
+        """
+        return pulumi.get(self, "directory_global_access_status")
 
     @property
     @pulumi.getter(name="directoryName")
     def directory_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        DirectoryName
         """
         return pulumi.get(self, "directory_name")
+
+    @property
+    @pulumi.getter(name="loginPreference")
+    def login_preference(self) -> pulumi.Output['outputs.DirectoryLoginPreference']:
+        """
+        Login preferences See `login_preference` below.
+        """
+        return pulumi.get(self, "login_preference")
+
+    @property
+    @pulumi.getter(name="mfaAuthenticationSettingInfo")
+    def mfa_authentication_setting_info(self) -> pulumi.Output['outputs.DirectoryMfaAuthenticationSettingInfo']:
+        """
+        Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        """
+        return pulumi.get(self, "mfa_authentication_setting_info")
 
     @property
     @pulumi.getter(name="mfaAuthenticationStatus")
     def mfa_authentication_status(self) -> pulumi.Output[builtins.str]:
         """
-        The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        MFA Authentication Status
         """
         return pulumi.get(self, "mfa_authentication_status")
+
+    @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> pulumi.Output['outputs.DirectoryPasswordPolicy']:
+        """
+        Password policy See `password_policy` below.
+        """
+        return pulumi.get(self, "password_policy")
 
     @property
     @pulumi.getter(name="samlIdentityProviderConfiguration")
     def saml_identity_provider_configuration(self) -> pulumi.Output['outputs.DirectorySamlIdentityProviderConfiguration']:
         """
-        The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-
-        > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         """
         return pulumi.get(self, "saml_identity_provider_configuration")
+
+    @property
+    @pulumi.getter(name="samlServiceProvider")
+    def saml_service_provider(self) -> pulumi.Output['outputs.DirectorySamlServiceProvider']:
+        """
+        SP information. See `saml_service_provider` below.
+        """
+        return pulumi.get(self, "saml_service_provider")
 
     @property
     @pulumi.getter(name="scimSynchronizationStatus")
     def scim_synchronization_status(self) -> pulumi.Output[builtins.str]:
         """
-        The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        SCIM Synchronization Status
         """
         return pulumi.get(self, "scim_synchronization_status")
+
+    @property
+    @pulumi.getter(name="userProvisioningConfiguration")
+    def user_provisioning_configuration(self) -> pulumi.Output['outputs.DirectoryUserProvisioningConfiguration']:
+        """
+        User Provisioning configuration See `user_provisioning_configuration` below.
+        """
+        return pulumi.get(self, "user_provisioning_configuration")
 

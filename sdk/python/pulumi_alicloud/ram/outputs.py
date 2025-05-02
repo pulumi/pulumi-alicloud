@@ -23,6 +23,7 @@ __all__ = [
     'GetPolicyDocumentStatementResult',
     'GetPolicyDocumentStatementConditionResult',
     'GetPolicyDocumentStatementPrincipalResult',
+    'GetRolePolicyAttachmentsAttachmentResult',
     'GetRolesRoleResult',
     'GetSamlProvidersProviderResult',
     'GetSystemPolicysPolicyResult',
@@ -381,6 +382,68 @@ class GetPolicyDocumentStatementPrincipalResult(dict):
         The identifiers of the principal.
         """
         return pulumi.get(self, "identifiers")
+
+
+@pulumi.output_type
+class GetRolePolicyAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 attach_date: builtins.str,
+                 description: builtins.str,
+                 id: builtins.str,
+                 policy_name: builtins.str,
+                 policy_type: builtins.str):
+        """
+        :param builtins.str attach_date: The time when the role was attached to the policy.
+        :param builtins.str description: The policy description.
+        :param builtins.str id: The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+        :param builtins.str policy_name: The name of the policy.
+        :param builtins.str policy_type: Policy type.- Custom: Custom policy.- System: System policy.
+        """
+        pulumi.set(__self__, "attach_date", attach_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="attachDate")
+    def attach_date(self) -> builtins.str:
+        """
+        The time when the role was attached to the policy.
+        """
+        return pulumi.get(self, "attach_date")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        The policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> builtins.str:
+        """
+        The name of the policy.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> builtins.str:
+        """
+        Policy type.- Custom: Custom policy.- System: System policy.
+        """
+        return pulumi.get(self, "policy_type")
 
 
 @pulumi.output_type

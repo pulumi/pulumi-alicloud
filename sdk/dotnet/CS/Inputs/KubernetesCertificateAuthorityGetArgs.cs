@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesCertificateAuthorityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }

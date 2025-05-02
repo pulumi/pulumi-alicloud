@@ -314,8 +314,8 @@ class EdgeKubernetesCertificateAuthority(dict):
                  client_key: Optional[builtins.str] = None,
                  cluster_cert: Optional[builtins.str] = None):
         """
-        :param builtins.str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param builtins.str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param builtins.str client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param builtins.str client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param builtins.str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -329,7 +329,7 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[builtins.str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -337,7 +337,7 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[builtins.str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -857,8 +857,8 @@ class KubernetesCertificateAuthority(dict):
                  client_key: Optional[builtins.str] = None,
                  cluster_cert: Optional[builtins.str] = None):
         """
-        :param builtins.str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param builtins.str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param builtins.str client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param builtins.str client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param builtins.str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -872,7 +872,7 @@ class KubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[builtins.str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -880,7 +880,7 @@ class KubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[builtins.str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -1390,8 +1390,8 @@ class ManagedKubernetesCertificateAuthority(dict):
                  client_key: Optional[builtins.str] = None,
                  cluster_cert: Optional[builtins.str] = None):
         """
-        :param builtins.str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param builtins.str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param builtins.str client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+        :param builtins.str client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param builtins.str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -1405,7 +1405,7 @@ class ManagedKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[builtins.str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
@@ -1413,7 +1413,7 @@ class ManagedKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[builtins.str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
@@ -4697,7 +4697,7 @@ class GetKubernetesNodePoolsNodepoolResult(dict):
         :param 'GetKubernetesNodePoolsNodepoolManagementArgs' management: Managed node pool configuration.
         :param builtins.str multi_az_policy: The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
         :param builtins.str node_name_mode: Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
-        :param builtins.str node_pool_id: The ID of node pool.
+        :param builtins.str node_pool_id: The first ID of the resource.
         :param builtins.str node_pool_name: The name of node pool.
         :param builtins.str on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         :param builtins.str on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
@@ -4985,7 +4985,7 @@ class GetKubernetesNodePoolsNodepoolResult(dict):
     @pulumi.getter(name="nodePoolId")
     def node_pool_id(self) -> builtins.str:
         """
-        The ID of node pool.
+        The first ID of the resource.
         """
         return pulumi.get(self, "node_pool_id")
 

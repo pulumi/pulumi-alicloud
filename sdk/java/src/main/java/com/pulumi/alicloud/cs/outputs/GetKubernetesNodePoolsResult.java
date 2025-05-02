@@ -26,6 +26,11 @@ public final class GetKubernetesNodePoolsResult {
      */
     private List<String> ids;
     /**
+     * @return The name of node pool.
+     * 
+     */
+    private @Nullable String nodePoolName;
+    /**
      * @return A list of Nodepool Entries. Each element contains the following attributes:
      * 
      */
@@ -51,6 +56,13 @@ public final class GetKubernetesNodePoolsResult {
         return this.ids;
     }
     /**
+     * @return The name of node pool.
+     * 
+     */
+    public Optional<String> nodePoolName() {
+        return Optional.ofNullable(this.nodePoolName);
+    }
+    /**
      * @return A list of Nodepool Entries. Each element contains the following attributes:
      * 
      */
@@ -73,6 +85,7 @@ public final class GetKubernetesNodePoolsResult {
         private String clusterId;
         private String id;
         private List<String> ids;
+        private @Nullable String nodePoolName;
         private List<GetKubernetesNodePoolsNodepool> nodepools;
         private @Nullable String outputFile;
         public Builder() {}
@@ -81,6 +94,7 @@ public final class GetKubernetesNodePoolsResult {
     	      this.clusterId = defaults.clusterId;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.nodePoolName = defaults.nodePoolName;
     	      this.nodepools = defaults.nodepools;
     	      this.outputFile = defaults.outputFile;
         }
@@ -113,6 +127,12 @@ public final class GetKubernetesNodePoolsResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder nodePoolName(@Nullable String nodePoolName) {
+
+            this.nodePoolName = nodePoolName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nodepools(List<GetKubernetesNodePoolsNodepool> nodepools) {
             if (nodepools == null) {
               throw new MissingRequiredPropertyException("GetKubernetesNodePoolsResult", "nodepools");
@@ -134,6 +154,7 @@ public final class GetKubernetesNodePoolsResult {
             _resultValue.clusterId = clusterId;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.nodePoolName = nodePoolName;
             _resultValue.nodepools = nodepools;
             _resultValue.outputFile = outputFile;
             return _resultValue;

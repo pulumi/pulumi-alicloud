@@ -4635,7 +4635,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> pulumi.Output[Optional[builtins.str]]:
+    def encryption_key(self) -> pulumi.Output[builtins.str]:
         """
         The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         When the instance is PostgreSQL, this parameter can be used to enable, modify, and disable cloud disk encryption.Value range:

@@ -13,11 +13,14 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ENS Disk resource. The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a ENS Disk resource.
+ * 
+ * The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
  * 
  * For information about ENS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createdisk).
  * 
@@ -77,98 +80,98 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
     /**
-     * Types of disk instancesValues: cloud_efficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+     * The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
-     * @return Types of disk instancesValues: cloud_efficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+     * @return The category of the disk. Valid values: `cloud_efficiency` (high-efficiency cloud disk), `cloud_ssd` (full Flash cloud disk), `local_hdd` (local HDD), `local_ssd` (local ssd).
      * 
      */
     public Output<String> category() {
         return this.category;
     }
     /**
-     * Disk instance creation time.
+     * The time when the disk was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Disk instance creation time.
+     * @return The time when the disk was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Name of the disk instance.
+     * The name of the disk.
      * 
      */
     @Export(name="diskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskName;
 
     /**
-     * @return Name of the disk instance.
+     * @return The name of the disk.
      * 
      */
     public Output<Optional<String>> diskName() {
         return Codegen.optional(this.diskName);
     }
     /**
-     * Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+     * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      * 
      */
     @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
     /**
-     * @return Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+     * @return Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      * 
      */
     public Output<Optional<Boolean>> encrypted() {
         return Codegen.optional(this.encrypted);
     }
     /**
-     * Ens node IDExample value: cn-chengdu-telecom.
+     * The ID of the edge node.
      * 
      */
     @Export(name="ensRegionId", refs={String.class}, tree="[0]")
     private Output<String> ensRegionId;
 
     /**
-     * @return Ens node IDExample value: cn-chengdu-telecom.
+     * @return The ID of the edge node.
      * 
      */
     public Output<String> ensRegionId() {
         return this.ensRegionId;
     }
     /**
-     * The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+     * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     /**
-     * @return The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+     * @return The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      * 
      */
     public Output<String> kmsKeyId() {
         return this.kmsKeyId;
     }
     /**
-     * Billing type of the disk instanceValue: PayAsYouGo.
+     * The billing method of the instance. Valid values: `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Billing type of the disk instanceValue: PayAsYouGo.
+     * @return The billing method of the instance. Valid values: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
@@ -192,8 +195,8 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * The ID of the snapshot used to create the cloud disk.
      * 
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
@@ -203,26 +206,40 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * @return The ID of the snapshot used to create the cloud disk.
      * 
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshot_id` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      * 
      */
     public Output<Optional<String>> snapshotId() {
         return Codegen.optional(this.snapshotId);
     }
     /**
-     * Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+     * The status of the disk.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+     * @return The status of the disk.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The label to which the instance is bound.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The label to which the instance is bound.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

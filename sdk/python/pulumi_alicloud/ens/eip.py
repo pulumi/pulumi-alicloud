@@ -30,12 +30,12 @@ class EipArgs:
         """
         The set of arguments for constructing a Eip resource.
         :param pulumi.Input[builtins.str] ens_region_id: Ens node ID.
-        :param pulumi.Input[builtins.str] internet_charge_type: Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
-        :param pulumi.Input[builtins.str] payment_type: The billing type of the EIP instanceValue: PayAsYouGo.
-        :param pulumi.Input[builtins.int] bandwidth: The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        :param pulumi.Input[builtins.str] internet_charge_type: The metering method of the EIP. Valid value: `95BandwidthByMonth`.
+        :param pulumi.Input[builtins.str] payment_type: The billing method of the EIP. Valid value: `PayAsYouGo`.
+        :param pulumi.Input[builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         :param pulumi.Input[builtins.str] description: The description of the EIP.
-        :param pulumi.Input[builtins.str] eip_name: Name of the EIP instance.
-        :param pulumi.Input[builtins.str] isp: Internet service provider, if not filled in, it will be assigned according to the default rules.
+        :param pulumi.Input[builtins.str] eip_name: The name of the EIP.
+        :param pulumi.Input[builtins.str] isp: The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         pulumi.set(__self__, "ens_region_id", ens_region_id)
         pulumi.set(__self__, "internet_charge_type", internet_charge_type)
@@ -65,7 +65,7 @@ class EipArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[builtins.str]:
         """
-        Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -77,7 +77,7 @@ class EipArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[builtins.str]:
         """
-        The billing type of the EIP instanceValue: PayAsYouGo.
+        The billing method of the EIP. Valid value: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -89,7 +89,7 @@ class EipArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -113,7 +113,7 @@ class EipArgs:
     @pulumi.getter(name="eipName")
     def eip_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the EIP instance.
+        The name of the EIP.
         """
         return pulumi.get(self, "eip_name")
 
@@ -125,7 +125,7 @@ class EipArgs:
     @pulumi.getter
     def isp(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Internet service provider, if not filled in, it will be assigned according to the default rules.
+        The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         return pulumi.get(self, "isp")
 
@@ -148,15 +148,15 @@ class _EipState:
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
-        :param pulumi.Input[builtins.int] bandwidth: The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        :param pulumi.Input[builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         :param pulumi.Input[builtins.str] create_time: The creation time of the EIP instance.
         :param pulumi.Input[builtins.str] description: The description of the EIP.
-        :param pulumi.Input[builtins.str] eip_name: Name of the EIP instance.
+        :param pulumi.Input[builtins.str] eip_name: The name of the EIP.
         :param pulumi.Input[builtins.str] ens_region_id: Ens node ID.
-        :param pulumi.Input[builtins.str] internet_charge_type: Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
-        :param pulumi.Input[builtins.str] isp: Internet service provider, if not filled in, it will be assigned according to the default rules.
-        :param pulumi.Input[builtins.str] payment_type: The billing type of the EIP instanceValue: PayAsYouGo.
-        :param pulumi.Input[builtins.str] status: The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        :param pulumi.Input[builtins.str] internet_charge_type: The metering method of the EIP. Valid value: `95BandwidthByMonth`.
+        :param pulumi.Input[builtins.str] isp: The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        :param pulumi.Input[builtins.str] payment_type: The billing method of the EIP. Valid value: `PayAsYouGo`.
+        :param pulumi.Input[builtins.str] status: The status of the EIP.
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
@@ -181,7 +181,7 @@ class _EipState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -217,7 +217,7 @@ class _EipState:
     @pulumi.getter(name="eipName")
     def eip_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the EIP instance.
+        The name of the EIP.
         """
         return pulumi.get(self, "eip_name")
 
@@ -241,7 +241,7 @@ class _EipState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -253,7 +253,7 @@ class _EipState:
     @pulumi.getter
     def isp(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Internet service provider, if not filled in, it will be assigned according to the default rules.
+        The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         return pulumi.get(self, "isp")
 
@@ -265,7 +265,7 @@ class _EipState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The billing type of the EIP instanceValue: PayAsYouGo.
+        The billing method of the EIP. Valid value: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -277,7 +277,7 @@ class _EipState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        The status of the EIP.
         """
         return pulumi.get(self, "status")
 
@@ -303,7 +303,9 @@ class Eip(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+        Provides a ENS Eip resource.
+
+        Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
 
         For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
 
@@ -341,13 +343,13 @@ class Eip(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.int] bandwidth: The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        :param pulumi.Input[builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         :param pulumi.Input[builtins.str] description: The description of the EIP.
-        :param pulumi.Input[builtins.str] eip_name: Name of the EIP instance.
+        :param pulumi.Input[builtins.str] eip_name: The name of the EIP.
         :param pulumi.Input[builtins.str] ens_region_id: Ens node ID.
-        :param pulumi.Input[builtins.str] internet_charge_type: Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
-        :param pulumi.Input[builtins.str] isp: Internet service provider, if not filled in, it will be assigned according to the default rules.
-        :param pulumi.Input[builtins.str] payment_type: The billing type of the EIP instanceValue: PayAsYouGo.
+        :param pulumi.Input[builtins.str] internet_charge_type: The metering method of the EIP. Valid value: `95BandwidthByMonth`.
+        :param pulumi.Input[builtins.str] isp: The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        :param pulumi.Input[builtins.str] payment_type: The billing method of the EIP. Valid value: `PayAsYouGo`.
         """
         ...
     @overload
@@ -356,7 +358,9 @@ class Eip(pulumi.CustomResource):
                  args: EipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+        Provides a ENS Eip resource.
+
+        Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
 
         For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
 
@@ -464,15 +468,15 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.int] bandwidth: The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        :param pulumi.Input[builtins.int] bandwidth: The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         :param pulumi.Input[builtins.str] create_time: The creation time of the EIP instance.
         :param pulumi.Input[builtins.str] description: The description of the EIP.
-        :param pulumi.Input[builtins.str] eip_name: Name of the EIP instance.
+        :param pulumi.Input[builtins.str] eip_name: The name of the EIP.
         :param pulumi.Input[builtins.str] ens_region_id: Ens node ID.
-        :param pulumi.Input[builtins.str] internet_charge_type: Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
-        :param pulumi.Input[builtins.str] isp: Internet service provider, if not filled in, it will be assigned according to the default rules.
-        :param pulumi.Input[builtins.str] payment_type: The billing type of the EIP instanceValue: PayAsYouGo.
-        :param pulumi.Input[builtins.str] status: The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        :param pulumi.Input[builtins.str] internet_charge_type: The metering method of the EIP. Valid value: `95BandwidthByMonth`.
+        :param pulumi.Input[builtins.str] isp: The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
+        :param pulumi.Input[builtins.str] payment_type: The billing method of the EIP. Valid value: `PayAsYouGo`.
+        :param pulumi.Input[builtins.str] status: The status of the EIP.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -493,7 +497,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[builtins.int]:
         """
-        The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+        The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -517,7 +521,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="eipName")
     def eip_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the EIP instance.
+        The name of the EIP.
         """
         return pulumi.get(self, "eip_name")
 
@@ -533,7 +537,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[builtins.str]:
         """
-        Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+        The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -541,7 +545,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def isp(self) -> pulumi.Output[builtins.str]:
         """
-        Internet service provider, if not filled in, it will be assigned according to the default rules.
+        The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         return pulumi.get(self, "isp")
 
@@ -549,7 +553,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[builtins.str]:
         """
-        The billing type of the EIP instanceValue: PayAsYouGo.
+        The billing method of the EIP. Valid value: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -557,7 +561,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+        The status of the EIP.
         """
         return pulumi.get(self, "status")
 

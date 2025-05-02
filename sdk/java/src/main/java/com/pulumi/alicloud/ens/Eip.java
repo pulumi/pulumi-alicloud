@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a ENS Eip resource.
+ * 
+ * Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
  * 
  * For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
  * 
@@ -79,14 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/eip:Eip")
 public class Eip extends com.pulumi.resources.CustomResource {
     /**
-     * The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * @return The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      * 
      */
     public Output<Integer> bandwidth() {
@@ -121,14 +123,14 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Name of the EIP instance.
+     * The name of the EIP.
      * 
      */
     @Export(name="eipName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eipName;
 
     /**
-     * @return Name of the EIP instance.
+     * @return The name of the EIP.
      * 
      */
     public Output<Optional<String>> eipName() {
@@ -149,56 +151,56 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return this.ensRegionId;
     }
     /**
-     * Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
-     * @return Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * @return The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      * 
      */
     public Output<String> internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      * 
      */
     @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
-     * @return Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * @return The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      * 
      */
     public Output<String> isp() {
         return this.isp;
     }
     /**
-     * The billing type of the EIP instanceValue: PayAsYouGo.
+     * The billing method of the EIP. Valid value: `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The billing type of the EIP instanceValue: PayAsYouGo.
+     * @return The billing method of the EIP. Valid value: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+     * The status of the EIP.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+     * @return The status of the EIP.
      * 
      */
     public Output<String> status() {

@@ -3052,8 +3052,9 @@ export namespace alb {
          */
         status: string;
         /**
-         * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+         * The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
          *
+         * > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
          * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         weight: number;
@@ -10369,15 +10370,154 @@ export namespace cloudsso {
         permissionPolicyType: string;
     }
 
+    export interface DirectoryLoginPreference {
+        /**
+         * Whether the user can obtain the program access credential in the portal after logging in.
+         */
+        allowUserToGetCredentials: boolean;
+        /**
+         * IP address whitelist
+         */
+        loginNetworkMasks?: string;
+    }
+
+    export interface DirectoryMfaAuthenticationSettingInfo {
+        /**
+         * Global MFA validation policy
+         */
+        mfaAuthenticationAdvanceSettings: string;
+        /**
+         * MFA verification policy for abnormal logon.
+         */
+        operationForRiskLogin: string;
+    }
+
+    export interface DirectoryPasswordPolicy {
+        /**
+         * Whether to restrict login after Password Expiration
+         */
+        hardExpire: boolean;
+        /**
+         * Number of password retries.
+         */
+        maxLoginAttempts: number;
+        /**
+         * Password validity period.
+         */
+        maxPasswordAge: number;
+        /**
+         * Maximum password length.
+         */
+        maxPasswordLength: number;
+        /**
+         * The minimum number of different characters in a password.
+         */
+        minPasswordDifferentChars: number;
+        /**
+         * Minimum password length.
+         */
+        minPasswordLength: number;
+        /**
+         * Whether the user name is not allowed in the password.
+         */
+        passwordNotContainUsername: boolean;
+        /**
+         * Historical password check policy.
+         */
+        passwordReusePrevention: number;
+        /**
+         * Whether lowercase letters are required in the password.
+         */
+        requireLowerCaseChars: boolean;
+        /**
+         * Whether numbers are required in the password.
+         */
+        requireNumbers: boolean;
+        /**
+         * Whether symbols are required in the password.
+         */
+        requireSymbols: boolean;
+        /**
+         * Whether uppercase letters are required in the password.
+         */
+        requireUpperCaseChars: boolean;
+    }
+
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
-         * Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+         * The Binding method for initiating a SAML request.
+         */
+        bindingType: string;
+        /**
+         * Certificate ID list
+         */
+        certificateIds: string[];
+        /**
+         * CreateTime
+         */
+        createTime: string;
+        /**
+         * EncodedMetadataDocument
+         */
+        encodedMetadataDocument?: string;
+        /**
+         * EntityId
+         */
+        entityId: string;
+        /**
+         * LoginUrl
+         */
+        loginUrl: string;
+        /**
+         * SSOStatus
+         */
+        ssoStatus: string;
+        /**
+         * UpdateTime
+         */
+        updateTime: string;
+        /**
+         * SP Request whether the signature is required
+         */
+        wantRequestSigned: boolean;
+    }
+
+    export interface DirectorySamlServiceProvider {
+        /**
+         * ACS URL of SP.
+         */
+        acsUrl: string;
+        /**
+         * Signature algorithms supported by AuthNRequest
+         */
+        authnSignAlgo: string;
+        /**
+         * Type of certificate used for signing in the SSO process
+         */
+        certificateType: string;
+        /**
+         * SP metadata document (Base64 encoding).
          */
         encodedMetadataDocument: string;
         /**
-         * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * SP identity.
          */
-        ssoStatus: string;
+        entityId: string;
+        /**
+         * Whether IdP-side encryption of Assertion is supported.
+         */
+        supportEncryptedAssertion: boolean;
+    }
+
+    export interface DirectoryUserProvisioningConfiguration {
+        /**
+         * The duration of the Session after the user logs in.
+         */
+        defaultLandingPage: string;
+        /**
+         * The duration of the Session after the user logs in.
+         */
+        sessionDuration: string;
     }
 
     export interface GetAccessAssignmentsAssignment {
@@ -13449,6 +13589,7 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
          */
         eflo?: string;
+        efloCnp?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
          */
@@ -14298,11 +14439,11 @@ export namespace cs {
 
     export interface EdgeKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert: string;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey: string;
         /**
@@ -14776,7 +14917,7 @@ export namespace cs {
          */
         nodeNameMode: string;
         /**
-         * The ID of node pool.
+         * The first ID of the resource.
          */
         nodePoolId: string;
         /**
@@ -15798,11 +15939,11 @@ export namespace cs {
 
     export interface KubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert: string;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey: string;
         /**
@@ -15963,11 +16104,11 @@ export namespace cs {
 
     export interface ManagedKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert: string;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey: string;
         /**
@@ -25653,7 +25794,7 @@ export namespace ecs {
          */
         nvmeSupport: string;
         /**
-         * The price of instance type.
+         * The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
          */
         price: string;
         /**
@@ -28247,6 +28388,73 @@ export namespace eflo {
         vswitchId?: string;
     }
 
+    export interface ExperimentPlanTemplateTemplatePipeline {
+        /**
+         * Contains a series of parameters related to the environment. See `envParams` below.
+         */
+        envParams: outputs.eflo.ExperimentPlanTemplateTemplatePipelineEnvParams;
+        /**
+         * Indicates the sequence number of the pipeline node.
+         */
+        pipelineOrder: number;
+        /**
+         * The use of the template scenario. It can have the following optional parameters:
+         * - baseline: benchmark evaluation
+         */
+        scene: string;
+        /**
+         * Represents additional parameters for the run.
+         */
+        settingParams: {[key: string]: string};
+        /**
+         * Used to uniquely identify a specific payload.
+         */
+        workloadId: number;
+        /**
+         * The name used to represent a specific payload.
+         */
+        workloadName: string;
+    }
+
+    export interface ExperimentPlanTemplateTemplatePipelineEnvParams {
+        /**
+         * Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+         */
+        cpuPerWorker: number;
+        /**
+         * The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+         */
+        cudaVersion?: string;
+        /**
+         * The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+         */
+        gpuDriverVersion?: string;
+        /**
+         * Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+         */
+        gpuPerWorker: number;
+        /**
+         * The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+         */
+        memoryPerWorker: number;
+        /**
+         * The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+         */
+        ncclVersion?: string;
+        /**
+         * The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+         */
+        pyTorchVersion?: string;
+        /**
+         * Shared memory GB allocation
+         */
+        shareMemory: number;
+        /**
+         * The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+         */
+        workerNum: number;
+    }
+
     export interface GetSubnetsSubnet {
         /**
          * Network segment
@@ -28435,6 +28643,68 @@ export namespace eflo {
          * Switch ID
          */
         vswitchId?: string;
+    }
+
+    export interface ResourceMachineTypes {
+        /**
+         * This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+         */
+        bondNum?: number;
+        /**
+         * Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+         */
+        cpuInfo: string;
+        /**
+         * Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+         */
+        diskInfo?: string;
+        /**
+         * Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+         */
+        gpuInfo: string;
+        /**
+         * This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+         */
+        memoryInfo?: string;
+        /**
+         * Specification Name.
+         */
+        name?: string;
+        /**
+         * Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+         */
+        networkInfo?: string;
+        /**
+         * Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+         */
+        networkMode?: string;
+        /**
+         * Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+         */
+        nodeCount?: number;
+        /**
+         * Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+         */
+        type?: string;
+    }
+
+    export interface ResourceUserAccessParam {
+        /**
+         * Access keys are important credentials for authentication.
+         */
+        accessId: string;
+        /**
+         * A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+         */
+        accessKey: string;
+        /**
+         * An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+         */
+        endpoint: string;
+        /**
+         * A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+         */
+        workspaceId: string;
     }
 
 }
@@ -38006,6 +38276,52 @@ export namespace imp {
 
 }
 
+export namespace ims {
+    export interface GetOidcProvidersProvider {
+        /**
+         * ARN of OIDC identity provider.
+         */
+        arn: string;
+        /**
+         * Client ID.
+         */
+        clientIds: string[];
+        /**
+         * Creation Time (UTC time).
+         */
+        createTime: string;
+        /**
+         * Description of OIDC identity provider.
+         */
+        description: string;
+        /**
+         * The authentication fingerprint of the HTTPS CA certificate.
+         */
+        fingerprints: string[];
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+         */
+        issuanceLimitTime: number;
+        /**
+         * The issuer URL of the OIDC identity provider.
+         */
+        issuerUrl: string;
+        /**
+         * The name of the OIDC identity provider.
+         */
+        oidcProviderName: string;
+        /**
+         * Modification Time (UTC time).
+         */
+        updateTime: string;
+    }
+
+}
+
 export namespace iot {
     export interface GetDeviceGroupsGroup {
         /**
@@ -40515,6 +40831,10 @@ export namespace mongodb {
          */
         replicaSetRole: string;
         /**
+         * The id of the role.
+         */
+        roleId: string;
+        /**
          * VPC instance ID.
          */
         vpcCloudInstanceId: string;
@@ -40526,6 +40846,33 @@ export namespace mongodb {
          * The virtual switch ID to launch DB instances in one VPC.
          */
         vswitchId: string;
+    }
+
+    export interface PublicNetworkAddressReplicaSet {
+        /**
+         * The connection address of the node.
+         */
+        connectionDomain: string;
+        /**
+         * The connection port of the node.
+         */
+        connectionPort: string;
+        /**
+         * The connection type.
+         */
+        connectionType: string;
+        /**
+         * The network type, should be always "Public".
+         */
+        networkType: string;
+        /**
+         * The role of the node.
+         */
+        replicaSetRole: string;
+        /**
+         * The id of the role.
+         */
+        roleId: string;
     }
 
     export interface ServerlessInstanceSecurityIpGroup {
@@ -41097,32 +41444,88 @@ export namespace nas {
 
     export interface FileSystemNfsAcl {
         /**
-         * Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+         * Whether the NFS ACL function is enabled.
          */
-        enabled?: boolean;
+        enabled: boolean;
+    }
+
+    export interface FileSystemOptions {
+        /**
+         * Whether to enable the OpLock function. Value:
+         * - true: On.
+         * - false: does not turn on.
+         *
+         * > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         */
+        enableOplock: boolean;
     }
 
     export interface FileSystemRecycleBin {
         /**
-         * The time at which the recycle bin was enabled.
+         * Recycle Bin open time
          */
         enableTime: string;
         /**
-         * The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+         * Retention time of files in the Recycle Bin. Unit: days.
          */
         reservedDays: number;
         /**
-         * The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+         * Amount of low-frequency data stored in the recycle bin. Unit: Byte.
          */
         secondarySize: number;
         /**
-         * The size of the files that are dumped to the recycle bin.
+         * The amount of files stored in the Recycle Bin. Unit: Byte.
          */
         size: number;
         /**
-         * Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+         * Recycle Bin Status
          */
         status: string;
+    }
+
+    export interface FileSystemSmbAcl {
+        /**
+         * Whether to allow anonymous access.
+         * - true: Allow anonymous access.
+         * - false (default): Anonymous access is not allowed.
+         */
+        enableAnonymousAccess: boolean;
+        /**
+         * Whether SMB ACL is enabled
+         */
+        enabled: boolean;
+        /**
+         * Whether transmission encryption is enabled.
+         * - true: Enables encryption in transit.
+         * - false (default): Transport encryption is not enabled.
+         */
+        encryptData?: boolean;
+        /**
+         * The user directory home path for each user. The file path format is as follows:
+         * - A forward slash (/) or backslash (\) as a separator.
+         * - Each paragraph cannot contain ":|? *.
+         * - The length of each segment ranges from 0 to 255.
+         * - The total length range is 0~32767.
+         *
+         * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+         *
+         * > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+         */
+        homeDirPath?: string;
+        /**
+         * Whether to reject non-encrypted clients.
+         * - true: Deny non-encrypted clients.
+         * - false (default): Non-encrypted clients are not rejected.
+         */
+        rejectUnencryptedAccess?: boolean;
+        /**
+         * The ID of the Super User. The ID rules are as follows:
+         * - Must start with S and no other letters can appear after the S at the beginning.
+         * - At least three dashes (-) apart.
+         *
+         * Such as S-1-5-22 or S-1-5-22-23.
+         */
+        superAdminSid?: string;
     }
 
     export interface GetAccessGroupsGroup {
@@ -45942,6 +46345,29 @@ export namespace ram {
         identifiers: string[];
     }
 
+    export interface GetRolePolicyAttachmentsAttachment {
+        /**
+         * The time when the role was attached to the policy.
+         */
+        attachDate: string;
+        /**
+         * The policy description.
+         */
+        description: string;
+        /**
+         * The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+         */
+        id: string;
+        /**
+         * The name of the policy.
+         */
+        policyName: string;
+        /**
+         * Policy type.- Custom: Custom policy.- System: System policy.
+         */
+        policyType: string;
+    }
+
     export interface GetRolesRole {
         /**
          * Resource descriptor of the role.
@@ -50643,7 +51069,7 @@ export namespace selectdb {
         /**
          * The value range of the parameter.
          */
-        optional: number;
+        optional: string;
         /**
          * The category of the parameter.
          */
@@ -53659,6 +54085,68 @@ export namespace sls {
          * When the resource directory is configured in the custom mode, the corresponding member account list
          */
         members?: string[];
+    }
+
+    export interface EtlConfiguration {
+        /**
+         * The beginning of the time range for transformation.
+         */
+        fromTime: number;
+        /**
+         * Data processing syntax type.
+         */
+        lang: string;
+        /**
+         * Destination Logstore Name.
+         */
+        logstore: string;
+        /**
+         * Advanced parameter configuration.
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: string;
+        /**
+         * Processing script.
+         */
+        script: string;
+        /**
+         * Processing result output target list See `sink` below.
+         */
+        sinks: outputs.sls.EtlConfigurationSink[];
+        /**
+         * The end of the time range for transformation.
+         */
+        toTime: number;
+    }
+
+    export interface EtlConfigurationSink {
+        /**
+         * Write Result Set.
+         */
+        datasets: string[];
+        /**
+         * The endpoint of the region where the target Project is located.
+         */
+        endpoint: string;
+        /**
+         * Destination Logstore Name.
+         */
+        logstore: string;
+        /**
+         * Output Destination Name.
+         */
+        name: string;
+        /**
+         * Project Name.
+         */
+        project: string;
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: string;
     }
 
     export interface OssExportSinkConfiguration {

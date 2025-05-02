@@ -136,7 +136,7 @@ type Instance struct {
 	// - <Key ID>: Use a custom key to enable cloud disk encryption or change the current key. For example: 494c98ce-f2b5-48ab-96ab-36c986b6****.
 	// - disabled: Turn off cloud disk encryption.
 	// > **NOTE:** This parameter is available when the instance runs MySQL.
-	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
+	EncryptionKey pulumi.StringOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
@@ -2057,8 +2057,8 @@ func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 // - <Key ID>: Use a custom key to enable cloud disk encryption or change the current key. For example: 494c98ce-f2b5-48ab-96ab-36c986b6****.
 // - disabled: Turn off cloud disk encryption.
 // > **NOTE:** This parameter is available when the instance runs MySQL.
-func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EncryptionKey }).(pulumi.StringOutput)
 }
 
 // Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.

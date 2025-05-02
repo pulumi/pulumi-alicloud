@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a GWLB Server Group resource.
  * 
- * For information about GWLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/).
+ * For information about GWLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createservergroup).
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 

@@ -6,6 +6,7 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .flow_pipeline import *
 from .service import *
 from .workspace_code_source import *
 from .workspace_dataset import *

@@ -71,7 +71,9 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> AccountNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Language environment (if not filled in, default is zh): zh, en.
+        /// Language environment (if not filled in, default is zh):
+        /// - zh
+        /// - en
         /// </summary>
         [Output("aliyunLang")]
         public Output<string?> AliyunLang { get; private set; } = null!;
@@ -121,7 +123,11 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> GrafanaVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Edition
+        /// The edition. **Valid values:**
+        /// - standard: `Beta Edition(For internal testing only) `
+        /// - personal_edition: Developer Edition
+        /// - experts_edition: Pro Edition
+        /// - advanced_edition: Advanced Edition
         /// </summary>
         [Output("grafanaWorkspaceEdition")]
         public Output<string?> GrafanaWorkspaceEdition { get; private set; } = null!;
@@ -225,7 +231,9 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? AccountNumber { get; set; }
 
         /// <summary>
-        /// Language environment (if not filled in, default is zh): zh, en.
+        /// Language environment (if not filled in, default is zh):
+        /// - zh
+        /// - en
         /// </summary>
         [Input("aliyunLang")]
         public Input<string>? AliyunLang { get; set; }
@@ -269,7 +277,11 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? GrafanaVersion { get; set; }
 
         /// <summary>
-        /// Edition
+        /// The edition. **Valid values:**
+        /// - standard: `Beta Edition(For internal testing only) `
+        /// - personal_edition: Developer Edition
+        /// - experts_edition: Pro Edition
+        /// - advanced_edition: Advanced Edition
         /// </summary>
         [Input("grafanaWorkspaceEdition")]
         public Input<string>? GrafanaWorkspaceEdition { get; set; }
@@ -329,7 +341,9 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? AccountNumber { get; set; }
 
         /// <summary>
-        /// Language environment (if not filled in, default is zh): zh, en.
+        /// Language environment (if not filled in, default is zh):
+        /// - zh
+        /// - en
         /// </summary>
         [Input("aliyunLang")]
         public Input<string>? AliyunLang { get; set; }
@@ -379,7 +393,11 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? GrafanaVersion { get; set; }
 
         /// <summary>
-        /// Edition
+        /// The edition. **Valid values:**
+        /// - standard: `Beta Edition(For internal testing only) `
+        /// - personal_edition: Developer Edition
+        /// - experts_edition: Pro Edition
+        /// - advanced_edition: Advanced Edition
         /// </summary>
         [Input("grafanaWorkspaceEdition")]
         public Input<string>? GrafanaWorkspaceEdition { get; set; }

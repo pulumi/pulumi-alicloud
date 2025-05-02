@@ -291,7 +291,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
     public readonly tdeStatus!: pulumi.Output<string>;
     /**
@@ -635,7 +635,7 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
     tdeStatus?: pulumi.Input<string>;
     /**
@@ -834,7 +834,7 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
     tdeStatus?: pulumi.Input<string>;
     /**

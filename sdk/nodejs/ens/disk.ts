@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ENS Disk resource. The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a ENS Disk resource.
+ *
+ * The disk. When you use it for the first time, please contact the product classmates to add a resource whitelist.
  *
  * For information about ENS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createdisk).
  *
@@ -66,31 +68,31 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /**
-     * Types of disk instancesValues: cloudEfficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+     * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      */
     public readonly category!: pulumi.Output<string>;
     /**
-     * Disk instance creation time.
+     * The time when the disk was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Name of the disk instance.
+     * The name of the disk.
      */
     public readonly diskName!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+     * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
     /**
-     * Ens node IDExample value: cn-chengdu-telecom.
+     * The ID of the edge node.
      */
     public readonly ensRegionId!: pulumi.Output<string>;
     /**
-     * The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+     * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
     public readonly kmsKeyId!: pulumi.Output<string>;
     /**
-     * Billing type of the disk instanceValue: PayAsYouGo.
+     * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -101,14 +103,18 @@ export class Disk extends pulumi.CustomResource {
      * The ID of the snapshot used to create the cloud disk.
      *
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
-     * Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+     * The status of the disk.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The label to which the instance is bound.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -133,6 +139,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -152,6 +159,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -165,31 +173,31 @@ export class Disk extends pulumi.CustomResource {
  */
 export interface DiskState {
     /**
-     * Types of disk instancesValues: cloudEfficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+     * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      */
     category?: pulumi.Input<string>;
     /**
-     * Disk instance creation time.
+     * The time when the disk was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Name of the disk instance.
+     * The name of the disk.
      */
     diskName?: pulumi.Input<string>;
     /**
-     * Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+     * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
     encrypted?: pulumi.Input<boolean>;
     /**
-     * Ens node IDExample value: cn-chengdu-telecom.
+     * The ID of the edge node.
      */
     ensRegionId?: pulumi.Input<string>;
     /**
-     * The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+     * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * Billing type of the disk instanceValue: PayAsYouGo.
+     * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -200,14 +208,18 @@ export interface DiskState {
      * The ID of the snapshot used to create the cloud disk.
      *
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * Status of the disk instance:Value:In-use: In useAvailable: To be mountedAttaching: AttachingDetaching: uninstallingCreating: CreatingReIniting: Resetting.
+     * The status of the disk.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The label to which the instance is bound.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -215,27 +227,27 @@ export interface DiskState {
  */
 export interface DiskArgs {
     /**
-     * Types of disk instancesValues: cloudEfficiency (high-efficiency cloud disk),cloud_ssd (full Flash cloud disk),local_hdd (local HDD),local_ssd (local ssd).
+     * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      */
     category: pulumi.Input<string>;
     /**
-     * Name of the disk instance.
+     * The name of the disk.
      */
     diskName?: pulumi.Input<string>;
     /**
-     * Indicates whether the cloud disk is Encrypted. If Encrypted = true, the default service key is used when KMSKeyId is not entered. Value range:`true`, `false`(default).
+     * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
     encrypted?: pulumi.Input<boolean>;
     /**
-     * Ens node IDExample value: cn-chengdu-telecom.
+     * The ID of the edge node.
      */
     ensRegionId: pulumi.Input<string>;
     /**
-     * The ID of the KMS key used by the cloud disk. If Encrypted is set to true, the service default key is used when KMSKeyId is empty.
+     * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * Billing type of the disk instanceValue: PayAsYouGo.
+     * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
     /**
@@ -246,8 +258,12 @@ export interface DiskArgs {
      * The ID of the snapshot used to create the cloud disk.
      *
      * The SnapshotId and Size parameters have the following limitations:
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is greater than the specified **Size** parameter, the Size of the cloud disk created is the Size of the specified snapshot.
-     * - If the snapshot capacity corresponding to the **SnapshotId** parameter is less than the set **Size** parameter value, the Size of the cloud disk created is the specified **Size** parameter value.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
+     * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
     snapshotId?: pulumi.Input<string>;
+    /**
+     * The label to which the instance is bound.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

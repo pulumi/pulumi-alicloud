@@ -323,6 +323,7 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
      */
     eflo?: pulumi.Input<string>;
+    efloCnp?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
      */
@@ -1571,8 +1572,9 @@ export namespace alb {
          */
         status?: pulumi.Input<string>;
         /**
-         * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+         * The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
          *
+         * > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
          * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         weight?: pulumi.Input<number>;
@@ -3524,15 +3526,154 @@ export namespace cloudsso {
         permissionPolicyType: pulumi.Input<string>;
     }
 
+    export interface DirectoryLoginPreference {
+        /**
+         * Whether the user can obtain the program access credential in the portal after logging in.
+         */
+        allowUserToGetCredentials?: pulumi.Input<boolean>;
+        /**
+         * IP address whitelist
+         */
+        loginNetworkMasks?: pulumi.Input<string>;
+    }
+
+    export interface DirectoryMfaAuthenticationSettingInfo {
+        /**
+         * Global MFA validation policy
+         */
+        mfaAuthenticationAdvanceSettings?: pulumi.Input<string>;
+        /**
+         * MFA verification policy for abnormal logon.
+         */
+        operationForRiskLogin?: pulumi.Input<string>;
+    }
+
+    export interface DirectoryPasswordPolicy {
+        /**
+         * Whether to restrict login after Password Expiration
+         */
+        hardExpire?: pulumi.Input<boolean>;
+        /**
+         * Number of password retries.
+         */
+        maxLoginAttempts?: pulumi.Input<number>;
+        /**
+         * Password validity period.
+         */
+        maxPasswordAge?: pulumi.Input<number>;
+        /**
+         * Maximum password length.
+         */
+        maxPasswordLength?: pulumi.Input<number>;
+        /**
+         * The minimum number of different characters in a password.
+         */
+        minPasswordDifferentChars?: pulumi.Input<number>;
+        /**
+         * Minimum password length.
+         */
+        minPasswordLength?: pulumi.Input<number>;
+        /**
+         * Whether the user name is not allowed in the password.
+         */
+        passwordNotContainUsername?: pulumi.Input<boolean>;
+        /**
+         * Historical password check policy.
+         */
+        passwordReusePrevention?: pulumi.Input<number>;
+        /**
+         * Whether lowercase letters are required in the password.
+         */
+        requireLowerCaseChars?: pulumi.Input<boolean>;
+        /**
+         * Whether numbers are required in the password.
+         */
+        requireNumbers?: pulumi.Input<boolean>;
+        /**
+         * Whether symbols are required in the password.
+         */
+        requireSymbols?: pulumi.Input<boolean>;
+        /**
+         * Whether uppercase letters are required in the password.
+         */
+        requireUpperCaseChars?: pulumi.Input<boolean>;
+    }
+
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
-         * Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+         * The Binding method for initiating a SAML request.
+         */
+        bindingType?: pulumi.Input<string>;
+        /**
+         * Certificate ID list
+         */
+        certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * CreateTime
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * EncodedMetadataDocument
          */
         encodedMetadataDocument?: pulumi.Input<string>;
         /**
-         * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * EntityId
+         */
+        entityId?: pulumi.Input<string>;
+        /**
+         * LoginUrl
+         */
+        loginUrl?: pulumi.Input<string>;
+        /**
+         * SSOStatus
          */
         ssoStatus?: pulumi.Input<string>;
+        /**
+         * UpdateTime
+         */
+        updateTime?: pulumi.Input<string>;
+        /**
+         * SP Request whether the signature is required
+         */
+        wantRequestSigned?: pulumi.Input<boolean>;
+    }
+
+    export interface DirectorySamlServiceProvider {
+        /**
+         * ACS URL of SP.
+         */
+        acsUrl?: pulumi.Input<string>;
+        /**
+         * Signature algorithms supported by AuthNRequest
+         */
+        authnSignAlgo?: pulumi.Input<string>;
+        /**
+         * Type of certificate used for signing in the SSO process
+         */
+        certificateType?: pulumi.Input<string>;
+        /**
+         * SP metadata document (Base64 encoding).
+         */
+        encodedMetadataDocument?: pulumi.Input<string>;
+        /**
+         * SP identity.
+         */
+        entityId?: pulumi.Input<string>;
+        /**
+         * Whether IdP-side encryption of Assertion is supported.
+         */
+        supportEncryptedAssertion?: pulumi.Input<boolean>;
+    }
+
+    export interface DirectoryUserProvisioningConfiguration {
+        /**
+         * The duration of the Session after the user logs in.
+         */
+        defaultLandingPage?: pulumi.Input<string>;
+        /**
+         * The duration of the Session after the user logs in.
+         */
+        sessionDuration?: pulumi.Input<string>;
     }
 
 }
@@ -4443,11 +4584,11 @@ export namespace cs {
 
     export interface EdgeKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert?: pulumi.Input<string>;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey?: pulumi.Input<string>;
         /**
@@ -4609,11 +4750,11 @@ export namespace cs {
 
     export interface KubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert?: pulumi.Input<string>;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey?: pulumi.Input<string>;
         /**
@@ -4774,11 +4915,11 @@ export namespace cs {
 
     export interface ManagedKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          */
         clientCert?: pulumi.Input<string>;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          */
         clientKey?: pulumi.Input<string>;
         /**
@@ -8632,6 +8773,73 @@ export namespace eflo {
         vswitchId?: pulumi.Input<string>;
     }
 
+    export interface ExperimentPlanTemplateTemplatePipeline {
+        /**
+         * Contains a series of parameters related to the environment. See `envParams` below.
+         */
+        envParams: pulumi.Input<inputs.eflo.ExperimentPlanTemplateTemplatePipelineEnvParams>;
+        /**
+         * Indicates the sequence number of the pipeline node.
+         */
+        pipelineOrder: pulumi.Input<number>;
+        /**
+         * The use of the template scenario. It can have the following optional parameters:
+         * - baseline: benchmark evaluation
+         */
+        scene: pulumi.Input<string>;
+        /**
+         * Represents additional parameters for the run.
+         */
+        settingParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Used to uniquely identify a specific payload.
+         */
+        workloadId: pulumi.Input<number>;
+        /**
+         * The name used to represent a specific payload.
+         */
+        workloadName: pulumi.Input<string>;
+    }
+
+    export interface ExperimentPlanTemplateTemplatePipelineEnvParams {
+        /**
+         * Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+         */
+        cpuPerWorker: pulumi.Input<number>;
+        /**
+         * The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+         */
+        cudaVersion?: pulumi.Input<string>;
+        /**
+         * The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+         */
+        gpuDriverVersion?: pulumi.Input<string>;
+        /**
+         * Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+         */
+        gpuPerWorker: pulumi.Input<number>;
+        /**
+         * The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+         */
+        memoryPerWorker: pulumi.Input<number>;
+        /**
+         * The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+         */
+        ncclVersion?: pulumi.Input<string>;
+        /**
+         * The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+         */
+        pyTorchVersion?: pulumi.Input<string>;
+        /**
+         * Shared memory GB allocation
+         */
+        shareMemory: pulumi.Input<number>;
+        /**
+         * The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+         */
+        workerNum: pulumi.Input<number>;
+    }
+
     export interface NodeGroupIpAllocationPolicy {
         /**
          * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
@@ -8731,6 +8939,68 @@ export namespace eflo {
          * Switch ID
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface ResourceMachineTypes {
+        /**
+         * This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+         */
+        bondNum?: pulumi.Input<number>;
+        /**
+         * Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+         */
+        cpuInfo: pulumi.Input<string>;
+        /**
+         * Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+         */
+        diskInfo?: pulumi.Input<string>;
+        /**
+         * Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+         */
+        gpuInfo: pulumi.Input<string>;
+        /**
+         * This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+         */
+        memoryInfo?: pulumi.Input<string>;
+        /**
+         * Specification Name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+         */
+        networkInfo?: pulumi.Input<string>;
+        /**
+         * Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+         */
+        networkMode?: pulumi.Input<string>;
+        /**
+         * Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+         */
+        nodeCount?: pulumi.Input<number>;
+        /**
+         * Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ResourceUserAccessParam {
+        /**
+         * Access keys are important credentials for authentication.
+         */
+        accessId: pulumi.Input<string>;
+        /**
+         * A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+         */
+        accessKey: pulumi.Input<string>;
+        /**
+         * An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+         */
+        workspaceId: pulumi.Input<string>;
     }
 }
 
@@ -12679,6 +12949,9 @@ export namespace imp {
 
 }
 
+export namespace ims {
+}
+
 export namespace iot {
 }
 
@@ -13470,6 +13743,10 @@ export namespace mongodb {
          */
         replicaSetRole?: pulumi.Input<string>;
         /**
+         * The id of the role.
+         */
+        roleId?: pulumi.Input<string>;
+        /**
          * VPC instance ID.
          */
         vpcCloudInstanceId?: pulumi.Input<string>;
@@ -13481,6 +13758,33 @@ export namespace mongodb {
          * The virtual switch ID to launch DB instances in one VPC.
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface PublicNetworkAddressReplicaSet {
+        /**
+         * The connection address of the node.
+         */
+        connectionDomain?: pulumi.Input<string>;
+        /**
+         * The connection port of the node.
+         */
+        connectionPort?: pulumi.Input<string>;
+        /**
+         * The connection type.
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * The network type, should be always "Public".
+         */
+        networkType?: pulumi.Input<string>;
+        /**
+         * The role of the node.
+         */
+        replicaSetRole?: pulumi.Input<string>;
+        /**
+         * The id of the role.
+         */
+        roleId?: pulumi.Input<string>;
     }
 
     export interface ServerlessInstanceSecurityIpGroup {
@@ -13731,32 +14035,88 @@ export namespace nas {
 
     export interface FileSystemNfsAcl {
         /**
-         * Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+         * Whether the NFS ACL function is enabled.
          */
         enabled?: pulumi.Input<boolean>;
     }
 
+    export interface FileSystemOptions {
+        /**
+         * Whether to enable the OpLock function. Value:
+         * - true: On.
+         * - false: does not turn on.
+         *
+         * > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         */
+        enableOplock?: pulumi.Input<boolean>;
+    }
+
     export interface FileSystemRecycleBin {
         /**
-         * The time at which the recycle bin was enabled.
+         * Recycle Bin open time
          */
         enableTime?: pulumi.Input<string>;
         /**
-         * The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+         * Retention time of files in the Recycle Bin. Unit: days.
          */
         reservedDays?: pulumi.Input<number>;
         /**
-         * The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+         * Amount of low-frequency data stored in the recycle bin. Unit: Byte.
          */
         secondarySize?: pulumi.Input<number>;
         /**
-         * The size of the files that are dumped to the recycle bin.
+         * The amount of files stored in the Recycle Bin. Unit: Byte.
          */
         size?: pulumi.Input<number>;
         /**
-         * Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+         * Recycle Bin Status
          */
         status?: pulumi.Input<string>;
+    }
+
+    export interface FileSystemSmbAcl {
+        /**
+         * Whether to allow anonymous access.
+         * - true: Allow anonymous access.
+         * - false (default): Anonymous access is not allowed.
+         */
+        enableAnonymousAccess?: pulumi.Input<boolean>;
+        /**
+         * Whether SMB ACL is enabled
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Whether transmission encryption is enabled.
+         * - true: Enables encryption in transit.
+         * - false (default): Transport encryption is not enabled.
+         */
+        encryptData?: pulumi.Input<boolean>;
+        /**
+         * The user directory home path for each user. The file path format is as follows:
+         * - A forward slash (/) or backslash (\) as a separator.
+         * - Each paragraph cannot contain ":|? *.
+         * - The length of each segment ranges from 0 to 255.
+         * - The total length range is 0~32767.
+         *
+         * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+         *
+         * > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+         */
+        homeDirPath?: pulumi.Input<string>;
+        /**
+         * Whether to reject non-encrypted clients.
+         * - true: Deny non-encrypted clients.
+         * - false (default): Non-encrypted clients are not rejected.
+         */
+        rejectUnencryptedAccess?: pulumi.Input<boolean>;
+        /**
+         * The ID of the Super User. The ID rules are as follows:
+         * - Must start with S and no other letters can appear after the S at the beginning.
+         * - At least three dashes (-) apart.
+         *
+         * Such as S-1-5-22 or S-1-5-22-23.
+         */
+        superAdminSid?: pulumi.Input<string>;
     }
 
 }
@@ -17827,6 +18187,68 @@ export namespace sls {
          * When the resource directory is configured in the custom mode, the corresponding member account list
          */
         members?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EtlConfiguration {
+        /**
+         * The beginning of the time range for transformation.
+         */
+        fromTime: pulumi.Input<number>;
+        /**
+         * Data processing syntax type.
+         */
+        lang: pulumi.Input<string>;
+        /**
+         * Destination Logstore Name.
+         */
+        logstore: pulumi.Input<string>;
+        /**
+         * Advanced parameter configuration.
+         */
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: pulumi.Input<string>;
+        /**
+         * Processing script.
+         */
+        script: pulumi.Input<string>;
+        /**
+         * Processing result output target list See `sink` below.
+         */
+        sinks: pulumi.Input<pulumi.Input<inputs.sls.EtlConfigurationSink>[]>;
+        /**
+         * The end of the time range for transformation.
+         */
+        toTime: pulumi.Input<number>;
+    }
+
+    export interface EtlConfigurationSink {
+        /**
+         * Write Result Set.
+         */
+        datasets: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The endpoint of the region where the target Project is located.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * Destination Logstore Name.
+         */
+        logstore: pulumi.Input<string>;
+        /**
+         * Output Destination Name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Project Name.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: pulumi.Input<string>;
     }
 
     export interface OssExportSinkConfiguration {

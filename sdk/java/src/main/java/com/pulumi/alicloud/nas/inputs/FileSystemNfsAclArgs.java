@@ -16,14 +16,14 @@ public final class FileSystemNfsAclArgs extends com.pulumi.resources.ResourceArg
     public static final FileSystemNfsAclArgs Empty = new FileSystemNfsAclArgs();
 
     /**
-     * Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+     * Whether the NFS ACL function is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+     * @return Whether the NFS ACL function is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class FileSystemNfsAclArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+         * @param enabled Whether the NFS ACL function is enabled.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class FileSystemNfsAclArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+         * @param enabled Whether the NFS ACL function is enabled.
          * 
          * @return builder
          * 

@@ -58,6 +58,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The name of node pool.
+        /// </summary>
+        [Input("nodePoolName")]
+        public string? NodePoolName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
@@ -90,6 +96,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The name of node pool.
+        /// </summary>
+        [Input("nodePoolName")]
+        public Input<string>? NodePoolName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
@@ -115,6 +127,10 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
+        /// The name of node pool.
+        /// </summary>
+        public readonly string? NodePoolName;
+        /// <summary>
         /// A list of Nodepool Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodePoolsNodepoolResult> Nodepools;
@@ -128,6 +144,8 @@ namespace Pulumi.AliCloud.CS
 
             ImmutableArray<string> ids,
 
+            string? nodePoolName,
+
             ImmutableArray<Outputs.GetKubernetesNodePoolsNodepoolResult> nodepools,
 
             string? outputFile)
@@ -135,6 +153,7 @@ namespace Pulumi.AliCloud.CS
             ClusterId = clusterId;
             Id = id;
             Ids = ids;
+            NodePoolName = nodePoolName;
             Nodepools = nodepools;
             OutputFile = outputFile;
         }

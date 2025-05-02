@@ -47,6 +47,21 @@ public final class GetKubernetesNodePoolsPlainArgs extends com.pulumi.resources.
     }
 
     /**
+     * The name of node pool.
+     * 
+     */
+    @Import(name="nodePoolName")
+    private @Nullable String nodePoolName;
+
+    /**
+     * @return The name of node pool.
+     * 
+     */
+    public Optional<String> nodePoolName() {
+        return Optional.ofNullable(this.nodePoolName);
+    }
+
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
      */
@@ -66,6 +81,7 @@ public final class GetKubernetesNodePoolsPlainArgs extends com.pulumi.resources.
     private GetKubernetesNodePoolsPlainArgs(GetKubernetesNodePoolsPlainArgs $) {
         this.clusterId = $.clusterId;
         this.ids = $.ids;
+        this.nodePoolName = $.nodePoolName;
         this.outputFile = $.outputFile;
     }
 
@@ -117,6 +133,17 @@ public final class GetKubernetesNodePoolsPlainArgs extends com.pulumi.resources.
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param nodePoolName The name of node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolName(@Nullable String nodePoolName) {
+            $.nodePoolName = nodePoolName;
+            return this;
         }
 
         /**

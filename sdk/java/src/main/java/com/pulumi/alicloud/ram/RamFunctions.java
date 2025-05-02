@@ -14,6 +14,8 @@ import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
 import com.pulumi.alicloud.ram.inputs.GetPoliciesPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
 import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentPlainArgs;
+import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
 import com.pulumi.alicloud.ram.inputs.GetRolesPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
@@ -27,6 +29,7 @@ import com.pulumi.alicloud.ram.outputs.GetAccountAliasesResult;
 import com.pulumi.alicloud.ram.outputs.GetGroupsResult;
 import com.pulumi.alicloud.ram.outputs.GetPoliciesResult;
 import com.pulumi.alicloud.ram.outputs.GetPolicyDocumentResult;
+import com.pulumi.alicloud.ram.outputs.GetRolePolicyAttachmentsResult;
 import com.pulumi.alicloud.ram.outputs.GetRolesResult;
 import com.pulumi.alicloud.ram.outputs.GetSamlProvidersResult;
 import com.pulumi.alicloud.ram.outputs.GetSystemPolicysResult;
@@ -3496,6 +3499,566 @@ public final class RamFunctions {
      */
     public static CompletableFuture<GetPolicyDocumentResult> getPolicyDocumentPlain(GetPolicyDocumentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getPolicyDocument:getPolicyDocument", TypeShape.of(GetPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
+     * 
+     * &gt; **NOTE:** Available since v1.248.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("roleName")
+     *             .document("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": "sts:AssumeRole",
+     *           "Effect": "Allow",
+     *           "Principal": {
+     *             "Service": [
+     *               "apigateway.aliyuncs.com", 
+     *               "ecs.aliyuncs.com"
+     *             ]
+     *           }
+     *         }
+     *       ],
+     *       "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyDocument("""
+     *   {
+     *     "Statement": [
+     *       {
+     *         "Action": [
+     *           "oss:ListObjects",
+     *           "oss:GetObject"
+     *         ],
+     *         "Effect": "Allow",
+     *         "Resource": [
+     *           "acs:oss:*:*:mybucket",
+     *           "acs:oss:*:*:mybucket/*"
+     *         ]
+     *       }
+     *     ],
+     *       "Version": "1"
+     *   }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .roleName(role.name())
+     *             .build());
+     * 
+     *         final var default = RamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+     *             .ids(defaultRolePolicyAttachment.id())
+     *             .roleName(role.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(GetRolePolicyAttachmentsArgs args) {
+        return getRolePolicyAttachments(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
+     * 
+     * &gt; **NOTE:** Available since v1.248.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("roleName")
+     *             .document("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": "sts:AssumeRole",
+     *           "Effect": "Allow",
+     *           "Principal": {
+     *             "Service": [
+     *               "apigateway.aliyuncs.com", 
+     *               "ecs.aliyuncs.com"
+     *             ]
+     *           }
+     *         }
+     *       ],
+     *       "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyDocument("""
+     *   {
+     *     "Statement": [
+     *       {
+     *         "Action": [
+     *           "oss:ListObjects",
+     *           "oss:GetObject"
+     *         ],
+     *         "Effect": "Allow",
+     *         "Resource": [
+     *           "acs:oss:*:*:mybucket",
+     *           "acs:oss:*:*:mybucket/*"
+     *         ]
+     *       }
+     *     ],
+     *       "Version": "1"
+     *   }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .roleName(role.name())
+     *             .build());
+     * 
+     *         final var default = RamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+     *             .ids(defaultRolePolicyAttachment.id())
+     *             .roleName(role.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsPlain(GetRolePolicyAttachmentsPlainArgs args) {
+        return getRolePolicyAttachmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
+     * 
+     * &gt; **NOTE:** Available since v1.248.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("roleName")
+     *             .document("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": "sts:AssumeRole",
+     *           "Effect": "Allow",
+     *           "Principal": {
+     *             "Service": [
+     *               "apigateway.aliyuncs.com", 
+     *               "ecs.aliyuncs.com"
+     *             ]
+     *           }
+     *         }
+     *       ],
+     *       "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyDocument("""
+     *   {
+     *     "Statement": [
+     *       {
+     *         "Action": [
+     *           "oss:ListObjects",
+     *           "oss:GetObject"
+     *         ],
+     *         "Effect": "Allow",
+     *         "Resource": [
+     *           "acs:oss:*:*:mybucket",
+     *           "acs:oss:*:*:mybucket/*"
+     *         ]
+     *       }
+     *     ],
+     *       "Version": "1"
+     *   }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .roleName(role.name())
+     *             .build());
+     * 
+     *         final var default = RamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+     *             .ids(defaultRolePolicyAttachment.id())
+     *             .roleName(role.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(GetRolePolicyAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getRolePolicyAttachments:getRolePolicyAttachments", TypeShape.of(GetRolePolicyAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
+     * 
+     * &gt; **NOTE:** Available since v1.248.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("roleName")
+     *             .document("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": "sts:AssumeRole",
+     *           "Effect": "Allow",
+     *           "Principal": {
+     *             "Service": [
+     *               "apigateway.aliyuncs.com", 
+     *               "ecs.aliyuncs.com"
+     *             ]
+     *           }
+     *         }
+     *       ],
+     *       "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyDocument("""
+     *   {
+     *     "Statement": [
+     *       {
+     *         "Action": [
+     *           "oss:ListObjects",
+     *           "oss:GetObject"
+     *         ],
+     *         "Effect": "Allow",
+     *         "Resource": [
+     *           "acs:oss:*:*:mybucket",
+     *           "acs:oss:*:*:mybucket/*"
+     *         ]
+     *       }
+     *     ],
+     *       "Version": "1"
+     *   }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .roleName(role.name())
+     *             .build());
+     * 
+     *         final var default = RamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+     *             .ids(defaultRolePolicyAttachment.id())
+     *             .roleName(role.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(GetRolePolicyAttachmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getRolePolicyAttachments:getRolePolicyAttachments", TypeShape.of(GetRolePolicyAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
+     * 
+     * &gt; **NOTE:** Available since v1.248.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+     * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("roleName")
+     *             .document("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": "sts:AssumeRole",
+     *           "Effect": "Allow",
+     *           "Principal": {
+     *             "Service": [
+     *               "apigateway.aliyuncs.com", 
+     *               "ecs.aliyuncs.com"
+     *             ]
+     *           }
+     *         }
+     *       ],
+     *       "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyDocument("""
+     *   {
+     *     "Statement": [
+     *       {
+     *         "Action": [
+     *           "oss:ListObjects",
+     *           "oss:GetObject"
+     *         ],
+     *         "Effect": "Allow",
+     *         "Resource": [
+     *           "acs:oss:*:*:mybucket",
+     *           "acs:oss:*:*:mybucket/*"
+     *         ]
+     *       }
+     *     ],
+     *       "Version": "1"
+     *   }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .roleName(role.name())
+     *             .build());
+     * 
+     *         final var default = RamFunctions.getRolePolicyAttachments(GetRolePolicyAttachmentsArgs.builder()
+     *             .ids(defaultRolePolicyAttachment.id())
+     *             .roleName(role.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsPlain(GetRolePolicyAttachmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ram/getRolePolicyAttachments:getRolePolicyAttachments", TypeShape.of(GetRolePolicyAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.

@@ -175,7 +175,7 @@ class Environment(pulumi.CustomResource):
         """
         Provides a APIG Environment resource.
 
-        For information about APIG Environment and how to use it, see [What is Environment](https://www.alibabacloud.com/help/en/).
+        For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
 
         > **NOTE:** Available since v1.240.0.
 
@@ -203,7 +203,7 @@ class Environment(pulumi.CustomResource):
         """
         Provides a APIG Environment resource.
 
-        For information about APIG Environment and how to use it, see [What is Environment](https://www.alibabacloud.com/help/en/).
+        For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
 
         > **NOTE:** Available since v1.240.0.
 

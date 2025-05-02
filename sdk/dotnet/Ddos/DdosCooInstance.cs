@@ -51,10 +51,10 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// DdosCoo instance can be imported using the id, e.g.
+    /// DdosCoo Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+    /// $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/ddosCooInstance:DdosCooInstance")]
@@ -85,6 +85,12 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> BaseBandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.248.0) The time when the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         /// </summary>
         [Output("domainCount")]
@@ -103,10 +109,16 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> FunctionVersion { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.212.0) The IP address of the instance.
+        /// (Available since v1.212.0) The IP address of the Instance.
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+        /// </summary>
+        [Output("modifyType")]
+        public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
         /// Name of the instance. This name can have a string of `1` to `64` characters.
@@ -115,13 +127,13 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
         /// </summary>
         [Output("normalBandwidth")]
         public Output<string> NormalBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
         /// </summary>
         [Output("normalQps")]
         public Output<string> NormalQps { get; private set; } = null!;
@@ -155,6 +167,18 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Output("serviceBandwidth")]
         public Output<string> ServiceBandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.248.0) The status of the instance.
+        /// </summary>
+        [Output("status")]
+        public Output<int> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -249,19 +273,25 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? FunctionVersion { get; set; }
 
         /// <summary>
+        /// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+        /// </summary>
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
+
+        /// <summary>
         /// Name of the instance. This name can have a string of `1` to `64` characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
         /// </summary>
         [Input("normalBandwidth")]
         public Input<string>? NormalBandwidth { get; set; }
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
         /// </summary>
         [Input("normalQps")]
         public Input<string>? NormalQps { get; set; }
@@ -296,6 +326,18 @@ namespace Pulumi.AliCloud.Ddos
         [Input("serviceBandwidth")]
         public Input<string>? ServiceBandwidth { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public DdosCooInstanceArgs()
         {
         }
@@ -329,6 +371,12 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? BaseBandwidth { get; set; }
 
         /// <summary>
+        /// (Available since v1.248.0) The time when the instance was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
         /// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         /// </summary>
         [Input("domainCount")]
@@ -347,10 +395,16 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? FunctionVersion { get; set; }
 
         /// <summary>
-        /// (Available since v1.212.0) The IP address of the instance.
+        /// (Available since v1.212.0) The IP address of the Instance.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
+
+        /// <summary>
+        /// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+        /// </summary>
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
 
         /// <summary>
         /// Name of the instance. This name can have a string of `1` to `64` characters.
@@ -359,13 +413,13 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
         /// </summary>
         [Input("normalBandwidth")]
         public Input<string>? NormalBandwidth { get; set; }
 
         /// <summary>
-        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+        /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
         /// </summary>
         [Input("normalQps")]
         public Input<string>? NormalQps { get; set; }
@@ -399,6 +453,24 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("serviceBandwidth")]
         public Input<string>? ServiceBandwidth { get; set; }
+
+        /// <summary>
+        /// (Available since v1.248.0) The status of the instance.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DdosCooInstanceState()
         {

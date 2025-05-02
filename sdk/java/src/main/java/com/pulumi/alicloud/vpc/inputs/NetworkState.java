@@ -22,6 +22,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The CIDR block of the VPC.
+     * 
      * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
      * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
@@ -31,6 +32,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The CIDR block of the VPC.
+     * 
      * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
      * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
@@ -71,7 +73,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The new description of the VPC.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -80,7 +81,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The new description of the VPC.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -89,14 +89,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * The status of VPC DNS Hostname
      * 
      */
     @Import(name="dnsHostnameStatus")
     private @Nullable Output<String> dnsHostnameStatus;
 
     /**
-     * @return The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * @return The status of VPC DNS Hostname
      * 
      */
     public Optional<Output<String>> dnsHostnameStatus() {
@@ -104,14 +104,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to perform a dry run. Valid values:
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform a dry run. Valid values:
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -119,18 +119,33 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable IPv6. Valid values:
+     * Whether to enable the IPv6 network segment. Value:
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable IPv6. Valid values:
+     * @return Whether to enable the IPv6 network segment. Value:
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
+     * Force delete vpc or not.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Force delete vpc or not.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -267,14 +282,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     * The ID of the region where the VPC is located.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     * @return The ID of the region where the VPC is located.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -301,14 +316,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the route table that you want to query.
+     * The ID of the system route table.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
     /**
-     * @return The ID of the route table that you want to query.
+     * @return The ID of the system route table.
      * 
      */
     public Optional<Output<String>> routeTableId() {
@@ -316,14 +331,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The router ID of the VPC.
+     * The region ID of the VPC to which the route table belongs.
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return The router ID of the VPC.
+     * @return The region ID of the VPC to which the route table belongs.
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -377,33 +392,37 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
-     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * @deprecated
+     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
+    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Import(name="secondaryCidrMask")
     private @Nullable Output<Integer> secondaryCidrMask;
 
     /**
-     * @return Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
-     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * @deprecated
+     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
+    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     public Optional<Output<Integer>> secondaryCidrMask() {
         return Optional.ofNullable(this.secondaryCidrMask);
     }
 
     /**
-     * The status of the VPC.
+     * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC.
+     * @return The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -412,7 +431,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The description of the route table.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -421,7 +439,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The description of the route table.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -431,7 +448,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the route table.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
@@ -440,12 +456,26 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the route table.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> systemRouteTableName() {
         return Optional.ofNullable(this.systemRouteTableName);
+    }
+
+    /**
+     * Whether the system route table receives propagation routes.
+     * 
+     */
+    @Import(name="systemRouteTableRoutePropagationEnable")
+    private @Nullable Output<Boolean> systemRouteTableRoutePropagationEnable;
+
+    /**
+     * @return Whether the system route table receives propagation routes.
+     * 
+     */
+    public Optional<Output<Boolean>> systemRouteTableRoutePropagationEnable() {
+        return Optional.ofNullable(this.systemRouteTableRoutePropagationEnable);
     }
 
     /**
@@ -480,7 +510,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The new name of the VPC.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -491,7 +520,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The new name of the VPC.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -511,6 +539,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.dnsHostnameStatus = $.dnsHostnameStatus;
         this.dryRun = $.dryRun;
         this.enableIpv6 = $.enableIpv6;
+        this.forceDelete = $.forceDelete;
         this.ipv4CidrMask = $.ipv4CidrMask;
         this.ipv4IpamPoolId = $.ipv4IpamPoolId;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
@@ -528,6 +557,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.systemRouteTableDescription = $.systemRouteTableDescription;
         this.systemRouteTableName = $.systemRouteTableName;
+        this.systemRouteTableRoutePropagationEnable = $.systemRouteTableRoutePropagationEnable;
         this.tags = $.tags;
         this.userCidrs = $.userCidrs;
         this.vpcName = $.vpcName;
@@ -553,6 +583,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cidrBlock The CIDR block of the VPC.
+         * 
          * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
          * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
          * 
@@ -566,6 +597,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cidrBlock The CIDR block of the VPC.
+         * 
          * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
          * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
          * 
@@ -620,7 +652,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description The new description of the VPC.
-         * 
          * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -633,7 +664,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description The new description of the VPC.
-         * 
          * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -644,7 +674,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+         * @param dnsHostnameStatus The status of VPC DNS Hostname
          * 
          * @return builder
          * 
@@ -655,7 +685,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+         * @param dnsHostnameStatus The status of VPC DNS Hostname
          * 
          * @return builder
          * 
@@ -665,7 +695,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform a dry run. Valid values:
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -676,7 +706,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform a dry run. Valid values:
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -686,7 +716,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable IPv6. Valid values:
+         * @param enableIpv6 Whether to enable the IPv6 network segment. Value:
          * 
          * @return builder
          * 
@@ -697,13 +727,34 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable IPv6. Valid values:
+         * @param enableIpv6 Whether to enable the IPv6 network segment. Value:
          * 
          * @return builder
          * 
          */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
+         * @param forceDelete Force delete vpc or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Force delete vpc or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
@@ -892,7 +943,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionId (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+         * @param regionId The ID of the region where the VPC is located.
          * 
          * @return builder
          * 
@@ -903,7 +954,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionId (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+         * @param regionId The ID of the region where the VPC is located.
          * 
          * @return builder
          * 
@@ -938,7 +989,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableId The ID of the route table that you want to query.
+         * @param routeTableId The ID of the system route table.
          * 
          * @return builder
          * 
@@ -949,7 +1000,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableId The ID of the route table that you want to query.
+         * @param routeTableId The ID of the system route table.
          * 
          * @return builder
          * 
@@ -959,7 +1010,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The router ID of the VPC.
+         * @param routerId The region ID of the VPC to which the route table belongs.
          * 
          * @return builder
          * 
@@ -970,7 +1021,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The router ID of the VPC.
+         * @param routerId The region ID of the VPC to which the route table belongs.
          * 
          * @return builder
          * 
@@ -1052,32 +1103,36 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
-         * 
-         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * @param secondaryCidrMask Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * 
          */
+        @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
         public Builder secondaryCidrMask(@Nullable Output<Integer> secondaryCidrMask) {
             $.secondaryCidrMask = secondaryCidrMask;
             return this;
         }
 
         /**
-         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
-         * 
-         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * @param secondaryCidrMask Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * 
          */
+        @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
         public Builder secondaryCidrMask(Integer secondaryCidrMask) {
             return secondaryCidrMask(Output.of(secondaryCidrMask));
         }
 
         /**
-         * @param status The status of the VPC.
+         * @param status The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
          * 
          * @return builder
          * 
@@ -1088,7 +1143,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC.
+         * @param status The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
          * 
          * @return builder
          * 
@@ -1099,7 +1154,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemRouteTableDescription The description of the route table.
-         * 
          * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -1112,7 +1166,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemRouteTableDescription The description of the route table.
-         * 
          * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -1124,7 +1177,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemRouteTableName The name of the route table.
-         * 
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -1137,7 +1189,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemRouteTableName The name of the route table.
-         * 
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -1145,6 +1196,27 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder systemRouteTableName(String systemRouteTableName) {
             return systemRouteTableName(Output.of(systemRouteTableName));
+        }
+
+        /**
+         * @param systemRouteTableRoutePropagationEnable Whether the system route table receives propagation routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemRouteTableRoutePropagationEnable(@Nullable Output<Boolean> systemRouteTableRoutePropagationEnable) {
+            $.systemRouteTableRoutePropagationEnable = systemRouteTableRoutePropagationEnable;
+            return this;
+        }
+
+        /**
+         * @param systemRouteTableRoutePropagationEnable Whether the system route table receives propagation routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemRouteTableRoutePropagationEnable(Boolean systemRouteTableRoutePropagationEnable) {
+            return systemRouteTableRoutePropagationEnable(Output.of(systemRouteTableRoutePropagationEnable));
         }
 
         /**
@@ -1201,7 +1273,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcName The new name of the VPC.
-         * 
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -1216,7 +1287,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcName The new name of the VPC.
-         * 
          * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:

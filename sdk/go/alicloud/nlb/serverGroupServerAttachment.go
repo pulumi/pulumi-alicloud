@@ -56,12 +56,14 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "default", &nlb.ServerGroupArgs{
-//				ResourceGroupId: pulumi.String(_default.Ids[0]),
-//				ServerGroupName: pulumi.String(name),
-//				ServerGroupType: pulumi.String("Ip"),
-//				VpcId:           defaultNetwork.ID(),
-//				Scheduler:       pulumi.String("Wrr"),
-//				Protocol:        pulumi.String("TCP"),
+//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
+//				ServerGroupName:        pulumi.String(name),
+//				ServerGroupType:        pulumi.String("Ip"),
+//				ConnectionDrainTimeout: pulumi.Int(10),
+//				ConnectionDrainEnabled: pulumi.Bool(true),
+//				VpcId:                  defaultNetwork.ID(),
+//				Scheduler:              pulumi.String("Wrr"),
+//				Protocol:               pulumi.String("TCP"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
 //				},

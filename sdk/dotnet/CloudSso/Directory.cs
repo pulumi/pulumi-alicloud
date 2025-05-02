@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Available since v1.135.0.
     /// 
-    /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -32,17 +30,11 @@ namespace Pulumi.AliCloud.CloudSso
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
-    /// 
-    ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     var @default = new AliCloud.CloudSso.Directory("default", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
-    ///         {
-    ///             DirectoryName = name,
-    ///         }));
-    ///     }
+    ///         DirectoryName = name,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -58,30 +50,70 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class Directory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        /// CreateTime
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Directory Global Acceleration activation status
+        /// </summary>
+        [Output("directoryGlobalAccessStatus")]
+        public Output<string> DirectoryGlobalAccessStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// DirectoryName
         /// </summary>
         [Output("directoryName")]
         public Output<string?> DirectoryName { get; private set; } = null!;
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        /// Login preferences See `login_preference` below.
+        /// </summary>
+        [Output("loginPreference")]
+        public Output<Outputs.DirectoryLoginPreference> LoginPreference { get; private set; } = null!;
+
+        /// <summary>
+        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// </summary>
+        [Output("mfaAuthenticationSettingInfo")]
+        public Output<Outputs.DirectoryMfaAuthenticationSettingInfo> MfaAuthenticationSettingInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// MFA Authentication Status
         /// </summary>
         [Output("mfaAuthenticationStatus")]
         public Output<string> MfaAuthenticationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-        /// 
-        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        /// Password policy See `password_policy` below.
+        /// </summary>
+        [Output("passwordPolicy")]
+        public Output<Outputs.DirectoryPasswordPolicy> PasswordPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         /// </summary>
         [Output("samlIdentityProviderConfiguration")]
         public Output<Outputs.DirectorySamlIdentityProviderConfiguration> SamlIdentityProviderConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// SP information. See `saml_service_provider` below.
+        /// </summary>
+        [Output("samlServiceProvider")]
+        public Output<Outputs.DirectorySamlServiceProvider> SamlServiceProvider { get; private set; } = null!;
+
+        /// <summary>
+        /// SCIM Synchronization Status
         /// </summary>
         [Output("scimSynchronizationStatus")]
         public Output<string> ScimSynchronizationStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// </summary>
+        [Output("userProvisioningConfiguration")]
+        public Output<Outputs.DirectoryUserProvisioningConfiguration> UserProvisioningConfiguration { get; private set; } = null!;
 
 
         /// <summary>
@@ -130,30 +162,64 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class DirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        /// Directory Global Acceleration activation status
+        /// </summary>
+        [Input("directoryGlobalAccessStatus")]
+        public Input<string>? DirectoryGlobalAccessStatus { get; set; }
+
+        /// <summary>
+        /// DirectoryName
         /// </summary>
         [Input("directoryName")]
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        /// Login preferences See `login_preference` below.
+        /// </summary>
+        [Input("loginPreference")]
+        public Input<Inputs.DirectoryLoginPreferenceArgs>? LoginPreference { get; set; }
+
+        /// <summary>
+        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// </summary>
+        [Input("mfaAuthenticationSettingInfo")]
+        public Input<Inputs.DirectoryMfaAuthenticationSettingInfoArgs>? MfaAuthenticationSettingInfo { get; set; }
+
+        /// <summary>
+        /// MFA Authentication Status
         /// </summary>
         [Input("mfaAuthenticationStatus")]
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-        /// 
-        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        /// Password policy See `password_policy` below.
+        /// </summary>
+        [Input("passwordPolicy")]
+        public Input<Inputs.DirectoryPasswordPolicyArgs>? PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationArgs>? SamlIdentityProviderConfiguration { get; set; }
 
         /// <summary>
-        /// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// SP information. See `saml_service_provider` below.
+        /// </summary>
+        [Input("samlServiceProvider")]
+        public Input<Inputs.DirectorySamlServiceProviderArgs>? SamlServiceProvider { get; set; }
+
+        /// <summary>
+        /// SCIM Synchronization Status
         /// </summary>
         [Input("scimSynchronizationStatus")]
         public Input<string>? ScimSynchronizationStatus { get; set; }
+
+        /// <summary>
+        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// </summary>
+        [Input("userProvisioningConfiguration")]
+        public Input<Inputs.DirectoryUserProvisioningConfigurationArgs>? UserProvisioningConfiguration { get; set; }
 
         public DirectoryArgs()
         {
@@ -164,30 +230,70 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class DirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+        /// CreateTime
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Directory Global Acceleration activation status
+        /// </summary>
+        [Input("directoryGlobalAccessStatus")]
+        public Input<string>? DirectoryGlobalAccessStatus { get; set; }
+
+        /// <summary>
+        /// DirectoryName
         /// </summary>
         [Input("directoryName")]
         public Input<string>? DirectoryName { get; set; }
 
         /// <summary>
-        /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+        /// Login preferences See `login_preference` below.
+        /// </summary>
+        [Input("loginPreference")]
+        public Input<Inputs.DirectoryLoginPreferenceGetArgs>? LoginPreference { get; set; }
+
+        /// <summary>
+        /// Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+        /// </summary>
+        [Input("mfaAuthenticationSettingInfo")]
+        public Input<Inputs.DirectoryMfaAuthenticationSettingInfoGetArgs>? MfaAuthenticationSettingInfo { get; set; }
+
+        /// <summary>
+        /// MFA Authentication Status
         /// </summary>
         [Input("mfaAuthenticationStatus")]
         public Input<string>? MfaAuthenticationStatus { get; set; }
 
         /// <summary>
-        /// The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-        /// 
-        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+        /// Password policy See `password_policy` below.
+        /// </summary>
+        [Input("passwordPolicy")]
+        public Input<Inputs.DirectoryPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         /// </summary>
         [Input("samlIdentityProviderConfiguration")]
         public Input<Inputs.DirectorySamlIdentityProviderConfigurationGetArgs>? SamlIdentityProviderConfiguration { get; set; }
 
         /// <summary>
-        /// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// SP information. See `saml_service_provider` below.
+        /// </summary>
+        [Input("samlServiceProvider")]
+        public Input<Inputs.DirectorySamlServiceProviderGetArgs>? SamlServiceProvider { get; set; }
+
+        /// <summary>
+        /// SCIM Synchronization Status
         /// </summary>
         [Input("scimSynchronizationStatus")]
         public Input<string>? ScimSynchronizationStatus { get; set; }
+
+        /// <summary>
+        /// User Provisioning configuration See `user_provisioning_configuration` below.
+        /// </summary>
+        [Input("userProvisioningConfiguration")]
+        public Input<Inputs.DirectoryUserProvisioningConfigurationGetArgs>? UserProvisioningConfiguration { get; set; }
 
         public DirectoryState()
         {

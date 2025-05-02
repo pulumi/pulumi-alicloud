@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Rds
         /// &gt; **NOTE:** This parameter is available when the instance runs MySQL.
         /// </summary>
         [Output("encryptionKey")]
-        public Output<string?> EncryptionKey { get; private set; } = null!;
+        public Output<string> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.

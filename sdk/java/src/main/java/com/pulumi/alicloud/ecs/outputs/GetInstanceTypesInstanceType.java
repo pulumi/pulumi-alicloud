@@ -96,7 +96,7 @@ public final class GetInstanceTypesInstanceType {
      */
     private String nvmeSupport;
     /**
-     * @return The price of instance type.
+     * @return The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
      * 
      */
     private String price;
@@ -225,7 +225,7 @@ public final class GetInstanceTypesInstanceType {
         return this.nvmeSupport;
     }
     /**
-     * @return The price of instance type.
+     * @return The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
      * 
      */
     public String price() {

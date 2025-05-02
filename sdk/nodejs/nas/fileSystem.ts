@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a File Storage (NAS) File System resource.
  *
+ * File System Instance.
+ *
  * For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
  *
  * > **NOTE:** Available since v1.33.0.
@@ -40,57 +42,6 @@ import * as utilities from "../utilities";
  *         enabled: true,
  *     },
  *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.nas.getZones({
- *     fileSystemType: "extreme",
- * });
- * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
- *     protocolType: "NFS",
- *     storageType: "standard",
- *     capacity: 100,
- *     description: name,
- *     encryptType: 1,
- *     fileSystemType: "extreme",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.nas.getZones({
- *     fileSystemType: "cpfs",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.zones?.[1]?.zoneId),
- * });
- * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
- *     protocolType: "cpfs",
- *     storageType: "advance_100",
- *     capacity: 5000,
- *     description: name,
- *     fileSystemType: "cpfs",
- *     vswitchId: defaultSwitch.id,
- *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.zones?.[1]?.zoneId),
  * });
  * ```
  *
@@ -131,80 +82,137 @@ export class FileSystem extends pulumi.CustomResource {
     }
 
     /**
-     * The capacity of the file system. Unit: GiB. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `capacity` must be set.
+     * File system capacity.
+     *
+     * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
+     *
+     * For optional values, please refer to the actual specifications on the purchase page:
+     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
+     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
+     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
+     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
     public readonly capacity!: pulumi.Output<number>;
     /**
-     * (Available since v1.236.0) The time when the file system was created.
+     * CreateTime
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the file system.
+     * File system description.
+     *
+     * Restrictions:
+     * - 2~128 English or Chinese characters in length.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+     * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+     * Whether the file system is encrypted.
+     *
+     * Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
+     *
+     * Value:
+     * - 0 (default): not encrypted.
+     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
-    public readonly encryptType!: pulumi.Output<number | undefined>;
+    public readonly encryptType!: pulumi.Output<number>;
     /**
-     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+     * File system type.
+     *
+     * Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * - cpfs: file storage CPFS
      */
     public readonly fileSystemType!: pulumi.Output<string>;
     /**
-     * The ID of the KMS-managed key. **Note:** If `encryptType` is set to `2`, `kmsKeyId` must be set.
+     * String of keytab file content encrypted by base64
+     */
+    public readonly keytab!: pulumi.Output<string | undefined>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     */
+    public readonly keytabMd5!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the KMS key.
+     * This parameter is required only when EncryptType = 2.
      */
     public readonly kmsKeyId!: pulumi.Output<string>;
     /**
-     * The NFS ACL feature of the file system. See `nfsAcl` below.
-     * > **NOTE:** `nfsAcl` takes effect only if `fileSystemType` is set to `standard`.
+     * NFS ACL See `nfsAcl` below.
      */
     public readonly nfsAcl!: pulumi.Output<outputs.nas.FileSystemNfsAcl>;
     /**
-     * The protocol type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `NFS`, `SMB`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `NFS`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `cpfs`.
+     * Option. See `options` below.
+     */
+    public readonly options!: pulumi.Output<outputs.nas.FileSystemOptions>;
+    /**
+     * File transfer protocol type.
+     * - When FileSystemType = standard, the values are NFS and SMB.
+     * - When FileSystemType = extreme, the value is NFS.
+     * - When FileSystemType = cpfs, the value is cpfs.
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
-     * The recycle bin feature of the file system. See `recycleBin` below.
-     * > **NOTE:** `recycleBin` takes effect only if `fileSystemType` is set to `standard`.
+     * Recycle Bin See `recycleBin` below.
      */
     public readonly recycleBin!: pulumi.Output<outputs.nas.FileSystemRecycleBin>;
+    /**
+     * RegionId
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The ID of the snapshot. **NOTE:** `snapshotId` takes effect only if `fileSystemType` is set to `extreme`.
+     * SMB ACL See `smbAcl` below.
+     */
+    public readonly smbAcl!: pulumi.Output<outputs.nas.FileSystemSmbAcl>;
+    /**
+     * Only extreme NAS is supported.
+     *
+     * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
-     * (Available since v1.236.0) The status of the File System.
+     * File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The storage type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `standard`, `advance`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `advance100`, `advance200`.
-     * > **NOTE:** From version 1.140.0, `storageType` can be set to `standard`, `advance`. From version 1.153.0, `storageType` can be set to `advance100`, `advance200`. From version 1.236.0, `storageType` can be set to `Premium`.
+     * The storage type.
+     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = extreme, the value is standard or advance.
+     * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Label information collection.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The ID of the VPC. **NOTE:** `vpcId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the VPC network.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the vSwitch. **NOTE:** `vswitchId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the switch.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the zone. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `zoneId` must be set.
+     * The zone ID.
+     *
+     * The usable area refers to the physical area where power and network are independent of each other in the same area.
+     *
+     * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
+     *
+     * > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     *
+     * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -226,11 +234,16 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptType"] = state ? state.encryptType : undefined;
             resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
+            resourceInputs["keytab"] = state ? state.keytab : undefined;
+            resourceInputs["keytabMd5"] = state ? state.keytabMd5 : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["nfsAcl"] = state ? state.nfsAcl : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["protocolType"] = state ? state.protocolType : undefined;
             resourceInputs["recycleBin"] = state ? state.recycleBin : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["smbAcl"] = state ? state.smbAcl : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
@@ -250,11 +263,15 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptType"] = args ? args.encryptType : undefined;
             resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
+            resourceInputs["keytab"] = args ? args.keytab : undefined;
+            resourceInputs["keytabMd5"] = args ? args.keytabMd5 : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["nfsAcl"] = args ? args.nfsAcl : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
             resourceInputs["recycleBin"] = args ? args.recycleBin : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["smbAcl"] = args ? args.smbAcl : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -262,6 +279,7 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -274,80 +292,137 @@ export class FileSystem extends pulumi.CustomResource {
  */
 export interface FileSystemState {
     /**
-     * The capacity of the file system. Unit: GiB. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `capacity` must be set.
+     * File system capacity.
+     *
+     * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
+     *
+     * For optional values, please refer to the actual specifications on the purchase page:
+     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
+     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
+     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
+     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
     capacity?: pulumi.Input<number>;
     /**
-     * (Available since v1.236.0) The time when the file system was created.
+     * CreateTime
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the file system.
+     * File system description.
+     *
+     * Restrictions:
+     * - 2~128 English or Chinese characters in length.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+     * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+     * Whether the file system is encrypted.
+     *
+     * Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
+     *
+     * Value:
+     * - 0 (default): not encrypted.
+     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
     encryptType?: pulumi.Input<number>;
     /**
-     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+     * File system type.
+     *
+     * Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * The ID of the KMS-managed key. **Note:** If `encryptType` is set to `2`, `kmsKeyId` must be set.
+     * String of keytab file content encrypted by base64
+     */
+    keytab?: pulumi.Input<string>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     */
+    keytabMd5?: pulumi.Input<string>;
+    /**
+     * The ID of the KMS key.
+     * This parameter is required only when EncryptType = 2.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * The NFS ACL feature of the file system. See `nfsAcl` below.
-     * > **NOTE:** `nfsAcl` takes effect only if `fileSystemType` is set to `standard`.
+     * NFS ACL See `nfsAcl` below.
      */
     nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl>;
     /**
-     * The protocol type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `NFS`, `SMB`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `NFS`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `cpfs`.
+     * Option. See `options` below.
+     */
+    options?: pulumi.Input<inputs.nas.FileSystemOptions>;
+    /**
+     * File transfer protocol type.
+     * - When FileSystemType = standard, the values are NFS and SMB.
+     * - When FileSystemType = extreme, the value is NFS.
+     * - When FileSystemType = cpfs, the value is cpfs.
      */
     protocolType?: pulumi.Input<string>;
     /**
-     * The recycle bin feature of the file system. See `recycleBin` below.
-     * > **NOTE:** `recycleBin` takes effect only if `fileSystemType` is set to `standard`.
+     * Recycle Bin See `recycleBin` below.
      */
     recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
+    /**
+     * RegionId
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the snapshot. **NOTE:** `snapshotId` takes effect only if `fileSystemType` is set to `extreme`.
+     * SMB ACL See `smbAcl` below.
+     */
+    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl>;
+    /**
+     * Only extreme NAS is supported.
+     *
+     * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * (Available since v1.236.0) The status of the File System.
+     * File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      */
     status?: pulumi.Input<string>;
     /**
-     * The storage type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `standard`, `advance`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `advance100`, `advance200`.
-     * > **NOTE:** From version 1.140.0, `storageType` can be set to `standard`, `advance`. From version 1.153.0, `storageType` can be set to `advance100`, `advance200`. From version 1.236.0, `storageType` can be set to `Premium`.
+     * The storage type.
+     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = extreme, the value is standard or advance.
+     * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      */
     storageType?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Label information collection.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC. **NOTE:** `vpcId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the VPC network.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The ID of the vSwitch. **NOTE:** `vswitchId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the switch.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The ID of the zone. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `zoneId` must be set.
+     * The zone ID.
+     *
+     * The usable area refers to the physical area where power and network are independent of each other in the same area.
+     *
+     * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
+     *
+     * > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     *
+     * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -357,40 +432,76 @@ export interface FileSystemState {
  */
 export interface FileSystemArgs {
     /**
-     * The capacity of the file system. Unit: GiB. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `capacity` must be set.
+     * File system capacity.
+     *
+     * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
+     *
+     * For optional values, please refer to the actual specifications on the purchase page:
+     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
+     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
+     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
+     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
     capacity?: pulumi.Input<number>;
     /**
-     * The description of the file system.
+     * File system description.
+     *
+     * Restrictions:
+     * - 2~128 English or Chinese characters in length.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+     * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+     * Whether the file system is encrypted.
+     *
+     * Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
+     *
+     * Value:
+     * - 0 (default): not encrypted.
+     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
     encryptType?: pulumi.Input<number>;
     /**
-     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+     * File system type.
+     *
+     * Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * The ID of the KMS-managed key. **Note:** If `encryptType` is set to `2`, `kmsKeyId` must be set.
+     * String of keytab file content encrypted by base64
+     */
+    keytab?: pulumi.Input<string>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     */
+    keytabMd5?: pulumi.Input<string>;
+    /**
+     * The ID of the KMS key.
+     * This parameter is required only when EncryptType = 2.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * The NFS ACL feature of the file system. See `nfsAcl` below.
-     * > **NOTE:** `nfsAcl` takes effect only if `fileSystemType` is set to `standard`.
+     * NFS ACL See `nfsAcl` below.
      */
     nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl>;
     /**
-     * The protocol type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `NFS`, `SMB`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `NFS`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `cpfs`.
+     * Option. See `options` below.
+     */
+    options?: pulumi.Input<inputs.nas.FileSystemOptions>;
+    /**
+     * File transfer protocol type.
+     * - When FileSystemType = standard, the values are NFS and SMB.
+     * - When FileSystemType = extreme, the value is NFS.
+     * - When FileSystemType = cpfs, the value is cpfs.
      */
     protocolType: pulumi.Input<string>;
     /**
-     * The recycle bin feature of the file system. See `recycleBin` below.
-     * > **NOTE:** `recycleBin` takes effect only if `fileSystemType` is set to `standard`.
+     * Recycle Bin See `recycleBin` below.
      */
     recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
     /**
@@ -398,31 +509,48 @@ export interface FileSystemArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the snapshot. **NOTE:** `snapshotId` takes effect only if `fileSystemType` is set to `extreme`.
+     * SMB ACL See `smbAcl` below.
+     */
+    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl>;
+    /**
+     * Only extreme NAS is supported.
+     *
+     * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The storage type of the file system. Valid values:
-     * - If `fileSystemType` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
-     * - If `fileSystemType` is set to `extreme`. Valid values: `standard`, `advance`.
-     * - If `fileSystemType` is set to `cpfs`. Valid values: `advance100`, `advance200`.
-     * > **NOTE:** From version 1.140.0, `storageType` can be set to `standard`, `advance`. From version 1.153.0, `storageType` can be set to `advance100`, `advance200`. From version 1.236.0, `storageType` can be set to `Premium`.
+     * The storage type.
+     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = extreme, the value is standard or advance.
+     * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      */
     storageType: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Label information collection.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC. **NOTE:** `vpcId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the VPC network.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The ID of the vSwitch. **NOTE:** `vswitchId` takes effect only if `fileSystemType` is set to `cpfs`.
+     * The ID of the switch.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The ID of the zone. **Note:** If `fileSystemType` is set to `extreme` or `cpfs`, `zoneId` must be set.
+     * The zone ID.
+     *
+     * The usable area refers to the physical area where power and network are independent of each other in the same area.
+     *
+     * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
+     *
+     * > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     *
+     * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
     zoneId?: pulumi.Input<string>;
 }

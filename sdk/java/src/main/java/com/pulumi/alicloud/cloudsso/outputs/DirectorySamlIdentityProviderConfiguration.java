@@ -4,7 +4,9 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,30 +14,114 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DirectorySamlIdentityProviderConfiguration {
     /**
-     * @return Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+     * @return The Binding method for initiating a SAML request.
+     * 
+     */
+    private @Nullable String bindingType;
+    /**
+     * @return Certificate ID list
+     * 
+     */
+    private @Nullable List<String> certificateIds;
+    /**
+     * @return CreateTime
+     * 
+     */
+    private @Nullable String createTime;
+    /**
+     * @return EncodedMetadataDocument
      * 
      */
     private @Nullable String encodedMetadataDocument;
     /**
-     * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * @return EntityId
+     * 
+     */
+    private @Nullable String entityId;
+    /**
+     * @return LoginUrl
+     * 
+     */
+    private @Nullable String loginUrl;
+    /**
+     * @return SSOStatus
      * 
      */
     private @Nullable String ssoStatus;
+    /**
+     * @return UpdateTime
+     * 
+     */
+    private @Nullable String updateTime;
+    /**
+     * @return SP Request whether the signature is required
+     * 
+     */
+    private @Nullable Boolean wantRequestSigned;
 
     private DirectorySamlIdentityProviderConfiguration() {}
     /**
-     * @return Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+     * @return The Binding method for initiating a SAML request.
+     * 
+     */
+    public Optional<String> bindingType() {
+        return Optional.ofNullable(this.bindingType);
+    }
+    /**
+     * @return Certificate ID list
+     * 
+     */
+    public List<String> certificateIds() {
+        return this.certificateIds == null ? List.of() : this.certificateIds;
+    }
+    /**
+     * @return CreateTime
+     * 
+     */
+    public Optional<String> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+    /**
+     * @return EncodedMetadataDocument
      * 
      */
     public Optional<String> encodedMetadataDocument() {
         return Optional.ofNullable(this.encodedMetadataDocument);
     }
     /**
-     * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * @return EntityId
+     * 
+     */
+    public Optional<String> entityId() {
+        return Optional.ofNullable(this.entityId);
+    }
+    /**
+     * @return LoginUrl
+     * 
+     */
+    public Optional<String> loginUrl() {
+        return Optional.ofNullable(this.loginUrl);
+    }
+    /**
+     * @return SSOStatus
      * 
      */
     public Optional<String> ssoStatus() {
         return Optional.ofNullable(this.ssoStatus);
+    }
+    /**
+     * @return UpdateTime
+     * 
+     */
+    public Optional<String> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+    /**
+     * @return SP Request whether the signature is required
+     * 
+     */
+    public Optional<Boolean> wantRequestSigned() {
+        return Optional.ofNullable(this.wantRequestSigned);
     }
 
     public static Builder builder() {
@@ -47,19 +133,66 @@ public final class DirectorySamlIdentityProviderConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String bindingType;
+        private @Nullable List<String> certificateIds;
+        private @Nullable String createTime;
         private @Nullable String encodedMetadataDocument;
+        private @Nullable String entityId;
+        private @Nullable String loginUrl;
         private @Nullable String ssoStatus;
+        private @Nullable String updateTime;
+        private @Nullable Boolean wantRequestSigned;
         public Builder() {}
         public Builder(DirectorySamlIdentityProviderConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bindingType = defaults.bindingType;
+    	      this.certificateIds = defaults.certificateIds;
+    	      this.createTime = defaults.createTime;
     	      this.encodedMetadataDocument = defaults.encodedMetadataDocument;
+    	      this.entityId = defaults.entityId;
+    	      this.loginUrl = defaults.loginUrl;
     	      this.ssoStatus = defaults.ssoStatus;
+    	      this.updateTime = defaults.updateTime;
+    	      this.wantRequestSigned = defaults.wantRequestSigned;
         }
 
+        @CustomType.Setter
+        public Builder bindingType(@Nullable String bindingType) {
+
+            this.bindingType = bindingType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certificateIds(@Nullable List<String> certificateIds) {
+
+            this.certificateIds = certificateIds;
+            return this;
+        }
+        public Builder certificateIds(String... certificateIds) {
+            return certificateIds(List.of(certificateIds));
+        }
+        @CustomType.Setter
+        public Builder createTime(@Nullable String createTime) {
+
+            this.createTime = createTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder encodedMetadataDocument(@Nullable String encodedMetadataDocument) {
 
             this.encodedMetadataDocument = encodedMetadataDocument;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entityId(@Nullable String entityId) {
+
+            this.entityId = entityId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loginUrl(@Nullable String loginUrl) {
+
+            this.loginUrl = loginUrl;
             return this;
         }
         @CustomType.Setter
@@ -68,10 +201,29 @@ public final class DirectorySamlIdentityProviderConfiguration {
             this.ssoStatus = ssoStatus;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateTime(@Nullable String updateTime) {
+
+            this.updateTime = updateTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder wantRequestSigned(@Nullable Boolean wantRequestSigned) {
+
+            this.wantRequestSigned = wantRequestSigned;
+            return this;
+        }
         public DirectorySamlIdentityProviderConfiguration build() {
             final var _resultValue = new DirectorySamlIdentityProviderConfiguration();
+            _resultValue.bindingType = bindingType;
+            _resultValue.certificateIds = certificateIds;
+            _resultValue.createTime = createTime;
             _resultValue.encodedMetadataDocument = encodedMetadataDocument;
+            _resultValue.entityId = entityId;
+            _resultValue.loginUrl = loginUrl;
             _resultValue.ssoStatus = ssoStatus;
+            _resultValue.updateTime = updateTime;
+            _resultValue.wantRequestSigned = wantRequestSigned;
             return _resultValue;
         }
     }

@@ -278,11 +278,11 @@ def get_instance_types(availability_zone: Optional[builtins.str] = None,
     """
     This data source provides the ECS instance types of Alibaba Cloud.
 
+    > **NOTE:** Available since v1.0.0.
+
     > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
-
-    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
 
@@ -423,11 +423,11 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     """
     This data source provides the ECS instance types of Alibaba Cloud.
 
+    > **NOTE:** Available since v1.0.0.
+
     > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
-
-    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
 

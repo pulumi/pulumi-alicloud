@@ -125,6 +125,16 @@ export type RewriteUrlRule = import("./rewriteUrlRule").RewriteUrlRule;
 export const RewriteUrlRule: typeof import("./rewriteUrlRule").RewriteUrlRule = null as any;
 utilities.lazyLoad(exports, ["RewriteUrlRule"], () => require("./rewriteUrlRule"));
 
+export { ScheduledPreloadExecutionArgs, ScheduledPreloadExecutionState } from "./scheduledPreloadExecution";
+export type ScheduledPreloadExecution = import("./scheduledPreloadExecution").ScheduledPreloadExecution;
+export const ScheduledPreloadExecution: typeof import("./scheduledPreloadExecution").ScheduledPreloadExecution = null as any;
+utilities.lazyLoad(exports, ["ScheduledPreloadExecution"], () => require("./scheduledPreloadExecution"));
+
+export { ScheduledPreloadJobArgs, ScheduledPreloadJobState } from "./scheduledPreloadJob";
+export type ScheduledPreloadJob = import("./scheduledPreloadJob").ScheduledPreloadJob;
+export const ScheduledPreloadJob: typeof import("./scheduledPreloadJob").ScheduledPreloadJob = null as any;
+utilities.lazyLoad(exports, ["ScheduledPreloadJob"], () => require("./scheduledPreloadJob"));
+
 export { SiteArgs, SiteState } from "./site";
 export type Site = import("./site").Site;
 export const Site: typeof import("./site").Site = null as any;
@@ -201,6 +211,10 @@ const _module = {
                 return new RedirectRule(name, <any>undefined, { urn })
             case "alicloud:esa/rewriteUrlRule:RewriteUrlRule":
                 return new RewriteUrlRule(name, <any>undefined, { urn })
+            case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
+                return new ScheduledPreloadExecution(name, <any>undefined, { urn })
+            case "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob":
+                return new ScheduledPreloadJob(name, <any>undefined, { urn })
             case "alicloud:esa/site:Site":
                 return new Site(name, <any>undefined, { urn })
             case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
@@ -239,6 +253,8 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/ratePlanInstance", _modul
 pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/redirectRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/rewriteUrlRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)

@@ -89,30 +89,11 @@ import (
 //				NewNatGateway:               pulumi.Bool(true),
 //				EndpointPublicAccessEnabled: pulumi.Bool(true),
 //				DeletionProtection:          pulumi.Bool(false),
-//				LoadBalancerSpec:            pulumi.String("slb.s2.small"),
 //				TimeZone:                    pulumi.String("Asia/Shanghai"),
 //				ServiceCidr:                 pulumi.String("172.21.0.0/20"),
-//				ServiceDiscoveryTypes: pulumi.StringArray{
-//					pulumi.String("PrivateZone"),
-//				},
-//				LoggingType: pulumi.String("SLS"),
 //				Tags: pulumi.StringMap{
 //					"k-aa": pulumi.String("v-aa"),
-//					"k-bb": pulumi.String("v-aa"),
-//				},
-//				Addons: cs.ServerlessKubernetesAddonArray{
-//					&cs.ServerlessKubernetesAddonArgs{
-//						Name: pulumi.String("alb-ingress-controller"),
-//					},
-//					&cs.ServerlessKubernetesAddonArgs{
-//						Name: pulumi.String("metrics-server"),
-//					},
-//					&cs.ServerlessKubernetesAddonArgs{
-//						Name: pulumi.String("knative"),
-//					},
-//					&cs.ServerlessKubernetesAddonArgs{
-//						Name: pulumi.String("arms-prometheus"),
-//					},
+//					"k-bb": pulumi.String("v-bb"),
 //				},
 //			})
 //			if err != nil {
@@ -136,11 +117,17 @@ type ServerlessKubernetes struct {
 
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+	//
+	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
-	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
@@ -159,9 +146,9 @@ type ServerlessKubernetes struct {
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"endpointPublicAccessEnabled"`
-	// The path of kube config, like `~/.kube/config`.
+	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 	//
-	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
@@ -247,11 +234,17 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 type serverlessKubernetesState struct {
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+	//
+	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
-	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
@@ -270,9 +263,9 @@ type serverlessKubernetesState struct {
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
-	// The path of kube config, like `~/.kube/config`.
+	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 	//
-	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
@@ -329,11 +322,17 @@ type serverlessKubernetesState struct {
 type ServerlessKubernetesState struct {
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrInput
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+	//
+	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput
-	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
@@ -352,9 +351,9 @@ type ServerlessKubernetesState struct {
 	EnableRrsa pulumi.BoolPtrInput
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
-	// The path of kube config, like `~/.kube/config`.
+	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 	//
-	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
@@ -415,11 +414,17 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 type serverlessKubernetesArgs struct {
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+	//
+	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
-	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
@@ -438,9 +443,9 @@ type serverlessKubernetesArgs struct {
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
-	// The path of kube config, like `~/.kube/config`.
+	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 	//
-	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
@@ -496,11 +501,17 @@ type serverlessKubernetesArgs struct {
 type ServerlessKubernetesArgs struct {
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrInput
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+	//
+	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput
-	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+	//
+	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
 	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
 	// - ack.standard: Standard serverless clusters.
@@ -519,9 +530,9 @@ type ServerlessKubernetesArgs struct {
 	EnableRrsa pulumi.BoolPtrInput
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
-	// The path of kube config, like `~/.kube/config`.
+	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 	//
-	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
@@ -665,17 +676,23 @@ func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutpu
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+//
+// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o ServerlessKubernetesOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+//
+// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o ServerlessKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+//
+// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 func (o ServerlessKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ClusterCaCert }).(pulumi.StringPtrOutput)
 }
@@ -715,9 +732,9 @@ func (o ServerlessKubernetesOutput) EndpointPublicAccessEnabled() pulumi.BoolPtr
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EndpointPublicAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The path of kube config, like `~/.kube/config`.
+// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
 //
-// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 func (o ServerlessKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
 }

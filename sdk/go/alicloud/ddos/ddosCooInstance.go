@@ -65,10 +65,10 @@ import (
 //
 // ## Import
 //
-// DdosCoo instance can be imported using the id, e.g.
+// DdosCoo Instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+// $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example <id>
 // ```
 type DdosCooInstance struct {
 	pulumi.CustomResourceState
@@ -81,19 +81,23 @@ type DdosCooInstance struct {
 	BandwidthMode pulumi.StringPtrOutput `pulumi:"bandwidthMode"`
 	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	BaseBandwidth pulumi.StringOutput `pulumi:"baseBandwidth"`
+	// (Available since v1.248.0) The time when the instance was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount pulumi.StringOutput `pulumi:"domainCount"`
 	// The mitigation plan of the instance. Default value: `coop`. Valid values:
 	EditionSale pulumi.StringOutput `pulumi:"editionSale"`
 	// The function plan of the instance. Valid values:
 	FunctionVersion pulumi.StringOutput `pulumi:"functionVersion"`
-	// (Available since v1.212.0) The IP address of the instance.
+	// (Available since v1.212.0) The IP address of the Instance.
 	Ip pulumi.StringOutput `pulumi:"ip"`
+	// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Name of the instance. This name can have a string of `1` to `64` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 	NormalBandwidth pulumi.StringOutput `pulumi:"normalBandwidth"`
-	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 	NormalQps pulumi.StringOutput `pulumi:"normalQps"`
 	// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -105,6 +109,10 @@ type DdosCooInstance struct {
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	ServiceBandwidth pulumi.StringOutput `pulumi:"serviceBandwidth"`
+	// (Available since v1.248.0) The status of the instance.
+	Status pulumi.IntOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDdosCooInstance registers a new resource with the given unique name, arguments, and options.
@@ -157,19 +165,23 @@ type ddosCooInstanceState struct {
 	BandwidthMode *string `pulumi:"bandwidthMode"`
 	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	BaseBandwidth *string `pulumi:"baseBandwidth"`
+	// (Available since v1.248.0) The time when the instance was created.
+	CreateTime *int `pulumi:"createTime"`
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount *string `pulumi:"domainCount"`
 	// The mitigation plan of the instance. Default value: `coop`. Valid values:
 	EditionSale *string `pulumi:"editionSale"`
 	// The function plan of the instance. Valid values:
 	FunctionVersion *string `pulumi:"functionVersion"`
-	// (Available since v1.212.0) The IP address of the instance.
+	// (Available since v1.212.0) The IP address of the Instance.
 	Ip *string `pulumi:"ip"`
+	// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+	ModifyType *string `pulumi:"modifyType"`
 	// Name of the instance. This name can have a string of `1` to `64` characters.
 	Name *string `pulumi:"name"`
-	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 	NormalBandwidth *string `pulumi:"normalBandwidth"`
-	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 	NormalQps *string `pulumi:"normalQps"`
 	// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period *int `pulumi:"period"`
@@ -181,6 +193,10 @@ type ddosCooInstanceState struct {
 	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	ServiceBandwidth *string `pulumi:"serviceBandwidth"`
+	// (Available since v1.248.0) The status of the instance.
+	Status *int `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DdosCooInstanceState struct {
@@ -192,19 +208,23 @@ type DdosCooInstanceState struct {
 	BandwidthMode pulumi.StringPtrInput
 	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	BaseBandwidth pulumi.StringPtrInput
+	// (Available since v1.248.0) The time when the instance was created.
+	CreateTime pulumi.IntPtrInput
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount pulumi.StringPtrInput
 	// The mitigation plan of the instance. Default value: `coop`. Valid values:
 	EditionSale pulumi.StringPtrInput
 	// The function plan of the instance. Valid values:
 	FunctionVersion pulumi.StringPtrInput
-	// (Available since v1.212.0) The IP address of the instance.
+	// (Available since v1.212.0) The IP address of the Instance.
 	Ip pulumi.StringPtrInput
+	// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+	ModifyType pulumi.StringPtrInput
 	// Name of the instance. This name can have a string of `1` to `64` characters.
 	Name pulumi.StringPtrInput
-	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 	NormalBandwidth pulumi.StringPtrInput
-	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 	NormalQps pulumi.StringPtrInput
 	// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrInput
@@ -216,6 +236,10 @@ type DdosCooInstanceState struct {
 	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	ServiceBandwidth pulumi.StringPtrInput
+	// (Available since v1.248.0) The status of the instance.
+	Status pulumi.IntPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (DdosCooInstanceState) ElementType() reflect.Type {
@@ -237,11 +261,13 @@ type ddosCooInstanceArgs struct {
 	EditionSale *string `pulumi:"editionSale"`
 	// The function plan of the instance. Valid values:
 	FunctionVersion *string `pulumi:"functionVersion"`
+	// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+	ModifyType *string `pulumi:"modifyType"`
 	// Name of the instance. This name can have a string of `1` to `64` characters.
 	Name *string `pulumi:"name"`
-	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 	NormalBandwidth *string `pulumi:"normalBandwidth"`
-	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 	NormalQps *string `pulumi:"normalQps"`
 	// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period *int `pulumi:"period"`
@@ -253,6 +279,8 @@ type ddosCooInstanceArgs struct {
 	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	ServiceBandwidth *string `pulumi:"serviceBandwidth"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DdosCooInstance resource.
@@ -271,11 +299,13 @@ type DdosCooInstanceArgs struct {
 	EditionSale pulumi.StringPtrInput
 	// The function plan of the instance. Valid values:
 	FunctionVersion pulumi.StringPtrInput
+	// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+	ModifyType pulumi.StringPtrInput
 	// Name of the instance. This name can have a string of `1` to `64` characters.
 	Name pulumi.StringPtrInput
-	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+	// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 	NormalBandwidth pulumi.StringPtrInput
-	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+	// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 	NormalQps pulumi.StringPtrInput
 	// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrInput
@@ -287,6 +317,8 @@ type DdosCooInstanceArgs struct {
 	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	ServiceBandwidth pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (DdosCooInstanceArgs) ElementType() reflect.Type {
@@ -396,6 +428,11 @@ func (o DdosCooInstanceOutput) BaseBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.BaseBandwidth }).(pulumi.StringOutput)
 }
 
+// (Available since v1.248.0) The time when the instance was created.
+func (o DdosCooInstanceOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
 // Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 func (o DdosCooInstanceOutput) DomainCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.DomainCount }).(pulumi.StringOutput)
@@ -411,9 +448,14 @@ func (o DdosCooInstanceOutput) FunctionVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.FunctionVersion }).(pulumi.StringOutput)
 }
 
-// (Available since v1.212.0) The IP address of the instance.
+// (Available since v1.212.0) The IP address of the Instance.
 func (o DdosCooInstanceOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+func (o DdosCooInstanceOutput) ModifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
 
 // Name of the instance. This name can have a string of `1` to `64` characters.
@@ -421,12 +463,12 @@ func (o DdosCooInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
+// The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
 func (o DdosCooInstanceOutput) NormalBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.NormalBandwidth }).(pulumi.StringOutput)
 }
 
-// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
+// The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
 func (o DdosCooInstanceOutput) NormalQps() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.NormalQps }).(pulumi.StringOutput)
 }
@@ -454,6 +496,16 @@ func (o DdosCooInstanceOutput) ProductType() pulumi.StringPtrOutput {
 // Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 func (o DdosCooInstanceOutput) ServiceBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.ServiceBandwidth }).(pulumi.StringOutput)
+}
+
+// (Available since v1.248.0) The status of the instance.
+func (o DdosCooInstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DdosCooInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DdosCooInstanceArrayOutput struct{ *pulumi.OutputState }

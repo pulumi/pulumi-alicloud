@@ -20,6 +20,8 @@ __all__ = [
     'InstanceParameterArgsDict',
     'InstanceReplicaSetArgs',
     'InstanceReplicaSetArgsDict',
+    'PublicNetworkAddressReplicaSetArgs',
+    'PublicNetworkAddressReplicaSetArgsDict',
     'ServerlessInstanceSecurityIpGroupArgs',
     'ServerlessInstanceSecurityIpGroupArgsDict',
     'ShardingInstanceConfigServerListArgs',
@@ -104,6 +106,10 @@ if not MYPY:
         """
         The role of the node.
         """
+        role_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The id of the role.
+        """
         vpc_cloud_instance_id: NotRequired[pulumi.Input[builtins.str]]
         """
         VPC instance ID.
@@ -126,6 +132,7 @@ class InstanceReplicaSetArgs:
                  connection_port: Optional[pulumi.Input[builtins.str]] = None,
                  network_type: Optional[pulumi.Input[builtins.str]] = None,
                  replica_set_role: Optional[pulumi.Input[builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_cloud_instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None):
@@ -134,6 +141,7 @@ class InstanceReplicaSetArgs:
         :param pulumi.Input[builtins.str] connection_port: The connection port of the node.
         :param pulumi.Input[builtins.str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[builtins.str] replica_set_role: The role of the node.
+        :param pulumi.Input[builtins.str] role_id: The id of the role.
         :param pulumi.Input[builtins.str] vpc_cloud_instance_id: VPC instance ID.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -146,6 +154,8 @@ class InstanceReplicaSetArgs:
             pulumi.set(__self__, "network_type", network_type)
         if replica_set_role is not None:
             pulumi.set(__self__, "replica_set_role", replica_set_role)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
         if vpc_cloud_instance_id is not None:
             pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
         if vpc_id is not None:
@@ -202,6 +212,18 @@ class InstanceReplicaSetArgs:
         pulumi.set(self, "replica_set_role", value)
 
     @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The id of the role.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "role_id", value)
+
+    @property
     @pulumi.getter(name="vpcCloudInstanceId")
     def vpc_cloud_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -236,6 +258,138 @@ class InstanceReplicaSetArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+if not MYPY:
+    class PublicNetworkAddressReplicaSetArgsDict(TypedDict):
+        connection_domain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The connection address of the node.
+        """
+        connection_port: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The connection port of the node.
+        """
+        connection_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The connection type.
+        """
+        network_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The network type, should be always "Public".
+        """
+        replica_set_role: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The role of the node.
+        """
+        role_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The id of the role.
+        """
+elif False:
+    PublicNetworkAddressReplicaSetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PublicNetworkAddressReplicaSetArgs:
+    def __init__(__self__, *,
+                 connection_domain: Optional[pulumi.Input[builtins.str]] = None,
+                 connection_port: Optional[pulumi.Input[builtins.str]] = None,
+                 connection_type: Optional[pulumi.Input[builtins.str]] = None,
+                 network_type: Optional[pulumi.Input[builtins.str]] = None,
+                 replica_set_role: Optional[pulumi.Input[builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] connection_domain: The connection address of the node.
+        :param pulumi.Input[builtins.str] connection_port: The connection port of the node.
+        :param pulumi.Input[builtins.str] connection_type: The connection type.
+        :param pulumi.Input[builtins.str] network_type: The network type, should be always "Public".
+        :param pulumi.Input[builtins.str] replica_set_role: The role of the node.
+        :param pulumi.Input[builtins.str] role_id: The id of the role.
+        """
+        if connection_domain is not None:
+            pulumi.set(__self__, "connection_domain", connection_domain)
+        if connection_port is not None:
+            pulumi.set(__self__, "connection_port", connection_port)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if replica_set_role is not None:
+            pulumi.set(__self__, "replica_set_role", replica_set_role)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+
+    @property
+    @pulumi.getter(name="connectionDomain")
+    def connection_domain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The connection address of the node.
+        """
+        return pulumi.get(self, "connection_domain")
+
+    @connection_domain.setter
+    def connection_domain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_domain", value)
+
+    @property
+    @pulumi.getter(name="connectionPort")
+    def connection_port(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The connection port of the node.
+        """
+        return pulumi.get(self, "connection_port")
+
+    @connection_port.setter
+    def connection_port(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_port", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The connection type.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The network type, should be always "Public".
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
+    @pulumi.getter(name="replicaSetRole")
+    def replica_set_role(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "replica_set_role")
+
+    @replica_set_role.setter
+    def replica_set_role(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "replica_set_role", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The id of the role.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "role_id", value)
 
 
 if not MYPY:
