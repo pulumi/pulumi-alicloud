@@ -235,6 +235,18 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> RestoreType { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the secondary zone.
+        /// </summary>
+        [Output("secondaryVswitchId")]
+        public Output<string?> SecondaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary vSwitch.
+        /// </summary>
+        [Output("secondaryZoneId")]
+        public Output<string?> SecondaryZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
         /// - IP addresses, such as 10.23.XX.XX.
         /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -430,6 +442,18 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("restoreType")]
         public Input<string>? RestoreType { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary zone.
+        /// </summary>
+        [Input("secondaryVswitchId")]
+        public Input<string>? SecondaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
@@ -643,6 +667,18 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("restoreType")]
         public Input<string>? RestoreType { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary zone.
+        /// </summary>
+        [Input("secondaryVswitchId")]
+        public Input<string>? SecondaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:

@@ -30,6 +30,8 @@ from .rate_plan_instance import *
 from .record import *
 from .redirect_rule import *
 from .rewrite_url_rule import *
+from .scheduled_preload_execution import *
+from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
 from .waiting_room import *

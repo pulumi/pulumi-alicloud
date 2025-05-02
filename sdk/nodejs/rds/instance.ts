@@ -211,7 +211,7 @@ export class Instance extends pulumi.CustomResource {
      * - disabled: Turn off cloud disk encryption.
      * > **NOTE:** This parameter is available when the instance runs MySQL.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    public readonly encryptionKey!: pulumi.Output<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      *

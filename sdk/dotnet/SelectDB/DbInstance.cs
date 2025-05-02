@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.SelectDB
     ///         DbInstanceDescription = name,
     ///         CacheSize = 200,
     ///         PaymentType = "PayAsYouGo",
+    ///         EngineMinorVersion = "3.0.12",
     ///         VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.VpcId),
     ///         ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
     ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
@@ -150,7 +151,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// The current DBInstance minor version.
+        /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         /// </summary>
         [Output("engineMinorVersion")]
         public Output<string> EngineMinorVersion { get; private set; } = null!;
@@ -254,10 +255,10 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         /// </summary>
         [Output("upgradedEngineMinorVersion")]
-        public Output<string?> UpgradedEngineMinorVersion { get; private set; } = null!;
+        public Output<string> UpgradedEngineMinorVersion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC for DBInstance.
@@ -380,6 +381,12 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<bool>? EnablePublicNetwork { get; set; }
 
         /// <summary>
+        /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
+        /// </summary>
+        [Input("engineMinorVersion")]
+        public Input<string>? EngineMinorVersion { get; set; }
+
+        /// <summary>
         /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         /// </summary>
         [Input("paymentType", required: true)]
@@ -412,7 +419,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }
@@ -538,7 +545,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// The current DBInstance minor version.
+        /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         /// </summary>
         [Input("engineMinorVersion")]
         public Input<string>? EngineMinorVersion { get; set; }
@@ -660,7 +667,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }

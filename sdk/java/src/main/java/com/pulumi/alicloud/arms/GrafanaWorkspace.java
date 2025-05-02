@@ -109,14 +109,18 @@ public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountNumber);
     }
     /**
-     * Language environment (if not filled in, default is zh): zh, en.
+     * Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      * 
      */
     @Export(name="aliyunLang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aliyunLang;
 
     /**
-     * @return Language environment (if not filled in, default is zh): zh, en.
+     * @return Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      * 
      */
     public Output<Optional<String>> aliyunLang() {
@@ -223,14 +227,22 @@ public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.grafanaVersion);
     }
     /**
-     * Edition
+     * The edition. **Valid values:**
+     * - standard: ` Beta Edition(For internal testing only)  `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      * 
      */
     @Export(name="grafanaWorkspaceEdition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> grafanaWorkspaceEdition;
 
     /**
-     * @return Edition
+     * @return The edition. **Valid values:**
+     * - standard: ` Beta Edition(For internal testing only)  `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      * 
      */
     public Output<Optional<String>> grafanaWorkspaceEdition() {

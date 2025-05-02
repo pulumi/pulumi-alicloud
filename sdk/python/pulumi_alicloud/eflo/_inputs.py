@@ -46,6 +46,10 @@ __all__ = [
     'ClusterNodeGroupArgsDict',
     'ClusterNodeGroupNodeArgs',
     'ClusterNodeGroupNodeArgsDict',
+    'ExperimentPlanTemplateTemplatePipelineArgs',
+    'ExperimentPlanTemplateTemplatePipelineArgsDict',
+    'ExperimentPlanTemplateTemplatePipelineEnvParamsArgs',
+    'ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict',
     'NodeGroupIpAllocationPolicyArgs',
     'NodeGroupIpAllocationPolicyArgsDict',
     'NodeGroupIpAllocationPolicyBondPolicyArgs',
@@ -62,6 +66,10 @@ __all__ = [
     'NodeGroupIpAllocationPolicyNodePolicyBondArgsDict',
     'NodeGroupNodeArgs',
     'NodeGroupNodeArgsDict',
+    'ResourceMachineTypesArgs',
+    'ResourceMachineTypesArgsDict',
+    'ResourceUserAccessParamArgs',
+    'ResourceUserAccessParamArgsDict',
 ]
 
 MYPY = False
@@ -1228,6 +1236,323 @@ class ClusterNodeGroupNodeArgs:
 
 
 if not MYPY:
+    class ExperimentPlanTemplateTemplatePipelineArgsDict(TypedDict):
+        env_params: pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict']
+        """
+        Contains a series of parameters related to the environment. See `env_params` below.
+        """
+        pipeline_order: pulumi.Input[builtins.int]
+        """
+        Indicates the sequence number of the pipeline node.
+        """
+        scene: pulumi.Input[builtins.str]
+        """
+        The use of the template scenario. It can have the following optional parameters:
+        - baseline: benchmark evaluation
+        """
+        workload_id: pulumi.Input[builtins.int]
+        """
+        Used to uniquely identify a specific payload.
+        """
+        workload_name: pulumi.Input[builtins.str]
+        """
+        The name used to represent a specific payload.
+        """
+        setting_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Represents additional parameters for the run.
+        """
+elif False:
+    ExperimentPlanTemplateTemplatePipelineArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExperimentPlanTemplateTemplatePipelineArgs:
+    def __init__(__self__, *,
+                 env_params: pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgs'],
+                 pipeline_order: pulumi.Input[builtins.int],
+                 scene: pulumi.Input[builtins.str],
+                 workload_id: pulumi.Input[builtins.int],
+                 workload_name: pulumi.Input[builtins.str],
+                 setting_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgs'] env_params: Contains a series of parameters related to the environment. See `env_params` below.
+        :param pulumi.Input[builtins.int] pipeline_order: Indicates the sequence number of the pipeline node.
+        :param pulumi.Input[builtins.str] scene: The use of the template scenario. It can have the following optional parameters:
+               - baseline: benchmark evaluation
+        :param pulumi.Input[builtins.int] workload_id: Used to uniquely identify a specific payload.
+        :param pulumi.Input[builtins.str] workload_name: The name used to represent a specific payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] setting_params: Represents additional parameters for the run.
+        """
+        pulumi.set(__self__, "env_params", env_params)
+        pulumi.set(__self__, "pipeline_order", pipeline_order)
+        pulumi.set(__self__, "scene", scene)
+        pulumi.set(__self__, "workload_id", workload_id)
+        pulumi.set(__self__, "workload_name", workload_name)
+        if setting_params is not None:
+            pulumi.set(__self__, "setting_params", setting_params)
+
+    @property
+    @pulumi.getter(name="envParams")
+    def env_params(self) -> pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgs']:
+        """
+        Contains a series of parameters related to the environment. See `env_params` below.
+        """
+        return pulumi.get(self, "env_params")
+
+    @env_params.setter
+    def env_params(self, value: pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgs']):
+        pulumi.set(self, "env_params", value)
+
+    @property
+    @pulumi.getter(name="pipelineOrder")
+    def pipeline_order(self) -> pulumi.Input[builtins.int]:
+        """
+        Indicates the sequence number of the pipeline node.
+        """
+        return pulumi.get(self, "pipeline_order")
+
+    @pipeline_order.setter
+    def pipeline_order(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "pipeline_order", value)
+
+    @property
+    @pulumi.getter
+    def scene(self) -> pulumi.Input[builtins.str]:
+        """
+        The use of the template scenario. It can have the following optional parameters:
+        - baseline: benchmark evaluation
+        """
+        return pulumi.get(self, "scene")
+
+    @scene.setter
+    def scene(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "scene", value)
+
+    @property
+    @pulumi.getter(name="workloadId")
+    def workload_id(self) -> pulumi.Input[builtins.int]:
+        """
+        Used to uniquely identify a specific payload.
+        """
+        return pulumi.get(self, "workload_id")
+
+    @workload_id.setter
+    def workload_id(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "workload_id", value)
+
+    @property
+    @pulumi.getter(name="workloadName")
+    def workload_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name used to represent a specific payload.
+        """
+        return pulumi.get(self, "workload_name")
+
+    @workload_name.setter
+    def workload_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "workload_name", value)
+
+    @property
+    @pulumi.getter(name="settingParams")
+    def setting_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Represents additional parameters for the run.
+        """
+        return pulumi.get(self, "setting_params")
+
+    @setting_params.setter
+    def setting_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "setting_params", value)
+
+
+if not MYPY:
+    class ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict(TypedDict):
+        cpu_per_worker: pulumi.Input[builtins.int]
+        """
+        Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+        """
+        gpu_per_worker: pulumi.Input[builtins.int]
+        """
+        Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+        """
+        memory_per_worker: pulumi.Input[builtins.int]
+        """
+        The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+        """
+        share_memory: pulumi.Input[builtins.int]
+        """
+        Shared memory GB allocation
+        """
+        worker_num: pulumi.Input[builtins.int]
+        """
+        The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+        """
+        cuda_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+        """
+        gpu_driver_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+        """
+        nccl_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+        """
+        py_torch_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+        """
+elif False:
+    ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
+    def __init__(__self__, *,
+                 cpu_per_worker: pulumi.Input[builtins.int],
+                 gpu_per_worker: pulumi.Input[builtins.int],
+                 memory_per_worker: pulumi.Input[builtins.int],
+                 share_memory: pulumi.Input[builtins.int],
+                 worker_num: pulumi.Input[builtins.int],
+                 cuda_version: Optional[pulumi.Input[builtins.str]] = None,
+                 gpu_driver_version: Optional[pulumi.Input[builtins.str]] = None,
+                 nccl_version: Optional[pulumi.Input[builtins.str]] = None,
+                 py_torch_version: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] cpu_per_worker: Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+        :param pulumi.Input[builtins.int] gpu_per_worker: Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+        :param pulumi.Input[builtins.int] memory_per_worker: The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+        :param pulumi.Input[builtins.int] share_memory: Shared memory GB allocation
+        :param pulumi.Input[builtins.int] worker_num: The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+        :param pulumi.Input[builtins.str] cuda_version: The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+        :param pulumi.Input[builtins.str] gpu_driver_version: The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+        :param pulumi.Input[builtins.str] nccl_version: The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+        :param pulumi.Input[builtins.str] py_torch_version: The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+        """
+        pulumi.set(__self__, "cpu_per_worker", cpu_per_worker)
+        pulumi.set(__self__, "gpu_per_worker", gpu_per_worker)
+        pulumi.set(__self__, "memory_per_worker", memory_per_worker)
+        pulumi.set(__self__, "share_memory", share_memory)
+        pulumi.set(__self__, "worker_num", worker_num)
+        if cuda_version is not None:
+            pulumi.set(__self__, "cuda_version", cuda_version)
+        if gpu_driver_version is not None:
+            pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
+        if nccl_version is not None:
+            pulumi.set(__self__, "nccl_version", nccl_version)
+        if py_torch_version is not None:
+            pulumi.set(__self__, "py_torch_version", py_torch_version)
+
+    @property
+    @pulumi.getter(name="cpuPerWorker")
+    def cpu_per_worker(self) -> pulumi.Input[builtins.int]:
+        """
+        Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+        """
+        return pulumi.get(self, "cpu_per_worker")
+
+    @cpu_per_worker.setter
+    def cpu_per_worker(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "cpu_per_worker", value)
+
+    @property
+    @pulumi.getter(name="gpuPerWorker")
+    def gpu_per_worker(self) -> pulumi.Input[builtins.int]:
+        """
+        Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+        """
+        return pulumi.get(self, "gpu_per_worker")
+
+    @gpu_per_worker.setter
+    def gpu_per_worker(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "gpu_per_worker", value)
+
+    @property
+    @pulumi.getter(name="memoryPerWorker")
+    def memory_per_worker(self) -> pulumi.Input[builtins.int]:
+        """
+        The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+        """
+        return pulumi.get(self, "memory_per_worker")
+
+    @memory_per_worker.setter
+    def memory_per_worker(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "memory_per_worker", value)
+
+    @property
+    @pulumi.getter(name="shareMemory")
+    def share_memory(self) -> pulumi.Input[builtins.int]:
+        """
+        Shared memory GB allocation
+        """
+        return pulumi.get(self, "share_memory")
+
+    @share_memory.setter
+    def share_memory(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "share_memory", value)
+
+    @property
+    @pulumi.getter(name="workerNum")
+    def worker_num(self) -> pulumi.Input[builtins.int]:
+        """
+        The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+        """
+        return pulumi.get(self, "worker_num")
+
+    @worker_num.setter
+    def worker_num(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "worker_num", value)
+
+    @property
+    @pulumi.getter(name="cudaVersion")
+    def cuda_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+        """
+        return pulumi.get(self, "cuda_version")
+
+    @cuda_version.setter
+    def cuda_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cuda_version", value)
+
+    @property
+    @pulumi.getter(name="gpuDriverVersion")
+    def gpu_driver_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+        """
+        return pulumi.get(self, "gpu_driver_version")
+
+    @gpu_driver_version.setter
+    def gpu_driver_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gpu_driver_version", value)
+
+    @property
+    @pulumi.getter(name="ncclVersion")
+    def nccl_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+        """
+        return pulumi.get(self, "nccl_version")
+
+    @nccl_version.setter
+    def nccl_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "nccl_version", value)
+
+    @property
+    @pulumi.getter(name="pyTorchVersion")
+    def py_torch_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+        """
+        return pulumi.get(self, "py_torch_version")
+
+    @py_torch_version.setter
+    def py_torch_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "py_torch_version", value)
+
+
+if not MYPY:
     class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
         bond_policy: NotRequired[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgsDict']]
         """
@@ -1714,5 +2039,303 @@ class NodeGroupNodeArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+if not MYPY:
+    class ResourceMachineTypesArgsDict(TypedDict):
+        cpu_info: pulumi.Input[builtins.str]
+        """
+        Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+        """
+        gpu_info: pulumi.Input[builtins.str]
+        """
+        Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+        """
+        bond_num: NotRequired[pulumi.Input[builtins.int]]
+        """
+        This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+        """
+        disk_info: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+        """
+        memory_info: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specification Name.
+        """
+        network_info: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+        """
+        network_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+        """
+        node_count: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+        """
+elif False:
+    ResourceMachineTypesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceMachineTypesArgs:
+    def __init__(__self__, *,
+                 cpu_info: pulumi.Input[builtins.str],
+                 gpu_info: pulumi.Input[builtins.str],
+                 bond_num: Optional[pulumi.Input[builtins.int]] = None,
+                 disk_info: Optional[pulumi.Input[builtins.str]] = None,
+                 memory_info: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 network_info: Optional[pulumi.Input[builtins.str]] = None,
+                 network_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] cpu_info: Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+        :param pulumi.Input[builtins.str] gpu_info: Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+        :param pulumi.Input[builtins.int] bond_num: This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+        :param pulumi.Input[builtins.str] disk_info: Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+        :param pulumi.Input[builtins.str] memory_info: This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+        :param pulumi.Input[builtins.str] name: Specification Name.
+        :param pulumi.Input[builtins.str] network_info: Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+        :param pulumi.Input[builtins.str] network_mode: Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+        :param pulumi.Input[builtins.int] node_count: Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+        :param pulumi.Input[builtins.str] type: Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+        """
+        pulumi.set(__self__, "cpu_info", cpu_info)
+        pulumi.set(__self__, "gpu_info", gpu_info)
+        if bond_num is not None:
+            pulumi.set(__self__, "bond_num", bond_num)
+        if disk_info is not None:
+            pulumi.set(__self__, "disk_info", disk_info)
+        if memory_info is not None:
+            pulumi.set(__self__, "memory_info", memory_info)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_info is not None:
+            pulumi.set(__self__, "network_info", network_info)
+        if network_mode is not None:
+            pulumi.set(__self__, "network_mode", network_mode)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cpuInfo")
+    def cpu_info(self) -> pulumi.Input[builtins.str]:
+        """
+        Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+        """
+        return pulumi.get(self, "cpu_info")
+
+    @cpu_info.setter
+    def cpu_info(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "cpu_info", value)
+
+    @property
+    @pulumi.getter(name="gpuInfo")
+    def gpu_info(self) -> pulumi.Input[builtins.str]:
+        """
+        Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+        """
+        return pulumi.get(self, "gpu_info")
+
+    @gpu_info.setter
+    def gpu_info(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "gpu_info", value)
+
+    @property
+    @pulumi.getter(name="bondNum")
+    def bond_num(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+        """
+        return pulumi.get(self, "bond_num")
+
+    @bond_num.setter
+    def bond_num(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "bond_num", value)
+
+    @property
+    @pulumi.getter(name="diskInfo")
+    def disk_info(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+        """
+        return pulumi.get(self, "disk_info")
+
+    @disk_info.setter
+    def disk_info(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_info", value)
+
+    @property
+    @pulumi.getter(name="memoryInfo")
+    def memory_info(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+        """
+        return pulumi.get(self, "memory_info")
+
+    @memory_info.setter
+    def memory_info(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "memory_info", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specification Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInfo")
+    def network_info(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+        """
+        return pulumi.get(self, "network_info")
+
+    @network_info.setter
+    def network_info(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "network_info", value)
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+        """
+        return pulumi.get(self, "network_mode")
+
+    @network_mode.setter
+    def network_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "network_mode", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class ResourceUserAccessParamArgsDict(TypedDict):
+        access_id: pulumi.Input[builtins.str]
+        """
+        Access keys are important credentials for authentication.
+        """
+        access_key: pulumi.Input[builtins.str]
+        """
+        A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+        """
+        endpoint: pulumi.Input[builtins.str]
+        """
+        An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+        """
+        workspace_id: pulumi.Input[builtins.str]
+        """
+        A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+        """
+elif False:
+    ResourceUserAccessParamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceUserAccessParamArgs:
+    def __init__(__self__, *,
+                 access_id: pulumi.Input[builtins.str],
+                 access_key: pulumi.Input[builtins.str],
+                 endpoint: pulumi.Input[builtins.str],
+                 workspace_id: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] access_id: Access keys are important credentials for authentication.
+        :param pulumi.Input[builtins.str] access_key: A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+        :param pulumi.Input[builtins.str] endpoint: An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+        :param pulumi.Input[builtins.str] workspace_id: A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+        """
+        pulumi.set(__self__, "access_id", access_id)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="accessId")
+    def access_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Access keys are important credentials for authentication.
+        """
+        return pulumi.get(self, "access_id")
+
+    @access_id.setter
+    def access_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "access_id", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Input[builtins.str]:
+        """
+        A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[builtins.str]:
+        """
+        An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[builtins.str]:
+        """
+        A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 

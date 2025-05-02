@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
     public sealed class FileSystemNfsAcl
     {
         /// <summary>
-        /// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        /// Whether the NFS ACL function is enabled.
         /// </summary>
         public readonly bool? Enabled;
 

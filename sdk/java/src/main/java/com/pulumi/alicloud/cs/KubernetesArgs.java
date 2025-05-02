@@ -26,16 +26,12 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
-     * *Network params*
-     * 
      */
     @Import(name="addons")
     private @Nullable Output<List<KubernetesAddonArgs>> addons;
 
     /**
      * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-     * 
-     * *Network params*
      * 
      */
     public Optional<Output<List<KubernetesAddonArgs>>> addons() {
@@ -58,50 +54,74 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     * 
+     * @deprecated
+     * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
+    @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     * 
+     * @deprecated
+     * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
+    @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
     public Optional<Output<String>> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
 
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     * 
+     * @deprecated
+     * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
+    @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     * 
+     * @deprecated
+     * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
+    @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
     public Optional<Output<String>> clientKey() {
         return Optional.ofNullable(this.clientKey);
     }
 
     /**
-     * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      * *Removed params*
      * 
+     * @deprecated
+     * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+     * 
      */
+    @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
     @Import(name="clusterCaCert")
     private @Nullable Output<String> clusterCaCert;
 
     /**
-     * @return The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      * *Removed params*
      * 
+     * @deprecated
+     * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+     * 
      */
+    @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
     public Optional<Output<String>> clusterCaCert() {
         return Optional.ofNullable(this.clusterCaCert);
     }
@@ -730,6 +750,25 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * 
+     * *Network params*
+     * 
+     */
+    @Import(name="skipSetCertificateAuthority")
+    private @Nullable Output<Boolean> skipSetCertificateAuthority;
+
+    /**
+     * @return Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+     * 
+     * *Network params*
+     * 
+     */
+    public Optional<Output<Boolean>> skipSetCertificateAuthority() {
+        return Optional.ofNullable(this.skipSetCertificateAuthority);
+    }
+
+    /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
      * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
@@ -863,6 +902,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         this.securityGroupId = $.securityGroupId;
         this.serviceAccountIssuer = $.serviceAccountIssuer;
         this.serviceCidr = $.serviceCidr;
+        this.skipSetCertificateAuthority = $.skipSetCertificateAuthority;
         this.slbInternetEnabled = $.slbInternetEnabled;
         this.tags = $.tags;
         this.timezone = $.timezone;
@@ -891,8 +931,6 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
-         * *Network params*
-         * 
          * @return builder
          * 
          */
@@ -904,8 +942,6 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
-         * *Network params*
-         * 
          * @return builder
          * 
          */
@@ -915,8 +951,6 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-         * 
-         * *Network params*
          * 
          * @return builder
          * 
@@ -957,68 +991,92 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
         public Builder clientCert(@Nullable Output<String> clientCert) {
             $.clientCert = clientCert;
             return this;
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
         public Builder clientCert(String clientCert) {
             return clientCert(Output.of(clientCert));
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
         public Builder clientKey(@Nullable Output<String> clientKey) {
             $.clientKey = clientKey;
             return this;
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
         public Builder clientKey(String clientKey) {
             return clientKey(Output.of(clientKey));
         }
 
         /**
-         * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+         * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
          * *Removed params*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
         public Builder clusterCaCert(@Nullable Output<String> clusterCaCert) {
             $.clusterCaCert = clusterCaCert;
             return this;
         }
 
         /**
-         * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+         * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
          * *Removed params*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+         * 
          */
+        @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
         public Builder clusterCaCert(String clusterCaCert) {
             return clusterCaCert(Output.of(clusterCaCert));
         }
@@ -1940,6 +1998,31 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceCidr(String serviceCidr) {
             return serviceCidr(Output.of(serviceCidr));
+        }
+
+        /**
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * 
+         * *Network params*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSetCertificateAuthority(@Nullable Output<Boolean> skipSetCertificateAuthority) {
+            $.skipSetCertificateAuthority = skipSetCertificateAuthority;
+            return this;
+        }
+
+        /**
+         * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+         * 
+         * *Network params*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSetCertificateAuthority(Boolean skipSetCertificateAuthority) {
+            return skipSetCertificateAuthority(Output.of(skipSetCertificateAuthority));
         }
 
         /**

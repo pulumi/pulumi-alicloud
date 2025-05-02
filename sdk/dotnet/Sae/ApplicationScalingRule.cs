@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
+    /// For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://next.api.aliyun.com/api/sae/2019-05-06/CreateApplicationScalingRule).
     /// 
     /// &gt; **NOTE:** Available since v1.159.0.
     /// 

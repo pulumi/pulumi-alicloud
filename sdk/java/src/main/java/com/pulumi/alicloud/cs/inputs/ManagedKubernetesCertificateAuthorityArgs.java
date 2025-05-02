@@ -16,14 +16,14 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
     public static final ManagedKubernetesCertificateAuthorityArgs Empty = new ManagedKubernetesCertificateAuthorityArgs();
 
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
     public Optional<Output<String>> clientCert() {
@@ -31,14 +31,14 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
     }
 
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -87,7 +87,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
          * 
          * @return builder
          * 

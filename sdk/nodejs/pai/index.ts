@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FlowPipelineArgs, FlowPipelineState } from "./flowPipeline";
+export type FlowPipeline = import("./flowPipeline").FlowPipeline;
+export const FlowPipeline: typeof import("./flowPipeline").FlowPipeline = null as any;
+utilities.lazyLoad(exports, ["FlowPipeline"], () => require("./flowPipeline"));
+
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
@@ -45,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:pai/flowPipeline:FlowPipeline":
+                return new FlowPipeline(name, <any>undefined, { urn })
             case "alicloud:pai/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource":
@@ -64,6 +71,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "pai/flowPipeline", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceCodeSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDataset", _module)

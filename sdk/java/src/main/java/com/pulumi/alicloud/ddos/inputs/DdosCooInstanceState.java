@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -77,6 +78,21 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Available since v1.248.0) The time when the instance was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.248.0) The time when the instance was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      * 
      */
@@ -122,18 +138,33 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Available since v1.212.0) The IP address of the instance.
+     * (Available since v1.212.0) The IP address of the Instance.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return (Available since v1.212.0) The IP address of the instance.
+     * @return (Available since v1.212.0) The IP address of the Instance.
      * 
      */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
+    }
+
+    /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    @Import(name="modifyType")
+    private @Nullable Output<String> modifyType;
+
+    /**
+     * @return The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    public Optional<Output<String>> modifyType() {
+        return Optional.ofNullable(this.modifyType);
     }
 
     /**
@@ -152,14 +183,14 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     @Import(name="normalBandwidth")
     private @Nullable Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     public Optional<Output<String>> normalBandwidth() {
@@ -167,14 +198,14 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     @Import(name="normalQps")
     private @Nullable Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     public Optional<Output<String>> normalQps() {
@@ -256,6 +287,36 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.serviceBandwidth);
     }
 
+    /**
+     * (Available since v1.248.0) The status of the instance.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<Integer> status;
+
+    /**
+     * @return (Available since v1.248.0) The status of the instance.
+     * 
+     */
+    public Optional<Output<Integer>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private DdosCooInstanceState() {}
 
     private DdosCooInstanceState(DdosCooInstanceState $) {
@@ -263,10 +324,12 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         this.bandwidth = $.bandwidth;
         this.bandwidthMode = $.bandwidthMode;
         this.baseBandwidth = $.baseBandwidth;
+        this.createTime = $.createTime;
         this.domainCount = $.domainCount;
         this.editionSale = $.editionSale;
         this.functionVersion = $.functionVersion;
         this.ip = $.ip;
+        this.modifyType = $.modifyType;
         this.name = $.name;
         this.normalBandwidth = $.normalBandwidth;
         this.normalQps = $.normalQps;
@@ -275,6 +338,8 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         this.productPlan = $.productPlan;
         this.productType = $.productType;
         this.serviceBandwidth = $.serviceBandwidth;
+        this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -380,6 +445,27 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param createTime (Available since v1.248.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.248.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param domainCount Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
          * 
          * @return builder
@@ -443,7 +529,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ip (Available since v1.212.0) The IP address of the instance.
+         * @param ip (Available since v1.212.0) The IP address of the Instance.
          * 
          * @return builder
          * 
@@ -454,13 +540,34 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ip (Available since v1.212.0) The IP address of the instance.
+         * @param ip (Available since v1.212.0) The IP address of the Instance.
          * 
          * @return builder
          * 
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        /**
+         * @param modifyType The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyType(@Nullable Output<String> modifyType) {
+            $.modifyType = modifyType;
+            return this;
+        }
+
+        /**
+         * @param modifyType The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyType(String modifyType) {
+            return modifyType(Output.of(modifyType));
         }
 
         /**
@@ -485,7 +592,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -496,7 +603,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -506,7 +613,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
          * 
          * @return builder
          * 
@@ -517,7 +624,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
          * 
          * @return builder
          * 
@@ -629,6 +736,48 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
          */
         public Builder serviceBandwidth(String serviceBandwidth) {
             return serviceBandwidth(Output.of(serviceBandwidth));
+        }
+
+        /**
+         * @param status (Available since v1.248.0) The status of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<Integer> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available since v1.248.0) The status of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(Integer status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DdosCooInstanceState build() {

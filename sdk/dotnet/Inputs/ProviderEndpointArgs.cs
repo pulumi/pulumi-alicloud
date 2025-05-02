@@ -426,6 +426,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("eflo")]
         public Input<string>? Eflo { get; set; }
 
+        [Input("efloCnp")]
+        public Input<string>? EfloCnp { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
         /// </summary>

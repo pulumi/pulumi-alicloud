@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * You can use the existing vpc module
  * to create a VPC and several VSwitches one-click.
  * 
- * For information about VPC Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+ * For information about VPC VPC and how to use it, see [What is VPC](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
  * 
  * ## Example Usage
  * 
@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
 public class Network extends com.pulumi.resources.CustomResource {
     /**
      * The CIDR block of the VPC.
+     * 
      * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
      * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
@@ -100,6 +101,7 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The CIDR block of the VPC.
+     * 
      * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
      * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
@@ -137,7 +139,6 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The new description of the VPC.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -146,7 +147,6 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The new description of the VPC.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -154,46 +154,60 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * The status of VPC DNS Hostname
      * 
      */
     @Export(name="dnsHostnameStatus", refs={String.class}, tree="[0]")
     private Output<String> dnsHostnameStatus;
 
     /**
-     * @return The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * @return The status of VPC DNS Hostname
      * 
      */
     public Output<String> dnsHostnameStatus() {
         return this.dnsHostnameStatus;
     }
     /**
-     * Specifies whether to perform a dry run. Valid values:
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform a dry run. Valid values:
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Specifies whether to enable IPv6. Valid values:
+     * Whether to enable the IPv6 network segment. Value:
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable IPv6. Valid values:
+     * @return Whether to enable the IPv6 network segment. Value:
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
+    }
+    /**
+     * Force delete vpc or not.
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Force delete vpc or not.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
     }
     /**
      * Allocate VPC from The IPAM address pool by entering a mask.
@@ -318,14 +332,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     * The ID of the region where the VPC is located.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     * @return The ID of the region where the VPC is located.
      * 
      */
     public Output<String> regionId() {
@@ -350,28 +364,28 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The ID of the route table that you want to query.
+     * The ID of the system route table.
      * 
      */
     @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
-     * @return The ID of the route table that you want to query.
+     * @return The ID of the system route table.
      * 
      */
     public Output<String> routeTableId() {
         return this.routeTableId;
     }
     /**
-     * The router ID of the VPC.
+     * The region ID of the VPC to which the route table belongs.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The router ID of the VPC.
+     * @return The region ID of the VPC to which the route table belongs.
      * 
      */
     public Output<String> routerId() {
@@ -414,32 +428,32 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.secondaryCidrBlocks;
     }
     /**
-     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
-     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * @deprecated
+     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
+    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Export(name="secondaryCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secondaryCidrMask;
 
     /**
-     * @return Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
-     * 
-     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
      */
     public Output<Optional<Integer>> secondaryCidrMask() {
         return Codegen.optional(this.secondaryCidrMask);
     }
     /**
-     * The status of the VPC.
+     * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPC.
+     * @return The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     public Output<String> status() {
@@ -447,7 +461,6 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The description of the route table.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -456,7 +469,6 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The description of the route table.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -465,7 +477,6 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the route table.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
@@ -474,12 +485,25 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the route table.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> systemRouteTableName() {
         return Codegen.optional(this.systemRouteTableName);
+    }
+    /**
+     * Whether the system route table receives propagation routes.
+     * 
+     */
+    @Export(name="systemRouteTableRoutePropagationEnable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> systemRouteTableRoutePropagationEnable;
+
+    /**
+     * @return Whether the system route table receives propagation routes.
+     * 
+     */
+    public Output<Boolean> systemRouteTableRoutePropagationEnable() {
+        return this.systemRouteTableRoutePropagationEnable;
     }
     /**
      * The tags of Vpc.
@@ -511,7 +535,6 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The new name of the VPC.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
@@ -522,7 +545,6 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The new name of the VPC.
-     * 
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:

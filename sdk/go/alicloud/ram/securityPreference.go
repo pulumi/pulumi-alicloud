@@ -11,68 +11,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM Security Preference resource.
-//
-// For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
-//
-// > **NOTE:** Available since v1.152.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ram.NewSecurityPreference(ctx, "example", &ram.SecurityPreferenceArgs{
-//				EnableSaveMfaTicket:       pulumi.Bool(false),
-//				AllowUserToChangePassword: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RAM Security Preference can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example
 // ```
 type SecurityPreference struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage their own passwords. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToChangePassword pulumi.BoolOutput `pulumi:"allowUserToChangePassword"`
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+	// Whether to allow RAM users to log on using a passkey. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToLoginWithPasskey pulumi.BoolOutput `pulumi:"allowUserToLoginWithPasskey"`
+	// Whether to allow RAM users to manage their own access keys. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	AllowUserToManageAccessKeys pulumi.BoolOutput `pulumi:"allowUserToManageAccessKeys"`
-	// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToManageMfaDevices pulumi.BoolOutput `pulumi:"allowUserToManageMfaDevices"`
-	// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+	// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToManagePersonalDingTalk pulumi.BoolOutput `pulumi:"allowUserToManagePersonalDingTalk"`
+	// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	EnableSaveMfaTicket pulumi.BoolOutput `pulumi:"enableSaveMfaTicket"`
+	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 	EnforceMfaForLogin pulumi.BoolOutput `pulumi:"enforceMfaForLogin"`
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-	// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-	// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-	// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+	// - If the mask is specified, RAM users can only log on from the specified IP address.
+	// - If you do not specify any mask, the login console function will apply to the entire network.
+	//
+	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrOutput `pulumi:"loginNetworkMasks"`
-	// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+	// The validity period of the logon session of RAM users.
+	// Valid values: 1 to 24. Unit: hours.
+	// Default value: 6.
 	LoginSessionDuration pulumi.IntOutput `pulumi:"loginSessionDuration"`
+	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+	// - adaptive: Used only during abnormal login.
+	MfaOperationForLogin pulumi.StringOutput `pulumi:"mfaOperationForLogin"`
+	// Whether MFA is verified twice during abnormal logon. Value:
+	// - autonomous (default): Skip, do not force binding.
+	// - enforceVerify: Force binding validation.
+	OperationForRiskLogin pulumi.StringOutput `pulumi:"operationForRiskLogin"`
+	// Means of multi-factor authentication. Value:
+	// - sms: secure phone.
+	// - email: Secure mailbox.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VerificationTypes pulumi.StringArrayOutput `pulumi:"verificationTypes"`
 }
 
 // NewSecurityPreference registers a new resource with the given unique name, arguments, and options.
@@ -105,43 +107,117 @@ func GetSecurityPreference(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityPreference resources.
 type securityPreferenceState struct {
-	// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage their own passwords. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToChangePassword *bool `pulumi:"allowUserToChangePassword"`
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+	// Whether to allow RAM users to log on using a passkey. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToLoginWithPasskey *bool `pulumi:"allowUserToLoginWithPasskey"`
+	// Whether to allow RAM users to manage their own access keys. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	AllowUserToManageAccessKeys *bool `pulumi:"allowUserToManageAccessKeys"`
-	// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToManageMfaDevices *bool `pulumi:"allowUserToManageMfaDevices"`
-	// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+	// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToManagePersonalDingTalk *bool `pulumi:"allowUserToManagePersonalDingTalk"`
+	// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	EnableSaveMfaTicket *bool `pulumi:"enableSaveMfaTicket"`
+	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 	EnforceMfaForLogin *bool `pulumi:"enforceMfaForLogin"`
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-	// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-	// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-	// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+	// - If the mask is specified, RAM users can only log on from the specified IP address.
+	// - If you do not specify any mask, the login console function will apply to the entire network.
+	//
+	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks *string `pulumi:"loginNetworkMasks"`
-	// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+	// The validity period of the logon session of RAM users.
+	// Valid values: 1 to 24. Unit: hours.
+	// Default value: 6.
 	LoginSessionDuration *int `pulumi:"loginSessionDuration"`
+	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+	// - adaptive: Used only during abnormal login.
+	MfaOperationForLogin *string `pulumi:"mfaOperationForLogin"`
+	// Whether MFA is verified twice during abnormal logon. Value:
+	// - autonomous (default): Skip, do not force binding.
+	// - enforceVerify: Force binding validation.
+	OperationForRiskLogin *string `pulumi:"operationForRiskLogin"`
+	// Means of multi-factor authentication. Value:
+	// - sms: secure phone.
+	// - email: Secure mailbox.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VerificationTypes []string `pulumi:"verificationTypes"`
 }
 
 type SecurityPreferenceState struct {
-	// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage their own passwords. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToChangePassword pulumi.BoolPtrInput
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+	// Whether to allow RAM users to log on using a passkey. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToLoginWithPasskey pulumi.BoolPtrInput
+	// Whether to allow RAM users to manage their own access keys. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	AllowUserToManageAccessKeys pulumi.BoolPtrInput
-	// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToManageMfaDevices pulumi.BoolPtrInput
-	// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+	// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToManagePersonalDingTalk pulumi.BoolPtrInput
+	// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	EnableSaveMfaTicket pulumi.BoolPtrInput
+	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 	EnforceMfaForLogin pulumi.BoolPtrInput
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-	// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-	// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-	// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+	// - If the mask is specified, RAM users can only log on from the specified IP address.
+	// - If you do not specify any mask, the login console function will apply to the entire network.
+	//
+	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrInput
-	// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+	// The validity period of the logon session of RAM users.
+	// Valid values: 1 to 24. Unit: hours.
+	// Default value: 6.
 	LoginSessionDuration pulumi.IntPtrInput
+	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+	// - adaptive: Used only during abnormal login.
+	MfaOperationForLogin pulumi.StringPtrInput
+	// Whether MFA is verified twice during abnormal logon. Value:
+	// - autonomous (default): Skip, do not force binding.
+	// - enforceVerify: Force binding validation.
+	OperationForRiskLogin pulumi.StringPtrInput
+	// Means of multi-factor authentication. Value:
+	// - sms: secure phone.
+	// - email: Secure mailbox.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VerificationTypes pulumi.StringArrayInput
 }
 
 func (SecurityPreferenceState) ElementType() reflect.Type {
@@ -149,44 +225,118 @@ func (SecurityPreferenceState) ElementType() reflect.Type {
 }
 
 type securityPreferenceArgs struct {
-	// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage their own passwords. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToChangePassword *bool `pulumi:"allowUserToChangePassword"`
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+	// Whether to allow RAM users to log on using a passkey. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToLoginWithPasskey *bool `pulumi:"allowUserToLoginWithPasskey"`
+	// Whether to allow RAM users to manage their own access keys. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	AllowUserToManageAccessKeys *bool `pulumi:"allowUserToManageAccessKeys"`
-	// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToManageMfaDevices *bool `pulumi:"allowUserToManageMfaDevices"`
-	// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+	// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToManagePersonalDingTalk *bool `pulumi:"allowUserToManagePersonalDingTalk"`
+	// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	EnableSaveMfaTicket *bool `pulumi:"enableSaveMfaTicket"`
+	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 	EnforceMfaForLogin *bool `pulumi:"enforceMfaForLogin"`
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-	// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-	// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-	// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+	// - If the mask is specified, RAM users can only log on from the specified IP address.
+	// - If you do not specify any mask, the login console function will apply to the entire network.
+	//
+	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks *string `pulumi:"loginNetworkMasks"`
-	// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+	// The validity period of the logon session of RAM users.
+	// Valid values: 1 to 24. Unit: hours.
+	// Default value: 6.
 	LoginSessionDuration *int `pulumi:"loginSessionDuration"`
+	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+	// - adaptive: Used only during abnormal login.
+	MfaOperationForLogin *string `pulumi:"mfaOperationForLogin"`
+	// Whether MFA is verified twice during abnormal logon. Value:
+	// - autonomous (default): Skip, do not force binding.
+	// - enforceVerify: Force binding validation.
+	OperationForRiskLogin *string `pulumi:"operationForRiskLogin"`
+	// Means of multi-factor authentication. Value:
+	// - sms: secure phone.
+	// - email: Secure mailbox.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VerificationTypes []string `pulumi:"verificationTypes"`
 }
 
 // The set of arguments for constructing a SecurityPreference resource.
 type SecurityPreferenceArgs struct {
-	// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage their own passwords. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToChangePassword pulumi.BoolPtrInput
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+	// Whether to allow RAM users to log on using a passkey. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToLoginWithPasskey pulumi.BoolPtrInput
+	// Whether to allow RAM users to manage their own access keys. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	AllowUserToManageAccessKeys pulumi.BoolPtrInput
-	// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+	// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
 	AllowUserToManageMfaDevices pulumi.BoolPtrInput
-	// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+	// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+	// - true (default): Allowed.
+	// - false: not allowed.
+	AllowUserToManagePersonalDingTalk pulumi.BoolPtrInput
+	// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+	// - true: Allow.
+	// - false (default): Not allowed.
 	EnableSaveMfaTicket pulumi.BoolPtrInput
+	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 	EnforceMfaForLogin pulumi.BoolPtrInput
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-	// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-	// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-	// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+	// - If the mask is specified, RAM users can only log on from the specified IP address.
+	// - If you do not specify any mask, the login console function will apply to the entire network.
+	//
+	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrInput
-	// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+	// The validity period of the logon session of RAM users.
+	// Valid values: 1 to 24. Unit: hours.
+	// Default value: 6.
 	LoginSessionDuration pulumi.IntPtrInput
+	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+	// - adaptive: Used only during abnormal login.
+	MfaOperationForLogin pulumi.StringPtrInput
+	// Whether MFA is verified twice during abnormal logon. Value:
+	// - autonomous (default): Skip, do not force binding.
+	// - enforceVerify: Force binding validation.
+	OperationForRiskLogin pulumi.StringPtrInput
+	// Means of multi-factor authentication. Value:
+	// - sms: secure phone.
+	// - email: Secure mailbox.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VerificationTypes pulumi.StringArrayInput
 }
 
 func (SecurityPreferenceArgs) ElementType() reflect.Type {
@@ -276,42 +426,94 @@ func (o SecurityPreferenceOutput) ToSecurityPreferenceOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+// Whether to allow RAM users to manage their own passwords. Value:
+// - true (default): Allowed.
+// - false: not allowed.
 func (o SecurityPreferenceOutput) AllowUserToChangePassword() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToChangePassword }).(pulumi.BoolOutput)
 }
 
-// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+// Whether to allow RAM users to log on using a passkey. Value:
+// - true (default): Allowed.
+// - false: not allowed.
+func (o SecurityPreferenceOutput) AllowUserToLoginWithPasskey() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToLoginWithPasskey }).(pulumi.BoolOutput)
+}
+
+// Whether to allow RAM users to manage their own access keys. Value:
+// - true: Allow.
+// - false (default): Not allowed.
 func (o SecurityPreferenceOutput) AllowUserToManageAccessKeys() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToManageAccessKeys }).(pulumi.BoolOutput)
 }
 
-// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+// - true (default): Allowed.
+// - false: not allowed.
 func (o SecurityPreferenceOutput) AllowUserToManageMfaDevices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToManageMfaDevices }).(pulumi.BoolOutput)
 }
 
-// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+// - true (default): Allowed.
+// - false: not allowed.
+func (o SecurityPreferenceOutput) AllowUserToManagePersonalDingTalk() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.AllowUserToManagePersonalDingTalk }).(pulumi.BoolOutput)
+}
+
+// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+// - true: Allow.
+// - false (default): Not allowed.
 func (o SecurityPreferenceOutput) EnableSaveMfaTicket() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.EnableSaveMfaTicket }).(pulumi.BoolOutput)
 }
 
+// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 // Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
 func (o SecurityPreferenceOutput) EnforceMfaForLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.EnforceMfaForLogin }).(pulumi.BoolOutput)
 }
 
-// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+// - If the mask is specified, RAM users can only log on from the specified IP address.
+// - If you do not specify any mask, the login console function will apply to the entire network.
+//
+// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+//
+// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 func (o SecurityPreferenceOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.StringPtrOutput { return v.LoginNetworkMasks }).(pulumi.StringPtrOutput)
 }
 
-// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+// The validity period of the logon session of RAM users.
+// Valid values: 1 to 24. Unit: hours.
+// Default value: 6.
 func (o SecurityPreferenceOutput) LoginSessionDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.IntOutput { return v.LoginSessionDuration }).(pulumi.IntOutput)
+}
+
+// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+// - adaptive: Used only during abnormal login.
+func (o SecurityPreferenceOutput) MfaOperationForLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.StringOutput { return v.MfaOperationForLogin }).(pulumi.StringOutput)
+}
+
+// Whether MFA is verified twice during abnormal logon. Value:
+// - autonomous (default): Skip, do not force binding.
+// - enforceVerify: Force binding validation.
+func (o SecurityPreferenceOutput) OperationForRiskLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.StringOutput { return v.OperationForRiskLogin }).(pulumi.StringOutput)
+}
+
+// Means of multi-factor authentication. Value:
+// - sms: secure phone.
+// - email: Secure mailbox.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o SecurityPreferenceOutput) VerificationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.StringArrayOutput { return v.VerificationTypes }).(pulumi.StringArrayOutput)
 }
 
 type SecurityPreferenceArrayOutput struct{ *pulumi.OutputState }

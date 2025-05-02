@@ -7,7 +7,9 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.nas.FileSystemArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemState;
 import com.pulumi.alicloud.nas.outputs.FileSystemNfsAcl;
+import com.pulumi.alicloud.nas.outputs.FileSystemOptions;
 import com.pulumi.alicloud.nas.outputs.FileSystemRecycleBin;
+import com.pulumi.alicloud.nas.outputs.FileSystemSmbAcl;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -20,6 +22,8 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a File Storage (NAS) File System resource.
+ * 
+ * File System Instance.
  * 
  * For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
  * 
@@ -84,117 +88,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.nas.NasFunctions;
- * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.nas.FileSystem;
- * import com.pulumi.alicloud.nas.FileSystemArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType("extreme")
- *             .build());
- * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .protocolType("NFS")
- *             .storageType("standard")
- *             .capacity(100)
- *             .description(name)
- *             .encryptType(1)
- *             .fileSystemType("extreme")
- *             .zoneId(default_.zones()[0].zoneId())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.nas.NasFunctions;
- * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.nas.FileSystem;
- * import com.pulumi.alicloud.nas.FileSystemArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType("cpfs")
- *             .build());
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones()[1].zoneId())
- *             .build());
- * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .protocolType("cpfs")
- *             .storageType("advance_100")
- *             .capacity(5000)
- *             .description(name)
- *             .fileSystemType("cpfs")
- *             .vswitchId(defaultSwitch.id())
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones()[1].zoneId())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * File Storage (NAS) File System can be imported using the id, e.g.
@@ -207,140 +100,244 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nas/fileSystem:FileSystem")
 public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
-     * The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+     * File system capacity.
+     * 
+     * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
+     * 
+     * For optional values, please refer to the actual specifications on the purchase page:
+     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
+     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
+     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
+     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      * 
      */
     @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
-     * @return The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+     * @return File system capacity.
+     * 
+     * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
+     * 
+     * For optional values, please refer to the actual specifications on the purchase page:
+     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
+     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
+     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
+     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      * 
      */
     public Output<Integer> capacity() {
         return this.capacity;
     }
     /**
-     * (Available since v1.236.0) The time when the file system was created.
+     * CreateTime
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (Available since v1.236.0) The time when the file system was created.
+     * @return CreateTime
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the file system.
+     * File system description.
+     * 
+     * Restrictions:
+     * - 2~128 English or Chinese characters in length.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+     * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the file system.
+     * @return File system description.
+     * 
+     * Restrictions:
+     * - 2~128 English or Chinese characters in length.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+     * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+     * Whether the file system is encrypted.
+     * 
+     * Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
+     * 
+     * Value:
+     * - 0 (default): not encrypted.
+     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      * 
      */
     @Export(name="encryptType", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> encryptType;
+    private Output<Integer> encryptType;
 
     /**
-     * @return Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+     * @return Whether the file system is encrypted.
+     * 
+     * Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
+     * 
+     * Value:
+     * - 0 (default): not encrypted.
+     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      * 
      */
-    public Output<Optional<Integer>> encryptType() {
-        return Codegen.optional(this.encryptType);
+    public Output<Integer> encryptType() {
+        return this.encryptType;
     }
     /**
-     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+     * File system type.
+     * 
+     * Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * - cpfs: file storage CPFS
      * 
      */
     @Export(name="fileSystemType", refs={String.class}, tree="[0]")
     private Output<String> fileSystemType;
 
     /**
-     * @return The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+     * @return File system type.
+     * 
+     * Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * - cpfs: file storage CPFS
      * 
      */
     public Output<String> fileSystemType() {
         return this.fileSystemType;
     }
     /**
-     * The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+     * String of keytab file content encrypted by base64
+     * 
+     */
+    @Export(name="keytab", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keytab;
+
+    /**
+     * @return String of keytab file content encrypted by base64
+     * 
+     */
+    public Output<Optional<String>> keytab() {
+        return Codegen.optional(this.keytab);
+    }
+    /**
+     * String of the keytab file content encrypted by MD5
+     * 
+     */
+    @Export(name="keytabMd5", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keytabMd5;
+
+    /**
+     * @return String of the keytab file content encrypted by MD5
+     * 
+     */
+    public Output<Optional<String>> keytabMd5() {
+        return Codegen.optional(this.keytabMd5);
+    }
+    /**
+     * The ID of the KMS key.
+     * This parameter is required only when EncryptType = 2.
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     /**
-     * @return The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+     * @return The ID of the KMS key.
+     * This parameter is required only when EncryptType = 2.
      * 
      */
     public Output<String> kmsKeyId() {
         return this.kmsKeyId;
     }
     /**
-     * The NFS ACL feature of the file system. See `nfs_acl` below.
-     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * NFS ACL See `nfs_acl` below.
      * 
      */
     @Export(name="nfsAcl", refs={FileSystemNfsAcl.class}, tree="[0]")
     private Output<FileSystemNfsAcl> nfsAcl;
 
     /**
-     * @return The NFS ACL feature of the file system. See `nfs_acl` below.
-     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * @return NFS ACL See `nfs_acl` below.
      * 
      */
     public Output<FileSystemNfsAcl> nfsAcl() {
         return this.nfsAcl;
     }
     /**
-     * The protocol type of the file system. Valid values:
-     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
-     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
-     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+     * Option. See `options` below.
+     * 
+     */
+    @Export(name="options", refs={FileSystemOptions.class}, tree="[0]")
+    private Output<FileSystemOptions> options;
+
+    /**
+     * @return Option. See `options` below.
+     * 
+     */
+    public Output<FileSystemOptions> options() {
+        return this.options;
+    }
+    /**
+     * File transfer protocol type.
+     * - When FileSystemType = standard, the values are NFS and SMB.
+     * - When FileSystemType = extreme, the value is NFS.
+     * - When FileSystemType = cpfs, the value is cpfs.
      * 
      */
     @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
-     * @return The protocol type of the file system. Valid values:
-     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
-     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
-     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+     * @return File transfer protocol type.
+     * - When FileSystemType = standard, the values are NFS and SMB.
+     * - When FileSystemType = extreme, the value is NFS.
+     * - When FileSystemType = cpfs, the value is cpfs.
      * 
      */
     public Output<String> protocolType() {
         return this.protocolType;
     }
     /**
-     * The recycle bin feature of the file system. See `recycle_bin` below.
-     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * Recycle Bin See `recycle_bin` below.
      * 
      */
     @Export(name="recycleBin", refs={FileSystemRecycleBin.class}, tree="[0]")
     private Output<FileSystemRecycleBin> recycleBin;
 
     /**
-     * @return The recycle bin feature of the file system. See `recycle_bin` below.
-     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * @return Recycle Bin See `recycle_bin` below.
      * 
      */
     public Output<FileSystemRecycleBin> recycleBin() {
         return this.recycleBin;
+    }
+    /**
+     * RegionId
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return RegionId
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the resource group.
@@ -357,106 +354,146 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * SMB ACL See `smb_acl` below.
+     * 
+     */
+    @Export(name="smbAcl", refs={FileSystemSmbAcl.class}, tree="[0]")
+    private Output<FileSystemSmbAcl> smbAcl;
+
+    /**
+     * @return SMB ACL See `smb_acl` below.
+     * 
+     */
+    public Output<FileSystemSmbAcl> smbAcl() {
+        return this.smbAcl;
+    }
+    /**
+     * Only extreme NAS is supported.
+     * 
+     * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**
-     * @return The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * @return Only extreme NAS is supported.
+     * 
+     * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      * 
      */
     public Output<Optional<String>> snapshotId() {
         return Codegen.optional(this.snapshotId);
     }
     /**
-     * (Available since v1.236.0) The status of the File System.
+     * File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available since v1.236.0) The status of the File System.
+     * @return File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The storage type of the file system. Valid values:
-     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
-     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
-     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
-     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
+     * The storage type.
+     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = extreme, the value is standard or advance.
+     * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the file system. Valid values:
-     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
-     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
-     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
-     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
+     * @return The storage type.
+     * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+     * - When FileSystemType = extreme, the value is standard or advance.
+     * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      * 
      */
     public Output<String> storageType() {
         return this.storageType;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * Label information collection.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return Label information collection.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+     * The ID of the VPC network.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+     * @return The ID of the VPC network.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      * 
      */
     public Output<Optional<String>> vpcId() {
         return Codegen.optional(this.vpcId);
     }
     /**
-     * The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+     * The ID of the switch.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+     * @return The ID of the switch.
+     * This parameter must be configured when FileSystemType = cpfs.
+     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      * 
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
+     * The zone ID.
+     * 
+     * The usable area refers to the physical area where power and network are independent of each other in the same area.
+     * 
+     * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
+     * 
+     * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     * 
+     * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
+     * @return The zone ID.
+     * 
+     * The usable area refers to the physical area where power and network are independent of each other in the same area.
+     * 
+     * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
+     * 
+     * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     * 
+     * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      * 
      */
     public Output<String> zoneId() {

@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name: pulumi.String("default"),
+//				SecurityGroupName: pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,7 +47,7 @@ import (
 //			_, err = ecs.NewSecurityGroupRule(ctx, "allow_all_tcp", &ecs.SecurityGroupRuleArgs{
 //				Type:            pulumi.String("ingress"),
 //				IpProtocol:      pulumi.String("tcp"),
-//				NicType:         pulumi.String("internet"),
+//				NicType:         pulumi.String("intranet"),
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("1/65535"),
 //				Priority:        pulumi.Int(1),
@@ -101,6 +101,8 @@ type SecurityGroupRule struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// The ID of the Security Group Rule.
+	SecurityGroupRuleId pulumi.StringOutput `pulumi:"securityGroupRuleId"`
 	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
 	SourceGroupOwnerAccount pulumi.StringPtrOutput `pulumi:"sourceGroupOwnerAccount"`
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
@@ -171,6 +173,8 @@ type securityGroupRuleState struct {
 	Priority *int `pulumi:"priority"`
 	// The ID of the Security Group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The ID of the Security Group Rule.
+	SecurityGroupRuleId *string `pulumi:"securityGroupRuleId"`
 	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
 	SourceGroupOwnerAccount *string `pulumi:"sourceGroupOwnerAccount"`
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
@@ -203,6 +207,8 @@ type SecurityGroupRuleState struct {
 	Priority pulumi.IntPtrInput
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringPtrInput
+	// The ID of the Security Group Rule.
+	SecurityGroupRuleId pulumi.StringPtrInput
 	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
 	SourceGroupOwnerAccount pulumi.StringPtrInput
 	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
@@ -418,6 +424,11 @@ func (o SecurityGroupRuleOutput) Priority() pulumi.IntPtrOutput {
 // The ID of the Security Group.
 func (o SecurityGroupRuleOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Security Group Rule.
+func (o SecurityGroupRuleOutput) SecurityGroupRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.SecurityGroupRuleId }).(pulumi.StringOutput)
 }
 
 // The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.

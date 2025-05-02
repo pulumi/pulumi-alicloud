@@ -67,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RedirectRule{}
 	case "alicloud:esa/rewriteUrlRule:RewriteUrlRule":
 		r = &RewriteUrlRule{}
+	case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
+		r = &ScheduledPreloadExecution{}
+	case "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob":
+		r = &ScheduledPreloadJob{}
 	case "alicloud:esa/site:Site":
 		r = &Site{}
 	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
@@ -203,6 +207,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/rewriteUrlRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/scheduledPreloadExecution",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/scheduledPreloadJob",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

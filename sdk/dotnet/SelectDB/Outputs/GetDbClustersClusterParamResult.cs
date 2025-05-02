@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// <summary>
         /// The value range of the parameter.
         /// </summary>
-        public readonly int Optional;
+        public readonly string Optional;
         /// <summary>
         /// The category of the parameter.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
 
             string name,
 
-            int optional,
+            string optional,
 
             string paramCategory,
 

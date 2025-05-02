@@ -30,6 +30,8 @@ type GetKubernetesNodePoolsArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// A list of Nodepool IDs.
 	Ids []string `pulumi:"ids"`
+	// The name of node pool.
+	NodePoolName *string `pulumi:"nodePoolName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -41,6 +43,8 @@ type GetKubernetesNodePoolsResult struct {
 	Id string `pulumi:"id"`
 	// A list of Nodepool IDs.
 	Ids []string `pulumi:"ids"`
+	// The name of node pool.
+	NodePoolName *string `pulumi:"nodePoolName"`
 	// A list of Nodepool Entries. Each element contains the following attributes:
 	Nodepools  []GetKubernetesNodePoolsNodepool `pulumi:"nodepools"`
 	OutputFile *string                          `pulumi:"outputFile"`
@@ -61,6 +65,8 @@ type GetKubernetesNodePoolsOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// A list of Nodepool IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of node pool.
+	NodePoolName pulumi.StringPtrInput `pulumi:"nodePoolName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
@@ -96,6 +102,11 @@ func (o GetKubernetesNodePoolsResultOutput) Id() pulumi.StringOutput {
 // A list of Nodepool IDs.
 func (o GetKubernetesNodePoolsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesNodePoolsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The name of node pool.
+func (o GetKubernetesNodePoolsResultOutput) NodePoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsResult) *string { return v.NodePoolName }).(pulumi.StringPtrOutput)
 }
 
 // A list of Nodepool Entries. Each element contains the following attributes:

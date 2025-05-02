@@ -72,6 +72,8 @@ import javax.annotation.Nullable;
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
  *             .serverGroupType("Ip")
+ *             .connectionDrainTimeout(10)
+ *             .connectionDrainEnabled(true)
  *             .vpcId(defaultNetwork.id())
  *             .scheduler("Wrr")
  *             .protocol("TCP")

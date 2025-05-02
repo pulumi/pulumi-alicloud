@@ -24,7 +24,7 @@ replace (
 replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.247.0
+	github.com/aliyun/terraform-provider-alicloud v1.248.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.0
 	github.com/pulumi/pulumi/sdk/v3 v3.163.0
@@ -225,6 +225,7 @@ require (
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
+	github.com/samber/lo v1.49.1 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/segmentio/asm v1.1.3 // indirect

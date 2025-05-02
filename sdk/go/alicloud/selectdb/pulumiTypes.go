@@ -1016,7 +1016,7 @@ type GetDbClustersClusterParam struct {
 	// Changed parameter name.
 	Name string `pulumi:"name"`
 	// The value range of the parameter.
-	Optional int `pulumi:"optional"`
+	Optional string `pulumi:"optional"`
 	// The category of the parameter.
 	ParamCategory string `pulumi:"paramCategory"`
 	// The new value of Parameter.
@@ -1046,7 +1046,7 @@ type GetDbClustersClusterParamArgs struct {
 	// Changed parameter name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value range of the parameter.
-	Optional pulumi.IntInput `pulumi:"optional"`
+	Optional pulumi.StringInput `pulumi:"optional"`
 	// The category of the parameter.
 	ParamCategory pulumi.StringInput `pulumi:"paramCategory"`
 	// The new value of Parameter.
@@ -1130,8 +1130,8 @@ func (o GetDbClustersClusterParamOutput) Name() pulumi.StringOutput {
 }
 
 // The value range of the parameter.
-func (o GetDbClustersClusterParamOutput) Optional() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersClusterParam) int { return v.Optional }).(pulumi.IntOutput)
+func (o GetDbClustersClusterParamOutput) Optional() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersClusterParam) string { return v.Optional }).(pulumi.StringOutput)
 }
 
 // The category of the parameter.

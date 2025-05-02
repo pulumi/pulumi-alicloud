@@ -81,7 +81,9 @@ type GrafanaWorkspace struct {
 	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
 	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
 	AccountNumber pulumi.StringPtrOutput `pulumi:"accountNumber"`
-	// Language environment (if not filled in, default is zh): zh, en.
+	// Language environment (if not filled in, default is zh):
+	// - zh
+	// - en
 	AliyunLang pulumi.StringPtrOutput `pulumi:"aliyunLang"`
 	// Whether to automatically renew. Value range:
 	// - true: Automatic renewal. Default value: true.
@@ -103,7 +105,11 @@ type GrafanaWorkspace struct {
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
 	// Grafana version
 	GrafanaVersion pulumi.StringPtrOutput `pulumi:"grafanaVersion"`
-	// Edition
+	// The edition. **Valid values:**
+	// - standard: ` Beta Edition(For internal testing only)  `
+	// - personal_edition: Developer Edition
+	// - experts_edition: Pro Edition
+	// - advanced_edition: Advanced Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrOutput `pulumi:"grafanaWorkspaceEdition"`
 	// The name of the resource
 	GrafanaWorkspaceName pulumi.StringOutput `pulumi:"grafanaWorkspaceName"`
@@ -160,7 +166,9 @@ type grafanaWorkspaceState struct {
 	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
 	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
 	AccountNumber *string `pulumi:"accountNumber"`
-	// Language environment (if not filled in, default is zh): zh, en.
+	// Language environment (if not filled in, default is zh):
+	// - zh
+	// - en
 	AliyunLang *string `pulumi:"aliyunLang"`
 	// Whether to automatically renew. Value range:
 	// - true: Automatic renewal. Default value: true.
@@ -182,7 +190,11 @@ type grafanaWorkspaceState struct {
 	Duration *string `pulumi:"duration"`
 	// Grafana version
 	GrafanaVersion *string `pulumi:"grafanaVersion"`
-	// Edition
+	// The edition. **Valid values:**
+	// - standard: ` Beta Edition(For internal testing only)  `
+	// - personal_edition: Developer Edition
+	// - experts_edition: Pro Edition
+	// - advanced_edition: Advanced Edition
 	GrafanaWorkspaceEdition *string `pulumi:"grafanaWorkspaceEdition"`
 	// The name of the resource
 	GrafanaWorkspaceName *string `pulumi:"grafanaWorkspaceName"`
@@ -207,7 +219,9 @@ type GrafanaWorkspaceState struct {
 	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
 	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
 	AccountNumber pulumi.StringPtrInput
-	// Language environment (if not filled in, default is zh): zh, en.
+	// Language environment (if not filled in, default is zh):
+	// - zh
+	// - en
 	AliyunLang pulumi.StringPtrInput
 	// Whether to automatically renew. Value range:
 	// - true: Automatic renewal. Default value: true.
@@ -229,7 +243,11 @@ type GrafanaWorkspaceState struct {
 	Duration pulumi.StringPtrInput
 	// Grafana version
 	GrafanaVersion pulumi.StringPtrInput
-	// Edition
+	// The edition. **Valid values:**
+	// - standard: ` Beta Edition(For internal testing only)  `
+	// - personal_edition: Developer Edition
+	// - experts_edition: Pro Edition
+	// - advanced_edition: Advanced Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrInput
 	// The name of the resource
 	GrafanaWorkspaceName pulumi.StringPtrInput
@@ -258,7 +276,9 @@ type grafanaWorkspaceArgs struct {
 	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
 	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
 	AccountNumber *string `pulumi:"accountNumber"`
-	// Language environment (if not filled in, default is zh): zh, en.
+	// Language environment (if not filled in, default is zh):
+	// - zh
+	// - en
 	AliyunLang *string `pulumi:"aliyunLang"`
 	// Whether to automatically renew. Value range:
 	// - true: Automatic renewal. Default value: true.
@@ -278,7 +298,11 @@ type grafanaWorkspaceArgs struct {
 	Duration *string `pulumi:"duration"`
 	// Grafana version
 	GrafanaVersion *string `pulumi:"grafanaVersion"`
-	// Edition
+	// The edition. **Valid values:**
+	// - standard: ` Beta Edition(For internal testing only)  `
+	// - personal_edition: Developer Edition
+	// - experts_edition: Pro Edition
+	// - advanced_edition: Advanced Edition
 	GrafanaWorkspaceEdition *string `pulumi:"grafanaWorkspaceEdition"`
 	// The name of the resource
 	GrafanaWorkspaceName string `pulumi:"grafanaWorkspaceName"`
@@ -300,7 +324,9 @@ type GrafanaWorkspaceArgs struct {
 	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
 	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
 	AccountNumber pulumi.StringPtrInput
-	// Language environment (if not filled in, default is zh): zh, en.
+	// Language environment (if not filled in, default is zh):
+	// - zh
+	// - en
 	AliyunLang pulumi.StringPtrInput
 	// Whether to automatically renew. Value range:
 	// - true: Automatic renewal. Default value: true.
@@ -320,7 +346,11 @@ type GrafanaWorkspaceArgs struct {
 	Duration pulumi.StringPtrInput
 	// Grafana version
 	GrafanaVersion pulumi.StringPtrInput
-	// Edition
+	// The edition. **Valid values:**
+	// - standard: ` Beta Edition(For internal testing only)  `
+	// - personal_edition: Developer Edition
+	// - experts_edition: Pro Edition
+	// - advanced_edition: Advanced Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrInput
 	// The name of the resource
 	GrafanaWorkspaceName pulumi.StringInput
@@ -430,7 +460,9 @@ func (o GrafanaWorkspaceOutput) AccountNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.AccountNumber }).(pulumi.StringPtrOutput)
 }
 
-// Language environment (if not filled in, default is zh): zh, en.
+// Language environment (if not filled in, default is zh):
+// - zh
+// - en
 func (o GrafanaWorkspaceOutput) AliyunLang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.AliyunLang }).(pulumi.StringPtrOutput)
 }
@@ -473,7 +505,11 @@ func (o GrafanaWorkspaceOutput) GrafanaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.GrafanaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Edition
+// The edition. **Valid values:**
+// - standard: ` Beta Edition(For internal testing only)  `
+// - personal_edition: Developer Edition
+// - experts_edition: Pro Edition
+// - advanced_edition: Advanced Edition
 func (o GrafanaWorkspaceOutput) GrafanaWorkspaceEdition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.GrafanaWorkspaceEdition }).(pulumi.StringPtrOutput)
 }

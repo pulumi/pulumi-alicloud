@@ -15,6 +15,11 @@ export type CollectionPolicy = import("./collectionPolicy").CollectionPolicy;
 export const CollectionPolicy: typeof import("./collectionPolicy").CollectionPolicy = null as any;
 utilities.lazyLoad(exports, ["CollectionPolicy"], () => require("./collectionPolicy"));
 
+export { EtlArgs, EtlState } from "./etl";
+export type Etl = import("./etl").Etl;
+export const Etl: typeof import("./etl").Etl = null as any;
+utilities.lazyLoad(exports, ["Etl"], () => require("./etl"));
+
 export { OssExportSinkArgs, OssExportSinkState } from "./ossExportSink";
 export type OssExportSink = import("./ossExportSink").OssExportSink;
 export const OssExportSink: typeof import("./ossExportSink").OssExportSink = null as any;
@@ -34,6 +39,8 @@ const _module = {
                 return new Alert(name, <any>undefined, { urn })
             case "alicloud:sls/collectionPolicy:CollectionPolicy":
                 return new CollectionPolicy(name, <any>undefined, { urn })
+            case "alicloud:sls/etl:Etl":
+                return new Etl(name, <any>undefined, { urn })
             case "alicloud:sls/ossExportSink:OssExportSink":
                 return new OssExportSink(name, <any>undefined, { urn })
             case "alicloud:sls/scheduledSql:ScheduledSql":
@@ -45,5 +52,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "sls/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/etl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

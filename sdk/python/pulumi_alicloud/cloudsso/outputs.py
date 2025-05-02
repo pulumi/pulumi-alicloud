@@ -18,7 +18,12 @@ from . import outputs
 
 __all__ = [
     'AccessConfigurationPermissionPolicy',
+    'DirectoryLoginPreference',
+    'DirectoryMfaAuthenticationSettingInfo',
+    'DirectoryPasswordPolicy',
     'DirectorySamlIdentityProviderConfiguration',
+    'DirectorySamlServiceProvider',
+    'DirectoryUserProvisioningConfiguration',
     'GetAccessAssignmentsAssignmentResult',
     'GetAccessConfigurationsConfigurationResult',
     'GetAccessConfigurationsConfigurationPermissionPolicyResult',
@@ -94,14 +99,318 @@ class AccessConfigurationPermissionPolicy(dict):
 
 
 @pulumi.output_type
+class DirectoryLoginPreference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowUserToGetCredentials":
+            suggest = "allow_user_to_get_credentials"
+        elif key == "loginNetworkMasks":
+            suggest = "login_network_masks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryLoginPreference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectoryLoginPreference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectoryLoginPreference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_user_to_get_credentials: Optional[builtins.bool] = None,
+                 login_network_masks: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_user_to_get_credentials: Whether the user can obtain the program access credential in the portal after logging in.
+        :param builtins.str login_network_masks: IP address whitelist
+        """
+        if allow_user_to_get_credentials is not None:
+            pulumi.set(__self__, "allow_user_to_get_credentials", allow_user_to_get_credentials)
+        if login_network_masks is not None:
+            pulumi.set(__self__, "login_network_masks", login_network_masks)
+
+    @property
+    @pulumi.getter(name="allowUserToGetCredentials")
+    def allow_user_to_get_credentials(self) -> Optional[builtins.bool]:
+        """
+        Whether the user can obtain the program access credential in the portal after logging in.
+        """
+        return pulumi.get(self, "allow_user_to_get_credentials")
+
+    @property
+    @pulumi.getter(name="loginNetworkMasks")
+    def login_network_masks(self) -> Optional[builtins.str]:
+        """
+        IP address whitelist
+        """
+        return pulumi.get(self, "login_network_masks")
+
+
+@pulumi.output_type
+class DirectoryMfaAuthenticationSettingInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mfaAuthenticationAdvanceSettings":
+            suggest = "mfa_authentication_advance_settings"
+        elif key == "operationForRiskLogin":
+            suggest = "operation_for_risk_login"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryMfaAuthenticationSettingInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectoryMfaAuthenticationSettingInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectoryMfaAuthenticationSettingInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mfa_authentication_advance_settings: Optional[builtins.str] = None,
+                 operation_for_risk_login: Optional[builtins.str] = None):
+        """
+        :param builtins.str mfa_authentication_advance_settings: Global MFA validation policy
+        :param builtins.str operation_for_risk_login: MFA verification policy for abnormal logon.
+        """
+        if mfa_authentication_advance_settings is not None:
+            pulumi.set(__self__, "mfa_authentication_advance_settings", mfa_authentication_advance_settings)
+        if operation_for_risk_login is not None:
+            pulumi.set(__self__, "operation_for_risk_login", operation_for_risk_login)
+
+    @property
+    @pulumi.getter(name="mfaAuthenticationAdvanceSettings")
+    def mfa_authentication_advance_settings(self) -> Optional[builtins.str]:
+        """
+        Global MFA validation policy
+        """
+        return pulumi.get(self, "mfa_authentication_advance_settings")
+
+    @property
+    @pulumi.getter(name="operationForRiskLogin")
+    def operation_for_risk_login(self) -> Optional[builtins.str]:
+        """
+        MFA verification policy for abnormal logon.
+        """
+        return pulumi.get(self, "operation_for_risk_login")
+
+
+@pulumi.output_type
+class DirectoryPasswordPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hardExpire":
+            suggest = "hard_expire"
+        elif key == "maxLoginAttempts":
+            suggest = "max_login_attempts"
+        elif key == "maxPasswordAge":
+            suggest = "max_password_age"
+        elif key == "maxPasswordLength":
+            suggest = "max_password_length"
+        elif key == "minPasswordDifferentChars":
+            suggest = "min_password_different_chars"
+        elif key == "minPasswordLength":
+            suggest = "min_password_length"
+        elif key == "passwordNotContainUsername":
+            suggest = "password_not_contain_username"
+        elif key == "passwordReusePrevention":
+            suggest = "password_reuse_prevention"
+        elif key == "requireLowerCaseChars":
+            suggest = "require_lower_case_chars"
+        elif key == "requireNumbers":
+            suggest = "require_numbers"
+        elif key == "requireSymbols":
+            suggest = "require_symbols"
+        elif key == "requireUpperCaseChars":
+            suggest = "require_upper_case_chars"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryPasswordPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectoryPasswordPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectoryPasswordPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hard_expire: Optional[builtins.bool] = None,
+                 max_login_attempts: Optional[builtins.int] = None,
+                 max_password_age: Optional[builtins.int] = None,
+                 max_password_length: Optional[builtins.int] = None,
+                 min_password_different_chars: Optional[builtins.int] = None,
+                 min_password_length: Optional[builtins.int] = None,
+                 password_not_contain_username: Optional[builtins.bool] = None,
+                 password_reuse_prevention: Optional[builtins.int] = None,
+                 require_lower_case_chars: Optional[builtins.bool] = None,
+                 require_numbers: Optional[builtins.bool] = None,
+                 require_symbols: Optional[builtins.bool] = None,
+                 require_upper_case_chars: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool hard_expire: Whether to restrict login after Password Expiration
+        :param builtins.int max_login_attempts: Number of password retries.
+        :param builtins.int max_password_age: Password validity period.
+        :param builtins.int max_password_length: Maximum password length.
+        :param builtins.int min_password_different_chars: The minimum number of different characters in a password.
+        :param builtins.int min_password_length: Minimum password length.
+        :param builtins.bool password_not_contain_username: Whether the user name is not allowed in the password.
+        :param builtins.int password_reuse_prevention: Historical password check policy.
+        :param builtins.bool require_lower_case_chars: Whether lowercase letters are required in the password.
+        :param builtins.bool require_numbers: Whether numbers are required in the password.
+        :param builtins.bool require_symbols: Whether symbols are required in the password.
+        :param builtins.bool require_upper_case_chars: Whether uppercase letters are required in the password.
+        """
+        if hard_expire is not None:
+            pulumi.set(__self__, "hard_expire", hard_expire)
+        if max_login_attempts is not None:
+            pulumi.set(__self__, "max_login_attempts", max_login_attempts)
+        if max_password_age is not None:
+            pulumi.set(__self__, "max_password_age", max_password_age)
+        if max_password_length is not None:
+            pulumi.set(__self__, "max_password_length", max_password_length)
+        if min_password_different_chars is not None:
+            pulumi.set(__self__, "min_password_different_chars", min_password_different_chars)
+        if min_password_length is not None:
+            pulumi.set(__self__, "min_password_length", min_password_length)
+        if password_not_contain_username is not None:
+            pulumi.set(__self__, "password_not_contain_username", password_not_contain_username)
+        if password_reuse_prevention is not None:
+            pulumi.set(__self__, "password_reuse_prevention", password_reuse_prevention)
+        if require_lower_case_chars is not None:
+            pulumi.set(__self__, "require_lower_case_chars", require_lower_case_chars)
+        if require_numbers is not None:
+            pulumi.set(__self__, "require_numbers", require_numbers)
+        if require_symbols is not None:
+            pulumi.set(__self__, "require_symbols", require_symbols)
+        if require_upper_case_chars is not None:
+            pulumi.set(__self__, "require_upper_case_chars", require_upper_case_chars)
+
+    @property
+    @pulumi.getter(name="hardExpire")
+    def hard_expire(self) -> Optional[builtins.bool]:
+        """
+        Whether to restrict login after Password Expiration
+        """
+        return pulumi.get(self, "hard_expire")
+
+    @property
+    @pulumi.getter(name="maxLoginAttempts")
+    def max_login_attempts(self) -> Optional[builtins.int]:
+        """
+        Number of password retries.
+        """
+        return pulumi.get(self, "max_login_attempts")
+
+    @property
+    @pulumi.getter(name="maxPasswordAge")
+    def max_password_age(self) -> Optional[builtins.int]:
+        """
+        Password validity period.
+        """
+        return pulumi.get(self, "max_password_age")
+
+    @property
+    @pulumi.getter(name="maxPasswordLength")
+    def max_password_length(self) -> Optional[builtins.int]:
+        """
+        Maximum password length.
+        """
+        return pulumi.get(self, "max_password_length")
+
+    @property
+    @pulumi.getter(name="minPasswordDifferentChars")
+    def min_password_different_chars(self) -> Optional[builtins.int]:
+        """
+        The minimum number of different characters in a password.
+        """
+        return pulumi.get(self, "min_password_different_chars")
+
+    @property
+    @pulumi.getter(name="minPasswordLength")
+    def min_password_length(self) -> Optional[builtins.int]:
+        """
+        Minimum password length.
+        """
+        return pulumi.get(self, "min_password_length")
+
+    @property
+    @pulumi.getter(name="passwordNotContainUsername")
+    def password_not_contain_username(self) -> Optional[builtins.bool]:
+        """
+        Whether the user name is not allowed in the password.
+        """
+        return pulumi.get(self, "password_not_contain_username")
+
+    @property
+    @pulumi.getter(name="passwordReusePrevention")
+    def password_reuse_prevention(self) -> Optional[builtins.int]:
+        """
+        Historical password check policy.
+        """
+        return pulumi.get(self, "password_reuse_prevention")
+
+    @property
+    @pulumi.getter(name="requireLowerCaseChars")
+    def require_lower_case_chars(self) -> Optional[builtins.bool]:
+        """
+        Whether lowercase letters are required in the password.
+        """
+        return pulumi.get(self, "require_lower_case_chars")
+
+    @property
+    @pulumi.getter(name="requireNumbers")
+    def require_numbers(self) -> Optional[builtins.bool]:
+        """
+        Whether numbers are required in the password.
+        """
+        return pulumi.get(self, "require_numbers")
+
+    @property
+    @pulumi.getter(name="requireSymbols")
+    def require_symbols(self) -> Optional[builtins.bool]:
+        """
+        Whether symbols are required in the password.
+        """
+        return pulumi.get(self, "require_symbols")
+
+    @property
+    @pulumi.getter(name="requireUpperCaseChars")
+    def require_upper_case_chars(self) -> Optional[builtins.bool]:
+        """
+        Whether uppercase letters are required in the password.
+        """
+        return pulumi.get(self, "require_upper_case_chars")
+
+
+@pulumi.output_type
 class DirectorySamlIdentityProviderConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "encodedMetadataDocument":
+        if key == "bindingType":
+            suggest = "binding_type"
+        elif key == "certificateIds":
+            suggest = "certificate_ids"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "encodedMetadataDocument":
             suggest = "encoded_metadata_document"
+        elif key == "entityId":
+            suggest = "entity_id"
+        elif key == "loginUrl":
+            suggest = "login_url"
         elif key == "ssoStatus":
             suggest = "sso_status"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "wantRequestSigned":
+            suggest = "want_request_signed"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DirectorySamlIdentityProviderConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -115,32 +424,272 @@ class DirectorySamlIdentityProviderConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 binding_type: Optional[builtins.str] = None,
+                 certificate_ids: Optional[Sequence[builtins.str]] = None,
+                 create_time: Optional[builtins.str] = None,
                  encoded_metadata_document: Optional[builtins.str] = None,
-                 sso_status: Optional[builtins.str] = None):
+                 entity_id: Optional[builtins.str] = None,
+                 login_url: Optional[builtins.str] = None,
+                 sso_status: Optional[builtins.str] = None,
+                 update_time: Optional[builtins.str] = None,
+                 want_request_signed: Optional[builtins.bool] = None):
         """
-        :param builtins.str encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
-        :param builtins.str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        :param builtins.str binding_type: The Binding method for initiating a SAML request.
+        :param Sequence[builtins.str] certificate_ids: Certificate ID list
+        :param builtins.str create_time: CreateTime
+        :param builtins.str encoded_metadata_document: EncodedMetadataDocument
+        :param builtins.str entity_id: EntityId
+        :param builtins.str login_url: LoginUrl
+        :param builtins.str sso_status: SSOStatus
+        :param builtins.str update_time: UpdateTime
+        :param builtins.bool want_request_signed: SP Request whether the signature is required
         """
+        if binding_type is not None:
+            pulumi.set(__self__, "binding_type", binding_type)
+        if certificate_ids is not None:
+            pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if encoded_metadata_document is not None:
             pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+        if login_url is not None:
+            pulumi.set(__self__, "login_url", login_url)
         if sso_status is not None:
             pulumi.set(__self__, "sso_status", sso_status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if want_request_signed is not None:
+            pulumi.set(__self__, "want_request_signed", want_request_signed)
+
+    @property
+    @pulumi.getter(name="bindingType")
+    def binding_type(self) -> Optional[builtins.str]:
+        """
+        The Binding method for initiating a SAML request.
+        """
+        return pulumi.get(self, "binding_type")
+
+    @property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Certificate ID list
+        """
+        return pulumi.get(self, "certificate_ids")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[builtins.str]:
+        """
+        CreateTime
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="encodedMetadataDocument")
     def encoded_metadata_document(self) -> Optional[builtins.str]:
         """
-        Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+        EncodedMetadataDocument
         """
         return pulumi.get(self, "encoded_metadata_document")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[builtins.str]:
+        """
+        EntityId
+        """
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> Optional[builtins.str]:
+        """
+        LoginUrl
+        """
+        return pulumi.get(self, "login_url")
 
     @property
     @pulumi.getter(name="ssoStatus")
     def sso_status(self) -> Optional[builtins.str]:
         """
-        SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        SSOStatus
         """
         return pulumi.get(self, "sso_status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[builtins.str]:
+        """
+        UpdateTime
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="wantRequestSigned")
+    def want_request_signed(self) -> Optional[builtins.bool]:
+        """
+        SP Request whether the signature is required
+        """
+        return pulumi.get(self, "want_request_signed")
+
+
+@pulumi.output_type
+class DirectorySamlServiceProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acsUrl":
+            suggest = "acs_url"
+        elif key == "authnSignAlgo":
+            suggest = "authn_sign_algo"
+        elif key == "certificateType":
+            suggest = "certificate_type"
+        elif key == "encodedMetadataDocument":
+            suggest = "encoded_metadata_document"
+        elif key == "entityId":
+            suggest = "entity_id"
+        elif key == "supportEncryptedAssertion":
+            suggest = "support_encrypted_assertion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectorySamlServiceProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectorySamlServiceProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectorySamlServiceProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acs_url: Optional[builtins.str] = None,
+                 authn_sign_algo: Optional[builtins.str] = None,
+                 certificate_type: Optional[builtins.str] = None,
+                 encoded_metadata_document: Optional[builtins.str] = None,
+                 entity_id: Optional[builtins.str] = None,
+                 support_encrypted_assertion: Optional[builtins.bool] = None):
+        """
+        :param builtins.str acs_url: ACS URL of SP.
+        :param builtins.str authn_sign_algo: Signature algorithms supported by AuthNRequest
+        :param builtins.str certificate_type: Type of certificate used for signing in the SSO process
+        :param builtins.str encoded_metadata_document: SP metadata document (Base64 encoding).
+        :param builtins.str entity_id: SP identity.
+        :param builtins.bool support_encrypted_assertion: Whether IdP-side encryption of Assertion is supported.
+        """
+        if acs_url is not None:
+            pulumi.set(__self__, "acs_url", acs_url)
+        if authn_sign_algo is not None:
+            pulumi.set(__self__, "authn_sign_algo", authn_sign_algo)
+        if certificate_type is not None:
+            pulumi.set(__self__, "certificate_type", certificate_type)
+        if encoded_metadata_document is not None:
+            pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+        if support_encrypted_assertion is not None:
+            pulumi.set(__self__, "support_encrypted_assertion", support_encrypted_assertion)
+
+    @property
+    @pulumi.getter(name="acsUrl")
+    def acs_url(self) -> Optional[builtins.str]:
+        """
+        ACS URL of SP.
+        """
+        return pulumi.get(self, "acs_url")
+
+    @property
+    @pulumi.getter(name="authnSignAlgo")
+    def authn_sign_algo(self) -> Optional[builtins.str]:
+        """
+        Signature algorithms supported by AuthNRequest
+        """
+        return pulumi.get(self, "authn_sign_algo")
+
+    @property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> Optional[builtins.str]:
+        """
+        Type of certificate used for signing in the SSO process
+        """
+        return pulumi.get(self, "certificate_type")
+
+    @property
+    @pulumi.getter(name="encodedMetadataDocument")
+    def encoded_metadata_document(self) -> Optional[builtins.str]:
+        """
+        SP metadata document (Base64 encoding).
+        """
+        return pulumi.get(self, "encoded_metadata_document")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[builtins.str]:
+        """
+        SP identity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="supportEncryptedAssertion")
+    def support_encrypted_assertion(self) -> Optional[builtins.bool]:
+        """
+        Whether IdP-side encryption of Assertion is supported.
+        """
+        return pulumi.get(self, "support_encrypted_assertion")
+
+
+@pulumi.output_type
+class DirectoryUserProvisioningConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultLandingPage":
+            suggest = "default_landing_page"
+        elif key == "sessionDuration":
+            suggest = "session_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryUserProvisioningConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectoryUserProvisioningConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectoryUserProvisioningConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_landing_page: Optional[builtins.str] = None,
+                 session_duration: Optional[builtins.str] = None):
+        """
+        :param builtins.str default_landing_page: The duration of the Session after the user logs in.
+        :param builtins.str session_duration: The duration of the Session after the user logs in.
+        """
+        if default_landing_page is not None:
+            pulumi.set(__self__, "default_landing_page", default_landing_page)
+        if session_duration is not None:
+            pulumi.set(__self__, "session_duration", session_duration)
+
+    @property
+    @pulumi.getter(name="defaultLandingPage")
+    def default_landing_page(self) -> Optional[builtins.str]:
+        """
+        The duration of the Session after the user logs in.
+        """
+        return pulumi.get(self, "default_landing_page")
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[builtins.str]:
+        """
+        The duration of the Session after the user logs in.
+        """
+        return pulumi.get(self, "session_duration")
 
 
 @pulumi.output_type

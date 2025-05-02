@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,18 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     public static final SecurityPreferenceArgs Empty = new SecurityPreferenceArgs();
 
     /**
-     * Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+     * Whether to allow RAM users to manage their own passwords. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     @Import(name="allowUserToChangePassword")
     private @Nullable Output<Boolean> allowUserToChangePassword;
 
     /**
-     * @return Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage their own passwords. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     public Optional<Output<Boolean>> allowUserToChangePassword() {
@@ -33,14 +38,37 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+     * Whether to allow RAM users to log on using a passkey. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    @Import(name="allowUserToLoginWithPasskey")
+    private @Nullable Output<Boolean> allowUserToLoginWithPasskey;
+
+    /**
+     * @return Whether to allow RAM users to log on using a passkey. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    public Optional<Output<Boolean>> allowUserToLoginWithPasskey() {
+        return Optional.ofNullable(this.allowUserToLoginWithPasskey);
+    }
+
+    /**
+     * Whether to allow RAM users to manage their own access keys. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     @Import(name="allowUserToManageAccessKeys")
     private @Nullable Output<Boolean> allowUserToManageAccessKeys;
 
     /**
-     * @return Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage their own access keys. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     public Optional<Output<Boolean>> allowUserToManageAccessKeys() {
@@ -48,14 +76,18 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+     * Whether to allow RAM users to manage multi-factor authentication devices. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     @Import(name="allowUserToManageMfaDevices")
     private @Nullable Output<Boolean> allowUserToManageMfaDevices;
 
     /**
-     * @return Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage multi-factor authentication devices. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     public Optional<Output<Boolean>> allowUserToManageMfaDevices() {
@@ -63,14 +95,37 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+     * Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    @Import(name="allowUserToManagePersonalDingTalk")
+    private @Nullable Output<Boolean> allowUserToManagePersonalDingTalk;
+
+    /**
+     * @return Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    public Optional<Output<Boolean>> allowUserToManagePersonalDingTalk() {
+        return Optional.ofNullable(this.allowUserToManagePersonalDingTalk);
+    }
+
+    /**
+     * Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     @Import(name="enableSaveMfaTicket")
     private @Nullable Output<Boolean> enableSaveMfaTicket;
 
     /**
-     * @return Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+     * @return Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     public Optional<Output<Boolean>> enableSaveMfaTicket() {
@@ -78,6 +133,7 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
@@ -85,7 +141,8 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<Boolean> enforceMfaForLogin;
 
     /**
-     * @return Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+     * @return Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+     * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
     public Optional<Output<Boolean>> enforceMfaForLogin() {
@@ -93,20 +150,26 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-     * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-     * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-     * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+     * The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+     * - If the mask is specified, RAM users can only log on from the specified IP address.
+     * - If you do not specify any mask, the login console function will apply to the entire network.
+     * 
+     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * 
+     * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
      */
     @Import(name="loginNetworkMasks")
     private @Nullable Output<String> loginNetworkMasks;
 
     /**
-     * @return The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-     * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-     * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-     * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+     * @return The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+     * - If the mask is specified, RAM users can only log on from the specified IP address.
+     * - If you do not specify any mask, the login console function will apply to the entire network.
+     * 
+     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * 
+     * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
      */
     public Optional<Output<String>> loginNetworkMasks() {
@@ -114,30 +177,102 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+     * The validity period of the logon session of RAM users.
+     * Valid values: 1 to 24. Unit: hours.
+     * Default value: 6.
      * 
      */
     @Import(name="loginSessionDuration")
     private @Nullable Output<Integer> loginSessionDuration;
 
     /**
-     * @return The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+     * @return The validity period of the logon session of RAM users.
+     * Valid values: 1 to 24. Unit: hours.
+     * Default value: 6.
      * 
      */
     public Optional<Output<Integer>> loginSessionDuration() {
         return Optional.ofNullable(this.loginSessionDuration);
     }
 
+    /**
+     * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+     * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+     * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+     * - adaptive: Used only during abnormal login.
+     * 
+     */
+    @Import(name="mfaOperationForLogin")
+    private @Nullable Output<String> mfaOperationForLogin;
+
+    /**
+     * @return MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+     * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+     * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+     * - adaptive: Used only during abnormal login.
+     * 
+     */
+    public Optional<Output<String>> mfaOperationForLogin() {
+        return Optional.ofNullable(this.mfaOperationForLogin);
+    }
+
+    /**
+     * Whether MFA is verified twice during abnormal logon. Value:
+     * - autonomous (default): Skip, do not force binding.
+     * - enforceVerify: Force binding validation.
+     * 
+     */
+    @Import(name="operationForRiskLogin")
+    private @Nullable Output<String> operationForRiskLogin;
+
+    /**
+     * @return Whether MFA is verified twice during abnormal logon. Value:
+     * - autonomous (default): Skip, do not force binding.
+     * - enforceVerify: Force binding validation.
+     * 
+     */
+    public Optional<Output<String>> operationForRiskLogin() {
+        return Optional.ofNullable(this.operationForRiskLogin);
+    }
+
+    /**
+     * Means of multi-factor authentication. Value:
+     * - sms: secure phone.
+     * - email: Secure mailbox.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="verificationTypes")
+    private @Nullable Output<List<String>> verificationTypes;
+
+    /**
+     * @return Means of multi-factor authentication. Value:
+     * - sms: secure phone.
+     * - email: Secure mailbox.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<List<String>>> verificationTypes() {
+        return Optional.ofNullable(this.verificationTypes);
+    }
+
     private SecurityPreferenceArgs() {}
 
     private SecurityPreferenceArgs(SecurityPreferenceArgs $) {
         this.allowUserToChangePassword = $.allowUserToChangePassword;
+        this.allowUserToLoginWithPasskey = $.allowUserToLoginWithPasskey;
         this.allowUserToManageAccessKeys = $.allowUserToManageAccessKeys;
         this.allowUserToManageMfaDevices = $.allowUserToManageMfaDevices;
+        this.allowUserToManagePersonalDingTalk = $.allowUserToManagePersonalDingTalk;
         this.enableSaveMfaTicket = $.enableSaveMfaTicket;
         this.enforceMfaForLogin = $.enforceMfaForLogin;
         this.loginNetworkMasks = $.loginNetworkMasks;
         this.loginSessionDuration = $.loginSessionDuration;
+        this.mfaOperationForLogin = $.mfaOperationForLogin;
+        this.operationForRiskLogin = $.operationForRiskLogin;
+        this.verificationTypes = $.verificationTypes;
     }
 
     public static Builder builder() {
@@ -159,7 +294,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToChangePassword Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+         * @param allowUserToChangePassword Whether to allow RAM users to manage their own passwords. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
          * 
          * @return builder
          * 
@@ -170,7 +307,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToChangePassword Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+         * @param allowUserToChangePassword Whether to allow RAM users to manage their own passwords. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
          * 
          * @return builder
          * 
@@ -180,7 +319,34 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToManageAccessKeys Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+         * @param allowUserToLoginWithPasskey Whether to allow RAM users to log on using a passkey. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUserToLoginWithPasskey(@Nullable Output<Boolean> allowUserToLoginWithPasskey) {
+            $.allowUserToLoginWithPasskey = allowUserToLoginWithPasskey;
+            return this;
+        }
+
+        /**
+         * @param allowUserToLoginWithPasskey Whether to allow RAM users to log on using a passkey. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUserToLoginWithPasskey(Boolean allowUserToLoginWithPasskey) {
+            return allowUserToLoginWithPasskey(Output.of(allowUserToLoginWithPasskey));
+        }
+
+        /**
+         * @param allowUserToManageAccessKeys Whether to allow RAM users to manage their own access keys. Value:
+         * - true: Allow.
+         * - false (default): Not allowed.
          * 
          * @return builder
          * 
@@ -191,7 +357,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToManageAccessKeys Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+         * @param allowUserToManageAccessKeys Whether to allow RAM users to manage their own access keys. Value:
+         * - true: Allow.
+         * - false (default): Not allowed.
          * 
          * @return builder
          * 
@@ -201,7 +369,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToManageMfaDevices Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+         * @param allowUserToManageMfaDevices Whether to allow RAM users to manage multi-factor authentication devices. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
          * 
          * @return builder
          * 
@@ -212,7 +382,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowUserToManageMfaDevices Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+         * @param allowUserToManageMfaDevices Whether to allow RAM users to manage multi-factor authentication devices. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
          * 
          * @return builder
          * 
@@ -222,7 +394,34 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableSaveMfaTicket Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+         * @param allowUserToManagePersonalDingTalk Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUserToManagePersonalDingTalk(@Nullable Output<Boolean> allowUserToManagePersonalDingTalk) {
+            $.allowUserToManagePersonalDingTalk = allowUserToManagePersonalDingTalk;
+            return this;
+        }
+
+        /**
+         * @param allowUserToManagePersonalDingTalk Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+         * - true (default): Allowed.
+         * - false: not allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUserToManagePersonalDingTalk(Boolean allowUserToManagePersonalDingTalk) {
+            return allowUserToManagePersonalDingTalk(Output.of(allowUserToManagePersonalDingTalk));
+        }
+
+        /**
+         * @param enableSaveMfaTicket Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+         * - true: Allow.
+         * - false (default): Not allowed.
          * 
          * @return builder
          * 
@@ -233,7 +432,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableSaveMfaTicket Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+         * @param enableSaveMfaTicket Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+         * - true: Allow.
+         * - false (default): Not allowed.
          * 
          * @return builder
          * 
@@ -243,7 +444,8 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enforceMfaForLogin Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+         * @param enforceMfaForLogin Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+         * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
          * 
          * @return builder
          * 
@@ -254,7 +456,8 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enforceMfaForLogin Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+         * @param enforceMfaForLogin Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+         * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
          * 
          * @return builder
          * 
@@ -264,10 +467,13 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loginNetworkMasks The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-         * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-         * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-         * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+         * @param loginNetworkMasks The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+         * - If the mask is specified, RAM users can only log on from the specified IP address.
+         * - If you do not specify any mask, the login console function will apply to the entire network.
+         * 
+         * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+         * 
+         * Configure a maximum of 40 logon masks, with a total length of 512 characters.
          * 
          * @return builder
          * 
@@ -278,10 +484,13 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loginNetworkMasks The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-         * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-         * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-         * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+         * @param loginNetworkMasks The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+         * - If the mask is specified, RAM users can only log on from the specified IP address.
+         * - If you do not specify any mask, the login console function will apply to the entire network.
+         * 
+         * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+         * 
+         * Configure a maximum of 40 logon masks, with a total length of 512 characters.
          * 
          * @return builder
          * 
@@ -291,7 +500,9 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loginSessionDuration The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+         * @param loginSessionDuration The validity period of the logon session of RAM users.
+         * Valid values: 1 to 24. Unit: hours.
+         * Default value: 6.
          * 
          * @return builder
          * 
@@ -302,13 +513,110 @@ public final class SecurityPreferenceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loginSessionDuration The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+         * @param loginSessionDuration The validity period of the logon session of RAM users.
+         * Valid values: 1 to 24. Unit: hours.
+         * Default value: 6.
          * 
          * @return builder
          * 
          */
         public Builder loginSessionDuration(Integer loginSessionDuration) {
             return loginSessionDuration(Output.of(loginSessionDuration));
+        }
+
+        /**
+         * @param mfaOperationForLogin MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+         * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+         * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+         * - adaptive: Used only during abnormal login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaOperationForLogin(@Nullable Output<String> mfaOperationForLogin) {
+            $.mfaOperationForLogin = mfaOperationForLogin;
+            return this;
+        }
+
+        /**
+         * @param mfaOperationForLogin MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+         * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+         * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+         * - adaptive: Used only during abnormal login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaOperationForLogin(String mfaOperationForLogin) {
+            return mfaOperationForLogin(Output.of(mfaOperationForLogin));
+        }
+
+        /**
+         * @param operationForRiskLogin Whether MFA is verified twice during abnormal logon. Value:
+         * - autonomous (default): Skip, do not force binding.
+         * - enforceVerify: Force binding validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationForRiskLogin(@Nullable Output<String> operationForRiskLogin) {
+            $.operationForRiskLogin = operationForRiskLogin;
+            return this;
+        }
+
+        /**
+         * @param operationForRiskLogin Whether MFA is verified twice during abnormal logon. Value:
+         * - autonomous (default): Skip, do not force binding.
+         * - enforceVerify: Force binding validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationForRiskLogin(String operationForRiskLogin) {
+            return operationForRiskLogin(Output.of(operationForRiskLogin));
+        }
+
+        /**
+         * @param verificationTypes Means of multi-factor authentication. Value:
+         * - sms: secure phone.
+         * - email: Secure mailbox.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationTypes(@Nullable Output<List<String>> verificationTypes) {
+            $.verificationTypes = verificationTypes;
+            return this;
+        }
+
+        /**
+         * @param verificationTypes Means of multi-factor authentication. Value:
+         * - sms: secure phone.
+         * - email: Secure mailbox.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationTypes(List<String> verificationTypes) {
+            return verificationTypes(Output.of(verificationTypes));
+        }
+
+        /**
+         * @param verificationTypes Means of multi-factor authentication. Value:
+         * - sms: secure phone.
+         * - email: Secure mailbox.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationTypes(String... verificationTypes) {
+            return verificationTypes(List.of(verificationTypes));
         }
 
         public SecurityPreferenceArgs build() {

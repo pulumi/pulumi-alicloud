@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FileSystemNfsAcl {
     /**
-     * @return Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+     * @return Whether the NFS ACL function is enabled.
      * 
      */
     private @Nullable Boolean enabled;
 
     private FileSystemNfsAcl() {}
     /**
-     * @return Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+     * @return Whether the NFS ACL function is enabled.
      * 
      */
     public Optional<Boolean> enabled() {

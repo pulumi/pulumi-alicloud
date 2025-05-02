@@ -34,6 +34,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 )
 
 // all of the AliCloud token components used below.
@@ -1114,6 +1115,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mongodb_serverless_instance":              {Tok: resource(mongoDbMod, "ServerlessInstance")},
 			"alicloud_mongodb_sharding_network_public_address":  {Tok: resource(mongoDbMod, "ShardingNetworkPublicAddress")},
 			"alicloud_mongodb_sharding_network_private_address": {Tok: resource(mongoDbMod, "ShardingNetworkPrivateAddress")},
+
+			"alicloud_mongodb_replica_set_role": {
+				Tok: resource(mongoDbMod, "ReplicaSetRole"),
+				Fields: map[string]*info.Schema{
+					"replica_set_role": {
+						CSharpName: "ReplicaSetRoleOfRelatedConnectionString",
+					},
+				},
+			},
 
 			// Mns
 			"alicloud_mns_queue":              {Tok: resource(mnsMod, "Queue")},

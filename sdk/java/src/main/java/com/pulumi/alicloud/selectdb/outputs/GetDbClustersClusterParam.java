@@ -40,7 +40,7 @@ public final class GetDbClustersClusterParam {
      * @return The value range of the parameter.
      * 
      */
-    private Integer optional;
+    private String optional;
     /**
      * @return The category of the parameter.
      * 
@@ -92,7 +92,7 @@ public final class GetDbClustersClusterParam {
      * @return The value range of the parameter.
      * 
      */
-    public Integer optional() {
+    public String optional() {
         return this.optional;
     }
     /**
@@ -124,7 +124,7 @@ public final class GetDbClustersClusterParam {
         private Integer isDynamic;
         private Integer isUserModifiable;
         private String name;
-        private Integer optional;
+        private String optional;
         private String paramCategory;
         private String value;
         public Builder() {}
@@ -181,7 +181,7 @@ public final class GetDbClustersClusterParam {
             return this;
         }
         @CustomType.Setter
-        public Builder optional(Integer optional) {
+        public Builder optional(String optional) {
             if (optional == null) {
               throw new MissingRequiredPropertyException("GetDbClustersClusterParam", "optional");
             }

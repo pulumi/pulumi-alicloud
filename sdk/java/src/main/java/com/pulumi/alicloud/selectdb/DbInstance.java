@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceDescription(name)
  *             .cacheSize(200)
  *             .paymentType("PayAsYouGo")
+ *             .engineMinorVersion("3.0.12")
  *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
  *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
  *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
@@ -285,14 +286,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.engine;
     }
     /**
-     * The current DBInstance minor version.
+     * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      * 
      */
     @Export(name="engineMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> engineMinorVersion;
 
     /**
-     * @return The current DBInstance minor version.
+     * @return The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      * 
      */
     public Output<String> engineMinorVersion() {
@@ -527,18 +528,22 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
+     * 
+     * @deprecated
+     * Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
      * 
      */
+    @Deprecated /* Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead. */
     @Export(name="upgradedEngineMinorVersion", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> upgradedEngineMinorVersion;
+    private Output<String> upgradedEngineMinorVersion;
 
     /**
-     * @return The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+     * @return Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
      * 
      */
-    public Output<Optional<String>> upgradedEngineMinorVersion() {
-        return Codegen.optional(this.upgradedEngineMinorVersion);
+    public Output<String> upgradedEngineMinorVersion() {
+        return this.upgradedEngineMinorVersion;
     }
     /**
      * The ID of the VPC for DBInstance.

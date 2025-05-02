@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesCertificateAuthority
     {
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         public readonly string? ClientCert;
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>

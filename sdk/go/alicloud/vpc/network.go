@@ -24,7 +24,7 @@ import (
 // You can use the existing vpc module
 // to create a VPC and several VSwitches one-click.
 //
-// For information about VPC Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+// For information about VPC VPC and how to use it, see [What is VPC](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
 //
 // ## Example Usage
 //
@@ -75,6 +75,7 @@ type Network struct {
 	pulumi.CustomResourceState
 
 	// The CIDR block of the VPC.
+	//
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
@@ -83,15 +84,16 @@ type Network struct {
 	// The creation time of the VPC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The new description of the VPC.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// The status of VPC DNS Hostname
 	DnsHostnameStatus pulumi.StringOutput `pulumi:"dnsHostnameStatus"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable the IPv6 network segment. Value:
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	// Force delete vpc or not.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Allocate VPC from The IPAM address pool by entering a mask.
 	//
 	// > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
@@ -118,15 +120,15 @@ type Network struct {
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+	// The ID of the region where the VPC is located.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The ID of the route table that you want to query.
+	// The ID of the system route table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// The router ID of the VPC.
+	// The region ID of the VPC to which the route table belongs.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -136,26 +138,25 @@ type Network struct {
 	//
 	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
-	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 	//
-	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrMask pulumi.IntPtrOutput `pulumi:"secondaryCidrMask"`
-	// The status of the VPC.
+	// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of the route table.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	SystemRouteTableDescription pulumi.StringPtrOutput `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrOutput `pulumi:"systemRouteTableName"`
+	// Whether the system route table receives propagation routes.
+	SystemRouteTableRoutePropagationEnable pulumi.BoolOutput `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
 	// The new name of the VPC.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -193,6 +194,7 @@ func GetNetwork(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
 	// The CIDR block of the VPC.
+	//
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
@@ -201,15 +203,16 @@ type networkState struct {
 	// The creation time of the VPC.
 	CreateTime *string `pulumi:"createTime"`
 	// The new description of the VPC.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// The status of VPC DNS Hostname
 	DnsHostnameStatus *string `pulumi:"dnsHostnameStatus"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable the IPv6 network segment. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// Force delete vpc or not.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Allocate VPC from The IPAM address pool by entering a mask.
 	//
 	// > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
@@ -236,15 +239,15 @@ type networkState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
-	// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+	// The ID of the region where the VPC is located.
 	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The ID of the route table that you want to query.
+	// The ID of the system route table.
 	RouteTableId *string `pulumi:"routeTableId"`
-	// The router ID of the VPC.
+	// The region ID of the VPC to which the route table belongs.
 	RouterId *string `pulumi:"routerId"`
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -254,26 +257,25 @@ type networkState struct {
 	//
 	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
-	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 	//
-	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrMask *int `pulumi:"secondaryCidrMask"`
-	// The status of the VPC.
+	// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
 	Status *string `pulumi:"status"`
 	// The description of the route table.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	SystemRouteTableDescription *string `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
+	// Whether the system route table receives propagation routes.
+	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -282,6 +284,7 @@ type networkState struct {
 
 type NetworkState struct {
 	// The CIDR block of the VPC.
+	//
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringPtrInput
@@ -290,15 +293,16 @@ type NetworkState struct {
 	// The creation time of the VPC.
 	CreateTime pulumi.StringPtrInput
 	// The new description of the VPC.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// The status of VPC DNS Hostname
 	DnsHostnameStatus pulumi.StringPtrInput
-	// Specifies whether to perform a dry run. Valid values:
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable the IPv6 network segment. Value:
 	EnableIpv6 pulumi.BoolPtrInput
+	// Force delete vpc or not.
+	ForceDelete pulumi.BoolPtrInput
 	// Allocate VPC from The IPAM address pool by entering a mask.
 	//
 	// > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
@@ -325,15 +329,15 @@ type NetworkState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
-	// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+	// The ID of the region where the VPC is located.
 	RegionId pulumi.StringPtrInput
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	ResourceGroupId pulumi.StringPtrInput
-	// The ID of the route table that you want to query.
+	// The ID of the system route table.
 	RouteTableId pulumi.StringPtrInput
-	// The router ID of the VPC.
+	// The region ID of the VPC to which the route table belongs.
 	RouterId pulumi.StringPtrInput
 	// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
 	//
@@ -343,26 +347,25 @@ type NetworkState struct {
 	//
 	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayInput
-	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 	//
-	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrMask pulumi.IntPtrInput
-	// The status of the VPC.
+	// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
 	Status pulumi.StringPtrInput
 	// The description of the route table.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	SystemRouteTableDescription pulumi.StringPtrInput
 	// The name of the route table.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrInput
+	// Whether the system route table receives propagation routes.
+	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -375,21 +378,23 @@ func (NetworkState) ElementType() reflect.Type {
 
 type networkArgs struct {
 	// The CIDR block of the VPC.
+	//
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The status of ClassicLink function.
 	ClassicLinkEnabled *bool `pulumi:"classicLinkEnabled"`
 	// The new description of the VPC.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// The status of VPC DNS Hostname
 	DnsHostnameStatus *string `pulumi:"dnsHostnameStatus"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable the IPv6 network segment. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// Force delete vpc or not.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Allocate VPC from The IPAM address pool by entering a mask.
 	//
 	// > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
@@ -422,24 +427,23 @@ type networkArgs struct {
 	//
 	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
-	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 	//
-	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrMask *int `pulumi:"secondaryCidrMask"`
 	// The description of the route table.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	SystemRouteTableDescription *string `pulumi:"systemRouteTableDescription"`
 	// The name of the route table.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
+	// Whether the system route table receives propagation routes.
+	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -449,21 +453,23 @@ type networkArgs struct {
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
 	// The CIDR block of the VPC.
+	//
 	// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 	CidrBlock pulumi.StringPtrInput
 	// The status of ClassicLink function.
 	ClassicLinkEnabled pulumi.BoolPtrInput
 	// The new description of the VPC.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+	// The status of VPC DNS Hostname
 	DnsHostnameStatus pulumi.StringPtrInput
-	// Specifies whether to perform a dry run. Valid values:
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable IPv6. Valid values:
+	// Whether to enable the IPv6 network segment. Value:
 	EnableIpv6 pulumi.BoolPtrInput
+	// Force delete vpc or not.
+	ForceDelete pulumi.BoolPtrInput
 	// Allocate VPC from The IPAM address pool by entering a mask.
 	//
 	// > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
@@ -496,24 +502,23 @@ type NetworkArgs struct {
 	//
 	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayInput
-	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 	//
-	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	SecondaryCidrMask pulumi.IntPtrInput
 	// The description of the route table.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	SystemRouteTableDescription pulumi.StringPtrInput
 	// The name of the route table.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrInput
+	// Whether the system route table receives propagation routes.
+	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
-	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -608,6 +613,7 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 }
 
 // The CIDR block of the VPC.
+//
 // - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
 // - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
 func (o NetworkOutput) CidrBlock() pulumi.StringOutput {
@@ -625,25 +631,29 @@ func (o NetworkOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The new description of the VPC.
-//
 // The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 func (o NetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+// The status of VPC DNS Hostname
 func (o NetworkOutput) DnsHostnameStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.DnsHostnameStatus }).(pulumi.StringOutput)
 }
 
-// Specifies whether to perform a dry run. Valid values:
+// Whether to PreCheck only this request. Value:
 func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable IPv6. Valid values:
+// Whether to enable the IPv6 network segment. Value:
 func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Force delete vpc or not.
+func (o NetworkOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Allocate VPC from The IPAM address pool by entering a mask.
@@ -693,7 +703,7 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+// The ID of the region where the VPC is located.
 func (o NetworkOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -705,12 +715,12 @@ func (o NetworkOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The ID of the route table that you want to query.
+// The ID of the system route table.
 func (o NetworkOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The router ID of the VPC.
+// The region ID of the VPC to which the route table belongs.
 func (o NetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
@@ -729,30 +739,33 @@ func (o NetworkOutput) SecondaryCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.SecondaryCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
 //
-// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+// Deprecated: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 func (o NetworkOutput) SecondaryCidrMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.IntPtrOutput { return v.SecondaryCidrMask }).(pulumi.IntPtrOutput)
 }
 
-// The status of the VPC.
+// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
 func (o NetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The description of the route table.
-//
 // The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 func (o NetworkOutput) SystemRouteTableDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.SystemRouteTableDescription }).(pulumi.StringPtrOutput)
 }
 
 // The name of the route table.
-//
 // The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 func (o NetworkOutput) SystemRouteTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.SystemRouteTableName }).(pulumi.StringPtrOutput)
+}
+
+// Whether the system route table receives propagation routes.
+func (o NetworkOutput) SystemRouteTableRoutePropagationEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.SystemRouteTableRoutePropagationEnable }).(pulumi.BoolOutput)
 }
 
 // The tags of Vpc.
@@ -766,7 +779,6 @@ func (o NetworkOutput) UserCidrs() pulumi.StringArrayOutput {
 }
 
 // The new name of the VPC.
-//
 // The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 //
 // The following arguments will be discarded. Please use new fields as soon as possible:

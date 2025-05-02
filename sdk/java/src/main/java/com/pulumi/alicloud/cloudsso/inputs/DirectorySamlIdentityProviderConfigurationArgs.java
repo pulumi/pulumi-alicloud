@@ -5,7 +5,9 @@ package com.pulumi.alicloud.cloudsso.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,59 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
     public static final DirectorySamlIdentityProviderConfigurationArgs Empty = new DirectorySamlIdentityProviderConfigurationArgs();
 
     /**
-     * Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+     * The Binding method for initiating a SAML request.
+     * 
+     */
+    @Import(name="bindingType")
+    private @Nullable Output<String> bindingType;
+
+    /**
+     * @return The Binding method for initiating a SAML request.
+     * 
+     */
+    public Optional<Output<String>> bindingType() {
+        return Optional.ofNullable(this.bindingType);
+    }
+
+    /**
+     * Certificate ID list
+     * 
+     */
+    @Import(name="certificateIds")
+    private @Nullable Output<List<String>> certificateIds;
+
+    /**
+     * @return Certificate ID list
+     * 
+     */
+    public Optional<Output<List<String>>> certificateIds() {
+        return Optional.ofNullable(this.certificateIds);
+    }
+
+    /**
+     * CreateTime
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return CreateTime
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * EncodedMetadataDocument
      * 
      */
     @Import(name="encodedMetadataDocument")
     private @Nullable Output<String> encodedMetadataDocument;
 
     /**
-     * @return Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+     * @return EncodedMetadataDocument
      * 
      */
     public Optional<Output<String>> encodedMetadataDocument() {
@@ -31,25 +78,92 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
     }
 
     /**
-     * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * EntityId
+     * 
+     */
+    @Import(name="entityId")
+    private @Nullable Output<String> entityId;
+
+    /**
+     * @return EntityId
+     * 
+     */
+    public Optional<Output<String>> entityId() {
+        return Optional.ofNullable(this.entityId);
+    }
+
+    /**
+     * LoginUrl
+     * 
+     */
+    @Import(name="loginUrl")
+    private @Nullable Output<String> loginUrl;
+
+    /**
+     * @return LoginUrl
+     * 
+     */
+    public Optional<Output<String>> loginUrl() {
+        return Optional.ofNullable(this.loginUrl);
+    }
+
+    /**
+     * SSOStatus
      * 
      */
     @Import(name="ssoStatus")
     private @Nullable Output<String> ssoStatus;
 
     /**
-     * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * @return SSOStatus
      * 
      */
     public Optional<Output<String>> ssoStatus() {
         return Optional.ofNullable(this.ssoStatus);
     }
 
+    /**
+     * UpdateTime
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return UpdateTime
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
+     * SP Request whether the signature is required
+     * 
+     */
+    @Import(name="wantRequestSigned")
+    private @Nullable Output<Boolean> wantRequestSigned;
+
+    /**
+     * @return SP Request whether the signature is required
+     * 
+     */
+    public Optional<Output<Boolean>> wantRequestSigned() {
+        return Optional.ofNullable(this.wantRequestSigned);
+    }
+
     private DirectorySamlIdentityProviderConfigurationArgs() {}
 
     private DirectorySamlIdentityProviderConfigurationArgs(DirectorySamlIdentityProviderConfigurationArgs $) {
+        this.bindingType = $.bindingType;
+        this.certificateIds = $.certificateIds;
+        this.createTime = $.createTime;
         this.encodedMetadataDocument = $.encodedMetadataDocument;
+        this.entityId = $.entityId;
+        this.loginUrl = $.loginUrl;
         this.ssoStatus = $.ssoStatus;
+        this.updateTime = $.updateTime;
+        this.wantRequestSigned = $.wantRequestSigned;
     }
 
     public static Builder builder() {
@@ -71,7 +185,80 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
         }
 
         /**
-         * @param encodedMetadataDocument Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+         * @param bindingType The Binding method for initiating a SAML request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindingType(@Nullable Output<String> bindingType) {
+            $.bindingType = bindingType;
+            return this;
+        }
+
+        /**
+         * @param bindingType The Binding method for initiating a SAML request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindingType(String bindingType) {
+            return bindingType(Output.of(bindingType));
+        }
+
+        /**
+         * @param certificateIds Certificate ID list
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIds(@Nullable Output<List<String>> certificateIds) {
+            $.certificateIds = certificateIds;
+            return this;
+        }
+
+        /**
+         * @param certificateIds Certificate ID list
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIds(List<String> certificateIds) {
+            return certificateIds(Output.of(certificateIds));
+        }
+
+        /**
+         * @param certificateIds Certificate ID list
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIds(String... certificateIds) {
+            return certificateIds(List.of(certificateIds));
+        }
+
+        /**
+         * @param createTime CreateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime CreateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param encodedMetadataDocument EncodedMetadataDocument
          * 
          * @return builder
          * 
@@ -82,7 +269,7 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
         }
 
         /**
-         * @param encodedMetadataDocument Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+         * @param encodedMetadataDocument EncodedMetadataDocument
          * 
          * @return builder
          * 
@@ -92,7 +279,49 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
         }
 
         /**
-         * @param ssoStatus SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * @param entityId EntityId
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entityId(@Nullable Output<String> entityId) {
+            $.entityId = entityId;
+            return this;
+        }
+
+        /**
+         * @param entityId EntityId
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entityId(String entityId) {
+            return entityId(Output.of(entityId));
+        }
+
+        /**
+         * @param loginUrl LoginUrl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginUrl(@Nullable Output<String> loginUrl) {
+            $.loginUrl = loginUrl;
+            return this;
+        }
+
+        /**
+         * @param loginUrl LoginUrl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginUrl(String loginUrl) {
+            return loginUrl(Output.of(loginUrl));
+        }
+
+        /**
+         * @param ssoStatus SSOStatus
          * 
          * @return builder
          * 
@@ -103,13 +332,55 @@ public final class DirectorySamlIdentityProviderConfigurationArgs extends com.pu
         }
 
         /**
-         * @param ssoStatus SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * @param ssoStatus SSOStatus
          * 
          * @return builder
          * 
          */
         public Builder ssoStatus(String ssoStatus) {
             return ssoStatus(Output.of(ssoStatus));
+        }
+
+        /**
+         * @param updateTime UpdateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime UpdateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param wantRequestSigned SP Request whether the signature is required
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wantRequestSigned(@Nullable Output<Boolean> wantRequestSigned) {
+            $.wantRequestSigned = wantRequestSigned;
+            return this;
+        }
+
+        /**
+         * @param wantRequestSigned SP Request whether the signature is required
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wantRequestSigned(Boolean wantRequestSigned) {
+            return wantRequestSigned(Output.of(wantRequestSigned));
         }
 
         public DirectorySamlIdentityProviderConfigurationArgs build() {

@@ -121,7 +121,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
@@ -723,7 +723,7 @@ class InstanceArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         """
         return pulumi.get(self, "tde_status")
 
@@ -880,7 +880,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
@@ -1541,7 +1541,7 @@ class _InstanceState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         """
         return pulumi.get(self, "tde_status")
 
@@ -1760,7 +1760,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
@@ -2085,7 +2085,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
@@ -2522,7 +2522,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[builtins.str]:
         """
-        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
         """
         return pulumi.get(self, "tde_status")
 

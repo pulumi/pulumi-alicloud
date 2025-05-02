@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -123,6 +124,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    @Import(name="modifyType")
+    private @Nullable Output<String> modifyType;
+
+    /**
+     * @return The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    public Optional<Output<String>> modifyType() {
+        return Optional.ofNullable(this.modifyType);
+    }
+
+    /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      * 
      */
@@ -138,14 +154,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     @Import(name="normalBandwidth")
     private @Nullable Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     public Optional<Output<String>> normalBandwidth() {
@@ -153,14 +169,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     @Import(name="normalQps")
     private @Nullable Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     public Optional<Output<String>> normalQps() {
@@ -242,6 +258,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.serviceBandwidth);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private DdosCooInstanceArgs() {}
 
     private DdosCooInstanceArgs(DdosCooInstanceArgs $) {
@@ -252,6 +283,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         this.domainCount = $.domainCount;
         this.editionSale = $.editionSale;
         this.functionVersion = $.functionVersion;
+        this.modifyType = $.modifyType;
         this.name = $.name;
         this.normalBandwidth = $.normalBandwidth;
         this.normalQps = $.normalQps;
@@ -260,6 +292,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         this.productPlan = $.productPlan;
         this.productType = $.productType;
         this.serviceBandwidth = $.serviceBandwidth;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -428,6 +461,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param modifyType The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyType(@Nullable Output<String> modifyType) {
+            $.modifyType = modifyType;
+            return this;
+        }
+
+        /**
+         * @param modifyType The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyType(String modifyType) {
+            return modifyType(Output.of(modifyType));
+        }
+
+        /**
          * @param name Name of the instance. This name can have a string of `1` to `64` characters.
          * 
          * @return builder
@@ -449,7 +503,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -460,7 +514,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalBandwidth The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
          * 
          * @return builder
          * 
@@ -470,7 +524,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
          * 
          * @return builder
          * 
@@ -481,7 +535,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+         * @param normalQps The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
          * 
          * @return builder
          * 
@@ -593,6 +647,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder serviceBandwidth(String serviceBandwidth) {
             return serviceBandwidth(Output.of(serviceBandwidth));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DdosCooInstanceArgs build() {

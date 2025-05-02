@@ -666,7 +666,7 @@ class GetDbClustersClusterParamResult(dict):
                  is_dynamic: builtins.int,
                  is_user_modifiable: builtins.int,
                  name: builtins.str,
-                 optional: builtins.int,
+                 optional: builtins.str,
                  param_category: builtins.str,
                  value: builtins.str):
         """
@@ -675,7 +675,7 @@ class GetDbClustersClusterParamResult(dict):
         :param builtins.int is_dynamic: Indicates whether the parameter immediately takes effect without requiring a restart.
         :param builtins.int is_user_modifiable: Indicates whether the parameter is modifiable.
         :param builtins.str name: Changed parameter name.
-        :param builtins.int optional: The value range of the parameter.
+        :param builtins.str optional: The value range of the parameter.
         :param builtins.str param_category: The category of the parameter.
         :param builtins.str value: The new value of Parameter.
         """
@@ -730,7 +730,7 @@ class GetDbClustersClusterParamResult(dict):
 
     @property
     @pulumi.getter
-    def optional(self) -> builtins.int:
+    def optional(self) -> builtins.str:
         """
         The value range of the parameter.
         """

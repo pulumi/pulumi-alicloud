@@ -8848,7 +8848,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param builtins.str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
                - required: The cloud disk can be attached by using the NVMe protocol.
                - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
-        :param builtins.str price: The price of instance type.
+        :param builtins.str price: The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
         :param builtins.int primary_eni_queue_number: (Available since v1.239.0) The default number of queues per primary ENI.
         :param builtins.int secondary_eni_queue_number: (Available since v1.239.0) The default number of queues per secondary ENI.
         :param builtins.int total_eni_queue_quantity: (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
@@ -8997,7 +8997,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @pulumi.getter
     def price(self) -> builtins.str:
         """
-        The price of instance type.
+        The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
         """
         return pulumi.get(self, "price")
 

@@ -13,31 +13,31 @@ namespace Pulumi.AliCloud.Nas.Inputs
     public sealed class FileSystemRecycleBinGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time at which the recycle bin was enabled.
+        /// Recycle Bin open time
         /// </summary>
         [Input("enableTime")]
         public Input<string>? EnableTime { get; set; }
 
         /// <summary>
-        /// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        /// Retention time of files in the Recycle Bin. Unit: days.
         /// </summary>
         [Input("reservedDays")]
         public Input<int>? ReservedDays { get; set; }
 
         /// <summary>
-        /// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        /// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
         /// </summary>
         [Input("secondarySize")]
         public Input<int>? SecondarySize { get; set; }
 
         /// <summary>
-        /// The size of the files that are dumped to the recycle bin.
+        /// The amount of files stored in the Recycle Bin. Unit: Byte.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        /// Recycle Bin Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

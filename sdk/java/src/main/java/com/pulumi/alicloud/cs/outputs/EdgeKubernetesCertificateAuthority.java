@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeKubernetesCertificateAuthority {
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
     private @Nullable String clientCert;
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
     private @Nullable String clientKey;
@@ -29,14 +29,14 @@ public final class EdgeKubernetesCertificateAuthority {
 
     private EdgeKubernetesCertificateAuthority() {}
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
     public Optional<String> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
     public Optional<String> clientKey() {

@@ -37,6 +37,12 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? ReplicaSetRole { get; set; }
 
         /// <summary>
+        /// The id of the role.
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
+
+        /// <summary>
         /// VPC instance ID.
         /// </summary>
         [Input("vpcCloudInstanceId")]

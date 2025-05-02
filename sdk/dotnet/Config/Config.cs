@@ -595,6 +595,7 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
             /// </summary>
                 public string? Eflo { get; set; } = null!;
+                public string? EfloCnp { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
             /// </summary>

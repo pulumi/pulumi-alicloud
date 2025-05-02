@@ -18,14 +18,14 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     public static final EipArgs Empty = new EipArgs();
 
     /**
-     * The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+     * @return The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -48,14 +48,14 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the EIP instance.
+     * The name of the EIP.
      * 
      */
     @Import(name="eipName")
     private @Nullable Output<String> eipName;
 
     /**
-     * @return Name of the EIP instance.
+     * @return The name of the EIP.
      * 
      */
     public Optional<Output<String>> eipName() {
@@ -78,14 +78,14 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      * 
      */
     @Import(name="internetChargeType", required=true)
     private Output<String> internetChargeType;
 
     /**
-     * @return Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+     * @return The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      * 
      */
     public Output<String> internetChargeType() {
@@ -93,14 +93,14 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return Internet service provider, if not filled in, it will be assigned according to the default rules.
+     * @return The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -108,14 +108,14 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing type of the EIP instanceValue: PayAsYouGo.
+     * The billing method of the EIP. Valid value: `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The billing type of the EIP instanceValue: PayAsYouGo.
+     * @return The billing method of the EIP. Valid value: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
@@ -153,7 +153,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+         * @param bandwidth The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+         * @param bandwidth The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipName Name of the EIP instance.
+         * @param eipName The name of the EIP.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipName Name of the EIP instance.
+         * @param eipName The name of the EIP.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+         * @param internetChargeType The metering method of the EIP. Valid value: `95BandwidthByMonth`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+         * @param internetChargeType The metering method of the EIP. Valid value: `95BandwidthByMonth`.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp Internet service provider, if not filled in, it will be assigned according to the default rules.
+         * @param isp The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp Internet service provider, if not filled in, it will be assigned according to the default rules.
+         * @param isp The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing type of the EIP instanceValue: PayAsYouGo.
+         * @param paymentType The billing method of the EIP. Valid value: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing type of the EIP instanceValue: PayAsYouGo.
+         * @param paymentType The billing method of the EIP. Valid value: `PayAsYouGo`.
          * 
          * @return builder
          * 

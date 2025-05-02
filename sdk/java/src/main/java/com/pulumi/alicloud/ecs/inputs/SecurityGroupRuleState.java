@@ -173,6 +173,21 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The ID of the Security Group Rule.
+     * 
+     */
+    @Import(name="securityGroupRuleId")
+    private @Nullable Output<String> securityGroupRuleId;
+
+    /**
+     * @return The ID of the Security Group Rule.
+     * 
+     */
+    public Optional<Output<String>> securityGroupRuleId() {
+        return Optional.ofNullable(this.securityGroupRuleId);
+    }
+
+    /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
      * 
      */
@@ -230,6 +245,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         this.prefixListId = $.prefixListId;
         this.priority = $.priority;
         this.securityGroupId = $.securityGroupId;
+        this.securityGroupRuleId = $.securityGroupRuleId;
         this.sourceGroupOwnerAccount = $.sourceGroupOwnerAccount;
         this.sourceSecurityGroupId = $.sourceSecurityGroupId;
         this.type = $.type;
@@ -467,6 +483,27 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
          */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
+         * @param securityGroupRuleId The ID of the Security Group Rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupRuleId(@Nullable Output<String> securityGroupRuleId) {
+            $.securityGroupRuleId = securityGroupRuleId;
+            return this;
+        }
+
+        /**
+         * @param securityGroupRuleId The ID of the Security Group Rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupRuleId(String securityGroupRuleId) {
+            return securityGroupRuleId(Output.of(securityGroupRuleId));
         }
 
         /**

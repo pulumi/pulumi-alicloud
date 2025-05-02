@@ -15,6 +15,7 @@ from .get_account_aliases import *
 from .get_groups import *
 from .get_policies import *
 from .get_policy_document import *
+from .get_role_policy_attachments import *
 from .get_roles import *
 from .get_saml_providers import *
 from .get_system_policys import *

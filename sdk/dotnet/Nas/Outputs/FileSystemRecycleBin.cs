@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.Nas.Outputs
     public sealed class FileSystemRecycleBin
     {
         /// <summary>
-        /// The time at which the recycle bin was enabled.
+        /// Recycle Bin open time
         /// </summary>
         public readonly string? EnableTime;
         /// <summary>
-        /// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        /// Retention time of files in the Recycle Bin. Unit: days.
         /// </summary>
         public readonly int? ReservedDays;
         /// <summary>
-        /// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        /// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
         /// </summary>
         public readonly int? SecondarySize;
         /// <summary>
-        /// The size of the files that are dumped to the recycle bin.
+        /// The amount of files stored in the Recycle Bin. Unit: Byte.
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        /// Recycle Bin Status
         /// </summary>
         public readonly string? Status;
 

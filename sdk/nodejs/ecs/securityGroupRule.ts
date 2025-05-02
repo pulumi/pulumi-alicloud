@@ -23,11 +23,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.SecurityGroup("default", {name: "default"});
+ * const _default = new alicloud.ecs.SecurityGroup("default", {securityGroupName: "default"});
  * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allow_all_tcp", {
  *     type: "ingress",
  *     ipProtocol: "tcp",
- *     nicType: "internet",
+ *     nicType: "intranet",
  *     policy: "accept",
  *     portRange: "1/65535",
  *     priority: 1,
@@ -121,6 +121,10 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
+     * The ID of the Security Group Rule.
+     */
+    public /*out*/ readonly securityGroupRuleId!: pulumi.Output<string>;
+    /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
     public readonly sourceGroupOwnerAccount!: pulumi.Output<string | undefined>;
@@ -156,6 +160,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityGroupRuleId"] = state ? state.securityGroupRuleId : undefined;
             resourceInputs["sourceGroupOwnerAccount"] = state ? state.sourceGroupOwnerAccount : undefined;
             resourceInputs["sourceSecurityGroupId"] = state ? state.sourceSecurityGroupId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -183,6 +188,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["sourceGroupOwnerAccount"] = args ? args.sourceGroupOwnerAccount : undefined;
             resourceInputs["sourceSecurityGroupId"] = args ? args.sourceSecurityGroupId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["securityGroupRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGroupRule.__pulumiType, name, resourceInputs, opts);
@@ -236,6 +242,10 @@ export interface SecurityGroupRuleState {
      * The ID of the Security Group.
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * The ID of the Security Group Rule.
+     */
+    securityGroupRuleId?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */

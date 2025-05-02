@@ -76,6 +76,21 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The id of the role.
+     * 
+     */
+    @Import(name="roleId")
+    private @Nullable Output<String> roleId;
+
+    /**
+     * @return The id of the role.
+     * 
+     */
+    public Optional<Output<String>> roleId() {
+        return Optional.ofNullable(this.roleId);
+    }
+
+    /**
      * VPC instance ID.
      * 
      */
@@ -127,6 +142,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         this.connectionPort = $.connectionPort;
         this.networkType = $.networkType;
         this.replicaSetRole = $.replicaSetRole;
+        this.roleId = $.roleId;
         this.vpcCloudInstanceId = $.vpcCloudInstanceId;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -232,6 +248,27 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
          */
         public Builder replicaSetRole(String replicaSetRole) {
             return replicaSetRole(Output.of(replicaSetRole));
+        }
+
+        /**
+         * @param roleId The id of the role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(@Nullable Output<String> roleId) {
+            $.roleId = roleId;
+            return this;
+        }
+
+        /**
+         * @param roleId The id of the role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(String roleId) {
+            return roleId(Output.of(roleId));
         }
 
         /**

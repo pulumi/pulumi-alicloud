@@ -10,88 +10,118 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM Security Preference resource.
-    /// 
-    /// For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
-    /// 
-    /// &gt; **NOTE:** Available since v1.152.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ram.SecurityPreference("example", new()
-    ///     {
-    ///         EnableSaveMfaTicket = false,
-    ///         AllowUserToChangePassword = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RAM Security Preference can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example &lt;id&gt;
+    /// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/securityPreference:SecurityPreference")]
     public partial class SecurityPreference : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage their own passwords. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Output("allowUserToChangePassword")]
         public Output<bool> AllowUserToChangePassword { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+        /// Whether to allow RAM users to log on using a passkey. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Output("allowUserToLoginWithPasskey")]
+        public Output<bool> AllowUserToLoginWithPasskey { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to allow RAM users to manage their own access keys. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Output("allowUserToManageAccessKeys")]
         public Output<bool> AllowUserToManageAccessKeys { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Output("allowUserToManageMfaDevices")]
         public Output<bool> AllowUserToManageMfaDevices { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+        /// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Output("allowUserToManagePersonalDingTalk")]
+        public Output<bool> AllowUserToManagePersonalDingTalk { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Output("enableSaveMfaTicket")]
         public Output<bool> EnableSaveMfaTicket { get; private set; } = null!;
 
         /// <summary>
+        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         /// </summary>
         [Output("enforceMfaForLogin")]
         public Output<bool> EnforceMfaForLogin { get; private set; } = null!;
 
         /// <summary>
-        /// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-        /// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-        /// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-        /// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+        /// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+        /// - If the mask is specified, RAM users can only log on from the specified IP address.
+        /// - If you do not specify any mask, the login console function will apply to the entire network.
+        /// 
+        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// 
+        /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
         [Output("loginNetworkMasks")]
         public Output<string?> LoginNetworkMasks { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+        /// The validity period of the logon session of RAM users.
+        /// Valid values: 1 to 24. Unit: hours.
+        /// Default value: 6.
         /// </summary>
         [Output("loginSessionDuration")]
         public Output<int> LoginSessionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+        /// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+        /// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+        /// - adaptive: Used only during abnormal login.
+        /// </summary>
+        [Output("mfaOperationForLogin")]
+        public Output<string> MfaOperationForLogin { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether MFA is verified twice during abnormal logon. Value:
+        /// - autonomous (default): Skip, do not force binding.
+        /// - enforceVerify: Force binding validation.
+        /// </summary>
+        [Output("operationForRiskLogin")]
+        public Output<string> OperationForRiskLogin { get; private set; } = null!;
+
+        /// <summary>
+        /// Means of multi-factor authentication. Value:
+        /// - sms: secure phone.
+        /// - email: Secure mailbox.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("verificationTypes")]
+        public Output<ImmutableArray<string>> VerificationTypes { get; private set; } = null!;
 
 
         /// <summary>
@@ -140,49 +170,112 @@ namespace Pulumi.AliCloud.Ram
     public sealed class SecurityPreferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage their own passwords. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Input("allowUserToChangePassword")]
         public Input<bool>? AllowUserToChangePassword { get; set; }
 
         /// <summary>
-        /// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+        /// Whether to allow RAM users to log on using a passkey. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Input("allowUserToLoginWithPasskey")]
+        public Input<bool>? AllowUserToLoginWithPasskey { get; set; }
+
+        /// <summary>
+        /// Whether to allow RAM users to manage their own access keys. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Input("allowUserToManageAccessKeys")]
         public Input<bool>? AllowUserToManageAccessKeys { get; set; }
 
         /// <summary>
-        /// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Input("allowUserToManageMfaDevices")]
         public Input<bool>? AllowUserToManageMfaDevices { get; set; }
 
         /// <summary>
-        /// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+        /// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Input("allowUserToManagePersonalDingTalk")]
+        public Input<bool>? AllowUserToManagePersonalDingTalk { get; set; }
+
+        /// <summary>
+        /// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Input("enableSaveMfaTicket")]
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
+        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         /// </summary>
         [Input("enforceMfaForLogin")]
         public Input<bool>? EnforceMfaForLogin { get; set; }
 
         /// <summary>
-        /// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-        /// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-        /// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-        /// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+        /// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+        /// - If the mask is specified, RAM users can only log on from the specified IP address.
+        /// - If you do not specify any mask, the login console function will apply to the entire network.
+        /// 
+        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// 
+        /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
         [Input("loginNetworkMasks")]
         public Input<string>? LoginNetworkMasks { get; set; }
 
         /// <summary>
-        /// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+        /// The validity period of the logon session of RAM users.
+        /// Valid values: 1 to 24. Unit: hours.
+        /// Default value: 6.
         /// </summary>
         [Input("loginSessionDuration")]
         public Input<int>? LoginSessionDuration { get; set; }
+
+        /// <summary>
+        /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+        /// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+        /// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+        /// - adaptive: Used only during abnormal login.
+        /// </summary>
+        [Input("mfaOperationForLogin")]
+        public Input<string>? MfaOperationForLogin { get; set; }
+
+        /// <summary>
+        /// Whether MFA is verified twice during abnormal logon. Value:
+        /// - autonomous (default): Skip, do not force binding.
+        /// - enforceVerify: Force binding validation.
+        /// </summary>
+        [Input("operationForRiskLogin")]
+        public Input<string>? OperationForRiskLogin { get; set; }
+
+        [Input("verificationTypes")]
+        private InputList<string>? _verificationTypes;
+
+        /// <summary>
+        /// Means of multi-factor authentication. Value:
+        /// - sms: secure phone.
+        /// - email: Secure mailbox.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputList<string> VerificationTypes
+        {
+            get => _verificationTypes ?? (_verificationTypes = new InputList<string>());
+            set => _verificationTypes = value;
+        }
 
         public SecurityPreferenceArgs()
         {
@@ -193,49 +286,112 @@ namespace Pulumi.AliCloud.Ram
     public sealed class SecurityPreferenceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage their own passwords. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Input("allowUserToChangePassword")]
         public Input<bool>? AllowUserToChangePassword { get; set; }
 
         /// <summary>
-        /// Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+        /// Whether to allow RAM users to log on using a passkey. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Input("allowUserToLoginWithPasskey")]
+        public Input<bool>? AllowUserToLoginWithPasskey { get; set; }
+
+        /// <summary>
+        /// Whether to allow RAM users to manage their own access keys. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Input("allowUserToManageAccessKeys")]
         public Input<bool>? AllowUserToManageAccessKeys { get; set; }
 
         /// <summary>
-        /// Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+        /// Whether to allow RAM users to manage multi-factor authentication devices. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
         /// </summary>
         [Input("allowUserToManageMfaDevices")]
         public Input<bool>? AllowUserToManageMfaDevices { get; set; }
 
         /// <summary>
-        /// Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+        /// Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+        /// - true (default): Allowed.
+        /// - false: not allowed.
+        /// </summary>
+        [Input("allowUserToManagePersonalDingTalk")]
+        public Input<bool>? AllowUserToManagePersonalDingTalk { get; set; }
+
+        /// <summary>
+        /// Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+        /// - true: Allow.
+        /// - false (default): Not allowed.
         /// </summary>
         [Input("enableSaveMfaTicket")]
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
+        /// Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         /// </summary>
         [Input("enforceMfaForLogin")]
         public Input<bool>? EnforceMfaForLogin { get; set; }
 
         /// <summary>
-        /// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-        /// * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-        /// * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-        /// * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+        /// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+        /// - If the mask is specified, RAM users can only log on from the specified IP address.
+        /// - If you do not specify any mask, the login console function will apply to the entire network.
+        /// 
+        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// 
+        /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
         [Input("loginNetworkMasks")]
         public Input<string>? LoginNetworkMasks { get; set; }
 
         /// <summary>
-        /// The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+        /// The validity period of the logon session of RAM users.
+        /// Valid values: 1 to 24. Unit: hours.
+        /// Default value: 6.
         /// </summary>
         [Input("loginSessionDuration")]
         public Input<int>? LoginSessionDuration { get; set; }
+
+        /// <summary>
+        /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+        /// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+        /// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+        /// - adaptive: Used only during abnormal login.
+        /// </summary>
+        [Input("mfaOperationForLogin")]
+        public Input<string>? MfaOperationForLogin { get; set; }
+
+        /// <summary>
+        /// Whether MFA is verified twice during abnormal logon. Value:
+        /// - autonomous (default): Skip, do not force binding.
+        /// - enforceVerify: Force binding validation.
+        /// </summary>
+        [Input("operationForRiskLogin")]
+        public Input<string>? OperationForRiskLogin { get; set; }
+
+        [Input("verificationTypes")]
+        private InputList<string>? _verificationTypes;
+
+        /// <summary>
+        /// Means of multi-factor authentication. Value:
+        /// - sms: secure phone.
+        /// - email: Secure mailbox.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputList<string> VerificationTypes
+        {
+            get => _verificationTypes ?? (_verificationTypes = new InputList<string>());
+            set => _verificationTypes = value;
+        }
 
         public SecurityPreferenceState()
         {

@@ -1048,6 +1048,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.eflo);
     }
 
+    @Import(name="efloCnp")
+    private @Nullable Output<String> efloCnp;
+
+    public Optional<Output<String>> efloCnp() {
+        return Optional.ofNullable(this.efloCnp);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
      * 
@@ -2402,6 +2409,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.edsUser = $.edsUser;
         this.edsuser = $.edsuser;
         this.eflo = $.eflo;
+        this.efloCnp = $.efloCnp;
         this.efloController = $.efloController;
         this.ehpc = $.ehpc;
         this.ehs = $.ehs;
@@ -3951,6 +3959,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder eflo(String eflo) {
             return eflo(Output.of(eflo));
+        }
+
+        public Builder efloCnp(@Nullable Output<String> efloCnp) {
+            $.efloCnp = efloCnp;
+            return this;
+        }
+
+        public Builder efloCnp(String efloCnp) {
+            return efloCnp(Output.of(efloCnp));
         }
 
         /**

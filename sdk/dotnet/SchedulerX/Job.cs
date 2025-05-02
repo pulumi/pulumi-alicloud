@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.SchedulerX
     /// <summary>
     /// Provides a Schedulerx Job resource.
     /// 
-    /// For information about Schedulerx Job and how to use it, see [What is Job](https://www.alibabacloud.com/help/en/).
+    /// For information about Schedulerx Job and how to use it, see [What is Job](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-createjob).
     /// 
     /// &gt; **NOTE:** Available since v1.240.0.
     /// 

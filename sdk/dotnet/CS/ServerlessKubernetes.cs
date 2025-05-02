@@ -77,37 +77,12 @@ namespace Pulumi.AliCloud.CS
     ///         NewNatGateway = true,
     ///         EndpointPublicAccessEnabled = true,
     ///         DeletionProtection = false,
-    ///         LoadBalancerSpec = "slb.s2.small",
     ///         TimeZone = "Asia/Shanghai",
     ///         ServiceCidr = "172.21.0.0/20",
-    ///         ServiceDiscoveryTypes = new[]
-    ///         {
-    ///             "PrivateZone",
-    ///         },
-    ///         LoggingType = "SLS",
     ///         Tags = 
     ///         {
     ///             { "k-aa", "v-aa" },
-    ///             { "k-bb", "v-aa" },
-    ///         },
-    ///         Addons = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///             {
-    ///                 Name = "alb-ingress-controller",
-    ///             },
-    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///             {
-    ///                 Name = "metrics-server",
-    ///             },
-    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///             {
-    ///                 Name = "knative",
-    ///             },
-    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///             {
-    ///                 Name = "arms-prometheus",
-    ///             },
+    ///             { "k-bb", "v-bb" },
     ///         },
     ///     });
     /// 
@@ -132,19 +107,19 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Output("clientCert")]
         public Output<string?> ClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// </summary>
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
@@ -191,7 +166,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EndpointPublicAccessEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The path of kube config, like `~/.kube/config`.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
@@ -377,19 +352,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -442,7 +417,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// The path of kube config, like `~/.kube/config`.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -607,19 +582,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -672,7 +647,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// The path of kube config, like `~/.kube/config`.
+        /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }

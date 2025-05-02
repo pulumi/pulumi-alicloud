@@ -6,4 +6,6 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_oidc_providers import *
 from .oidc_provider import *
+from . import outputs

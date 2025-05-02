@@ -34,14 +34,14 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "default",
+    ///         SecurityGroupName = "default",
     ///     });
     /// 
     ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allow_all_tcp", new()
     ///     {
     ///         Type = "ingress",
     ///         IpProtocol = "tcp",
-    ///         NicType = "internet",
+    ///         NicType = "intranet",
     ///         Policy = "accept",
     ///         PortRange = "1/65535",
     ///         Priority = 1,
@@ -130,6 +130,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Security Group Rule.
+        /// </summary>
+        [Output("securityGroupRuleId")]
+        public Output<string> SecurityGroupRuleId { get; private set; } = null!;
 
         /// <summary>
         /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
@@ -346,6 +352,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of the Security Group Rule.
+        /// </summary>
+        [Input("securityGroupRuleId")]
+        public Input<string>? SecurityGroupRuleId { get; set; }
 
         /// <summary>
         /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.

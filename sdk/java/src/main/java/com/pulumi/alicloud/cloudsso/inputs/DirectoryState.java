@@ -3,7 +3,12 @@
 
 package com.pulumi.alicloud.cloudsso.inputs;
 
+import com.pulumi.alicloud.cloudsso.inputs.DirectoryLoginPreferenceArgs;
+import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
 import com.pulumi.alicloud.cloudsso.inputs.DirectorySamlIdentityProviderConfigurationArgs;
+import com.pulumi.alicloud.cloudsso.inputs.DirectorySamlServiceProviderArgs;
+import com.pulumi.alicloud.cloudsso.inputs.DirectoryUserProvisioningConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -17,14 +22,44 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     public static final DirectoryState Empty = new DirectoryState();
 
     /**
-     * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * CreateTime
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return CreateTime
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Directory Global Acceleration activation status
+     * 
+     */
+    @Import(name="directoryGlobalAccessStatus")
+    private @Nullable Output<String> directoryGlobalAccessStatus;
+
+    /**
+     * @return Directory Global Acceleration activation status
+     * 
+     */
+    public Optional<Output<String>> directoryGlobalAccessStatus() {
+        return Optional.ofNullable(this.directoryGlobalAccessStatus);
+    }
+
+    /**
+     * DirectoryName
      * 
      */
     @Import(name="directoryName")
     private @Nullable Output<String> directoryName;
 
     /**
-     * @return The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * @return DirectoryName
      * 
      */
     public Optional<Output<String>> directoryName() {
@@ -32,14 +67,44 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * Login preferences See `login_preference` below.
+     * 
+     */
+    @Import(name="loginPreference")
+    private @Nullable Output<DirectoryLoginPreferenceArgs> loginPreference;
+
+    /**
+     * @return Login preferences See `login_preference` below.
+     * 
+     */
+    public Optional<Output<DirectoryLoginPreferenceArgs>> loginPreference() {
+        return Optional.ofNullable(this.loginPreference);
+    }
+
+    /**
+     * Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * 
+     */
+    @Import(name="mfaAuthenticationSettingInfo")
+    private @Nullable Output<DirectoryMfaAuthenticationSettingInfoArgs> mfaAuthenticationSettingInfo;
+
+    /**
+     * @return Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * 
+     */
+    public Optional<Output<DirectoryMfaAuthenticationSettingInfoArgs>> mfaAuthenticationSettingInfo() {
+        return Optional.ofNullable(this.mfaAuthenticationSettingInfo);
+    }
+
+    /**
+     * MFA Authentication Status
      * 
      */
     @Import(name="mfaAuthenticationStatus")
     private @Nullable Output<String> mfaAuthenticationStatus;
 
     /**
-     * @return The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * @return MFA Authentication Status
      * 
      */
     public Optional<Output<String>> mfaAuthenticationStatus() {
@@ -47,18 +112,29 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * Password policy See `password_policy` below.
      * 
-     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     */
+    @Import(name="passwordPolicy")
+    private @Nullable Output<DirectoryPasswordPolicyArgs> passwordPolicy;
+
+    /**
+     * @return Password policy See `password_policy` below.
+     * 
+     */
+    public Optional<Output<DirectoryPasswordPolicyArgs>> passwordPolicy() {
+        return Optional.ofNullable(this.passwordPolicy);
+    }
+
+    /**
+     * Identity Provider (IDP) See `saml_identity_provider_configuration` below.
      * 
      */
     @Import(name="samlIdentityProviderConfiguration")
     private @Nullable Output<DirectorySamlIdentityProviderConfigurationArgs> samlIdentityProviderConfiguration;
 
     /**
-     * @return The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-     * 
-     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * @return Identity Provider (IDP) See `saml_identity_provider_configuration` below.
      * 
      */
     public Optional<Output<DirectorySamlIdentityProviderConfigurationArgs>> samlIdentityProviderConfiguration() {
@@ -66,27 +142,64 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * SP information. See `saml_service_provider` below.
+     * 
+     */
+    @Import(name="samlServiceProvider")
+    private @Nullable Output<DirectorySamlServiceProviderArgs> samlServiceProvider;
+
+    /**
+     * @return SP information. See `saml_service_provider` below.
+     * 
+     */
+    public Optional<Output<DirectorySamlServiceProviderArgs>> samlServiceProvider() {
+        return Optional.ofNullable(this.samlServiceProvider);
+    }
+
+    /**
+     * SCIM Synchronization Status
      * 
      */
     @Import(name="scimSynchronizationStatus")
     private @Nullable Output<String> scimSynchronizationStatus;
 
     /**
-     * @return The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * @return SCIM Synchronization Status
      * 
      */
     public Optional<Output<String>> scimSynchronizationStatus() {
         return Optional.ofNullable(this.scimSynchronizationStatus);
     }
 
+    /**
+     * User Provisioning configuration See `user_provisioning_configuration` below.
+     * 
+     */
+    @Import(name="userProvisioningConfiguration")
+    private @Nullable Output<DirectoryUserProvisioningConfigurationArgs> userProvisioningConfiguration;
+
+    /**
+     * @return User Provisioning configuration See `user_provisioning_configuration` below.
+     * 
+     */
+    public Optional<Output<DirectoryUserProvisioningConfigurationArgs>> userProvisioningConfiguration() {
+        return Optional.ofNullable(this.userProvisioningConfiguration);
+    }
+
     private DirectoryState() {}
 
     private DirectoryState(DirectoryState $) {
+        this.createTime = $.createTime;
+        this.directoryGlobalAccessStatus = $.directoryGlobalAccessStatus;
         this.directoryName = $.directoryName;
+        this.loginPreference = $.loginPreference;
+        this.mfaAuthenticationSettingInfo = $.mfaAuthenticationSettingInfo;
         this.mfaAuthenticationStatus = $.mfaAuthenticationStatus;
+        this.passwordPolicy = $.passwordPolicy;
         this.samlIdentityProviderConfiguration = $.samlIdentityProviderConfiguration;
+        this.samlServiceProvider = $.samlServiceProvider;
         this.scimSynchronizationStatus = $.scimSynchronizationStatus;
+        this.userProvisioningConfiguration = $.userProvisioningConfiguration;
     }
 
     public static Builder builder() {
@@ -108,7 +221,49 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryName The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+         * @param createTime CreateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime CreateTime
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param directoryGlobalAccessStatus Directory Global Acceleration activation status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryGlobalAccessStatus(@Nullable Output<String> directoryGlobalAccessStatus) {
+            $.directoryGlobalAccessStatus = directoryGlobalAccessStatus;
+            return this;
+        }
+
+        /**
+         * @param directoryGlobalAccessStatus Directory Global Acceleration activation status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryGlobalAccessStatus(String directoryGlobalAccessStatus) {
+            return directoryGlobalAccessStatus(Output.of(directoryGlobalAccessStatus));
+        }
+
+        /**
+         * @param directoryName DirectoryName
          * 
          * @return builder
          * 
@@ -119,7 +274,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryName The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+         * @param directoryName DirectoryName
          * 
          * @return builder
          * 
@@ -129,7 +284,49 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaAuthenticationStatus The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+         * @param loginPreference Login preferences See `login_preference` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPreference(@Nullable Output<DirectoryLoginPreferenceArgs> loginPreference) {
+            $.loginPreference = loginPreference;
+            return this;
+        }
+
+        /**
+         * @param loginPreference Login preferences See `login_preference` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPreference(DirectoryLoginPreferenceArgs loginPreference) {
+            return loginPreference(Output.of(loginPreference));
+        }
+
+        /**
+         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaAuthenticationSettingInfo(@Nullable Output<DirectoryMfaAuthenticationSettingInfoArgs> mfaAuthenticationSettingInfo) {
+            $.mfaAuthenticationSettingInfo = mfaAuthenticationSettingInfo;
+            return this;
+        }
+
+        /**
+         * @param mfaAuthenticationSettingInfo Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs mfaAuthenticationSettingInfo) {
+            return mfaAuthenticationSettingInfo(Output.of(mfaAuthenticationSettingInfo));
+        }
+
+        /**
+         * @param mfaAuthenticationStatus MFA Authentication Status
          * 
          * @return builder
          * 
@@ -140,7 +337,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaAuthenticationStatus The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+         * @param mfaAuthenticationStatus MFA Authentication Status
          * 
          * @return builder
          * 
@@ -150,9 +347,28 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+         * @param passwordPolicy Password policy See `password_policy` below.
          * 
-         * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+         * @return builder
+         * 
+         */
+        public Builder passwordPolicy(@Nullable Output<DirectoryPasswordPolicyArgs> passwordPolicy) {
+            $.passwordPolicy = passwordPolicy;
+            return this;
+        }
+
+        /**
+         * @param passwordPolicy Password policy See `password_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordPolicy(DirectoryPasswordPolicyArgs passwordPolicy) {
+            return passwordPolicy(Output.of(passwordPolicy));
+        }
+
+        /**
+         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `saml_identity_provider_configuration` below.
          * 
          * @return builder
          * 
@@ -163,9 +379,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlIdentityProviderConfiguration The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-         * 
-         * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+         * @param samlIdentityProviderConfiguration Identity Provider (IDP) See `saml_identity_provider_configuration` below.
          * 
          * @return builder
          * 
@@ -175,7 +389,28 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimSynchronizationStatus The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * @param samlServiceProvider SP information. See `saml_service_provider` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlServiceProvider(@Nullable Output<DirectorySamlServiceProviderArgs> samlServiceProvider) {
+            $.samlServiceProvider = samlServiceProvider;
+            return this;
+        }
+
+        /**
+         * @param samlServiceProvider SP information. See `saml_service_provider` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlServiceProvider(DirectorySamlServiceProviderArgs samlServiceProvider) {
+            return samlServiceProvider(Output.of(samlServiceProvider));
+        }
+
+        /**
+         * @param scimSynchronizationStatus SCIM Synchronization Status
          * 
          * @return builder
          * 
@@ -186,13 +421,34 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimSynchronizationStatus The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         * @param scimSynchronizationStatus SCIM Synchronization Status
          * 
          * @return builder
          * 
          */
         public Builder scimSynchronizationStatus(String scimSynchronizationStatus) {
             return scimSynchronizationStatus(Output.of(scimSynchronizationStatus));
+        }
+
+        /**
+         * @param userProvisioningConfiguration User Provisioning configuration See `user_provisioning_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userProvisioningConfiguration(@Nullable Output<DirectoryUserProvisioningConfigurationArgs> userProvisioningConfiguration) {
+            $.userProvisioningConfiguration = userProvisioningConfiguration;
+            return this;
+        }
+
+        /**
+         * @param userProvisioningConfiguration User Provisioning configuration See `user_provisioning_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userProvisioningConfiguration(DirectoryUserProvisioningConfigurationArgs userProvisioningConfiguration) {
+            return userProvisioningConfiguration(Output.of(userProvisioningConfiguration));
         }
 
         public DirectoryState build() {

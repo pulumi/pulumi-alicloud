@@ -239,6 +239,7 @@ class Endpoints(dict):
                  eds_user: Optional[builtins.str] = None,
                  edsuser: Optional[builtins.str] = None,
                  eflo: Optional[builtins.str] = None,
+                 eflo_cnp: Optional[builtins.str] = None,
                  eflo_controller: Optional[builtins.str] = None,
                  ehpc: Optional[builtins.str] = None,
                  ehs: Optional[builtins.str] = None,
@@ -621,6 +622,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "edsuser", edsuser)
         if eflo is not None:
             pulumi.set(__self__, "eflo", eflo)
+        if eflo_cnp is not None:
+            pulumi.set(__self__, "eflo_cnp", eflo_cnp)
         if eflo_controller is not None:
             pulumi.set(__self__, "eflo_controller", eflo_controller)
         if ehpc is not None:
@@ -1353,6 +1356,11 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
         """
         return pulumi.get(self, "eflo")
+
+    @property
+    @pulumi.getter(name="efloCnp")
+    def eflo_cnp(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "eflo_cnp")
 
     @property
     @pulumi.getter(name="efloController")

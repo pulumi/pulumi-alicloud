@@ -80,7 +80,9 @@ export class GrafanaWorkspace extends pulumi.CustomResource {
      */
     public readonly accountNumber!: pulumi.Output<string | undefined>;
     /**
-     * Language environment (if not filled in, default is zh): zh, en.
+     * Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      */
     public readonly aliyunLang!: pulumi.Output<string | undefined>;
     /**
@@ -116,7 +118,11 @@ export class GrafanaWorkspace extends pulumi.CustomResource {
      */
     public readonly grafanaVersion!: pulumi.Output<string | undefined>;
     /**
-     * Edition
+     * The edition. **Valid values:**
+     * - standard: `Beta Edition(For internal testing only) `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      */
     public readonly grafanaWorkspaceEdition!: pulumi.Output<string | undefined>;
     /**
@@ -217,7 +223,9 @@ export interface GrafanaWorkspaceState {
      */
     accountNumber?: pulumi.Input<string>;
     /**
-     * Language environment (if not filled in, default is zh): zh, en.
+     * Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      */
     aliyunLang?: pulumi.Input<string>;
     /**
@@ -253,7 +261,11 @@ export interface GrafanaWorkspaceState {
      */
     grafanaVersion?: pulumi.Input<string>;
     /**
-     * Edition
+     * The edition. **Valid values:**
+     * - standard: `Beta Edition(For internal testing only) `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      */
     grafanaWorkspaceEdition?: pulumi.Input<string>;
     /**
@@ -299,7 +311,9 @@ export interface GrafanaWorkspaceArgs {
      */
     accountNumber?: pulumi.Input<string>;
     /**
-     * Language environment (if not filled in, default is zh): zh, en.
+     * Language environment (if not filled in, default is zh):
+     * - zh
+     * - en
      */
     aliyunLang?: pulumi.Input<string>;
     /**
@@ -331,7 +345,11 @@ export interface GrafanaWorkspaceArgs {
      */
     grafanaVersion?: pulumi.Input<string>;
     /**
-     * Edition
+     * The edition. **Valid values:**
+     * - standard: `Beta Edition(For internal testing only) `
+     * - personal_edition: Developer Edition
+     * - experts_edition: Pro Edition
+     * - advanced_edition: Advanced Edition
      */
     grafanaWorkspaceEdition?: pulumi.Input<string>;
     /**

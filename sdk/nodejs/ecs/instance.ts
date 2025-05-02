@@ -501,8 +501,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly systemDiskStorageClusterId!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -514,8 +514,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly volumeTags!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -1118,8 +1118,8 @@ export interface InstanceState {
     systemDiskStorageClusterId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1131,8 +1131,8 @@ export interface InstanceState {
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     volumeTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1489,8 +1489,8 @@ export interface InstanceArgs {
     systemDiskStorageClusterId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1502,8 +1502,8 @@ export interface InstanceArgs {
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     volumeTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

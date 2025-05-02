@@ -20,7 +20,9 @@ __all__ = [
     'AccessPointPosixUser',
     'AccessPointRootPathPermission',
     'FileSystemNfsAcl',
+    'FileSystemOptions',
     'FileSystemRecycleBin',
+    'FileSystemSmbAcl',
     'GetAccessGroupsGroupResult',
     'GetAccessRulesRuleResult',
     'GetAutoSnapshotPoliciesPolicyResult',
@@ -165,7 +167,7 @@ class FileSystemNfsAcl(dict):
     def __init__(__self__, *,
                  enabled: Optional[builtins.bool] = None):
         """
-        :param builtins.bool enabled: Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        :param builtins.bool enabled: Whether the NFS ACL function is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -174,9 +176,53 @@ class FileSystemNfsAcl(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        Whether the NFS ACL function is enabled.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FileSystemOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableOplock":
+            suggest = "enable_oplock"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileSystemOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileSystemOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileSystemOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_oplock: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool enable_oplock: Whether to enable the OpLock function. Value:
+               - true: On.
+               - false: does not turn on.
+               
+               > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+        """
+        if enable_oplock is not None:
+            pulumi.set(__self__, "enable_oplock", enable_oplock)
+
+    @property
+    @pulumi.getter(name="enableOplock")
+    def enable_oplock(self) -> Optional[builtins.bool]:
+        """
+        Whether to enable the OpLock function. Value:
+        - true: On.
+        - false: does not turn on.
+
+        > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+        """
+        return pulumi.get(self, "enable_oplock")
 
 
 @pulumi.output_type
@@ -209,11 +255,11 @@ class FileSystemRecycleBin(dict):
                  size: Optional[builtins.int] = None,
                  status: Optional[builtins.str] = None):
         """
-        :param builtins.str enable_time: The time at which the recycle bin was enabled.
-        :param builtins.int reserved_days: The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
-        :param builtins.int secondary_size: The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
-        :param builtins.int size: The size of the files that are dumped to the recycle bin.
-        :param builtins.str status: Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        :param builtins.str enable_time: Recycle Bin open time
+        :param builtins.int reserved_days: Retention time of files in the Recycle Bin. Unit: days.
+        :param builtins.int secondary_size: Amount of low-frequency data stored in the recycle bin. Unit: Byte.
+        :param builtins.int size: The amount of files stored in the Recycle Bin. Unit: Byte.
+        :param builtins.str status: Recycle Bin Status
         """
         if enable_time is not None:
             pulumi.set(__self__, "enable_time", enable_time)
@@ -230,7 +276,7 @@ class FileSystemRecycleBin(dict):
     @pulumi.getter(name="enableTime")
     def enable_time(self) -> Optional[builtins.str]:
         """
-        The time at which the recycle bin was enabled.
+        Recycle Bin open time
         """
         return pulumi.get(self, "enable_time")
 
@@ -238,7 +284,7 @@ class FileSystemRecycleBin(dict):
     @pulumi.getter(name="reservedDays")
     def reserved_days(self) -> Optional[builtins.int]:
         """
-        The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        Retention time of files in the Recycle Bin. Unit: days.
         """
         return pulumi.get(self, "reserved_days")
 
@@ -246,7 +292,7 @@ class FileSystemRecycleBin(dict):
     @pulumi.getter(name="secondarySize")
     def secondary_size(self) -> Optional[builtins.int]:
         """
-        The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        Amount of low-frequency data stored in the recycle bin. Unit: Byte.
         """
         return pulumi.get(self, "secondary_size")
 
@@ -254,7 +300,7 @@ class FileSystemRecycleBin(dict):
     @pulumi.getter
     def size(self) -> Optional[builtins.int]:
         """
-        The size of the files that are dumped to the recycle bin.
+        The amount of files stored in the Recycle Bin. Unit: Byte.
         """
         return pulumi.get(self, "size")
 
@@ -262,9 +308,149 @@ class FileSystemRecycleBin(dict):
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
         """
-        Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        Recycle Bin Status
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class FileSystemSmbAcl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableAnonymousAccess":
+            suggest = "enable_anonymous_access"
+        elif key == "encryptData":
+            suggest = "encrypt_data"
+        elif key == "homeDirPath":
+            suggest = "home_dir_path"
+        elif key == "rejectUnencryptedAccess":
+            suggest = "reject_unencrypted_access"
+        elif key == "superAdminSid":
+            suggest = "super_admin_sid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileSystemSmbAcl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileSystemSmbAcl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileSystemSmbAcl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_anonymous_access: Optional[builtins.bool] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 encrypt_data: Optional[builtins.bool] = None,
+                 home_dir_path: Optional[builtins.str] = None,
+                 reject_unencrypted_access: Optional[builtins.bool] = None,
+                 super_admin_sid: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enable_anonymous_access: Whether to allow anonymous access.
+               - true: Allow anonymous access.
+               - false (default): Anonymous access is not allowed.
+        :param builtins.bool enabled: Whether SMB ACL is enabled
+        :param builtins.bool encrypt_data: Whether transmission encryption is enabled.
+               - true: Enables encryption in transit.
+               - false (default): Transport encryption is not enabled.
+        :param builtins.str home_dir_path: The user directory home path for each user. The file path format is as follows:
+               - A forward slash (/) or backslash (\\) as a separator.
+               - Each paragraph cannot contain ":|? *.
+               - The length of each segment ranges from 0 to 255.
+               - The total length range is 0~32767.
+               
+               For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+               
+               > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+        :param builtins.bool reject_unencrypted_access: Whether to reject non-encrypted clients.
+               - true: Deny non-encrypted clients.
+               - false (default): Non-encrypted clients are not rejected.
+        :param builtins.str super_admin_sid: The ID of the Super User. The ID rules are as follows:
+               - Must start with S and no other letters can appear after the S at the beginning.
+               - At least three dashes (-) apart.
+               
+               Such as S-1-5-22 or S-1-5-22-23.
+        """
+        if enable_anonymous_access is not None:
+            pulumi.set(__self__, "enable_anonymous_access", enable_anonymous_access)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if encrypt_data is not None:
+            pulumi.set(__self__, "encrypt_data", encrypt_data)
+        if home_dir_path is not None:
+            pulumi.set(__self__, "home_dir_path", home_dir_path)
+        if reject_unencrypted_access is not None:
+            pulumi.set(__self__, "reject_unencrypted_access", reject_unencrypted_access)
+        if super_admin_sid is not None:
+            pulumi.set(__self__, "super_admin_sid", super_admin_sid)
+
+    @property
+    @pulumi.getter(name="enableAnonymousAccess")
+    def enable_anonymous_access(self) -> Optional[builtins.bool]:
+        """
+        Whether to allow anonymous access.
+        - true: Allow anonymous access.
+        - false (default): Anonymous access is not allowed.
+        """
+        return pulumi.get(self, "enable_anonymous_access")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether SMB ACL is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="encryptData")
+    def encrypt_data(self) -> Optional[builtins.bool]:
+        """
+        Whether transmission encryption is enabled.
+        - true: Enables encryption in transit.
+        - false (default): Transport encryption is not enabled.
+        """
+        return pulumi.get(self, "encrypt_data")
+
+    @property
+    @pulumi.getter(name="homeDirPath")
+    def home_dir_path(self) -> Optional[builtins.str]:
+        """
+        The user directory home path for each user. The file path format is as follows:
+        - A forward slash (/) or backslash (\\) as a separator.
+        - Each paragraph cannot contain ":|? *.
+        - The length of each segment ranges from 0 to 255.
+        - The total length range is 0~32767.
+
+        For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+
+        > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+        """
+        return pulumi.get(self, "home_dir_path")
+
+    @property
+    @pulumi.getter(name="rejectUnencryptedAccess")
+    def reject_unencrypted_access(self) -> Optional[builtins.bool]:
+        """
+        Whether to reject non-encrypted clients.
+        - true: Deny non-encrypted clients.
+        - false (default): Non-encrypted clients are not rejected.
+        """
+        return pulumi.get(self, "reject_unencrypted_access")
+
+    @property
+    @pulumi.getter(name="superAdminSid")
+    def super_admin_sid(self) -> Optional[builtins.str]:
+        """
+        The ID of the Super User. The ID rules are as follows:
+        - Must start with S and no other letters can appear after the S at the beginning.
+        - At least three dashes (-) apart.
+
+        Such as S-1-5-22 or S-1-5-22-23.
+        """
+        return pulumi.get(self, "super_admin_sid")
 
 
 @pulumi.output_type

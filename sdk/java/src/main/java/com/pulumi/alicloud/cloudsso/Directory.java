@@ -6,7 +6,12 @@ package com.pulumi.alicloud.cloudsso;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cloudsso.DirectoryArgs;
 import com.pulumi.alicloud.cloudsso.inputs.DirectoryState;
+import com.pulumi.alicloud.cloudsso.outputs.DirectoryLoginPreference;
+import com.pulumi.alicloud.cloudsso.outputs.DirectoryMfaAuthenticationSettingInfo;
+import com.pulumi.alicloud.cloudsso.outputs.DirectoryPasswordPolicy;
 import com.pulumi.alicloud.cloudsso.outputs.DirectorySamlIdentityProviderConfiguration;
+import com.pulumi.alicloud.cloudsso.outputs.DirectorySamlServiceProvider;
+import com.pulumi.alicloud.cloudsso.outputs.DirectoryUserProvisioningConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -22,8 +27,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.135.0.
  * 
- * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -36,11 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
- * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
  * import com.pulumi.alicloud.cloudsso.Directory;
  * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,16 +56,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+ *         var default_ = new Directory("default", DirectoryArgs.builder()
+ *             .directoryName(name)
  *             .build());
  * 
- *         for (var i = 0; i < default_.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
- *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
- *                 .directoryName(name)
- *                 .build());
- * 
- *         
- * }
  *     }
  * }
  * }
@@ -84,64 +78,158 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/directory:Directory")
 public class Directory extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * CreateTime
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return CreateTime
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Directory Global Acceleration activation status
+     * 
+     */
+    @Export(name="directoryGlobalAccessStatus", refs={String.class}, tree="[0]")
+    private Output<String> directoryGlobalAccessStatus;
+
+    /**
+     * @return Directory Global Acceleration activation status
+     * 
+     */
+    public Output<String> directoryGlobalAccessStatus() {
+        return this.directoryGlobalAccessStatus;
+    }
+    /**
+     * DirectoryName
      * 
      */
     @Export(name="directoryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryName;
 
     /**
-     * @return The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * @return DirectoryName
      * 
      */
     public Output<Optional<String>> directoryName() {
         return Codegen.optional(this.directoryName);
     }
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * Login preferences See `login_preference` below.
+     * 
+     */
+    @Export(name="loginPreference", refs={DirectoryLoginPreference.class}, tree="[0]")
+    private Output<DirectoryLoginPreference> loginPreference;
+
+    /**
+     * @return Login preferences See `login_preference` below.
+     * 
+     */
+    public Output<DirectoryLoginPreference> loginPreference() {
+        return this.loginPreference;
+    }
+    /**
+     * Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * 
+     */
+    @Export(name="mfaAuthenticationSettingInfo", refs={DirectoryMfaAuthenticationSettingInfo.class}, tree="[0]")
+    private Output<DirectoryMfaAuthenticationSettingInfo> mfaAuthenticationSettingInfo;
+
+    /**
+     * @return Global MFA verification configuration. See `mfa_authentication_setting_info` below.
+     * 
+     */
+    public Output<DirectoryMfaAuthenticationSettingInfo> mfaAuthenticationSettingInfo() {
+        return this.mfaAuthenticationSettingInfo;
+    }
+    /**
+     * MFA Authentication Status
      * 
      */
     @Export(name="mfaAuthenticationStatus", refs={String.class}, tree="[0]")
     private Output<String> mfaAuthenticationStatus;
 
     /**
-     * @return The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * @return MFA Authentication Status
      * 
      */
     public Output<String> mfaAuthenticationStatus() {
         return this.mfaAuthenticationStatus;
     }
     /**
-     * The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+     * Password policy See `password_policy` below.
      * 
-     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     */
+    @Export(name="passwordPolicy", refs={DirectoryPasswordPolicy.class}, tree="[0]")
+    private Output<DirectoryPasswordPolicy> passwordPolicy;
+
+    /**
+     * @return Password policy See `password_policy` below.
+     * 
+     */
+    public Output<DirectoryPasswordPolicy> passwordPolicy() {
+        return this.passwordPolicy;
+    }
+    /**
+     * Identity Provider (IDP) See `saml_identity_provider_configuration` below.
      * 
      */
     @Export(name="samlIdentityProviderConfiguration", refs={DirectorySamlIdentityProviderConfiguration.class}, tree="[0]")
     private Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration;
 
     /**
-     * @return The saml identity provider configuration. See `saml_identity_provider_configuration` below.
-     * 
-     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * @return Identity Provider (IDP) See `saml_identity_provider_configuration` below.
      * 
      */
     public Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration() {
         return this.samlIdentityProviderConfiguration;
     }
     /**
-     * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * SP information. See `saml_service_provider` below.
+     * 
+     */
+    @Export(name="samlServiceProvider", refs={DirectorySamlServiceProvider.class}, tree="[0]")
+    private Output<DirectorySamlServiceProvider> samlServiceProvider;
+
+    /**
+     * @return SP information. See `saml_service_provider` below.
+     * 
+     */
+    public Output<DirectorySamlServiceProvider> samlServiceProvider() {
+        return this.samlServiceProvider;
+    }
+    /**
+     * SCIM Synchronization Status
      * 
      */
     @Export(name="scimSynchronizationStatus", refs={String.class}, tree="[0]")
     private Output<String> scimSynchronizationStatus;
 
     /**
-     * @return The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * @return SCIM Synchronization Status
      * 
      */
     public Output<String> scimSynchronizationStatus() {
         return this.scimSynchronizationStatus;
+    }
+    /**
+     * User Provisioning configuration See `user_provisioning_configuration` below.
+     * 
+     */
+    @Export(name="userProvisioningConfiguration", refs={DirectoryUserProvisioningConfiguration.class}, tree="[0]")
+    private Output<DirectoryUserProvisioningConfiguration> userProvisioningConfiguration;
+
+    /**
+     * @return User Provisioning configuration See `user_provisioning_configuration` below.
+     * 
+     */
+    public Output<DirectoryUserProvisioningConfiguration> userProvisioningConfiguration() {
+        return this.userProvisioningConfiguration;
     }
 
     /**

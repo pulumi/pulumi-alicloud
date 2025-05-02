@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string NvmeSupport;
         /// <summary>
-        /// The price of instance type.
+        /// The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
         /// </summary>
         public readonly string Price;
         /// <summary>

@@ -12,11 +12,35 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
 
     public sealed class DirectorySamlIdentityProviderConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Binding method for initiating a SAML request.
+        /// </summary>
+        [Input("bindingType")]
+        public Input<string>? BindingType { get; set; }
+
+        [Input("certificateIds")]
+        private InputList<string>? _certificateIds;
+
+        /// <summary>
+        /// Certificate ID list
+        /// </summary>
+        public InputList<string> CertificateIds
+        {
+            get => _certificateIds ?? (_certificateIds = new InputList<string>());
+            set => _certificateIds = value;
+        }
+
+        /// <summary>
+        /// CreateTime
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("encodedMetadataDocument")]
         private Input<string>? _encodedMetadataDocument;
 
         /// <summary>
-        /// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+        /// EncodedMetadataDocument
         /// </summary>
         public Input<string>? EncodedMetadataDocument
         {
@@ -29,10 +53,34 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
         }
 
         /// <summary>
-        /// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// EntityId
+        /// </summary>
+        [Input("entityId")]
+        public Input<string>? EntityId { get; set; }
+
+        /// <summary>
+        /// LoginUrl
+        /// </summary>
+        [Input("loginUrl")]
+        public Input<string>? LoginUrl { get; set; }
+
+        /// <summary>
+        /// SSOStatus
         /// </summary>
         [Input("ssoStatus")]
         public Input<string>? SsoStatus { get; set; }
+
+        /// <summary>
+        /// UpdateTime
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// SP Request whether the signature is required
+        /// </summary>
+        [Input("wantRequestSigned")]
+        public Input<bool>? WantRequestSigned { get; set; }
 
         public DirectorySamlIdentityProviderConfigurationGetArgs()
         {

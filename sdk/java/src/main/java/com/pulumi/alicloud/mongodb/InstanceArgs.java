@@ -659,14 +659,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     @Import(name="tdeStatus")
     private @Nullable Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+     * @return The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -1704,7 +1704,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
          * 
          * @return builder
          * 
@@ -1715,7 +1715,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
          * 
          * @return builder
          * 

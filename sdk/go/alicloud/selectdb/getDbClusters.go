@@ -63,6 +63,7 @@ import (
 //				DbInstanceDescription: pulumi.String(name),
 //				CacheSize:             pulumi.Int(200),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
+//				EngineMinorVersion:    pulumi.String("3.0.12"),
 //				VpcId:                 pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
 //				ZoneId:                pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
 //				VswitchId:             pulumi.String(defaultGetSwitches.Vswitches[0].Id),

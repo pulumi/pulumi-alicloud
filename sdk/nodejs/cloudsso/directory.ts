@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.135.0.
  *
- * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
  * ## Example Usage
  *
  * Basic Usage
@@ -25,13 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = alicloud.cloudsso.getDirectories({});
- * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
- * _default.then(_default => _default.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));
- *     }
- * });
+ * const _default = new alicloud.cloudsso.Directory("default", {directoryName: name});
  * ```
  *
  * ## Import
@@ -71,23 +63,49 @@ export class Directory extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * CreateTime
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Directory Global Acceleration activation status
+     */
+    public readonly directoryGlobalAccessStatus!: pulumi.Output<string>;
+    /**
+     * DirectoryName
      */
     public readonly directoryName!: pulumi.Output<string | undefined>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * Login preferences See `loginPreference` below.
+     */
+    public readonly loginPreference!: pulumi.Output<outputs.cloudsso.DirectoryLoginPreference>;
+    /**
+     * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+     */
+    public readonly mfaAuthenticationSettingInfo!: pulumi.Output<outputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    /**
+     * MFA Authentication Status
      */
     public readonly mfaAuthenticationStatus!: pulumi.Output<string>;
     /**
-     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-     *
-     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * Password policy See `passwordPolicy` below.
+     */
+    public readonly passwordPolicy!: pulumi.Output<outputs.cloudsso.DirectoryPasswordPolicy>;
+    /**
+     * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
     public readonly samlIdentityProviderConfiguration!: pulumi.Output<outputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
-     * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * SP information. See `samlServiceProvider` below.
+     */
+    public readonly samlServiceProvider!: pulumi.Output<outputs.cloudsso.DirectorySamlServiceProvider>;
+    /**
+     * SCIM Synchronization Status
      */
     public readonly scimSynchronizationStatus!: pulumi.Output<string>;
+    /**
+     * User Provisioning configuration See `userProvisioningConfiguration` below.
+     */
+    public readonly userProvisioningConfiguration!: pulumi.Output<outputs.cloudsso.DirectoryUserProvisioningConfiguration>;
 
     /**
      * Create a Directory resource with the given unique name, arguments, and options.
@@ -102,16 +120,30 @@ export class Directory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["directoryGlobalAccessStatus"] = state ? state.directoryGlobalAccessStatus : undefined;
             resourceInputs["directoryName"] = state ? state.directoryName : undefined;
+            resourceInputs["loginPreference"] = state ? state.loginPreference : undefined;
+            resourceInputs["mfaAuthenticationSettingInfo"] = state ? state.mfaAuthenticationSettingInfo : undefined;
             resourceInputs["mfaAuthenticationStatus"] = state ? state.mfaAuthenticationStatus : undefined;
+            resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
             resourceInputs["samlIdentityProviderConfiguration"] = state ? state.samlIdentityProviderConfiguration : undefined;
+            resourceInputs["samlServiceProvider"] = state ? state.samlServiceProvider : undefined;
             resourceInputs["scimSynchronizationStatus"] = state ? state.scimSynchronizationStatus : undefined;
+            resourceInputs["userProvisioningConfiguration"] = state ? state.userProvisioningConfiguration : undefined;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
+            resourceInputs["directoryGlobalAccessStatus"] = args ? args.directoryGlobalAccessStatus : undefined;
             resourceInputs["directoryName"] = args ? args.directoryName : undefined;
+            resourceInputs["loginPreference"] = args ? args.loginPreference : undefined;
+            resourceInputs["mfaAuthenticationSettingInfo"] = args ? args.mfaAuthenticationSettingInfo : undefined;
             resourceInputs["mfaAuthenticationStatus"] = args ? args.mfaAuthenticationStatus : undefined;
+            resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
             resourceInputs["samlIdentityProviderConfiguration"] = args ? args.samlIdentityProviderConfiguration : undefined;
+            resourceInputs["samlServiceProvider"] = args ? args.samlServiceProvider : undefined;
             resourceInputs["scimSynchronizationStatus"] = args ? args.scimSynchronizationStatus : undefined;
+            resourceInputs["userProvisioningConfiguration"] = args ? args.userProvisioningConfiguration : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Directory.__pulumiType, name, resourceInputs, opts);
@@ -123,23 +155,49 @@ export class Directory extends pulumi.CustomResource {
  */
 export interface DirectoryState {
     /**
-     * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * CreateTime
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Directory Global Acceleration activation status
+     */
+    directoryGlobalAccessStatus?: pulumi.Input<string>;
+    /**
+     * DirectoryName
      */
     directoryName?: pulumi.Input<string>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * Login preferences See `loginPreference` below.
+     */
+    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference>;
+    /**
+     * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+     */
+    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    /**
+     * MFA Authentication Status
      */
     mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
-     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-     *
-     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * Password policy See `passwordPolicy` below.
+     */
+    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy>;
+    /**
+     * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
     samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
-     * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * SP information. See `samlServiceProvider` below.
+     */
+    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider>;
+    /**
+     * SCIM Synchronization Status
      */
     scimSynchronizationStatus?: pulumi.Input<string>;
+    /**
+     * User Provisioning configuration See `userProvisioningConfiguration` below.
+     */
+    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration>;
 }
 
 /**
@@ -147,21 +205,43 @@ export interface DirectoryState {
  */
 export interface DirectoryArgs {
     /**
-     * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
+     * Directory Global Acceleration activation status
+     */
+    directoryGlobalAccessStatus?: pulumi.Input<string>;
+    /**
+     * DirectoryName
      */
     directoryName?: pulumi.Input<string>;
     /**
-     * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
+     * Login preferences See `loginPreference` below.
+     */
+    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference>;
+    /**
+     * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
+     */
+    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    /**
+     * MFA Authentication Status
      */
     mfaAuthenticationStatus?: pulumi.Input<string>;
     /**
-     * The saml identity provider configuration. See `samlIdentityProviderConfiguration` below.
-     *
-     * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * Password policy See `passwordPolicy` below.
+     */
+    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy>;
+    /**
+     * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
     samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
-     * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * SP information. See `samlServiceProvider` below.
+     */
+    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider>;
+    /**
+     * SCIM Synchronization Status
      */
     scimSynchronizationStatus?: pulumi.Input<string>;
+    /**
+     * User Provisioning configuration See `userProvisioningConfiguration` below.
+     */
+    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration>;
 }

@@ -66,6 +66,7 @@ import (
 //				DbInstanceDescription: pulumi.String(name),
 //				CacheSize:             pulumi.Int(200),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
+//				EngineMinorVersion:    pulumi.String("3.0.12"),
 //				VpcId:                 pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
 //				ZoneId:                pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
 //				VswitchId:             pulumi.String(defaultGetSwitches.Vswitches[0].Id),
@@ -115,7 +116,7 @@ type DbInstance struct {
 	EnablePublicNetwork pulumi.BoolPtrOutput `pulumi:"enablePublicNetwork"`
 	// The engine of DBInstance. Always `selectdb`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// The current DBInstance minor version.
+	// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
 	EngineMinorVersion pulumi.StringOutput `pulumi:"engineMinorVersion"`
 	// The time when DBInstance is created.
 	GmtCreated pulumi.StringOutput `pulumi:"gmtCreated"`
@@ -151,8 +152,10 @@ type DbInstance struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
-	UpgradedEngineMinorVersion pulumi.StringPtrOutput `pulumi:"upgradedEngineMinorVersion"`
+	// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	//
+	// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	UpgradedEngineMinorVersion pulumi.StringOutput `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of vswitch for DBInstance.
@@ -245,7 +248,7 @@ type dbInstanceState struct {
 	EnablePublicNetwork *bool `pulumi:"enablePublicNetwork"`
 	// The engine of DBInstance. Always `selectdb`.
 	Engine *string `pulumi:"engine"`
-	// The current DBInstance minor version.
+	// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
 	EngineMinorVersion *string `pulumi:"engineMinorVersion"`
 	// The time when DBInstance is created.
 	GmtCreated *string `pulumi:"gmtCreated"`
@@ -281,7 +284,9 @@ type dbInstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+	// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	//
+	// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
 	UpgradedEngineMinorVersion *string `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId *string `pulumi:"vpcId"`
@@ -318,7 +323,7 @@ type DbInstanceState struct {
 	EnablePublicNetwork pulumi.BoolPtrInput
 	// The engine of DBInstance. Always `selectdb`.
 	Engine pulumi.StringPtrInput
-	// The current DBInstance minor version.
+	// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
 	EngineMinorVersion pulumi.StringPtrInput
 	// The time when DBInstance is created.
 	GmtCreated pulumi.StringPtrInput
@@ -354,7 +359,9 @@ type DbInstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+	// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	//
+	// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
 	UpgradedEngineMinorVersion pulumi.StringPtrInput
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringPtrInput
@@ -381,6 +388,8 @@ type dbInstanceArgs struct {
 	DesiredSecurityIpLists []DbInstanceDesiredSecurityIpList `pulumi:"desiredSecurityIpLists"`
 	// If DBInstance need to open public network, set it to `true`.
 	EnablePublicNetwork *bool `pulumi:"enablePublicNetwork"`
+	// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
+	EngineMinorVersion *string `pulumi:"engineMinorVersion"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
@@ -391,7 +400,9 @@ type dbInstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+	// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	//
+	// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
 	UpgradedEngineMinorVersion *string `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId string `pulumi:"vpcId"`
@@ -415,6 +426,8 @@ type DbInstanceArgs struct {
 	DesiredSecurityIpLists DbInstanceDesiredSecurityIpListArrayInput
 	// If DBInstance need to open public network, set it to `true`.
 	EnablePublicNetwork pulumi.BoolPtrInput
+	// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
+	EngineMinorVersion pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringInput
 	// It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
@@ -425,7 +438,9 @@ type DbInstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+	// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+	//
+	// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
 	UpgradedEngineMinorVersion pulumi.StringPtrInput
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringInput
@@ -587,7 +602,7 @@ func (o DbInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The current DBInstance minor version.
+// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
 func (o DbInstanceOutput) EngineMinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.EngineMinorVersion }).(pulumi.StringOutput)
 }
@@ -674,9 +689,11 @@ func (o DbInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
-func (o DbInstanceOutput) UpgradedEngineMinorVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.UpgradedEngineMinorVersion }).(pulumi.StringPtrOutput)
+// Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+//
+// Deprecated: Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+func (o DbInstanceOutput) UpgradedEngineMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.UpgradedEngineMinorVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the VPC for DBInstance.

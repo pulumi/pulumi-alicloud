@@ -32,6 +32,7 @@ class DbInstanceArgs:
                  admin_pass: Optional[pulumi.Input[builtins.str]] = None,
                  desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
                  enable_public_network: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_minor_version: Optional[pulumi.Input[builtins.str]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  period_time: Optional[pulumi.Input[builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -48,12 +49,13 @@ class DbInstanceArgs:
         :param pulumi.Input[builtins.str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
+        :param pulumi.Input[builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[builtins.str] period: It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
         :param pulumi.Input[builtins.int] period_time: The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         pulumi.set(__self__, "cache_size", cache_size)
         pulumi.set(__self__, "db_instance_class", db_instance_class)
@@ -68,12 +70,17 @@ class DbInstanceArgs:
             pulumi.set(__self__, "desired_security_ip_lists", desired_security_ip_lists)
         if enable_public_network is not None:
             pulumi.set(__self__, "enable_public_network", enable_public_network)
+        if engine_minor_version is not None:
+            pulumi.set(__self__, "engine_minor_version", engine_minor_version)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if period_time is not None:
             pulumi.set(__self__, "period_time", period_time)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if upgraded_engine_minor_version is not None:
+            warnings.warn("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""", DeprecationWarning)
+            pulumi.log.warn("""upgraded_engine_minor_version is deprecated: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
         if upgraded_engine_minor_version is not None:
             pulumi.set(__self__, "upgraded_engine_minor_version", upgraded_engine_minor_version)
 
@@ -198,6 +205,18 @@ class DbInstanceArgs:
         pulumi.set(self, "enable_public_network", value)
 
     @property
+    @pulumi.getter(name="engineMinorVersion")
+    def engine_minor_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
+        """
+        return pulumi.get(self, "engine_minor_version")
+
+    @engine_minor_version.setter
+    def engine_minor_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_minor_version", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -237,9 +256,10 @@ class DbInstanceArgs:
 
     @property
     @pulumi.getter(name="upgradedEngineMinorVersion")
+    @_utilities.deprecated("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
     def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
@@ -300,7 +320,7 @@ class _DbInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
         :param pulumi.Input[builtins.str] engine: The engine of DBInstance. Always `selectdb`.
-        :param pulumi.Input[builtins.str] engine_minor_version: The current DBInstance minor version.
+        :param pulumi.Input[builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[builtins.str] gmt_created: The time when DBInstance is created.
         :param pulumi.Input[builtins.str] gmt_expired: The time when DBInstance will be expired. Available on `Subscription` DBInstance.
         :param pulumi.Input[builtins.str] gmt_modified: The time when DBInstance is modified.
@@ -319,7 +339,7 @@ class _DbInstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[builtins.str] zone_id: The ID of zone for DBInstance.
@@ -384,6 +404,9 @@ class _DbInstanceState:
             pulumi.set(__self__, "sub_domain", sub_domain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if upgraded_engine_minor_version is not None:
+            warnings.warn("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""", DeprecationWarning)
+            pulumi.log.warn("""upgraded_engine_minor_version is deprecated: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
         if upgraded_engine_minor_version is not None:
             pulumi.set(__self__, "upgraded_engine_minor_version", upgraded_engine_minor_version)
         if vpc_id is not None:
@@ -553,7 +576,7 @@ class _DbInstanceState:
     @pulumi.getter(name="engineMinorVersion")
     def engine_minor_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The current DBInstance minor version.
+        The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         """
         return pulumi.get(self, "engine_minor_version")
 
@@ -757,9 +780,10 @@ class _DbInstanceState:
 
     @property
     @pulumi.getter(name="upgradedEngineMinorVersion")
+    @_utilities.deprecated("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
     def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
@@ -818,6 +842,7 @@ class DbInstance(pulumi.CustomResource):
                  db_instance_description: Optional[pulumi.Input[builtins.str]] = None,
                  desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
                  enable_public_network: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_minor_version: Optional[pulumi.Input[builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[builtins.str]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  period_time: Optional[pulumi.Input[builtins.int]] = None,
@@ -855,6 +880,7 @@ class DbInstance(pulumi.CustomResource):
             db_instance_description=name,
             cache_size=200,
             payment_type="PayAsYouGo",
+            engine_minor_version="3.0.12",
             vpc_id=default_get_switches.vswitches[0].vpc_id,
             zone_id=default_get_switches.vswitches[0].zone_id,
             vswitch_id=default_get_switches.vswitches[0].id)
@@ -876,13 +902,14 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] db_instance_description: The DBInstance description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
+        :param pulumi.Input[builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[builtins.str] period: It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
         :param pulumi.Input[builtins.int] period_time: The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[builtins.str] zone_id: The ID of zone for DBInstance.
@@ -921,6 +948,7 @@ class DbInstance(pulumi.CustomResource):
             db_instance_description=name,
             cache_size=200,
             payment_type="PayAsYouGo",
+            engine_minor_version="3.0.12",
             vpc_id=default_get_switches.vswitches[0].vpc_id,
             zone_id=default_get_switches.vswitches[0].zone_id,
             vswitch_id=default_get_switches.vswitches[0].id)
@@ -955,6 +983,7 @@ class DbInstance(pulumi.CustomResource):
                  db_instance_description: Optional[pulumi.Input[builtins.str]] = None,
                  desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
                  enable_public_network: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_minor_version: Optional[pulumi.Input[builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[builtins.str]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  period_time: Optional[pulumi.Input[builtins.int]] = None,
@@ -984,6 +1013,7 @@ class DbInstance(pulumi.CustomResource):
             __props__.__dict__["db_instance_description"] = db_instance_description
             __props__.__dict__["desired_security_ip_lists"] = desired_security_ip_lists
             __props__.__dict__["enable_public_network"] = enable_public_network
+            __props__.__dict__["engine_minor_version"] = engine_minor_version
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
@@ -1007,7 +1037,6 @@ class DbInstance(pulumi.CustomResource):
             __props__.__dict__["cpu_postpaid"] = None
             __props__.__dict__["cpu_prepaid"] = None
             __props__.__dict__["engine"] = None
-            __props__.__dict__["engine_minor_version"] = None
             __props__.__dict__["gmt_created"] = None
             __props__.__dict__["gmt_expired"] = None
             __props__.__dict__["gmt_modified"] = None
@@ -1086,7 +1115,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[builtins.bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
         :param pulumi.Input[builtins.str] engine: The engine of DBInstance. Always `selectdb`.
-        :param pulumi.Input[builtins.str] engine_minor_version: The current DBInstance minor version.
+        :param pulumi.Input[builtins.str] engine_minor_version: The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         :param pulumi.Input[builtins.str] gmt_created: The time when DBInstance is created.
         :param pulumi.Input[builtins.str] gmt_expired: The time when DBInstance will be expired. Available on `Subscription` DBInstance.
         :param pulumi.Input[builtins.str] gmt_modified: The time when DBInstance is modified.
@@ -1105,7 +1134,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        :param pulumi.Input[builtins.str] upgraded_engine_minor_version: Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[builtins.str] zone_id: The ID of zone for DBInstance.
@@ -1258,7 +1287,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="engineMinorVersion")
     def engine_minor_version(self) -> pulumi.Output[builtins.str]:
         """
-        The current DBInstance minor version.
+        The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         """
         return pulumi.get(self, "engine_minor_version")
 
@@ -1394,9 +1423,10 @@ class DbInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upgradedEngineMinorVersion")
-    def upgraded_engine_minor_version(self) -> pulumi.Output[Optional[builtins.str]]:
+    @_utilities.deprecated("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
+    def upgraded_engine_minor_version(self) -> pulumi.Output[builtins.str]:
         """
-        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+        Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 

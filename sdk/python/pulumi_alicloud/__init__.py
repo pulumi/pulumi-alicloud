@@ -3835,6 +3835,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eflo/experimentPlan",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/experimentPlan:ExperimentPlan": "ExperimentPlan"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/experimentPlanTemplate",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate": "ExperimentPlanTemplate"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eflo/invocation",
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
@@ -3855,6 +3871,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
    "alicloud:eflo/nodeGroup:NodeGroup": "NodeGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/resource",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/resource:Resource": "Resource"
   }
  },
  {
@@ -4223,6 +4247,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/rewriteUrlRule:RewriteUrlRule": "RewriteUrlRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/scheduledPreloadExecution",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution": "ScheduledPreloadExecution"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/scheduledPreloadJob",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob": "ScheduledPreloadJob"
   }
  },
  {
@@ -5731,6 +5771,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "mongodb/publicNetworkAddress",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress": "PublicNetworkAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/replicaSetRole",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/replicaSetRole:ReplicaSetRole": "ReplicaSetRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "mongodb/serverlessInstance",
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
@@ -6311,6 +6367,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ots",
   "classes": {
    "alicloud:ots/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/flowPipeline",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/flowPipeline:FlowPipeline": "FlowPipeline"
   }
  },
  {
@@ -7751,6 +7815,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/collectionPolicy:CollectionPolicy": "CollectionPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/etl",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/etl:Etl": "Etl"
   }
  },
  {

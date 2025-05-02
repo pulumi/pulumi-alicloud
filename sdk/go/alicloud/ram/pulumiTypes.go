@@ -793,6 +793,139 @@ func (o GetPolicyDocumentStatementPrincipalArrayOutput) Index(i pulumi.IntInput)
 	}).(GetPolicyDocumentStatementPrincipalOutput)
 }
 
+type GetRolePolicyAttachmentsAttachment struct {
+	// The time when the role was attached to the policy.
+	AttachDate string `pulumi:"attachDate"`
+	// The policy description.
+	Description string `pulumi:"description"`
+	// The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+	Id string `pulumi:"id"`
+	// The name of the policy.
+	PolicyName string `pulumi:"policyName"`
+	// Policy type.- Custom: Custom policy.- System: System policy.
+	PolicyType string `pulumi:"policyType"`
+}
+
+// GetRolePolicyAttachmentsAttachmentInput is an input type that accepts GetRolePolicyAttachmentsAttachmentArgs and GetRolePolicyAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetRolePolicyAttachmentsAttachmentInput` via:
+//
+//	GetRolePolicyAttachmentsAttachmentArgs{...}
+type GetRolePolicyAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetRolePolicyAttachmentsAttachmentOutput() GetRolePolicyAttachmentsAttachmentOutput
+	ToGetRolePolicyAttachmentsAttachmentOutputWithContext(context.Context) GetRolePolicyAttachmentsAttachmentOutput
+}
+
+type GetRolePolicyAttachmentsAttachmentArgs struct {
+	// The time when the role was attached to the policy.
+	AttachDate pulumi.StringInput `pulumi:"attachDate"`
+	// The policy description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// Policy type.- Custom: Custom policy.- System: System policy.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+}
+
+func (GetRolePolicyAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetRolePolicyAttachmentsAttachmentArgs) ToGetRolePolicyAttachmentsAttachmentOutput() GetRolePolicyAttachmentsAttachmentOutput {
+	return i.ToGetRolePolicyAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetRolePolicyAttachmentsAttachmentArgs) ToGetRolePolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetRolePolicyAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePolicyAttachmentsAttachmentOutput)
+}
+
+// GetRolePolicyAttachmentsAttachmentArrayInput is an input type that accepts GetRolePolicyAttachmentsAttachmentArray and GetRolePolicyAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetRolePolicyAttachmentsAttachmentArrayInput` via:
+//
+//	GetRolePolicyAttachmentsAttachmentArray{ GetRolePolicyAttachmentsAttachmentArgs{...} }
+type GetRolePolicyAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetRolePolicyAttachmentsAttachmentArrayOutput() GetRolePolicyAttachmentsAttachmentArrayOutput
+	ToGetRolePolicyAttachmentsAttachmentArrayOutputWithContext(context.Context) GetRolePolicyAttachmentsAttachmentArrayOutput
+}
+
+type GetRolePolicyAttachmentsAttachmentArray []GetRolePolicyAttachmentsAttachmentInput
+
+func (GetRolePolicyAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetRolePolicyAttachmentsAttachmentArray) ToGetRolePolicyAttachmentsAttachmentArrayOutput() GetRolePolicyAttachmentsAttachmentArrayOutput {
+	return i.ToGetRolePolicyAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolePolicyAttachmentsAttachmentArray) ToGetRolePolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetRolePolicyAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePolicyAttachmentsAttachmentArrayOutput)
+}
+
+type GetRolePolicyAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetRolePolicyAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetRolePolicyAttachmentsAttachmentOutput) ToGetRolePolicyAttachmentsAttachmentOutput() GetRolePolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetRolePolicyAttachmentsAttachmentOutput) ToGetRolePolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetRolePolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+// The time when the role was attached to the policy.
+func (o GetRolePolicyAttachmentsAttachmentOutput) AttachDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePolicyAttachmentsAttachment) string { return v.AttachDate }).(pulumi.StringOutput)
+}
+
+// The policy description.
+func (o GetRolePolicyAttachmentsAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePolicyAttachmentsAttachment) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above. The value is formulated as `role:<policy_name>:<policy_type>:<role_name>`.
+func (o GetRolePolicyAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePolicyAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the policy.
+func (o GetRolePolicyAttachmentsAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePolicyAttachmentsAttachment) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// Policy type.- Custom: Custom policy.- System: System policy.
+func (o GetRolePolicyAttachmentsAttachmentOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePolicyAttachmentsAttachment) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+type GetRolePolicyAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolePolicyAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetRolePolicyAttachmentsAttachmentArrayOutput) ToGetRolePolicyAttachmentsAttachmentArrayOutput() GetRolePolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetRolePolicyAttachmentsAttachmentArrayOutput) ToGetRolePolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetRolePolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetRolePolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetRolePolicyAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePolicyAttachmentsAttachment {
+		return vs[0].([]GetRolePolicyAttachmentsAttachment)[vs[1].(int)]
+	}).(GetRolePolicyAttachmentsAttachmentOutput)
+}
+
 type GetRolesRole struct {
 	// Resource descriptor of the role.
 	Arn string `pulumi:"arn"`
@@ -1383,6 +1516,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementConditionArrayInput)(nil)).Elem(), GetPolicyDocumentStatementConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementPrincipalInput)(nil)).Elem(), GetPolicyDocumentStatementPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementPrincipalArrayInput)(nil)).Elem(), GetPolicyDocumentStatementPrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePolicyAttachmentsAttachmentInput)(nil)).Elem(), GetRolePolicyAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePolicyAttachmentsAttachmentArrayInput)(nil)).Elem(), GetRolePolicyAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderInput)(nil)).Elem(), GetSamlProvidersProviderArgs{})
@@ -1403,6 +1538,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyDocumentStatementConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyDocumentStatementPrincipalOutput{})
 	pulumi.RegisterOutputType(GetPolicyDocumentStatementPrincipalArrayOutput{})
+	pulumi.RegisterOutputType(GetRolePolicyAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetRolePolicyAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSamlProvidersProviderOutput{})

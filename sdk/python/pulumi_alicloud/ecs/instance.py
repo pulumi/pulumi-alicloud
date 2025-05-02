@@ -222,15 +222,15 @@ class InstanceArgs:
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -1302,8 +1302,8 @@ class InstanceArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -1331,8 +1331,8 @@ class InstanceArgs:
     def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "volume_tags")
 
@@ -1592,15 +1592,15 @@ class _InstanceState:
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -2840,8 +2840,8 @@ class _InstanceState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -2869,8 +2869,8 @@ class _InstanceState:
     def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "volume_tags")
 
@@ -3190,15 +3190,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -3715,15 +3715,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
-               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -4542,8 +4542,8 @@ class Instance(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
         A mapping of tags to assign to the resource.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -4563,8 +4563,8 @@ class Instance(pulumi.CustomResource):
     def volume_tags(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
-        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        - Key: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to `128` characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "volume_tags")
 

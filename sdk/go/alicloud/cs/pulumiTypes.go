@@ -374,9 +374,9 @@ func (o EdgeKubernetesAddonArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesA
 }
 
 type EdgeKubernetesCertificateAuthority struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -394,9 +394,9 @@ type EdgeKubernetesCertificateAuthorityInput interface {
 }
 
 type EdgeKubernetesCertificateAuthorityArgs struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -479,12 +479,12 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAut
 	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -518,7 +518,7 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertif
 	}).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -528,7 +528,7 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -1592,9 +1592,9 @@ func (o KubernetesAutoscalerNodepoolArrayOutput) Index(i pulumi.IntInput) Kubern
 }
 
 type KubernetesCertificateAuthority struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -1612,9 +1612,9 @@ type KubernetesCertificateAuthorityInput interface {
 }
 
 type KubernetesCertificateAuthorityArgs struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -1697,12 +1697,12 @@ func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPt
 	}).(KubernetesCertificateAuthorityPtrOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o KubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o KubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -1736,7 +1736,7 @@ func (o KubernetesCertificateAuthorityPtrOutput) Elem() KubernetesCertificateAut
 	}).(KubernetesCertificateAuthorityOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -1746,7 +1746,7 @@ func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o KubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -2654,9 +2654,9 @@ func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 }
 
 type ManagedKubernetesCertificateAuthority struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -2674,9 +2674,9 @@ type ManagedKubernetesCertificateAuthorityInput interface {
 }
 
 type ManagedKubernetesCertificateAuthorityArgs struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -2759,12 +2759,12 @@ func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertific
 	}).(ManagedKubernetesCertificateAuthorityPtrOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o ManagedKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o ManagedKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -2798,7 +2798,7 @@ func (o ManagedKubernetesCertificateAuthorityPtrOutput) Elem() ManagedKubernetes
 	}).(ManagedKubernetesCertificateAuthorityOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -2808,7 +2808,7 @@ func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -9239,7 +9239,7 @@ type GetKubernetesNodePoolsNodepool struct {
 	MultiAzPolicy string `pulumi:"multiAzPolicy"`
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode string `pulumi:"nodeNameMode"`
-	// The ID of node pool.
+	// The first ID of the resource.
 	NodePoolId string `pulumi:"nodePoolId"`
 	// The name of node pool.
 	NodePoolName string `pulumi:"nodePoolName"`
@@ -9381,7 +9381,7 @@ type GetKubernetesNodePoolsNodepoolArgs struct {
 	MultiAzPolicy pulumi.StringInput `pulumi:"multiAzPolicy"`
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode pulumi.StringInput `pulumi:"nodeNameMode"`
-	// The ID of node pool.
+	// The first ID of the resource.
 	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
 	// The name of node pool.
 	NodePoolName pulumi.StringInput `pulumi:"nodePoolName"`
@@ -9630,7 +9630,7 @@ func (o GetKubernetesNodePoolsNodepoolOutput) NodeNameMode() pulumi.StringOutput
 	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.NodeNameMode }).(pulumi.StringOutput)
 }
 
-// The ID of node pool.
+// The first ID of the resource.
 func (o GetKubernetesNodePoolsNodepoolOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.NodePoolId }).(pulumi.StringOutput)
 }

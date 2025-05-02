@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dts
     /// <summary>
     /// Provides a DTS Job Monitor Rule resource.
     /// 
-    /// For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
+    /// For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.alibabacloud.com/help/en/dts/developer-reference/api-createjobmonitorrule).
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 

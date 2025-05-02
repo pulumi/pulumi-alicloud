@@ -7,11 +7,14 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .experiment_plan import *
+from .experiment_plan_template import *
 from .get_subnets import *
 from .get_vpds import *
 from .invocation import *
 from .node import *
 from .node_group import *
+from .resource import *
 from .subnet import *
 from .vpd import *
 from ._inputs import *

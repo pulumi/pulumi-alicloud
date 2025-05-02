@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Nas.Inputs
     public sealed class FileSystemNfsAclGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        /// Whether the NFS ACL function is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

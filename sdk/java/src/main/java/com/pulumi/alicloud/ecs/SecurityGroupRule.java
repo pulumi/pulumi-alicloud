@@ -56,13 +56,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()
- *             .name("default")
+ *             .securityGroupName("default")
  *             .build());
  * 
  *         var allowAllTcp = new SecurityGroupRule("allowAllTcp", SecurityGroupRuleArgs.builder()
  *             .type("ingress")
  *             .ipProtocol("tcp")
- *             .nicType("internet")
+ *             .nicType("intranet")
  *             .policy("accept")
  *             .portRange("1/65535")
  *             .priority(1)
@@ -237,6 +237,20 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
+    }
+    /**
+     * The ID of the Security Group Rule.
+     * 
+     */
+    @Export(name="securityGroupRuleId", refs={String.class}, tree="[0]")
+    private Output<String> securityGroupRuleId;
+
+    /**
+     * @return The ID of the Security Group Rule.
+     * 
+     */
+    public Output<String> securityGroupRuleId() {
+        return this.securityGroupRuleId;
     }
     /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.

@@ -13,122 +13,132 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM Security Preference resource.
- * 
- * For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
- * 
- * &gt; **NOTE:** Available since v1.152.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ram.SecurityPreference;
- * import com.pulumi.alicloud.ram.SecurityPreferenceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new SecurityPreference("example", SecurityPreferenceArgs.builder()
- *             .enableSaveMfaTicket(false)
- *             .allowUserToChangePassword(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * RAM Security Preference can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/securityPreference:SecurityPreference example &lt;id&gt;
+ * $ pulumi import alicloud:ram/securityPreference:SecurityPreference example 
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/securityPreference:SecurityPreference")
 public class SecurityPreference extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+     * Whether to allow RAM users to manage their own passwords. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     @Export(name="allowUserToChangePassword", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToChangePassword;
 
     /**
-     * @return Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage their own passwords. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     public Output<Boolean> allowUserToChangePassword() {
         return this.allowUserToChangePassword;
     }
     /**
-     * Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+     * Whether to allow RAM users to log on using a passkey. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    @Export(name="allowUserToLoginWithPasskey", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowUserToLoginWithPasskey;
+
+    /**
+     * @return Whether to allow RAM users to log on using a passkey. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    public Output<Boolean> allowUserToLoginWithPasskey() {
+        return this.allowUserToLoginWithPasskey;
+    }
+    /**
+     * Whether to allow RAM users to manage their own access keys. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     @Export(name="allowUserToManageAccessKeys", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToManageAccessKeys;
 
     /**
-     * @return Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage their own access keys. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     public Output<Boolean> allowUserToManageAccessKeys() {
         return this.allowUserToManageAccessKeys;
     }
     /**
-     * Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+     * Whether to allow RAM users to manage multi-factor authentication devices. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     @Export(name="allowUserToManageMfaDevices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToManageMfaDevices;
 
     /**
-     * @return Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
+     * @return Whether to allow RAM users to manage multi-factor authentication devices. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
      * 
      */
     public Output<Boolean> allowUserToManageMfaDevices() {
         return this.allowUserToManageMfaDevices;
     }
     /**
-     * Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+     * Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    @Export(name="allowUserToManagePersonalDingTalk", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowUserToManagePersonalDingTalk;
+
+    /**
+     * @return Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
+     * - true (default): Allowed.
+     * - false: not allowed.
+     * 
+     */
+    public Output<Boolean> allowUserToManagePersonalDingTalk() {
+        return this.allowUserToManagePersonalDingTalk;
+    }
+    /**
+     * Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     @Export(name="enableSaveMfaTicket", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableSaveMfaTicket;
 
     /**
-     * @return Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
+     * @return Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
+     * - true: Allow.
+     * - false (default): Not allowed.
      * 
      */
     public Output<Boolean> enableSaveMfaTicket() {
         return this.enableSaveMfaTicket;
     }
     /**
+     * Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
@@ -136,45 +146,116 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
     private Output<Boolean> enforceMfaForLogin;
 
     /**
-     * @return Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+     * @return Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
+     * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
     public Output<Boolean> enforceMfaForLogin() {
         return this.enforceMfaForLogin;
     }
     /**
-     * The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-     * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-     * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-     * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+     * The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+     * - If the mask is specified, RAM users can only log on from the specified IP address.
+     * - If you do not specify any mask, the login console function will apply to the entire network.
+     * 
+     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * 
+     * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
      */
     @Export(name="loginNetworkMasks", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loginNetworkMasks;
 
     /**
-     * @return The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.**NOTE:** You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
-     * * If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
-     * * If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
-     * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+     * @return The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
+     * - If the mask is specified, RAM users can only log on from the specified IP address.
+     * - If you do not specify any mask, the login console function will apply to the entire network.
+     * 
+     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * 
+     * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
      */
     public Output<Optional<String>> loginNetworkMasks() {
         return Codegen.optional(this.loginNetworkMasks);
     }
     /**
-     * The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+     * The validity period of the logon session of RAM users.
+     * Valid values: 1 to 24. Unit: hours.
+     * Default value: 6.
      * 
      */
     @Export(name="loginSessionDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> loginSessionDuration;
 
     /**
-     * @return The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
+     * @return The validity period of the logon session of RAM users.
+     * Valid values: 1 to 24. Unit: hours.
+     * Default value: 6.
      * 
      */
     public Output<Integer> loginSessionDuration() {
         return this.loginSessionDuration;
+    }
+    /**
+     * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+     * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+     * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+     * - adaptive: Used only during abnormal login.
+     * 
+     */
+    @Export(name="mfaOperationForLogin", refs={String.class}, tree="[0]")
+    private Output<String> mfaOperationForLogin;
+
+    /**
+     * @return MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
+     * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
+     * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
+     * - adaptive: Used only during abnormal login.
+     * 
+     */
+    public Output<String> mfaOperationForLogin() {
+        return this.mfaOperationForLogin;
+    }
+    /**
+     * Whether MFA is verified twice during abnormal logon. Value:
+     * - autonomous (default): Skip, do not force binding.
+     * - enforceVerify: Force binding validation.
+     * 
+     */
+    @Export(name="operationForRiskLogin", refs={String.class}, tree="[0]")
+    private Output<String> operationForRiskLogin;
+
+    /**
+     * @return Whether MFA is verified twice during abnormal logon. Value:
+     * - autonomous (default): Skip, do not force binding.
+     * - enforceVerify: Force binding validation.
+     * 
+     */
+    public Output<String> operationForRiskLogin() {
+        return this.operationForRiskLogin;
+    }
+    /**
+     * Means of multi-factor authentication. Value:
+     * - sms: secure phone.
+     * - email: Secure mailbox.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="verificationTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> verificationTypes;
+
+    /**
+     * @return Means of multi-factor authentication. Value:
+     * - sms: secure phone.
+     * - email: Secure mailbox.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<List<String>>> verificationTypes() {
+        return Codegen.optional(this.verificationTypes);
     }
 
     /**

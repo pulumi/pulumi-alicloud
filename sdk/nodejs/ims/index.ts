@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetOidcProvidersArgs, GetOidcProvidersResult, GetOidcProvidersOutputArgs } from "./getOidcProviders";
+export const getOidcProviders: typeof import("./getOidcProviders").getOidcProviders = null as any;
+export const getOidcProvidersOutput: typeof import("./getOidcProviders").getOidcProvidersOutput = null as any;
+utilities.lazyLoad(exports, ["getOidcProviders","getOidcProvidersOutput"], () => require("./getOidcProviders"));
+
 export { OidcProviderArgs, OidcProviderState } from "./oidcProvider";
 export type OidcProvider = import("./oidcProvider").OidcProvider;
 export const OidcProvider: typeof import("./oidcProvider").OidcProvider = null as any;

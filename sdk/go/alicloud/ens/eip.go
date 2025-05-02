@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ENS Eip resource. Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+// Provides a ENS Eip resource.
+//
+// Edge elastic public network IP. When you use it for the first time, please contact the product classmates to add a resource whitelist.
 //
 // For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
 //
@@ -68,23 +70,23 @@ import (
 type Eip struct {
 	pulumi.CustomResourceState
 
-	// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The creation time of the EIP instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the EIP.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the EIP instance.
+	// The name of the EIP.
 	EipName pulumi.StringPtrOutput `pulumi:"eipName"`
 	// Ens node ID.
 	EnsRegionId pulumi.StringOutput `pulumi:"ensRegionId"`
-	// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+	// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
-	// Internet service provider, if not filled in, it will be assigned according to the default rules.
+	// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 	Isp pulumi.StringOutput `pulumi:"isp"`
-	// The billing type of the EIP instanceValue: PayAsYouGo.
+	// The billing method of the EIP. Valid value: `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+	// The status of the EIP.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -127,44 +129,44 @@ func GetEip(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Eip resources.
 type eipState struct {
-	// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The creation time of the EIP instance.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the EIP.
 	Description *string `pulumi:"description"`
-	// Name of the EIP instance.
+	// The name of the EIP.
 	EipName *string `pulumi:"eipName"`
 	// Ens node ID.
 	EnsRegionId *string `pulumi:"ensRegionId"`
-	// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+	// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// Internet service provider, if not filled in, it will be assigned according to the default rules.
+	// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 	Isp *string `pulumi:"isp"`
-	// The billing type of the EIP instanceValue: PayAsYouGo.
+	// The billing method of the EIP. Valid value: `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+	// The status of the EIP.
 	Status *string `pulumi:"status"`
 }
 
 type EipState struct {
-	// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth pulumi.IntPtrInput
 	// The creation time of the EIP instance.
 	CreateTime pulumi.StringPtrInput
 	// The description of the EIP.
 	Description pulumi.StringPtrInput
-	// Name of the EIP instance.
+	// The name of the EIP.
 	EipName pulumi.StringPtrInput
 	// Ens node ID.
 	EnsRegionId pulumi.StringPtrInput
-	// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+	// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 	InternetChargeType pulumi.StringPtrInput
-	// Internet service provider, if not filled in, it will be assigned according to the default rules.
+	// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 	Isp pulumi.StringPtrInput
-	// The billing type of the EIP instanceValue: PayAsYouGo.
+	// The billing method of the EIP. Valid value: `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+	// The status of the EIP.
 	Status pulumi.StringPtrInput
 }
 
@@ -173,37 +175,37 @@ func (EipState) ElementType() reflect.Type {
 }
 
 type eipArgs struct {
-	// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The description of the EIP.
 	Description *string `pulumi:"description"`
-	// Name of the EIP instance.
+	// The name of the EIP.
 	EipName *string `pulumi:"eipName"`
 	// Ens node ID.
 	EnsRegionId string `pulumi:"ensRegionId"`
-	// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+	// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// Internet service provider, if not filled in, it will be assigned according to the default rules.
+	// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 	Isp *string `pulumi:"isp"`
-	// The billing type of the EIP instanceValue: PayAsYouGo.
+	// The billing method of the EIP. Valid value: `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
 }
 
 // The set of arguments for constructing a Eip resource.
 type EipArgs struct {
-	// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth pulumi.IntPtrInput
 	// The description of the EIP.
 	Description pulumi.StringPtrInput
-	// Name of the EIP instance.
+	// The name of the EIP.
 	EipName pulumi.StringPtrInput
 	// Ens node ID.
 	EnsRegionId pulumi.StringInput
-	// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+	// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 	InternetChargeType pulumi.StringInput
-	// Internet service provider, if not filled in, it will be assigned according to the default rules.
+	// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 	Isp pulumi.StringPtrInput
-	// The billing type of the EIP instanceValue: PayAsYouGo.
+	// The billing method of the EIP. Valid value: `PayAsYouGo`.
 	PaymentType pulumi.StringInput
 }
 
@@ -294,7 +296,7 @@ func (o EipOutput) ToEipOutputWithContext(ctx context.Context) EipOutput {
 	return o
 }
 
-// The peak bandwidth of the EIP to be specified.Rules:Default value: 5, value range: 5~10000, unit: Mbps. Example value: 5.
+// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 func (o EipOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Eip) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -309,7 +311,7 @@ func (o EipOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Name of the EIP instance.
+// The name of the EIP.
 func (o EipOutput) EipName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.EipName }).(pulumi.StringPtrOutput)
 }
@@ -319,22 +321,22 @@ func (o EipOutput) EnsRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.EnsRegionId }).(pulumi.StringOutput)
 }
 
-// Billing type of the EIP instance. Valid value: 95bandwidthbymonth.
+// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
 func (o EipOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// Internet service provider, if not filled in, it will be assigned according to the default rules.
+// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
 func (o EipOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
 }
 
-// The billing type of the EIP instanceValue: PayAsYouGo.
+// The billing method of the EIP. Valid value: `PayAsYouGo`.
 func (o EipOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The status of the EIP instance.Rules:Associating: bindingUnassociating: UnbindingInUse: AssignedAvailable: AvailableCreating: CreatingReleasing: Releasing.
+// The status of the EIP.
 func (o EipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

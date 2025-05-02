@@ -284,6 +284,36 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The ID of the secondary zone.
+     * 
+     */
+    @Import(name="secondaryVswitchId")
+    private @Nullable Output<String> secondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary zone.
+     * 
+     */
+    public Optional<Output<String>> secondaryVswitchId() {
+        return Optional.ofNullable(this.secondaryVswitchId);
+    }
+
+    /**
+     * The ID of the secondary vSwitch.
+     * 
+     */
+    @Import(name="secondaryZoneId")
+    private @Nullable Output<String> secondaryZoneId;
+
+    /**
+     * @return The ID of the secondary vSwitch.
+     * 
+     */
+    public Optional<Output<String>> secondaryZoneId() {
+        return Optional.ofNullable(this.secondaryZoneId);
+    }
+
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -397,6 +427,8 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         this.resourceGroupId = $.resourceGroupId;
         this.restoreToTime = $.restoreToTime;
         this.restoreType = $.restoreType;
+        this.secondaryVswitchId = $.secondaryVswitchId;
+        this.secondaryZoneId = $.secondaryZoneId;
         this.securityIps = $.securityIps;
         this.sourceDbClusterId = $.sourceDbClusterId;
         this.storageResource = $.storageResource;
@@ -788,6 +820,48 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
          */
         public Builder restoreType(String restoreType) {
             return restoreType(Output.of(restoreType));
+        }
+
+        /**
+         * @param secondaryVswitchId The ID of the secondary zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryVswitchId(@Nullable Output<String> secondaryVswitchId) {
+            $.secondaryVswitchId = secondaryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param secondaryVswitchId The ID of the secondary zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryVswitchId(String secondaryVswitchId) {
+            return secondaryVswitchId(Output.of(secondaryVswitchId));
+        }
+
+        /**
+         * @param secondaryZoneId The ID of the secondary vSwitch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(@Nullable Output<String> secondaryZoneId) {
+            $.secondaryZoneId = secondaryZoneId;
+            return this;
+        }
+
+        /**
+         * @param secondaryZoneId The ID of the secondary vSwitch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(String secondaryZoneId) {
+            return secondaryZoneId(Output.of(secondaryZoneId));
         }
 
         /**

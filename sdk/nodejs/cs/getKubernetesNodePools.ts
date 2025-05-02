@@ -16,6 +16,7 @@ export function getKubernetesNodePools(args: GetKubernetesNodePoolsArgs, opts?: 
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", {
         "clusterId": args.clusterId,
         "ids": args.ids,
+        "nodePoolName": args.nodePoolName,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -32,6 +33,10 @@ export interface GetKubernetesNodePoolsArgs {
      * A list of Nodepool IDs.
      */
     ids?: string[];
+    /**
+     * The name of node pool.
+     */
+    nodePoolName?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
@@ -52,6 +57,10 @@ export interface GetKubernetesNodePoolsResult {
      */
     readonly ids: string[];
     /**
+     * The name of node pool.
+     */
+    readonly nodePoolName?: string;
+    /**
      * A list of Nodepool Entries. Each element contains the following attributes:
      */
     readonly nodepools: outputs.cs.GetKubernetesNodePoolsNodepool[];
@@ -67,6 +76,7 @@ export function getKubernetesNodePoolsOutput(args: GetKubernetesNodePoolsOutputA
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", {
         "clusterId": args.clusterId,
         "ids": args.ids,
+        "nodePoolName": args.nodePoolName,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -83,6 +93,10 @@ export interface GetKubernetesNodePoolsOutputArgs {
      * A list of Nodepool IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of node pool.
+     */
+    nodePoolName?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */

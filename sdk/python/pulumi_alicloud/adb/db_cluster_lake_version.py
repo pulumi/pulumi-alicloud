@@ -40,6 +40,8 @@ class DBClusterLakeVersionArgs:
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  restore_to_time: Optional[pulumi.Input[builtins.str]] = None,
                  restore_type: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_ips: Optional[pulumi.Input[builtins.str]] = None,
                  source_db_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  storage_resource: Optional[pulumi.Input[builtins.str]] = None):
@@ -70,6 +72,8 @@ class DBClusterLakeVersionArgs:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[builtins.str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[builtins.str] restore_type: The method that you want to use to restore data. Valid values:
+        :param pulumi.Input[builtins.str] secondary_vswitch_id: The ID of the secondary zone.
+        :param pulumi.Input[builtins.str] secondary_zone_id: The ID of the secondary vSwitch.
         :param pulumi.Input[builtins.str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -111,6 +115,10 @@ class DBClusterLakeVersionArgs:
             pulumi.set(__self__, "restore_to_time", restore_to_time)
         if restore_type is not None:
             pulumi.set(__self__, "restore_type", restore_type)
+        if secondary_vswitch_id is not None:
+            pulumi.set(__self__, "secondary_vswitch_id", secondary_vswitch_id)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
         if source_db_cluster_id is not None:
@@ -364,6 +372,30 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "restore_type", value)
 
     @property
+    @pulumi.getter(name="secondaryVswitchId")
+    def secondary_vswitch_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the secondary zone.
+        """
+        return pulumi.get(self, "secondary_vswitch_id")
+
+    @secondary_vswitch_id.setter
+    def secondary_vswitch_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secondary_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the secondary vSwitch.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secondary_zone_id", value)
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -432,6 +464,8 @@ class _DBClusterLakeVersionState:
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  restore_to_time: Optional[pulumi.Input[builtins.str]] = None,
                  restore_type: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_ips: Optional[pulumi.Input[builtins.str]] = None,
                  source_db_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -473,6 +507,8 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[builtins.str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[builtins.str] restore_type: The method that you want to use to restore data. Valid values:
+        :param pulumi.Input[builtins.str] secondary_vswitch_id: The ID of the secondary zone.
+        :param pulumi.Input[builtins.str] secondary_zone_id: The ID of the secondary vSwitch.
         :param pulumi.Input[builtins.str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -537,6 +573,10 @@ class _DBClusterLakeVersionState:
             pulumi.set(__self__, "restore_to_time", restore_to_time)
         if restore_type is not None:
             pulumi.set(__self__, "restore_type", restore_type)
+        if secondary_vswitch_id is not None:
+            pulumi.set(__self__, "secondary_vswitch_id", secondary_vswitch_id)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
         if source_db_cluster_id is not None:
@@ -882,6 +922,30 @@ class _DBClusterLakeVersionState:
         pulumi.set(self, "restore_type", value)
 
     @property
+    @pulumi.getter(name="secondaryVswitchId")
+    def secondary_vswitch_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the secondary zone.
+        """
+        return pulumi.get(self, "secondary_vswitch_id")
+
+    @secondary_vswitch_id.setter
+    def secondary_vswitch_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secondary_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the secondary vSwitch.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secondary_zone_id", value)
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -993,6 +1057,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  restore_to_time: Optional[pulumi.Input[builtins.str]] = None,
                  restore_type: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_ips: Optional[pulumi.Input[builtins.str]] = None,
                  source_db_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  storage_resource: Optional[pulumi.Input[builtins.str]] = None,
@@ -1062,6 +1128,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[builtins.str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[builtins.str] restore_type: The method that you want to use to restore data. Valid values:
+        :param pulumi.Input[builtins.str] secondary_vswitch_id: The ID of the secondary zone.
+        :param pulumi.Input[builtins.str] secondary_zone_id: The ID of the secondary vSwitch.
         :param pulumi.Input[builtins.str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -1147,6 +1215,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  restore_to_time: Optional[pulumi.Input[builtins.str]] = None,
                  restore_type: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_ips: Optional[pulumi.Input[builtins.str]] = None,
                  source_db_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  storage_resource: Optional[pulumi.Input[builtins.str]] = None,
@@ -1183,6 +1253,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restore_to_time"] = restore_to_time
             __props__.__dict__["restore_type"] = restore_type
+            __props__.__dict__["secondary_vswitch_id"] = secondary_vswitch_id
+            __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["source_db_cluster_id"] = source_db_cluster_id
             __props__.__dict__["storage_resource"] = storage_resource
@@ -1243,6 +1315,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
             restore_to_time: Optional[pulumi.Input[builtins.str]] = None,
             restore_type: Optional[pulumi.Input[builtins.str]] = None,
+            secondary_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
+            secondary_zone_id: Optional[pulumi.Input[builtins.str]] = None,
             security_ips: Optional[pulumi.Input[builtins.str]] = None,
             source_db_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -1289,6 +1363,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[builtins.str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[builtins.str] restore_type: The method that you want to use to restore data. Valid values:
+        :param pulumi.Input[builtins.str] secondary_vswitch_id: The ID of the secondary zone.
+        :param pulumi.Input[builtins.str] secondary_zone_id: The ID of the secondary vSwitch.
         :param pulumi.Input[builtins.str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -1330,6 +1406,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restore_to_time"] = restore_to_time
         __props__.__dict__["restore_type"] = restore_type
+        __props__.__dict__["secondary_vswitch_id"] = secondary_vswitch_id
+        __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["source_db_cluster_id"] = source_db_cluster_id
         __props__.__dict__["status"] = status
@@ -1559,6 +1637,22 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         The method that you want to use to restore data. Valid values:
         """
         return pulumi.get(self, "restore_type")
+
+    @property
+    @pulumi.getter(name="secondaryVswitchId")
+    def secondary_vswitch_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The ID of the secondary zone.
+        """
+        return pulumi.get(self, "secondary_vswitch_id")
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The ID of the secondary vSwitch.
+        """
+        return pulumi.get(self, "secondary_zone_id")
 
     @property
     @pulumi.getter(name="securityIps")

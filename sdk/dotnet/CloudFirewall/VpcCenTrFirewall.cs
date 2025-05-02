@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// VPC firewall Cloud Enterprise Network Enterprise Edition.
     /// 
-    /// For information about Cloud Firewall Vpc Cen Tr Firewall and how to use it, see [What is Vpc Cen Tr Firewall](https://www.alibabacloud.com/help/en/).
+    /// For information about Cloud Firewall Vpc Cen Tr Firewall and how to use it, see [What is Vpc Cen Tr Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/developer-reference/api-cloudfw-2017-12-07-createtrfirewallv2).
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 

@@ -373,7 +373,7 @@ class Ingress(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Ingress resource.
 
-        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
+        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://next.api.aliyun.com/api/sae/2019-05-06/CreateIngress).
 
         > **NOTE:** Available since v1.137.0.
 
@@ -474,7 +474,7 @@ class Ingress(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Ingress resource.
 
-        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
+        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://next.api.aliyun.com/api/sae/2019-05-06/CreateIngress).
 
         > **NOTE:** Available since v1.137.0.
 

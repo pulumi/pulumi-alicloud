@@ -520,7 +520,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="encryptionKey", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> encryptionKey;
+    private Output<String> encryptionKey;
 
     /**
      * @return The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -531,8 +531,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is available when the instance runs MySQL.
      * 
      */
-    public Output<Optional<String>> encryptionKey() {
-        return Codegen.optional(this.encryptionKey);
+    public Output<String> encryptionKey() {
+        return this.encryptionKey;
     }
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.

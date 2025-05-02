@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string NodeNameMode;
         /// <summary>
-        /// The ID of node pool.
+        /// The first ID of the resource.
         /// </summary>
         public readonly string NodePoolId;
         /// <summary>

@@ -210,7 +210,7 @@ type Instance struct {
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+	// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -369,7 +369,7 @@ type instanceState struct {
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+	// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId *string `pulumi:"vpcId"`
@@ -483,7 +483,7 @@ type InstanceState struct {
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+	// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId pulumi.StringPtrInput
@@ -593,7 +593,7 @@ type instanceArgs struct {
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+	// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId *string `pulumi:"vpcId"`
@@ -700,7 +700,7 @@ type InstanceArgs struct {
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+	// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId pulumi.StringPtrInput
@@ -1035,7 +1035,7 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+// The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
 func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)
 }

@@ -484,6 +484,34 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.restoreType);
     }
     /**
+     * The ID of the secondary zone.
+     * 
+     */
+    @Export(name="secondaryVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secondaryVswitchId;
+
+    /**
+     * @return The ID of the secondary zone.
+     * 
+     */
+    public Output<Optional<String>> secondaryVswitchId() {
+        return Codegen.optional(this.secondaryVswitchId);
+    }
+    /**
+     * The ID of the secondary vSwitch.
+     * 
+     */
+    @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secondaryZoneId;
+
+    /**
+     * @return The ID of the secondary vSwitch.
+     * 
+     */
+    public Output<Optional<String>> secondaryZoneId() {
+        return Codegen.optional(this.secondaryZoneId);
+    }
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.

@@ -59,8 +59,6 @@ namespace Pulumi.AliCloud.CS
     {
         /// <summary>
         /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        /// 
-        /// *Network params*
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.KubernetesAddon>> Addons { get; private set; } = null!;
@@ -72,25 +70,25 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.KubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Output("clientCert")]
         public Output<string?> ClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
         /// *Removed params*
         /// </summary>
@@ -358,6 +356,14 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
+        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Output("skipSetCertificateAuthority")]
+        public Output<bool?> SkipSetCertificateAuthority { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of APIServer load balancer.
         /// </summary>
         [Output("slbId")]
@@ -477,8 +483,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        /// 
-        /// *Network params*
         /// </summary>
         public InputList<Inputs.KubernetesAddonArgs> Addons
         {
@@ -499,19 +503,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
         /// *Removed params*
         /// </summary>
@@ -812,6 +816,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
+        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Input("skipSetCertificateAuthority")]
+        public Input<bool>? SkipSetCertificateAuthority { get; set; }
+
+        /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
@@ -865,8 +877,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-        /// 
-        /// *Network params*
         /// </summary>
         public InputList<Inputs.KubernetesAddonGetArgs> Addons
         {
@@ -887,25 +897,25 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.KubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
         /// *Removed params*
         /// </summary>
@@ -1228,6 +1238,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
+
+        /// <summary>
+        /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Input("skipSetCertificateAuthority")]
+        public Input<bool>? SkipSetCertificateAuthority { get; set; }
 
         /// <summary>
         /// The ID of APIServer load balancer.

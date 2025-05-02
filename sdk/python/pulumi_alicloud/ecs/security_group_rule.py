@@ -249,6 +249,7 @@ class _SecurityGroupRuleState:
                  prefix_list_id: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 security_group_rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  source_group_owner_account: Optional[pulumi.Input[builtins.str]] = None,
                  source_security_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
@@ -267,6 +268,7 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[builtins.str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         :param pulumi.Input[builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the Security Group.
+        :param pulumi.Input[builtins.str] security_group_rule_id: The ID of the Security Group Rule.
         :param pulumi.Input[builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[builtins.str] type: The type of the Security Group Rule. Valid values:
@@ -291,6 +293,8 @@ class _SecurityGroupRuleState:
             pulumi.set(__self__, "priority", priority)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_group_rule_id is not None:
+            pulumi.set(__self__, "security_group_rule_id", security_group_rule_id)
         if source_group_owner_account is not None:
             pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
         if source_security_group_id is not None:
@@ -422,6 +426,18 @@ class _SecurityGroupRuleState:
         pulumi.set(self, "security_group_id", value)
 
     @property
+    @pulumi.getter(name="securityGroupRuleId")
+    def security_group_rule_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the Security Group Rule.
+        """
+        return pulumi.get(self, "security_group_rule_id")
+
+    @security_group_rule_id.setter
+    def security_group_rule_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "security_group_rule_id", value)
+
+    @property
     @pulumi.getter(name="sourceGroupOwnerAccount")
     def source_group_owner_account(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -499,11 +515,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", name="default")
+        default = alicloud.ecs.SecurityGroup("default", security_group_name="default")
         allow_all_tcp = alicloud.ecs.SecurityGroupRule("allow_all_tcp",
             type="ingress",
             ip_protocol="tcp",
-            nic_type="internet",
+            nic_type="intranet",
             policy="accept",
             port_range="1/65535",
             priority=1,
@@ -568,11 +584,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", name="default")
+        default = alicloud.ecs.SecurityGroup("default", security_group_name="default")
         allow_all_tcp = alicloud.ecs.SecurityGroupRule("allow_all_tcp",
             type="ingress",
             ip_protocol="tcp",
-            nic_type="internet",
+            nic_type="intranet",
             policy="accept",
             port_range="1/65535",
             priority=1,
@@ -649,6 +665,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["security_group_rule_id"] = None
         super(SecurityGroupRule, __self__).__init__(
             'alicloud:ecs/securityGroupRule:SecurityGroupRule',
             resource_name,
@@ -669,6 +686,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             prefix_list_id: Optional[pulumi.Input[builtins.str]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
             security_group_id: Optional[pulumi.Input[builtins.str]] = None,
+            security_group_rule_id: Optional[pulumi.Input[builtins.str]] = None,
             source_group_owner_account: Optional[pulumi.Input[builtins.str]] = None,
             source_security_group_id: Optional[pulumi.Input[builtins.str]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None) -> 'SecurityGroupRule':
@@ -692,6 +710,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         :param pulumi.Input[builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the Security Group.
+        :param pulumi.Input[builtins.str] security_group_rule_id: The ID of the Security Group Rule.
         :param pulumi.Input[builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[builtins.str] type: The type of the Security Group Rule. Valid values:
@@ -710,6 +729,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["prefix_list_id"] = prefix_list_id
         __props__.__dict__["priority"] = priority
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_group_rule_id"] = security_group_rule_id
         __props__.__dict__["source_group_owner_account"] = source_group_owner_account
         __props__.__dict__["source_security_group_id"] = source_security_group_id
         __props__.__dict__["type"] = type
@@ -797,6 +817,14 @@ class SecurityGroupRule(pulumi.CustomResource):
         The ID of the Security Group.
         """
         return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupRuleId")
+    def security_group_rule_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the Security Group Rule.
+        """
+        return pulumi.get(self, "security_group_rule_id")
 
     @property
     @pulumi.getter(name="sourceGroupOwnerAccount")

@@ -140,6 +140,10 @@ type DBClusterLakeVersion struct {
 	RestoreToTime pulumi.StringPtrOutput `pulumi:"restoreToTime"`
 	// The method that you want to use to restore data. Valid values:
 	RestoreType pulumi.StringPtrOutput `pulumi:"restoreType"`
+	// The ID of the secondary zone.
+	SecondaryVswitchId pulumi.StringPtrOutput `pulumi:"secondaryVswitchId"`
+	// The ID of the secondary vSwitch.
+	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -262,6 +266,10 @@ type dbclusterLakeVersionState struct {
 	RestoreToTime *string `pulumi:"restoreToTime"`
 	// The method that you want to use to restore data. Valid values:
 	RestoreType *string `pulumi:"restoreType"`
+	// The ID of the secondary zone.
+	SecondaryVswitchId *string `pulumi:"secondaryVswitchId"`
+	// The ID of the secondary vSwitch.
+	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -340,6 +348,10 @@ type DBClusterLakeVersionState struct {
 	RestoreToTime pulumi.StringPtrInput
 	// The method that you want to use to restore data. Valid values:
 	RestoreType pulumi.StringPtrInput
+	// The ID of the secondary zone.
+	SecondaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch.
+	SecondaryZoneId pulumi.StringPtrInput
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -402,6 +414,10 @@ type dbclusterLakeVersionArgs struct {
 	RestoreToTime *string `pulumi:"restoreToTime"`
 	// The method that you want to use to restore data. Valid values:
 	RestoreType *string `pulumi:"restoreType"`
+	// The ID of the secondary zone.
+	SecondaryVswitchId *string `pulumi:"secondaryVswitchId"`
+	// The ID of the secondary vSwitch.
+	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -459,6 +475,10 @@ type DBClusterLakeVersionArgs struct {
 	RestoreToTime pulumi.StringPtrInput
 	// The method that you want to use to restore data. Valid values:
 	RestoreType pulumi.StringPtrInput
+	// The ID of the secondary zone.
+	SecondaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch.
+	SecondaryZoneId pulumi.StringPtrInput
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -700,6 +720,16 @@ func (o DBClusterLakeVersionOutput) RestoreToTime() pulumi.StringPtrOutput {
 // The method that you want to use to restore data. Valid values:
 func (o DBClusterLakeVersionOutput) RestoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.RestoreType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary zone.
+func (o DBClusterLakeVersionOutput) SecondaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.SecondaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary vSwitch.
+func (o DBClusterLakeVersionOutput) SecondaryZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
 }
 
 // The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:

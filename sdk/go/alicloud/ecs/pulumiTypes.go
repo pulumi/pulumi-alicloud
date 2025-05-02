@@ -13719,7 +13719,7 @@ type GetInstanceTypesInstanceType struct {
 	// - required: The cloud disk can be attached by using the NVMe protocol.
 	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
 	NvmeSupport string `pulumi:"nvmeSupport"`
-	// The price of instance type.
+	// The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
 	Price string `pulumi:"price"`
 	// (Available since v1.239.0) The default number of queues per primary ENI.
 	PrimaryEniQueueNumber int `pulumi:"primaryEniQueueNumber"`
@@ -13778,7 +13778,7 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// - required: The cloud disk can be attached by using the NVMe protocol.
 	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
 	NvmeSupport pulumi.StringInput `pulumi:"nvmeSupport"`
-	// The price of instance type.
+	// The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
 	Price pulumi.StringInput `pulumi:"price"`
 	// (Available since v1.239.0) The default number of queues per primary ENI.
 	PrimaryEniQueueNumber pulumi.IntInput `pulumi:"primaryEniQueueNumber"`
@@ -13920,7 +13920,7 @@ func (o GetInstanceTypesInstanceTypeOutput) NvmeSupport() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.NvmeSupport }).(pulumi.StringOutput)
 }
 
-// The price of instance type.
+// The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
 func (o GetInstanceTypesInstanceTypeOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Price }).(pulumi.StringOutput)
 }

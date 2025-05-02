@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     dbInstanceDescription: name,
  *     cacheSize: 200,
  *     paymentType: "PayAsYouGo",
+ *     engineMinorVersion: "3.0.12",
  *     vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.vpcId),
  *     zoneId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.zoneId),
  *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.id),
@@ -133,9 +134,9 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
     /**
-     * The current DBInstance minor version.
+     * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      */
-    public /*out*/ readonly engineMinorVersion!: pulumi.Output<string>;
+    public readonly engineMinorVersion!: pulumi.Output<string>;
     /**
      * The time when DBInstance is created.
      */
@@ -203,9 +204,11 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     *
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
-    public readonly upgradedEngineMinorVersion!: pulumi.Output<string | undefined>;
+    public readonly upgradedEngineMinorVersion!: pulumi.Output<string>;
     /**
      * The ID of the VPC for DBInstance.
      */
@@ -295,6 +298,7 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
             resourceInputs["desiredSecurityIpLists"] = args ? args.desiredSecurityIpLists : undefined;
             resourceInputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
+            resourceInputs["engineMinorVersion"] = args ? args.engineMinorVersion : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodTime"] = args ? args.periodTime : undefined;
@@ -310,7 +314,6 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["cpuPostpaid"] = undefined /*out*/;
             resourceInputs["cpuPrepaid"] = undefined /*out*/;
             resourceInputs["engine"] = undefined /*out*/;
-            resourceInputs["engineMinorVersion"] = undefined /*out*/;
             resourceInputs["gmtCreated"] = undefined /*out*/;
             resourceInputs["gmtExpired"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
@@ -388,7 +391,7 @@ export interface DbInstanceState {
      */
     engine?: pulumi.Input<string>;
     /**
-     * The current DBInstance minor version.
+     * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      */
     engineMinorVersion?: pulumi.Input<string>;
     /**
@@ -458,7 +461,9 @@ export interface DbInstanceState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     *
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
     upgradedEngineMinorVersion?: pulumi.Input<string>;
     /**
@@ -504,6 +509,10 @@ export interface DbInstanceArgs {
      */
     enablePublicNetwork?: pulumi.Input<boolean>;
     /**
+     * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
+     */
+    engineMinorVersion?: pulumi.Input<string>;
+    /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
     paymentType: pulumi.Input<string>;
@@ -522,7 +531,9 @@ export interface DbInstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
+     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     *
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
     upgradedEngineMinorVersion?: pulumi.Input<string>;
     /**

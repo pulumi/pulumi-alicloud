@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -74,10 +75,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DdosCoo instance can be imported using the id, e.g.
+ * DdosCoo Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+ * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example &lt;id&gt;
  * ```
  * 
  * @deprecated
@@ -144,6 +145,20 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.baseBandwidth;
     }
     /**
+     * (Available since v1.248.0) The time when the instance was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.248.0) The time when the instance was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      * 
      */
@@ -186,18 +201,32 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.functionVersion;
     }
     /**
-     * (Available since v1.212.0) The IP address of the instance.
+     * (Available since v1.212.0) The IP address of the Instance.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
-     * @return (Available since v1.212.0) The IP address of the instance.
+     * @return (Available since v1.212.0) The IP address of the Instance.
      * 
      */
     public Output<String> ip() {
         return this.ip;
+    }
+    /**
+     * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modifyType;
+
+    /**
+     * @return The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
+     * 
+     */
+    public Output<Optional<String>> modifyType() {
+        return Codegen.optional(this.modifyType);
     }
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
@@ -214,28 +243,28 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     @Export(name="normalBandwidth", refs={String.class}, tree="[0]")
     private Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
      * 
      */
     public Output<String> normalBandwidth() {
         return this.normalBandwidth;
     }
     /**
-     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     @Export(name="normalQps", refs={String.class}, tree="[0]")
     private Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
+     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
      * 
      */
     public Output<String> normalQps() {
@@ -310,6 +339,34 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceBandwidth() {
         return this.serviceBandwidth;
+    }
+    /**
+     * (Available since v1.248.0) The status of the instance.
+     * 
+     */
+    @Export(name="status", refs={Integer.class}, tree="[0]")
+    private Output<Integer> status;
+
+    /**
+     * @return (Available since v1.248.0) The status of the instance.
+     * 
+     */
+    public Output<Integer> status() {
+        return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

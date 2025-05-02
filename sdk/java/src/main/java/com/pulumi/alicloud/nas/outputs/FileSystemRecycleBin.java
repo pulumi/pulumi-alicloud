@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FileSystemRecycleBin {
     /**
-     * @return The time at which the recycle bin was enabled.
+     * @return Recycle Bin open time
      * 
      */
     private @Nullable String enableTime;
     /**
-     * @return The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+     * @return Retention time of files in the Recycle Bin. Unit: days.
      * 
      */
     private @Nullable Integer reservedDays;
     /**
-     * @return The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+     * @return Amount of low-frequency data stored in the recycle bin. Unit: Byte.
      * 
      */
     private @Nullable Integer secondarySize;
     /**
-     * @return The size of the files that are dumped to the recycle bin.
+     * @return The amount of files stored in the Recycle Bin. Unit: Byte.
      * 
      */
     private @Nullable Integer size;
     /**
-     * @return Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+     * @return Recycle Bin Status
      * 
      */
     private @Nullable String status;
 
     private FileSystemRecycleBin() {}
     /**
-     * @return The time at which the recycle bin was enabled.
+     * @return Recycle Bin open time
      * 
      */
     public Optional<String> enableTime() {
         return Optional.ofNullable(this.enableTime);
     }
     /**
-     * @return The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+     * @return Retention time of files in the Recycle Bin. Unit: days.
      * 
      */
     public Optional<Integer> reservedDays() {
         return Optional.ofNullable(this.reservedDays);
     }
     /**
-     * @return The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+     * @return Amount of low-frequency data stored in the recycle bin. Unit: Byte.
      * 
      */
     public Optional<Integer> secondarySize() {
         return Optional.ofNullable(this.secondarySize);
     }
     /**
-     * @return The size of the files that are dumped to the recycle bin.
+     * @return The amount of files stored in the Recycle Bin. Unit: Byte.
      * 
      */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+     * @return Recycle Bin Status
      * 
      */
     public Optional<String> status() {
