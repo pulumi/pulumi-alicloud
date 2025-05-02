@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The role of the related connection string.
         /// </summary>
         [Output("replicaSetRole")]
-        public Output<string> ReplicaSetRole { get; private set; } = null!;
+        public Output<string> ReplicaSetRoleOfRelatedConnectionString { get; private set; } = null!;
 
         /// <summary>
         /// The role ID in the replica set.
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The role of the related connection string.
         /// </summary>
         [Input("replicaSetRole")]
-        public Input<string>? ReplicaSetRole { get; set; }
+        public Input<string>? ReplicaSetRoleOfRelatedConnectionString { get; set; }
 
         /// <summary>
         /// The role ID in the replica set.
