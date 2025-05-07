@@ -127,10 +127,8 @@ class _LoadBalancerSecurityGroupAttachmentState:
         pulumi.set(self, "security_group_id", value)
 
 
+@pulumi.type_token("alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")
 class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -518,10 +518,8 @@ class _DomainResourceState:
         pulumi.set(self, "rs_type", value)
 
 
+@pulumi.type_token("alicloud:ddos/domainResource:DomainResource")
 class DomainResource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/domainResource:DomainResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

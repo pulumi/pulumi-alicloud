@@ -208,10 +208,8 @@ class _NatIpCidrState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/natIpCidr:NatIpCidr")
 class NatIpCidr(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/natIpCidr:NatIpCidr"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

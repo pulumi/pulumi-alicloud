@@ -143,10 +143,8 @@ class _AccessGroupState:
         pulumi.set(self, "network_type", value)
 
 
+@pulumi.type_token("alicloud:dfs/accessGroup:AccessGroup")
 class AccessGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dfs/accessGroup:AccessGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

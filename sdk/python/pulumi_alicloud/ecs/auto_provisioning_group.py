@@ -672,10 +672,8 @@ class _AutoProvisioningGroupState:
         pulumi.set(self, "valid_until", value)
 
 
+@pulumi.type_token("alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup")
 class AutoProvisioningGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

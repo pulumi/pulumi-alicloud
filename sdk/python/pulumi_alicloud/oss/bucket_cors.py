@@ -129,10 +129,8 @@ class _BucketCorsState:
         pulumi.set(self, "response_vary", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketCors:BucketCors")
 class BucketCors(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketCors:BucketCors"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

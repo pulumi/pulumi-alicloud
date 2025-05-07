@@ -162,10 +162,8 @@ class _VscMountPointState:
         pulumi.set(self, "mount_point_id", value)
 
 
+@pulumi.type_token("alicloud:dfs/vscMountPoint:VscMountPoint")
 class VscMountPoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dfs/vscMountPoint:VscMountPoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

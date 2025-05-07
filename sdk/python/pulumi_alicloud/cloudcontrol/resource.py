@@ -175,10 +175,8 @@ class _ResourceState:
         pulumi.set(self, "resource_id", value)
 
 
+@pulumi.type_token("alicloud:cloudcontrol/resource:Resource")
 class Resource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudcontrol/resource:Resource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

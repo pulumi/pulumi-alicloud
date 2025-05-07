@@ -223,10 +223,8 @@ class _SaslUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("alicloud:alikafka/saslUser:SaslUser")
 class SaslUser(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alikafka/saslUser:SaslUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

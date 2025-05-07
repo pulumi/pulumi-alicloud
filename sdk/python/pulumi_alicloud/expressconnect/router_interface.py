@@ -1068,10 +1068,8 @@ class _RouterInterfaceState:
         pulumi.set(self, "vpc_instance_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerInterface:RouterInterface")
 class RouterInterface(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerInterface:RouterInterface"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

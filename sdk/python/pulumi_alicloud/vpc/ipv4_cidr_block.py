@@ -184,10 +184,8 @@ class _Ipv4CidrBlockState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock")
 class Ipv4CidrBlock(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

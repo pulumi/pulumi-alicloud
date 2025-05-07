@@ -164,11 +164,9 @@ class _DomainState:
 warnings.warn("""This resource has been deprecated in favour of DnsDomain""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:dns/domain:Domain")
 class Domain(pulumi.CustomResource):
     warnings.warn("""This resource has been deprecated in favour of DnsDomain""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:dns/domain:Domain"
 
     @overload
     def __init__(__self__,

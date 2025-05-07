@@ -128,10 +128,8 @@ class _UserVpcAuthorizationState:
         pulumi.set(self, "authorized_user_id", value)
 
 
+@pulumi.type_token("alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization")
 class UserVpcAuthorization(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

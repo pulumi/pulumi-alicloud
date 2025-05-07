@@ -208,10 +208,8 @@ class _EditingProjectState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("alicloud:vod/editingProject:EditingProject")
 class EditingProject(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vod/editingProject:EditingProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

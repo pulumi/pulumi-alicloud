@@ -220,10 +220,8 @@ class _AntiBruteForceRuleState:
         pulumi.set(self, "uuid_lists", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule")
 class AntiBruteForceRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

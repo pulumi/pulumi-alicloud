@@ -669,10 +669,8 @@ class _GtmInstanceState:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.type_token("alicloud:dns/gtmInstance:GtmInstance")
 class GtmInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/gtmInstance:GtmInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

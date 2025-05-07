@@ -64,10 +64,8 @@ class _AccountPublicAccessBlockState:
         pulumi.set(self, "block_public_access", value)
 
 
+@pulumi.type_token("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock")
 class AccountPublicAccessBlock(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

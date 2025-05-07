@@ -531,10 +531,8 @@ class _PhysicalConnectionState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/physicalConnection:PhysicalConnection")
 class PhysicalConnection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/physicalConnection:PhysicalConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

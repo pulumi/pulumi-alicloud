@@ -142,10 +142,8 @@ class _TlsCipherPolicyState:
         pulumi.set(self, "tls_versions", value)
 
 
+@pulumi.type_token("alicloud:slb/tlsCipherPolicy:TlsCipherPolicy")
 class TlsCipherPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

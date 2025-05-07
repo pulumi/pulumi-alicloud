@@ -472,10 +472,8 @@ class _ClusterEndpointState:
         pulumi.set(self, "ssl_expire_time", value)
 
 
+@pulumi.type_token("alicloud:polardb/clusterEndpoint:ClusterEndpoint")
 class ClusterEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/clusterEndpoint:ClusterEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

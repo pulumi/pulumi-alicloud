@@ -82,10 +82,8 @@ class _PublicNetworkAddressState:
         pulumi.set(self, "replica_sets", value)
 
 
+@pulumi.type_token("alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress")
 class PublicNetworkAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

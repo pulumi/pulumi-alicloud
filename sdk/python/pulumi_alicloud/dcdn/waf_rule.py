@@ -545,10 +545,8 @@ class _WafRuleState:
         pulumi.set(self, "waf_group_ids", value)
 
 
+@pulumi.type_token("alicloud:dcdn/wafRule:WafRule")
 class WafRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/wafRule:WafRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

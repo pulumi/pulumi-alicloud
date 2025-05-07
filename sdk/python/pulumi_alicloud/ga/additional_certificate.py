@@ -157,10 +157,8 @@ class _AdditionalCertificateState:
         pulumi.set(self, "listener_id", value)
 
 
+@pulumi.type_token("alicloud:ga/additionalCertificate:AdditionalCertificate")
 class AdditionalCertificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/additionalCertificate:AdditionalCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

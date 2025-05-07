@@ -209,10 +209,8 @@ class _ProtectionModuleState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:waf/protectionModule:ProtectionModule")
 class ProtectionModule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:waf/protectionModule:ProtectionModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -494,10 +494,8 @@ class _UserState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

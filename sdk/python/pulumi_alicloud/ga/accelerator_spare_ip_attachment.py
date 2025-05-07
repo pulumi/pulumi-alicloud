@@ -143,10 +143,8 @@ class _AcceleratorSpareIpAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment")
 class AcceleratorSpareIpAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

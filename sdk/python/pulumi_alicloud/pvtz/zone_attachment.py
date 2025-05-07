@@ -194,10 +194,8 @@ class _ZoneAttachmentState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:pvtz/zoneAttachment:ZoneAttachment")
 class ZoneAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/zoneAttachment:ZoneAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

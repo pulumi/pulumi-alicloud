@@ -95,10 +95,8 @@ class _ProductPortfolioAssociationState:
         pulumi.set(self, "product_id", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation")
 class ProductPortfolioAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

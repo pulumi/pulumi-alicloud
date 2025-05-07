@@ -1458,10 +1458,8 @@ class _EciScalingConfigurationState:
         pulumi.set(self, "volumes", value)
 
 
+@pulumi.type_token("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration")
 class EciScalingConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

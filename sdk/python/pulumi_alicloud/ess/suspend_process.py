@@ -95,10 +95,8 @@ class _SuspendProcessState:
         pulumi.set(self, "scaling_group_id", value)
 
 
+@pulumi.type_token("alicloud:ess/suspendProcess:SuspendProcess")
 class SuspendProcess(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/suspendProcess:SuspendProcess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

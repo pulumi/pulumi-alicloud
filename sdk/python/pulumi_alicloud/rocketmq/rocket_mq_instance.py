@@ -834,10 +834,8 @@ class _RocketMQInstanceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/rocketMQInstance:RocketMQInstance")
 class RocketMQInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/rocketMQInstance:RocketMQInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

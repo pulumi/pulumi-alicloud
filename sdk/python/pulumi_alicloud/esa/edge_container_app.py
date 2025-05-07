@@ -550,10 +550,8 @@ class _EdgeContainerAppState:
         pulumi.set(self, "target_port", value)
 
 
+@pulumi.type_token("alicloud:esa/edgeContainerApp:EdgeContainerApp")
 class EdgeContainerApp(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/edgeContainerApp:EdgeContainerApp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

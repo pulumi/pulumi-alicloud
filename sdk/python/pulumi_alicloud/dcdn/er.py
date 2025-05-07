@@ -130,10 +130,8 @@ class _ErState:
         pulumi.set(self, "er_name", value)
 
 
+@pulumi.type_token("alicloud:dcdn/er:Er")
 class Er(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/er:Er"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -208,10 +208,8 @@ class _RepoState:
         pulumi.set(self, "summary", value)
 
 
+@pulumi.type_token("alicloud:cr/repo:Repo")
 class Repo(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/repo:Repo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

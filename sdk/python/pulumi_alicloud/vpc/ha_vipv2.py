@@ -400,10 +400,8 @@ class _HaVipv2State:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/haVipv2:HaVipv2")
 class HaVipv2(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/haVipv2:HaVipv2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

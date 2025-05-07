@@ -261,10 +261,8 @@ class _CustomDeploymentSetState:
         pulumi.set(self, "strategy", value)
 
 
+@pulumi.type_token("alicloud:rds/customDeploymentSet:CustomDeploymentSet")
 class CustomDeploymentSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/customDeploymentSet:CustomDeploymentSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

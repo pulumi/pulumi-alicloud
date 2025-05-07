@@ -828,10 +828,8 @@ class _DbInstanceState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:selectdb/dbInstance:DbInstance")
 class DbInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:selectdb/dbInstance:DbInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

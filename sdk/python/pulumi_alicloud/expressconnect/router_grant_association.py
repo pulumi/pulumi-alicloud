@@ -212,10 +212,8 @@ class _RouterGrantAssociationState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation")
 class RouterGrantAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -157,10 +157,8 @@ class _ExtensionProviderState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:servicemesh/extensionProvider:ExtensionProvider")
 class ExtensionProvider(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicemesh/extensionProvider:ExtensionProvider"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

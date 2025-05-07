@@ -181,10 +181,8 @@ class _PrivateZoneState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cen/privateZone:PrivateZone")
 class PrivateZone(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/privateZone:PrivateZone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

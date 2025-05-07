@@ -223,10 +223,8 @@ class _ClientCertificateState:
         pulumi.set(self, "validity_days", value)
 
 
+@pulumi.type_token("alicloud:esa/clientCertificate:ClientCertificate")
 class ClientCertificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/clientCertificate:ClientCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

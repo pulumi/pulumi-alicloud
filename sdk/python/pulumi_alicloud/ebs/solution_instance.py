@@ -226,10 +226,8 @@ class _SolutionInstanceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ebs/solutionInstance:SolutionInstance")
 class SolutionInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/solutionInstance:SolutionInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

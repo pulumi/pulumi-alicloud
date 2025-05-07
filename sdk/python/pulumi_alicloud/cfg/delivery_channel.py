@@ -266,10 +266,8 @@ class _DeliveryChannelState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/deliveryChannel:DeliveryChannel")
 class DeliveryChannel(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/deliveryChannel:DeliveryChannel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

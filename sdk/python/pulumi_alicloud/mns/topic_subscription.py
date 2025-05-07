@@ -235,10 +235,8 @@ class _TopicSubscriptionState:
         pulumi.set(self, "topic_name", value)
 
 
+@pulumi.type_token("alicloud:mns/topicSubscription:TopicSubscription")
 class TopicSubscription(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mns/topicSubscription:TopicSubscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

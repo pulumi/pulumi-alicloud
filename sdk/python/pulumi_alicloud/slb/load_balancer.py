@@ -772,11 +772,9 @@ class _LoadBalancerState:
 warnings.warn("""This resource has been deprecated in favour of the ApplicationLoadBalancer resource""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:slb/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
     warnings.warn("""This resource has been deprecated in favour of the ApplicationLoadBalancer resource""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:slb/loadBalancer:LoadBalancer"
 
     @overload
     def __init__(__self__,

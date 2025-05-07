@@ -190,10 +190,8 @@ class _AlertRobotState:
         pulumi.set(self, "robot_type", value)
 
 
+@pulumi.type_token("alicloud:arms/alertRobot:AlertRobot")
 class AlertRobot(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/alertRobot:AlertRobot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -127,10 +127,8 @@ class _ListenerAdditionalCertificateAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment")
 class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

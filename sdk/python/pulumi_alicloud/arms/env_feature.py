@@ -158,10 +158,8 @@ class _EnvFeatureState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:arms/envFeature:EnvFeature")
 class EnvFeature(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/envFeature:EnvFeature"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

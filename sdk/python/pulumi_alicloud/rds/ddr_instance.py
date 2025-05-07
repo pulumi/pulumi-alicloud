@@ -2597,10 +2597,8 @@ class _DdrInstanceState:
         pulumi.set(self, "zone_id_slave_b", value)
 
 
+@pulumi.type_token("alicloud:rds/ddrInstance:DdrInstance")
 class DdrInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/ddrInstance:DdrInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

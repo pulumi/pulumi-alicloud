@@ -132,10 +132,8 @@ class _FolderState:
         pulumi.set(self, "project_identifier", value)
 
 
+@pulumi.type_token("alicloud:dataworks/folder:Folder")
 class Folder(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/folder:Folder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

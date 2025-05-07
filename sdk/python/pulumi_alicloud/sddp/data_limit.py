@@ -352,10 +352,8 @@ class _DataLimitState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:sddp/dataLimit:DataLimit")
 class DataLimit(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sddp/dataLimit:DataLimit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

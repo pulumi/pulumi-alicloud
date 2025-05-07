@@ -624,10 +624,8 @@ class _InstanceState:
         pulumi.set(self, "zone_ids", value)
 
 
+@pulumi.type_token("alicloud:kms/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

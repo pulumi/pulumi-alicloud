@@ -126,10 +126,8 @@ class _NetworkGrantState:
         pulumi.set(self, "cen_uid", value)
 
 
+@pulumi.type_token("alicloud:cloudconnect/networkGrant:NetworkGrant")
 class NetworkGrant(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudconnect/networkGrant:NetworkGrant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

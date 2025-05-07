@@ -191,10 +191,8 @@ class _MachineGroupState:
         pulumi.set(self, "topic", value)
 
 
+@pulumi.type_token("alicloud:log/machineGroup:MachineGroup")
 class MachineGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/machineGroup:MachineGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

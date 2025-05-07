@@ -407,10 +407,8 @@ class _CertificateState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:esa/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/certificate:Certificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

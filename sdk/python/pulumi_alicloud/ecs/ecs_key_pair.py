@@ -281,10 +281,8 @@ class _EcsKeyPairState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsKeyPair:EcsKeyPair")
 class EcsKeyPair(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsKeyPair:EcsKeyPair"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -222,10 +222,8 @@ class _FlowState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:fnf/flow:Flow")
 class Flow(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fnf/flow:Flow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -271,10 +271,8 @@ class _BgpGroupState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/bgpGroup:BgpGroup")
 class BgpGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/bgpGroup:BgpGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -449,10 +449,8 @@ class _TemplateApplicationsState:
         pulumi.set(self, "reason", value)
 
 
+@pulumi.type_token("alicloud:quotas/templateApplications:TemplateApplications")
 class TemplateApplications(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/templateApplications:TemplateApplications"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

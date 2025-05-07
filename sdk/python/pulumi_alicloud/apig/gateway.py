@@ -385,10 +385,8 @@ class _GatewayState:
         pulumi.set(self, "zone_config", value)
 
 
+@pulumi.type_token("alicloud:apig/gateway:Gateway")
 class Gateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apig/gateway:Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,10 +159,8 @@ class _ConfigMapState:
         pulumi.set(self, "namespace_id", value)
 
 
+@pulumi.type_token("alicloud:sae/configMap:ConfigMap")
 class ConfigMap(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/configMap:ConfigMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -353,11 +353,9 @@ class _QosCarState:
 warnings.warn("""alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:rocketmq/qosCar:QosCar")
 class QosCar(pulumi.CustomResource):
     warnings.warn("""alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:rocketmq/qosCar:QosCar"
 
     @overload
     def __init__(__self__,

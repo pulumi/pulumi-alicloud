@@ -271,10 +271,8 @@ class _BasicEndpointGroupState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/basicEndpointGroup:BasicEndpointGroup")
 class BasicEndpointGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/basicEndpointGroup:BasicEndpointGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -627,10 +627,8 @@ class _OssShipperState:
         pulumi.set(self, "shipper_name", value)
 
 
+@pulumi.type_token("alicloud:log/ossShipper:OssShipper")
 class OssShipper(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/ossShipper:OssShipper"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

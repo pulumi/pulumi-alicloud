@@ -135,10 +135,8 @@ class _PolicyVersionState:
         pulumi.set(self, "policy_name", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/policyVersion:PolicyVersion")
 class PolicyVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/policyVersion:PolicyVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -158,10 +158,8 @@ class _NetworkState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:dataworks/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -157,10 +157,8 @@ class _ServiceHybridDoubleWriteState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite")
 class ServiceHybridDoubleWrite(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -334,10 +334,8 @@ class _DbInstancePlanState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:gpdb/dbInstancePlan:DbInstancePlan")
 class DbInstancePlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/dbInstancePlan:DbInstancePlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

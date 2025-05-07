@@ -205,10 +205,8 @@ class _DbInstanceEndpointAddressState:
         pulumi.set(self, "port", value)
 
 
+@pulumi.type_token("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress")
 class DbInstanceEndpointAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

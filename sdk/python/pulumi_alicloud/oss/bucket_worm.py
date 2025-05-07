@@ -168,10 +168,8 @@ class _BucketWormState:
         pulumi.set(self, "worm_id", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketWorm:BucketWorm")
 class BucketWorm(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketWorm:BucketWorm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

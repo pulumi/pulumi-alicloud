@@ -130,10 +130,8 @@ class _ControlPolicyOrderState:
         pulumi.set(self, "order", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder")
 class ControlPolicyOrder(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -272,10 +272,8 @@ class _AccessRuleState:
         pulumi.set(self, "user_access_type", value)
 
 
+@pulumi.type_token("alicloud:nas/accessRule:AccessRule")
 class AccessRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/accessRule:AccessRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

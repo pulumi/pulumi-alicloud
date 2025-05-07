@@ -161,10 +161,8 @@ class _ListState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:esa/list:List")
 class List(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/list:List"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

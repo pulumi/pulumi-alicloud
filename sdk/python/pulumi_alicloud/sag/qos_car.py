@@ -350,10 +350,8 @@ class _QosCarState:
         pulumi.set(self, "qos_id", value)
 
 
+@pulumi.type_token("alicloud:sag/qosCar:QosCar")
 class QosCar(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/qosCar:QosCar"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

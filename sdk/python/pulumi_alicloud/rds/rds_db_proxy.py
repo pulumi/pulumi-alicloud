@@ -842,10 +842,8 @@ class _RdsDbProxyState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsDbProxy:RdsDbProxy")
 class RdsDbProxy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsDbProxy:RdsDbProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -361,10 +361,8 @@ class _SecurityGroupState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/securityGroup:SecurityGroup")
 class SecurityGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/securityGroup:SecurityGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

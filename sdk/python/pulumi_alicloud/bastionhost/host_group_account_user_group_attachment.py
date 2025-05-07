@@ -157,10 +157,8 @@ class _HostGroupAccountUserGroupAttachmentState:
         pulumi.set(self, "user_group_id", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment")
 class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

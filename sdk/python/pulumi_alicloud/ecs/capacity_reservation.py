@@ -494,10 +494,8 @@ class _CapacityReservationState:
         pulumi.set(self, "zone_ids", value)
 
 
+@pulumi.type_token("alicloud:ecs/capacityReservation:CapacityReservation")
 class CapacityReservation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/capacityReservation:CapacityReservation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

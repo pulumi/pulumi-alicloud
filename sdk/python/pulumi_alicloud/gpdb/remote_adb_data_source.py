@@ -345,10 +345,8 @@ class _RemoteAdbDataSourceState:
         pulumi.set(self, "user_password", value)
 
 
+@pulumi.type_token("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource")
 class RemoteAdbDataSource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

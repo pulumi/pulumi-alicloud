@@ -96,10 +96,8 @@ class _EnterpriseSnapshotPolicyAttachmentState:
         pulumi.set(self, "policy_id", value)
 
 
+@pulumi.type_token("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment")
 class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -281,10 +281,8 @@ class _AccessConfigurationState:
         pulumi.set(self, "session_duration", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/accessConfiguration:AccessConfiguration")
 class AccessConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/accessConfiguration:AccessConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

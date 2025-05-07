@@ -235,10 +235,8 @@ class _AccessKeyState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:ram/accessKey:AccessKey")
 class AccessKey(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/accessKey:AccessKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

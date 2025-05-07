@@ -189,10 +189,8 @@ class _DomainExtensionState:
         pulumi.set(self, "server_certificate_id", value)
 
 
+@pulumi.type_token("alicloud:slb/domainExtension:DomainExtension")
 class DomainExtension(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/domainExtension:DomainExtension"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

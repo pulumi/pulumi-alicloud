@@ -453,10 +453,8 @@ class _FileSystemState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:dfs/fileSystem:FileSystem")
 class FileSystem(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dfs/fileSystem:FileSystem"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

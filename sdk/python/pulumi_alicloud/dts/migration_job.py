@@ -1016,10 +1016,8 @@ class _MigrationJobState:
         pulumi.set(self, "structure_initialization", value)
 
 
+@pulumi.type_token("alicloud:dts/migrationJob:MigrationJob")
 class MigrationJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/migrationJob:MigrationJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

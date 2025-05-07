@@ -199,10 +199,8 @@ class _EipInstanceAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment")
 class EipInstanceAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/eipInstanceAttachment:EipInstanceAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

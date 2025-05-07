@@ -278,10 +278,8 @@ class _BackupPolicyState:
         pulumi.set(self, "recovery_point_period", value)
 
 
+@pulumi.type_token("alicloud:gpdb/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

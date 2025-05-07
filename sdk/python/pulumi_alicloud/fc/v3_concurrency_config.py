@@ -112,10 +112,8 @@ class _V3ConcurrencyConfigState:
         pulumi.set(self, "reserved_concurrency", value)
 
 
+@pulumi.type_token("alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig")
 class V3ConcurrencyConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

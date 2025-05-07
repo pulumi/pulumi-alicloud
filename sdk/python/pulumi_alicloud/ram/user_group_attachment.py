@@ -95,10 +95,8 @@ class _UserGroupAttachmentState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:ram/userGroupAttachment:UserGroupAttachment")
 class UserGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/userGroupAttachment:UserGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

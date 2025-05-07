@@ -142,10 +142,8 @@ class _BasicAccelerateIpEndpointRelationState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation")
 class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

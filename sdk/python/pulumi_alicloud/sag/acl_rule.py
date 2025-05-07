@@ -345,10 +345,8 @@ class _AclRuleState:
         pulumi.set(self, "source_port_range", value)
 
 
+@pulumi.type_token("alicloud:sag/aclRule:AclRule")
 class AclRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/aclRule:AclRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

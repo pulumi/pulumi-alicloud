@@ -223,10 +223,8 @@ class _KubernetesAutoscalerState:
         pulumi.set(self, "utilization", value)
 
 
+@pulumi.type_token("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")
 class KubernetesAutoscaler(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -97,10 +97,8 @@ class _AssetBindState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/assetBind:AssetBind")
 class AssetBind(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/assetBind:AssetBind"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

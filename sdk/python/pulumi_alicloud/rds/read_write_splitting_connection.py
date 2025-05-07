@@ -239,10 +239,8 @@ class _ReadWriteSplittingConnectionState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection")
 class ReadWriteSplittingConnection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

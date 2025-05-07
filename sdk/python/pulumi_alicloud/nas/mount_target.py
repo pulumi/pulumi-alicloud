@@ -328,10 +328,8 @@ class _MountTargetState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:nas/mountTarget:MountTarget")
 class MountTarget(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/mountTarget:MountTarget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

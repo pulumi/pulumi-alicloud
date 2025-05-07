@@ -80,10 +80,8 @@ class _HistoryDeliveryJobState:
         pulumi.set(self, "trail_name", value)
 
 
+@pulumi.type_token("alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob")
 class HistoryDeliveryJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

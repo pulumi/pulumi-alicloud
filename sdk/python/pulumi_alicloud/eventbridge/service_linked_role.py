@@ -72,10 +72,8 @@ class _ServiceLinkedRoleState:
         pulumi.set(self, "product_name", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole")
 class ServiceLinkedRole(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

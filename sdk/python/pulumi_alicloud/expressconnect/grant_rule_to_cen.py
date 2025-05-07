@@ -126,10 +126,8 @@ class _GrantRuleToCenState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen")
 class GrantRuleToCen(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/grantRuleToCen:GrantRuleToCen"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

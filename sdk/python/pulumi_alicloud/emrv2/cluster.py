@@ -541,10 +541,8 @@ class _ClusterState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:emrv2/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:emrv2/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

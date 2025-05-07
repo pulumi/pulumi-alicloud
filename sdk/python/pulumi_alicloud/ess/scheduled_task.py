@@ -497,10 +497,8 @@ class _ScheduledTaskState:
         pulumi.set(self, "task_enabled", value)
 
 
+@pulumi.type_token("alicloud:ess/scheduledTask:ScheduledTask")
 class ScheduledTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/scheduledTask:ScheduledTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -112,10 +112,8 @@ class _GlobalDatabaseNetworkState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork")
 class GlobalDatabaseNetwork(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

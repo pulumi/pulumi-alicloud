@@ -170,10 +170,8 @@ class _SharedResourceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/sharedResource:SharedResource")
 class SharedResource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/sharedResource:SharedResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

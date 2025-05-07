@@ -65,10 +65,8 @@ class _QosState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:sag/qos:Qos")
 class Qos(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/qos:Qos"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

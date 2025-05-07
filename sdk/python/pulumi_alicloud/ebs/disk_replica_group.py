@@ -581,10 +581,8 @@ class _DiskReplicaGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ebs/diskReplicaGroup:DiskReplicaGroup")
 class DiskReplicaGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/diskReplicaGroup:DiskReplicaGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

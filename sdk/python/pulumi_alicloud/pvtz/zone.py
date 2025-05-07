@@ -407,10 +407,8 @@ class _ZoneState:
         pulumi.set(self, "zone_name", value)
 
 
+@pulumi.type_token("alicloud:pvtz/zone:Zone")
 class Zone(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/zone:Zone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

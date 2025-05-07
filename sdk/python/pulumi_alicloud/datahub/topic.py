@@ -316,10 +316,8 @@ class _TopicState:
         pulumi.set(self, "shard_count", value)
 
 
+@pulumi.type_token("alicloud:datahub/topic:Topic")
 class Topic(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:datahub/topic:Topic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

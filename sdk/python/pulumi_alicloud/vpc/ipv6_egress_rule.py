@@ -223,10 +223,8 @@ class _Ipv6EgressRuleState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv6EgressRule:Ipv6EgressRule")
 class Ipv6EgressRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

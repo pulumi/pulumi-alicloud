@@ -96,10 +96,8 @@ class _BucketTransferAccelerationState:
         pulumi.set(self, "enabled", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration")
 class BucketTransferAcceleration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

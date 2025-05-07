@@ -190,10 +190,8 @@ class _EndpointAclPolicyState:
         pulumi.set(self, "module_name", value)
 
 
+@pulumi.type_token("alicloud:cr/endpointAclPolicy:EndpointAclPolicy")
 class EndpointAclPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/endpointAclPolicy:EndpointAclPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

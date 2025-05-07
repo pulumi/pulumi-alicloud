@@ -191,10 +191,8 @@ class _LoginProfileState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:ram/loginProfile:LoginProfile")
 class LoginProfile(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/loginProfile:LoginProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -474,10 +474,8 @@ class _SecurityGroupRuleState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:ecs/securityGroupRule:SecurityGroupRule")
 class SecurityGroupRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/securityGroupRule:SecurityGroupRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

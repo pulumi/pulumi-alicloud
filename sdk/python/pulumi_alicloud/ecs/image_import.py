@@ -294,10 +294,8 @@ class _ImageImportState:
         pulumi.set(self, "platform", value)
 
 
+@pulumi.type_token("alicloud:ecs/imageImport:ImageImport")
 class ImageImport(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/imageImport:ImageImport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

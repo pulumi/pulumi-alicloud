@@ -174,10 +174,8 @@ class _DbNodeState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:rds/dbNode:DbNode")
 class DbNode(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/dbNode:DbNode"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

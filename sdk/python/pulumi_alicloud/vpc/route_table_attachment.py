@@ -111,10 +111,8 @@ class _RouteTableAttachmentState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/routeTableAttachment:RouteTableAttachment")
 class RouteTableAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/routeTableAttachment:RouteTableAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

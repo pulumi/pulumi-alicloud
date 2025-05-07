@@ -159,10 +159,8 @@ class _ZnodeState:
         pulumi.set(self, "path", value)
 
 
+@pulumi.type_token("alicloud:mse/znode:Znode")
 class Znode(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mse/znode:Znode"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

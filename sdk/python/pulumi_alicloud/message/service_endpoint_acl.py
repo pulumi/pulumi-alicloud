@@ -126,10 +126,8 @@ class _ServiceEndpointAclState:
         pulumi.set(self, "endpoint_type", value)
 
 
+@pulumi.type_token("alicloud:message/serviceEndpointAcl:ServiceEndpointAcl")
 class ServiceEndpointAcl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

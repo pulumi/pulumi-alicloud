@@ -379,10 +379,8 @@ class _ApplicationInfoState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:quotas/applicationInfo:ApplicationInfo")
 class ApplicationInfo(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/applicationInfo:ApplicationInfo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

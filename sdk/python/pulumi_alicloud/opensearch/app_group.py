@@ -351,10 +351,8 @@ class _AppGroupState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:opensearch/appGroup:AppGroup")
 class AppGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:opensearch/appGroup:AppGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

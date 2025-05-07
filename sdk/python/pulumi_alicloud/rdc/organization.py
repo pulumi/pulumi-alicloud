@@ -159,10 +159,8 @@ class _OrganizationState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("alicloud:rdc/organization:Organization")
 class Organization(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rdc/organization:Organization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

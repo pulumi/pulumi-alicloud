@@ -129,10 +129,8 @@ class _AppState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:apigateway/app:App")
 class App(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/app:App"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

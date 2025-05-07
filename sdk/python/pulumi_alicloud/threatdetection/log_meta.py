@@ -175,10 +175,8 @@ class _LogMetaState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/logMeta:LogMeta")
 class LogMeta(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/logMeta:LogMeta"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

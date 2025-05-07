@@ -468,10 +468,8 @@ class _TrafficMirrorSessionState:
         pulumi.set(self, "virtual_network_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/trafficMirrorSession:TrafficMirrorSession")
 class TrafficMirrorSession(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

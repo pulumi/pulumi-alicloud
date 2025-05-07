@@ -416,10 +416,8 @@ class _SimpleOfficeSiteState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:eds/simpleOfficeSite:SimpleOfficeSite")
 class SimpleOfficeSite(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/simpleOfficeSite:SimpleOfficeSite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

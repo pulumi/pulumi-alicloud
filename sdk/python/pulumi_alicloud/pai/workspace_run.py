@@ -176,10 +176,8 @@ class _WorkspaceRunState:
         pulumi.set(self, "source_type", value)
 
 
+@pulumi.type_token("alicloud:pai/workspaceRun:WorkspaceRun")
 class WorkspaceRun(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/workspaceRun:WorkspaceRun"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

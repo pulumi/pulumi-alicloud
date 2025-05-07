@@ -776,10 +776,8 @@ class _EcsNetworkInterfaceState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface")
 class EcsNetworkInterface(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

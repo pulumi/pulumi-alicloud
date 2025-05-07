@@ -134,10 +134,8 @@ class _BandwidthLimitState:
         pulumi.set(self, "region_ids", value)
 
 
+@pulumi.type_token("alicloud:cen/bandwidthLimit:BandwidthLimit")
 class BandwidthLimit(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/bandwidthLimit:BandwidthLimit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

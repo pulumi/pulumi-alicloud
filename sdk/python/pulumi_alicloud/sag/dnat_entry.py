@@ -251,10 +251,8 @@ class _DnatEntryState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:sag/dnatEntry:DnatEntry")
 class DnatEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/dnatEntry:DnatEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -139,10 +139,8 @@ class _BaselineState:
         pulumi.set(self, "description", value)
 
 
+@pulumi.type_token("alicloud:governance/baseline:Baseline")
 class Baseline(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:governance/baseline:Baseline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

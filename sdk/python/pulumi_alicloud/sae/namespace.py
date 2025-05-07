@@ -192,10 +192,8 @@ class _NamespaceState:
         pulumi.set(self, "namespace_short_id", value)
 
 
+@pulumi.type_token("alicloud:sae/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/namespace:Namespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

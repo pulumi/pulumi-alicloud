@@ -612,10 +612,8 @@ class _CommonBandwithPackageState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")
 class CommonBandwithPackage(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

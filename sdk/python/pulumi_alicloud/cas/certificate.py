@@ -186,11 +186,9 @@ class _CertificateState:
 warnings.warn("""This resource has been deprecated in favour of ServiceCertificate""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:cas/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
     warnings.warn("""This resource has been deprecated in favour of ServiceCertificate""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:cas/certificate:Certificate"
 
     @overload
     def __init__(__self__,

@@ -304,10 +304,8 @@ class _SiteMonitorState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("alicloud:cms/siteMonitor:SiteMonitor")
 class SiteMonitor(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/siteMonitor:SiteMonitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

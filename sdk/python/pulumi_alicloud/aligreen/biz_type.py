@@ -192,10 +192,8 @@ class _BizTypeState:
         pulumi.set(self, "industry_info", value)
 
 
+@pulumi.type_token("alicloud:aligreen/bizType:BizType")
 class BizType(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/bizType:BizType"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

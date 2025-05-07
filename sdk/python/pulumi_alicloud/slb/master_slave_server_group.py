@@ -162,10 +162,8 @@ class _MasterSlaveServerGroupState:
         pulumi.set(self, "servers", value)
 
 
+@pulumi.type_token("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup")
 class MasterSlaveServerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

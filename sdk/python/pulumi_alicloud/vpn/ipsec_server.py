@@ -352,10 +352,8 @@ class _IpsecServerState:
         pulumi.set(self, "vpn_gateway_id", value)
 
 
+@pulumi.type_token("alicloud:vpn/ipsecServer:IpsecServer")
 class IpsecServer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/ipsecServer:IpsecServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

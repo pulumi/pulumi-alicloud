@@ -230,10 +230,8 @@ class _ReplicaSetRoleState:
         pulumi.set(self, "role_id", value)
 
 
+@pulumi.type_token("alicloud:mongodb/replicaSetRole:ReplicaSetRole")
 class ReplicaSetRole(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/replicaSetRole:ReplicaSetRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

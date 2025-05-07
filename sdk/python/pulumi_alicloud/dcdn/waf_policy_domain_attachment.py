@@ -95,10 +95,8 @@ class _WafPolicyDomainAttachmentState:
         pulumi.set(self, "policy_id", value)
 
 
+@pulumi.type_token("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment")
 class WafPolicyDomainAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

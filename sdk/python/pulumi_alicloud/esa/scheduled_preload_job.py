@@ -222,10 +222,8 @@ class _ScheduledPreloadJobState:
         pulumi.set(self, "url_list", value)
 
 
+@pulumi.type_token("alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob")
 class ScheduledPreloadJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

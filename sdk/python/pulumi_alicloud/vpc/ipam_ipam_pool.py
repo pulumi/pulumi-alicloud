@@ -520,10 +520,8 @@ class _IpamIpamPoolState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipamIpamPool:IpamIpamPool")
 class IpamIpamPool(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipamIpamPool:IpamIpamPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -585,10 +585,8 @@ class _NodeState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("alicloud:eflo/node:Node")
 class Node(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/node:Node"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

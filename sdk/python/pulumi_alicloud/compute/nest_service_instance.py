@@ -465,10 +465,8 @@ class _NestServiceInstanceState:
         pulumi.set(self, "template_name", value)
 
 
+@pulumi.type_token("alicloud:compute/nestServiceInstance:NestServiceInstance")
 class NestServiceInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:compute/nestServiceInstance:NestServiceInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

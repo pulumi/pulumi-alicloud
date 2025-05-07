@@ -316,10 +316,8 @@ class _WebLockConfigState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/webLockConfig:WebLockConfig")
 class WebLockConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/webLockConfig:WebLockConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

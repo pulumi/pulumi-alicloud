@@ -191,10 +191,8 @@ class _EcsNetworkInterfaceAttachmentState:
         pulumi.set(self, "wait_for_network_configuration_ready", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment")
 class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

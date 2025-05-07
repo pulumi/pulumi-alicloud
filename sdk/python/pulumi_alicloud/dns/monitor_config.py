@@ -284,10 +284,8 @@ class _MonitorConfigState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("alicloud:dns/monitorConfig:MonitorConfig")
 class MonitorConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/monitorConfig:MonitorConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

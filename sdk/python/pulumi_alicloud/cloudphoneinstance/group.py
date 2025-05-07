@@ -527,10 +527,8 @@ class _GroupState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:cloudphoneinstance/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudphoneinstance/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

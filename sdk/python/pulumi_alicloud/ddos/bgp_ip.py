@@ -175,10 +175,8 @@ class _BgpIpState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ddos/bgpIp:BgpIp")
 class BgpIp(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/bgpIp:BgpIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -259,10 +259,8 @@ class _GroupState:
         pulumi.set(self, "vpc_intranet_enable", value)
 
 
+@pulumi.type_token("alicloud:apigateway/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

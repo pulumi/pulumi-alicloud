@@ -142,10 +142,8 @@ class _BackupPolicyState:
         pulumi.set(self, "preferred_backup_time", value)
 
 
+@pulumi.type_token("alicloud:adb/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:adb/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

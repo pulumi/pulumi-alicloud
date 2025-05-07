@@ -690,10 +690,8 @@ class _DedicatedHostState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/dedicatedHost:DedicatedHost")
 class DedicatedHost(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/dedicatedHost:DedicatedHost"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

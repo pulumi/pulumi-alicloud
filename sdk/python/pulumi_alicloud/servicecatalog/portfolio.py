@@ -159,10 +159,8 @@ class _PortfolioState:
         pulumi.set(self, "provider_name", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/portfolio:Portfolio")
 class Portfolio(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/portfolio:Portfolio"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

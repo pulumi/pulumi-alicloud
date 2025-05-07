@@ -913,10 +913,8 @@ class _EnterpriseInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:dms/enterpriseInstance:EnterpriseInstance")
 class EnterpriseInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dms/enterpriseInstance:EnterpriseInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

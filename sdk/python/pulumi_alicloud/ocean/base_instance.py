@@ -936,10 +936,8 @@ class _BaseInstanceState:
         pulumi.set(self, "zones", value)
 
 
+@pulumi.type_token("alicloud:ocean/baseInstance:BaseInstance")
 class BaseInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ocean/baseInstance:BaseInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

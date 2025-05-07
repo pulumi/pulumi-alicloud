@@ -628,10 +628,8 @@ class _VirtualPhysicalConnectionState:
         pulumi.set(self, "vpconn_ali_uid", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection")
 class VirtualPhysicalConnection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -223,10 +223,8 @@ class _BucketRefererState:
         pulumi.set(self, "truncate_path", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketReferer:BucketReferer")
 class BucketReferer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketReferer:BucketReferer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

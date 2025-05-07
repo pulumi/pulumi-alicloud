@@ -664,10 +664,8 @@ class _AdConnectorOfficeSiteState:
         pulumi.set(self, "verify_code", value)
 
 
+@pulumi.type_token("alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite")
 class AdConnectorOfficeSite(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

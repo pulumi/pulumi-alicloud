@@ -1063,10 +1063,8 @@ class _K8sApplicationState:
         pulumi.set(self, "web_container", value)
 
 
+@pulumi.type_token("alicloud:edas/k8sApplication:K8sApplication")
 class K8sApplication(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/k8sApplication:K8sApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -175,10 +175,8 @@ class _MailAddressState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:directmail/mailAddress:MailAddress")
 class MailAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:directmail/mailAddress:MailAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

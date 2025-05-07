@@ -1025,10 +1025,8 @@ class _EcsDiskState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsDisk:EcsDisk")
 class EcsDisk(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsDisk:EcsDisk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

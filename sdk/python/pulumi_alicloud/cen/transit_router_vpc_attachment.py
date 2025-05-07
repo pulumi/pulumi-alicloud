@@ -677,10 +677,8 @@ class _TransitRouterVpcAttachmentState:
         pulumi.set(self, "zone_mappings", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")
 class TransitRouterVpcAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

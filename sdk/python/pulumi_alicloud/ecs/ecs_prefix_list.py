@@ -191,10 +191,8 @@ class _EcsPrefixListState:
         pulumi.set(self, "prefix_list_name", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsPrefixList:EcsPrefixList")
 class EcsPrefixList(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsPrefixList:EcsPrefixList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -494,10 +494,8 @@ class _RuleState:
         pulumi.set(self, "warn_level", value)
 
 
+@pulumi.type_token("alicloud:sddp/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sddp/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -976,10 +976,8 @@ class _AlertState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("alicloud:log/alert:Alert")
 class Alert(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/alert:Alert"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

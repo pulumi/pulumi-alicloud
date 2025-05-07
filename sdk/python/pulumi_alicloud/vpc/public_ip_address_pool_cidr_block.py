@@ -164,10 +164,8 @@ class _PublicIpAddressPoolCidrBlockState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock")
 class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

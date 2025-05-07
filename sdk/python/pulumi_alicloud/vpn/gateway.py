@@ -759,10 +759,8 @@ class _GatewayState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpn/gateway:Gateway")
 class Gateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/gateway:Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

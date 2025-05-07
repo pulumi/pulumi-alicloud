@@ -249,10 +249,8 @@ class _EcsDeploymentSetState:
         pulumi.set(self, "strategy", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet")
 class EcsDeploymentSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

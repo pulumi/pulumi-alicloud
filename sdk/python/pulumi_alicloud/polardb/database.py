@@ -191,10 +191,8 @@ class _DatabaseState:
         pulumi.set(self, "db_name", value)
 
 
+@pulumi.type_token("alicloud:polardb/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

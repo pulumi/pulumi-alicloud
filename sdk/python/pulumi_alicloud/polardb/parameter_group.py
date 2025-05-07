@@ -192,10 +192,8 @@ class _ParameterGroupState:
         pulumi.set(self, "parameters", value)
 
 
+@pulumi.type_token("alicloud:polardb/parameterGroup:ParameterGroup")
 class ParameterGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/parameterGroup:ParameterGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

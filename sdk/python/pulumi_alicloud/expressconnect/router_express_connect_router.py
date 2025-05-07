@@ -262,10 +262,8 @@ class _RouterExpressConnectRouterState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter")
 class RouterExpressConnectRouter(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

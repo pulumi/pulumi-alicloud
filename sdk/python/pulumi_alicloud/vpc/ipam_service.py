@@ -50,10 +50,8 @@ class _IpamServiceState:
         pulumi.set(self, "enabled", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipamService:IpamService")
 class IpamService(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipamService:IpamService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -174,10 +174,8 @@ class _EcsNetworkInterfacePermissionState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission")
 class EcsNetworkInterfacePermission(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

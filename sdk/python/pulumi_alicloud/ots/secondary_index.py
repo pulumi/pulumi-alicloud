@@ -251,10 +251,8 @@ class _SecondaryIndexState:
         pulumi.set(self, "table_name", value)
 
 
+@pulumi.type_token("alicloud:ots/secondaryIndex:SecondaryIndex")
 class SecondaryIndex(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ots/secondaryIndex:SecondaryIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

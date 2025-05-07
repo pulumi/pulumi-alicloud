@@ -96,10 +96,8 @@ class _StorageBundleState:
         pulumi.set(self, "storage_bundle_name", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/storageBundle:StorageBundle")
 class StorageBundle(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/storageBundle:StorageBundle"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

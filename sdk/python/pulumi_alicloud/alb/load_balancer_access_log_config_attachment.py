@@ -142,10 +142,8 @@ class _LoadBalancerAccessLogConfigAttachmentState:
         pulumi.set(self, "log_store", value)
 
 
+@pulumi.type_token("alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment")
 class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -95,10 +95,8 @@ class _BucketAclState:
         pulumi.set(self, "bucket", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketAcl:BucketAcl")
 class BucketAcl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketAcl:BucketAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -112,10 +112,8 @@ class _RecycleBinState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:nas/recycleBin:RecycleBin")
 class RecycleBin(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/recycleBin:RecycleBin"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

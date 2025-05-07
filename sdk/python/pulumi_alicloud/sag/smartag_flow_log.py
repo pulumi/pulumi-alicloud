@@ -416,10 +416,8 @@ class _SmartagFlowLogState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:sag/smartagFlowLog:SmartagFlowLog")
 class SmartagFlowLog(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/smartagFlowLog:SmartagFlowLog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

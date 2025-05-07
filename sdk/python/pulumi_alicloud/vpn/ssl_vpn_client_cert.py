@@ -176,10 +176,8 @@ class _SslVpnClientCertState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpn/sslVpnClientCert:SslVpnClientCert")
 class SslVpnClientCert(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/sslVpnClientCert:SslVpnClientCert"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

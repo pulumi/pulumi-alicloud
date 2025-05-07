@@ -221,10 +221,8 @@ class _HoneyPotState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/honeyPot:HoneyPot")
 class HoneyPot(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/honeyPot:HoneyPot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

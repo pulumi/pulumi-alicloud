@@ -320,10 +320,8 @@ class _AnycastEipAddressState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress")
 class AnycastEipAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eipanycast/anycastEipAddress:AnycastEipAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -274,10 +274,8 @@ class _V3AsyncInvokeConfigState:
         pulumi.set(self, "qualifier", value)
 
 
+@pulumi.type_token("alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig")
 class V3AsyncInvokeConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

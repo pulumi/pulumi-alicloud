@@ -200,10 +200,8 @@ class _CaCertificateState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:slb/caCertificate:CaCertificate")
 class CaCertificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/caCertificate:CaCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

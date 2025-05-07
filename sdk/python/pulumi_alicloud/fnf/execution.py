@@ -159,10 +159,8 @@ class _ExecutionState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:fnf/execution:Execution")
 class Execution(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fnf/execution:Execution"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

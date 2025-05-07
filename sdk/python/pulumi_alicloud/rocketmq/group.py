@@ -272,10 +272,8 @@ class _GroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -165,10 +165,8 @@ class _MscSubContractState:
         pulumi.set(self, "position", value)
 
 
+@pulumi.type_token("alicloud:index/mscSubContract:MscSubContract")
 class MscSubContract(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:index/mscSubContract:MscSubContract"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

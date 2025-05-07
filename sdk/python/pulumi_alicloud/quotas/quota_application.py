@@ -531,10 +531,8 @@ class _QuotaApplicationState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:quotas/quotaApplication:QuotaApplication")
 class QuotaApplication(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/quotaApplication:QuotaApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

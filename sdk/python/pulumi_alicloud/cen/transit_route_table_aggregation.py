@@ -279,10 +279,8 @@ class _TransitRouteTableAggregationState:
         pulumi.set(self, "transit_route_table_id", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation")
 class TransitRouteTableAggregation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

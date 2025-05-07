@@ -253,10 +253,8 @@ class _AutoSnapShotPolicyState:
         pulumi.set(self, "time_points", value)
 
 
+@pulumi.type_token("alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy")
 class AutoSnapShotPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

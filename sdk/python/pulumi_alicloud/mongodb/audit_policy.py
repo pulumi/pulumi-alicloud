@@ -127,10 +127,8 @@ class _AuditPolicyState:
         pulumi.set(self, "storage_period", value)
 
 
+@pulumi.type_token("alicloud:mongodb/auditPolicy:AuditPolicy")
 class AuditPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/auditPolicy:AuditPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

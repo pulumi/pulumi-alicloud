@@ -126,10 +126,8 @@ class _LogConfigState:
         pulumi.set(self, "sls_project", value)
 
 
+@pulumi.type_token("alicloud:apigateway/logConfig:LogConfig")
 class LogConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/logConfig:LogConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -351,10 +351,8 @@ class _SecretParameterState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("alicloud:oos/secretParameter:SecretParameter")
 class SecretParameter(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/secretParameter:SecretParameter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

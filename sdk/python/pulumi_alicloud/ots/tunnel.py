@@ -255,10 +255,8 @@ class _TunnelState:
         pulumi.set(self, "tunnel_type", value)
 
 
+@pulumi.type_token("alicloud:ots/tunnel:Tunnel")
 class Tunnel(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ots/tunnel:Tunnel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

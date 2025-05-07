@@ -64,10 +64,8 @@ class _FileUploadLimitState:
         pulumi.set(self, "limit", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/fileUploadLimit:FileUploadLimit")
 class FileUploadLimit(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/fileUploadLimit:FileUploadLimit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

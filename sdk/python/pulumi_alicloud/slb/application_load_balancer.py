@@ -729,10 +729,8 @@ class _ApplicationLoadBalancerState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer")
 class ApplicationLoadBalancer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

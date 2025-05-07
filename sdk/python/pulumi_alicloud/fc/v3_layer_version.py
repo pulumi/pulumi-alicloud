@@ -322,10 +322,8 @@ class _V3LayerVersionState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("alicloud:fc/v3LayerVersion:V3LayerVersion")
 class V3LayerVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3LayerVersion:V3LayerVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

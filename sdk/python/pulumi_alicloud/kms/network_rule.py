@@ -128,10 +128,8 @@ class _NetworkRuleState:
         pulumi.set(self, "source_private_ips", value)
 
 
+@pulumi.type_token("alicloud:kms/networkRule:NetworkRule")
 class NetworkRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/networkRule:NetworkRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

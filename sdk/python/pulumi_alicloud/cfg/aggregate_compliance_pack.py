@@ -295,10 +295,8 @@ class _AggregateCompliancePackState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack")
 class AggregateCompliancePack(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

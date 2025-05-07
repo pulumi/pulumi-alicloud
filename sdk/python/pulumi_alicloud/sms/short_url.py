@@ -142,10 +142,8 @@ class _ShortUrlState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:sms/shortUrl:ShortUrl")
 class ShortUrl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sms/shortUrl:ShortUrl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

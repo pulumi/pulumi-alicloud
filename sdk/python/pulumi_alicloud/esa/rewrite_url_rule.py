@@ -356,10 +356,8 @@ class _RewriteUrlRuleState:
         pulumi.set(self, "uri", value)
 
 
+@pulumi.type_token("alicloud:esa/rewriteUrlRule:RewriteUrlRule")
 class RewriteUrlRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/rewriteUrlRule:RewriteUrlRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

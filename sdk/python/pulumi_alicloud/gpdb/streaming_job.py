@@ -830,10 +830,8 @@ class _StreamingJobState:
         pulumi.set(self, "write_mode", value)
 
 
+@pulumi.type_token("alicloud:gpdb/streamingJob:StreamingJob")
 class StreamingJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/streamingJob:StreamingJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

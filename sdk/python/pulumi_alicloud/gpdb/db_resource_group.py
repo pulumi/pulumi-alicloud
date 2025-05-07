@@ -158,10 +158,8 @@ class _DbResourceGroupState:
         pulumi.set(self, "role_lists", value)
 
 
+@pulumi.type_token("alicloud:gpdb/dbResourceGroup:DbResourceGroup")
 class DbResourceGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/dbResourceGroup:DbResourceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

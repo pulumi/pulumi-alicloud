@@ -248,10 +248,8 @@ class _StorageCapacityUnitState:
         pulumi.set(self, "storage_capacity_unit_name", value)
 
 
+@pulumi.type_token("alicloud:ecs/storageCapacityUnit:StorageCapacityUnit")
 class StorageCapacityUnit(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/storageCapacityUnit:StorageCapacityUnit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

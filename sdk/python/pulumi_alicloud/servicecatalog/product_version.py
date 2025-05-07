@@ -269,10 +269,8 @@ class _ProductVersionState:
         pulumi.set(self, "template_url", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/productVersion:ProductVersion")
 class ProductVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/productVersion:ProductVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

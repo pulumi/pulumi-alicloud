@@ -306,10 +306,8 @@ class _V3ProvisionConfigState:
         pulumi.set(self, "target_tracking_policies", value)
 
 
+@pulumi.type_token("alicloud:fc/v3ProvisionConfig:V3ProvisionConfig")
 class V3ProvisionConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3ProvisionConfig:V3ProvisionConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

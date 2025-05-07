@@ -88,10 +88,8 @@ class _KeyVersionState:
         pulumi.set(self, "key_version_id", value)
 
 
+@pulumi.type_token("alicloud:kms/keyVersion:KeyVersion")
 class KeyVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/keyVersion:KeyVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

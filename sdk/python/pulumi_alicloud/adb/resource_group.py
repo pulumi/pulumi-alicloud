@@ -239,10 +239,8 @@ class _ResourceGroupState:
         pulumi.set(self, "users", value)
 
 
+@pulumi.type_token("alicloud:adb/resourceGroup:ResourceGroup")
 class ResourceGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:adb/resourceGroup:ResourceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

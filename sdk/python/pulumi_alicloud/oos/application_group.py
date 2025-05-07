@@ -226,10 +226,8 @@ class _ApplicationGroupState:
         pulumi.set(self, "import_tag_value", value)
 
 
+@pulumi.type_token("alicloud:oos/applicationGroup:ApplicationGroup")
 class ApplicationGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/applicationGroup:ApplicationGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

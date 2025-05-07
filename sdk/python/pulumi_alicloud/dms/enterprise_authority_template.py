@@ -159,10 +159,8 @@ class _EnterpriseAuthorityTemplateState:
         pulumi.set(self, "tid", value)
 
 
+@pulumi.type_token("alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate")
 class EnterpriseAuthorityTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

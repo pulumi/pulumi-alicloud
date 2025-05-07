@@ -423,10 +423,8 @@ class _RecordState:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.type_token("alicloud:esa/record:Record")
 class Record(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/record:Record"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

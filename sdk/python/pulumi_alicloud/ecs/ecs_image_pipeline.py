@@ -519,10 +519,8 @@ class _EcsImagePipelineState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsImagePipeline:EcsImagePipeline")
 class EcsImagePipeline(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsImagePipeline:EcsImagePipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

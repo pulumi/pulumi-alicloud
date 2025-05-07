@@ -366,10 +366,8 @@ class _TriggerState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:fc/trigger:Trigger")
 class Trigger(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/trigger:Trigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

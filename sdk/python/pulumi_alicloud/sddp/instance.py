@@ -586,10 +586,8 @@ class _InstanceState:
         pulumi.set(self, "udc", value)
 
 
+@pulumi.type_token("alicloud:sddp/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sddp/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

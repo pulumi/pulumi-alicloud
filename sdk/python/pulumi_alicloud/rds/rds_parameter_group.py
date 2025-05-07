@@ -191,10 +191,8 @@ class _RdsParameterGroupState:
         pulumi.set(self, "parameter_group_name", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsParameterGroup:RdsParameterGroup")
 class RdsParameterGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsParameterGroup:RdsParameterGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

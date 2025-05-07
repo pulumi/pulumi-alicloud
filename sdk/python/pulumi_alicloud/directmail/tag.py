@@ -64,10 +64,8 @@ class _TagState:
         pulumi.set(self, "tag_name", value)
 
 
+@pulumi.type_token("alicloud:directmail/tag:Tag")
 class Tag(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:directmail/tag:Tag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

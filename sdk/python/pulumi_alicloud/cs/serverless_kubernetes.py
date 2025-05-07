@@ -1119,10 +1119,8 @@ class _ServerlessKubernetesState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 class ServerlessKubernetes(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/serverlessKubernetes:ServerlessKubernetes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

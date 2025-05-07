@@ -68,10 +68,8 @@ class _TemplateServiceState:
         pulumi.set(self, "service_status", value)
 
 
+@pulumi.type_token("alicloud:quotas/templateService:TemplateService")
 class TemplateService(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/templateService:TemplateService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

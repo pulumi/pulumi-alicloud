@@ -193,10 +193,8 @@ class _MonitorGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:cms/monitorGroup:MonitorGroup")
 class MonitorGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/monitorGroup:MonitorGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

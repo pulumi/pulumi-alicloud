@@ -292,10 +292,8 @@ class _RouteEntryState:
         pulumi.set(self, "router_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/routeEntry:RouteEntry")
 class RouteEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/routeEntry:RouteEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -339,10 +339,8 @@ class _V3CustomDomainState:
         pulumi.set(self, "waf_config", value)
 
 
+@pulumi.type_token("alicloud:fc/v3CustomDomain:V3CustomDomain")
 class V3CustomDomain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3CustomDomain:V3CustomDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

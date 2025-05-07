@@ -545,10 +545,8 @@ class _AutoscalingConfigState:
         pulumi.set(self, "utilization_threshold", value)
 
 
+@pulumi.type_token("alicloud:cs/autoscalingConfig:AutoscalingConfig")
 class AutoscalingConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/autoscalingConfig:AutoscalingConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

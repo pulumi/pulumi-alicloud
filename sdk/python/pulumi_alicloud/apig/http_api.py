@@ -223,10 +223,8 @@ class _HttpApiState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:apig/httpApi:HttpApi")
 class HttpApi(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apig/httpApi:HttpApi"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

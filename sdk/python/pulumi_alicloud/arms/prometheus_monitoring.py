@@ -174,10 +174,8 @@ class _PrometheusMonitoringState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:arms/prometheusMonitoring:PrometheusMonitoring")
 class PrometheusMonitoring(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/prometheusMonitoring:PrometheusMonitoring"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

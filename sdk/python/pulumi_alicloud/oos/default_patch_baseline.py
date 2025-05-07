@@ -80,10 +80,8 @@ class _DefaultPatchBaselineState:
         pulumi.set(self, "patch_baseline_name", value)
 
 
+@pulumi.type_token("alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline")
 class DefaultPatchBaseline(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

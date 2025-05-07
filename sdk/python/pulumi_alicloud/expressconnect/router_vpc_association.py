@@ -238,10 +238,8 @@ class _RouterVpcAssociationState:
         pulumi.set(self, "vpc_owner_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation")
 class RouterVpcAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

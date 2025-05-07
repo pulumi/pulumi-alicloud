@@ -568,10 +568,8 @@ class _GrafanaWorkspaceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:arms/grafanaWorkspace:GrafanaWorkspace")
 class GrafanaWorkspace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/grafanaWorkspace:GrafanaWorkspace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

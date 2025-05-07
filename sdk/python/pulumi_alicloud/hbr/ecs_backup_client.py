@@ -384,10 +384,8 @@ class _EcsBackupClientState:
         pulumi.set(self, "use_https", value)
 
 
+@pulumi.type_token("alicloud:hbr/ecsBackupClient:EcsBackupClient")
 class EcsBackupClient(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/ecsBackupClient:EcsBackupClient"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

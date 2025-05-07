@@ -431,10 +431,8 @@ class _MetricRuleBlackListState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("alicloud:cms/metricRuleBlackList:MetricRuleBlackList")
 class MetricRuleBlackList(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/metricRuleBlackList:MetricRuleBlackList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

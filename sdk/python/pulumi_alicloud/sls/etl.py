@@ -223,10 +223,8 @@ class _EtlState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:sls/etl:Etl")
 class Etl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sls/etl:Etl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

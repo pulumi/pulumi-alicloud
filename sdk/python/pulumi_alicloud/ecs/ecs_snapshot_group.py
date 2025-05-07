@@ -337,10 +337,8 @@ class _EcsSnapshotGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup")
 class EcsSnapshotGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

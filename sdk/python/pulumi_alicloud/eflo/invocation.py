@@ -681,10 +681,8 @@ class _InvocationState:
         pulumi.set(self, "working_dir", value)
 
 
+@pulumi.type_token("alicloud:eflo/invocation:Invocation")
 class Invocation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/invocation:Invocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

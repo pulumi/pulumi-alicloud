@@ -111,10 +111,8 @@ class _KvNamespaceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:dcdn/kvNamespace:KvNamespace")
 class KvNamespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/kvNamespace:KvNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

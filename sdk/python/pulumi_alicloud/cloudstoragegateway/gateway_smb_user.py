@@ -126,10 +126,8 @@ class _GatewaySmbUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser")
 class GatewaySmbUser(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

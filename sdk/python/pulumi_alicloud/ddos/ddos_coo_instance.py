@@ -623,10 +623,8 @@ class _DdosCooInstanceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ddos/ddosCooInstance:DdosCooInstance")
 class DdosCooInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/ddosCooInstance:DdosCooInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

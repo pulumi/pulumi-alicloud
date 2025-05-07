@@ -653,10 +653,8 @@ class _GatewayVpnAttachmentState:
         pulumi.set(self, "vpn_attachment_name", value)
 
 
+@pulumi.type_token("alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment")
 class GatewayVpnAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

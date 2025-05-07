@@ -322,10 +322,8 @@ class _ServerBackupPlanState:
         pulumi.set(self, "schedule", value)
 
 
+@pulumi.type_token("alicloud:hbr/serverBackupPlan:ServerBackupPlan")
 class ServerBackupPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/serverBackupPlan:ServerBackupPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

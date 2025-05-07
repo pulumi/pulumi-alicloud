@@ -495,10 +495,8 @@ class _PolicyBindingState:
         pulumi.set(self, "speed_limit", value)
 
 
+@pulumi.type_token("alicloud:hbr/policyBinding:PolicyBinding")
 class PolicyBinding(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/policyBinding:PolicyBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

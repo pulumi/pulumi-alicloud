@@ -190,10 +190,8 @@ class _HostShareKeyState:
         pulumi.set(self, "private_key_finger_print", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostShareKey:HostShareKey")
 class HostShareKey(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostShareKey:HostShareKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

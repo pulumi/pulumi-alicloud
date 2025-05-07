@@ -160,10 +160,8 @@ class _DeviceGroupState:
         pulumi.set(self, "super_group_id", value)
 
 
+@pulumi.type_token("alicloud:iot/deviceGroup:DeviceGroup")
 class DeviceGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:iot/deviceGroup:DeviceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

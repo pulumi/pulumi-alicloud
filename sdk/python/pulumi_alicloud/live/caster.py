@@ -815,10 +815,8 @@ class _CasterState:
         pulumi.set(self, "urgent_material_id", value)
 
 
+@pulumi.type_token("alicloud:live/caster:Caster")
 class Caster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:live/caster:Caster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

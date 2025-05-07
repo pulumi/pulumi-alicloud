@@ -321,10 +321,8 @@ class _AccountPasswordPolicyState:
         pulumi.set(self, "require_uppercase_characters", value)
 
 
+@pulumi.type_token("alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")
 class AccountPasswordPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

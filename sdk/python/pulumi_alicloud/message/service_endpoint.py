@@ -99,10 +99,8 @@ class _ServiceEndpointState:
         pulumi.set(self, "endpoint_type", value)
 
 
+@pulumi.type_token("alicloud:message/serviceEndpoint:ServiceEndpoint")
 class ServiceEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:message/serviceEndpoint:ServiceEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

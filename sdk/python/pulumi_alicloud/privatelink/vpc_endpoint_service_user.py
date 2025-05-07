@@ -159,10 +159,8 @@ class _VpcEndpointServiceUserState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser")
 class VpcEndpointServiceUser(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

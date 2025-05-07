@@ -159,10 +159,8 @@ class _ChartNamespaceState:
         pulumi.set(self, "namespace_name", value)
 
 
+@pulumi.type_token("alicloud:cr/chartNamespace:ChartNamespace")
 class ChartNamespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/chartNamespace:ChartNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

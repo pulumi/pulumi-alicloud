@@ -399,10 +399,8 @@ class _EnterpriseSnapshotPolicyState:
         pulumi.set(self, "target_type", value)
 
 
+@pulumi.type_token("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy")
 class EnterpriseSnapshotPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

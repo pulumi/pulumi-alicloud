@@ -142,10 +142,8 @@ class _ConnectionState:
         pulumi.set(self, "port", value)
 
 
+@pulumi.type_token("alicloud:kvstore/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kvstore/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

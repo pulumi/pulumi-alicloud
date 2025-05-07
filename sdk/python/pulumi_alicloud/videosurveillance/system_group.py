@@ -396,10 +396,8 @@ class _SystemGroupState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:videosurveillance/systemGroup:SystemGroup")
 class SystemGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:videosurveillance/systemGroup:SystemGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

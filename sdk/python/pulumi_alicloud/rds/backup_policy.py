@@ -1000,10 +1000,8 @@ class _BackupPolicyState:
         pulumi.set(self, "retention_period", value)
 
 
+@pulumi.type_token("alicloud:rds/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

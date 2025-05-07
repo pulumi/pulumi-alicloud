@@ -95,10 +95,8 @@ class _MetaTagState:
         pulumi.set(self, "values", value)
 
 
+@pulumi.type_token("alicloud:tag/metaTag:MetaTag")
 class MetaTag(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:tag/metaTag:MetaTag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

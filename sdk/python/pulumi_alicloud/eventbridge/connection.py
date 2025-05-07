@@ -177,10 +177,8 @@ class _ConnectionState:
         pulumi.set(self, "network_parameters", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

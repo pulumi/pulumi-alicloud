@@ -598,10 +598,8 @@ class _WorkspaceDatasetState:
         pulumi.set(self, "property", value)
 
 
+@pulumi.type_token("alicloud:pai/workspaceDataset:WorkspaceDataset")
 class WorkspaceDataset(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/workspaceDataset:WorkspaceDataset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

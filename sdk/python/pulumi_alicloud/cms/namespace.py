@@ -152,10 +152,8 @@ class _NamespaceState:
         pulumi.set(self, "specification", value)
 
 
+@pulumi.type_token("alicloud:cms/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/namespace:Namespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -96,10 +96,8 @@ class _ReplicaGroupDrillState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill")
 class ReplicaGroupDrill(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

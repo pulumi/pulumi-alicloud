@@ -944,10 +944,8 @@ class _DedicatedPropreHostState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost")
 class DedicatedPropreHost(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -191,10 +191,8 @@ class _SnapshotState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ens/snapshot:Snapshot")
 class Snapshot(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/snapshot:Snapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -384,10 +384,8 @@ class _V3TriggerState:
         pulumi.set(self, "trigger_type", value)
 
 
+@pulumi.type_token("alicloud:fc/v3Trigger:V3Trigger")
 class V3Trigger(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3Trigger:V3Trigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

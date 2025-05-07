@@ -335,10 +335,8 @@ class _ServiceState:
         pulumi.set(self, "vpc_config", value)
 
 
+@pulumi.type_token("alicloud:fc/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

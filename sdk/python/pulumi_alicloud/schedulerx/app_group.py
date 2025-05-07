@@ -525,10 +525,8 @@ class _AppGroupState:
         pulumi.set(self, "schedule_busy_workers", value)
 
 
+@pulumi.type_token("alicloud:schedulerx/appGroup:AppGroup")
 class AppGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:schedulerx/appGroup:AppGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

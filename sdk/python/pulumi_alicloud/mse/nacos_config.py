@@ -397,10 +397,8 @@ class _NacosConfigState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:mse/nacosConfig:NacosConfig")
 class NacosConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mse/nacosConfig:NacosConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

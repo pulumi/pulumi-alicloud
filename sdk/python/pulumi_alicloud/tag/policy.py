@@ -159,10 +159,8 @@ class _PolicyState:
         pulumi.set(self, "user_type", value)
 
 
+@pulumi.type_token("alicloud:tag/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:tag/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

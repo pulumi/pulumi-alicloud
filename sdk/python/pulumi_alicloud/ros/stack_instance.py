@@ -330,10 +330,8 @@ class _StackInstanceState:
         pulumi.set(self, "timeout_in_minutes", value)
 
 
+@pulumi.type_token("alicloud:ros/stackInstance:StackInstance")
 class StackInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ros/stackInstance:StackInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

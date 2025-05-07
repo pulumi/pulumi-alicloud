@@ -277,10 +277,8 @@ class _MaliciousFileWhitelistConfigState:
         pulumi.set(self, "target_value", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig")
 class MaliciousFileWhitelistConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

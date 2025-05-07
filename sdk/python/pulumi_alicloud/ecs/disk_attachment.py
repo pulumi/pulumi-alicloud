@@ -203,10 +203,8 @@ class _DiskAttachmentState:
         pulumi.set(self, "password", value)
 
 
+@pulumi.type_token("alicloud:ecs/diskAttachment:DiskAttachment")
 class DiskAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/diskAttachment:DiskAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

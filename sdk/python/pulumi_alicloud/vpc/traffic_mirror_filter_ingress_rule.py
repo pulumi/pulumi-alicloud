@@ -404,10 +404,8 @@ class _TrafficMirrorFilterIngressRuleState:
         pulumi.set(self, "traffic_mirror_filter_ingress_rule_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule")
 class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -193,10 +193,8 @@ class _ServiceSettingState:
         pulumi.set(self, "delivery_sls_project_name", value)
 
 
+@pulumi.type_token("alicloud:oos/serviceSetting:ServiceSetting")
 class ServiceSetting(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/serviceSetting:ServiceSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -157,10 +157,8 @@ class _PluginAttachmentState:
         pulumi.set(self, "stage_name", value)
 
 
+@pulumi.type_token("alicloud:apigateway/pluginAttachment:PluginAttachment")
 class PluginAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/pluginAttachment:PluginAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

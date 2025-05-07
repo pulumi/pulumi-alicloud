@@ -376,10 +376,8 @@ class _EcsImageComponentState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsImageComponent:EcsImageComponent")
 class EcsImageComponent(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsImageComponent:EcsImageComponent"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

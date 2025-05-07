@@ -284,10 +284,8 @@ class _DnsDomainState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:dns/dnsDomain:DnsDomain")
 class DnsDomain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/dnsDomain:DnsDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
