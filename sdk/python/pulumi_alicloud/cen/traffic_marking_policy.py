@@ -296,10 +296,8 @@ class _TrafficMarkingPolicyState:
         pulumi.set(self, "transit_router_id", value)
 
 
+@pulumi.type_token("alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy")
 class TrafficMarkingPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -174,10 +174,8 @@ class _ProductState:
         pulumi.set(self, "provider_name", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/product:Product")
 class Product(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/product:Product"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

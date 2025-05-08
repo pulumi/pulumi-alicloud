@@ -449,10 +449,8 @@ class _SiteDeliveryTaskState:
         pulumi.set(self, "task_name", value)
 
 
+@pulumi.type_token("alicloud:esa/siteDeliveryTask:SiteDeliveryTask")
 class SiteDeliveryTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/siteDeliveryTask:SiteDeliveryTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

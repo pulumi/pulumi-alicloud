@@ -530,10 +530,8 @@ class _ServiceMeshState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("alicloud:servicemesh/serviceMesh:ServiceMesh")
 class ServiceMesh(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicemesh/serviceMesh:ServiceMesh"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

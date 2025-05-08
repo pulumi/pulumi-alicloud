@@ -434,10 +434,8 @@ class _QueueState:
         pulumi.set(self, "virtual_host_name", value)
 
 
+@pulumi.type_token("alicloud:amqp/queue:Queue")
 class Queue(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:amqp/queue:Queue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

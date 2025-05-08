@@ -239,10 +239,8 @@ class _ExperimentPlanState:
         pulumi.set(self, "template_id", value)
 
 
+@pulumi.type_token("alicloud:eflo/experimentPlan:ExperimentPlan")
 class ExperimentPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/experimentPlan:ExperimentPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

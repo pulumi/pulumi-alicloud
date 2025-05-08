@@ -257,10 +257,8 @@ class _HttpRequestHeaderModificationRuleState:
         pulumi.set(self, "site_version", value)
 
 
+@pulumi.type_token("alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule")
 class HttpRequestHeaderModificationRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

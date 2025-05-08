@@ -273,10 +273,8 @@ class _StudioApplicationState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("alicloud:bp/studioApplication:StudioApplication")
 class StudioApplication(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bp/studioApplication:StudioApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

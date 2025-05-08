@@ -331,10 +331,8 @@ class _AccountState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:kvstore/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kvstore/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

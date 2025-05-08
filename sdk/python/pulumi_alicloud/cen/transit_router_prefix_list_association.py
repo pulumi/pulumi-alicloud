@@ -253,10 +253,8 @@ class _TransitRouterPrefixListAssociationState:
         pulumi.set(self, "transit_router_table_id", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation")
 class TransitRouterPrefixListAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

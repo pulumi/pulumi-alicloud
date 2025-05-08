@@ -320,10 +320,8 @@ class _Ipv4GatewayState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv4Gateway:Ipv4Gateway")
 class Ipv4Gateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv4Gateway:Ipv4Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -537,10 +537,8 @@ class _SecurityPreferenceState:
         pulumi.set(self, "verification_types", value)
 
 
+@pulumi.type_token("alicloud:ram/securityPreference:SecurityPreference")
 class SecurityPreference(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/securityPreference:SecurityPreference"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

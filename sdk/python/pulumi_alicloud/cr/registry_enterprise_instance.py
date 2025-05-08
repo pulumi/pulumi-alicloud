@@ -612,10 +612,8 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")
 class RegistryEnterpriseInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

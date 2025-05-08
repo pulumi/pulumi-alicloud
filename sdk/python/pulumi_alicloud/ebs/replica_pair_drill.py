@@ -96,10 +96,8 @@ class _ReplicaPairDrillState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ebs/replicaPairDrill:ReplicaPairDrill")
 class ReplicaPairDrill(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/replicaPairDrill:ReplicaPairDrill"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

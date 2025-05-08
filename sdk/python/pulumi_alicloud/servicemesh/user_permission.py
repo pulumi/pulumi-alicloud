@@ -98,10 +98,8 @@ class _UserPermissionState:
         pulumi.set(self, "sub_account_user_id", value)
 
 
+@pulumi.type_token("alicloud:servicemesh/userPermission:UserPermission")
 class UserPermission(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicemesh/userPermission:UserPermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

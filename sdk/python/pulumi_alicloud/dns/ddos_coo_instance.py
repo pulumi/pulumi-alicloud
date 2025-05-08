@@ -626,11 +626,9 @@ class _DdosCooInstanceState:
 warnings.warn("""alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:dns/ddosCooInstance:DdosCooInstance")
 class DdosCooInstance(pulumi.CustomResource):
     warnings.warn("""alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:dns/ddosCooInstance:DdosCooInstance"
 
     @overload
     def __init__(__self__,

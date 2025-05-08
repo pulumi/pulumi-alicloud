@@ -126,10 +126,8 @@ class _ExpressSyncShareAttachmentState:
         pulumi.set(self, "share_name", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment")
 class ExpressSyncShareAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -238,10 +238,8 @@ class _AddonReleaseState:
         pulumi.set(self, "values", value)
 
 
+@pulumi.type_token("alicloud:arms/addonRelease:AddonRelease")
 class AddonRelease(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/addonRelease:AddonRelease"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

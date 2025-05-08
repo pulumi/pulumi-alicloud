@@ -338,10 +338,8 @@ class _ServiceQueueState:
         pulumi.set(self, "visibility_timeout", value)
 
 
+@pulumi.type_token("alicloud:message/serviceQueue:ServiceQueue")
 class ServiceQueue(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:message/serviceQueue:ServiceQueue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

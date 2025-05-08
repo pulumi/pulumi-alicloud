@@ -355,10 +355,8 @@ class _DefenseTemplateState:
         pulumi.set(self, "template_type", value)
 
 
+@pulumi.type_token("alicloud:wafv3/defenseTemplate:DefenseTemplate")
 class DefenseTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:wafv3/defenseTemplate:DefenseTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

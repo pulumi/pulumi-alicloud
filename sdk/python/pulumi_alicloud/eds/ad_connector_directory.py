@@ -427,10 +427,8 @@ class _AdConnectorDirectoryState:
         pulumi.set(self, "vswitch_ids", value)
 
 
+@pulumi.type_token("alicloud:eds/adConnectorDirectory:AdConnectorDirectory")
 class AdConnectorDirectory(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/adConnectorDirectory:AdConnectorDirectory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

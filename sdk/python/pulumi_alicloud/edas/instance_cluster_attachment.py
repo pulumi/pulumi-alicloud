@@ -143,10 +143,8 @@ class _InstanceClusterAttachmentState:
         pulumi.set(self, "status_map", value)
 
 
+@pulumi.type_token("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")
 class InstanceClusterAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

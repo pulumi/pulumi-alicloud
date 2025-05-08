@@ -127,10 +127,8 @@ class _ImageExportState:
         pulumi.set(self, "oss_prefix", value)
 
 
+@pulumi.type_token("alicloud:ecs/imageExport:ImageExport")
 class ImageExport(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/imageExport:ImageExport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

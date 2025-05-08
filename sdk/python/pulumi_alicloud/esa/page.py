@@ -159,10 +159,8 @@ class _PageState:
         pulumi.set(self, "page_name", value)
 
 
+@pulumi.type_token("alicloud:esa/page:Page")
 class Page(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/page:Page"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

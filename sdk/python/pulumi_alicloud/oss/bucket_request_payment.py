@@ -96,10 +96,8 @@ class _BucketRequestPaymentState:
         pulumi.set(self, "payer", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketRequestPayment:BucketRequestPayment")
 class BucketRequestPayment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketRequestPayment:BucketRequestPayment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -126,10 +126,8 @@ class _SecurityIpState:
         pulumi.set(self, "security_ip_list", value)
 
 
+@pulumi.type_token("alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp")
 class SecurityIp(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

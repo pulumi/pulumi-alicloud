@@ -129,10 +129,8 @@ class _QuotaScheduleState:
         pulumi.set(self, "timezone", value)
 
 
+@pulumi.type_token("alicloud:maxcompute/quotaSchedule:QuotaSchedule")
 class QuotaSchedule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:maxcompute/quotaSchedule:QuotaSchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

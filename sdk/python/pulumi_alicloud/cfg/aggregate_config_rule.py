@@ -554,10 +554,8 @@ class _AggregateConfigRuleState:
         pulumi.set(self, "tag_value_scope", value)
 
 
+@pulumi.type_token("alicloud:cfg/aggregateConfigRule:AggregateConfigRule")
 class AggregateConfigRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/aggregateConfigRule:AggregateConfigRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

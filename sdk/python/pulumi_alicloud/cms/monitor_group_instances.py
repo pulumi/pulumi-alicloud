@@ -97,10 +97,8 @@ class _MonitorGroupInstancesState:
         pulumi.set(self, "instances", value)
 
 
+@pulumi.type_token("alicloud:cms/monitorGroupInstances:MonitorGroupInstances")
 class MonitorGroupInstances(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/monitorGroupInstances:MonitorGroupInstances"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

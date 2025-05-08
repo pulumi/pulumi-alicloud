@@ -224,10 +224,8 @@ class _ServiceState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("alicloud:pai/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

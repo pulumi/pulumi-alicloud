@@ -631,10 +631,8 @@ class _V2FunctionState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("alicloud:fc/v2Function:V2Function")
 class V2Function(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v2Function:V2Function"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -416,10 +416,8 @@ class _AutoGroupingRuleState:
         pulumi.set(self, "rule_type", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule")
 class AutoGroupingRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

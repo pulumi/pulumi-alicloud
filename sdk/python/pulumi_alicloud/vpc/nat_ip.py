@@ -288,10 +288,8 @@ class _NatIpState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/natIp:NatIp")
 class NatIp(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/natIp:NatIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -255,10 +255,8 @@ class _HybridMonitorSlsTaskState:
         pulumi.set(self, "task_name", value)
 
 
+@pulumi.type_token("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask")
 class HybridMonitorSlsTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

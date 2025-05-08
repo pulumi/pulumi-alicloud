@@ -213,10 +213,8 @@ class _VpcEndpointLinkedVpcState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc")
 class VpcEndpointLinkedVpc(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

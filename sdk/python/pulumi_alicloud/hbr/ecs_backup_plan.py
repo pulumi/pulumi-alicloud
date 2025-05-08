@@ -583,10 +583,8 @@ class _EcsBackupPlanState:
         pulumi.set(self, "vault_id", value)
 
 
+@pulumi.type_token("alicloud:hbr/ecsBackupPlan:EcsBackupPlan")
 class EcsBackupPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/ecsBackupPlan:EcsBackupPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

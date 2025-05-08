@@ -220,10 +220,8 @@ class _SchedulerRuleState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("alicloud:ddos/schedulerRule:SchedulerRule")
 class SchedulerRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/schedulerRule:SchedulerRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

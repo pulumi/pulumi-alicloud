@@ -855,10 +855,8 @@ class _DbClusterState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:clickhouse/dbCluster:DbCluster")
 class DbCluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:clickhouse/dbCluster:DbCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

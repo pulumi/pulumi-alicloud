@@ -716,10 +716,8 @@ class _AlarmState:
         pulumi.set(self, "webhook", value)
 
 
+@pulumi.type_token("alicloud:cms/alarm:Alarm")
 class Alarm(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/alarm:Alarm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

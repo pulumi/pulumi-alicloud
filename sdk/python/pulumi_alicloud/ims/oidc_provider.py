@@ -259,10 +259,8 @@ class _OidcProviderState:
         pulumi.set(self, "oidc_provider_name", value)
 
 
+@pulumi.type_token("alicloud:ims/oidcProvider:OidcProvider")
 class OidcProvider(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ims/oidcProvider:OidcProvider"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

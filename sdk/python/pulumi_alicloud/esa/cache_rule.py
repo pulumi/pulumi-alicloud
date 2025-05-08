@@ -856,10 +856,8 @@ class _CacheRuleState:
         pulumi.set(self, "user_language", value)
 
 
+@pulumi.type_token("alicloud:esa/cacheRule:CacheRule")
 class CacheRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/cacheRule:CacheRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

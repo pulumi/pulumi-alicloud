@@ -2384,10 +2384,8 @@ class _ApplicationState:
         pulumi.set(self, "web_container", value)
 
 
+@pulumi.type_token("alicloud:sae/application:Application")
 class Application(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/application:Application"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

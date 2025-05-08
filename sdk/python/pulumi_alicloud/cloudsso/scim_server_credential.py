@@ -192,10 +192,8 @@ class _ScimServerCredentialState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/scimServerCredential:ScimServerCredential")
 class ScimServerCredential(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/scimServerCredential:ScimServerCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

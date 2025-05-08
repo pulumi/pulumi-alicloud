@@ -283,10 +283,8 @@ class _TrafficMirrorFilterState:
         pulumi.set(self, "traffic_mirror_filter_name", value)
 
 
+@pulumi.type_token("alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter")
 class TrafficMirrorFilter(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

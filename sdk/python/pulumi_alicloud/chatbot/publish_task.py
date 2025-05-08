@@ -176,10 +176,8 @@ class _PublishTaskState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:chatbot/publishTask:PublishTask")
 class PublishTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:chatbot/publishTask:PublishTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

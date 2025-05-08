@@ -220,10 +220,8 @@ class _BasicThresholdState:
         pulumi.set(self, "pps", value)
 
 
+@pulumi.type_token("alicloud:ddos/basicThreshold:BasicThreshold")
 class BasicThreshold(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/basicThreshold:BasicThreshold"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

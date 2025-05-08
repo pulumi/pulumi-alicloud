@@ -248,10 +248,8 @@ class _ImageTransformState:
         pulumi.set(self, "site_version", value)
 
 
+@pulumi.type_token("alicloud:esa/imageTransform:ImageTransform")
 class ImageTransform(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/imageTransform:ImageTransform"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

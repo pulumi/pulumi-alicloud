@@ -221,10 +221,8 @@ class _ChildInstanceRouteEntryToAttachmentState:
         pulumi.set(self, "transit_router_attachment_id", value)
 
 
+@pulumi.type_token("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment")
 class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

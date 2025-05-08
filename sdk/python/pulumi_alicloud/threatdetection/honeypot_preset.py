@@ -175,10 +175,8 @@ class _HoneypotPresetState:
         pulumi.set(self, "preset_name", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/honeypotPreset:HoneypotPreset")
 class HoneypotPreset(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/honeypotPreset:HoneypotPreset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

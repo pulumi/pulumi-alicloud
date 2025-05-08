@@ -157,10 +157,8 @@ class _WafPolicyState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:dcdn/wafPolicy:WafPolicy")
 class WafPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/wafPolicy:WafPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

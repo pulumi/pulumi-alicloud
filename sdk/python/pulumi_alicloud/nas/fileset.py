@@ -191,10 +191,8 @@ class _FilesetState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:nas/fileset:Fileset")
 class Fileset(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/fileset:Fileset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -585,10 +585,8 @@ class _DomainState:
         pulumi.set(self, "video_seek_enable", value)
 
 
+@pulumi.type_token("alicloud:cdn/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cdn/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -365,10 +365,8 @@ class _DedicatedBlockStorageClusterState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster")
 class DedicatedBlockStorageCluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

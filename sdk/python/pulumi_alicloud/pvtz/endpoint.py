@@ -206,10 +206,8 @@ class _EndpointState:
         pulumi.set(self, "vpc_region_id", value)
 
 
+@pulumi.type_token("alicloud:pvtz/endpoint:Endpoint")
 class Endpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/endpoint:Endpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

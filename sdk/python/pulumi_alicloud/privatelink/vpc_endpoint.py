@@ -608,10 +608,8 @@ class _VpcEndpointState:
         pulumi.set(self, "zone_private_ip_address_count", value)
 
 
+@pulumi.type_token("alicloud:privatelink/vpcEndpoint:VpcEndpoint")
 class VpcEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:privatelink/vpcEndpoint:VpcEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

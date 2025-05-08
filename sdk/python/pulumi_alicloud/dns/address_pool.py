@@ -190,10 +190,8 @@ class _AddressPoolState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:dns/addressPool:AddressPool")
 class AddressPool(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/addressPool:AddressPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

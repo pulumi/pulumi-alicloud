@@ -268,10 +268,8 @@ class _LogTailConfigState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("alicloud:log/logTailConfig:LogTailConfig")
 class LogTailConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/logTailConfig:LogTailConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

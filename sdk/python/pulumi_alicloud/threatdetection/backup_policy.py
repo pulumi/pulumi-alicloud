@@ -205,10 +205,8 @@ class _BackupPolicyState:
         pulumi.set(self, "uuid_lists", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

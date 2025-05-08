@@ -1652,10 +1652,8 @@ class _TairInstanceState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:redis/tairInstance:TairInstance")
 class TairInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:redis/tairInstance:TairInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

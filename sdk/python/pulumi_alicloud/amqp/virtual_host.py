@@ -95,10 +95,8 @@ class _VirtualHostState:
         pulumi.set(self, "virtual_host_name", value)
 
 
+@pulumi.type_token("alicloud:amqp/virtualHost:VirtualHost")
 class VirtualHost(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:amqp/virtualHost:VirtualHost"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

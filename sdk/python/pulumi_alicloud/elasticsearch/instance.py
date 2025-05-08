@@ -1419,10 +1419,8 @@ class _InstanceState:
         pulumi.set(self, "zone_count", value)
 
 
+@pulumi.type_token("alicloud:elasticsearch/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:elasticsearch/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

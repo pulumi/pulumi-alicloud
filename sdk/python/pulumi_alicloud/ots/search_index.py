@@ -259,10 +259,8 @@ class _SearchIndexState:
         pulumi.set(self, "time_to_live", value)
 
 
+@pulumi.type_token("alicloud:ots/searchIndex:SearchIndex")
 class SearchIndex(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ots/searchIndex:SearchIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -201,10 +201,8 @@ class _ActivationState:
         pulumi.set(self, "time_to_live_in_hours", value)
 
 
+@pulumi.type_token("alicloud:ecs/activation:Activation")
 class Activation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/activation:Activation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

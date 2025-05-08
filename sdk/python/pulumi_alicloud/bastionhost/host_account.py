@@ -269,10 +269,8 @@ class _HostAccountState:
         pulumi.set(self, "protocol_name", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostAccount:HostAccount")
 class HostAccount(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostAccount:HostAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

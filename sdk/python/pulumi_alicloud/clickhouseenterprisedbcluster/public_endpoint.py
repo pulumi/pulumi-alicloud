@@ -130,10 +130,8 @@ class _PublicEndpointState:
         pulumi.set(self, "net_type", value)
 
 
+@pulumi.type_token("alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint")
 class PublicEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

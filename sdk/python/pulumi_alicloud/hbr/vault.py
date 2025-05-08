@@ -376,10 +376,8 @@ class _VaultState:
         pulumi.set(self, "worm_enabled", value)
 
 
+@pulumi.type_token("alicloud:hbr/vault:Vault")
 class Vault(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/vault:Vault"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

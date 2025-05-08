@@ -284,10 +284,8 @@ class _ClientFileProtectState:
         pulumi.set(self, "switch_id", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/clientFileProtect:ClientFileProtect")
 class ClientFileProtect(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/clientFileProtect:ClientFileProtect"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

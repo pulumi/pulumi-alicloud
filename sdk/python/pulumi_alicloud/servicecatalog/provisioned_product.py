@@ -511,10 +511,8 @@ class _ProvisionedProductState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct")
 class ProvisionedProduct(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/provisionedProduct:ProvisionedProduct"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

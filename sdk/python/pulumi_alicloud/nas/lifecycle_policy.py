@@ -188,10 +188,8 @@ class _LifecyclePolicyState:
         pulumi.set(self, "storage_type", value)
 
 
+@pulumi.type_token("alicloud:nas/lifecyclePolicy:LifecyclePolicy")
 class LifecyclePolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/lifecyclePolicy:LifecyclePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

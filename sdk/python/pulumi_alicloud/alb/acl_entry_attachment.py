@@ -143,10 +143,8 @@ class _AclEntryAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:alb/aclEntryAttachment:AclEntryAttachment")
 class AclEntryAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/aclEntryAttachment:AclEntryAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

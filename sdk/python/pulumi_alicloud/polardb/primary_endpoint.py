@@ -344,10 +344,8 @@ class _PrimaryEndpointState:
         pulumi.set(self, "ssl_expire_time", value)
 
 
+@pulumi.type_token("alicloud:polardb/primaryEndpoint:PrimaryEndpoint")
 class PrimaryEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/primaryEndpoint:PrimaryEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

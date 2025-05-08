@@ -116,10 +116,8 @@ class _ImagePipelineExecutionState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ecs/imagePipelineExecution:ImagePipelineExecution")
 class ImagePipelineExecution(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/imagePipelineExecution:ImagePipelineExecution"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

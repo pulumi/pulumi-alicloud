@@ -626,10 +626,8 @@ class _ChangeSetState:
         pulumi.set(self, "use_previous_parameters", value)
 
 
+@pulumi.type_token("alicloud:ros/changeSet:ChangeSet")
 class ChangeSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ros/changeSet:ChangeSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

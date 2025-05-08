@@ -234,10 +234,8 @@ class _DbInstanceIpArrayState:
         pulumi.set(self, "security_ip_lists", value)
 
 
+@pulumi.type_token("alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray")
 class DbInstanceIpArray(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

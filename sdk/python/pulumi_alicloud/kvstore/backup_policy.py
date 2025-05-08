@@ -128,10 +128,8 @@ class _BackupPolicyState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:kvstore/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kvstore/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

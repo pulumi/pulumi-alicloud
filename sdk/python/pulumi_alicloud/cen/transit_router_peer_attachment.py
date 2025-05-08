@@ -720,10 +720,8 @@ class _TransitRouterPeerAttachmentState:
         pulumi.set(self, "transit_router_peer_attachment_name", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")
 class TransitRouterPeerAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

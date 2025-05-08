@@ -190,10 +190,8 @@ class _DataSourceSharedRuleState:
         pulumi.set(self, "target_project_id", value)
 
 
+@pulumi.type_token("alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule")
 class DataSourceSharedRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -606,10 +606,8 @@ class _SecretState:
         pulumi.set(self, "version_stages", value)
 
 
+@pulumi.type_token("alicloud:kms/secret:Secret")
 class Secret(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/secret:Secret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

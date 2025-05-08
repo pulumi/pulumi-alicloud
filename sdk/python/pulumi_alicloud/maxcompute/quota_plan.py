@@ -165,10 +165,8 @@ class _QuotaPlanState:
         pulumi.set(self, "quota", value)
 
 
+@pulumi.type_token("alicloud:maxcompute/quotaPlan:QuotaPlan")
 class QuotaPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:maxcompute/quotaPlan:QuotaPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

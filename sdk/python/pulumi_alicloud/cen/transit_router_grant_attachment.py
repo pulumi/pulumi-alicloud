@@ -189,10 +189,8 @@ class _TransitRouterGrantAttachmentState:
         pulumi.set(self, "order_type", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment")
 class TransitRouterGrantAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

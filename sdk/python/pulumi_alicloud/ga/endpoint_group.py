@@ -671,10 +671,8 @@ class _EndpointGroupState:
         pulumi.set(self, "traffic_percentage", value)
 
 
+@pulumi.type_token("alicloud:ga/endpointGroup:EndpointGroup")
 class EndpointGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/endpointGroup:EndpointGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

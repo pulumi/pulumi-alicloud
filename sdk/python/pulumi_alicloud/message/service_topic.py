@@ -224,10 +224,8 @@ class _ServiceTopicState:
         pulumi.set(self, "topic_name", value)
 
 
+@pulumi.type_token("alicloud:message/serviceTopic:ServiceTopic")
 class ServiceTopic(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:message/serviceTopic:ServiceTopic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

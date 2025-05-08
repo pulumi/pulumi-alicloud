@@ -111,10 +111,8 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment")
 class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

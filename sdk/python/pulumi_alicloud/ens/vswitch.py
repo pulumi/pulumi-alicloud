@@ -223,10 +223,8 @@ class _VswitchState:
         pulumi.set(self, "vswitch_name", value)
 
 
+@pulumi.type_token("alicloud:ens/vswitch:Vswitch")
 class Vswitch(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/vswitch:Vswitch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

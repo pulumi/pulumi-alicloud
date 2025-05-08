@@ -320,10 +320,8 @@ class _VswitchCidrReservationState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation")
 class VswitchCidrReservation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

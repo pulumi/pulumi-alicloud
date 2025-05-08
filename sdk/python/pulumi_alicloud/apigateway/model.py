@@ -158,10 +158,8 @@ class _ModelState:
         pulumi.set(self, "schema", value)
 
 
+@pulumi.type_token("alicloud:apigateway/model:Model")
 class Model(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/model:Model"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1099,10 +1099,8 @@ class _GatewayFileShareState:
         pulumi.set(self, "windows_acl", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare")
 class GatewayFileShare(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

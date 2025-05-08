@@ -207,10 +207,8 @@ class _RamDirectoryState:
         pulumi.set(self, "vswitch_ids", value)
 
 
+@pulumi.type_token("alicloud:eds/ramDirectory:RamDirectory")
 class RamDirectory(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/ramDirectory:RamDirectory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

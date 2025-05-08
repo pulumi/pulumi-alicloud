@@ -167,10 +167,8 @@ class _NetworkInterfaceAttachmentState:
         pulumi.set(self, "wait_for_network_configuration_ready", value)
 
 
+@pulumi.type_token("alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment")
 class NetworkInterfaceAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

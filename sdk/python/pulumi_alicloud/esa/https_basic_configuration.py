@@ -588,10 +588,8 @@ class _HttpsBasicConfigurationState:
         pulumi.set(self, "tls13", value)
 
 
+@pulumi.type_token("alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration")
 class HttpsBasicConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

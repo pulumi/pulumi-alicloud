@@ -203,10 +203,8 @@ class _ServiceCertificateState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:cas/serviceCertificate:ServiceCertificate")
 class ServiceCertificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cas/serviceCertificate:ServiceCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -184,10 +184,8 @@ class _AuditLogConfigState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:kvstore/auditLogConfig:AuditLogConfig")
 class AuditLogConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kvstore/auditLogConfig:AuditLogConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

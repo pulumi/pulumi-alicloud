@@ -368,10 +368,8 @@ class _DomainNewState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:cdn/domainNew:DomainNew")
 class DomainNew(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cdn/domainNew:DomainNew"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

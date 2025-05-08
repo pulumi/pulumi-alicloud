@@ -541,10 +541,8 @@ class _ListenerState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/listener:Listener")
 class Listener(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/listener:Listener"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

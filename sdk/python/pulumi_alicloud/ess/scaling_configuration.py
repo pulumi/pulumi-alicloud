@@ -1810,10 +1810,8 @@ class _ScalingConfigurationState:
         pulumi.set(self, "user_data", value)
 
 
+@pulumi.type_token("alicloud:ess/scalingConfiguration:ScalingConfiguration")
 class ScalingConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/scalingConfiguration:ScalingConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

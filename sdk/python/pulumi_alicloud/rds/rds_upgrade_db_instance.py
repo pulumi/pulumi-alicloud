@@ -2022,10 +2022,8 @@ class _RdsUpgradeDbInstanceState:
         pulumi.set(self, "zone_id_slave1", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance")
 class RdsUpgradeDbInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

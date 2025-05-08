@@ -111,10 +111,8 @@ class _FaceConfigState:
         pulumi.set(self, "gmt_modified", value)
 
 
+@pulumi.type_token("alicloud:cloudauth/faceConfig:FaceConfig")
 class FaceConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudauth/faceConfig:FaceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

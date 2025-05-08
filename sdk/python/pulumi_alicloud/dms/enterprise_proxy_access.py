@@ -303,10 +303,8 @@ class _EnterpriseProxyAccessState:
         pulumi.set(self, "user_uid", value)
 
 
+@pulumi.type_token("alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess")
 class EnterpriseProxyAccess(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

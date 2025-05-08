@@ -380,10 +380,8 @@ class _MigrationInstanceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:dts/migrationInstance:MigrationInstance")
 class MigrationInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/migrationInstance:MigrationInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1277,10 +1277,8 @@ class _SubscriptionJobState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:dts/subscriptionJob:SubscriptionJob")
 class SubscriptionJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/subscriptionJob:SubscriptionJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

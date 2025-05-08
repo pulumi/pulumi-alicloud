@@ -241,10 +241,8 @@ class _ChainState:
         pulumi.set(self, "repo_namespace_name", value)
 
 
+@pulumi.type_token("alicloud:cr/chain:Chain")
 class Chain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/chain:Chain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

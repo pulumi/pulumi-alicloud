@@ -142,10 +142,8 @@ class _AccessControlListState:
         pulumi.set(self, "address_ip_version", value)
 
 
+@pulumi.type_token("alicloud:apigateway/accessControlList:AccessControlList")
 class AccessControlList(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/accessControlList:AccessControlList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

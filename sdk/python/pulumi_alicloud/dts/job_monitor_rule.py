@@ -191,10 +191,8 @@ class _JobMonitorRuleState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:dts/jobMonitorRule:JobMonitorRule")
 class JobMonitorRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/jobMonitorRule:JobMonitorRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

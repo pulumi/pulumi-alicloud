@@ -873,10 +873,8 @@ class _FileSystemState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:nas/fileSystem:FileSystem")
 class FileSystem(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/fileSystem:FileSystem"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

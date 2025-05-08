@@ -366,10 +366,8 @@ class _DiskState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ens/disk:Disk")
 class Disk(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/disk:Disk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

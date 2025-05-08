@@ -50,10 +50,8 @@ class _ServiceLinkedRoleState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole")
 class ServiceLinkedRole(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -126,10 +126,8 @@ class _LogTailAttachmentState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("alicloud:log/logTailAttachment:LogTailAttachment")
 class LogTailAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/logTailAttachment:LogTailAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

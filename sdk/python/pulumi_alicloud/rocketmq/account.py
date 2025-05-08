@@ -158,10 +158,8 @@ class _AccountState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

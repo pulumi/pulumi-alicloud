@@ -205,10 +205,8 @@ class _GatewayVcoRouteState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute")
 class GatewayVcoRoute(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -272,10 +272,8 @@ class _RdsBackupState:
         pulumi.set(self, "store_status", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsBackup:RdsBackup")
 class RdsBackup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsBackup:RdsBackup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -746,10 +746,8 @@ class _RuleState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("alicloud:slb/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -494,10 +494,8 @@ class _AggregateDeliveryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/aggregateDelivery:AggregateDelivery")
 class AggregateDelivery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/aggregateDelivery:AggregateDelivery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

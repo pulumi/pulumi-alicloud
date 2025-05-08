@@ -150,10 +150,8 @@ class _ListenerAclAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:alb/listenerAclAttachment:ListenerAclAttachment")
 class ListenerAclAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/listenerAclAttachment:ListenerAclAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -175,10 +175,8 @@ class _VpdState:
         pulumi.set(self, "vpd_name", value)
 
 
+@pulumi.type_token("alicloud:eflo/vpd:Vpd")
 class Vpd(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/vpd:Vpd"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

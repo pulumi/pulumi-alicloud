@@ -303,10 +303,8 @@ class _AnycastEipAddressAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment")
 class AnycastEipAddressAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

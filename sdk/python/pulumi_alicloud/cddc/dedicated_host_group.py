@@ -323,10 +323,8 @@ class _DedicatedHostGroupState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup")
 class DedicatedHostGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

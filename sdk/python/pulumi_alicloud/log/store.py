@@ -603,10 +603,8 @@ class _StoreState:
         pulumi.set(self, "telemetry_type", value)
 
 
+@pulumi.type_token("alicloud:log/store:Store")
 class Store(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/store:Store"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

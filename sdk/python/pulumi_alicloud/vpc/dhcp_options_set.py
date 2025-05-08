@@ -403,10 +403,8 @@ class _DhcpOptionsSetState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet")
 class DhcpOptionsSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

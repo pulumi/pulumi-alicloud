@@ -95,10 +95,8 @@ class _BucketPolicyState:
         pulumi.set(self, "policy", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketPolicy:BucketPolicy")
 class BucketPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketPolicy:BucketPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

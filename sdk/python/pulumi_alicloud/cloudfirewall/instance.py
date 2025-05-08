@@ -684,10 +684,8 @@ class _InstanceState:
         pulumi.set(self, "user_status", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -684,10 +684,8 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "vlan_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter")
 class VirtualBorderRouter(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

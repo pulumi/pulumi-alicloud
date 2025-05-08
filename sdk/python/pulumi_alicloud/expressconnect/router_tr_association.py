@@ -271,10 +271,8 @@ class _RouterTrAssociationState:
         pulumi.set(self, "transit_router_owner_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation")
 class RouterTrAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

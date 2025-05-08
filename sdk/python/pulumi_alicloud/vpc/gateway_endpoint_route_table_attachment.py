@@ -111,10 +111,8 @@ class _GatewayEndpointRouteTableAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment")
 class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

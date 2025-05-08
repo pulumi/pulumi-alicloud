@@ -690,10 +690,8 @@ class _StackState:
         pulumi.set(self, "use_previous_parameters", value)
 
 
+@pulumi.type_token("alicloud:ros/stack:Stack")
 class Stack(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ros/stack:Stack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

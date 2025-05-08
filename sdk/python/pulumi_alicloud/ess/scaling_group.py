@@ -1349,10 +1349,8 @@ class _ScalingGroupState:
         pulumi.set(self, "vswitch_ids", value)
 
 
+@pulumi.type_token("alicloud:ess/scalingGroup:ScalingGroup")
 class ScalingGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/scalingGroup:ScalingGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

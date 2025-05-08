@@ -127,10 +127,8 @@ class _BandwidthPackageAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment")
 class BandwidthPackageAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

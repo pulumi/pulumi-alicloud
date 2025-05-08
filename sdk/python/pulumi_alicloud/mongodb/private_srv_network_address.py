@@ -80,10 +80,8 @@ class _PrivateSrvNetworkAddressState:
         pulumi.set(self, "private_srv_connection_string_uri", value)
 
 
+@pulumi.type_token("alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress")
 class PrivateSrvNetworkAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

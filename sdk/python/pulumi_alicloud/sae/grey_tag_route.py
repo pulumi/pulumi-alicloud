@@ -193,10 +193,8 @@ class _GreyTagRouteState:
         pulumi.set(self, "sc_rules", value)
 
 
+@pulumi.type_token("alicloud:sae/greyTagRoute:GreyTagRoute")
 class GreyTagRoute(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/greyTagRoute:GreyTagRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

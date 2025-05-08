@@ -555,10 +555,8 @@ class _RegistryEnterpriseSyncRuleState:
         pulumi.set(self, "target_user_id", value)
 
 
+@pulumi.type_token("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")
 class RegistryEnterpriseSyncRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

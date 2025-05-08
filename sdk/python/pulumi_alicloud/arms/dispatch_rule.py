@@ -271,10 +271,8 @@ class _DispatchRuleState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:arms/dispatchRule:DispatchRule")
 class DispatchRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/dispatchRule:DispatchRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

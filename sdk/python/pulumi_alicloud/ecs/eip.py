@@ -796,11 +796,9 @@ class _EipState:
 warnings.warn("""This resource has been deprecated in favour of the EipAddress resource""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:ecs/eip:Eip")
 class Eip(pulumi.CustomResource):
     warnings.warn("""This resource has been deprecated in favour of the EipAddress resource""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:ecs/eip:Eip"
 
     @overload
     def __init__(__self__,

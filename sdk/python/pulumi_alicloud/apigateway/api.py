@@ -526,10 +526,8 @@ class _ApiState:
         pulumi.set(self, "system_parameters", value)
 
 
+@pulumi.type_token("alicloud:apigateway/api:Api")
 class Api(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/api:Api"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -267,10 +267,8 @@ class _IndustrialPidLoopState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:brain/industrialPidLoop:IndustrialPidLoop")
 class IndustrialPidLoop(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:brain/industrialPidLoop:IndustrialPidLoop"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

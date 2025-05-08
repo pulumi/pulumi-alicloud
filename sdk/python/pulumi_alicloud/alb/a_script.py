@@ -303,10 +303,8 @@ class _AScriptState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:alb/aScript:AScript")
 class AScript(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/aScript:AScript"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

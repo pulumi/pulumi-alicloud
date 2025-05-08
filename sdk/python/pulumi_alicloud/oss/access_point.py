@@ -216,10 +216,8 @@ class _AccessPointState:
         pulumi.set(self, "vpc_configuration", value)
 
 
+@pulumi.type_token("alicloud:oss/accessPoint:AccessPoint")
 class AccessPoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/accessPoint:AccessPoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

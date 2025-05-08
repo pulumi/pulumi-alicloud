@@ -158,10 +158,8 @@ class _GatewayLoggingState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging")
 class GatewayLogging(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -664,10 +664,8 @@ class _WaitingRoomState:
         pulumi.set(self, "waiting_room_type", value)
 
 
+@pulumi.type_token("alicloud:esa/waitingRoom:WaitingRoom")
 class WaitingRoom(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/waitingRoom:WaitingRoom"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

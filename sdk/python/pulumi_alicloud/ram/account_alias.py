@@ -68,10 +68,8 @@ class _AccountAliasState:
         pulumi.set(self, "account_alias", value)
 
 
+@pulumi.type_token("alicloud:ram/accountAlias:AccountAlias")
 class AccountAlias(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/accountAlias:AccountAlias"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

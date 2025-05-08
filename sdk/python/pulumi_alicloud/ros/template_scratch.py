@@ -306,10 +306,8 @@ class _TemplateScratchState:
         pulumi.set(self, "template_scratch_type", value)
 
 
+@pulumi.type_token("alicloud:ros/templateScratch:TemplateScratch")
 class TemplateScratch(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ros/templateScratch:TemplateScratch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

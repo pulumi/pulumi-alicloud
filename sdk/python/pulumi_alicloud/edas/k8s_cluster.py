@@ -184,10 +184,8 @@ class _K8sClusterState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:edas/k8sCluster:K8sCluster")
 class K8sCluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/k8sCluster:K8sCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -349,10 +349,8 @@ class _StateConfigurationState:
         pulumi.set(self, "template_version", value)
 
 
+@pulumi.type_token("alicloud:oos/stateConfiguration:StateConfiguration")
 class StateConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/stateConfiguration:StateConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -174,10 +174,8 @@ class _ApplicationDeploymentState:
         pulumi.set(self, "war_url", value)
 
 
+@pulumi.type_token("alicloud:edas/applicationDeployment:ApplicationDeployment")
 class ApplicationDeployment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/applicationDeployment:ApplicationDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

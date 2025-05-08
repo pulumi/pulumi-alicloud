@@ -370,10 +370,8 @@ class _NetworkAclState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/networkAcl:NetworkAcl")
 class NetworkAcl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/networkAcl:NetworkAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

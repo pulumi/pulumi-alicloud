@@ -96,10 +96,8 @@ class _BucketMetaQueryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketMetaQuery:BucketMetaQuery")
 class BucketMetaQuery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketMetaQuery:BucketMetaQuery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

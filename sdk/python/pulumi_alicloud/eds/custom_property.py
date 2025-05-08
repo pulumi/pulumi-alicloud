@@ -98,10 +98,8 @@ class _CustomPropertyState:
         pulumi.set(self, "property_values", value)
 
 
+@pulumi.type_token("alicloud:eds/customProperty:CustomProperty")
 class CustomProperty(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/customProperty:CustomProperty"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

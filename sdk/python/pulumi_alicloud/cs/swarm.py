@@ -435,10 +435,8 @@ class _SwarmState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:cs/swarm:Swarm")
 class Swarm(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/swarm:Swarm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

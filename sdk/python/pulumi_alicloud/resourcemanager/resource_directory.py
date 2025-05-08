@@ -145,10 +145,8 @@ class _ResourceDirectoryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/resourceDirectory:ResourceDirectory")
 class ResourceDirectory(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/resourceDirectory:ResourceDirectory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

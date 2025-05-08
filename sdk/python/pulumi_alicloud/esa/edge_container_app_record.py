@@ -143,10 +143,8 @@ class _EdgeContainerAppRecordState:
         pulumi.set(self, "site_id", value)
 
 
+@pulumi.type_token("alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord")
 class EdgeContainerAppRecord(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -351,10 +351,8 @@ class _IngressState:
         pulumi.set(self, "slb_id", value)
 
 
+@pulumi.type_token("alicloud:sae/ingress:Ingress")
 class Ingress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/ingress:Ingress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

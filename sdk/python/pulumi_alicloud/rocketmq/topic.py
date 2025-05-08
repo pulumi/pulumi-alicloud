@@ -287,10 +287,8 @@ class _TopicState:
         pulumi.set(self, "topic_name", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/topic:Topic")
 class Topic(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/topic:Topic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -601,10 +601,8 @@ class _RdsAccountState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsAccount:RdsAccount")
 class RdsAccount(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsAccount:RdsAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

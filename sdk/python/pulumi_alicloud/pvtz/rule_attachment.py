@@ -97,10 +97,8 @@ class _RuleAttachmentState:
         pulumi.set(self, "vpcs", value)
 
 
+@pulumi.type_token("alicloud:pvtz/ruleAttachment:RuleAttachment")
 class RuleAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/ruleAttachment:RuleAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

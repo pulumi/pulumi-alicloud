@@ -174,10 +174,8 @@ class _BackupPolicyState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:clickhouse/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:clickhouse/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

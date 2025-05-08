@@ -319,10 +319,8 @@ class _KeywordLibState:
         pulumi.set(self, "resource_type", value)
 
 
+@pulumi.type_token("alicloud:aligreen/keywordLib:KeywordLib")
 class KeywordLib(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/keywordLib:KeywordLib"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

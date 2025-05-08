@@ -368,10 +368,8 @@ class _VirtualNodeState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eci/virtualNode:VirtualNode")
 class VirtualNode(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eci/virtualNode:VirtualNode"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

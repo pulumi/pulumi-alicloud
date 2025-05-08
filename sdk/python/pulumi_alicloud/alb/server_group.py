@@ -777,10 +777,8 @@ class _ServerGroupState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:alb/serverGroup:ServerGroup")
 class ServerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/serverGroup:ServerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

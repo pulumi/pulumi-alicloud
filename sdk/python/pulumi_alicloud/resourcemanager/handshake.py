@@ -223,10 +223,8 @@ class _HandshakeState:
         pulumi.set(self, "target_type", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/handshake:Handshake")
 class Handshake(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/handshake:Handshake"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

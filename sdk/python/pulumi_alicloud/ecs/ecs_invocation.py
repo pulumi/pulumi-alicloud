@@ -327,10 +327,8 @@ class _EcsInvocationState:
         pulumi.set(self, "windows_password_name", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsInvocation:EcsInvocation")
 class EcsInvocation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsInvocation:EcsInvocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

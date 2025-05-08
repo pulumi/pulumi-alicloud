@@ -259,10 +259,8 @@ class _PolicyState:
         pulumi.set(self, "resolution_width", value)
 
 
+@pulumi.type_token("alicloud:cloudphone/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudphone/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -225,10 +225,8 @@ class _ImageEventOperationState:
         pulumi.set(self, "scenarios", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/imageEventOperation:ImageEventOperation")
 class ImageEventOperation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/imageEventOperation:ImageEventOperation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

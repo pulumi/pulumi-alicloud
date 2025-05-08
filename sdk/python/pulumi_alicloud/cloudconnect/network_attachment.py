@@ -95,10 +95,8 @@ class _NetworkAttachmentState:
         pulumi.set(self, "sag_id", value)
 
 
+@pulumi.type_token("alicloud:cloudconnect/networkAttachment:NetworkAttachment")
 class NetworkAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudconnect/networkAttachment:NetworkAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

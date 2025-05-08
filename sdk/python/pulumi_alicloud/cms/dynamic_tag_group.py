@@ -208,10 +208,8 @@ class _DynamicTagGroupState:
         pulumi.set(self, "template_id_lists", value)
 
 
+@pulumi.type_token("alicloud:cms/dynamicTagGroup:DynamicTagGroup")
 class DynamicTagGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/dynamicTagGroup:DynamicTagGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

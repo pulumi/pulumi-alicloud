@@ -735,10 +735,8 @@ class _ListenerState:
         pulumi.set(self, "x_forwarded_for_config", value)
 
 
+@pulumi.type_token("alicloud:alb/listener:Listener")
 class Listener(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/listener:Listener"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

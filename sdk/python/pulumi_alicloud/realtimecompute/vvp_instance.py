@@ -413,10 +413,8 @@ class _VvpInstanceState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:realtimecompute/vvpInstance:VvpInstance")
 class VvpInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:realtimecompute/vvpInstance:VvpInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

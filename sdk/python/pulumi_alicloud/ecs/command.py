@@ -255,10 +255,8 @@ class _CommandState:
         pulumi.set(self, "working_dir", value)
 
 
+@pulumi.type_token("alicloud:ecs/command:Command")
 class Command(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/command:Command"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

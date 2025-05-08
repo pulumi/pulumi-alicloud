@@ -327,10 +327,8 @@ class _LayerVersionState:
         pulumi.set(self, "zip_file", value)
 
 
+@pulumi.type_token("alicloud:fc/layerVersion:LayerVersion")
 class LayerVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/layerVersion:LayerVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

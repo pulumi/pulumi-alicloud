@@ -137,10 +137,8 @@ class _DomainGroupState:
         pulumi.set(self, "lang", value)
 
 
+@pulumi.type_token("alicloud:dns/domainGroup:DomainGroup")
 class DomainGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/domainGroup:DomainGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -144,10 +144,8 @@ class _SwitchDasProState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("alicloud:das/switchDasPro:SwitchDasPro")
 class SwitchDasPro(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:das/switchDasPro:SwitchDasPro"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

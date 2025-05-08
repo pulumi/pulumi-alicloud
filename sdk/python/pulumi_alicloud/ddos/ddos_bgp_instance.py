@@ -285,10 +285,8 @@ class _DdosBgpInstanceState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:ddos/ddosBgpInstance:DdosBgpInstance")
 class DdosBgpInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/ddosBgpInstance:DdosBgpInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

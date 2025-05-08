@@ -128,10 +128,8 @@ class _VulWhitelistState:
         pulumi.set(self, "whitelist", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/vulWhitelist:VulWhitelist")
 class VulWhitelist(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/vulWhitelist:VulWhitelist"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

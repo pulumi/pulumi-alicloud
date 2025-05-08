@@ -97,10 +97,8 @@ class _GroupState:
         pulumi.set(self, "group_name", value)
 
 
+@pulumi.type_token("alicloud:securitycenter/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:securitycenter/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

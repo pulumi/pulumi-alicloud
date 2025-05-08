@@ -239,10 +239,8 @@ class _EnterpriseLogicDatabaseState:
         pulumi.set(self, "search_name", value)
 
 
+@pulumi.type_token("alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase")
 class EnterpriseLogicDatabase(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

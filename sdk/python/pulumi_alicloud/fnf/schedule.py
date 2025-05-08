@@ -254,10 +254,8 @@ class _ScheduleState:
         pulumi.set(self, "schedule_name", value)
 
 
+@pulumi.type_token("alicloud:fnf/schedule:Schedule")
 class Schedule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fnf/schedule:Schedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

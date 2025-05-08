@@ -767,10 +767,8 @@ class _RuleState:
         pulumi.set(self, "tag_value_scope", value)
 
 
+@pulumi.type_token("alicloud:cfg/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

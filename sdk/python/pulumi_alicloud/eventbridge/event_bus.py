@@ -96,10 +96,8 @@ class _EventBusState:
         pulumi.set(self, "event_bus_name", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/eventBus:EventBus")
 class EventBus(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/eventBus:EventBus"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

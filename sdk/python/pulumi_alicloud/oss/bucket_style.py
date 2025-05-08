@@ -174,10 +174,8 @@ class _BucketStyleState:
         pulumi.set(self, "style_name", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketStyle:BucketStyle")
 class BucketStyle(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketStyle:BucketStyle"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

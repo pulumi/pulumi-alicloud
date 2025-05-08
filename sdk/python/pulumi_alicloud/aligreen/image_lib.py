@@ -190,10 +190,8 @@ class _ImageLibState:
         pulumi.set(self, "scene", value)
 
 
+@pulumi.type_token("alicloud:aligreen/imageLib:ImageLib")
 class ImageLib(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/imageLib:ImageLib"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

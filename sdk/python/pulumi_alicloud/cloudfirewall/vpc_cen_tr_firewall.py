@@ -424,10 +424,8 @@ class _VpcCenTrFirewallState:
         pulumi.set(self, "transit_router_id", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall")
 class VpcCenTrFirewall(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

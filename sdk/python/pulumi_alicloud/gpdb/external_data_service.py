@@ -206,10 +206,8 @@ class _ExternalDataServiceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:gpdb/externalDataService:ExternalDataService")
 class ExternalDataService(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/externalDataService:ExternalDataService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

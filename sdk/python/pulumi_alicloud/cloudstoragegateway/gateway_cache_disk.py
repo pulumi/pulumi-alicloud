@@ -207,10 +207,8 @@ class _GatewayCacheDiskState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk")
 class GatewayCacheDisk(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

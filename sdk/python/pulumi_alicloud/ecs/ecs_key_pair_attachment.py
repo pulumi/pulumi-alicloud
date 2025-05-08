@@ -168,10 +168,8 @@ class _EcsKeyPairAttachmentState:
         pulumi.set(self, "key_pair_name", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment")
 class EcsKeyPairAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

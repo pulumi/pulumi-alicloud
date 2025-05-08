@@ -258,10 +258,8 @@ class _IpamIpamPoolAllocationState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation")
 class IpamIpamPoolAllocation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

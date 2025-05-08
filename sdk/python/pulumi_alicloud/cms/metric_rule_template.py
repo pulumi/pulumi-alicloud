@@ -378,10 +378,8 @@ class _MetricRuleTemplateState:
         pulumi.set(self, "webhook", value)
 
 
+@pulumi.type_token("alicloud:cms/metricRuleTemplate:MetricRuleTemplate")
 class MetricRuleTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/metricRuleTemplate:MetricRuleTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

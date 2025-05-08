@@ -222,10 +222,8 @@ class _BackupPlanState:
         pulumi.set(self, "retention_period", value)
 
 
+@pulumi.type_token("alicloud:cassandra/backupPlan:BackupPlan")
 class BackupPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cassandra/backupPlan:BackupPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

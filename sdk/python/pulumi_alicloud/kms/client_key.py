@@ -207,10 +207,8 @@ class _ClientKeyState:
         pulumi.set(self, "private_key_data_file", value)
 
 
+@pulumi.type_token("alicloud:kms/clientKey:ClientKey")
 class ClientKey(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/clientKey:ClientKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

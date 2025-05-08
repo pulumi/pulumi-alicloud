@@ -382,10 +382,8 @@ class _PrometheusAlertRuleState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:arms/prometheusAlertRule:PrometheusAlertRule")
 class PrometheusAlertRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/prometheusAlertRule:PrometheusAlertRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

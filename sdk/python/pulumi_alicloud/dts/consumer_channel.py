@@ -173,10 +173,8 @@ class _ConsumerChannelState:
         pulumi.set(self, "dts_instance_id", value)
 
 
+@pulumi.type_token("alicloud:dts/consumerChannel:ConsumerChannel")
 class ConsumerChannel(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/consumerChannel:ConsumerChannel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

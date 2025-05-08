@@ -145,10 +145,8 @@ class _LoadBalancerInternetState:
         pulumi.set(self, "internets", value)
 
 
+@pulumi.type_token("alicloud:sae/loadBalancerInternet:LoadBalancerInternet")
 class LoadBalancerInternet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/loadBalancerInternet:LoadBalancerInternet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

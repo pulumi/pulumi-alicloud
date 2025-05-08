@@ -96,10 +96,8 @@ class _V3VpcBindingState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:fc/v3VpcBinding:V3VpcBinding")
 class V3VpcBinding(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3VpcBinding:V3VpcBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

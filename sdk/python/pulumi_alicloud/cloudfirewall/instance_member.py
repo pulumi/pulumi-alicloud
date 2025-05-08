@@ -160,10 +160,8 @@ class _InstanceMemberState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/instanceMember:InstanceMember")
 class InstanceMember(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/instanceMember:InstanceMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

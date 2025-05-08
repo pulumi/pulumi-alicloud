@@ -289,10 +289,8 @@ class _FunctionAsyncInvokeConfigState:
         pulumi.set(self, "stateful_invocation", value)
 
 
+@pulumi.type_token("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig")
 class FunctionAsyncInvokeConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

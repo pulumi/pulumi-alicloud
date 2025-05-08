@@ -318,10 +318,8 @@ class _CollectionPolicyState:
         pulumi.set(self, "resource_directory", value)
 
 
+@pulumi.type_token("alicloud:sls/collectionPolicy:CollectionPolicy")
 class CollectionPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sls/collectionPolicy:CollectionPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

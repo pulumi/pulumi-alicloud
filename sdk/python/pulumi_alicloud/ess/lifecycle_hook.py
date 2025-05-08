@@ -255,10 +255,8 @@ class _LifecycleHookState:
         pulumi.set(self, "scaling_group_id", value)
 
 
+@pulumi.type_token("alicloud:ess/lifecycleHook:LifecycleHook")
 class LifecycleHook(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/lifecycleHook:LifecycleHook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

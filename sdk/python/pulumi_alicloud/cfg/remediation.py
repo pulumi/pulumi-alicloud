@@ -244,10 +244,8 @@ class _RemediationState:
         pulumi.set(self, "remediation_type", value)
 
 
+@pulumi.type_token("alicloud:cfg/remediation:Remediation")
 class Remediation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/remediation:Remediation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

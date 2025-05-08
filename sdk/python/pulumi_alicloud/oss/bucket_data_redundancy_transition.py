@@ -112,10 +112,8 @@ class _BucketDataRedundancyTransitionState:
         pulumi.set(self, "task_id", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition")
 class BucketDataRedundancyTransition(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

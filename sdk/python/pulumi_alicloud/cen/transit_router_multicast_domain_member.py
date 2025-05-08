@@ -206,10 +206,8 @@ class _TransitRouterMulticastDomainMemberState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember")
 class TransitRouterMulticastDomainMember(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -683,10 +683,8 @@ class _FirewallVpcFirewallControlPolicyState:
         pulumi.set(self, "vpc_firewall_id", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy")
 class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

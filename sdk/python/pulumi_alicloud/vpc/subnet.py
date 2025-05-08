@@ -352,11 +352,9 @@ class _SubnetState:
 warnings.warn("""This resource has been deprecated and replaced by the Switch resource.""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:vpc/subnet:Subnet")
 class Subnet(pulumi.CustomResource):
     warnings.warn("""This resource has been deprecated and replaced by the Switch resource.""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:vpc/subnet:Subnet"
 
     @overload
     def __init__(__self__,

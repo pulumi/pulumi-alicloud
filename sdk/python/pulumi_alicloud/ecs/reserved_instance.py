@@ -638,10 +638,8 @@ class _ReservedInstanceState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/reservedInstance:ReservedInstance")
 class ReservedInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/reservedInstance:ReservedInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

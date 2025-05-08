@@ -235,10 +235,8 @@ class _AccessLogState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/accessLog:AccessLog")
 class AccessLog(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/accessLog:AccessLog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

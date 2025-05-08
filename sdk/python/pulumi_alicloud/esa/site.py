@@ -423,10 +423,8 @@ class _SiteState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:esa/site:Site")
 class Site(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/site:Site"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -328,10 +328,8 @@ class _RouteTableState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/routeTable:RouteTable")
 class RouteTable(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/routeTable:RouteTable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

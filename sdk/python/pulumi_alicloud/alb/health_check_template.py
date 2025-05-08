@@ -448,10 +448,8 @@ class _HealthCheckTemplateState:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
+@pulumi.type_token("alicloud:alb/healthCheckTemplate:HealthCheckTemplate")
 class HealthCheckTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/healthCheckTemplate:HealthCheckTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

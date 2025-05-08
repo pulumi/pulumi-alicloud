@@ -314,10 +314,8 @@ class _IngestionState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("alicloud:log/ingestion:Ingestion")
 class Ingestion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/ingestion:Ingestion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

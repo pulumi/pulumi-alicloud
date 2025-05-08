@@ -761,10 +761,8 @@ class _KeyState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:kms/key:Key")
 class Key(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/key:Key"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

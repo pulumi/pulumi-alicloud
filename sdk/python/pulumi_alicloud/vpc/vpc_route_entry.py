@@ -357,10 +357,8 @@ class _VPCRouteEntryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/vPCRouteEntry:VPCRouteEntry")
 class VPCRouteEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/vPCRouteEntry:VPCRouteEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

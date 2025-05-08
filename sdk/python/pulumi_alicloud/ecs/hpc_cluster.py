@@ -97,10 +97,8 @@ class _HpcClusterState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:ecs/hpcCluster:HpcCluster")
 class HpcCluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/hpcCluster:HpcCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

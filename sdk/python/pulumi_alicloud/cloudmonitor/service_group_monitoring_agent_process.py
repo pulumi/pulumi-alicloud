@@ -208,10 +208,8 @@ class _ServiceGroupMonitoringAgentProcessState:
         pulumi.set(self, "process_name", value)
 
 
+@pulumi.type_token("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess")
 class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

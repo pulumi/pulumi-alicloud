@@ -173,10 +173,8 @@ class _InstanceAllowedIpAttachmentState:
         pulumi.set(self, "port_range", value)
 
 
+@pulumi.type_token("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment")
 class InstanceAllowedIpAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

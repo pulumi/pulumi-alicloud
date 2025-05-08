@@ -323,10 +323,8 @@ class _GatewayEndpointState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/gatewayEndpoint:GatewayEndpoint")
 class GatewayEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/gatewayEndpoint:GatewayEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

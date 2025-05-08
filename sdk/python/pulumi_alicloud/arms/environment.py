@@ -359,10 +359,8 @@ class _EnvironmentState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:arms/environment:Environment")
 class Environment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/environment:Environment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

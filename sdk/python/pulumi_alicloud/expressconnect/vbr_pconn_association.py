@@ -390,10 +390,8 @@ class _VbrPconnAssociationState:
         pulumi.set(self, "vlan_id", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation")
 class VbrPconnAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

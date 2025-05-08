@@ -303,10 +303,8 @@ class _UserState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

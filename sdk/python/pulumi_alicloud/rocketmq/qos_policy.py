@@ -381,11 +381,9 @@ class _QosPolicyState:
 warnings.warn("""alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:rocketmq/qosPolicy:QosPolicy")
 class QosPolicy(pulumi.CustomResource):
     warnings.warn("""alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:rocketmq/qosPolicy:QosPolicy"
 
     @overload
     def __init__(__self__,

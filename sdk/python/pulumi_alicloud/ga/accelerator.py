@@ -565,10 +565,8 @@ class _AcceleratorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ga/accelerator:Accelerator")
 class Accelerator(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/accelerator:Accelerator"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1913,10 +1913,8 @@ class _KubernetesState:
         pulumi.set(self, "worker_ram_role_name", value)
 
 
+@pulumi.type_token("alicloud:cs/kubernetes:Kubernetes")
 class Kubernetes(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/kubernetes:Kubernetes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

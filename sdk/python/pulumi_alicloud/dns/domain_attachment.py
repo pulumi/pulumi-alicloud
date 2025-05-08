@@ -95,10 +95,8 @@ class _DomainAttachmentState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:dns/domainAttachment:DomainAttachment")
 class DomainAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/domainAttachment:DomainAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

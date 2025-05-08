@@ -416,10 +416,8 @@ class _HoneypotProbeState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/honeypotProbe:HoneypotProbe")
 class HoneypotProbe(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/honeypotProbe:HoneypotProbe"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

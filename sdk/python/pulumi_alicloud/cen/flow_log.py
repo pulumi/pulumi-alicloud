@@ -430,10 +430,8 @@ class _FlowLogState:
         pulumi.set(self, "transit_router_id", value)
 
 
+@pulumi.type_token("alicloud:cen/flowLog:FlowLog")
 class FlowLog(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/flowLog:FlowLog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -206,10 +206,8 @@ class _CommandState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("alicloud:eds/command:Command")
 class Command(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/command:Command"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

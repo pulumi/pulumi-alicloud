@@ -193,10 +193,8 @@ class _AlbServerGroupAttachmentState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment")
 class AlbServerGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

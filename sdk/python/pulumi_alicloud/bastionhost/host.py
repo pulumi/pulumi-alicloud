@@ -376,10 +376,8 @@ class _HostState:
         pulumi.set(self, "source_instance_id", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/host:Host")
 class Host(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/host:Host"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

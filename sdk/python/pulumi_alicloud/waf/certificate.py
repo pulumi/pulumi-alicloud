@@ -223,10 +223,8 @@ class _CertificateState:
         pulumi.set(self, "private_key", value)
 
 
+@pulumi.type_token("alicloud:waf/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:waf/certificate:Certificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

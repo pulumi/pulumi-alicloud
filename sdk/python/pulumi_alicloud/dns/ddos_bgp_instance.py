@@ -288,11 +288,9 @@ class _DdosBgpInstanceState:
 warnings.warn("""alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:dns/ddosBgpInstance:DdosBgpInstance")
 class DdosBgpInstance(pulumi.CustomResource):
     warnings.warn("""alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:dns/ddosBgpInstance:DdosBgpInstance"
 
     @overload
     def __init__(__self__,

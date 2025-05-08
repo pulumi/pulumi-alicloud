@@ -176,10 +176,8 @@ class _ApiDestinationState:
         pulumi.set(self, "http_api_parameters", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/apiDestination:ApiDestination")
 class ApiDestination(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/apiDestination:ApiDestination"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

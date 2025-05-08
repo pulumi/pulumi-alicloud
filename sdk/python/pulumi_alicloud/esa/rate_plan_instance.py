@@ -319,10 +319,8 @@ class _RatePlanInstanceState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:esa/ratePlanInstance:RatePlanInstance")
 class RatePlanInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/ratePlanInstance:RatePlanInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

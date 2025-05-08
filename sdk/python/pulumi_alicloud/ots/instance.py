@@ -345,10 +345,8 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ots/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ots/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

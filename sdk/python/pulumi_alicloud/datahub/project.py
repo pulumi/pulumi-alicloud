@@ -129,10 +129,8 @@ class _ProjectState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:datahub/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:datahub/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

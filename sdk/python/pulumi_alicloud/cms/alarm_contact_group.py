@@ -160,10 +160,8 @@ class _AlarmContactGroupState:
         pulumi.set(self, "enable_subscribed", value)
 
 
+@pulumi.type_token("alicloud:cms/alarmContactGroup:AlarmContactGroup")
 class AlarmContactGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/alarmContactGroup:AlarmContactGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

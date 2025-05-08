@@ -261,10 +261,8 @@ class _RouterVbrChildInstanceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance")
 class RouterVbrChildInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

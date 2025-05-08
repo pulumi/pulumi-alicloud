@@ -518,10 +518,8 @@ class _ElasticityAssuranceState:
         pulumi.set(self, "zone_ids", value)
 
 
+@pulumi.type_token("alicloud:ecs/elasticityAssurance:ElasticityAssurance")
 class ElasticityAssurance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/elasticityAssurance:ElasticityAssurance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

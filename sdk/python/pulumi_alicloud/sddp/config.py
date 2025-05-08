@@ -161,10 +161,8 @@ class _ConfigState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("alicloud:sddp/config:Config")
 class Config(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sddp/config:Config"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
