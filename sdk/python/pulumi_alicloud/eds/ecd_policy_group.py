@@ -659,10 +659,8 @@ class _EcdPolicyGroupState:
         pulumi.set(self, "watermark_type", value)
 
 
+@pulumi.type_token("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup")
 class EcdPolicyGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

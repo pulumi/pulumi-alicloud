@@ -255,10 +255,8 @@ class _SnatEntryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/snatEntry:SnatEntry")
 class SnatEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/snatEntry:SnatEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

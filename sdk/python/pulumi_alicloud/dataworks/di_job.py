@@ -467,10 +467,8 @@ class _DiJobState:
         pulumi.set(self, "transformation_rules", value)
 
 
+@pulumi.type_token("alicloud:dataworks/diJob:DiJob")
 class DiJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/diJob:DiJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

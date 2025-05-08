@@ -159,10 +159,8 @@ class _BucketServerSideEncryptionState:
         pulumi.set(self, "sse_algorithm", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption")
 class BucketServerSideEncryption(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

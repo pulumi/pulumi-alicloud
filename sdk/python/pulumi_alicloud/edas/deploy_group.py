@@ -111,10 +111,8 @@ class _DeployGroupState:
         pulumi.set(self, "group_type", value)
 
 
+@pulumi.type_token("alicloud:edas/deployGroup:DeployGroup")
 class DeployGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/deployGroup:DeployGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

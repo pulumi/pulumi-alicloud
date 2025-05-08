@@ -111,10 +111,8 @@ class _RemoteWriteState:
         pulumi.set(self, "remote_write_yaml", value)
 
 
+@pulumi.type_token("alicloud:arms/remoteWrite:RemoteWrite")
 class RemoteWrite(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/remoteWrite:RemoteWrite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

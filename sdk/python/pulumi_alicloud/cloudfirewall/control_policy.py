@@ -885,10 +885,8 @@ class _ControlPolicyState:
         pulumi.set(self, "start_time", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/controlPolicy:ControlPolicy")
 class ControlPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/controlPolicy:ControlPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1021,10 +1021,8 @@ class _InstanceState:
         pulumi.set(self, "used_time", value)
 
 
+@pulumi.type_token("alicloud:dts/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

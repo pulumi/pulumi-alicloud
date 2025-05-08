@@ -143,10 +143,8 @@ class _UserGroupState:
         pulumi.set(self, "user_group_name", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/userGroup:UserGroup")
 class UserGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/userGroup:UserGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -357,10 +357,8 @@ class _PublicIpAddressPoolState:
         pulumi.set(self, "used_ip_num", value)
 
 
+@pulumi.type_token("alicloud:vpc/publicIpAddressPool:PublicIpAddressPool")
 class PublicIpAddressPool(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/publicIpAddressPool:PublicIpAddressPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -98,10 +98,8 @@ class _KubernetesPermissionState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("alicloud:cs/kubernetesPermission:KubernetesPermission")
 class KubernetesPermission(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/kubernetesPermission:KubernetesPermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

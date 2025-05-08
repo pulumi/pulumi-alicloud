@@ -111,10 +111,8 @@ class _BucketCnameTokenState:
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketCnameToken:BucketCnameToken")
 class BucketCnameToken(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketCnameToken:BucketCnameToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

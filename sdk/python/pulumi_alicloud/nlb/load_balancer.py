@@ -812,10 +812,8 @@ class _LoadBalancerState:
         pulumi.set(self, "zone_mappings", value)
 
 
+@pulumi.type_token("alicloud:nlb/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nlb/loadBalancer:LoadBalancer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

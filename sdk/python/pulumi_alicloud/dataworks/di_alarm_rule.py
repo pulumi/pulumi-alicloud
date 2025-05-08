@@ -266,10 +266,8 @@ class _DiAlarmRuleState:
         pulumi.set(self, "trigger_conditions", value)
 
 
+@pulumi.type_token("alicloud:dataworks/diAlarmRule:DiAlarmRule")
 class DiAlarmRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/diAlarmRule:DiAlarmRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

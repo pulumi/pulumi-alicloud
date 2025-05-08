@@ -755,10 +755,8 @@ class _ClusterState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:mse/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mse/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

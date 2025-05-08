@@ -275,10 +275,8 @@ class _EventSourceState:
         pulumi.set(self, "linked_external_source", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/eventSource:EventSource")
 class EventSource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/eventSource:EventSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

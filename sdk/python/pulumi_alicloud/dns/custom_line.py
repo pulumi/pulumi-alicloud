@@ -160,10 +160,8 @@ class _CustomLineState:
         pulumi.set(self, "lang", value)
 
 
+@pulumi.type_token("alicloud:dns/customLine:CustomLine")
 class CustomLine(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/customLine:CustomLine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

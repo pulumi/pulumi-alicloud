@@ -193,10 +193,8 @@ class _AlertContactState:
         pulumi.set(self, "system_noc", value)
 
 
+@pulumi.type_token("alicloud:arms/alertContact:AlertContact")
 class AlertContact(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/alertContact:AlertContact"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

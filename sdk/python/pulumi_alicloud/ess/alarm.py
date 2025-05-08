@@ -599,10 +599,8 @@ class _AlarmState:
         pulumi.set(self, "threshold", value)
 
 
+@pulumi.type_token("alicloud:ess/alarm:Alarm")
 class Alarm(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/alarm:Alarm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

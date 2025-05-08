@@ -127,10 +127,8 @@ class _AssociatedRuleState:
         pulumi.set(self, "tag_keys", value)
 
 
+@pulumi.type_token("alicloud:tag/associatedRule:AssociatedRule")
 class AssociatedRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:tag/associatedRule:AssociatedRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

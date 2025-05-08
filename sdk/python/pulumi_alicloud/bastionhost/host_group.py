@@ -143,10 +143,8 @@ class _HostGroupState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostGroup:HostGroup")
 class HostGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostGroup:HostGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

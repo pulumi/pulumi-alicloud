@@ -95,10 +95,8 @@ class _DelegatedAdministratorState:
         pulumi.set(self, "service_principal", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator")
 class DelegatedAdministrator(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

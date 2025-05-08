@@ -2903,10 +2903,8 @@ class _InstanceState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

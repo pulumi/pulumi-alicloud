@@ -213,10 +213,8 @@ class _RealTimeLogDeliveryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery")
 class RealTimeLogDelivery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

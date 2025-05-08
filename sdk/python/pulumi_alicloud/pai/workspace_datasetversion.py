@@ -479,10 +479,8 @@ class _WorkspaceDatasetversionState:
         pulumi.set(self, "property", value)
 
 
+@pulumi.type_token("alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion")
 class WorkspaceDatasetversion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

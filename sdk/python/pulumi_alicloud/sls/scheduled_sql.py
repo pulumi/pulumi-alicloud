@@ -222,10 +222,8 @@ class _ScheduledSqlState:
         pulumi.set(self, "scheduled_sql_name", value)
 
 
+@pulumi.type_token("alicloud:sls/scheduledSql:ScheduledSql")
 class ScheduledSql(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sls/scheduledSql:ScheduledSql"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

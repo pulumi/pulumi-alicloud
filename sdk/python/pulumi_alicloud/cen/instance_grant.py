@@ -126,10 +126,8 @@ class _InstanceGrantState:
         pulumi.set(self, "child_instance_id", value)
 
 
+@pulumi.type_token("alicloud:cen/instanceGrant:InstanceGrant")
 class InstanceGrant(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/instanceGrant:InstanceGrant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

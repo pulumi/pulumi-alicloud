@@ -224,10 +224,8 @@ class _HanaBackupClientState:
         pulumi.set(self, "vault_id", value)
 
 
+@pulumi.type_token("alicloud:hbr/hanaBackupClient:HanaBackupClient")
 class HanaBackupClient(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/hanaBackupClient:HanaBackupClient"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

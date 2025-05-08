@@ -223,10 +223,8 @@ class _AttachmentState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:slb/attachment:Attachment")
 class Attachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/attachment:Attachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

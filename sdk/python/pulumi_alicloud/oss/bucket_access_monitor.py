@@ -95,10 +95,8 @@ class _BucketAccessMonitorState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketAccessMonitor:BucketAccessMonitor")
 class BucketAccessMonitor(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketAccessMonitor:BucketAccessMonitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

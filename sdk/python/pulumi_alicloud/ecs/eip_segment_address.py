@@ -388,10 +388,8 @@ class _EipSegmentAddressState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("alicloud:ecs/eipSegmentAddress:EipSegmentAddress")
 class EipSegmentAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/eipSegmentAddress:EipSegmentAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

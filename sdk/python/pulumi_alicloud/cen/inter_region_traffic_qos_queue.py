@@ -239,10 +239,8 @@ class _InterRegionTrafficQosQueueState:
         pulumi.set(self, "traffic_qos_policy_id", value)
 
 
+@pulumi.type_token("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue")
 class InterRegionTrafficQosQueue(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

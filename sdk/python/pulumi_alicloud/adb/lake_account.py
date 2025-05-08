@@ -240,10 +240,8 @@ class _LakeAccountState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:adb/lakeAccount:LakeAccount")
 class LakeAccount(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:adb/lakeAccount:LakeAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

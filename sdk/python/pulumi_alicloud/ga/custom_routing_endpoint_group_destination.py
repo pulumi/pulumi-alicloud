@@ -221,10 +221,8 @@ class _CustomRoutingEndpointGroupDestinationState:
         pulumi.set(self, "to_port", value)
 
 
+@pulumi.type_token("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination")
 class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

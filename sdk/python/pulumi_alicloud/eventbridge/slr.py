@@ -56,10 +56,8 @@ class _SlrState:
         pulumi.set(self, "product_name", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/slr:Slr")
 class Slr(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/slr:Slr"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

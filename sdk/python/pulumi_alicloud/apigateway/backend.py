@@ -159,10 +159,8 @@ class _BackendState:
         pulumi.set(self, "description", value)
 
 
+@pulumi.type_token("alicloud:apigateway/backend:Backend")
 class Backend(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/backend:Backend"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

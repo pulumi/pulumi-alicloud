@@ -98,10 +98,8 @@ class _K8sSlbAttachmentState:
         pulumi.set(self, "slb_configs", value)
 
 
+@pulumi.type_token("alicloud:edas/k8sSlbAttachment:K8sSlbAttachment")
 class K8sSlbAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/k8sSlbAttachment:K8sSlbAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

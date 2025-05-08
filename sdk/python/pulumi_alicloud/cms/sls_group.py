@@ -129,10 +129,8 @@ class _SlsGroupState:
         pulumi.set(self, "sls_group_name", value)
 
 
+@pulumi.type_token("alicloud:cms/slsGroup:SlsGroup")
 class SlsGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/slsGroup:SlsGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -126,10 +126,8 @@ class _PrincipalPortfolioAssociationState:
         pulumi.set(self, "principal_type", value)
 
 
+@pulumi.type_token("alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation")
 class PrincipalPortfolioAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

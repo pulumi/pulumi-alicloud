@@ -447,10 +447,8 @@ class _DeliveryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/delivery:Delivery")
 class Delivery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/delivery:Delivery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

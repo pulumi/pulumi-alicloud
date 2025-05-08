@@ -295,10 +295,8 @@ class _OpenApiImageCacheState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eci/openApiImageCache:OpenApiImageCache")
 class OpenApiImageCache(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eci/openApiImageCache:OpenApiImageCache"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

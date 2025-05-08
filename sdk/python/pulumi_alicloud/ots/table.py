@@ -414,10 +414,8 @@ class _TableState:
         pulumi.set(self, "time_to_live", value)
 
 
+@pulumi.type_token("alicloud:ots/table:Table")
 class Table(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ots/table:Table"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

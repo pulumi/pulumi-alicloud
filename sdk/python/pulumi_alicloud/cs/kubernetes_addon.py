@@ -240,10 +240,8 @@ class _KubernetesAddonState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("alicloud:cs/kubernetesAddon:KubernetesAddon")
 class KubernetesAddon(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/kubernetesAddon:KubernetesAddon"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

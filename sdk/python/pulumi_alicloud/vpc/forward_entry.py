@@ -363,10 +363,8 @@ class _ForwardEntryState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/forwardEntry:ForwardEntry")
 class ForwardEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/forwardEntry:ForwardEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

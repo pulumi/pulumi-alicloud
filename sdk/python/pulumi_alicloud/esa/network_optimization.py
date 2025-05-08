@@ -368,10 +368,8 @@ class _NetworkOptimizationState:
         pulumi.set(self, "websocket", value)
 
 
+@pulumi.type_token("alicloud:esa/networkOptimization:NetworkOptimization")
 class NetworkOptimization(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/networkOptimization:NetworkOptimization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

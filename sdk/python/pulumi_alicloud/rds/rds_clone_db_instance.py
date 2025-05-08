@@ -2276,10 +2276,8 @@ class _RdsCloneDbInstanceState:
         pulumi.set(self, "zone_id_slave_b", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance")
 class RdsCloneDbInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

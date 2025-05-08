@@ -1492,10 +1492,8 @@ class _EcsInstanceSetState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsInstanceSet:EcsInstanceSet")
 class EcsInstanceSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsInstanceSet:EcsInstanceSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

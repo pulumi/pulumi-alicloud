@@ -95,10 +95,8 @@ class _MscSubWebhookState:
         pulumi.set(self, "webhook_name", value)
 
 
+@pulumi.type_token("alicloud:index/mscSubWebhook:MscSubWebhook")
 class MscSubWebhook(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:index/mscSubWebhook:MscSubWebhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

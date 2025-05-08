@@ -378,10 +378,8 @@ class _SmbAclAttachmentState:
         pulumi.set(self, "super_admin_sid", value)
 
 
+@pulumi.type_token("alicloud:nas/smbAclAttachment:SmbAclAttachment")
 class SmbAclAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/smbAclAttachment:SmbAclAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -414,10 +414,8 @@ class _NatFirewallState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/natFirewall:NatFirewall")
 class NatFirewall(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/natFirewall:NatFirewall"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

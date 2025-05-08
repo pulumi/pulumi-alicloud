@@ -240,10 +240,8 @@ class _IpamIpamResourceDiscoveryState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery")
 class IpamIpamResourceDiscovery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

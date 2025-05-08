@@ -191,10 +191,8 @@ class _AuditState:
         pulumi.set(self, "variable_map", value)
 
 
+@pulumi.type_token("alicloud:log/audit:Audit")
 class Audit(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/audit:Audit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

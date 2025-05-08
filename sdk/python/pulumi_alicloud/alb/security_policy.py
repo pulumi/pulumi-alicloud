@@ -238,10 +238,8 @@ class _SecurityPolicyState:
         pulumi.set(self, "tls_versions", value)
 
 
+@pulumi.type_token("alicloud:alb/securityPolicy:SecurityPolicy")
 class SecurityPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/securityPolicy:SecurityPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

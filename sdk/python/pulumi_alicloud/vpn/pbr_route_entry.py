@@ -235,10 +235,8 @@ class _PbrRouteEntryState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:vpn/pbrRouteEntry:PbrRouteEntry")
 class PbrRouteEntry(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/pbrRouteEntry:PbrRouteEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

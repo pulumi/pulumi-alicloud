@@ -97,10 +97,8 @@ class _CloudPhoneInstanceState:
         pulumi.set(self, "android_instance_name", value)
 
 
+@pulumi.type_token("alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance")
 class CloudPhoneInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

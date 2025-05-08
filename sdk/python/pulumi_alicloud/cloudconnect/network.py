@@ -160,10 +160,8 @@ class _NetworkState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:cloudconnect/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudconnect/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

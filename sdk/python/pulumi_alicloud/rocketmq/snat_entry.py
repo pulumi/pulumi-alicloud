@@ -129,11 +129,9 @@ class _SnatEntryState:
 warnings.warn("""alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:rocketmq/snatEntry:SnatEntry")
 class SnatEntry(pulumi.CustomResource):
     warnings.warn("""alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:rocketmq/snatEntry:SnatEntry"
 
     @overload
     def __init__(__self__,

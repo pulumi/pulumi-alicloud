@@ -325,10 +325,8 @@ class _BundleState:
         pulumi.set(self, "user_disk_size_gibs", value)
 
 
+@pulumi.type_token("alicloud:eds/bundle:Bundle")
 class Bundle(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/bundle:Bundle"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

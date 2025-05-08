@@ -143,10 +143,8 @@ class _ReceiversState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:directmail/receivers:Receivers")
 class Receivers(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:directmail/receivers:Receivers"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

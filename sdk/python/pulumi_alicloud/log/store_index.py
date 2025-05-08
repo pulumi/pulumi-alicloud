@@ -161,10 +161,8 @@ class _StoreIndexState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("alicloud:log/storeIndex:StoreIndex")
 class StoreIndex(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/storeIndex:StoreIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

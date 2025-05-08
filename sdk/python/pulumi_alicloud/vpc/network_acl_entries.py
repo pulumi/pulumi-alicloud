@@ -130,10 +130,8 @@ class _NetworkAclEntriesState:
         pulumi.set(self, "network_acl_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/networkAclEntries:NetworkAclEntries")
 class NetworkAclEntries(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/networkAclEntries:NetworkAclEntries"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

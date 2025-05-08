@@ -575,10 +575,8 @@ class _InstanceState:
         pulumi.set(self, "waf_log", value)
 
 
+@pulumi.type_token("alicloud:waf/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:waf/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

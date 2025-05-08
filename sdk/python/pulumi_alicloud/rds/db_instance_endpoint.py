@@ -333,10 +333,8 @@ class _DbInstanceEndpointState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint")
 class DbInstanceEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -680,10 +680,8 @@ class _ConnectionState:
         pulumi.set(self, "vpn_gateway_id", value)
 
 
+@pulumi.type_token("alicloud:vpn/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

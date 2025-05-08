@@ -82,10 +82,8 @@ class _InstanceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:wafv3/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:wafv3/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

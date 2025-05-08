@@ -1520,10 +1520,8 @@ class _EdgeKubernetesState:
         pulumi.set(self, "worker_vswitch_ids", value)
 
 
+@pulumi.type_token("alicloud:cs/edgeKubernetes:EdgeKubernetes")
 class EdgeKubernetes(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/edgeKubernetes:EdgeKubernetes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

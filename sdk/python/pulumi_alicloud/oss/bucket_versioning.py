@@ -96,10 +96,8 @@ class _BucketVersioningState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketVersioning:BucketVersioning")
 class BucketVersioning(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketVersioning:BucketVersioning"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

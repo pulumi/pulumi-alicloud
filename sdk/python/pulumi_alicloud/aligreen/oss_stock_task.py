@@ -1125,10 +1125,8 @@ class _OssStockTaskState:
         pulumi.set(self, "video_voice_antispam_freeze_config", value)
 
 
+@pulumi.type_token("alicloud:aligreen/ossStockTask:OssStockTask")
 class OssStockTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/ossStockTask:OssStockTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

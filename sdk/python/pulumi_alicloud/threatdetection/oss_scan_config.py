@@ -315,10 +315,8 @@ class _OssScanConfigState:
         pulumi.set(self, "start_time", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/ossScanConfig:OssScanConfig")
 class OssScanConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/ossScanConfig:OssScanConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -177,10 +177,8 @@ class _OriginPoolState:
         pulumi.set(self, "site_id", value)
 
 
+@pulumi.type_token("alicloud:esa/originPool:OriginPool")
 class OriginPool(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/originPool:OriginPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -436,11 +436,9 @@ class _TrailDeprecatedState:
 warnings.warn("""Resource renamed to `Trail`""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:actiontrail/trailDeprecated:TrailDeprecated")
 class TrailDeprecated(pulumi.CustomResource):
     warnings.warn("""Resource renamed to `Trail`""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:actiontrail/trailDeprecated:TrailDeprecated"
 
     @overload
     def __init__(__self__,

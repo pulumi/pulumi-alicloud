@@ -251,10 +251,8 @@ class _TrafficQosQueueState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue")
 class TrafficQosQueue(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/trafficQosQueue:TrafficQosQueue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

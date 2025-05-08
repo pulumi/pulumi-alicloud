@@ -142,10 +142,8 @@ class _LoadBalancerZoneShiftedAttachmentState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment")
 class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -328,10 +328,8 @@ class _Ipv6GatewayState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv6Gateway:Ipv6Gateway")
 class Ipv6Gateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv6Gateway:Ipv6Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

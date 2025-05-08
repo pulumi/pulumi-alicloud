@@ -3359,10 +3359,8 @@ class _InstanceState:
         pulumi.set(self, "zone_id_slave_b", value)
 
 
+@pulumi.type_token("alicloud:rds/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

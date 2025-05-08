@@ -80,10 +80,8 @@ class _DomainState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:directmail/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:directmail/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

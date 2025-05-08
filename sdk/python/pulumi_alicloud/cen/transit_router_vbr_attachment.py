@@ -471,10 +471,8 @@ class _TransitRouterVbrAttachmentState:
         pulumi.set(self, "vbr_owner_id", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment")
 class TransitRouterVbrAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

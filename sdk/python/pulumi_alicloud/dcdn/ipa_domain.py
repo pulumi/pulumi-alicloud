@@ -193,10 +193,8 @@ class _IpaDomainState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:dcdn/ipaDomain:IpaDomain")
 class IpaDomain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/ipaDomain:IpaDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

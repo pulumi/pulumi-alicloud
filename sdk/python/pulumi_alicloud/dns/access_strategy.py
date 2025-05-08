@@ -605,10 +605,8 @@ class _AccessStrategyState:
         pulumi.set(self, "strategy_name", value)
 
 
+@pulumi.type_token("alicloud:dns/accessStrategy:AccessStrategy")
 class AccessStrategy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/accessStrategy:AccessStrategy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

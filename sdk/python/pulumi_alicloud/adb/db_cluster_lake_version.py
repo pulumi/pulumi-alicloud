@@ -1032,10 +1032,8 @@ class _DBClusterLakeVersionState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion")
 class DBClusterLakeVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

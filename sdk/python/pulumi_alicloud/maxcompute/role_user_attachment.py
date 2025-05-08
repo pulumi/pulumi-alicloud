@@ -143,10 +143,8 @@ class _RoleUserAttachmentState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("alicloud:maxcompute/roleUserAttachment:RoleUserAttachment")
 class RoleUserAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:maxcompute/roleUserAttachment:RoleUserAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

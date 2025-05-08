@@ -339,10 +339,8 @@ class _PrefixListState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:vpc/prefixList:PrefixList")
 class PrefixList(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/prefixList:PrefixList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

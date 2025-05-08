@@ -130,10 +130,8 @@ class _BackendServerState:
         pulumi.set(self, "load_balancer_id", value)
 
 
+@pulumi.type_token("alicloud:slb/backendServer:BackendServer")
 class BackendServer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/backendServer:BackendServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

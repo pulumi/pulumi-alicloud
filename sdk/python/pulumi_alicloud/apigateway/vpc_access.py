@@ -158,10 +158,8 @@ class _VpcAccessState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:apigateway/vpcAccess:VpcAccess")
 class VpcAccess(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/vpcAccess:VpcAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

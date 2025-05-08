@@ -239,10 +239,8 @@ class _RocketMQTopicState:
         pulumi.set(self, "topic_name", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/rocketMQTopic:RocketMQTopic")
 class RocketMQTopic(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/rocketMQTopic:RocketMQTopic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

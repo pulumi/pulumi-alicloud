@@ -759,10 +759,8 @@ class _InstanceState:
         pulumi.set(self, "zone_vswitch_security_groups", value)
 
 
+@pulumi.type_token("alicloud:apigateway/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

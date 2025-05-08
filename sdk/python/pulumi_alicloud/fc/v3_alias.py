@@ -224,10 +224,8 @@ class _V3AliasState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("alicloud:fc/v3Alias:V3Alias")
 class V3Alias(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3Alias:V3Alias"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

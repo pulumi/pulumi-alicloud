@@ -550,10 +550,8 @@ class _PeerConnectionState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/peerConnection:PeerConnection")
 class PeerConnection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/peerConnection:PeerConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

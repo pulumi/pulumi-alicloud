@@ -254,10 +254,8 @@ class _AppState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:mhub/app:App")
 class App(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mhub/app:App"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

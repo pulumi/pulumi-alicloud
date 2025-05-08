@@ -209,10 +209,8 @@ class _CustomRoutingEndpointTrafficPolicyState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy")
 class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

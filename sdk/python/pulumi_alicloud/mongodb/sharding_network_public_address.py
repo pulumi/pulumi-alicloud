@@ -113,10 +113,8 @@ class _ShardingNetworkPublicAddressState:
         pulumi.set(self, "node_id", value)
 
 
+@pulumi.type_token("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress")
 class ShardingNetworkPublicAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

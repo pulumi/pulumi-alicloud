@@ -175,10 +175,8 @@ class _EnvPodMonitorState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:arms/envPodMonitor:EnvPodMonitor")
 class EnvPodMonitor(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/envPodMonitor:EnvPodMonitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -153,10 +153,8 @@ class _ConfigurationRecorderState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/configurationRecorder:ConfigurationRecorder")
 class ConfigurationRecorder(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/configurationRecorder:ConfigurationRecorder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

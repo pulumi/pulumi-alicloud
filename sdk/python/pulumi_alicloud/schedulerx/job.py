@@ -789,10 +789,8 @@ class _JobState:
         pulumi.set(self, "x_attrs", value)
 
 
+@pulumi.type_token("alicloud:schedulerx/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:schedulerx/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

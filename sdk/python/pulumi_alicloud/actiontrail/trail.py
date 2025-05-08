@@ -473,10 +473,8 @@ class _TrailState:
         pulumi.set(self, "trail_region", value)
 
 
+@pulumi.type_token("alicloud:actiontrail/trail:Trail")
 class Trail(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:actiontrail/trail:Trail"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

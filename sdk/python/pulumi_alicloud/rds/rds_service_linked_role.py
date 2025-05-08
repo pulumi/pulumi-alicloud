@@ -112,10 +112,8 @@ class _RdsServiceLinkedRoleState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole")
 class RdsServiceLinkedRole(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -127,10 +127,8 @@ class _ApplicationAccessPointState:
         pulumi.set(self, "policies", value)
 
 
+@pulumi.type_token("alicloud:kms/applicationAccessPoint:ApplicationAccessPoint")
 class ApplicationAccessPoint(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:kms/applicationAccessPoint:ApplicationAccessPoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

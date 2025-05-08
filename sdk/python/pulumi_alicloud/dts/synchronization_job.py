@@ -1471,10 +1471,8 @@ class _SynchronizationJobState:
         pulumi.set(self, "synchronization_direction", value)
 
 
+@pulumi.type_token("alicloud:dts/synchronizationJob:SynchronizationJob")
 class SynchronizationJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/synchronizationJob:SynchronizationJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

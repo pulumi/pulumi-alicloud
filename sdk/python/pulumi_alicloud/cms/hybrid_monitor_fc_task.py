@@ -143,10 +143,8 @@ class _HybridMonitorFcTaskState:
         pulumi.set(self, "yarm_config", value)
 
 
+@pulumi.type_token("alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask")
 class HybridMonitorFcTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

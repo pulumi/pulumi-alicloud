@@ -142,10 +142,8 @@ class _VpcNetworkAclAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment")
 class VpcNetworkAclAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

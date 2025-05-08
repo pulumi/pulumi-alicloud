@@ -95,10 +95,8 @@ class _RoleAttachmentState:
         pulumi.set(self, "role_name", value)
 
 
+@pulumi.type_token("alicloud:ram/roleAttachment:RoleAttachment")
 class RoleAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/roleAttachment:RoleAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

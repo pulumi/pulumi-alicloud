@@ -450,10 +450,8 @@ class _StackGroupState:
         pulumi.set(self, "template_version", value)
 
 
+@pulumi.type_token("alicloud:ros/stackGroup:StackGroup")
 class StackGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ros/stackGroup:StackGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

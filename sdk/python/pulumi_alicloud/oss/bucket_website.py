@@ -162,10 +162,8 @@ class _BucketWebsiteState:
         pulumi.set(self, "routing_rules", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketWebsite:BucketWebsite")
 class BucketWebsite(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketWebsite:BucketWebsite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -993,10 +993,8 @@ class _V3FunctionState:
         pulumi.set(self, "vpc_config", value)
 
 
+@pulumi.type_token("alicloud:fc/v3Function:V3Function")
 class V3Function(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3Function:V3Function"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

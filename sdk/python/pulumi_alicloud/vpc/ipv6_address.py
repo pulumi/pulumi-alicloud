@@ -296,10 +296,8 @@ class _Ipv6AddressState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv6Address:Ipv6Address")
 class Ipv6Address(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv6Address:Ipv6Address"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

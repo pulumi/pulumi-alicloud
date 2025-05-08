@@ -223,10 +223,8 @@ class _RuleState:
         pulumi.set(self, "targets", value)
 
 
+@pulumi.type_token("alicloud:eventbridge/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eventbridge/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

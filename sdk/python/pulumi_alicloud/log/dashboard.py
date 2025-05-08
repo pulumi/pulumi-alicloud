@@ -194,10 +194,8 @@ class _DashboardState:
         pulumi.set(self, "project_name", value)
 
 
+@pulumi.type_token("alicloud:log/dashboard:Dashboard")
 class Dashboard(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/dashboard:Dashboard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -346,10 +346,8 @@ class _SslVpnServerState:
         pulumi.set(self, "vpn_gateway_id", value)
 
 
+@pulumi.type_token("alicloud:vpn/sslVpnServer:SslVpnServer")
 class SslVpnServer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/sslVpnServer:SslVpnServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

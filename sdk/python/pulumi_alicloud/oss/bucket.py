@@ -731,10 +731,8 @@ class _BucketState:
         pulumi.set(self, "website", value)
 
 
+@pulumi.type_token("alicloud:oss/bucket:Bucket")
 class Bucket(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucket:Bucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

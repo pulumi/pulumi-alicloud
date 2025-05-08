@@ -190,10 +190,8 @@ class _StaticAccountState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:amqp/staticAccount:StaticAccount")
 class StaticAccount(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:amqp/staticAccount:StaticAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

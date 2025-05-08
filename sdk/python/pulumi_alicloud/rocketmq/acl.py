@@ -259,10 +259,8 @@ class _AclState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/acl:Acl")
 class Acl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/acl:Acl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

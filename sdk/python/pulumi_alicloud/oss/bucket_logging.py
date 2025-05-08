@@ -127,10 +127,8 @@ class _BucketLoggingState:
         pulumi.set(self, "target_prefix", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketLogging:BucketLogging")
 class BucketLogging(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketLogging:BucketLogging"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

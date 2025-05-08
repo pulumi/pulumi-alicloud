@@ -256,10 +256,8 @@ class _CustomerGatewayState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:vpn/customerGateway:CustomerGateway")
 class CustomerGateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpn/customerGateway:CustomerGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

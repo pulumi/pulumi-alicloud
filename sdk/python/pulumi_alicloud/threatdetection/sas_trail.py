@@ -68,10 +68,8 @@ class _SasTrailState:
         pulumi.set(self, "service_trail", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/sasTrail:SasTrail")
 class SasTrail(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/sasTrail:SasTrail"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

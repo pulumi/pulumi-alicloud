@@ -174,10 +174,8 @@ class _Ipv6InternetBandwidthState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth")
 class Ipv6InternetBandwidth(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

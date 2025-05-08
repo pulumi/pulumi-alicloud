@@ -142,10 +142,8 @@ class _IntegrationExporterState:
         pulumi.set(self, "param", value)
 
 
+@pulumi.type_token("alicloud:arms/integrationExporter:IntegrationExporter")
 class IntegrationExporter(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/integrationExporter:IntegrationExporter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

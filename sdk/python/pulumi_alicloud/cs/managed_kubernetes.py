@@ -1599,10 +1599,8 @@ class _ManagedKubernetesState:
         pulumi.set(self, "zone_ids", value)
 
 
+@pulumi.type_token("alicloud:cs/managedKubernetes:ManagedKubernetes")
 class ManagedKubernetes(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/managedKubernetes:ManagedKubernetes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,10 +159,8 @@ class _ConsumerGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:alikafka/consumerGroup:ConsumerGroup")
 class ConsumerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:alikafka/consumerGroup:ConsumerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

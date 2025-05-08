@@ -1040,10 +1040,8 @@ class _CustomState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:rds/custom:Custom")
 class Custom(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/custom:Custom"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

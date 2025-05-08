@@ -383,10 +383,8 @@ class _ImageCacheState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eci/imageCache:ImageCache")
 class ImageCache(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eci/imageCache:ImageCache"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

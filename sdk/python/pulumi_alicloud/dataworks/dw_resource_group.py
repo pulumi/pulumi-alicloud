@@ -414,10 +414,8 @@ class _DwResourceGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:dataworks/dwResourceGroup:DwResourceGroup")
 class DwResourceGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/dwResourceGroup:DwResourceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -286,10 +286,8 @@ class _ClientUserState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:sag/clientUser:ClientUser")
 class ClientUser(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sag/clientUser:ClientUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

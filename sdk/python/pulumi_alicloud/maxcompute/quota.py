@@ -241,10 +241,8 @@ class _QuotaState:
         pulumi.set(self, "sub_quota_info_lists", value)
 
 
+@pulumi.type_token("alicloud:maxcompute/quota:Quota")
 class Quota(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:maxcompute/quota:Quota"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

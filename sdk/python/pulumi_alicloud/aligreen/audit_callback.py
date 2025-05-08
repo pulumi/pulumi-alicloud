@@ -188,10 +188,8 @@ class _AuditCallbackState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("alicloud:aligreen/auditCallback:AuditCallback")
 class AuditCallback(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/auditCallback:AuditCallback"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

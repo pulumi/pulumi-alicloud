@@ -351,10 +351,8 @@ class _ImageCopyState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ecs/imageCopy:ImageCopy")
 class ImageCopy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/imageCopy:ImageCopy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

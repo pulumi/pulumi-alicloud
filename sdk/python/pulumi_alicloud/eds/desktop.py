@@ -638,10 +638,8 @@ class _DesktopState:
         pulumi.set(self, "user_disk_size_gib", value)
 
 
+@pulumi.type_token("alicloud:eds/desktop:Desktop")
 class Desktop(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/desktop:Desktop"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

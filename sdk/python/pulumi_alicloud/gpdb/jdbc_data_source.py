@@ -303,10 +303,8 @@ class _JdbcDataSourceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:gpdb/jdbcDataSource:JdbcDataSource")
 class JdbcDataSource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/jdbcDataSource:JdbcDataSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

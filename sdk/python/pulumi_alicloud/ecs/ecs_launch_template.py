@@ -1835,10 +1835,8 @@ class _EcsLaunchTemplateState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate")
 class EcsLaunchTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

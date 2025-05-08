@@ -353,10 +353,8 @@ class _BucketReplicationState:
         pulumi.set(self, "sync_role", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketReplication:BucketReplication")
 class BucketReplication(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketReplication:BucketReplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

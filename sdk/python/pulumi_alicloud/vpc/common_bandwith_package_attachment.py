@@ -223,10 +223,8 @@ class _CommonBandwithPackageAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")
 class CommonBandwithPackageAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

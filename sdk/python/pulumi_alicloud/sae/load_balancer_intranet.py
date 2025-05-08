@@ -145,10 +145,8 @@ class _LoadBalancerIntranetState:
         pulumi.set(self, "intranets", value)
 
 
+@pulumi.type_token("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet")
 class LoadBalancerIntranet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -65,10 +65,8 @@ class _GlobalEventsStorageRegionState:
         pulumi.set(self, "storage_region", value)
 
 
+@pulumi.type_token("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion")
 class GlobalEventsStorageRegion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -190,10 +190,8 @@ class _EnvCustomJobState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:arms/envCustomJob:EnvCustomJob")
 class EnvCustomJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/envCustomJob:EnvCustomJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

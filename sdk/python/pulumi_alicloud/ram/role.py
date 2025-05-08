@@ -345,10 +345,8 @@ class _RoleState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("alicloud:ram/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

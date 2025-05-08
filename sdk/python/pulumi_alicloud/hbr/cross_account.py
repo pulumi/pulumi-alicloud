@@ -143,10 +143,8 @@ class _CrossAccountState:
         pulumi.set(self, "cross_account_user_id", value)
 
 
+@pulumi.type_token("alicloud:hbr/crossAccount:CrossAccount")
 class CrossAccount(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/crossAccount:CrossAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

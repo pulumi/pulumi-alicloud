@@ -223,10 +223,8 @@ class _EndpointAddressState:
         pulumi.set(self, "port", value)
 
 
+@pulumi.type_token("alicloud:polardb/endpointAddress:EndpointAddress")
 class EndpointAddress(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/endpointAddress:EndpointAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

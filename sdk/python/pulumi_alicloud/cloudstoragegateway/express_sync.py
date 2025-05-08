@@ -190,10 +190,8 @@ class _ExpressSyncState:
         pulumi.set(self, "express_sync_name", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/expressSync:ExpressSync")
 class ExpressSync(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/expressSync:ExpressSync"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

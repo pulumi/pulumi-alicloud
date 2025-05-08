@@ -283,10 +283,8 @@ class _BindingState:
         pulumi.set(self, "virtual_host_name", value)
 
 
+@pulumi.type_token("alicloud:amqp/binding:Binding")
 class Binding(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:amqp/binding:Binding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

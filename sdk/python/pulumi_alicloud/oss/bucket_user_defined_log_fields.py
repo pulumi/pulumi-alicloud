@@ -128,10 +128,8 @@ class _BucketUserDefinedLogFieldsState:
         pulumi.set(self, "param_sets", value)
 
 
+@pulumi.type_token("alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields")
 class BucketUserDefinedLogFields(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

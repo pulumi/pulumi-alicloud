@@ -146,10 +146,8 @@ class _TunnelQuotaTimerState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer")
 class TunnelQuotaTimer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

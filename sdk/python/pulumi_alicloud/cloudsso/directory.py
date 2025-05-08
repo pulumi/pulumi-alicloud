@@ -371,10 +371,8 @@ class _DirectoryState:
         pulumi.set(self, "user_provisioning_configuration", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/directory:Directory")
 class Directory(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/directory:Directory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

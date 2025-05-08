@@ -254,11 +254,9 @@ class _DnatEntryState:
 warnings.warn("""alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:rocketmq/dnatEntry:DnatEntry")
 class DnatEntry(pulumi.CustomResource):
     warnings.warn("""alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:rocketmq/dnatEntry:DnatEntry"
 
     @overload
     def __init__(__self__,

@@ -207,10 +207,8 @@ class _VbrHaState:
         pulumi.set(self, "vbr_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/vbrHa:VbrHa")
 class VbrHa(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/vbrHa:VbrHa"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

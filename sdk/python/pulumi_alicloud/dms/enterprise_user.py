@@ -328,10 +328,8 @@ class _EnterpriseUserState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:dms/enterpriseUser:EnterpriseUser")
 class EnterpriseUser(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dms/enterpriseUser:EnterpriseUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

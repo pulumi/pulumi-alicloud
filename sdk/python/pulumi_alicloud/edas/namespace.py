@@ -167,10 +167,8 @@ class _NamespaceState:
         pulumi.set(self, "namespace_name", value)
 
 
+@pulumi.type_token("alicloud:edas/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/namespace:Namespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

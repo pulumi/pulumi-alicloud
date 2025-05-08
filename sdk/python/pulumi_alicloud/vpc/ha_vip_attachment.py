@@ -236,10 +236,8 @@ class _HAVipAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/hAVipAttachment:HAVipAttachment")
 class HAVipAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/hAVipAttachment:HAVipAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

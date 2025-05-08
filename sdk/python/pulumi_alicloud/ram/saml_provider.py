@@ -163,10 +163,8 @@ class _SamlProviderState:
         pulumi.set(self, "update_date", value)
 
 
+@pulumi.type_token("alicloud:ram/samlProvider:SamlProvider")
 class SamlProvider(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/samlProvider:SamlProvider"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

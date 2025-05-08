@@ -183,10 +183,8 @@ class _PolicyState:
         pulumi.set(self, "policy_type", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

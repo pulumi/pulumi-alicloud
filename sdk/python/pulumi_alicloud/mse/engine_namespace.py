@@ -232,10 +232,8 @@ class _EngineNamespaceState:
         pulumi.set(self, "namespace_show_name", value)
 
 
+@pulumi.type_token("alicloud:mse/engineNamespace:EngineNamespace")
 class EngineNamespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mse/engineNamespace:EngineNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

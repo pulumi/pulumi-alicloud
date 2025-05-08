@@ -540,10 +540,8 @@ class _GatewayBlockVolumeState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume")
 class GatewayBlockVolume(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

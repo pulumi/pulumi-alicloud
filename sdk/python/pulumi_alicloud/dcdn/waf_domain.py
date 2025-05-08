@@ -96,10 +96,8 @@ class _WafDomainState:
         pulumi.set(self, "domain_name", value)
 
 
+@pulumi.type_token("alicloud:dcdn/wafDomain:WafDomain")
 class WafDomain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/wafDomain:WafDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

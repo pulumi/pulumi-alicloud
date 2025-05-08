@@ -288,10 +288,8 @@ class _ApplicationScalingRuleState:
         pulumi.set(self, "scaling_rule_type", value)
 
 
+@pulumi.type_token("alicloud:sae/applicationScalingRule:ApplicationScalingRule")
 class ApplicationScalingRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sae/applicationScalingRule:ApplicationScalingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

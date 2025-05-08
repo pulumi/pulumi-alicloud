@@ -724,10 +724,8 @@ class _FunctionState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("alicloud:fc/function:Function")
 class Function(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/function:Function"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -270,10 +270,8 @@ class _AlidnsInstanceState:
         pulumi.set(self, "version_name", value)
 
 
+@pulumi.type_token("alicloud:dns/alidnsInstance:AlidnsInstance")
 class AlidnsInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/alidnsInstance:AlidnsInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

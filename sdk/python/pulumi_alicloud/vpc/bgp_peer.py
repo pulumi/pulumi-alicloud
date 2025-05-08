@@ -224,10 +224,8 @@ class _BgpPeerState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/bgpPeer:BgpPeer")
 class BgpPeer(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/bgpPeer:BgpPeer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

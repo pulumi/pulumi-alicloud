@@ -111,10 +111,8 @@ class _InstanceAttachmentState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:databasefilesystem/instanceAttachment:InstanceAttachment")
 class InstanceAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:databasefilesystem/instanceAttachment:InstanceAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

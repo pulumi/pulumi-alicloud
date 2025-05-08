@@ -96,10 +96,8 @@ class _InstanceSecurityGroupAttachmentState:
         pulumi.set(self, "security_group_id", value)
 
 
+@pulumi.type_token("alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment")
 class InstanceSecurityGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -312,10 +312,8 @@ class _CompressionRuleState:
         pulumi.set(self, "zstd", value)
 
 
+@pulumi.type_token("alicloud:esa/compressionRule:CompressionRule")
 class CompressionRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/compressionRule:CompressionRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

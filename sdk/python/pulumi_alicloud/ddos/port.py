@@ -235,10 +235,8 @@ class _PortState:
         pulumi.set(self, "real_servers", value)
 
 
+@pulumi.type_token("alicloud:ddos/port:Port")
 class Port(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/port:Port"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -263,10 +263,8 @@ class _AlarmContactState:
         pulumi.set(self, "lang", value)
 
 
+@pulumi.type_token("alicloud:cms/alarmContact:AlarmContact")
 class AlarmContact(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/alarmContact:AlarmContact"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

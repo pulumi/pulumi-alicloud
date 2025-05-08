@@ -206,10 +206,8 @@ class _NatGatewayState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:ens/natGateway:NatGateway")
 class NatGateway(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/natGateway:NatGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

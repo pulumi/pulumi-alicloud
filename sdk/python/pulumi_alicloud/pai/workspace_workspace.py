@@ -210,10 +210,8 @@ class _WorkspaceWorkspaceState:
         pulumi.set(self, "workspace_name", value)
 
 
+@pulumi.type_token("alicloud:pai/workspaceWorkspace:WorkspaceWorkspace")
 class WorkspaceWorkspace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -262,10 +262,8 @@ class _InstanceState:
         pulumi.set(self, "version_name", value)
 
 
+@pulumi.type_token("alicloud:dns/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dns/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -231,10 +231,8 @@ class _ListenerState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:gwlb/listener:Listener")
 class Listener(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gwlb/listener:Listener"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

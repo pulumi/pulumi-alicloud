@@ -126,10 +126,8 @@ class _HostAttachmentState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostAttachment:HostAttachment")
 class HostAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostAttachment:HostAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -312,10 +312,8 @@ class _QuotaAlarmState:
         pulumi.set(self, "web_hook", value)
 
 
+@pulumi.type_token("alicloud:quotas/quotaAlarm:QuotaAlarm")
 class QuotaAlarm(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/quotaAlarm:QuotaAlarm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

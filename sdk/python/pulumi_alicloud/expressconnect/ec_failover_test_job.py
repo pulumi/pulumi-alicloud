@@ -253,10 +253,8 @@ class _EcFailoverTestJobState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob")
 class EcFailoverTestJob(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

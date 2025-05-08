@@ -240,10 +240,8 @@ class _NasFileSystemState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:eds/nasFileSystem:NasFileSystem")
 class NasFileSystem(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/nasFileSystem:NasFileSystem"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

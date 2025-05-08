@@ -293,10 +293,8 @@ class _VbrHealthCheckState:
         pulumi.set(self, "vbr_instance_region_id", value)
 
 
+@pulumi.type_token("alicloud:cen/vbrHealthCheck:VbrHealthCheck")
 class VbrHealthCheck(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/vbrHealthCheck:VbrHealthCheck"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

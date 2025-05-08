@@ -119,10 +119,8 @@ class _IpamIpamPoolCidrState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr")
 class IpamIpamPoolCidr(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

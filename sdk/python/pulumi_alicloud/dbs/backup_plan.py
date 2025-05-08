@@ -1244,10 +1244,8 @@ class _BackupPlanState:
         pulumi.set(self, "used_time", value)
 
 
+@pulumi.type_token("alicloud:dbs/backupPlan:BackupPlan")
 class BackupPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dbs/backupPlan:BackupPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

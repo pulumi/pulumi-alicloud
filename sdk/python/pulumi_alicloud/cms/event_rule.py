@@ -417,10 +417,8 @@ class _EventRuleState:
         pulumi.set(self, "webhook_parameters", value)
 
 
+@pulumi.type_token("alicloud:cms/eventRule:EventRule")
 class EventRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/eventRule:EventRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

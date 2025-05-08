@@ -428,10 +428,8 @@ class _OtsBackupPlanState:
         pulumi.set(self, "vault_id", value)
 
 
+@pulumi.type_token("alicloud:hbr/otsBackupPlan:OtsBackupPlan")
 class OtsBackupPlan(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/otsBackupPlan:OtsBackupPlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

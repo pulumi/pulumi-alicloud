@@ -398,10 +398,8 @@ class _PatchBaselineState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:oos/patchBaseline:PatchBaseline")
 class PatchBaseline(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/patchBaseline:PatchBaseline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -956,10 +956,8 @@ class _RouteMapState:
         pulumi.set(self, "transmit_direction", value)
 
 
+@pulumi.type_token("alicloud:cen/routeMap:RouteMap")
 class RouteMap(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/routeMap:RouteMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

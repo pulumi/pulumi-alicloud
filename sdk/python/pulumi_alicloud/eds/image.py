@@ -144,10 +144,8 @@ class _ImageState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:eds/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

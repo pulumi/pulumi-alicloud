@@ -297,10 +297,8 @@ class _DomainState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:scdn/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:scdn/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

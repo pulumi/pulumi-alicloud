@@ -223,10 +223,8 @@ class _OssExportSinkState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:sls/ossExportSink:OssExportSink")
 class OssExportSink(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:sls/ossExportSink:OssExportSink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

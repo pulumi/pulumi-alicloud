@@ -160,10 +160,8 @@ class _ConnectionState:
         pulumi.set(self, "port", value)
 
 
+@pulumi.type_token("alicloud:gpdb/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

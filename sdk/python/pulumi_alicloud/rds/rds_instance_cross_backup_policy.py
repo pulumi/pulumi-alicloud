@@ -293,10 +293,8 @@ class _RdsInstanceCrossBackupPolicyState:
         pulumi.set(self, "retention", value)
 
 
+@pulumi.type_token("alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy")
 class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

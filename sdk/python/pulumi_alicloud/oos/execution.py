@@ -512,10 +512,8 @@ class _ExecutionState:
         pulumi.set(self, "update_date", value)
 
 
+@pulumi.type_token("alicloud:oos/execution:Execution")
 class Execution(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/execution:Execution"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

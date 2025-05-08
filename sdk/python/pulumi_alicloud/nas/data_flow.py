@@ -321,10 +321,8 @@ class _DataFlowState:
         pulumi.set(self, "throughput", value)
 
 
+@pulumi.type_token("alicloud:nas/dataFlow:DataFlow")
 class DataFlow(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:nas/dataFlow:DataFlow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

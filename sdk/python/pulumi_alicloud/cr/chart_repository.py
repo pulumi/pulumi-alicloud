@@ -190,10 +190,8 @@ class _ChartRepositoryState:
         pulumi.set(self, "summary", value)
 
 
+@pulumi.type_token("alicloud:cr/chartRepository:ChartRepository")
 class ChartRepository(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cr/chartRepository:ChartRepository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

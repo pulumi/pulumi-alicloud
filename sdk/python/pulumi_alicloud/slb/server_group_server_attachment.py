@@ -222,10 +222,8 @@ class _ServerGroupServerAttachmentState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment")
 class ServerGroupServerAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

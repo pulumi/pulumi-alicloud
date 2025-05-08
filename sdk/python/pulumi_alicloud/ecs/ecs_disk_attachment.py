@@ -239,10 +239,8 @@ class _EcsDiskAttachmentState:
         pulumi.set(self, "password", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment")
 class EcsDiskAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -628,10 +628,8 @@ class _ServerlessInstanceState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:mongodb/serverlessInstance:ServerlessInstance")
 class ServerlessInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:mongodb/serverlessInstance:ServerlessInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

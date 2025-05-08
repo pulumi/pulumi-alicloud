@@ -240,10 +240,8 @@ class _TransitRouterRouteTableState:
         pulumi.set(self, "transit_router_route_table_type", value)
 
 
+@pulumi.type_token("alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable")
 class TransitRouterRouteTable(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

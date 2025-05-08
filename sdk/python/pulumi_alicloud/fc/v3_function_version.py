@@ -128,10 +128,8 @@ class _V3FunctionVersionState:
         pulumi.set(self, "last_modified_time", value)
 
 
+@pulumi.type_token("alicloud:fc/v3FunctionVersion:V3FunctionVersion")
 class V3FunctionVersion(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/v3FunctionVersion:V3FunctionVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

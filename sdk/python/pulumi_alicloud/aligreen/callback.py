@@ -205,10 +205,8 @@ class _CallbackState:
         pulumi.set(self, "crypt_type", value)
 
 
+@pulumi.type_token("alicloud:aligreen/callback:Callback")
 class Callback(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:aligreen/callback:Callback"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

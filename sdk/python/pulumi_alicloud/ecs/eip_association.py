@@ -339,10 +339,8 @@ class _EipAssociationState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/eipAssociation:EipAssociation")
 class EipAssociation(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/eipAssociation:EipAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

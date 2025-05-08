@@ -496,10 +496,8 @@ class _HadoopDataSourceState:
         pulumi.set(self, "yarn_conf", value)
 
 
+@pulumi.type_token("alicloud:gpdb/hadoopDataSource:HadoopDataSource")
 class HadoopDataSource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/hadoopDataSource:HadoopDataSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

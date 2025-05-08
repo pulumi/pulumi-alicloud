@@ -254,10 +254,8 @@ class _AccountState:
         pulumi.set(self, "kms_encryption_context", value)
 
 
+@pulumi.type_token("alicloud:polardb/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:polardb/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

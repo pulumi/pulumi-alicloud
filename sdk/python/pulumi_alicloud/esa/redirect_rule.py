@@ -384,10 +384,8 @@ class _RedirectRuleState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:esa/redirectRule:RedirectRule")
 class RedirectRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/redirectRule:RedirectRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

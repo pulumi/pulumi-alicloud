@@ -95,10 +95,8 @@ class _MembershipAttachmentState:
         pulumi.set(self, "sub_cluster_id", value)
 
 
+@pulumi.type_token("alicloud:ackone/membershipAttachment:MembershipAttachment")
 class MembershipAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ackone/membershipAttachment:MembershipAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

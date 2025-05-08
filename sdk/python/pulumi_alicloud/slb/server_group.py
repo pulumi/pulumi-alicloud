@@ -206,10 +206,8 @@ class _ServerGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:slb/serverGroup:ServerGroup")
 class ServerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:slb/serverGroup:ServerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

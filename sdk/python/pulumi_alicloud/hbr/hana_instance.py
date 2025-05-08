@@ -448,10 +448,8 @@ class _HanaInstanceState:
         pulumi.set(self, "vault_id", value)
 
 
+@pulumi.type_token("alicloud:hbr/hanaInstance:HanaInstance")
 class HanaInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/hanaInstance:HanaInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

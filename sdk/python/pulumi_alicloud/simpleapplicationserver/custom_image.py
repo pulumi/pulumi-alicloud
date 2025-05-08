@@ -198,10 +198,8 @@ class _CustomImageState:
         pulumi.set(self, "system_snapshot_id", value)
 
 
+@pulumi.type_token("alicloud:simpleapplicationserver/customImage:CustomImage")
 class CustomImage(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:simpleapplicationserver/customImage:CustomImage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

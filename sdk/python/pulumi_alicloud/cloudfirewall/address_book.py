@@ -292,10 +292,8 @@ class _AddressBookState:
         pulumi.set(self, "tag_relation", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/addressBook:AddressBook")
 class AddressBook(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/addressBook:AddressBook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

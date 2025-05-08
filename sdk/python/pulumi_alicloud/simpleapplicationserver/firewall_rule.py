@@ -174,10 +174,8 @@ class _FirewallRuleState:
         pulumi.set(self, "rule_protocol", value)
 
 
+@pulumi.type_token("alicloud:simpleapplicationserver/firewallRule:FirewallRule")
 class FirewallRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:simpleapplicationserver/firewallRule:FirewallRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

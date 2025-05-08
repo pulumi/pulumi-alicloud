@@ -676,10 +676,8 @@ class _NetworkInterfaceState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:vpc/networkInterface:NetworkInterface")
 class NetworkInterface(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/networkInterface:NetworkInterface"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

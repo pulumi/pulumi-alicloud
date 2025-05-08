@@ -348,10 +348,8 @@ class _TemplateQuotaState:
         pulumi.set(self, "quota_category", value)
 
 
+@pulumi.type_token("alicloud:quotas/templateQuota:TemplateQuota")
 class TemplateQuota(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:quotas/templateQuota:TemplateQuota"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -111,10 +111,8 @@ class _BgpNetworkState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:vpc/bgpNetwork:BgpNetwork")
 class BgpNetwork(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vpc/bgpNetwork:BgpNetwork"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

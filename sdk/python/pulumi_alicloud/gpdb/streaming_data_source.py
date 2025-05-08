@@ -276,10 +276,8 @@ class _StreamingDataSourceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:gpdb/streamingDataSource:StreamingDataSource")
 class StreamingDataSource(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:gpdb/streamingDataSource:StreamingDataSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

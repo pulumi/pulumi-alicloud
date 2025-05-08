@@ -95,10 +95,8 @@ class _ImageSharePermissionState:
         pulumi.set(self, "image_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/imageSharePermission:ImageSharePermission")
 class ImageSharePermission(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/imageSharePermission:ImageSharePermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

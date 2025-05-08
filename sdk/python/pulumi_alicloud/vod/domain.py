@@ -377,10 +377,8 @@ class _DomainState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("alicloud:vod/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:vod/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

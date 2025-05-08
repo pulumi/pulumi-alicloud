@@ -129,10 +129,8 @@ class _BgpPolicyState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("alicloud:ddos/bgpPolicy:BgpPolicy")
 class BgpPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ddos/bgpPolicy:BgpPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

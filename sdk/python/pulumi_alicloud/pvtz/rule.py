@@ -191,10 +191,8 @@ class _RuleState:
         pulumi.set(self, "zone_name", value)
 
 
+@pulumi.type_token("alicloud:pvtz/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pvtz/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

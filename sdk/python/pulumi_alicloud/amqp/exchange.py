@@ -295,10 +295,8 @@ class _ExchangeState:
         pulumi.set(self, "virtual_host_name", value)
 
 
+@pulumi.type_token("alicloud:amqp/exchange:Exchange")
 class Exchange(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:amqp/exchange:Exchange"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

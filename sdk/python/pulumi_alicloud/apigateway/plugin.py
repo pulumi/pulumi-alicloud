@@ -262,10 +262,8 @@ class _PluginState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:apigateway/plugin:Plugin")
 class Plugin(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:apigateway/plugin:Plugin"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

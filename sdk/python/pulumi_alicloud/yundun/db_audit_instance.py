@@ -225,10 +225,8 @@ class _DBAuditInstanceState:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.type_token("alicloud:yundun/dBAuditInstance:DBAuditInstance")
 class DBAuditInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:yundun/dBAuditInstance:DBAuditInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

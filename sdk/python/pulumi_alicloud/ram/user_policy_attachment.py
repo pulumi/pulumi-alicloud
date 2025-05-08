@@ -134,10 +134,8 @@ class _UserPolicyAttachmentState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("alicloud:ram/userPolicyAttachment:UserPolicyAttachment")
 class UserPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/userPolicyAttachment:UserPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

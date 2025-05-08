@@ -126,10 +126,8 @@ class _HostAccountShareKeyAttachmentState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment")
 class HostAccountShareKeyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

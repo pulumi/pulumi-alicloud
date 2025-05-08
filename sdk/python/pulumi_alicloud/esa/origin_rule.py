@@ -448,10 +448,8 @@ class _OriginRuleState:
         pulumi.set(self, "site_version", value)
 
 
+@pulumi.type_token("alicloud:esa/originRule:OriginRule")
 class OriginRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/originRule:OriginRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

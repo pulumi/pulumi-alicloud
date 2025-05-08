@@ -95,10 +95,8 @@ class _EcsAutoSnapshotPolicyAttachmentState:
         pulumi.set(self, "disk_id", value)
 
 
+@pulumi.type_token("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment")
 class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

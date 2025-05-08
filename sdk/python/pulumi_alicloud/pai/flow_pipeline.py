@@ -111,10 +111,8 @@ class _FlowPipelineState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("alicloud:pai/flowPipeline:FlowPipeline")
 class FlowPipeline(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:pai/flowPipeline:FlowPipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

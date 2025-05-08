@@ -185,10 +185,8 @@ class _AggregatorState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:cfg/aggregator:Aggregator")
 class Aggregator(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cfg/aggregator:Aggregator"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

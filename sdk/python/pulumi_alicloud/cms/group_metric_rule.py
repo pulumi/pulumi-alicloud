@@ -589,10 +589,8 @@ class _GroupMetricRuleState:
         pulumi.set(self, "webhook", value)
 
 
+@pulumi.type_token("alicloud:cms/groupMetricRule:GroupMetricRule")
 class GroupMetricRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cms/groupMetricRule:GroupMetricRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

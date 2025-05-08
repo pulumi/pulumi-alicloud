@@ -143,10 +143,8 @@ class _GroupState:
         pulumi.set(self, "group_name", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

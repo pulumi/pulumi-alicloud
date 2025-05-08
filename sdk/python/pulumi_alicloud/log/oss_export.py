@@ -830,10 +830,8 @@ class _OssExportState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("alicloud:log/ossExport:OssExport")
 class OssExport(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:log/ossExport:OssExport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

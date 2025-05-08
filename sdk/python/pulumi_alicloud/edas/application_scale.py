@@ -174,10 +174,8 @@ class _ApplicationScaleState:
         pulumi.set(self, "force_status", value)
 
 
+@pulumi.type_token("alicloud:edas/applicationScale:ApplicationScale")
 class ApplicationScale(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:edas/applicationScale:ApplicationScale"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

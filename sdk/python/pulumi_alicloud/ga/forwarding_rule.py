@@ -255,10 +255,8 @@ class _ForwardingRuleState:
         pulumi.set(self, "rule_conditions", value)
 
 
+@pulumi.type_token("alicloud:ga/forwardingRule:ForwardingRule")
 class ForwardingRule(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/forwardingRule:ForwardingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

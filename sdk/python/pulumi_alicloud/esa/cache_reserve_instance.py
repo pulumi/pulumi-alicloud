@@ -264,10 +264,8 @@ class _CacheReserveInstanceState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:esa/cacheReserveInstance:CacheReserveInstance")
 class CacheReserveInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:esa/cacheReserveInstance:CacheReserveInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

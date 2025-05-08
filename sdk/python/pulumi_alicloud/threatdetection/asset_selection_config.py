@@ -127,10 +127,8 @@ class _AssetSelectionConfigState:
         pulumi.set(self, "target_type", value)
 
 
+@pulumi.type_token("alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig")
 class AssetSelectionConfig(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

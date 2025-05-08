@@ -111,10 +111,8 @@ class _SharedTargetState:
         pulumi.set(self, "target_id", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/sharedTarget:SharedTarget")
 class SharedTarget(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/sharedTarget:SharedTarget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

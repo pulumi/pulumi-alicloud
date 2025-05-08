@@ -263,10 +263,8 @@ class _AttachmentState:
         pulumi.set(self, "scaling_group_id", value)
 
 
+@pulumi.type_token("alicloud:ess/attachment:Attachment")
 class Attachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/attachment:Attachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -145,10 +145,8 @@ class _ProjectMemberState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("alicloud:dataworks/projectMember:ProjectMember")
 class ProjectMember(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dataworks/projectMember:ProjectMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

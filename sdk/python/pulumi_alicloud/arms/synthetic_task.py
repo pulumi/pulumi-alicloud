@@ -413,10 +413,8 @@ class _SyntheticTaskState:
         pulumi.set(self, "task_type", value)
 
 
+@pulumi.type_token("alicloud:arms/syntheticTask:SyntheticTask")
 class SyntheticTask(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:arms/syntheticTask:SyntheticTask"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

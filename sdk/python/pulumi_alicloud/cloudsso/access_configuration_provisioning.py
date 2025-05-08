@@ -189,10 +189,8 @@ class _AccessConfigurationProvisioningState:
         pulumi.set(self, "target_type", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning")
 class AccessConfigurationProvisioning(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

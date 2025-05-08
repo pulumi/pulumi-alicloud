@@ -206,10 +206,8 @@ class _ReplicationVaultState:
         pulumi.set(self, "vault_storage_class", value)
 
 
+@pulumi.type_token("alicloud:hbr/replicationVault:ReplicationVault")
 class ReplicationVault(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:hbr/replicationVault:ReplicationVault"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

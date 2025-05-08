@@ -182,10 +182,8 @@ class _AccountPrivilegeState:
         pulumi.set(self, "privilege", value)
 
 
+@pulumi.type_token("alicloud:rds/accountPrivilege:AccountPrivilege")
 class AccountPrivilege(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rds/accountPrivilege:AccountPrivilege"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

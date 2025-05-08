@@ -126,10 +126,8 @@ class _KvState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("alicloud:dcdn/kv:Kv")
 class Kv(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dcdn/kv:Kv"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

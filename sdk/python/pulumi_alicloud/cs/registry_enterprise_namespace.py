@@ -168,10 +168,8 @@ class _RegistryEnterpriseNamespaceState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace")
 class RegistryEnterpriseNamespace(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

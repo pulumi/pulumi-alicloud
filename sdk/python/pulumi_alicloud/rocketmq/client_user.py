@@ -289,11 +289,9 @@ class _ClientUserState:
 warnings.warn("""alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser""", DeprecationWarning)
 
 
+@pulumi.type_token("alicloud:rocketmq/clientUser:ClientUser")
 class ClientUser(pulumi.CustomResource):
     warnings.warn("""alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser""", DeprecationWarning)
-
-
-    pulumi_type = "alicloud:rocketmq/clientUser:ClientUser"
 
     @overload
     def __init__(__self__,

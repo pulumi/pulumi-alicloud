@@ -250,10 +250,8 @@ class _AclState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("alicloud:ga/acl:Acl")
 class Acl(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/acl:Acl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

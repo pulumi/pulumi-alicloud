@@ -127,10 +127,8 @@ class _DiskInstanceAttachmentState:
         pulumi.set(self, "instance_id", value)
 
 
+@pulumi.type_token("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment")
 class DiskInstanceAttachment(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

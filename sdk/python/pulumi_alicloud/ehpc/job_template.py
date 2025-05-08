@@ -575,10 +575,8 @@ class _JobTemplateState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("alicloud:ehpc/jobTemplate:JobTemplate")
 class JobTemplate(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ehpc/jobTemplate:JobTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

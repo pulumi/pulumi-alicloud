@@ -129,10 +129,8 @@ class _ScalingGroupVServerGroupsState:
         pulumi.set(self, "vserver_groups", value)
 
 
+@pulumi.type_token("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups")
 class ScalingGroupVServerGroups(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

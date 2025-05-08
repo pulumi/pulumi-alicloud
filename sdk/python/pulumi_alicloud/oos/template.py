@@ -399,10 +399,8 @@ class _TemplateState:
         pulumi.set(self, "version_name", value)
 
 
+@pulumi.type_token("alicloud:oos/template:Template")
 class Template(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:oos/template:Template"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

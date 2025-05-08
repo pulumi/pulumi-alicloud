@@ -127,10 +127,8 @@ class _NetworkPackageState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:eds/networkPackage:NetworkPackage")
 class NetworkPackage(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eds/networkPackage:NetworkPackage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

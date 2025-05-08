@@ -972,10 +972,8 @@ class _NatFirewallControlPolicyState:
         pulumi.set(self, "start_time", value)
 
 
+@pulumi.type_token("alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy")
 class NatFirewallControlPolicy(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

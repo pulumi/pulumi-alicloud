@@ -272,10 +272,8 @@ class _ConsumerGroupState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:rocketmq/consumerGroup:ConsumerGroup")
 class ConsumerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:rocketmq/consumerGroup:ConsumerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

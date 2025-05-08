@@ -50,10 +50,8 @@ class _ServiceBasicPublicState:
         pulumi.set(self, "create_time", value)
 
 
+@pulumi.type_token("alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic")
 class ServiceBasicPublic(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

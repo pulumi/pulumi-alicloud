@@ -95,10 +95,8 @@ class _GroupMembershipState:
         pulumi.set(self, "user_names", value)
 
 
+@pulumi.type_token("alicloud:ram/groupMembership:GroupMembership")
 class GroupMembership(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ram/groupMembership:GroupMembership"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

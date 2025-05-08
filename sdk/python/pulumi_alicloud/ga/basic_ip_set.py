@@ -175,10 +175,8 @@ class _BasicIpSetState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ga/basicIpSet:BasicIpSet")
 class BasicIpSet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ga/basicIpSet:BasicIpSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

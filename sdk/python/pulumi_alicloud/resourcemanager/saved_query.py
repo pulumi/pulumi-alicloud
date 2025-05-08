@@ -143,10 +143,8 @@ class _SavedQueryState:
         pulumi.set(self, "saved_query_name", value)
 
 
+@pulumi.type_token("alicloud:resourcemanager/savedQuery:SavedQuery")
 class SavedQuery(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:resourcemanager/savedQuery:SavedQuery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1019,10 +1019,8 @@ class _ContainerGroupState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eci/containerGroup:ContainerGroup")
 class ContainerGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eci/containerGroup:ContainerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

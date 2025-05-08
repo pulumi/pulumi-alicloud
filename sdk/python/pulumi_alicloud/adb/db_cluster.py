@@ -1087,10 +1087,8 @@ class _DBClusterState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:adb/dBCluster:DBCluster")
 class DBCluster(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:adb/dBCluster:DBCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

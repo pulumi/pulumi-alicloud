@@ -225,10 +225,8 @@ class _CustomDomainState:
         pulumi.set(self, "route_configs", value)
 
 
+@pulumi.type_token("alicloud:fc/customDomain:CustomDomain")
 class CustomDomain(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:fc/customDomain:CustomDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

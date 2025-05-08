@@ -286,10 +286,8 @@ class _OrderState:
         pulumi.set(self, "quantity", value)
 
 
+@pulumi.type_token("alicloud:marketplace/order:Order")
 class Order(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:marketplace/order:Order"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -96,10 +96,8 @@ class _IndustrialPidOrganizationState:
         pulumi.set(self, "pid_organization_name", value)
 
 
+@pulumi.type_token("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization")
 class IndustrialPidOrganization(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

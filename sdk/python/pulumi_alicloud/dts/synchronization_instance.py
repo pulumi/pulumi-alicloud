@@ -492,10 +492,8 @@ class _SynchronizationInstanceState:
         pulumi.set(self, "sync_architecture", value)
 
 
+@pulumi.type_token("alicloud:dts/synchronizationInstance:SynchronizationInstance")
 class SynchronizationInstance(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:dts/synchronizationInstance:SynchronizationInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

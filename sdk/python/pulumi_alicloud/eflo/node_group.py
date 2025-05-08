@@ -478,10 +478,8 @@ class _NodeGroupState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eflo/nodeGroup:NodeGroup")
 class NodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/nodeGroup:NodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

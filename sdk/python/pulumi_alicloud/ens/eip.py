@@ -286,10 +286,8 @@ class _EipState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("alicloud:ens/eip:Eip")
 class Eip(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:ens/eip:Eip"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

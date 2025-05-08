@@ -297,10 +297,8 @@ class _SubnetState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("alicloud:eflo/subnet:Subnet")
 class Subnet(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:eflo/subnet:Subnet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

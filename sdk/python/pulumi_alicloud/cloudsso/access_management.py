@@ -251,10 +251,8 @@ class _AccessManagementState:
         pulumi.set(self, "target_type", value)
 
 
+@pulumi.type_token("alicloud:cloudsso/accessManagement:AccessManagement")
 class AccessManagement(pulumi.CustomResource):
-
-    pulumi_type = "alicloud:cloudsso/accessManagement:AccessManagement"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
