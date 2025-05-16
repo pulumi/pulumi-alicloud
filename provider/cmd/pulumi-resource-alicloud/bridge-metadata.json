@@ -1437,6 +1437,9 @@
             "alicloud_cloud_firewall_instance_member": {
                 "current": "alicloud:cloudfirewall/instanceMember:InstanceMember"
             },
+            "alicloud_cloud_firewall_ips_config": {
+                "current": "alicloud:cloudfirewall/ipsConfig:IpsConfig"
+            },
             "alicloud_cloud_firewall_nat_firewall": {
                 "current": "alicloud:cloudfirewall/natFirewall:NatFirewall",
                 "fields": {
@@ -7457,6 +7460,30 @@
             "alicloud_pai_workspace_experiment": {
                 "current": "alicloud:pai/workspaceExperiment:WorkspaceExperiment"
             },
+            "alicloud_pai_workspace_member": {
+                "current": "alicloud:pai/workspaceMember:WorkspaceMember",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_pai_workspace_model": {
+                "current": "alicloud:pai/workspaceModel:WorkspaceModel",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_pai_workspace_model_version": {
+                "current": "alicloud:pai/workspaceModelVersion:WorkspaceModelVersion",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_pai_workspace_run": {
                 "current": "alicloud:pai/workspaceRun:WorkspaceRun"
             },
@@ -7935,6 +7962,9 @@
                 "current": "alicloud:resourcemanager/account:Account",
                 "fields": {
                     "abandon_able_check_id": {
+                        "maxItemsOne": false
+                    },
+                    "abandonable_check_id": {
                         "maxItemsOne": false
                     }
                 }
@@ -8742,6 +8772,9 @@
             "alicloud_slb_listener": {
                 "current": "alicloud:slb/listener:Listener",
                 "fields": {
+                    "acl_ids": {
+                        "maxItemsOne": false
+                    },
                     "x_forwarded_for": {
                         "maxItemsOne": true
                     }
@@ -15956,6 +15989,9 @@
                         "elem": {
                             "fields": {
                                 "db_instance_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "launch_template_override": {
                                     "maxItemsOne": false
                                 },
                                 "load_balancer_ids": {
