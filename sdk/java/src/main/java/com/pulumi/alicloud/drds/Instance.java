@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
  * 
+ * &gt; **NOTE:** Available since v1.24.0.
+ * 
  * &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
  * 
  * &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
@@ -97,14 +99,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:drds/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     * (Available since v1.196.0) The connection string of the DRDS instance.
      * 
      */
     @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
-     * @return (Available in 1.196.0+) The connection string of the DRDS instance.
+     * @return (Available since v1.196.0) The connection string of the DRDS instance.
      * 
      */
     public Output<String> connectionString() {
@@ -173,14 +175,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.mysqlVersion;
     }
     /**
-     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     * (Available since v1.196.0) The connection port of the DRDS instance.
      * 
      */
     @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the DRDS instance.
+     * @return (Available since v1.196.0) The connection port of the DRDS instance.
      * 
      */
     public Output<String> port() {

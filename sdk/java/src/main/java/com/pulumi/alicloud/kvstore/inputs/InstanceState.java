@@ -647,7 +647,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * Node type, valid values:
+     * - `MASTER_SLAVE`: High availability (dual copies)
+     * - `STAND_ALONE`: Single copy
      * 
      * @deprecated
      * Field &#39;node_type&#39; has been deprecated from version 1.120.1
@@ -658,7 +660,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * @return Node type, valid values:
+     * - `MASTER_SLAVE`: High availability (dual copies)
+     * - `STAND_ALONE`: Single copy
      * 
      * @deprecated
      * Field &#39;node_type&#39; has been deprecated from version 1.120.1
@@ -2078,7 +2082,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+         * @param nodeType Node type, valid values:
+         * - `MASTER_SLAVE`: High availability (dual copies)
+         * - `STAND_ALONE`: Single copy
          * 
          * @return builder
          * 
@@ -2093,7 +2099,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+         * @param nodeType Node type, valid values:
+         * - `MASTER_SLAVE`: High availability (dual copies)
+         * - `STAND_ALONE`: Single copy
          * 
          * @return builder
          * 

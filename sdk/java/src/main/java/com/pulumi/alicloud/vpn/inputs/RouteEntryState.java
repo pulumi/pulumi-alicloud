@@ -63,14 +63,14 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.161.0+) The type of the vpn route entry.
+     * (Available since v1.161.0) The type of the vpn route entry.
      * 
      */
     @Import(name="routeEntryType")
     private @Nullable Output<String> routeEntryType;
 
     /**
-     * @return (Available in 1.161.0+) The type of the vpn route entry.
+     * @return (Available since v1.161.0) The type of the vpn route entry.
      * 
      */
     public Optional<Output<String>> routeEntryType() {
@@ -78,14 +78,14 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.161.0+) The status of the vpn route entry.
+     * (Available since v1.161.0) The status of the vpn route entry.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.161.0+) The status of the vpn route entry.
+     * @return (Available since v1.161.0) The status of the vpn route entry.
      * 
      */
     public Optional<Output<String>> status() {
@@ -216,7 +216,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeEntryType (Available in 1.161.0+) The type of the vpn route entry.
+         * @param routeEntryType (Available since v1.161.0) The type of the vpn route entry.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeEntryType (Available in 1.161.0+) The type of the vpn route entry.
+         * @param routeEntryType (Available since v1.161.0) The type of the vpn route entry.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.161.0+) The status of the vpn route entry.
+         * @param status (Available since v1.161.0) The status of the vpn route entry.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.161.0+) The status of the vpn route entry.
+         * @param status (Available since v1.161.0) The status of the vpn route entry.
          * 
          * @return builder
          * 

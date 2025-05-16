@@ -26,19 +26,19 @@ if not MYPY:
     class InstanceBindVpcArgsDict(TypedDict):
         region_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        region id.
+        region id
         """
         vpc_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        VPC ID.
+        VPC ID
         """
         vpc_owner_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        VPC owner root user ID.
+        VPC owner root user ID
         """
         vswitch_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        vswitch id.
+        vswitch id
         """
 elif False:
     InstanceBindVpcArgsDict: TypeAlias = Mapping[str, Any]
@@ -51,10 +51,10 @@ class InstanceBindVpcArgs:
                  vpc_owner_id: Optional[pulumi.Input[builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] region_id: region id.
-        :param pulumi.Input[builtins.str] vpc_id: VPC ID.
-        :param pulumi.Input[builtins.str] vpc_owner_id: VPC owner root user ID.
-        :param pulumi.Input[builtins.str] vswitch_id: vswitch id.
+        :param pulumi.Input[builtins.str] region_id: region id
+        :param pulumi.Input[builtins.str] vpc_id: VPC ID
+        :param pulumi.Input[builtins.str] vpc_owner_id: VPC owner root user ID
+        :param pulumi.Input[builtins.str] vswitch_id: vswitch id
         """
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
@@ -69,7 +69,7 @@ class InstanceBindVpcArgs:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        region id.
+        region id
         """
         return pulumi.get(self, "region_id")
 
@@ -81,7 +81,7 @@ class InstanceBindVpcArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        VPC ID.
+        VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
@@ -93,7 +93,7 @@ class InstanceBindVpcArgs:
     @pulumi.getter(name="vpcOwnerId")
     def vpc_owner_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        VPC owner root user ID.
+        VPC owner root user ID
         """
         return pulumi.get(self, "vpc_owner_id")
 
@@ -105,7 +105,7 @@ class InstanceBindVpcArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        vswitch id.
+        vswitch id
         """
         return pulumi.get(self, "vswitch_id")
 

@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE:** Available in v1.162.0+.
+ * &gt; **NOTE:** Available since v1.162.0.
  * 
  * &gt; **NOTE:** The maximum number of entries per acl is 300.
  * 

@@ -164,7 +164,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly hotReplicaMode!: pulumi.Output<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      */
     public readonly hotStandbyCluster!: pulumi.Output<string>;
     /**
@@ -312,6 +313,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly sourceResourceId!: pulumi.Output<string | undefined>;
     /**
+     * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+     */
+    public readonly standbyAz!: pulumi.Output<string>;
+    /**
      * (Available since 1.204.1) PolarDB cluster status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -449,6 +455,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["serverlessSteadySwitch"] = state ? state.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = state ? state.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
+            resourceInputs["standbyAz"] = state ? state.standbyAz : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storagePayType"] = state ? state.storagePayType : undefined;
             resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
@@ -530,6 +537,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["serverlessSteadySwitch"] = args ? args.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = args ? args.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
+            resourceInputs["standbyAz"] = args ? args.standbyAz : undefined;
             resourceInputs["storagePayType"] = args ? args.storagePayType : undefined;
             resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
@@ -679,7 +687,8 @@ export interface ClusterState {
      */
     hotReplicaMode?: pulumi.Input<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      */
     hotStandbyCluster?: pulumi.Input<string>;
     /**
@@ -826,6 +835,11 @@ export interface ClusterState {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      */
     sourceResourceId?: pulumi.Input<string>;
+    /**
+     * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+     */
+    standbyAz?: pulumi.Input<string>;
     /**
      * (Available since 1.204.1) PolarDB cluster status.
      */
@@ -1005,7 +1019,8 @@ export interface ClusterArgs {
      */
     hotReplicaMode?: pulumi.Input<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      */
     hotStandbyCluster?: pulumi.Input<string>;
     /**
@@ -1148,6 +1163,11 @@ export interface ClusterArgs {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      */
     sourceResourceId?: pulumi.Input<string>;
+    /**
+     * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+     */
+    standbyAz?: pulumi.Input<string>;
     /**
      * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
      */

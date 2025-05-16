@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Vpc Ipv4 Gateway resource.
  *
- * For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+ * For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -20,14 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
+ * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.resourcemanager.ResourceGroup("default", {
- *     displayName: "tf-testAcc-rg665",
+ *     displayName: name,
  *     resourceGroupName: name,
- * });
- * const modify = new alicloud.resourcemanager.ResourceGroup("modify", {
- *     displayName: "tf-testAcc-rg298",
- *     resourceGroupName: `${name}1`,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: `${name}2`,
@@ -35,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultIpv4Gateway = new alicloud.vpc.Ipv4Gateway("default", {
  *     ipv4GatewayName: name,
- *     ipv4GatewayDescription: "tf-testAcc-Ipv4Gateway",
+ *     ipv4GatewayDescription: name,
  *     resourceGroupId: _default.id,
  *     vpcId: defaultNetwork.id,
  * });
@@ -43,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Vpc Ipv4 Gateway can be imported using the id, e.g.
+ * VPC Ipv4 Gateway can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
@@ -78,7 +74,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -86,9 +82,13 @@ export class Ipv4Gateway extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     */
+    public readonly internetMode!: pulumi.Output<string | undefined>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */
@@ -102,7 +102,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
      */
     public readonly ipv4GatewayName!: pulumi.Output<string | undefined>;
     /**
-     * ID of the route table associated with IPv4 Gateway.
+     * ID of the route table associated with IPv4 Gateway
      */
     public /*out*/ readonly ipv4GatewayRouteTableId!: pulumi.Output<string>;
     /**
@@ -110,7 +110,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -138,6 +138,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["internetMode"] = state ? state.internetMode : undefined;
             resourceInputs["ipv4GatewayDescription"] = state ? state.ipv4GatewayDescription : undefined;
             resourceInputs["ipv4GatewayId"] = state ? state.ipv4GatewayId : undefined;
             resourceInputs["ipv4GatewayName"] = state ? state.ipv4GatewayName : undefined;
@@ -153,6 +154,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
             }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["internetMode"] = args ? args.internetMode : undefined;
             resourceInputs["ipv4GatewayDescription"] = args ? args.ipv4GatewayDescription : undefined;
             resourceInputs["ipv4GatewayName"] = args ? args.ipv4GatewayName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -173,7 +175,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
  */
 export interface Ipv4GatewayState {
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -181,9 +183,13 @@ export interface Ipv4GatewayState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     */
+    internetMode?: pulumi.Input<string>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */
@@ -197,7 +203,7 @@ export interface Ipv4GatewayState {
      */
     ipv4GatewayName?: pulumi.Input<string>;
     /**
-     * ID of the route table associated with IPv4 Gateway.
+     * ID of the route table associated with IPv4 Gateway
      */
     ipv4GatewayRouteTableId?: pulumi.Input<string>;
     /**
@@ -205,7 +211,7 @@ export interface Ipv4GatewayState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
@@ -227,9 +233,13 @@ export interface Ipv4GatewayArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     */
+    internetMode?: pulumi.Input<string>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */

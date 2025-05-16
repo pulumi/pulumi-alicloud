@@ -111,10 +111,10 @@ class RdsCloneDbInstanceArgs:
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
-               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+               * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         :param pulumi.Input[builtins.str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[builtins.str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[builtins.int] client_ca_enabled: The client ca enabled.
@@ -454,10 +454,10 @@ class RdsCloneDbInstanceArgs:
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
-        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         """
         return pulumi.get(self, "category")
 
@@ -1223,10 +1223,10 @@ class _RdsCloneDbInstanceState:
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
-               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+               * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         :param pulumi.Input[builtins.str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[builtins.str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[builtins.int] client_ca_enabled: The client ca enabled.
@@ -1539,10 +1539,10 @@ class _RdsCloneDbInstanceState:
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
-        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         """
         return pulumi.get(self, "category")
 
@@ -2349,7 +2349,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
 
         For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
 
-        > **NOTE:** Available since v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 
@@ -2425,10 +2425,10 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
-               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+               * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         :param pulumi.Input[builtins.str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[builtins.str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[builtins.int] client_ca_enabled: The client ca enabled.
@@ -2549,7 +2549,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
 
         For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
 
-        > **NOTE:** Available since v1.149.0+.
+        > **NOTE:** Available since v1.149.0.
 
         ## Example Usage
 
@@ -2855,10 +2855,10 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
-               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+               * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         :param pulumi.Input[builtins.str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[builtins.str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[builtins.int] client_ca_enabled: The client ca enabled.
@@ -3094,10 +3094,10 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
-        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         """
         return pulumi.get(self, "category")
 

@@ -175,7 +175,7 @@ class Znode(pulumi.CustomResource):
 
         For information about Microservice Engine (MSE) Znode and how to use it, see [What is Znode](https://help.aliyun.com/document_detail/393622.html).
 
-        > **NOTE:** Available in v1.162.0+.
+        > **NOTE:** Available since v1.162.0.
 
         ## Example Usage
 
@@ -238,7 +238,7 @@ class Znode(pulumi.CustomResource):
 
         For information about Microservice Engine (MSE) Znode and how to use it, see [What is Znode](https://help.aliyun.com/document_detail/393622.html).
 
-        > **NOTE:** Available in v1.162.0+.
+        > **NOTE:** Available since v1.162.0.
 
         ## Example Usage
 

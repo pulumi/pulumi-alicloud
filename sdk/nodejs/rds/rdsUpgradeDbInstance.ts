@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  *
- * > **NOTE:** Available since v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *

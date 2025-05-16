@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about ROS Stack Instance and how to use it, see [What is Stack Instance](https://www.alibabacloud.com/help/en/doc-detail/151338.html).
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *

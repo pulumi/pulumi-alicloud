@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,11 +19,30 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     public static final ListenerState Empty = new ListenerState();
 
+    /**
+     * @deprecated
+     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * 
+     */
+    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
+    /**
+     * @deprecated
+     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * 
+     */
+    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
     public Optional<Output<String>> aclId() {
         return Optional.ofNullable(this.aclId);
+    }
+
+    @Import(name="aclIds")
+    private @Nullable Output<List<String>> aclIds;
+
+    public Optional<Output<List<String>>> aclIds() {
+        return Optional.ofNullable(this.aclIds);
     }
 
     @Import(name="aclStatus")
@@ -200,44 +220,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.idleTimeout);
     }
 
-    /**
-     * @deprecated
-     * Field &#39;lb_port&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-    @Import(name="lbPort")
-    private @Nullable Output<Integer> lbPort;
-
-    /**
-     * @deprecated
-     * Field &#39;lb_port&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-    public Optional<Output<Integer>> lbPort() {
-        return Optional.ofNullable(this.lbPort);
-    }
-
-    /**
-     * @deprecated
-     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-    @Import(name="lbProtocol")
-    private @Nullable Output<String> lbProtocol;
-
-    /**
-     * @deprecated
-     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-    public Optional<Output<String>> lbProtocol() {
-        return Optional.ofNullable(this.lbProtocol);
-    }
-
     @Import(name="listenerForward")
     private @Nullable Output<String> listenerForward;
 
@@ -374,6 +356,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     private ListenerState(ListenerState $) {
         this.aclId = $.aclId;
+        this.aclIds = $.aclIds;
         this.aclStatus = $.aclStatus;
         this.aclType = $.aclType;
         this.backendPort = $.backendPort;
@@ -399,8 +382,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.healthCheckUri = $.healthCheckUri;
         this.healthyThreshold = $.healthyThreshold;
         this.idleTimeout = $.idleTimeout;
-        this.lbPort = $.lbPort;
-        this.lbProtocol = $.lbProtocol;
         this.listenerForward = $.listenerForward;
         this.loadBalancerId = $.loadBalancerId;
         this.masterSlaveServerGroupId = $.masterSlaveServerGroupId;
@@ -437,13 +418,42 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
             $ = new ListenerState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+         * 
+         */
+        @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
         public Builder aclId(@Nullable Output<String> aclId) {
             $.aclId = aclId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+         * 
+         */
+        @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
         public Builder aclId(String aclId) {
             return aclId(Output.of(aclId));
+        }
+
+        public Builder aclIds(@Nullable Output<List<String>> aclIds) {
+            $.aclIds = aclIds;
+            return this;
+        }
+
+        public Builder aclIds(List<String> aclIds) {
+            return aclIds(Output.of(aclIds));
+        }
+
+        public Builder aclIds(String... aclIds) {
+            return aclIds(List.of(aclIds));
         }
 
         public Builder aclStatus(@Nullable Output<String> aclStatus) {
@@ -669,56 +679,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         public Builder idleTimeout(Integer idleTimeout) {
             return idleTimeout(Output.of(idleTimeout));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;lb_port&#39; has been removed since 1.211.0.
-         * 
-         */
-        @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-        public Builder lbPort(@Nullable Output<Integer> lbPort) {
-            $.lbPort = lbPort;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;lb_port&#39; has been removed since 1.211.0.
-         * 
-         */
-        @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-        public Builder lbPort(Integer lbPort) {
-            return lbPort(Output.of(lbPort));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
-         * 
-         */
-        @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-        public Builder lbProtocol(@Nullable Output<String> lbProtocol) {
-            $.lbProtocol = lbProtocol;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
-         * 
-         */
-        @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-        public Builder lbProtocol(String lbProtocol) {
-            return lbProtocol(Output.of(lbProtocol));
         }
 
         public Builder listenerForward(@Nullable Output<String> listenerForward) {

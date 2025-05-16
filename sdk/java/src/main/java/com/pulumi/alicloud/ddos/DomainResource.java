@@ -74,7 +74,13 @@ import javax.annotation.Nullable;
  *             .rsType(0)
  *             .instanceIds(default_.id())
  *             .realServers("177.167.32.11")
- *             .httpsExt("{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}")
+ *             .httpsExt("""
+ *     {
+ *     "Http2": 1,
+ *     "Http2https": 0,
+ *     "Https2http": 0
+ *   }
+ *             """)
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()
  *                 .proxyPorts(443)
  *                 .proxyType("https")
@@ -119,7 +125,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     /**
      * The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
      * 
      */
     @Export(name="certIdentifier", refs={String.class}, tree="[0]")
@@ -128,7 +134,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
      * 
      */
     public Output<Optional<String>> certIdentifier() {

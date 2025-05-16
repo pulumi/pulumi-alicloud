@@ -113,6 +113,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+     * 
+     */
+    @Import(name="capacityOptionsPriceComparisonMode")
+    private @Nullable Output<String> capacityOptionsPriceComparisonMode;
+
+    /**
+     * @return The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+     * 
+     */
+    public Optional<Output<String>> capacityOptionsPriceComparisonMode() {
+        return Optional.ofNullable(this.capacityOptionsPriceComparisonMode);
+    }
+
+    /**
      * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify &#39;compensate_with_on_demand&#39;, it may result in a higher percentage of pay-as-you-go instances compared to the value of &#39;on_demand_percentage_above_base_capacity&#39;. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify &#39;compensate_with_on_demand&#39;, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
      * 
      */
@@ -654,6 +669,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.capacityOptionsCompensateWithOnDemand = $.capacityOptionsCompensateWithOnDemand;
         this.capacityOptionsOnDemandBaseCapacity = $.capacityOptionsOnDemandBaseCapacity;
         this.capacityOptionsOnDemandPercentageAboveBaseCapacity = $.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+        this.capacityOptionsPriceComparisonMode = $.capacityOptionsPriceComparisonMode;
         this.capacityOptionsSpotAutoReplaceOnDemand = $.capacityOptionsSpotAutoReplaceOnDemand;
         this.compensateWithOnDemand = $.compensateWithOnDemand;
         this.containerGroupId = $.containerGroupId;
@@ -841,6 +857,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityOptionsOnDemandPercentageAboveBaseCapacity(Integer capacityOptionsOnDemandPercentageAboveBaseCapacity) {
             return capacityOptionsOnDemandPercentageAboveBaseCapacity(Output.of(capacityOptionsOnDemandPercentageAboveBaseCapacity));
+        }
+
+        /**
+         * @param capacityOptionsPriceComparisonMode The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsPriceComparisonMode(@Nullable Output<String> capacityOptionsPriceComparisonMode) {
+            $.capacityOptionsPriceComparisonMode = capacityOptionsPriceComparisonMode;
+            return this;
+        }
+
+        /**
+         * @param capacityOptionsPriceComparisonMode The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsPriceComparisonMode(String capacityOptionsPriceComparisonMode) {
+            return capacityOptionsPriceComparisonMode(Output.of(capacityOptionsPriceComparisonMode));
         }
 
         /**

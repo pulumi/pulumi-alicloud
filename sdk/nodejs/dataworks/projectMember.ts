@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultProjectMember = new alicloud.dataworks.ProjectMember("default", {
  *     userId: defaultKCTrB2.id,
- *     projectId: defaultCoMnk8.id,
+ *     projectId: defaultQeRfvU.id,
  *     roles: [{
  *         code: adminCode,
  *     }],

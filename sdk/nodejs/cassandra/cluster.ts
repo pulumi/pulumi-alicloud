@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
  * The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).

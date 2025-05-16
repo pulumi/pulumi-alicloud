@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS Upgrade DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
     /// 
-    /// &gt; **NOTE:** Available since v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0.
     /// 
     /// ## Example Usage
     /// 

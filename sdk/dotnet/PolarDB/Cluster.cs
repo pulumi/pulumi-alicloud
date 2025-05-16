@@ -196,7 +196,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> HotReplicaMode { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Output("hotStandbyCluster")]
         public Output<string> HotStandbyCluster { get; private set; } = null!;
@@ -408,6 +409,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("sourceResourceId")]
         public Output<string?> SourceResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// </summary>
+        [Output("standbyAz")]
+        public Output<string> StandbyAz { get; private set; } = null!;
 
         /// <summary>
         /// (Available since 1.204.1) PolarDB cluster status.
@@ -710,7 +718,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? HotReplicaMode { get; set; }
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }
@@ -934,6 +943,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
+
+        /// <summary>
+        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// </summary>
+        [Input("standbyAz")]
+        public Input<string>? StandbyAz { get; set; }
 
         /// <summary>
         /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
@@ -1214,7 +1230,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? HotReplicaMode { get; set; }
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        /// &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }
@@ -1444,6 +1461,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
+
+        /// <summary>
+        /// The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        /// &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        /// </summary>
+        [Input("standbyAz")]
+        public Input<string>? StandbyAz { get; set; }
 
         /// <summary>
         /// (Available since 1.204.1) PolarDB cluster status.

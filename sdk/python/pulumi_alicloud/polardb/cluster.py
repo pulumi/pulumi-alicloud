@@ -78,6 +78,7 @@ class ClusterArgs:
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 standby_az: Optional[pulumi.Input[builtins.str]] = None,
                  storage_pay_type: Optional[pulumi.Input[builtins.str]] = None,
                  storage_space: Optional[pulumi.Input[builtins.int]] = None,
                  storage_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -128,7 +129,8 @@ class ClusterArgs:
         :param pulumi.Input[builtins.str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[builtins.str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+               > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         :param pulumi.Input[builtins.str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -176,6 +178,8 @@ class ClusterArgs:
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+               > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
@@ -304,6 +308,8 @@ class ClusterArgs:
             pulumi.set(__self__, "serverless_type", serverless_type)
         if source_resource_id is not None:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
+        if standby_az is not None:
+            pulumi.set(__self__, "standby_az", standby_az)
         if storage_pay_type is not None:
             pulumi.set(__self__, "storage_pay_type", storage_pay_type)
         if storage_space is not None:
@@ -633,7 +639,8 @@ class ClusterArgs:
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         """
         return pulumi.get(self, "hot_standby_cluster")
 
@@ -1030,6 +1037,19 @@ class ClusterArgs:
         pulumi.set(self, "source_resource_id", value)
 
     @property
+    @pulumi.getter(name="standbyAz")
+    def standby_az(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        """
+        return pulumi.get(self, "standby_az")
+
+    @standby_az.setter
+    def standby_az(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "standby_az", value)
+
+    @property
     @pulumi.getter(name="storagePayType")
     def storage_pay_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -1243,6 +1263,7 @@ class _ClusterState:
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 standby_az: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  storage_pay_type: Optional[pulumi.Input[builtins.str]] = None,
                  storage_space: Optional[pulumi.Input[builtins.int]] = None,
@@ -1298,7 +1319,8 @@ class _ClusterState:
         :param pulumi.Input[builtins.str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[builtins.str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+               > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         :param pulumi.Input[builtins.str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -1347,6 +1369,8 @@ class _ClusterState:
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+               > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[builtins.str] status: (Available since 1.204.1) PolarDB cluster status.
         :param pulumi.Input[builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
@@ -1490,6 +1514,8 @@ class _ClusterState:
             pulumi.set(__self__, "serverless_type", serverless_type)
         if source_resource_id is not None:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
+        if standby_az is not None:
+            pulumi.set(__self__, "standby_az", standby_az)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_pay_type is not None:
@@ -1859,7 +1885,8 @@ class _ClusterState:
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         """
         return pulumi.get(self, "hot_standby_cluster")
 
@@ -2268,6 +2295,19 @@ class _ClusterState:
         pulumi.set(self, "source_resource_id", value)
 
     @property
+    @pulumi.getter(name="standbyAz")
+    def standby_az(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        """
+        return pulumi.get(self, "standby_az")
+
+    @standby_az.setter
+    def standby_az(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "standby_az", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -2506,6 +2546,7 @@ class Cluster(pulumi.CustomResource):
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 standby_az: Optional[pulumi.Input[builtins.str]] = None,
                  storage_pay_type: Optional[pulumi.Input[builtins.str]] = None,
                  storage_space: Optional[pulumi.Input[builtins.int]] = None,
                  storage_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -2566,7 +2607,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[builtins.str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+               > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         :param pulumi.Input[builtins.str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -2614,6 +2656,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+               > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
@@ -2719,6 +2763,7 @@ class Cluster(pulumi.CustomResource):
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 standby_az: Optional[pulumi.Input[builtins.str]] = None,
                  storage_pay_type: Optional[pulumi.Input[builtins.str]] = None,
                  storage_space: Optional[pulumi.Input[builtins.int]] = None,
                  storage_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -2802,6 +2847,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["serverless_steady_switch"] = serverless_steady_switch
             __props__.__dict__["serverless_type"] = serverless_type
             __props__.__dict__["source_resource_id"] = source_resource_id
+            __props__.__dict__["standby_az"] = standby_az
             __props__.__dict__["storage_pay_type"] = storage_pay_type
             __props__.__dict__["storage_space"] = storage_space
             __props__.__dict__["storage_type"] = storage_type
@@ -2890,6 +2936,7 @@ class Cluster(pulumi.CustomResource):
             serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
             serverless_type: Optional[pulumi.Input[builtins.str]] = None,
             source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+            standby_az: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
             storage_pay_type: Optional[pulumi.Input[builtins.str]] = None,
             storage_space: Optional[pulumi.Input[builtins.int]] = None,
@@ -2950,7 +2997,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[builtins.str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        :param pulumi.Input[builtins.str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+               > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         :param pulumi.Input[builtins.str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -2999,6 +3047,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
+        :param pulumi.Input[builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+               > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[builtins.str] status: (Available since 1.204.1) PolarDB cluster status.
         :param pulumi.Input[builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
         :param pulumi.Input[builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
@@ -3086,6 +3136,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["serverless_steady_switch"] = serverless_steady_switch
         __props__.__dict__["serverless_type"] = serverless_type
         __props__.__dict__["source_resource_id"] = source_resource_id
+        __props__.__dict__["standby_az"] = standby_az
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_pay_type"] = storage_pay_type
         __props__.__dict__["storage_space"] = storage_space
@@ -3334,7 +3385,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> pulumi.Output[builtins.str]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+        > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
         """
         return pulumi.get(self, "hot_standby_cluster")
 
@@ -3609,6 +3661,15 @@ class Cluster(pulumi.CustomResource):
         The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
+
+    @property
+    @pulumi.getter(name="standbyAz")
+    def standby_az(self) -> pulumi.Output[builtins.str]:
+        """
+        The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+        > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+        """
+        return pulumi.get(self, "standby_az")
 
     @property
     @pulumi.getter

@@ -16,7 +16,7 @@ import (
 //
 // For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanainstance).
 //
-// > **NOTE:** Available in v1.178.0+.
+// > **NOTE:** Available since v1.178.0.
 //
 // > **NOTE:** The `sid` attribute is required when destroying resources.
 //

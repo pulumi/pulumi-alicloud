@@ -85,7 +85,10 @@ namespace Pulumi.AliCloud.Slb
     ///         },
     ///         AclStatus = "on",
     ///         AclType = "white",
-    ///         AclId = listenerAcl.Id,
+    ///         AclIds = new[]
+    ///         {
+    ///             listenerAcl.Id,
+    ///         },
     ///         RequestTimeout = 80,
     ///         IdleTimeout = 30,
     ///     });
@@ -123,7 +126,10 @@ namespace Pulumi.AliCloud.Slb
     public partial class Listener : global::Pulumi.CustomResource
     {
         [Output("aclId")]
-        public Output<string?> AclId { get; private set; } = null!;
+        public Output<string> AclId { get; private set; } = null!;
+
+        [Output("aclIds")]
+        public Output<ImmutableArray<string>> AclIds { get; private set; } = null!;
 
         [Output("aclStatus")]
         public Output<string?> AclStatus { get; private set; } = null!;
@@ -199,12 +205,6 @@ namespace Pulumi.AliCloud.Slb
 
         [Output("idleTimeout")]
         public Output<int?> IdleTimeout { get; private set; } = null!;
-
-        [Output("lbPort")]
-        public Output<int?> LbPort { get; private set; } = null!;
-
-        [Output("lbProtocol")]
-        public Output<string?> LbProtocol { get; private set; } = null!;
 
         [Output("listenerForward")]
         public Output<string> ListenerForward { get; private set; } = null!;
@@ -306,6 +306,14 @@ namespace Pulumi.AliCloud.Slb
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
+        [Input("aclIds")]
+        private InputList<string>? _aclIds;
+        public InputList<string> AclIds
+        {
+            get => _aclIds ?? (_aclIds = new InputList<string>());
+            set => _aclIds = value;
+        }
+
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
 
@@ -381,12 +389,6 @@ namespace Pulumi.AliCloud.Slb
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
-        [Input("lbPort")]
-        public Input<int>? LbPort { get; set; }
-
-        [Input("lbProtocol")]
-        public Input<string>? LbProtocol { get; set; }
-
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }
 
@@ -448,6 +450,14 @@ namespace Pulumi.AliCloud.Slb
     {
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
+
+        [Input("aclIds")]
+        private InputList<string>? _aclIds;
+        public InputList<string> AclIds
+        {
+            get => _aclIds ?? (_aclIds = new InputList<string>());
+            set => _aclIds = value;
+        }
 
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
@@ -523,12 +533,6 @@ namespace Pulumi.AliCloud.Slb
 
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
-
-        [Input("lbPort")]
-        public Input<int>? LbPort { get; set; }
-
-        [Input("lbProtocol")]
-        public Input<string>? LbProtocol { get; set; }
 
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }

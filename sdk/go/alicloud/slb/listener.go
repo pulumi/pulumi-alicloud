@@ -96,9 +96,11 @@ import (
 //					RetriveSlbIp: pulumi.Bool(true),
 //					RetriveSlbId: pulumi.Bool(true),
 //				},
-//				AclStatus:      pulumi.String("on"),
-//				AclType:        pulumi.String("white"),
-//				AclId:          listenerAcl.ID(),
+//				AclStatus: pulumi.String("on"),
+//				AclType:   pulumi.String("white"),
+//				AclIds: pulumi.StringArray{
+//					listenerAcl.ID(),
+//				},
 //				RequestTimeout: pulumi.Int(80),
 //				IdleTimeout:    pulumi.Int(30),
 //			})
@@ -141,46 +143,44 @@ import (
 type Listener struct {
 	pulumi.CustomResourceState
 
-	AclId                      pulumi.StringPtrOutput `pulumi:"aclId"`
-	AclStatus                  pulumi.StringPtrOutput `pulumi:"aclStatus"`
-	AclType                    pulumi.StringPtrOutput `pulumi:"aclType"`
-	BackendPort                pulumi.IntPtrOutput    `pulumi:"backendPort"`
-	Bandwidth                  pulumi.IntOutput       `pulumi:"bandwidth"`
-	CaCertificateId            pulumi.StringPtrOutput `pulumi:"caCertificateId"`
-	Cookie                     pulumi.StringPtrOutput `pulumi:"cookie"`
-	CookieTimeout              pulumi.IntPtrOutput    `pulumi:"cookieTimeout"`
-	DeleteProtectionValidation pulumi.BoolPtrOutput   `pulumi:"deleteProtectionValidation"`
-	Description                pulumi.StringPtrOutput `pulumi:"description"`
-	EnableHttp2                pulumi.StringPtrOutput `pulumi:"enableHttp2"`
-	EstablishedTimeout         pulumi.IntPtrOutput    `pulumi:"establishedTimeout"`
-	ForwardPort                pulumi.IntPtrOutput    `pulumi:"forwardPort"`
-	FrontendPort               pulumi.IntOutput       `pulumi:"frontendPort"`
-	Gzip                       pulumi.BoolPtrOutput   `pulumi:"gzip"`
-	HealthCheck                pulumi.StringPtrOutput `pulumi:"healthCheck"`
-	HealthCheckConnectPort     pulumi.IntOutput       `pulumi:"healthCheckConnectPort"`
-	HealthCheckDomain          pulumi.StringPtrOutput `pulumi:"healthCheckDomain"`
-	HealthCheckHttpCode        pulumi.StringOutput    `pulumi:"healthCheckHttpCode"`
-	HealthCheckInterval        pulumi.IntPtrOutput    `pulumi:"healthCheckInterval"`
-	HealthCheckMethod          pulumi.StringOutput    `pulumi:"healthCheckMethod"`
-	HealthCheckTimeout         pulumi.IntPtrOutput    `pulumi:"healthCheckTimeout"`
-	HealthCheckType            pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	HealthCheckUri             pulumi.StringPtrOutput `pulumi:"healthCheckUri"`
-	HealthyThreshold           pulumi.IntPtrOutput    `pulumi:"healthyThreshold"`
-	IdleTimeout                pulumi.IntPtrOutput    `pulumi:"idleTimeout"`
-	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-	LbPort pulumi.IntPtrOutput `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-	LbProtocol               pulumi.StringPtrOutput `pulumi:"lbProtocol"`
-	ListenerForward          pulumi.StringOutput    `pulumi:"listenerForward"`
-	LoadBalancerId           pulumi.StringOutput    `pulumi:"loadBalancerId"`
-	MasterSlaveServerGroupId pulumi.StringPtrOutput `pulumi:"masterSlaveServerGroupId"`
-	PersistenceTimeout       pulumi.IntPtrOutput    `pulumi:"persistenceTimeout"`
-	Protocol                 pulumi.StringOutput    `pulumi:"protocol"`
-	ProxyProtocolV2Enabled   pulumi.BoolOutput      `pulumi:"proxyProtocolV2Enabled"`
-	RequestTimeout           pulumi.IntPtrOutput    `pulumi:"requestTimeout"`
-	Scheduler                pulumi.StringPtrOutput `pulumi:"scheduler"`
-	ServerCertificateId      pulumi.StringOutput    `pulumi:"serverCertificateId"`
-	ServerGroupId            pulumi.StringPtrOutput `pulumi:"serverGroupId"`
+	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+	AclId                      pulumi.StringOutput      `pulumi:"aclId"`
+	AclIds                     pulumi.StringArrayOutput `pulumi:"aclIds"`
+	AclStatus                  pulumi.StringPtrOutput   `pulumi:"aclStatus"`
+	AclType                    pulumi.StringPtrOutput   `pulumi:"aclType"`
+	BackendPort                pulumi.IntPtrOutput      `pulumi:"backendPort"`
+	Bandwidth                  pulumi.IntOutput         `pulumi:"bandwidth"`
+	CaCertificateId            pulumi.StringPtrOutput   `pulumi:"caCertificateId"`
+	Cookie                     pulumi.StringPtrOutput   `pulumi:"cookie"`
+	CookieTimeout              pulumi.IntPtrOutput      `pulumi:"cookieTimeout"`
+	DeleteProtectionValidation pulumi.BoolPtrOutput     `pulumi:"deleteProtectionValidation"`
+	Description                pulumi.StringPtrOutput   `pulumi:"description"`
+	EnableHttp2                pulumi.StringPtrOutput   `pulumi:"enableHttp2"`
+	EstablishedTimeout         pulumi.IntPtrOutput      `pulumi:"establishedTimeout"`
+	ForwardPort                pulumi.IntPtrOutput      `pulumi:"forwardPort"`
+	FrontendPort               pulumi.IntOutput         `pulumi:"frontendPort"`
+	Gzip                       pulumi.BoolPtrOutput     `pulumi:"gzip"`
+	HealthCheck                pulumi.StringPtrOutput   `pulumi:"healthCheck"`
+	HealthCheckConnectPort     pulumi.IntOutput         `pulumi:"healthCheckConnectPort"`
+	HealthCheckDomain          pulumi.StringPtrOutput   `pulumi:"healthCheckDomain"`
+	HealthCheckHttpCode        pulumi.StringOutput      `pulumi:"healthCheckHttpCode"`
+	HealthCheckInterval        pulumi.IntPtrOutput      `pulumi:"healthCheckInterval"`
+	HealthCheckMethod          pulumi.StringOutput      `pulumi:"healthCheckMethod"`
+	HealthCheckTimeout         pulumi.IntPtrOutput      `pulumi:"healthCheckTimeout"`
+	HealthCheckType            pulumi.StringPtrOutput   `pulumi:"healthCheckType"`
+	HealthCheckUri             pulumi.StringPtrOutput   `pulumi:"healthCheckUri"`
+	HealthyThreshold           pulumi.IntPtrOutput      `pulumi:"healthyThreshold"`
+	IdleTimeout                pulumi.IntPtrOutput      `pulumi:"idleTimeout"`
+	ListenerForward            pulumi.StringOutput      `pulumi:"listenerForward"`
+	LoadBalancerId             pulumi.StringOutput      `pulumi:"loadBalancerId"`
+	MasterSlaveServerGroupId   pulumi.StringPtrOutput   `pulumi:"masterSlaveServerGroupId"`
+	PersistenceTimeout         pulumi.IntPtrOutput      `pulumi:"persistenceTimeout"`
+	Protocol                   pulumi.StringOutput      `pulumi:"protocol"`
+	ProxyProtocolV2Enabled     pulumi.BoolOutput        `pulumi:"proxyProtocolV2Enabled"`
+	RequestTimeout             pulumi.IntPtrOutput      `pulumi:"requestTimeout"`
+	Scheduler                  pulumi.StringPtrOutput   `pulumi:"scheduler"`
+	ServerCertificateId        pulumi.StringOutput      `pulumi:"serverCertificateId"`
+	ServerGroupId              pulumi.StringPtrOutput   `pulumi:"serverGroupId"`
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId   pulumi.StringOutput    `pulumi:"sslCertificateId"`
 	StickySession      pulumi.StringPtrOutput `pulumi:"stickySession"`
@@ -230,46 +230,44 @@ func GetListener(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
-	AclId                      *string `pulumi:"aclId"`
-	AclStatus                  *string `pulumi:"aclStatus"`
-	AclType                    *string `pulumi:"aclType"`
-	BackendPort                *int    `pulumi:"backendPort"`
-	Bandwidth                  *int    `pulumi:"bandwidth"`
-	CaCertificateId            *string `pulumi:"caCertificateId"`
-	Cookie                     *string `pulumi:"cookie"`
-	CookieTimeout              *int    `pulumi:"cookieTimeout"`
-	DeleteProtectionValidation *bool   `pulumi:"deleteProtectionValidation"`
-	Description                *string `pulumi:"description"`
-	EnableHttp2                *string `pulumi:"enableHttp2"`
-	EstablishedTimeout         *int    `pulumi:"establishedTimeout"`
-	ForwardPort                *int    `pulumi:"forwardPort"`
-	FrontendPort               *int    `pulumi:"frontendPort"`
-	Gzip                       *bool   `pulumi:"gzip"`
-	HealthCheck                *string `pulumi:"healthCheck"`
-	HealthCheckConnectPort     *int    `pulumi:"healthCheckConnectPort"`
-	HealthCheckDomain          *string `pulumi:"healthCheckDomain"`
-	HealthCheckHttpCode        *string `pulumi:"healthCheckHttpCode"`
-	HealthCheckInterval        *int    `pulumi:"healthCheckInterval"`
-	HealthCheckMethod          *string `pulumi:"healthCheckMethod"`
-	HealthCheckTimeout         *int    `pulumi:"healthCheckTimeout"`
-	HealthCheckType            *string `pulumi:"healthCheckType"`
-	HealthCheckUri             *string `pulumi:"healthCheckUri"`
-	HealthyThreshold           *int    `pulumi:"healthyThreshold"`
-	IdleTimeout                *int    `pulumi:"idleTimeout"`
-	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-	LbPort *int `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-	LbProtocol               *string `pulumi:"lbProtocol"`
-	ListenerForward          *string `pulumi:"listenerForward"`
-	LoadBalancerId           *string `pulumi:"loadBalancerId"`
-	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
-	PersistenceTimeout       *int    `pulumi:"persistenceTimeout"`
-	Protocol                 *string `pulumi:"protocol"`
-	ProxyProtocolV2Enabled   *bool   `pulumi:"proxyProtocolV2Enabled"`
-	RequestTimeout           *int    `pulumi:"requestTimeout"`
-	Scheduler                *string `pulumi:"scheduler"`
-	ServerCertificateId      *string `pulumi:"serverCertificateId"`
-	ServerGroupId            *string `pulumi:"serverGroupId"`
+	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+	AclId                      *string  `pulumi:"aclId"`
+	AclIds                     []string `pulumi:"aclIds"`
+	AclStatus                  *string  `pulumi:"aclStatus"`
+	AclType                    *string  `pulumi:"aclType"`
+	BackendPort                *int     `pulumi:"backendPort"`
+	Bandwidth                  *int     `pulumi:"bandwidth"`
+	CaCertificateId            *string  `pulumi:"caCertificateId"`
+	Cookie                     *string  `pulumi:"cookie"`
+	CookieTimeout              *int     `pulumi:"cookieTimeout"`
+	DeleteProtectionValidation *bool    `pulumi:"deleteProtectionValidation"`
+	Description                *string  `pulumi:"description"`
+	EnableHttp2                *string  `pulumi:"enableHttp2"`
+	EstablishedTimeout         *int     `pulumi:"establishedTimeout"`
+	ForwardPort                *int     `pulumi:"forwardPort"`
+	FrontendPort               *int     `pulumi:"frontendPort"`
+	Gzip                       *bool    `pulumi:"gzip"`
+	HealthCheck                *string  `pulumi:"healthCheck"`
+	HealthCheckConnectPort     *int     `pulumi:"healthCheckConnectPort"`
+	HealthCheckDomain          *string  `pulumi:"healthCheckDomain"`
+	HealthCheckHttpCode        *string  `pulumi:"healthCheckHttpCode"`
+	HealthCheckInterval        *int     `pulumi:"healthCheckInterval"`
+	HealthCheckMethod          *string  `pulumi:"healthCheckMethod"`
+	HealthCheckTimeout         *int     `pulumi:"healthCheckTimeout"`
+	HealthCheckType            *string  `pulumi:"healthCheckType"`
+	HealthCheckUri             *string  `pulumi:"healthCheckUri"`
+	HealthyThreshold           *int     `pulumi:"healthyThreshold"`
+	IdleTimeout                *int     `pulumi:"idleTimeout"`
+	ListenerForward            *string  `pulumi:"listenerForward"`
+	LoadBalancerId             *string  `pulumi:"loadBalancerId"`
+	MasterSlaveServerGroupId   *string  `pulumi:"masterSlaveServerGroupId"`
+	PersistenceTimeout         *int     `pulumi:"persistenceTimeout"`
+	Protocol                   *string  `pulumi:"protocol"`
+	ProxyProtocolV2Enabled     *bool    `pulumi:"proxyProtocolV2Enabled"`
+	RequestTimeout             *int     `pulumi:"requestTimeout"`
+	Scheduler                  *string  `pulumi:"scheduler"`
+	ServerCertificateId        *string  `pulumi:"serverCertificateId"`
+	ServerGroupId              *string  `pulumi:"serverGroupId"`
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId   *string `pulumi:"sslCertificateId"`
 	StickySession      *string `pulumi:"stickySession"`
@@ -281,7 +279,9 @@ type listenerState struct {
 }
 
 type ListenerState struct {
+	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
 	AclId                      pulumi.StringPtrInput
+	AclIds                     pulumi.StringArrayInput
 	AclStatus                  pulumi.StringPtrInput
 	AclType                    pulumi.StringPtrInput
 	BackendPort                pulumi.IntPtrInput
@@ -307,20 +307,16 @@ type ListenerState struct {
 	HealthCheckUri             pulumi.StringPtrInput
 	HealthyThreshold           pulumi.IntPtrInput
 	IdleTimeout                pulumi.IntPtrInput
-	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-	LbPort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-	LbProtocol               pulumi.StringPtrInput
-	ListenerForward          pulumi.StringPtrInput
-	LoadBalancerId           pulumi.StringPtrInput
-	MasterSlaveServerGroupId pulumi.StringPtrInput
-	PersistenceTimeout       pulumi.IntPtrInput
-	Protocol                 pulumi.StringPtrInput
-	ProxyProtocolV2Enabled   pulumi.BoolPtrInput
-	RequestTimeout           pulumi.IntPtrInput
-	Scheduler                pulumi.StringPtrInput
-	ServerCertificateId      pulumi.StringPtrInput
-	ServerGroupId            pulumi.StringPtrInput
+	ListenerForward            pulumi.StringPtrInput
+	LoadBalancerId             pulumi.StringPtrInput
+	MasterSlaveServerGroupId   pulumi.StringPtrInput
+	PersistenceTimeout         pulumi.IntPtrInput
+	Protocol                   pulumi.StringPtrInput
+	ProxyProtocolV2Enabled     pulumi.BoolPtrInput
+	RequestTimeout             pulumi.IntPtrInput
+	Scheduler                  pulumi.StringPtrInput
+	ServerCertificateId        pulumi.StringPtrInput
+	ServerGroupId              pulumi.StringPtrInput
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId   pulumi.StringPtrInput
 	StickySession      pulumi.StringPtrInput
@@ -336,46 +332,44 @@ func (ListenerState) ElementType() reflect.Type {
 }
 
 type listenerArgs struct {
-	AclId                      *string `pulumi:"aclId"`
-	AclStatus                  *string `pulumi:"aclStatus"`
-	AclType                    *string `pulumi:"aclType"`
-	BackendPort                *int    `pulumi:"backendPort"`
-	Bandwidth                  *int    `pulumi:"bandwidth"`
-	CaCertificateId            *string `pulumi:"caCertificateId"`
-	Cookie                     *string `pulumi:"cookie"`
-	CookieTimeout              *int    `pulumi:"cookieTimeout"`
-	DeleteProtectionValidation *bool   `pulumi:"deleteProtectionValidation"`
-	Description                *string `pulumi:"description"`
-	EnableHttp2                *string `pulumi:"enableHttp2"`
-	EstablishedTimeout         *int    `pulumi:"establishedTimeout"`
-	ForwardPort                *int    `pulumi:"forwardPort"`
-	FrontendPort               int     `pulumi:"frontendPort"`
-	Gzip                       *bool   `pulumi:"gzip"`
-	HealthCheck                *string `pulumi:"healthCheck"`
-	HealthCheckConnectPort     *int    `pulumi:"healthCheckConnectPort"`
-	HealthCheckDomain          *string `pulumi:"healthCheckDomain"`
-	HealthCheckHttpCode        *string `pulumi:"healthCheckHttpCode"`
-	HealthCheckInterval        *int    `pulumi:"healthCheckInterval"`
-	HealthCheckMethod          *string `pulumi:"healthCheckMethod"`
-	HealthCheckTimeout         *int    `pulumi:"healthCheckTimeout"`
-	HealthCheckType            *string `pulumi:"healthCheckType"`
-	HealthCheckUri             *string `pulumi:"healthCheckUri"`
-	HealthyThreshold           *int    `pulumi:"healthyThreshold"`
-	IdleTimeout                *int    `pulumi:"idleTimeout"`
-	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-	LbPort *int `pulumi:"lbPort"`
-	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-	LbProtocol               *string `pulumi:"lbProtocol"`
-	ListenerForward          *string `pulumi:"listenerForward"`
-	LoadBalancerId           string  `pulumi:"loadBalancerId"`
-	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
-	PersistenceTimeout       *int    `pulumi:"persistenceTimeout"`
-	Protocol                 string  `pulumi:"protocol"`
-	ProxyProtocolV2Enabled   *bool   `pulumi:"proxyProtocolV2Enabled"`
-	RequestTimeout           *int    `pulumi:"requestTimeout"`
-	Scheduler                *string `pulumi:"scheduler"`
-	ServerCertificateId      *string `pulumi:"serverCertificateId"`
-	ServerGroupId            *string `pulumi:"serverGroupId"`
+	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+	AclId                      *string  `pulumi:"aclId"`
+	AclIds                     []string `pulumi:"aclIds"`
+	AclStatus                  *string  `pulumi:"aclStatus"`
+	AclType                    *string  `pulumi:"aclType"`
+	BackendPort                *int     `pulumi:"backendPort"`
+	Bandwidth                  *int     `pulumi:"bandwidth"`
+	CaCertificateId            *string  `pulumi:"caCertificateId"`
+	Cookie                     *string  `pulumi:"cookie"`
+	CookieTimeout              *int     `pulumi:"cookieTimeout"`
+	DeleteProtectionValidation *bool    `pulumi:"deleteProtectionValidation"`
+	Description                *string  `pulumi:"description"`
+	EnableHttp2                *string  `pulumi:"enableHttp2"`
+	EstablishedTimeout         *int     `pulumi:"establishedTimeout"`
+	ForwardPort                *int     `pulumi:"forwardPort"`
+	FrontendPort               int      `pulumi:"frontendPort"`
+	Gzip                       *bool    `pulumi:"gzip"`
+	HealthCheck                *string  `pulumi:"healthCheck"`
+	HealthCheckConnectPort     *int     `pulumi:"healthCheckConnectPort"`
+	HealthCheckDomain          *string  `pulumi:"healthCheckDomain"`
+	HealthCheckHttpCode        *string  `pulumi:"healthCheckHttpCode"`
+	HealthCheckInterval        *int     `pulumi:"healthCheckInterval"`
+	HealthCheckMethod          *string  `pulumi:"healthCheckMethod"`
+	HealthCheckTimeout         *int     `pulumi:"healthCheckTimeout"`
+	HealthCheckType            *string  `pulumi:"healthCheckType"`
+	HealthCheckUri             *string  `pulumi:"healthCheckUri"`
+	HealthyThreshold           *int     `pulumi:"healthyThreshold"`
+	IdleTimeout                *int     `pulumi:"idleTimeout"`
+	ListenerForward            *string  `pulumi:"listenerForward"`
+	LoadBalancerId             string   `pulumi:"loadBalancerId"`
+	MasterSlaveServerGroupId   *string  `pulumi:"masterSlaveServerGroupId"`
+	PersistenceTimeout         *int     `pulumi:"persistenceTimeout"`
+	Protocol                   string   `pulumi:"protocol"`
+	ProxyProtocolV2Enabled     *bool    `pulumi:"proxyProtocolV2Enabled"`
+	RequestTimeout             *int     `pulumi:"requestTimeout"`
+	Scheduler                  *string  `pulumi:"scheduler"`
+	ServerCertificateId        *string  `pulumi:"serverCertificateId"`
+	ServerGroupId              *string  `pulumi:"serverGroupId"`
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId   *string `pulumi:"sslCertificateId"`
 	StickySession      *string `pulumi:"stickySession"`
@@ -388,7 +382,9 @@ type listenerArgs struct {
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
+	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
 	AclId                      pulumi.StringPtrInput
+	AclIds                     pulumi.StringArrayInput
 	AclStatus                  pulumi.StringPtrInput
 	AclType                    pulumi.StringPtrInput
 	BackendPort                pulumi.IntPtrInput
@@ -414,20 +410,16 @@ type ListenerArgs struct {
 	HealthCheckUri             pulumi.StringPtrInput
 	HealthyThreshold           pulumi.IntPtrInput
 	IdleTimeout                pulumi.IntPtrInput
-	// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-	LbPort pulumi.IntPtrInput
-	// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-	LbProtocol               pulumi.StringPtrInput
-	ListenerForward          pulumi.StringPtrInput
-	LoadBalancerId           pulumi.StringInput
-	MasterSlaveServerGroupId pulumi.StringPtrInput
-	PersistenceTimeout       pulumi.IntPtrInput
-	Protocol                 pulumi.StringInput
-	ProxyProtocolV2Enabled   pulumi.BoolPtrInput
-	RequestTimeout           pulumi.IntPtrInput
-	Scheduler                pulumi.StringPtrInput
-	ServerCertificateId      pulumi.StringPtrInput
-	ServerGroupId            pulumi.StringPtrInput
+	ListenerForward            pulumi.StringPtrInput
+	LoadBalancerId             pulumi.StringInput
+	MasterSlaveServerGroupId   pulumi.StringPtrInput
+	PersistenceTimeout         pulumi.IntPtrInput
+	Protocol                   pulumi.StringInput
+	ProxyProtocolV2Enabled     pulumi.BoolPtrInput
+	RequestTimeout             pulumi.IntPtrInput
+	Scheduler                  pulumi.StringPtrInput
+	ServerCertificateId        pulumi.StringPtrInput
+	ServerGroupId              pulumi.StringPtrInput
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId   pulumi.StringPtrInput
 	StickySession      pulumi.StringPtrInput
@@ -525,8 +517,13 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
-func (o ListenerOutput) AclId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.AclId }).(pulumi.StringPtrOutput)
+// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+func (o ListenerOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
+}
+
+func (o ListenerOutput) AclIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.AclIds }).(pulumi.StringArrayOutput)
 }
 
 func (o ListenerOutput) AclStatus() pulumi.StringPtrOutput {
@@ -627,16 +624,6 @@ func (o ListenerOutput) HealthyThreshold() pulumi.IntPtrOutput {
 
 func (o ListenerOutput) IdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.IdleTimeout }).(pulumi.IntPtrOutput)
-}
-
-// Deprecated: Field 'lb_port' has been removed since 1.211.0.
-func (o ListenerOutput) LbPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.LbPort }).(pulumi.IntPtrOutput)
-}
-
-// Deprecated: Field 'lb_protocol' has been removed since 1.211.0.
-func (o ListenerOutput) LbProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.LbProtocol }).(pulumi.StringPtrOutput)
 }
 
 func (o ListenerOutput) ListenerForward() pulumi.StringOutput {

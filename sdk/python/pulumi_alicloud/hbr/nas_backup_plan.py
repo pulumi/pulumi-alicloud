@@ -487,7 +487,11 @@ class NasBackupPlan(pulumi.CustomResource):
 
         For information about HBR Nas Backup Plan and how to use it, see [What is Nas Backup Plan](https://www.alibabacloud.com/help/doc-detail/132248.htm).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** Deprecated since v1.249.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 
         ## Example Usage
 
@@ -555,7 +559,11 @@ class NasBackupPlan(pulumi.CustomResource):
 
         For information about HBR Nas Backup Plan and how to use it, see [What is Nas Backup Plan](https://www.alibabacloud.com/help/doc-detail/132248.htm).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** Deprecated since v1.249.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 
         ## Example Usage
 

@@ -126,7 +126,9 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[builtins.str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[builtins.str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[builtins.str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        :param pulumi.Input[builtins.str] node_type: Node type, valid values:
+               - `MASTER_SLAVE`: High availability (dual copies)
+               - `STAND_ALONE`: Single copy
         :param pulumi.Input[builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
@@ -742,7 +744,9 @@ class InstanceArgs:
     @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        Node type, valid values:
+        - `MASTER_SLAVE`: High availability (dual copies)
+        - `STAND_ALONE`: Single copy
         """
         return pulumi.get(self, "node_type")
 
@@ -1196,7 +1200,9 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[builtins.str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[builtins.str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[builtins.str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        :param pulumi.Input[builtins.str] node_type: Node type, valid values:
+               - `MASTER_SLAVE`: High availability (dual copies)
+               - `STAND_ALONE`: Single copy
         :param pulumi.Input[builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
@@ -1864,7 +1870,9 @@ class _InstanceState:
     @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        Node type, valid values:
+        - `MASTER_SLAVE`: High availability (dual copies)
+        - `STAND_ALONE`: Single copy
         """
         return pulumi.get(self, "node_type")
 
@@ -2347,7 +2355,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[builtins.str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[builtins.str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[builtins.str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        :param pulumi.Input[builtins.str] node_type: Node type, valid values:
+               - `MASTER_SLAVE`: High availability (dual copies)
+               - `STAND_ALONE`: Single copy
         :param pulumi.Input[builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
@@ -2680,7 +2690,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[builtins.str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[builtins.str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[builtins.str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        :param pulumi.Input[builtins.str] node_type: Node type, valid values:
+               - `MASTER_SLAVE`: High availability (dual copies)
+               - `STAND_ALONE`: Single copy
         :param pulumi.Input[builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
@@ -3109,7 +3121,9 @@ class Instance(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> pulumi.Output[builtins.str]:
         """
-        "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        Node type, valid values:
+        - `MASTER_SLAVE`: High availability (dual copies)
+        - `STAND_ALONE`: Single copy
         """
         return pulumi.get(self, "node_type")
 

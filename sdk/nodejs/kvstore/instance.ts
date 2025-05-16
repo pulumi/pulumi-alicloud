@@ -212,7 +212,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * Node type, valid values:
+     * - `MASTER_SLAVE`: High availability (dual copies)
+     * - `STAND_ALONE`: Single copy
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
@@ -673,7 +675,9 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * Node type, valid values:
+     * - `MASTER_SLAVE`: High availability (dual copies)
+     * - `STAND_ALONE`: Single copy
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
@@ -962,7 +966,9 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * Node type, valid values:
+     * - `MASTER_SLAVE`: High availability (dual copies)
+     * - `STAND_ALONE`: Single copy
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */

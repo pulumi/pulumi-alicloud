@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
     /// 
-    /// &gt; **NOTE:** Available since v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 

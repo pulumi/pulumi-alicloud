@@ -23,9 +23,9 @@ import javax.annotation.Nullable;
  * environment in the cloud. An ADB cluster can contain multiple user-created
  * databases.
  * 
- * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+ * &gt; **NOTE:** Deprecated since v1.121.0.
  * 
- * &gt; **NOTE:** Available in v1.71.0+.
+ * &gt; **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
  * 
  * ## Example Usage
  * 
@@ -128,14 +128,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.computeResource);
     }
     /**
-     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     * (Available since v1.93.0) The connection string of the ADB cluster.
      * 
      */
     @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
-     * @return (Available in 1.93.0+) The connection string of the ADB cluster.
+     * @return (Available since v1.93.0) The connection string of the ADB cluster.
      * 
      */
     public Output<String> connectionString() {
@@ -352,14 +352,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * @return (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     public Output<String> port() {

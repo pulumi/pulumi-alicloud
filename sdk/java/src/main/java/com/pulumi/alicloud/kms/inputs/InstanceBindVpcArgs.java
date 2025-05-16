@@ -16,14 +16,14 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
     public static final InstanceBindVpcArgs Empty = new InstanceBindVpcArgs();
 
     /**
-     * region id.
+     * region id
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return region id.
+     * @return region id
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -31,14 +31,14 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VPC ID.
+     * VPC ID
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -46,14 +46,14 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VPC owner root user ID.
+     * VPC owner root user ID
      * 
      */
     @Import(name="vpcOwnerId")
     private @Nullable Output<String> vpcOwnerId;
 
     /**
-     * @return VPC owner root user ID.
+     * @return VPC owner root user ID
      * 
      */
     public Optional<Output<String>> vpcOwnerId() {
@@ -61,14 +61,14 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * vswitch id.
+     * vswitch id
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return vswitch id.
+     * @return vswitch id
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -103,7 +103,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param regionId region id.
+         * @param regionId region id
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param regionId region id.
+         * @param regionId region id
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcId VPC ID.
+         * @param vpcId VPC ID
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcId VPC ID.
+         * @param vpcId VPC ID
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcOwnerId VPC owner root user ID.
+         * @param vpcOwnerId VPC owner root user ID
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcOwnerId VPC owner root user ID.
+         * @param vpcOwnerId VPC owner root user ID
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId vswitch id.
+         * @param vswitchId vswitch id
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId vswitch id.
+         * @param vswitchId vswitch id
          * 
          * @return builder
          * 

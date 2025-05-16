@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> PortBreak { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.119.1+) The status of forward entry.
+        /// (Available since v1.119.1) The status of forward entry.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -332,7 +332,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? PortBreak { get; set; }
 
         /// <summary>
-        /// (Available since 1.119.1+) The status of forward entry.
+        /// (Available since v1.119.1) The status of forward entry.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

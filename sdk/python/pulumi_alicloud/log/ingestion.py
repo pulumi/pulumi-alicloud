@@ -331,10 +331,9 @@ class Ingestion(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore.
-        [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
+        Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
 
-        > **NOTE:** Available in 1.161.0+
+        > **NOTE:** Available since v1.161.0.
 
         ## Example Usage
 
@@ -424,10 +423,9 @@ class Ingestion(pulumi.CustomResource):
                  args: IngestionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore.
-        [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
+        Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
 
-        > **NOTE:** Available in 1.161.0+
+        > **NOTE:** Available since v1.161.0.
 
         ## Example Usage
 

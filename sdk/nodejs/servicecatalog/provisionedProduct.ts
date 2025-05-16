@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
  *
- * > **NOTE:** Available in v1.196.0+.
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *

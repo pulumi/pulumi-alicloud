@@ -24,7 +24,11 @@ import javax.annotation.Nullable;
  * 
  * For information about HBR Ots Backup Plan and how to use it, see [What is Ots Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/overview).
  * 
- * &gt; **NOTE:** Available in v1.163.0+.
+ * &gt; **NOTE:** Available since v1.163.0.
+ * 
+ * &gt; **NOTE:** Deprecated since v1.249.0.
+ * 
+ * &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  * 
  * ## Example Usage
  * 

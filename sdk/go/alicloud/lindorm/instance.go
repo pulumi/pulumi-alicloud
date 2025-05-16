@@ -101,6 +101,10 @@ type Instance struct {
 	ArbiterZoneId pulumi.StringPtrOutput `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringOutput `pulumi:"archVersion"`
+	// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
+	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+	AutoRenewPeriod pulumi.StringPtrOutput `pulumi:"autoRenewPeriod"`
 	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntOutput `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
@@ -133,7 +137,7 @@ type Instance struct {
 	FileEngineSpecification pulumi.StringOutput `pulumi:"fileEngineSpecification"`
 	// The name of the instance.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
-	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+	// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 	InstanceStorage pulumi.StringOutput `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayOutput `pulumi:"ipWhiteLists"`
@@ -244,6 +248,10 @@ type instanceState struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion *string `pulumi:"archVersion"`
+	// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+	AutoRenew *string `pulumi:"autoRenew"`
+	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
 	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
@@ -276,7 +284,7 @@ type instanceState struct {
 	FileEngineSpecification *string `pulumi:"fileEngineSpecification"`
 	// The name of the instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+	// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 	InstanceStorage *string `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists []string `pulumi:"ipWhiteLists"`
@@ -349,6 +357,10 @@ type InstanceState struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+	AutoRenew pulumi.StringPtrInput
+	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+	AutoRenewPeriod pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
@@ -381,7 +393,7 @@ type InstanceState struct {
 	FileEngineSpecification pulumi.StringPtrInput
 	// The name of the instance.
 	InstanceName pulumi.StringPtrInput
-	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+	// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 	InstanceStorage pulumi.StringPtrInput
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayInput
@@ -458,6 +470,10 @@ type instanceArgs struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion *string `pulumi:"archVersion"`
+	// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+	AutoRenew *string `pulumi:"autoRenew"`
+	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
 	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
@@ -478,7 +494,7 @@ type instanceArgs struct {
 	FileEngineSpecification *string `pulumi:"fileEngineSpecification"`
 	// The name of the instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+	// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 	InstanceStorage *string `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists []string `pulumi:"ipWhiteLists"`
@@ -548,6 +564,10 @@ type InstanceArgs struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
 	ArchVersion pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+	AutoRenew pulumi.StringPtrInput
+	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+	AutoRenewPeriod pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 	ColdStorage pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
@@ -568,7 +588,7 @@ type InstanceArgs struct {
 	FileEngineSpecification pulumi.StringPtrInput
 	// The name of the instance.
 	InstanceName pulumi.StringPtrInput
-	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+	// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 	InstanceStorage pulumi.StringPtrInput
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayInput
@@ -732,6 +752,16 @@ func (o InstanceOutput) ArchVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ArchVersion }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+func (o InstanceOutput) AutoRenew() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
+}
+
+// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+func (o InstanceOutput) AutoRenewPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AutoRenewPeriod }).(pulumi.StringPtrOutput)
+}
+
 // The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
 func (o InstanceOutput) ColdStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ColdStorage }).(pulumi.IntOutput)
@@ -809,7 +839,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
-// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
 func (o InstanceOutput) InstanceStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceStorage }).(pulumi.StringOutput)
 }

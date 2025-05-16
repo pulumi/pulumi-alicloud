@@ -20,6 +20,10 @@ __all__ = [
     'WorkspaceDatasetLabelArgsDict',
     'WorkspaceDatasetversionLabelArgs',
     'WorkspaceDatasetversionLabelArgsDict',
+    'WorkspaceModelLabelArgs',
+    'WorkspaceModelLabelArgsDict',
+    'WorkspaceModelVersionLabelArgs',
+    'WorkspaceModelVersionLabelArgsDict',
 ]
 
 MYPY = False
@@ -120,6 +124,110 @@ class WorkspaceDatasetversionLabelArgs:
     def value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The value of the tags
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class WorkspaceModelLabelArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        label key
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        label value
+        """
+elif False:
+    WorkspaceModelLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkspaceModelLabelArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] key: label key
+        :param pulumi.Input[builtins.str] value: label value
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        label key
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class WorkspaceModelVersionLabelArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        label key.
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        label value.
+        """
+elif False:
+    WorkspaceModelVersionLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkspaceModelVersionLabelArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] key: label key.
+        :param pulumi.Input[builtins.str] value: label value.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        label key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        label value.
         """
         return pulumi.get(self, "value")
 

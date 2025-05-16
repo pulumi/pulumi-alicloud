@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The bandwidth configured for the interconnected regions communication.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Output("bandwidthLimit")]
         public Output<int> Limit { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The bandwidth configured for the interconnected regions communication.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Input("bandwidthLimit", required: true)]
         public Input<int> Limit { get; set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// The bandwidth configured for the interconnected regions communication.
         /// 
-        /// -&gt;**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+        /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Input("bandwidthLimit")]
         public Input<int>? Limit { get; set; }

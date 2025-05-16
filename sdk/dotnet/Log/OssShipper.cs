@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Log
     /// Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
     /// [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/43724.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.121.0+
+    /// &gt; **NOTE:** Available since v1.121.0.
     /// 
     /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.215.0`. Please use new resource alicloud_log_oss_export.
     /// 

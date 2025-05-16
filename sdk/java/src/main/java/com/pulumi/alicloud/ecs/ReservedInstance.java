@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides an Reserved Instance resource.
  * 
- * &gt; **NOTE:** Available in 1.65.0+
+ * &gt; **NOTE:** Available since v1.65.0.
  * 
  * ## Example Usage
  * 

@@ -98,6 +98,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> ArchVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<string?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<string?> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Output("coldStorage")]
@@ -190,7 +202,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        /// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         /// </summary>
         [Output("instanceStorage")]
         public Output<string> InstanceStorage { get; private set; } = null!;
@@ -440,6 +452,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<string>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<string>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Input("coldStorage")]
@@ -496,7 +520,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        /// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         /// </summary>
         [Input("instanceStorage")]
         public Input<string>? InstanceStorage { get; set; }
@@ -708,6 +732,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<string>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<string>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         /// </summary>
         [Input("coldStorage")]
@@ -800,7 +836,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        /// The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         /// </summary>
         [Input("instanceStorage")]
         public Input<string>? InstanceStorage { get; set; }

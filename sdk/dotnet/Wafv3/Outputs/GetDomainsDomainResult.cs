@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
     public sealed class GetDomainsDomainResult
     {
         /// <summary>
+        /// The CNAME assigned by WAF to the domain name.
+        /// </summary>
+        public readonly string Cname;
+        /// <summary>
         /// The name of the domain name to query.
         /// </summary>
         public readonly string Domain;
@@ -40,6 +44,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
         [OutputConstructor]
         private GetDomainsDomainResult(
+            string cname,
+
             string domain,
 
             string id,
@@ -52,6 +58,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             string status)
         {
+            Cname = cname;
             Domain = domain;
             Id = id;
             Listens = listens;

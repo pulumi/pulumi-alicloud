@@ -191,7 +191,7 @@ class PublishTask(pulumi.CustomResource):
 
         For information about Chatbot Publish Task and how to use it, see [What is Publish Task](https://help.aliyun.com/document_detail/433996.html).
 
-        > **NOTE:** Available since v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 
@@ -232,7 +232,7 @@ class PublishTask(pulumi.CustomResource):
 
         For information about Chatbot Publish Task and how to use it, see [What is Publish Task](https://help.aliyun.com/document_detail/433996.html).
 
-        > **NOTE:** Available since v1.203.0+.
+        > **NOTE:** Available since v1.203.0.
 
         ## Example Usage
 

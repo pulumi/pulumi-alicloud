@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// For information about ROS Template Scratch and how to use it, see [What is Template Scratch](https://www.alibabacloud.com/help/zh/doc-detail/352074.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.151.0+.
+    /// &gt; **NOTE:** Available since v1.151.0.
     /// 
     /// ## Example Usage
     /// 

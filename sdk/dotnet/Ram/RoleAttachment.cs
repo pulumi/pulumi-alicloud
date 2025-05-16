@@ -34,7 +34,8 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 2,
-    ///         MemorySize = 4,
+    ///         MemorySize = 8,
+    ///         InstanceTypeFamily = "ecs.g6",
     ///     });
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
@@ -62,7 +63,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 

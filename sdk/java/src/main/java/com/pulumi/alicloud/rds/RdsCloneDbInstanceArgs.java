@@ -119,10 +119,10 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+     * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      * 
      */
     @Import(name="category")
@@ -134,10 +134,10 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+     * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      * 
      */
     public Optional<Output<String>> category() {
@@ -1286,10 +1286,10 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * **HighAvailability**: High availability
          * * **AlwaysOn**: Cluster Edition
          * * **Finance**: Three-node Enterprise Edition.
-         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-         * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-         * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-         * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+         * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+         * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+         * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+         * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
          * 
          * @return builder
          * 
@@ -1305,10 +1305,10 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * **HighAvailability**: High availability
          * * **AlwaysOn**: Cluster Edition
          * * **Finance**: Three-node Enterprise Edition.
-         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-         * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-         * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-         * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+         * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+         * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+         * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+         * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
          * 
          * @return builder
          * 

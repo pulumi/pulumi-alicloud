@@ -150,6 +150,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.archVersion;
     }
     /**
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * 
+     */
+    @Export(name="autoRenew", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * 
+     */
+    public Output<Optional<String>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     * 
+     */
+    @Export(name="autoRenewPeriod", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoRenewPeriod;
+
+    /**
+     * @return The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     * 
+     */
+    public Output<Optional<String>> autoRenewPeriod() {
+        return Codegen.optional(this.autoRenewPeriod);
+    }
+    /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
@@ -364,14 +392,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      * 
      */
     @Export(name="instanceStorage", refs={String.class}, tree="[0]")
     private Output<String> instanceStorage;
 
     /**
-     * @return The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * @return The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      * 
      */
     public Output<String> instanceStorage() {

@@ -10,10 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore.
-    /// [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
+    /// Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
     /// 
-    /// &gt; **NOTE:** Available in 1.161.0+
+    /// &gt; **NOTE:** Available since v1.161.0.
     /// 
     /// ## Example Usage
     /// 

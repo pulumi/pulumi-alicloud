@@ -268,6 +268,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -281,12 +282,15 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_http_response_header_modification_rule_example = alicloud.esa.Site("resource_Site_HttpResponseHeaderModificationRule_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_http_response_header_modification_rule_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpResponseHeaderModificationRule("default",
+        default_http_response_header_modification_rule = alicloud.esa.HttpResponseHeaderModificationRule("default",
             rule_enable="on",
             response_header_modifications=[
                 {
@@ -347,6 +351,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -360,12 +365,15 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_http_response_header_modification_rule_example = alicloud.esa.Site("resource_Site_HttpResponseHeaderModificationRule_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_http_response_header_modification_rule_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpResponseHeaderModificationRule("default",
+        default_http_response_header_modification_rule = alicloud.esa.HttpResponseHeaderModificationRule("default",
             rule_enable="on",
             response_header_modifications=[
                 {

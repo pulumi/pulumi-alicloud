@@ -56,10 +56,10 @@ class InstanceBindVpc(dict):
                  vpc_owner_id: Optional[builtins.str] = None,
                  vswitch_id: Optional[builtins.str] = None):
         """
-        :param builtins.str region_id: region id.
-        :param builtins.str vpc_id: VPC ID.
-        :param builtins.str vpc_owner_id: VPC owner root user ID.
-        :param builtins.str vswitch_id: vswitch id.
+        :param builtins.str region_id: region id
+        :param builtins.str vpc_id: VPC ID
+        :param builtins.str vpc_owner_id: VPC owner root user ID
+        :param builtins.str vswitch_id: vswitch id
         """
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
@@ -74,7 +74,7 @@ class InstanceBindVpc(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[builtins.str]:
         """
-        region id.
+        region id
         """
         return pulumi.get(self, "region_id")
 
@@ -82,7 +82,7 @@ class InstanceBindVpc(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[builtins.str]:
         """
-        VPC ID.
+        VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
@@ -90,7 +90,7 @@ class InstanceBindVpc(dict):
     @pulumi.getter(name="vpcOwnerId")
     def vpc_owner_id(self) -> Optional[builtins.str]:
         """
-        VPC owner root user ID.
+        VPC owner root user ID
         """
         return pulumi.get(self, "vpc_owner_id")
 
@@ -98,7 +98,7 @@ class InstanceBindVpc(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[builtins.str]:
         """
-        vswitch id.
+        vswitch id
         """
         return pulumi.get(self, "vswitch_id")
 

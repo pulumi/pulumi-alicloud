@@ -754,12 +754,30 @@ func (o GetAntiBruteForceRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAntiB
 }
 
 type GetAssetsAsset struct {
+	// The ID of the cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
 	// The creation time of the resource
 	CreateTime string `pulumi:"createTime"`
-	// The ID of the instance.
+	// The UUID of the asset.
 	Id string `pulumi:"id"`
-	// The UUID of the instance.
+	// The ID of the asset.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the asset.
+	InstanceName string `pulumi:"instanceName"`
+	// The public IP address of the asset.
+	InternetIp string `pulumi:"internetIp"`
+	// The private IP address of the asset.
+	IntranetIp string `pulumi:"intranetIp"`
+	// The status of the asset. Valid values:
+	// - **Running**: running
+	// - **notRunning**: stopped
+	Status string `pulumi:"status"`
+	// The UUID of the asset. Same as `id`.
 	Uuid string `pulumi:"uuid"`
+	// The ID of the VPC to which the asset belongs.
+	VpcInstanceId string `pulumi:"vpcInstanceId"`
 }
 
 // GetAssetsAssetInput is an input type that accepts GetAssetsAssetArgs and GetAssetsAssetOutput values.
@@ -774,12 +792,30 @@ type GetAssetsAssetInput interface {
 }
 
 type GetAssetsAssetArgs struct {
+	// The ID of the cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The creation time of the resource
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The ID of the instance.
+	// The UUID of the asset.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The UUID of the instance.
+	// The ID of the asset.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the asset.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The public IP address of the asset.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	// The private IP address of the asset.
+	IntranetIp pulumi.StringInput `pulumi:"intranetIp"`
+	// The status of the asset. Valid values:
+	// - **Running**: running
+	// - **notRunning**: stopped
+	Status pulumi.StringInput `pulumi:"status"`
+	// The UUID of the asset. Same as `id`.
 	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// The ID of the VPC to which the asset belongs.
+	VpcInstanceId pulumi.StringInput `pulumi:"vpcInstanceId"`
 }
 
 func (GetAssetsAssetArgs) ElementType() reflect.Type {
@@ -833,19 +869,61 @@ func (o GetAssetsAssetOutput) ToGetAssetsAssetOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the cluster.
+func (o GetAssetsAssetOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the cluster.
+func (o GetAssetsAssetOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
 // The creation time of the resource
 func (o GetAssetsAssetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetsAsset) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the instance.
+// The UUID of the asset.
 func (o GetAssetsAssetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetsAsset) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The UUID of the instance.
+// The ID of the asset.
+func (o GetAssetsAssetOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the asset.
+func (o GetAssetsAssetOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The public IP address of the asset.
+func (o GetAssetsAssetOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The private IP address of the asset.
+func (o GetAssetsAssetOutput) IntranetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.IntranetIp }).(pulumi.StringOutput)
+}
+
+// The status of the asset. Valid values:
+// - **Running**: running
+// - **notRunning**: stopped
+func (o GetAssetsAssetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The UUID of the asset. Same as `id`.
 func (o GetAssetsAssetOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssetsAsset) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC to which the asset belongs.
+func (o GetAssetsAssetOutput) VpcInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAssetsAsset) string { return v.VpcInstanceId }).(pulumi.StringOutput)
 }
 
 type GetAssetsAssetArrayOutput struct{ *pulumi.OutputState }

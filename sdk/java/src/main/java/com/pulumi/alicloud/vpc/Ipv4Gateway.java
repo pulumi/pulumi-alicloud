@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Vpc Ipv4 Gateway resource.
  * 
- * For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+ * For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
  * 
- * &gt; **NOTE:** Available in v1.181.0+.
+ * &gt; **NOTE:** Available since v1.181.0.
  * 
  * ## Example Usage
  * 
@@ -55,15 +55,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         final var name = config.get("name").orElse("tf-example");
  *         var default_ = new ResourceGroup("default", ResourceGroupArgs.builder()
- *             .displayName("tf-testAcc-rg665")
+ *             .displayName(name)
  *             .resourceGroupName(name)
- *             .build());
- * 
- *         var modify = new ResourceGroup("modify", ResourceGroupArgs.builder()
- *             .displayName("tf-testAcc-rg298")
- *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -73,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultIpv4Gateway = new Ipv4Gateway("defaultIpv4Gateway", Ipv4GatewayArgs.builder()
  *             .ipv4GatewayName(name)
- *             .ipv4GatewayDescription("tf-testAcc-Ipv4Gateway")
+ *             .ipv4GatewayDescription(name)
  *             .resourceGroupId(default_.id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
@@ -86,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Vpc Ipv4 Gateway can be imported using the id, e.g.
+ * VPC Ipv4 Gateway can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example &lt;id&gt;
@@ -96,14 +91,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/ipv4Gateway:Ipv4Gateway")
 public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
@@ -124,18 +119,32 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
+    }
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    @Export(name="internetMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> internetMode;
+
+    /**
+     * @return The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    public Output<Optional<String>> internetMode() {
+        return Codegen.optional(this.internetMode);
     }
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
@@ -180,14 +189,14 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipv4GatewayName);
     }
     /**
-     * ID of the route table associated with IPv4 Gateway.
+     * ID of the route table associated with IPv4 Gateway
      * 
      */
     @Export(name="ipv4GatewayRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> ipv4GatewayRouteTableId;
 
     /**
-     * @return ID of the route table associated with IPv4 Gateway.
+     * @return ID of the route table associated with IPv4 Gateway
      * 
      */
     public Output<String> ipv4GatewayRouteTableId() {
@@ -208,14 +217,14 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

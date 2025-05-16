@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *     },
  *     aclStatus: "on",
  *     aclType: "white",
- *     aclId: listenerAcl.id,
+ *     aclIds: [listenerAcl.id],
  *     requestTimeout: 80,
  *     idleTimeout: 30,
  * });
@@ -126,7 +126,11 @@ export class Listener extends pulumi.CustomResource {
         return obj['__pulumiType'] === Listener.__pulumiType;
     }
 
-    public readonly aclId!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+     */
+    public readonly aclId!: pulumi.Output<string>;
+    public readonly aclIds!: pulumi.Output<string[]>;
     public readonly aclStatus!: pulumi.Output<string | undefined>;
     public readonly aclType!: pulumi.Output<string | undefined>;
     public readonly backendPort!: pulumi.Output<number | undefined>;
@@ -152,14 +156,6 @@ export class Listener extends pulumi.CustomResource {
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
     public readonly idleTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * @deprecated Field 'lb_port' has been removed since 1.211.0.
-     */
-    public readonly lbPort!: pulumi.Output<number | undefined>;
-    /**
-     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
-     */
-    public readonly lbProtocol!: pulumi.Output<string | undefined>;
     public readonly listenerForward!: pulumi.Output<string>;
     public readonly loadBalancerId!: pulumi.Output<string>;
     public readonly masterSlaveServerGroupId!: pulumi.Output<string | undefined>;
@@ -197,6 +193,7 @@ export class Listener extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
             resourceInputs["aclId"] = state ? state.aclId : undefined;
+            resourceInputs["aclIds"] = state ? state.aclIds : undefined;
             resourceInputs["aclStatus"] = state ? state.aclStatus : undefined;
             resourceInputs["aclType"] = state ? state.aclType : undefined;
             resourceInputs["backendPort"] = state ? state.backendPort : undefined;
@@ -222,8 +219,6 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
             resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            resourceInputs["lbPort"] = state ? state.lbPort : undefined;
-            resourceInputs["lbProtocol"] = state ? state.lbProtocol : undefined;
             resourceInputs["listenerForward"] = state ? state.listenerForward : undefined;
             resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
             resourceInputs["masterSlaveServerGroupId"] = state ? state.masterSlaveServerGroupId : undefined;
@@ -252,6 +247,7 @@ export class Listener extends pulumi.CustomResource {
                 throw new Error("Missing required property 'protocol'");
             }
             resourceInputs["aclId"] = args ? args.aclId : undefined;
+            resourceInputs["aclIds"] = args ? args.aclIds : undefined;
             resourceInputs["aclStatus"] = args ? args.aclStatus : undefined;
             resourceInputs["aclType"] = args ? args.aclType : undefined;
             resourceInputs["backendPort"] = args ? args.backendPort : undefined;
@@ -277,8 +273,6 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
             resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            resourceInputs["lbPort"] = args ? args.lbPort : undefined;
-            resourceInputs["lbProtocol"] = args ? args.lbProtocol : undefined;
             resourceInputs["listenerForward"] = args ? args.listenerForward : undefined;
             resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
             resourceInputs["masterSlaveServerGroupId"] = args ? args.masterSlaveServerGroupId : undefined;
@@ -305,7 +299,11 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
+    /**
+     * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+     */
     aclId?: pulumi.Input<string>;
+    aclIds?: pulumi.Input<pulumi.Input<string>[]>;
     aclStatus?: pulumi.Input<string>;
     aclType?: pulumi.Input<string>;
     backendPort?: pulumi.Input<number>;
@@ -331,14 +329,6 @@ export interface ListenerState {
     healthCheckUri?: pulumi.Input<string>;
     healthyThreshold?: pulumi.Input<number>;
     idleTimeout?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_port' has been removed since 1.211.0.
-     */
-    lbPort?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
-     */
-    lbProtocol?: pulumi.Input<string>;
     listenerForward?: pulumi.Input<string>;
     loadBalancerId?: pulumi.Input<string>;
     masterSlaveServerGroupId?: pulumi.Input<string>;
@@ -367,7 +357,11 @@ export interface ListenerState {
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
+    /**
+     * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+     */
     aclId?: pulumi.Input<string>;
+    aclIds?: pulumi.Input<pulumi.Input<string>[]>;
     aclStatus?: pulumi.Input<string>;
     aclType?: pulumi.Input<string>;
     backendPort?: pulumi.Input<number>;
@@ -393,14 +387,6 @@ export interface ListenerArgs {
     healthCheckUri?: pulumi.Input<string>;
     healthyThreshold?: pulumi.Input<number>;
     idleTimeout?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_port' has been removed since 1.211.0.
-     */
-    lbPort?: pulumi.Input<number>;
-    /**
-     * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
-     */
-    lbProtocol?: pulumi.Input<string>;
     listenerForward?: pulumi.Input<string>;
     loadBalancerId: pulumi.Input<string>;
     masterSlaveServerGroupId?: pulumi.Input<string>;

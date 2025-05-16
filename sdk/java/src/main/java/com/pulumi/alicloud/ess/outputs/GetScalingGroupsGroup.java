@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess.outputs;
 
+import com.pulumi.alicloud.ess.outputs.GetScalingGroupsGroupLaunchTemplateOverride;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -34,6 +35,31 @@ public final class GetScalingGroupsGroup {
      * 
      */
     private Boolean azBalance;
+    /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    private Boolean capacityOptionsCompensateWithOnDemand;
+    /**
+     * @return (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+     * 
+     */
+    private Integer capacityOptionsOnDemandBaseCapacity;
+    /**
+     * @return (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+     * 
+     */
+    private Integer capacityOptionsOnDemandPercentageAboveBaseCapacity;
+    /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+     * 
+     */
+    private Boolean capacityOptionsSpotAutoReplaceOnDemand;
+    /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    private Boolean compensateWithOnDemand;
     /**
      * @return Default cooldown time of scaling group.
      * 
@@ -89,6 +115,11 @@ public final class GetScalingGroupsGroup {
      * 
      */
     private String launchTemplateId;
+    /**
+     * @return (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+     * 
+     */
+    private List<GetScalingGroupsGroupLaunchTemplateOverride> launchTemplateOverrides;
     /**
      * @return Version of active launch template.
      * 
@@ -300,6 +331,41 @@ public final class GetScalingGroupsGroup {
         return this.azBalance;
     }
     /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    public Boolean capacityOptionsCompensateWithOnDemand() {
+        return this.capacityOptionsCompensateWithOnDemand;
+    }
+    /**
+     * @return (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+     * 
+     */
+    public Integer capacityOptionsOnDemandBaseCapacity() {
+        return this.capacityOptionsOnDemandBaseCapacity;
+    }
+    /**
+     * @return (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+     * 
+     */
+    public Integer capacityOptionsOnDemandPercentageAboveBaseCapacity() {
+        return this.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+    }
+    /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+     * 
+     */
+    public Boolean capacityOptionsSpotAutoReplaceOnDemand() {
+        return this.capacityOptionsSpotAutoReplaceOnDemand;
+    }
+    /**
+     * @return (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    public Boolean compensateWithOnDemand() {
+        return this.compensateWithOnDemand;
+    }
+    /**
      * @return Default cooldown time of scaling group.
      * 
      */
@@ -375,6 +441,13 @@ public final class GetScalingGroupsGroup {
      */
     public String launchTemplateId() {
         return this.launchTemplateId;
+    }
+    /**
+     * @return (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+     * 
+     */
+    public List<GetScalingGroupsGroupLaunchTemplateOverride> launchTemplateOverrides() {
+        return this.launchTemplateOverrides;
     }
     /**
      * @return Version of active launch template.
@@ -642,6 +715,11 @@ public final class GetScalingGroupsGroup {
         private String activeScalingConfiguration;
         private String allocationStrategy;
         private Boolean azBalance;
+        private Boolean capacityOptionsCompensateWithOnDemand;
+        private Integer capacityOptionsOnDemandBaseCapacity;
+        private Integer capacityOptionsOnDemandPercentageAboveBaseCapacity;
+        private Boolean capacityOptionsSpotAutoReplaceOnDemand;
+        private Boolean compensateWithOnDemand;
         private Integer cooldownTime;
         private String creationTime;
         private List<String> dbInstanceIds;
@@ -653,6 +731,7 @@ public final class GetScalingGroupsGroup {
         private String id;
         private Integer initCapacity;
         private String launchTemplateId;
+        private List<GetScalingGroupsGroupLaunchTemplateOverride> launchTemplateOverrides;
         private String launchTemplateVersion;
         private String lifecycleState;
         private List<String> loadBalancerIds;
@@ -696,6 +775,11 @@ public final class GetScalingGroupsGroup {
     	      this.activeScalingConfiguration = defaults.activeScalingConfiguration;
     	      this.allocationStrategy = defaults.allocationStrategy;
     	      this.azBalance = defaults.azBalance;
+    	      this.capacityOptionsCompensateWithOnDemand = defaults.capacityOptionsCompensateWithOnDemand;
+    	      this.capacityOptionsOnDemandBaseCapacity = defaults.capacityOptionsOnDemandBaseCapacity;
+    	      this.capacityOptionsOnDemandPercentageAboveBaseCapacity = defaults.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+    	      this.capacityOptionsSpotAutoReplaceOnDemand = defaults.capacityOptionsSpotAutoReplaceOnDemand;
+    	      this.compensateWithOnDemand = defaults.compensateWithOnDemand;
     	      this.cooldownTime = defaults.cooldownTime;
     	      this.creationTime = defaults.creationTime;
     	      this.dbInstanceIds = defaults.dbInstanceIds;
@@ -707,6 +791,7 @@ public final class GetScalingGroupsGroup {
     	      this.id = defaults.id;
     	      this.initCapacity = defaults.initCapacity;
     	      this.launchTemplateId = defaults.launchTemplateId;
+    	      this.launchTemplateOverrides = defaults.launchTemplateOverrides;
     	      this.launchTemplateVersion = defaults.launchTemplateVersion;
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.loadBalancerIds = defaults.loadBalancerIds;
@@ -775,6 +860,46 @@ public final class GetScalingGroupsGroup {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "azBalance");
             }
             this.azBalance = azBalance;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityOptionsCompensateWithOnDemand(Boolean capacityOptionsCompensateWithOnDemand) {
+            if (capacityOptionsCompensateWithOnDemand == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "capacityOptionsCompensateWithOnDemand");
+            }
+            this.capacityOptionsCompensateWithOnDemand = capacityOptionsCompensateWithOnDemand;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityOptionsOnDemandBaseCapacity(Integer capacityOptionsOnDemandBaseCapacity) {
+            if (capacityOptionsOnDemandBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "capacityOptionsOnDemandBaseCapacity");
+            }
+            this.capacityOptionsOnDemandBaseCapacity = capacityOptionsOnDemandBaseCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityOptionsOnDemandPercentageAboveBaseCapacity(Integer capacityOptionsOnDemandPercentageAboveBaseCapacity) {
+            if (capacityOptionsOnDemandPercentageAboveBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "capacityOptionsOnDemandPercentageAboveBaseCapacity");
+            }
+            this.capacityOptionsOnDemandPercentageAboveBaseCapacity = capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityOptionsSpotAutoReplaceOnDemand(Boolean capacityOptionsSpotAutoReplaceOnDemand) {
+            if (capacityOptionsSpotAutoReplaceOnDemand == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "capacityOptionsSpotAutoReplaceOnDemand");
+            }
+            this.capacityOptionsSpotAutoReplaceOnDemand = capacityOptionsSpotAutoReplaceOnDemand;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compensateWithOnDemand(Boolean compensateWithOnDemand) {
+            if (compensateWithOnDemand == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "compensateWithOnDemand");
+            }
+            this.compensateWithOnDemand = compensateWithOnDemand;
             return this;
         }
         @CustomType.Setter
@@ -867,6 +992,17 @@ public final class GetScalingGroupsGroup {
             }
             this.launchTemplateId = launchTemplateId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder launchTemplateOverrides(List<GetScalingGroupsGroupLaunchTemplateOverride> launchTemplateOverrides) {
+            if (launchTemplateOverrides == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "launchTemplateOverrides");
+            }
+            this.launchTemplateOverrides = launchTemplateOverrides;
+            return this;
+        }
+        public Builder launchTemplateOverrides(GetScalingGroupsGroupLaunchTemplateOverride... launchTemplateOverrides) {
+            return launchTemplateOverrides(List.of(launchTemplateOverrides));
         }
         @CustomType.Setter
         public Builder launchTemplateVersion(String launchTemplateVersion) {
@@ -1174,6 +1310,11 @@ public final class GetScalingGroupsGroup {
             _resultValue.activeScalingConfiguration = activeScalingConfiguration;
             _resultValue.allocationStrategy = allocationStrategy;
             _resultValue.azBalance = azBalance;
+            _resultValue.capacityOptionsCompensateWithOnDemand = capacityOptionsCompensateWithOnDemand;
+            _resultValue.capacityOptionsOnDemandBaseCapacity = capacityOptionsOnDemandBaseCapacity;
+            _resultValue.capacityOptionsOnDemandPercentageAboveBaseCapacity = capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            _resultValue.capacityOptionsSpotAutoReplaceOnDemand = capacityOptionsSpotAutoReplaceOnDemand;
+            _resultValue.compensateWithOnDemand = compensateWithOnDemand;
             _resultValue.cooldownTime = cooldownTime;
             _resultValue.creationTime = creationTime;
             _resultValue.dbInstanceIds = dbInstanceIds;
@@ -1185,6 +1326,7 @@ public final class GetScalingGroupsGroup {
             _resultValue.id = id;
             _resultValue.initCapacity = initCapacity;
             _resultValue.launchTemplateId = launchTemplateId;
+            _resultValue.launchTemplateOverrides = launchTemplateOverrides;
             _resultValue.launchTemplateVersion = launchTemplateVersion;
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.loadBalancerIds = loadBalancerIds;

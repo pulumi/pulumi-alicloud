@@ -140,11 +140,11 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ## Import
     /// 
-    /// ### Timeouts
+    /// Oss Bucket Replication can be imported using the id, e.g.
     /// 
-    /// The `timeouts` block allows you to specify timeouts for certain actions:
-    /// 
-    /// * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+    /// ```sh
+    /// $ pulumi import alicloud:oss/bucketReplication:BucketReplication example 
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucketReplication:BucketReplication")]
     public partial class BucketReplication : global::Pulumi.CustomResource

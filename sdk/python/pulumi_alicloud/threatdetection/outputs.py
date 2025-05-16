@@ -389,17 +389,59 @@ class GetAntiBruteForceRulesRuleResult(dict):
 @pulumi.output_type
 class GetAssetsAssetResult(dict):
     def __init__(__self__, *,
+                 cluster_id: builtins.str,
+                 cluster_name: builtins.str,
                  create_time: builtins.str,
                  id: builtins.str,
-                 uuid: builtins.str):
+                 instance_id: builtins.str,
+                 instance_name: builtins.str,
+                 internet_ip: builtins.str,
+                 intranet_ip: builtins.str,
+                 status: builtins.str,
+                 uuid: builtins.str,
+                 vpc_instance_id: builtins.str):
         """
+        :param builtins.str cluster_id: The ID of the cluster.
+        :param builtins.str cluster_name: The name of the cluster.
         :param builtins.str create_time: The creation time of the resource
-        :param builtins.str id: The ID of the instance.
-        :param builtins.str uuid: The UUID of the instance.
+        :param builtins.str id: The UUID of the asset.
+        :param builtins.str instance_id: The ID of the asset.
+        :param builtins.str instance_name: The name of the asset.
+        :param builtins.str internet_ip: The public IP address of the asset.
+        :param builtins.str intranet_ip: The private IP address of the asset.
+        :param builtins.str status: The status of the asset. Valid values:
+               - **Running**: running
+               - **notRunning**: stopped
+        :param builtins.str uuid: The UUID of the asset. Same as `id`.
+        :param builtins.str vpc_instance_id: The ID of the VPC to which the asset belongs.
         """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "intranet_ip", intranet_ip)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> builtins.str:
+        """
+        The ID of the cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> builtins.str:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter(name="createTime")
@@ -413,17 +455,67 @@ class GetAssetsAssetResult(dict):
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The ID of the instance.
+        The UUID of the asset.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> builtins.str:
+        """
+        The ID of the asset.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> builtins.str:
+        """
+        The name of the asset.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> builtins.str:
+        """
+        The public IP address of the asset.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> builtins.str:
+        """
+        The private IP address of the asset.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The status of the asset. Valid values:
+        - **Running**: running
+        - **notRunning**: stopped
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def uuid(self) -> builtins.str:
         """
-        The UUID of the instance.
+        The UUID of the asset. Same as `id`.
         """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="vpcInstanceId")
+    def vpc_instance_id(self) -> builtins.str:
+        """
+        The ID of the VPC to which the asset belongs.
+        """
+        return pulumi.get(self, "vpc_instance_id")
 
 
 @pulumi.output_type

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Network Interface Permission and how to use it, see [What is Network Interface Permission](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/elastic-network-interfaces-overview).
  *
- * > **NOTE:** Available in v1.166.0+.
+ * > **NOTE:** Available since v1.166.0.
  *
  * ## Import
  *

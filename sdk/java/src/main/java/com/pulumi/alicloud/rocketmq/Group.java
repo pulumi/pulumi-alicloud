@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html).
  * 
- * &gt; **NOTE:** Available in 1.53.0+
+ * &gt; **NOTE:** Available since v1.53.0.
  * 
  * ## Example Usage
  * 

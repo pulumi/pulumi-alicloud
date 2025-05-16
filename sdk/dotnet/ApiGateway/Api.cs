@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<ImmutableArray<Outputs.ApiRequestParameter>> RequestParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        /// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         /// </summary>
         [Output("serviceType")]
         public Output<string> ServiceType { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        /// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         /// </summary>
         [Input("serviceType", required: true)]
         public Input<string> ServiceType { get; set; } = null!;
@@ -440,7 +440,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        /// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         /// </summary>
         [Input("serviceType")]
         public Input<string>? ServiceType { get; set; }

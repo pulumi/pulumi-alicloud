@@ -14,6 +14,11 @@ import java.util.Objects;
 @CustomType
 public final class GetDomainsDomain {
     /**
+     * @return The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    private String cname;
+    /**
      * @return The name of the domain name to query.
      * 
      */
@@ -45,6 +50,13 @@ public final class GetDomainsDomain {
     private String status;
 
     private GetDomainsDomain() {}
+    /**
+     * @return The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    public String cname() {
+        return this.cname;
+    }
     /**
      * @return The name of the domain name to query.
      * 
@@ -97,6 +109,7 @@ public final class GetDomainsDomain {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cname;
         private String domain;
         private String id;
         private List<GetDomainsDomainListen> listens;
@@ -106,6 +119,7 @@ public final class GetDomainsDomain {
         public Builder() {}
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cname = defaults.cname;
     	      this.domain = defaults.domain;
     	      this.id = defaults.id;
     	      this.listens = defaults.listens;
@@ -114,6 +128,14 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder cname(String cname) {
+            if (cname == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cname");
+            }
+            this.cname = cname;
+            return this;
+        }
         @CustomType.Setter
         public Builder domain(String domain) {
             if (domain == null) {
@@ -170,6 +192,7 @@ public final class GetDomainsDomain {
         }
         public GetDomainsDomain build() {
             final var _resultValue = new GetDomainsDomain();
+            _resultValue.cname = cname;
             _resultValue.domain = domain;
             _resultValue.id = id;
             _resultValue.listens = listens;

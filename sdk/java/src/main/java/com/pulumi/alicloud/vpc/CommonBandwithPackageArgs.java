@@ -191,18 +191,22 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * The percentage of the minimum bandwidth commitment. The value is only `20`.
      * 
-     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     * 
+     * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * @return The percentage of the minimum bandwidth commitment. The value is only `20`.
      * 
-     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     * 
+     * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -532,9 +536,11 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ratio The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+         * @param ratio The percentage of the minimum bandwidth commitment. The value is only `20`.
          * 
-         * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+         * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+         * 
+         * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
          * 
          * @return builder
          * 
@@ -545,9 +551,11 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ratio The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+         * @param ratio The percentage of the minimum bandwidth commitment. The value is only `20`.
          * 
-         * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+         * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+         * 
+         * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
          * 
          * @return builder
          * 

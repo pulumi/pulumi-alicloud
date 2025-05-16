@@ -221,14 +221,14 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      * 
      */
     @Import(name="serviceType")
     private @Nullable Output<String> serviceType;
 
     /**
-     * @return The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * @return The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      * 
      */
     public Optional<Output<String>> serviceType() {
@@ -598,7 +598,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceType The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+         * @param serviceType The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceType The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+         * @param serviceType The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
          * 
          * @return builder
          * 

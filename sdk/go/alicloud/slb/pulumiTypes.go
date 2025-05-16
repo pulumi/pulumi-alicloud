@@ -420,12 +420,18 @@ func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
 }
 
 type MasterSlaveServerGroupServer struct {
-	IsBackup   *int    `pulumi:"isBackup"`
-	Port       int     `pulumi:"port"`
-	ServerId   string  `pulumi:"serverId"`
+	// Determine if the server is executing. Valid value 0, 1.
+	IsBackup *int `pulumi:"isBackup"`
+	// The port used by the backend server. Valid value range: [1-65535].
+	Port int `pulumi:"port"`
+	// A list backend server ID (ECS instance ID).
+	ServerId string `pulumi:"serverId"`
+	// The server type of the backend server. Valid value Master, Slave.
 	ServerType *string `pulumi:"serverType"`
-	Type       *string `pulumi:"type"`
-	Weight     *int    `pulumi:"weight"`
+	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	Type *string `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	Weight *int `pulumi:"weight"`
 }
 
 // MasterSlaveServerGroupServerInput is an input type that accepts MasterSlaveServerGroupServerArgs and MasterSlaveServerGroupServerOutput values.
@@ -440,12 +446,18 @@ type MasterSlaveServerGroupServerInput interface {
 }
 
 type MasterSlaveServerGroupServerArgs struct {
-	IsBackup   pulumi.IntPtrInput    `pulumi:"isBackup"`
-	Port       pulumi.IntInput       `pulumi:"port"`
-	ServerId   pulumi.StringInput    `pulumi:"serverId"`
+	// Determine if the server is executing. Valid value 0, 1.
+	IsBackup pulumi.IntPtrInput `pulumi:"isBackup"`
+	// The port used by the backend server. Valid value range: [1-65535].
+	Port pulumi.IntInput `pulumi:"port"`
+	// A list backend server ID (ECS instance ID).
+	ServerId pulumi.StringInput `pulumi:"serverId"`
+	// The server type of the backend server. Valid value Master, Slave.
 	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
-	Type       pulumi.StringPtrInput `pulumi:"type"`
-	Weight     pulumi.IntPtrInput    `pulumi:"weight"`
+	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
 func (MasterSlaveServerGroupServerArgs) ElementType() reflect.Type {
@@ -499,26 +511,32 @@ func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutput
 	return o
 }
 
+// Determine if the server is executing. Valid value 0, 1.
 func (o MasterSlaveServerGroupServerOutput) IsBackup() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) *int { return v.IsBackup }).(pulumi.IntPtrOutput)
 }
 
+// The port used by the backend server. Valid value range: [1-65535].
 func (o MasterSlaveServerGroupServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// A list backend server ID (ECS instance ID).
 func (o MasterSlaveServerGroupServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
+// The server type of the backend server. Valid value Master, Slave.
 func (o MasterSlaveServerGroupServerOutput) ServerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) *string { return v.ServerType }).(pulumi.StringPtrOutput)
 }
 
+// Type of the backend server. Valid value ecs, eni. Default to eni.
 func (o MasterSlaveServerGroupServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Weight of the backend server. Valid value range: [0-100]. Default to 100.
 func (o MasterSlaveServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MasterSlaveServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

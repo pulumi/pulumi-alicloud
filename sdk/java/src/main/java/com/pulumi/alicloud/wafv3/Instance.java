@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Wafv3 Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf).
  * 
- * &gt; **NOTE:** Available in v1.200.0+.
+ * &gt; **NOTE:** Available since v1.200.0.
  * 
  * ## Example Usage
  * 

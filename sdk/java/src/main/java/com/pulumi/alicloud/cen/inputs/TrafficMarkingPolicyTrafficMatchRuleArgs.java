@@ -18,14 +18,14 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     public static final TrafficMarkingPolicyTrafficMatchRuleArgs Empty = new TrafficMarkingPolicyTrafficMatchRuleArgs();
 
     /**
-     * IP Address Family.
+     * IP Address Family
      * 
      */
     @Import(name="addressFamily")
     private @Nullable Output<String> addressFamily;
 
     /**
-     * @return IP Address Family.
+     * @return IP Address Family
      * 
      */
     public Optional<Output<String>> addressFamily() {
@@ -33,14 +33,16 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+     * The destination network segment of the traffic message.
+     * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
      * 
      */
     @Import(name="dstCidr")
     private @Nullable Output<String> dstCidr;
 
     /**
-     * @return The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+     * @return The destination network segment of the traffic message.
+     * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
      * 
      */
     public Optional<Output<String>> dstCidr() {
@@ -48,7 +50,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+     * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+     * 
+     * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
      * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
      * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -58,7 +64,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     private @Nullable Output<List<Integer>> dstPortRanges;
 
     /**
-     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+     * 
+     * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
      * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
      * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -69,14 +79,22 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+     * The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+     * 
+     * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+     * 
+     * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
      * 
      */
     @Import(name="matchDscp")
     private @Nullable Output<Integer> matchDscp;
 
     /**
-     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+     * 
+     * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+     * 
+     * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
      * 
      */
     public Optional<Output<Integer>> matchDscp() {
@@ -84,14 +102,16 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+     * The protocol type of the traffic message.
+     * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+     * @return The protocol type of the traffic message.
+     * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -99,14 +119,16 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+     * The source network segment of the traffic message.
+     * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
      * 
      */
     @Import(name="srcCidr")
     private @Nullable Output<String> srcCidr;
 
     /**
-     * @return The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+     * @return The source network segment of the traffic message.
+     * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
      * 
      */
     public Optional<Output<String>> srcCidr() {
@@ -114,7 +136,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+     * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+     * 
+     * The current parameter supports entering up to two port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
      * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
      * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -124,7 +150,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     private @Nullable Output<List<Integer>> srcPortRanges;
 
     /**
-     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+     * 
+     * The current parameter supports entering up to two port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
      * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
      * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -135,14 +165,16 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * The description information of the stream classification rule.
+     * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     @Import(name="trafficMatchRuleDescription")
     private @Nullable Output<String> trafficMatchRuleDescription;
 
     /**
-     * @return The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The description information of the stream classification rule.
+     * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     public Optional<Output<String>> trafficMatchRuleDescription() {
@@ -150,14 +182,16 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * The name of the stream classification rule.
+     * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     @Import(name="trafficMatchRuleName")
     private @Nullable Output<String> trafficMatchRuleName;
 
     /**
-     * @return The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The name of the stream classification rule.
+     * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     public Optional<Output<String>> trafficMatchRuleName() {
@@ -197,7 +231,7 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param addressFamily IP Address Family.
+         * @param addressFamily IP Address Family
          * 
          * @return builder
          * 
@@ -208,7 +242,7 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param addressFamily IP Address Family.
+         * @param addressFamily IP Address Family
          * 
          * @return builder
          * 
@@ -218,7 +252,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param dstCidr The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+         * @param dstCidr The destination network segment of the traffic message.
+         * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
          * 
          * @return builder
          * 
@@ -229,7 +264,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param dstCidr The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+         * @param dstCidr The destination network segment of the traffic message.
+         * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
          * 
          * @return builder
          * 
@@ -239,7 +275,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+         * 
+         * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
          * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
          * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -253,7 +293,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+         * 
+         * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
          * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
          * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -266,7 +310,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * @param dstPortRanges The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+         * 
+         * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
          * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
          * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -279,7 +327,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param matchDscp The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+         * @param matchDscp The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+         * 
+         * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+         * 
+         * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
          * 
          * @return builder
          * 
@@ -290,7 +342,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param matchDscp The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+         * @param matchDscp The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+         * 
+         * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+         * 
+         * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
          * 
          * @return builder
          * 
@@ -300,7 +356,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param protocol The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+         * @param protocol The protocol type of the traffic message.
+         * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
          * 
          * @return builder
          * 
@@ -311,7 +368,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param protocol The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+         * @param protocol The protocol type of the traffic message.
+         * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
          * 
          * @return builder
          * 
@@ -321,7 +379,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcCidr The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+         * @param srcCidr The source network segment of the traffic message.
+         * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
          * 
          * @return builder
          * 
@@ -332,7 +391,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcCidr The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+         * @param srcCidr The source network segment of the traffic message.
+         * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
          * 
          * @return builder
          * 
@@ -342,7 +402,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+         * 
+         * The current parameter supports entering up to two port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
          * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
          * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -356,7 +420,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+         * 
+         * The current parameter supports entering up to two port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
          * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
          * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -369,7 +437,11 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * @param srcPortRanges The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         * 
+         * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+         * 
+         * The current parameter supports entering up to two port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
          * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
          * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -382,7 +454,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param trafficMatchRuleDescription The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * @param trafficMatchRuleDescription The description information of the stream classification rule.
+         * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          * 
          * @return builder
          * 
@@ -393,7 +466,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param trafficMatchRuleDescription The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * @param trafficMatchRuleDescription The description information of the stream classification rule.
+         * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          * 
          * @return builder
          * 
@@ -403,7 +477,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param trafficMatchRuleName The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * @param trafficMatchRuleName The name of the stream classification rule.
+         * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          * 
          * @return builder
          * 
@@ -414,7 +489,8 @@ public final class TrafficMarkingPolicyTrafficMatchRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param trafficMatchRuleName The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * @param trafficMatchRuleName The name of the stream classification rule.
+         * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          * 
          * @return builder
          * 

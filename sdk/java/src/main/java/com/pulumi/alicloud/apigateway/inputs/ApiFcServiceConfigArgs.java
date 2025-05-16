@@ -79,6 +79,21 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+     * 
+     */
+    @Import(name="functionVersion")
+    private @Nullable Output<String> functionVersion;
+
+    /**
+     * @return The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+     * 
+     */
+    public Optional<Output<String>> functionVersion() {
+        return Optional.ofNullable(this.functionVersion);
+    }
+
+    /**
      * The http method of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
@@ -154,14 +169,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The service name of function compute service. Required if `function_type` is `FCEvent`.
+     * The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -190,6 +205,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         this.functionBaseUrl = $.functionBaseUrl;
         this.functionName = $.functionName;
         this.functionType = $.functionType;
+        this.functionVersion = $.functionVersion;
         this.method = $.method;
         this.onlyBusinessPath = $.onlyBusinessPath;
         this.path = $.path;
@@ -302,6 +318,27 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param functionVersion The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(@Nullable Output<String> functionVersion) {
+            $.functionVersion = functionVersion;
+            return this;
+        }
+
+        /**
+         * @param functionVersion The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(String functionVersion) {
+            return functionVersion(Output.of(functionVersion));
+        }
+
+        /**
          * @param method The http method of function compute service. Required if `function_type` is `HttpTrigger`.
          * 
          * @return builder
@@ -407,7 +444,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent`.
+         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
          * 
          * @return builder
          * 
@@ -418,7 +455,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent`.
+         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
          * 
          * @return builder
          * 

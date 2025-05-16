@@ -7,10 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
- * [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
+ * Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
  *
- * > **NOTE:** Available in 1.187.0+
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *

@@ -12,6 +12,9 @@ from .workspace_code_source import *
 from .workspace_dataset import *
 from .workspace_datasetversion import *
 from .workspace_experiment import *
+from .workspace_member import *
+from .workspace_model import *
+from .workspace_model_version import *
 from .workspace_run import *
 from .workspace_workspace import *
 from ._inputs import *

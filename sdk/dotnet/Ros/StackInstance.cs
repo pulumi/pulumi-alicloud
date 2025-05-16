@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// For information about ROS Stack Instance and how to use it, see [What is Stack Instance](https://www.alibabacloud.com/help/en/doc-detail/151338.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.145.0+.
+    /// &gt; **NOTE:** Available since v1.145.0.
     /// 
     /// ## Example Usage
     /// 

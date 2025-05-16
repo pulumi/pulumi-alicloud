@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.120.0+) The status of the HaVip instance.
+        /// (Available since v1.120.0) The status of the HaVip instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -338,7 +338,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// (Available in v1.120.0+) The status of the HaVip instance.
+        /// (Available since v1.120.0) The status of the HaVip instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

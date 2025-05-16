@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// CEN Traffic Marking Policy can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -77,6 +77,8 @@ type TrafficMarkingPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Whether to forcibly delete the traffic marker policy. Valid values:
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// MarkingDscp
 	MarkingDscp pulumi.IntOutput `pulumi:"markingDscp"`
 	// Priority
@@ -88,7 +90,6 @@ type TrafficMarkingPolicy struct {
 	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrOutput `pulumi:"trafficMarkingPolicyName"`
 	// List of stream classification rules.
-	//
 	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayOutput `pulumi:"trafficMatchRules"`
 	// TransitRouterId
@@ -138,6 +139,8 @@ type trafficMarkingPolicyState struct {
 	Description *string `pulumi:"description"`
 	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
+	// Whether to forcibly delete the traffic marker policy. Valid values:
+	Force *bool `pulumi:"force"`
 	// MarkingDscp
 	MarkingDscp *int `pulumi:"markingDscp"`
 	// Priority
@@ -149,7 +152,6 @@ type trafficMarkingPolicyState struct {
 	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName *string `pulumi:"trafficMarkingPolicyName"`
 	// List of stream classification rules.
-	//
 	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 	TrafficMatchRules []TrafficMarkingPolicyTrafficMatchRule `pulumi:"trafficMatchRules"`
 	// TransitRouterId
@@ -161,6 +163,8 @@ type TrafficMarkingPolicyState struct {
 	Description pulumi.StringPtrInput
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
+	// Whether to forcibly delete the traffic marker policy. Valid values:
+	Force pulumi.BoolPtrInput
 	// MarkingDscp
 	MarkingDscp pulumi.IntPtrInput
 	// Priority
@@ -172,7 +176,6 @@ type TrafficMarkingPolicyState struct {
 	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrInput
 	// List of stream classification rules.
-	//
 	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayInput
 	// TransitRouterId
@@ -188,6 +191,8 @@ type trafficMarkingPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
+	// Whether to forcibly delete the traffic marker policy. Valid values:
+	Force *bool `pulumi:"force"`
 	// MarkingDscp
 	MarkingDscp int `pulumi:"markingDscp"`
 	// Priority
@@ -195,7 +200,6 @@ type trafficMarkingPolicyArgs struct {
 	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName *string `pulumi:"trafficMarkingPolicyName"`
 	// List of stream classification rules.
-	//
 	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 	TrafficMatchRules []TrafficMarkingPolicyTrafficMatchRule `pulumi:"trafficMatchRules"`
 	// TransitRouterId
@@ -208,6 +212,8 @@ type TrafficMarkingPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
+	// Whether to forcibly delete the traffic marker policy. Valid values:
+	Force pulumi.BoolPtrInput
 	// MarkingDscp
 	MarkingDscp pulumi.IntInput
 	// Priority
@@ -215,7 +221,6 @@ type TrafficMarkingPolicyArgs struct {
 	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrInput
 	// List of stream classification rules.
-	//
 	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayInput
 	// TransitRouterId
@@ -319,6 +324,11 @@ func (o TrafficMarkingPolicyOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to forcibly delete the traffic marker policy. Valid values:
+func (o TrafficMarkingPolicyOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
 // MarkingDscp
 func (o TrafficMarkingPolicyOutput) MarkingDscp() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.IntOutput { return v.MarkingDscp }).(pulumi.IntOutput)
@@ -345,7 +355,6 @@ func (o TrafficMarkingPolicyOutput) TrafficMarkingPolicyName() pulumi.StringPtrO
 }
 
 // List of stream classification rules.
-//
 // You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
 func (o TrafficMarkingPolicyOutput) TrafficMatchRules() TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) TrafficMarkingPolicyTrafficMatchRuleArrayOutput {

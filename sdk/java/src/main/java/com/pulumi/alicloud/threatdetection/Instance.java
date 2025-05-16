@@ -204,6 +204,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      * 
      * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -220,6 +221,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      * 
      * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -515,7 +517,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  Step size is 1.
+     * &gt; **NOTE:**  Step size is 100.
      * 
      */
     @Export(name="threatAnalysisFlow", refs={String.class}, tree="[0]")
@@ -524,25 +526,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  Step size is 1.
+     * &gt; **NOTE:**  Step size is 100.
      * 
      */
     public Output<Optional<String>> threatAnalysisFlow() {
         return Codegen.optional(this.threatAnalysisFlow);
     }
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      * 
      */
     @Export(name="threatAnalysisSlsStorage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> threatAnalysisSlsStorage;
 
     /**
-     * @return Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * @return Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      * 
      */
     public Output<Optional<String>> threatAnalysisSlsStorage() {

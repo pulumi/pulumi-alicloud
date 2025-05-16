@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
     /// 
+    /// &gt; **NOTE:** Available since v1.24.0.
+    /// 
     /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
@@ -72,7 +74,7 @@ namespace Pulumi.AliCloud.Drds
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available in 1.196.0+) The connection string of the DRDS instance.
+        /// (Available since v1.196.0) The connection string of the DRDS instance.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -105,7 +107,7 @@ namespace Pulumi.AliCloud.Drds
         public Output<int> MysqlVersion { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the DRDS instance.
+        /// (Available since v1.196.0) The connection port of the DRDS instance.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -256,7 +258,7 @@ namespace Pulumi.AliCloud.Drds
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available in 1.196.0+) The connection string of the DRDS instance.
+        /// (Available since v1.196.0) The connection string of the DRDS instance.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -289,7 +291,7 @@ namespace Pulumi.AliCloud.Drds
         public Input<int>? MysqlVersion { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the DRDS instance.
+        /// (Available since v1.196.0) The connection port of the DRDS instance.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

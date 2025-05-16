@@ -20,6 +20,101 @@ import (
 //
 // > **NOTE:** Available since v1.132.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alb.GetZones(ctx, &alb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.4.1.0/24"),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				VswitchName: pulumi.Sprintf("%v_1", name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.4.2.0/24"),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
+//				VswitchName: pulumi.Sprintf("%v_2", name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
+//				LoadBalancerEdition:  pulumi.String("Basic"),
+//				AddressType:          pulumi.String("Internet"),
+//				VpcId:                defaultNetwork.ID(),
+//				AddressAllocatedMode: pulumi.String("Fixed"),
+//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
+//				LoadBalancerName:     pulumi.String(name),
+//				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
+//					PayType: pulumi.String("PayAsYouGo"),
+//				},
+//				ModificationProtectionConfig: &alb.LoadBalancerModificationProtectionConfigArgs{
+//					Status: pulumi.String("NonProtection"),
+//				},
+//				ZoneMappings: alb.LoadBalancerZoneMappingArray{
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default1.ID(),
+//						ZoneId:    pulumi.String(defaultGetZones.Zones[0].Id),
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default2.ID(),
+//						ZoneId:    pulumi.String(defaultGetZones.Zones[1].Id),
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.

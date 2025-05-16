@@ -199,7 +199,7 @@ class _ForwardEntryState:
         :param pulumi.Input[builtins.bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
-        :param pulumi.Input[builtins.str] status: (Available since 1.119.1+) The status of forward entry.
+        :param pulumi.Input[builtins.str] status: (Available since v1.119.1) The status of forward entry.
         """
         if external_ip is not None:
             pulumi.set(__self__, "external_ip", external_ip)
@@ -354,7 +354,7 @@ class _ForwardEntryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available since 1.119.1+) The status of forward entry.
+        (Available since v1.119.1) The status of forward entry.
         """
         return pulumi.get(self, "status")
 
@@ -601,7 +601,7 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
-        :param pulumi.Input[builtins.str] status: (Available since 1.119.1+) The status of forward entry.
+        :param pulumi.Input[builtins.str] status: (Available since v1.119.1) The status of forward entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -707,7 +707,7 @@ class ForwardEntry(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        (Available since 1.119.1+) The status of forward entry.
+        (Available since v1.119.1) The status of forward entry.
         """
         return pulumi.get(self, "status")
 

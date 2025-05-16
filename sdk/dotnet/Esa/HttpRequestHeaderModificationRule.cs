@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Esa
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -41,15 +42,21 @@ namespace Pulumi.AliCloud.Esa
     ///         PlanName = "high",
     ///     });
     /// 
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var site = new AliCloud.Esa.Site("site", new()
     ///     {
-    ///         SiteName = "gositecdn.cn",
+    ///         SiteName = $"gositecdn-{@default.Result}.cn",
     ///         InstanceId = instance.Id,
     ///         Coverage = "overseas",
     ///         AccessType = "NS",
     ///     });
     /// 
-    ///     var @default = new AliCloud.Esa.HttpRequestHeaderModificationRule("default", new()
+    ///     var defaultHttpRequestHeaderModificationRule = new AliCloud.Esa.HttpRequestHeaderModificationRule("default", new()
     ///     {
     ///         RuleName = "example_modify",
     ///         RequestHeaderModifications = new[]

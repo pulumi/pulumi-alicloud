@@ -45,7 +45,9 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 8,
+    ///         InstanceTypeFamily = "ecs.g6",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()

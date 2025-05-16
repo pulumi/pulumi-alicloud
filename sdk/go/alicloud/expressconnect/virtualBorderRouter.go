@@ -116,7 +116,7 @@ type VirtualBorderRouter struct {
 	PeeringSubnetMask pulumi.StringOutput `pulumi:"peeringSubnetMask"`
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId pulumi.StringOutput `pulumi:"physicalConnectionId"`
-	// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+	// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -205,7 +205,7 @@ type virtualBorderRouterState struct {
 	PeeringSubnetMask *string `pulumi:"peeringSubnetMask"`
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId *string `pulumi:"physicalConnectionId"`
-	// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+	// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status *string `pulumi:"status"`
@@ -250,7 +250,7 @@ type VirtualBorderRouterState struct {
 	PeeringSubnetMask pulumi.StringPtrInput
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId pulumi.StringPtrInput
-	// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+	// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
 	RouteTableId pulumi.StringPtrInput
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringPtrInput
@@ -520,7 +520,7 @@ func (o VirtualBorderRouterOutput) PhysicalConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.PhysicalConnectionId }).(pulumi.StringOutput)
 }
 
-// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
 func (o VirtualBorderRouterOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }

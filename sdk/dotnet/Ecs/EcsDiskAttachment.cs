@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
     /// 
-    /// &gt; **NOTE:** Available since v1.122.0+.
+    /// &gt; **NOTE:** Available since v1.122.0.
     /// 
     /// ## Example Usage
     /// 

@@ -217,18 +217,22 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * The percentage of the minimum bandwidth commitment. The value is only `20`.
      * 
-     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     * 
+     * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     @Export(name="ratio", refs={Integer.class}, tree="[0]")
     private Output<Integer> ratio;
 
     /**
-     * @return The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * @return The percentage of the minimum bandwidth commitment. The value is only `20`.
      * 
-     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     * 
+     * &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     public Output<Integer> ratio() {

@@ -16,7 +16,11 @@ import (
 //
 // For information about HBR Ots Backup Plan and how to use it, see [What is Ots Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/overview).
 //
-// > **NOTE:** Available in v1.163.0+.
+// > **NOTE:** Available since v1.163.0.
+//
+// > **NOTE:** Deprecated since v1.249.0.
+//
+// > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource hbr.Policy and alicloud_hbr_policy_binding.
 //
 // ## Example Usage
 //

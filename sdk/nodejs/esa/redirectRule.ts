@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
@@ -30,13 +31,17 @@ import * as utilities from "../utilities";
  *     autoPay: true,
  *     planName: "high",
  * });
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const resourceSiteRedirectRuleExample = new alicloud.esa.Site("resource_Site_RedirectRule_example", {
- *     siteName: "gositecdn.cn",
+ *     siteName: `gositecdn-${_default.result}.cn`,
  *     instanceId: resourceRedirectRuleExample.id,
  *     coverage: "overseas",
  *     accessType: "NS",
  * });
- * const _default = new alicloud.esa.RedirectRule("default", {
+ * const defaultRedirectRule = new alicloud.esa.RedirectRule("default", {
  *     statusCode: "301",
  *     ruleName: "example",
  *     siteId: resourceSiteRedirectRuleExample.id,

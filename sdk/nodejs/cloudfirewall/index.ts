@@ -90,6 +90,11 @@ export type InstanceMember = import("./instanceMember").InstanceMember;
 export const InstanceMember: typeof import("./instanceMember").InstanceMember = null as any;
 utilities.lazyLoad(exports, ["InstanceMember"], () => require("./instanceMember"));
 
+export { IpsConfigArgs, IpsConfigState } from "./ipsConfig";
+export type IpsConfig = import("./ipsConfig").IpsConfig;
+export const IpsConfig: typeof import("./ipsConfig").IpsConfig = null as any;
+utilities.lazyLoad(exports, ["IpsConfig"], () => require("./ipsConfig"));
+
 export { NatFirewallArgs, NatFirewallState } from "./natFirewall";
 export type NatFirewall = import("./natFirewall").NatFirewall;
 export const NatFirewall: typeof import("./natFirewall").NatFirewall = null as any;
@@ -126,6 +131,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/instanceMember:InstanceMember":
                 return new InstanceMember(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/ipsConfig:IpsConfig":
+                return new IpsConfig(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/natFirewall:NatFirewall":
                 return new NatFirewall(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
@@ -145,6 +152,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFire
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewallControlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceMember", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/ipsConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcCenTrFirewall", _module)

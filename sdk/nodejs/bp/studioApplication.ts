@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
  *
- * > **NOTE:** Available in v1.192.0+.
+ * > **NOTE:** Available since v1.192.0.
  *
  * ## Example Usage
  *

@@ -66,10 +66,10 @@ type Backend struct {
 
 	// The name of the Backend.
 	BackendName pulumi.StringOutput `pulumi:"backendName"`
-	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 	BackendType pulumi.StringOutput `pulumi:"backendType"`
 	// Whether to create an Event bus service association role.
-	CreateEventBridgeServiceLinkedRole pulumi.BoolPtrOutput `pulumi:"createEventBridgeServiceLinkedRole"`
+	CreateEventBridgeServiceLinkedRole pulumi.BoolOutput `pulumi:"createEventBridgeServiceLinkedRole"`
 	// The description of the Backend.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 }
@@ -112,7 +112,7 @@ func GetBackend(ctx *pulumi.Context,
 type backendState struct {
 	// The name of the Backend.
 	BackendName *string `pulumi:"backendName"`
-	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 	BackendType *string `pulumi:"backendType"`
 	// Whether to create an Event bus service association role.
 	CreateEventBridgeServiceLinkedRole *bool `pulumi:"createEventBridgeServiceLinkedRole"`
@@ -123,7 +123,7 @@ type backendState struct {
 type BackendState struct {
 	// The name of the Backend.
 	BackendName pulumi.StringPtrInput
-	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 	BackendType pulumi.StringPtrInput
 	// Whether to create an Event bus service association role.
 	CreateEventBridgeServiceLinkedRole pulumi.BoolPtrInput
@@ -138,7 +138,7 @@ func (BackendState) ElementType() reflect.Type {
 type backendArgs struct {
 	// The name of the Backend.
 	BackendName string `pulumi:"backendName"`
-	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 	BackendType string `pulumi:"backendType"`
 	// Whether to create an Event bus service association role.
 	CreateEventBridgeServiceLinkedRole *bool `pulumi:"createEventBridgeServiceLinkedRole"`
@@ -150,7 +150,7 @@ type backendArgs struct {
 type BackendArgs struct {
 	// The name of the Backend.
 	BackendName pulumi.StringInput
-	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+	// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 	BackendType pulumi.StringInput
 	// Whether to create an Event bus service association role.
 	CreateEventBridgeServiceLinkedRole pulumi.BoolPtrInput
@@ -250,14 +250,14 @@ func (o BackendOutput) BackendName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.BackendName }).(pulumi.StringOutput)
 }
 
-// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
 func (o BackendOutput) BackendType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.BackendType }).(pulumi.StringOutput)
 }
 
 // Whether to create an Event bus service association role.
-func (o BackendOutput) CreateEventBridgeServiceLinkedRole() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Backend) pulumi.BoolPtrOutput { return v.CreateEventBridgeServiceLinkedRole }).(pulumi.BoolPtrOutput)
+func (o BackendOutput) CreateEventBridgeServiceLinkedRole() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backend) pulumi.BoolOutput { return v.CreateEventBridgeServiceLinkedRole }).(pulumi.BoolOutput)
 }
 
 // The description of the Backend.

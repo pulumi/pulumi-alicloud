@@ -26,27 +26,27 @@ class ExchangeArgs:
                  instance_id: pulumi.Input[builtins.str],
                  internal: pulumi.Input[builtins.bool],
                  virtual_host_name: pulumi.Input[builtins.str],
-                 alternate_exchange: Optional[pulumi.Input[builtins.str]] = None):
+                 alternate_exchange: Optional[pulumi.Input[builtins.str]] = None,
+                 x_delayed_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Exchange resource.
-        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-               * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
-        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[builtins.str] exchange_type: The type of the exchange. Valid values:
-               * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-               * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-               * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-               * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-               When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-               when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-               The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
-        :param pulumi.Input[builtins.str] instance_id: The ID of the instance.
-        :param pulumi.Input[builtins.bool] internal: Specifies whether an exchange is an internal exchange. Valid values:
-               * false: The exchange is not an internal exchange.
-               * true: The exchange is an internal exchange.
-        :param pulumi.Input[builtins.str] virtual_host_name: The name of virtual host where an exchange resides.
-        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
+        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
+               
+               - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+               - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+        :param pulumi.Input[builtins.str] exchange_type: The Exchange type. Value:
+               - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+               - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+               - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+               - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+               - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+               - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
+        :param pulumi.Input[builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        :param pulumi.Input[builtins.bool] internal: Specifies whether the exchange is an internal exchange. Valid values:
+        :param pulumi.Input[builtins.str] virtual_host_name: The name of the vhost to which the exchange that you want to create belongs.
+        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
+        :param pulumi.Input[builtins.str] x_delayed_type: RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         pulumi.set(__self__, "auto_delete_state", auto_delete_state)
         pulumi.set(__self__, "exchange_name", exchange_name)
@@ -56,14 +56,14 @@ class ExchangeArgs:
         pulumi.set(__self__, "virtual_host_name", virtual_host_name)
         if alternate_exchange is not None:
             pulumi.set(__self__, "alternate_exchange", alternate_exchange)
+        if x_delayed_type is not None:
+            pulumi.set(__self__, "x_delayed_type", x_delayed_type)
 
     @property
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> pulumi.Input[builtins.bool]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        Specifies whether to automatically delete the exchange. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
@@ -75,7 +75,10 @@ class ExchangeArgs:
     @pulumi.getter(name="exchangeName")
     def exchange_name(self) -> pulumi.Input[builtins.str]:
         """
-        The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the exchange that you want to create. The exchange name must meet the following conventions:
+
+        - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         """
         return pulumi.get(self, "exchange_name")
 
@@ -87,14 +90,13 @@ class ExchangeArgs:
     @pulumi.getter(name="exchangeType")
     def exchange_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of the exchange. Valid values:
-        * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        The Exchange type. Value:
+        - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         """
         return pulumi.get(self, "exchange_type")
 
@@ -106,7 +108,7 @@ class ExchangeArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         """
         return pulumi.get(self, "instance_id")
 
@@ -118,9 +120,7 @@ class ExchangeArgs:
     @pulumi.getter
     def internal(self) -> pulumi.Input[builtins.bool]:
         """
-        Specifies whether an exchange is an internal exchange. Valid values:
-        * false: The exchange is not an internal exchange.
-        * true: The exchange is an internal exchange.
+        Specifies whether the exchange is an internal exchange. Valid values:
         """
         return pulumi.get(self, "internal")
 
@@ -132,7 +132,7 @@ class ExchangeArgs:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Input[builtins.str]:
         """
-        The name of virtual host where an exchange resides.
+        The name of the vhost to which the exchange that you want to create belongs.
         """
         return pulumi.get(self, "virtual_host_name")
 
@@ -144,7 +144,7 @@ class ExchangeArgs:
     @pulumi.getter(name="alternateExchange")
     def alternate_exchange(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         """
         return pulumi.get(self, "alternate_exchange")
 
@@ -152,42 +152,58 @@ class ExchangeArgs:
     def alternate_exchange(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "alternate_exchange", value)
 
+    @property
+    @pulumi.getter(name="xDelayedType")
+    def x_delayed_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        """
+        return pulumi.get(self, "x_delayed_type")
+
+    @x_delayed_type.setter
+    def x_delayed_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "x_delayed_type", value)
+
 
 @pulumi.input_type
 class _ExchangeState:
     def __init__(__self__, *,
                  alternate_exchange: Optional[pulumi.Input[builtins.str]] = None,
                  auto_delete_state: Optional[pulumi.Input[builtins.bool]] = None,
+                 create_time: Optional[pulumi.Input[builtins.int]] = None,
                  exchange_name: Optional[pulumi.Input[builtins.str]] = None,
                  exchange_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  internal: Optional[pulumi.Input[builtins.bool]] = None,
-                 virtual_host_name: Optional[pulumi.Input[builtins.str]] = None):
+                 virtual_host_name: Optional[pulumi.Input[builtins.str]] = None,
+                 x_delayed_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Exchange resources.
-        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
-        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-               * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
-        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[builtins.str] exchange_type: The type of the exchange. Valid values:
-               * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-               * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-               * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-               * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-               When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-               when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-               The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
-        :param pulumi.Input[builtins.str] instance_id: The ID of the instance.
-        :param pulumi.Input[builtins.bool] internal: Specifies whether an exchange is an internal exchange. Valid values:
-               * false: The exchange is not an internal exchange.
-               * true: The exchange is an internal exchange.
-        :param pulumi.Input[builtins.str] virtual_host_name: The name of virtual host where an exchange resides.
+        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
+        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
+        :param pulumi.Input[builtins.int] create_time: CreateTime
+        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
+               
+               - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+               - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+        :param pulumi.Input[builtins.str] exchange_type: The Exchange type. Value:
+               - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+               - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+               - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+               - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+               - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+               - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
+        :param pulumi.Input[builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        :param pulumi.Input[builtins.bool] internal: Specifies whether the exchange is an internal exchange. Valid values:
+        :param pulumi.Input[builtins.str] virtual_host_name: The name of the vhost to which the exchange that you want to create belongs.
+        :param pulumi.Input[builtins.str] x_delayed_type: RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         if alternate_exchange is not None:
             pulumi.set(__self__, "alternate_exchange", alternate_exchange)
         if auto_delete_state is not None:
             pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if exchange_name is not None:
             pulumi.set(__self__, "exchange_name", exchange_name)
         if exchange_type is not None:
@@ -198,12 +214,14 @@ class _ExchangeState:
             pulumi.set(__self__, "internal", internal)
         if virtual_host_name is not None:
             pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        if x_delayed_type is not None:
+            pulumi.set(__self__, "x_delayed_type", x_delayed_type)
 
     @property
     @pulumi.getter(name="alternateExchange")
     def alternate_exchange(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         """
         return pulumi.get(self, "alternate_exchange")
 
@@ -215,9 +233,7 @@ class _ExchangeState:
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        Specifies whether to automatically delete the exchange. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
@@ -226,10 +242,25 @@ class _ExchangeState:
         pulumi.set(self, "auto_delete_state", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        CreateTime
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="exchangeName")
     def exchange_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the exchange that you want to create. The exchange name must meet the following conventions:
+
+        - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         """
         return pulumi.get(self, "exchange_name")
 
@@ -241,14 +272,13 @@ class _ExchangeState:
     @pulumi.getter(name="exchangeType")
     def exchange_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of the exchange. Valid values:
-        * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        The Exchange type. Value:
+        - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         """
         return pulumi.get(self, "exchange_type")
 
@@ -260,7 +290,7 @@ class _ExchangeState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         """
         return pulumi.get(self, "instance_id")
 
@@ -272,9 +302,7 @@ class _ExchangeState:
     @pulumi.getter
     def internal(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Specifies whether an exchange is an internal exchange. Valid values:
-        * false: The exchange is not an internal exchange.
-        * true: The exchange is an internal exchange.
+        Specifies whether the exchange is an internal exchange. Valid values:
         """
         return pulumi.get(self, "internal")
 
@@ -286,13 +314,25 @@ class _ExchangeState:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of virtual host where an exchange resides.
+        The name of the vhost to which the exchange that you want to create belongs.
         """
         return pulumi.get(self, "virtual_host_name")
 
     @virtual_host_name.setter
     def virtual_host_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "virtual_host_name", value)
+
+    @property
+    @pulumi.getter(name="xDelayedType")
+    def x_delayed_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        """
+        return pulumi.get(self, "x_delayed_type")
+
+    @x_delayed_type.setter
+    def x_delayed_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "x_delayed_type", value)
 
 
 @pulumi.type_token("alicloud:amqp/exchange:Exchange")
@@ -308,6 +348,7 @@ class Exchange(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  internal: Optional[pulumi.Input[builtins.bool]] = None,
                  virtual_host_name: Optional[pulumi.Input[builtins.str]] = None,
+                 x_delayed_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Exchange resource.
@@ -324,24 +365,39 @@ class Exchange(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.amqp.Instance("default",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        virtual_host_name = config.get("virtualHostName")
+        if virtual_host_name is None:
+            virtual_host_name = "/"
+        create_instance = alicloud.amqp.Instance("CreateInstance",
+            renewal_duration=1,
+            max_tps="3000",
+            period_cycle="Month",
+            max_connections=2000,
             support_eip=True,
-            max_eip_tps="128",
+            auto_renew=False,
+            renewal_status="AutoRenewal",
+            period=12,
+            instance_name=name,
+            support_tracing=False,
             payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("default",
+            renewal_duration_unit="Month",
+            instance_type="enterprise",
+            queue_capacity="200",
+            max_eip_tps="128",
+            storage_size="0")
+        default = alicloud.amqp.Exchange("default",
+            virtual_host_name=virtual_host_name,
+            instance_id=create_instance.id,
+            internal=True,
             auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            exchange_name=name,
+            exchange_type="X_CONSISTENT_HASH",
+            alternate_exchange="bakExchange",
+            x_delayed_type="DIRECT")
         ```
 
         ## Import
@@ -354,24 +410,23 @@ class Exchange(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
-        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-               * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
-        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[builtins.str] exchange_type: The type of the exchange. Valid values:
-               * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-               * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-               * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-               * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-               When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-               when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-               The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
-        :param pulumi.Input[builtins.str] instance_id: The ID of the instance.
-        :param pulumi.Input[builtins.bool] internal: Specifies whether an exchange is an internal exchange. Valid values:
-               * false: The exchange is not an internal exchange.
-               * true: The exchange is an internal exchange.
-        :param pulumi.Input[builtins.str] virtual_host_name: The name of virtual host where an exchange resides.
+        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
+        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
+        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
+               
+               - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+               - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+        :param pulumi.Input[builtins.str] exchange_type: The Exchange type. Value:
+               - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+               - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+               - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+               - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+               - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+               - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
+        :param pulumi.Input[builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        :param pulumi.Input[builtins.bool] internal: Specifies whether the exchange is an internal exchange. Valid values:
+        :param pulumi.Input[builtins.str] virtual_host_name: The name of the vhost to which the exchange that you want to create belongs.
+        :param pulumi.Input[builtins.str] x_delayed_type: RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         ...
     @overload
@@ -394,24 +449,39 @@ class Exchange(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.amqp.Instance("default",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        virtual_host_name = config.get("virtualHostName")
+        if virtual_host_name is None:
+            virtual_host_name = "/"
+        create_instance = alicloud.amqp.Instance("CreateInstance",
+            renewal_duration=1,
+            max_tps="3000",
+            period_cycle="Month",
+            max_connections=2000,
             support_eip=True,
-            max_eip_tps="128",
+            auto_renew=False,
+            renewal_status="AutoRenewal",
+            period=12,
+            instance_name=name,
+            support_tracing=False,
             payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("default",
+            renewal_duration_unit="Month",
+            instance_type="enterprise",
+            queue_capacity="200",
+            max_eip_tps="128",
+            storage_size="0")
+        default = alicloud.amqp.Exchange("default",
+            virtual_host_name=virtual_host_name,
+            instance_id=create_instance.id,
+            internal=True,
             auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            exchange_name=name,
+            exchange_type="X_CONSISTENT_HASH",
+            alternate_exchange="bakExchange",
+            x_delayed_type="DIRECT")
         ```
 
         ## Import
@@ -444,6 +514,7 @@ class Exchange(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  internal: Optional[pulumi.Input[builtins.bool]] = None,
                  virtual_host_name: Optional[pulumi.Input[builtins.str]] = None,
+                 x_delayed_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,6 +543,8 @@ class Exchange(pulumi.CustomResource):
             if virtual_host_name is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_host_name'")
             __props__.__dict__["virtual_host_name"] = virtual_host_name
+            __props__.__dict__["x_delayed_type"] = x_delayed_type
+            __props__.__dict__["create_time"] = None
         super(Exchange, __self__).__init__(
             'alicloud:amqp/exchange:Exchange',
             resource_name,
@@ -484,11 +557,13 @@ class Exchange(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alternate_exchange: Optional[pulumi.Input[builtins.str]] = None,
             auto_delete_state: Optional[pulumi.Input[builtins.bool]] = None,
+            create_time: Optional[pulumi.Input[builtins.int]] = None,
             exchange_name: Optional[pulumi.Input[builtins.str]] = None,
             exchange_type: Optional[pulumi.Input[builtins.str]] = None,
             instance_id: Optional[pulumi.Input[builtins.str]] = None,
             internal: Optional[pulumi.Input[builtins.bool]] = None,
-            virtual_host_name: Optional[pulumi.Input[builtins.str]] = None) -> 'Exchange':
+            virtual_host_name: Optional[pulumi.Input[builtins.str]] = None,
+            x_delayed_type: Optional[pulumi.Input[builtins.str]] = None) -> 'Exchange':
         """
         Get an existing Exchange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -496,24 +571,24 @@ class Exchange(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
-        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-               * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
-        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[builtins.str] exchange_type: The type of the exchange. Valid values:
-               * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-               * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-               * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-               * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-               When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-               when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-               The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
-        :param pulumi.Input[builtins.str] instance_id: The ID of the instance.
-        :param pulumi.Input[builtins.bool] internal: Specifies whether an exchange is an internal exchange. Valid values:
-               * false: The exchange is not an internal exchange.
-               * true: The exchange is an internal exchange.
-        :param pulumi.Input[builtins.str] virtual_host_name: The name of virtual host where an exchange resides.
+        :param pulumi.Input[builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
+        :param pulumi.Input[builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
+        :param pulumi.Input[builtins.int] create_time: CreateTime
+        :param pulumi.Input[builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
+               
+               - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+               - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+        :param pulumi.Input[builtins.str] exchange_type: The Exchange type. Value:
+               - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+               - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+               - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+               - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+               - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+               - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
+        :param pulumi.Input[builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        :param pulumi.Input[builtins.bool] internal: Specifies whether the exchange is an internal exchange. Valid values:
+        :param pulumi.Input[builtins.str] virtual_host_name: The name of the vhost to which the exchange that you want to create belongs.
+        :param pulumi.Input[builtins.str] x_delayed_type: RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -521,18 +596,20 @@ class Exchange(pulumi.CustomResource):
 
         __props__.__dict__["alternate_exchange"] = alternate_exchange
         __props__.__dict__["auto_delete_state"] = auto_delete_state
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["exchange_name"] = exchange_name
         __props__.__dict__["exchange_type"] = exchange_type
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["internal"] = internal
         __props__.__dict__["virtual_host_name"] = virtual_host_name
+        __props__.__dict__["x_delayed_type"] = x_delayed_type
         return Exchange(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="alternateExchange")
     def alternate_exchange(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         """
         return pulumi.get(self, "alternate_exchange")
 
@@ -540,17 +617,26 @@ class Exchange(pulumi.CustomResource):
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> pulumi.Output[builtins.bool]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        Specifies whether to automatically delete the exchange. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[builtins.int]:
+        """
+        CreateTime
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="exchangeName")
     def exchange_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the exchange that you want to create. The exchange name must meet the following conventions:
+
+        - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         """
         return pulumi.get(self, "exchange_name")
 
@@ -558,14 +644,13 @@ class Exchange(pulumi.CustomResource):
     @pulumi.getter(name="exchangeType")
     def exchange_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of the exchange. Valid values:
-        * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        The Exchange type. Value:
+        - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         """
         return pulumi.get(self, "exchange_type")
 
@@ -573,7 +658,7 @@ class Exchange(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         """
         return pulumi.get(self, "instance_id")
 
@@ -581,9 +666,7 @@ class Exchange(pulumi.CustomResource):
     @pulumi.getter
     def internal(self) -> pulumi.Output[builtins.bool]:
         """
-        Specifies whether an exchange is an internal exchange. Valid values:
-        * false: The exchange is not an internal exchange.
-        * true: The exchange is an internal exchange.
+        Specifies whether the exchange is an internal exchange. Valid values:
         """
         return pulumi.get(self, "internal")
 
@@ -591,7 +674,15 @@ class Exchange(pulumi.CustomResource):
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of virtual host where an exchange resides.
+        The name of the vhost to which the exchange that you want to create belongs.
         """
         return pulumi.get(self, "virtual_host_name")
+
+    @property
+    @pulumi.getter(name="xDelayedType")
+    def x_delayed_type(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        """
+        return pulumi.get(self, "x_delayed_type")
 

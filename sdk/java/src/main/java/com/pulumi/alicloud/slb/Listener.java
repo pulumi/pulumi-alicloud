@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -111,7 +112,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aclStatus("on")
  *             .aclType("white")
- *             .aclId(listenerAcl.id())
+ *             .aclIds(listenerAcl.id())
  *             .requestTimeout(80)
  *             .idleTimeout(30)
  *             .build());
@@ -149,11 +150,23 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:slb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
+    /**
+     * @deprecated
+     * Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.
+     * 
+     */
+    @Deprecated /* Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead. */
     @Export(name="aclId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> aclId;
+    private Output<String> aclId;
 
-    public Output<Optional<String>> aclId() {
-        return Codegen.optional(this.aclId);
+    public Output<String> aclId() {
+        return this.aclId;
+    }
+    @Export(name="aclIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> aclIds;
+
+    public Output<List<String>> aclIds() {
+        return this.aclIds;
     }
     @Export(name="aclStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclStatus;
@@ -304,30 +317,6 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Integer>> idleTimeout() {
         return Codegen.optional(this.idleTimeout);
-    }
-    /**
-     * @deprecated
-     * Field &#39;lb_port&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-    @Export(name="lbPort", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> lbPort;
-
-    public Output<Optional<Integer>> lbPort() {
-        return Codegen.optional(this.lbPort);
-    }
-    /**
-     * @deprecated
-     * Field &#39;lb_protocol&#39; has been removed since 1.211.0.
-     * 
-     */
-    @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-    @Export(name="lbProtocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> lbProtocol;
-
-    public Output<Optional<String>> lbProtocol() {
-        return Codegen.optional(this.lbProtocol);
     }
     @Export(name="listenerForward", refs={String.class}, tree="[0]")
     private Output<String> listenerForward;

@@ -66,6 +66,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<String> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     * 
+     */
+    public Optional<Output<String>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     * 
+     */
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<String> autoRenewPeriod;
+
+    /**
+     * @return The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     * 
+     */
+    public Optional<Output<String>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
+    /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
@@ -205,14 +235,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      * 
      */
     @Import(name="instanceStorage")
     private @Nullable Output<String> instanceStorage;
 
     /**
-     * @return The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * @return The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      * 
      */
     public Optional<Output<String>> instanceStorage() {
@@ -653,6 +683,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.arbiterVswitchId = $.arbiterVswitchId;
         this.arbiterZoneId = $.arbiterZoneId;
         this.archVersion = $.archVersion;
+        this.autoRenew = $.autoRenew;
+        this.autoRenewPeriod = $.autoRenewPeriod;
         this.coldStorage = $.coldStorage;
         this.coreSingleStorage = $.coreSingleStorage;
         this.coreSpec = $.coreSpec;
@@ -772,6 +804,48 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder archVersion(String archVersion) {
             return archVersion(Output.of(archVersion));
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<String> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(String autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewPeriod The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(@Nullable Output<String> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriod The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(String autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
         /**
@@ -968,7 +1042,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceStorage The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+         * @param instanceStorage The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
          * 
          * @return builder
          * 
@@ -979,7 +1053,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceStorage The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+         * @param instanceStorage The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
          * 
          * @return builder
          * 

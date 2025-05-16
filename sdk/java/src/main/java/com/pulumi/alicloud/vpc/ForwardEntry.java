@@ -269,14 +269,14 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portBreak);
     }
     /**
-     * (Available since 1.119.1+) The status of forward entry.
+     * (Available since v1.119.1) The status of forward entry.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available since 1.119.1+) The status of forward entry.
+     * @return (Available since v1.119.1) The status of forward entry.
      * 
      */
     public Output<String> status() {

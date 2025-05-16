@@ -24,11 +24,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "terraform_example";
  * const defaulteNv8bu = new alicloud.dataworks.Project("defaulteNv8bu", {
  *     projectName: name,
  *     displayName: name,
  *     description: name,
+ *     paiTaskEnabled: true,
  * });
  * const defaultUW8inp = new alicloud.dataworks.DiJob("defaultUW8inp", {
  *     description: "xxxx",

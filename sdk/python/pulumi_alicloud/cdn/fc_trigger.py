@@ -270,7 +270,7 @@ class FcTrigger(pulumi.CustomResource):
 
         For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
-        > **NOTE:** Available in v1.165.0+.
+        > **NOTE:** Available since v1.165.0.
 
         ## Example Usage
 
@@ -320,7 +320,7 @@ class FcTrigger(pulumi.CustomResource):
 
         For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
-        > **NOTE:** Available in v1.165.0+.
+        > **NOTE:** Available since v1.165.0.
 
         ## Example Usage
 

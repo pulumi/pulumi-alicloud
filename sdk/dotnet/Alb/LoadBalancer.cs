@@ -18,6 +18,84 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultGetZones = AliCloud.Alb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var default1 = new AliCloud.Vpc.Switch("default1", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.4.1.0/24",
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = $"{name}_1",
+    ///     });
+    /// 
+    ///     var default2 = new AliCloud.Vpc.Switch("default2", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.4.2.0/24",
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///         VswitchName = $"{name}_2",
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+    ///     {
+    ///         LoadBalancerEdition = "Basic",
+    ///         AddressType = "Internet",
+    ///         VpcId = defaultNetwork.Id,
+    ///         AddressAllocatedMode = "Fixed",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         LoadBalancerName = name,
+    ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+    ///         {
+    ///             PayType = "PayAsYouGo",
+    ///         },
+    ///         ModificationProtectionConfig = new AliCloud.Alb.Inputs.LoadBalancerModificationProtectionConfigArgs
+    ///         {
+    ///             Status = "NonProtection",
+    ///         },
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = default1.Id,
+    ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             },
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = default2.Id,
+    ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.

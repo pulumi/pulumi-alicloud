@@ -18,14 +18,14 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     public static final ExchangeArgs Empty = new ExchangeArgs();
 
     /**
-     * The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+     * The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
      * 
      */
     @Import(name="alternateExchange")
     private @Nullable Output<String> alternateExchange;
 
     /**
-     * @return The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+     * @return The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
      * 
      */
     public Optional<Output<String>> alternateExchange() {
@@ -33,18 +33,14 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-     * * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+     * Specifies whether to automatically delete the exchange. Valid values:
      * 
      */
     @Import(name="autoDeleteState", required=true)
     private Output<Boolean> autoDeleteState;
 
     /**
-     * @return Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-     * * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+     * @return Specifies whether to automatically delete the exchange. Valid values:
      * 
      */
     public Output<Boolean> autoDeleteState() {
@@ -52,14 +48,20 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * The name of the exchange that you want to create. The exchange name must meet the following conventions:
+     * 
+     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+     * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
      * 
      */
     @Import(name="exchangeName", required=true)
     private Output<String> exchangeName;
 
     /**
-     * @return The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * @return The name of the exchange that you want to create. The exchange name must meet the following conventions:
+     * 
+     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+     * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
      * 
      */
     public Output<String> exchangeName() {
@@ -67,28 +69,26 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the exchange. Valid values:
-     * * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-     * * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-     * * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-     * * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-     *   When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-     *   when sending a message to the Headers Exchange, set the message&#39;s Headers property key-value pair and use the message Headers
-     *   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+     * The Exchange type. Value:
+     * - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+     * - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+     * - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+     * - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+     * - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+     * - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
      * 
      */
     @Import(name="exchangeType", required=true)
     private Output<String> exchangeType;
 
     /**
-     * @return The type of the exchange. Valid values:
-     * * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-     * * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-     * * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-     * * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-     *   When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-     *   when sending a message to the Headers Exchange, set the message&#39;s Headers property key-value pair and use the message Headers
-     *   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+     * @return The Exchange type. Value:
+     * - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+     * - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+     * - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+     * - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+     * - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+     * - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
      * 
      */
     public Output<String> exchangeType() {
@@ -96,14 +96,14 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the instance.
+     * The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
      * 
      */
     public Output<String> instanceId() {
@@ -111,18 +111,14 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether an exchange is an internal exchange. Valid values:
-     * * false: The exchange is not an internal exchange.
-     * * true: The exchange is an internal exchange.
+     * Specifies whether the exchange is an internal exchange. Valid values:
      * 
      */
     @Import(name="internal", required=true)
     private Output<Boolean> internal;
 
     /**
-     * @return Specifies whether an exchange is an internal exchange. Valid values:
-     * * false: The exchange is not an internal exchange.
-     * * true: The exchange is an internal exchange.
+     * @return Specifies whether the exchange is an internal exchange. Valid values:
      * 
      */
     public Output<Boolean> internal() {
@@ -130,18 +126,33 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of virtual host where an exchange resides.
+     * The name of the vhost to which the exchange that you want to create belongs.
      * 
      */
     @Import(name="virtualHostName", required=true)
     private Output<String> virtualHostName;
 
     /**
-     * @return The name of virtual host where an exchange resides.
+     * @return The name of the vhost to which the exchange that you want to create belongs.
      * 
      */
     public Output<String> virtualHostName() {
         return this.virtualHostName;
+    }
+
+    /**
+     * RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+     * 
+     */
+    @Import(name="xDelayedType")
+    private @Nullable Output<String> xDelayedType;
+
+    /**
+     * @return RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+     * 
+     */
+    public Optional<Output<String>> xDelayedType() {
+        return Optional.ofNullable(this.xDelayedType);
     }
 
     private ExchangeArgs() {}
@@ -154,6 +165,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.internal = $.internal;
         this.virtualHostName = $.virtualHostName;
+        this.xDelayedType = $.xDelayedType;
     }
 
     public static Builder builder() {
@@ -175,7 +187,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alternateExchange The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+         * @param alternateExchange The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
          * 
          * @return builder
          * 
@@ -186,7 +198,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alternateExchange The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+         * @param alternateExchange The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
          * 
          * @return builder
          * 
@@ -196,9 +208,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDeleteState Specifies whether the Auto Delete attribute is configured. Valid values:
-         * * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-         * * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+         * @param autoDeleteState Specifies whether to automatically delete the exchange. Valid values:
          * 
          * @return builder
          * 
@@ -209,9 +219,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDeleteState Specifies whether the Auto Delete attribute is configured. Valid values:
-         * * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-         * * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+         * @param autoDeleteState Specifies whether to automatically delete the exchange. Valid values:
          * 
          * @return builder
          * 
@@ -221,7 +229,10 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+         * @param exchangeName The name of the exchange that you want to create. The exchange name must meet the following conventions:
+         * 
+         * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+         * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
          * 
          * @return builder
          * 
@@ -232,7 +243,10 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+         * @param exchangeName The name of the exchange that you want to create. The exchange name must meet the following conventions:
+         * 
+         * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+         * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
          * 
          * @return builder
          * 
@@ -242,14 +256,13 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeType The type of the exchange. Valid values:
-         * * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-         * * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-         * * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-         * * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-         *   When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-         *   when sending a message to the Headers Exchange, set the message&#39;s Headers property key-value pair and use the message Headers
-         *   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+         * @param exchangeType The Exchange type. Value:
+         * - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+         * - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+         * - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+         * - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+         * - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+         * - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
          * 
          * @return builder
          * 
@@ -260,14 +273,13 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeType The type of the exchange. Valid values:
-         * * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-         * * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-         * * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-         * * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-         *   When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-         *   when sending a message to the Headers Exchange, set the message&#39;s Headers property key-value pair and use the message Headers
-         *   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+         * @param exchangeType The Exchange type. Value:
+         * - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+         * - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+         * - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+         * - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+         * - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+         * - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
          * 
          * @return builder
          * 
@@ -277,7 +289,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance.
+         * @param instanceId The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
          * 
          * @return builder
          * 
@@ -288,7 +300,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance.
+         * @param instanceId The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
          * 
          * @return builder
          * 
@@ -298,9 +310,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internal Specifies whether an exchange is an internal exchange. Valid values:
-         * * false: The exchange is not an internal exchange.
-         * * true: The exchange is an internal exchange.
+         * @param internal Specifies whether the exchange is an internal exchange. Valid values:
          * 
          * @return builder
          * 
@@ -311,9 +321,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internal Specifies whether an exchange is an internal exchange. Valid values:
-         * * false: The exchange is not an internal exchange.
-         * * true: The exchange is an internal exchange.
+         * @param internal Specifies whether the exchange is an internal exchange. Valid values:
          * 
          * @return builder
          * 
@@ -323,7 +331,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName The name of virtual host where an exchange resides.
+         * @param virtualHostName The name of the vhost to which the exchange that you want to create belongs.
          * 
          * @return builder
          * 
@@ -334,13 +342,34 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName The name of virtual host where an exchange resides.
+         * @param virtualHostName The name of the vhost to which the exchange that you want to create belongs.
          * 
          * @return builder
          * 
          */
         public Builder virtualHostName(String virtualHostName) {
             return virtualHostName(Output.of(virtualHostName));
+        }
+
+        /**
+         * @param xDelayedType RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xDelayedType(@Nullable Output<String> xDelayedType) {
+            $.xDelayedType = xDelayedType;
+            return this;
+        }
+
+        /**
+         * @param xDelayedType RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xDelayedType(String xDelayedType) {
+            return xDelayedType(Output.of(xDelayedType));
         }
 
         public ExchangeArgs build() {

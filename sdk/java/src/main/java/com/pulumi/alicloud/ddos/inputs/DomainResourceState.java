@@ -41,7 +41,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     /**
      * The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
      * 
      */
     @Import(name="certIdentifier")
@@ -50,7 +50,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name of the certificate.
      * 
-     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
      * 
      */
     public Optional<Output<String>> certIdentifier() {
@@ -322,7 +322,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param certIdentifier The name of the certificate.
          * 
-         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param certIdentifier The name of the certificate.
          * 
-         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the &#34;CertificateID-RegionId&#34; format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
          * 
          * @return builder
          * 

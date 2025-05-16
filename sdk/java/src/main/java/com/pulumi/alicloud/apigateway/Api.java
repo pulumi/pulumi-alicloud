@@ -296,14 +296,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requestParameters);
     }
     /**
-     * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      * 
      */
     @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
-     * @return The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * @return The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      * 
      */
     public Output<String> serviceType() {

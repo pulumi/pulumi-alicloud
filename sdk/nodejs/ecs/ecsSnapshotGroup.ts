@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Snapshot Group and how to use it, see [What is Snapshot Group](https://www.alibabacloud.com/help/en/doc-detail/210939.html).
  *
- * > **NOTE:** Available in v1.160.0+.
+ * > **NOTE:** Available since v1.160.0.
  *
  * ## Example Usage
  *

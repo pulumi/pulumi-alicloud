@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? FunctionType;
         /// <summary>
+        /// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+        /// </summary>
+        public readonly string? FunctionVersion;
+        /// <summary>
         /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
         /// </summary>
         public readonly string? Method;
@@ -50,7 +54,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The service name of function compute service. Required if `function_type` is `FCEvent`.
+        /// The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         /// </summary>
         public readonly string? ServiceName;
         /// <summary>
@@ -67,6 +71,8 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
             string? functionName,
 
             string? functionType,
+
+            string? functionVersion,
 
             string? method,
 
@@ -86,6 +92,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
             FunctionBaseUrl = functionBaseUrl;
             FunctionName = functionName;
             FunctionType = functionType;
+            FunctionVersion = functionVersion;
             Method = method;
             OnlyBusinessPath = onlyBusinessPath;
             Path = path;

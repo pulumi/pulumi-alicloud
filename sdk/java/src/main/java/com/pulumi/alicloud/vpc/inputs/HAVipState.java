@@ -195,14 +195,14 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.120.0+) The status of the HaVip instance.
+     * (Available since v1.120.0) The status of the HaVip instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in v1.120.0+) The status of the HaVip instance.
+     * @return (Available since v1.120.0) The status of the HaVip instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -556,7 +556,7 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in v1.120.0+) The status of the HaVip instance.
+         * @param status (Available since v1.120.0) The status of the HaVip instance.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in v1.120.0+) The status of the HaVip instance.
+         * @param status (Available since v1.120.0) The status of the HaVip instance.
          * 
          * @return builder
          * 

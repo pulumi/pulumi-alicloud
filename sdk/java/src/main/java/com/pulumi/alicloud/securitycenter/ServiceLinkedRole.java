@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Security Center Service Role and how to use it, see [What is Security Center](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Example Usage
  * 

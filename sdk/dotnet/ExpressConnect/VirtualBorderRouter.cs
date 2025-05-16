@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> PhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+        /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
         /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? PhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+        /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }

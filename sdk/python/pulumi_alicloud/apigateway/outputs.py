@@ -169,6 +169,8 @@ class ApiFcServiceConfig(dict):
             suggest = "function_name"
         elif key == "functionType":
             suggest = "function_type"
+        elif key == "functionVersion":
+            suggest = "function_version"
         elif key == "onlyBusinessPath":
             suggest = "only_business_path"
         elif key == "serviceName":
@@ -192,6 +194,7 @@ class ApiFcServiceConfig(dict):
                  function_base_url: Optional[builtins.str] = None,
                  function_name: Optional[builtins.str] = None,
                  function_type: Optional[builtins.str] = None,
+                 function_version: Optional[builtins.str] = None,
                  method: Optional[builtins.str] = None,
                  only_business_path: Optional[builtins.bool] = None,
                  path: Optional[builtins.str] = None,
@@ -204,11 +207,12 @@ class ApiFcServiceConfig(dict):
         :param builtins.str function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param builtins.str function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param builtins.str function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        :param builtins.str function_version: The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
         :param builtins.str method: The http method of function compute service. Required if `function_type` is `HttpTrigger`.
         :param builtins.bool only_business_path: Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
         :param builtins.str path: The path of function compute service. Required if `function_type` is `HttpTrigger`.
         :param builtins.str qualifier: The qualifier of function name of compute service.
-        :param builtins.str service_name: The service name of function compute service. Required if `function_type` is `FCEvent`.
+        :param builtins.str service_name: The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
         pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
@@ -219,6 +223,8 @@ class ApiFcServiceConfig(dict):
             pulumi.set(__self__, "function_name", function_name)
         if function_type is not None:
             pulumi.set(__self__, "function_type", function_type)
+        if function_version is not None:
+            pulumi.set(__self__, "function_version", function_version)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if only_business_path is not None:
@@ -279,6 +285,14 @@ class ApiFcServiceConfig(dict):
         return pulumi.get(self, "function_type")
 
     @property
+    @pulumi.getter(name="functionVersion")
+    def function_version(self) -> Optional[builtins.str]:
+        """
+        The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+        """
+        return pulumi.get(self, "function_version")
+
+    @property
     @pulumi.getter
     def method(self) -> Optional[builtins.str]:
         """
@@ -314,7 +328,7 @@ class ApiFcServiceConfig(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[builtins.str]:
         """
-        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
         return pulumi.get(self, "service_name")
 

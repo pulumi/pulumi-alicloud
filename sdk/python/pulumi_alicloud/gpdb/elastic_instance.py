@@ -356,7 +356,7 @@ class _ElasticInstanceState:
         :param pulumi.Input[builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[builtins.str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
@@ -561,7 +561,7 @@ class _ElasticInstanceState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.196.0+) The connection port of the instance.
+        (Available since v1.196.0) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 
@@ -695,9 +695,9 @@ class ElasticInstance(pulumi.CustomResource):
         Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\\
         For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
 
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+        > **NOTE:** Deprecated since v1.147.0.
 
-        > **NOTE:**  Available in 1.127.0+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
 
         ## Example Usage
 
@@ -772,9 +772,9 @@ class ElasticInstance(pulumi.CustomResource):
         Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\\
         For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
 
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+        > **NOTE:** Deprecated since v1.147.0.
 
-        > **NOTE:**  Available in 1.127.0+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
 
         ## Example Usage
 
@@ -945,7 +945,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[builtins.str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
@@ -1086,7 +1086,7 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.196.0+) The connection port of the instance.
+        (Available since v1.196.0) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 

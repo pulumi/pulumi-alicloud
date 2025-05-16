@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.esa.RatePlanInstance;
  * import com.pulumi.alicloud.esa.RatePlanInstanceArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.esa.Site;
  * import com.pulumi.alicloud.esa.SiteArgs;
  * import com.pulumi.alicloud.esa.HttpResponseHeaderModificationRule;
@@ -68,14 +70,19 @@ import javax.annotation.Nullable;
  *             .planName("high")
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var resourceSiteHttpResponseHeaderModificationRuleExample = new Site("resourceSiteHttpResponseHeaderModificationRuleExample", SiteArgs.builder()
- *             .siteName("gositecdn.cn")
+ *             .siteName(String.format("gositecdn-%s.cn", default_.result()))
  *             .instanceId(resourceHttpResponseHeaderModificationRuleExample.id())
  *             .coverage("overseas")
  *             .accessType("NS")
  *             .build());
  * 
- *         var default_ = new HttpResponseHeaderModificationRule("default", HttpResponseHeaderModificationRuleArgs.builder()
+ *         var defaultHttpResponseHeaderModificationRule = new HttpResponseHeaderModificationRule("defaultHttpResponseHeaderModificationRule", HttpResponseHeaderModificationRuleArgs.builder()
  *             .ruleEnable("on")
  *             .responseHeaderModifications(            
  *                 HttpResponseHeaderModificationRuleResponseHeaderModificationArgs.builder()

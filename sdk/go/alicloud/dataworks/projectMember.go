@@ -67,7 +67,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataworks.NewProject(ctx, "defaultQeRfvU", &dataworks.ProjectArgs{
+//			defaultQeRfvU, err := dataworks.NewProject(ctx, "defaultQeRfvU", &dataworks.ProjectArgs{
 //				Status:                pulumi.String("Available"),
 //				Description:           pulumi.String("tf_desc"),
 //				ProjectName:           pulumi.Sprintf("%v%v", name, randint.Id),
@@ -82,7 +82,7 @@ import (
 //			}
 //			_, err = dataworks.NewProjectMember(ctx, "default", &dataworks.ProjectMemberArgs{
 //				UserId:    defaultKCTrB2.ID(),
-//				ProjectId: pulumi.Any(defaultCoMnk8.Id),
+//				ProjectId: defaultQeRfvU.ID(),
 //				Roles: dataworks.ProjectMemberRoleArray{
 //					&dataworks.ProjectMemberRoleArgs{
 //						Code: pulumi.String(adminCode),

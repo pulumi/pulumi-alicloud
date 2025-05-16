@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
  *
- * > **NOTE:** Available in v1.157.0+.
+ * > **NOTE:** Available since v1.157.0.
  *
  * ## Import
  *

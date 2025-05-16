@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultProjectMember = new ProjectMember("defaultProjectMember", ProjectMemberArgs.builder()
  *             .userId(defaultKCTrB2.id())
- *             .projectId(defaultCoMnk8.id())
+ *             .projectId(defaultQeRfvU.id())
  *             .roles(ProjectMemberRoleArgs.builder()
  *                 .code(adminCode)
  *                 .build())

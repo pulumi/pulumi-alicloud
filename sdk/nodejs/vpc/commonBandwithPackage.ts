@@ -105,9 +105,11 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public /*out*/ readonly paymentType!: pulumi.Output<string>;
     /**
-     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
-     * > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     *
+     * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
     public readonly ratio!: pulumi.Output<number>;
     /**
@@ -259,9 +261,11 @@ export interface CommonBandwithPackageState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
-     * > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     *
+     * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
     ratio?: pulumi.Input<number>;
     /**
@@ -350,9 +354,11 @@ export interface CommonBandwithPackageArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
-     * > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+     * This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+     *
+     * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
     ratio?: pulumi.Input<number>;
     /**

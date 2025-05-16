@@ -386,6 +386,7 @@ class RewriteUrlRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -399,12 +400,15 @@ class RewriteUrlRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_rewrite_url_rule_site_example = alicloud.esa.Site("resource_RewriteUrlRule_Site_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_rewrite_url_rule_rate_plan_instance_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.RewriteUrlRule("default",
+        default_rewrite_url_rule = alicloud.esa.RewriteUrlRule("default",
             rewrite_uri_type="static",
             rewrite_query_string_type="static",
             site_id=resource_rewrite_url_rule_site_example.id,
@@ -461,6 +465,7 @@ class RewriteUrlRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -474,12 +479,15 @@ class RewriteUrlRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_rewrite_url_rule_site_example = alicloud.esa.Site("resource_RewriteUrlRule_Site_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_rewrite_url_rule_rate_plan_instance_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.RewriteUrlRule("default",
+        default_rewrite_url_rule = alicloud.esa.RewriteUrlRule("default",
             rewrite_uri_type="static",
             rewrite_query_string_type="static",
             site_id=resource_rewrite_url_rule_site_example.id,

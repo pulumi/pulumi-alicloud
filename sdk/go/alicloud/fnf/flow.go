@@ -16,7 +16,7 @@ import (
 //
 // For information about Serverless Workflow Flow and how to use it, see [What is Flow](https://www.alibabacloud.com/help/en/doc-detail/123079.htm).
 //
-// > **NOTE:** Available since v1.105.0+.
+// > **NOTE:** Available since v1.105.0.
 //
 // ## Example Usage
 //

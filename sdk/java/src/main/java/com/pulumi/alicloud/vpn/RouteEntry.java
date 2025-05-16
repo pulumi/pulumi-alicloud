@@ -207,28 +207,28 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
         return this.routeDest;
     }
     /**
-     * (Available in 1.161.0+) The type of the vpn route entry.
+     * (Available since v1.161.0) The type of the vpn route entry.
      * 
      */
     @Export(name="routeEntryType", refs={String.class}, tree="[0]")
     private Output<String> routeEntryType;
 
     /**
-     * @return (Available in 1.161.0+) The type of the vpn route entry.
+     * @return (Available since v1.161.0) The type of the vpn route entry.
      * 
      */
     public Output<String> routeEntryType() {
         return this.routeEntryType;
     }
     /**
-     * (Available in 1.161.0+) The status of the vpn route entry.
+     * (Available since v1.161.0) The status of the vpn route entry.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available in 1.161.0+) The status of the vpn route entry.
+     * @return (Available since v1.161.0) The status of the vpn route entry.
      * 
      */
     public Output<String> status() {

@@ -116,7 +116,7 @@ type Api struct {
 	RequestConfig ApiRequestConfigOutput `pulumi:"requestConfig"`
 	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayOutput `pulumi:"requestParameters"`
-	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+	// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayOutput `pulumi:"stageNames"`
@@ -195,7 +195,7 @@ type apiState struct {
 	RequestConfig *ApiRequestConfig `pulumi:"requestConfig"`
 	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
-	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+	// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 	ServiceType *string `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
@@ -230,7 +230,7 @@ type ApiState struct {
 	RequestConfig ApiRequestConfigPtrInput
 	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayInput
-	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+	// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 	ServiceType pulumi.StringPtrInput
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
@@ -267,7 +267,7 @@ type apiArgs struct {
 	RequestConfig ApiRequestConfig `pulumi:"requestConfig"`
 	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters []ApiRequestParameter `pulumi:"requestParameters"`
-	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+	// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 	ServiceType string `pulumi:"serviceType"`
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames []string `pulumi:"stageNames"`
@@ -301,7 +301,7 @@ type ApiArgs struct {
 	RequestConfig ApiRequestConfigInput
 	// request_parameters defines the request parameters of the api. See `requestParameters` below.
 	RequestParameters ApiRequestParameterArrayInput
-	// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+	// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 	ServiceType pulumi.StringInput
 	// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
 	StageNames pulumi.StringArrayInput
@@ -461,7 +461,7 @@ func (o ApiOutput) RequestParameters() ApiRequestParameterArrayOutput {
 	return o.ApplyT(func(v *Api) ApiRequestParameterArrayOutput { return v.RequestParameters }).(ApiRequestParameterArrayOutput)
 }
 
-// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+// The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
 func (o ApiOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
 }

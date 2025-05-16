@@ -51,6 +51,21 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether to forcibly delete the traffic marker policy. Valid values:
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    /**
+     * @return Whether to forcibly delete the traffic marker policy. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
      * MarkingDscp
      * 
      */
@@ -97,7 +112,6 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * List of stream classification rules.
-     * 
      * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
      * 
      */
@@ -106,7 +120,6 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return List of stream classification rules.
-     * 
      * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
      * 
      */
@@ -134,6 +147,7 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
     private TrafficMarkingPolicyArgs(TrafficMarkingPolicyArgs $) {
         this.description = $.description;
         this.dryRun = $.dryRun;
+        this.force = $.force;
         this.markingDscp = $.markingDscp;
         this.priority = $.priority;
         this.trafficMarkingPolicyName = $.trafficMarkingPolicyName;
@@ -202,6 +216,27 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param force Whether to forcibly delete the traffic marker policy. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force Whether to forcibly delete the traffic marker policy. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
+        }
+
+        /**
          * @param markingDscp MarkingDscp
          * 
          * @return builder
@@ -266,7 +301,6 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * 
          * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
          * 
          * @return builder
@@ -279,7 +313,6 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * 
          * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
          * 
          * @return builder
@@ -291,7 +324,6 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param trafficMatchRules List of stream classification rules.
-         * 
          * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
          * 
          * @return builder

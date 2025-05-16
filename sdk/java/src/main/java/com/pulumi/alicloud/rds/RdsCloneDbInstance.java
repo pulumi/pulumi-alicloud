@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
  * 
- * &gt; **NOTE:** Available since v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0.
  * 
  * ## Example Usage
  * 
@@ -226,10 +226,10 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+     * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
@@ -241,10 +241,10 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+     * * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      * 
      */
     public Output<String> category() {

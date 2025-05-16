@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
     /// 
-    /// &gt; **NOTE:** Available since v1.149.0+.
+    /// &gt; **NOTE:** Available since v1.149.0.
     /// 
     /// ## Example Usage
     /// 
@@ -145,10 +145,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High availability
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        /// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -632,10 +632,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High availability
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        /// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1099,10 +1099,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High availability
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+        /// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+        /// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

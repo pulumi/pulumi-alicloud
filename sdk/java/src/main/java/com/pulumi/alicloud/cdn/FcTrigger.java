@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
  * 
- * &gt; **NOTE:** Available in v1.165.0+.
+ * &gt; **NOTE:** Available since v1.165.0.
  * 
  * ## Example Usage
  * 

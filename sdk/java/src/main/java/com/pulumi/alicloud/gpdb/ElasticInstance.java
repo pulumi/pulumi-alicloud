@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
  * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
  * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  * 
- * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+ * &gt; **NOTE:** Deprecated since v1.147.0.
  * 
- * &gt; **NOTE:**  Available in 1.127.0+
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
  * 
  * ## Example Usage
  * 
@@ -281,14 +281,14 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      * 
      */
     @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the instance.
+     * @return (Available since v1.196.0) The connection port of the instance.
      * 
      */
     public Output<String> port() {

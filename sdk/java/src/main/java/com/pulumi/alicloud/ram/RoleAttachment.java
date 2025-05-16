@@ -70,7 +70,8 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(2)
- *             .memorySize(4)
+ *             .memorySize(8)
+ *             .instanceTypeFamily("ecs.g6")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -93,7 +94,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 

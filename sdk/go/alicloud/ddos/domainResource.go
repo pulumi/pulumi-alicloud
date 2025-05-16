@@ -66,7 +66,14 @@ import (
 //				RealServers: pulumi.StringArray{
 //					pulumi.String("177.167.32.11"),
 //				},
-//				HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}"),
+//				HttpsExt: pulumi.String(`    {
+//	    "Http2": 1,
+//	    "Http2https": 0,
+//	    "Https2http": 0
+//	  }
+//
+// `),
+//
 //				ProxyTypes: ddos.DomainResourceProxyTypeArray{
 //					&ddos.DomainResourceProxyTypeArgs{
 //						ProxyPorts: pulumi.IntArray{
@@ -101,7 +108,7 @@ type DomainResource struct {
 	Cert pulumi.StringPtrOutput `pulumi:"cert"`
 	// The name of the certificate.
 	//
-	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 	CertIdentifier pulumi.StringPtrOutput `pulumi:"certIdentifier"`
 	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 	//
@@ -211,7 +218,7 @@ type domainResourceState struct {
 	Cert *string `pulumi:"cert"`
 	// The name of the certificate.
 	//
-	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 	CertIdentifier *string `pulumi:"certIdentifier"`
 	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 	//
@@ -262,7 +269,7 @@ type DomainResourceState struct {
 	Cert pulumi.StringPtrInput
 	// The name of the certificate.
 	//
-	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 	CertIdentifier pulumi.StringPtrInput
 	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 	//
@@ -317,7 +324,7 @@ type domainResourceArgs struct {
 	Cert *string `pulumi:"cert"`
 	// The name of the certificate.
 	//
-	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 	CertIdentifier *string `pulumi:"certIdentifier"`
 	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 	//
@@ -367,7 +374,7 @@ type DomainResourceArgs struct {
 	Cert pulumi.StringPtrInput
 	// The name of the certificate.
 	//
-	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 	CertIdentifier pulumi.StringPtrInput
 	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 	//
@@ -505,7 +512,7 @@ func (o DomainResourceOutput) Cert() pulumi.StringPtrOutput {
 
 // The name of the certificate.
 //
-// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
 func (o DomainResourceOutput) CertIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringPtrOutput { return v.CertIdentifier }).(pulumi.StringPtrOutput)
 }

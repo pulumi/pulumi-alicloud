@@ -435,14 +435,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.hotReplicaMode;
     }
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     @Export(name="hotStandbyCluster", refs={String.class}, tree="[0]")
     private Output<String> hotStandbyCluster;
 
     /**
-     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     public Output<String> hotStandbyCluster() {
@@ -927,6 +929,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceResourceId() {
         return Codegen.optional(this.sourceResourceId);
+    }
+    /**
+     * The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * 
+     */
+    @Export(name="standbyAz", refs={String.class}, tree="[0]")
+    private Output<String> standbyAz;
+
+    /**
+     * @return The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * 
+     */
+    public Output<String> standbyAz() {
+        return this.standbyAz;
     }
     /**
      * (Available since 1.204.1) PolarDB cluster status.

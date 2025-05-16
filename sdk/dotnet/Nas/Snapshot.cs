@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.152.0.
     /// 
     /// &gt; **NOTE:** Only Extreme NAS file systems support the snapshot feature.
     /// 

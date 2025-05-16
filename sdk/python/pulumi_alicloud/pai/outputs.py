@@ -18,6 +18,8 @@ from .. import _utilities
 __all__ = [
     'WorkspaceDatasetLabel',
     'WorkspaceDatasetversionLabel',
+    'WorkspaceModelLabel',
+    'WorkspaceModelVersionLabel',
 ]
 
 @pulumi.output_type
@@ -78,6 +80,68 @@ class WorkspaceDatasetversionLabel(dict):
     def value(self) -> Optional[builtins.str]:
         """
         The value of the tags
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WorkspaceModelLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str key: label key
+        :param builtins.str value: label value
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        """
+        label key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        label value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WorkspaceModelVersionLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str key: label key.
+        :param builtins.str value: label value.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        """
+        label key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        label value.
         """
         return pulumi.get(self, "value")
 

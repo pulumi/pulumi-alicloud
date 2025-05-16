@@ -27,7 +27,7 @@ class BackendArgs:
         """
         The set of arguments for constructing a Backend resource.
         :param pulumi.Input[builtins.str] backend_name: The name of the Backend.
-        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[builtins.str] description: The description of the Backend.
         """
@@ -54,7 +54,7 @@ class BackendArgs:
     @pulumi.getter(name="backendType")
     def backend_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         """
         return pulumi.get(self, "backend_type")
 
@@ -97,7 +97,7 @@ class _BackendState:
         """
         Input properties used for looking up and filtering Backend resources.
         :param pulumi.Input[builtins.str] backend_name: The name of the Backend.
-        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[builtins.str] description: The description of the Backend.
         """
@@ -126,7 +126,7 @@ class _BackendState:
     @pulumi.getter(name="backendType")
     def backend_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         """
         return pulumi.get(self, "backend_type")
 
@@ -206,7 +206,7 @@ class Backend(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_name: The name of the Backend.
-        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[builtins.str] description: The description of the Backend.
         """
@@ -307,7 +307,7 @@ class Backend(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_name: The name of the Backend.
-        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        :param pulumi.Input[builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[builtins.str] description: The description of the Backend.
         """
@@ -333,13 +333,13 @@ class Backend(pulumi.CustomResource):
     @pulumi.getter(name="backendType")
     def backend_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         """
         return pulumi.get(self, "backend_type")
 
     @property
     @pulumi.getter(name="createEventBridgeServiceLinkedRole")
-    def create_event_bridge_service_linked_role(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def create_event_bridge_service_linked_role(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to create an Event bus service association role.
         """

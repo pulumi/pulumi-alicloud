@@ -143,7 +143,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     public readonly physicalConnectionId!: pulumi.Output<string>;
     /**
-     * (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      */
     public /*out*/ readonly routeTableId!: pulumi.Output<string>;
     /**
@@ -310,7 +310,7 @@ export interface VirtualBorderRouterState {
      */
     physicalConnectionId?: pulumi.Input<string>;
     /**
-     * (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      */
     routeTableId?: pulumi.Input<string>;
     /**

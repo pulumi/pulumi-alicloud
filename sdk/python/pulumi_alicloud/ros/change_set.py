@@ -656,7 +656,7 @@ class ChangeSet(pulumi.CustomResource):
 
         For information about ROS Change Set and how to use it, see [What is Change Set](https://www.alibabacloud.com/help/doc-detail/131051.htm).
 
-        > **NOTE:** Available in v1.105.0+.
+        > **NOTE:** Available since v1.105.0.
 
         ## Example Usage
 
@@ -718,7 +718,7 @@ class ChangeSet(pulumi.CustomResource):
 
         For information about ROS Change Set and how to use it, see [What is Change Set](https://www.alibabacloud.com/help/doc-detail/131051.htm).
 
-        > **NOTE:** Available in v1.105.0+.
+        > **NOTE:** Available since v1.105.0.
 
         ## Example Usage
 

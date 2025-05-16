@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Activation and how to use it, see [What is Activation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createactivation#doc-api-Ecs-CreateActivation).
     /// 
-    /// &gt; **NOTE:** Available in v1.177.0+.
+    /// &gt; **NOTE:** Available since v1.177.0.
     /// 
     /// ## Example Usage
     /// 

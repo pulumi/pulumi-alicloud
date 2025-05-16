@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// Provides an Application Load Balancer (ALB) Health Check Template resource.
+    /// Provides a Application Load Balancer (ALB) Health Check Template resource.
+    /// 
+    /// Health check template.
     /// 
     /// For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
     /// 
@@ -50,79 +52,97 @@ namespace Pulumi.AliCloud.Alb
     public partial class HealthCheckTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to precheck the API request.
+        /// Whether to PreCheck only this request, value:
+        /// true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+        /// false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
         /// </summary>
         [Output("healthCheckCodes")]
         public Output<ImmutableArray<string>> HealthCheckCodes { get; private set; } = null!;
 
         /// <summary>
-        /// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        /// The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
         /// </summary>
         [Output("healthCheckConnectPort")]
         public Output<int> HealthCheckConnectPort { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
         /// </summary>
         [Output("healthCheckHost")]
         public Output<string> HealthCheckHost { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
         /// </summary>
         [Output("healthCheckHttpVersion")]
         public Output<string> HealthCheckHttpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        /// The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
         /// </summary>
         [Output("healthCheckInterval")]
         public Output<int> HealthCheckInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
         /// </summary>
         [Output("healthCheckMethod")]
         public Output<string> HealthCheckMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/).
         /// </summary>
         [Output("healthCheckPath")]
         public Output<string> HealthCheckPath { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        /// The protocol used for the health check. Value:
+        /// HTTP (default): Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy.
+        /// HTTPS: Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+        /// TCP: Sends a SYN handshake packet to check whether the server port is alive.
+        /// gRPC: Check whether the server application is healthy by sending a POST or GET request.
         /// </summary>
         [Output("healthCheckProtocol")]
         public Output<string> HealthCheckProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("healthCheckTemplateName")]
         public Output<string> HealthCheckTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        /// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
         /// </summary>
         [Output("healthCheckTimeout")]
         public Output<int> HealthCheckTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
         /// </summary>
         [Output("healthyThreshold")]
         public Output<int> HealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The ID of the resource group
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
         /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int> UnhealthyThreshold { get; private set; } = null!;
@@ -174,7 +194,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class HealthCheckTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to precheck the API request.
+        /// Whether to PreCheck only this request, value:
+        /// true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+        /// false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -183,7 +205,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<string>? _healthCheckCodes;
 
         /// <summary>
-        /// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
         /// </summary>
         public InputList<string> HealthCheckCodes
         {
@@ -192,67 +214,89 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        /// The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
         /// </summary>
         [Input("healthCheckHost")]
         public Input<string>? HealthCheckHost { get; set; }
 
         /// <summary>
-        /// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
         /// </summary>
         [Input("healthCheckHttpVersion")]
         public Input<string>? HealthCheckHttpVersion { get; set; }
 
         /// <summary>
-        /// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        /// The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
-        /// The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/).
         /// </summary>
         [Input("healthCheckPath")]
         public Input<string>? HealthCheckPath { get; set; }
 
         /// <summary>
-        /// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        /// The protocol used for the health check. Value:
+        /// HTTP (default): Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy.
+        /// HTTPS: Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+        /// TCP: Sends a SYN handshake packet to check whether the server port is alive.
+        /// gRPC: Check whether the server application is healthy by sending a POST or GET request.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }
 
         /// <summary>
-        /// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("healthCheckTemplateName", required: true)]
         public Input<string> HealthCheckTemplateName { get; set; } = null!;
 
         /// <summary>
-        /// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        /// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
         /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
@@ -266,7 +310,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class HealthCheckTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to precheck the API request.
+        /// Whether to PreCheck only this request, value:
+        /// true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+        /// false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -275,7 +321,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<string>? _healthCheckCodes;
 
         /// <summary>
-        /// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
         /// </summary>
         public InputList<string> HealthCheckCodes
         {
@@ -284,67 +330,89 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        /// The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
         /// </summary>
         [Input("healthCheckHost")]
         public Input<string>? HealthCheckHost { get; set; }
 
         /// <summary>
-        /// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
         /// </summary>
         [Input("healthCheckHttpVersion")]
         public Input<string>? HealthCheckHttpVersion { get; set; }
 
         /// <summary>
-        /// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        /// The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
-        /// The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        /// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/).
         /// </summary>
         [Input("healthCheckPath")]
         public Input<string>? HealthCheckPath { get; set; }
 
         /// <summary>
-        /// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        /// The protocol used for the health check. Value:
+        /// HTTP (default): Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy.
+        /// HTTPS: Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+        /// TCP: Sends a SYN handshake packet to check whether the server port is alive.
+        /// gRPC: Check whether the server application is healthy by sending a POST or GET request.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }
 
         /// <summary>
-        /// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("healthCheckTemplateName")]
         public Input<string>? HealthCheckTemplateName { get; set; }
 
         /// <summary>
-        /// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        /// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
         /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }

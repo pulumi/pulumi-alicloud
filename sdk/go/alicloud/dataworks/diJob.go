@@ -38,14 +38,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "terraform_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaultMMHL8U, err := dataworks.NewProject(ctx, "defaultMMHL8U", &dataworks.ProjectArgs{
-//				Description: pulumi.String(name),
-//				ProjectName: pulumi.String(name),
-//				DisplayName: pulumi.String(name),
+//				ProjectName:    pulumi.String(name),
+//				DisplayName:    pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				PaiTaskEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

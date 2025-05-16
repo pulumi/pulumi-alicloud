@@ -175,6 +175,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
 
         /// <summary>
+        /// The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        /// </summary>
+        [Output("capacityOptionsPriceComparisonMode")]
+        public Output<string> CapacityOptionsPriceComparisonMode { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         /// </summary>
         [Output("capacityOptionsSpotAutoReplaceOnDemand")]
@@ -474,6 +480,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("capacityOptionsOnDemandPercentageAboveBaseCapacity")]
         public Input<int>? CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; set; }
+
+        /// <summary>
+        /// The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        /// </summary>
+        [Input("capacityOptionsPriceComparisonMode")]
+        public Input<string>? CapacityOptionsPriceComparisonMode { get; set; }
 
         /// <summary>
         /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
@@ -785,6 +797,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("capacityOptionsOnDemandPercentageAboveBaseCapacity")]
         public Input<int>? CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; set; }
+
+        /// <summary>
+        /// The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        /// </summary>
+        [Input("capacityOptionsPriceComparisonMode")]
+        public Input<string>? CapacityOptionsPriceComparisonMode { get; set; }
 
         /// <summary>
         /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.

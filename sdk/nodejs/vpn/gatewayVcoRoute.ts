@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
  *
- * > **NOTE:** Available since v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *

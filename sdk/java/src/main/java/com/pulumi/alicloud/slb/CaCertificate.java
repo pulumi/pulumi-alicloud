@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE:** Available since v1.21.0.
+ * 
  * A Load Balancer CA Certificate is used by the listener of the protocol https.
  * 
  * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).

@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 //
-// > **NOTE:** Available since v1.168.0+.
+// > **NOTE:** Available since v1.168.0.
 //
 // ## Example Usage
 //
@@ -50,7 +50,10 @@ import (
 //				return err
 //			}
 //			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(2),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -80,8 +83,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(name),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err

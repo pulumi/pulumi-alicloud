@@ -10,14 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
-    /// For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
+    /// Provides a Resource Manager Account resource.
+    /// 
+    /// For information about Resource Manager Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.83.0.
     /// 
-    /// &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
-    /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -48,96 +49,113 @@ namespace Pulumi.AliCloud.ResourceManager
     /// });
     /// ```
     /// 
-    /// ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
-    /// 
-    /// Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
-    /// but may not destroy the account. If there are some dependent resource in the account,
-    /// the deleting account will enter a silence period of 45 days. After the silence period ends,
-    /// the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
-    /// 
     /// ## Import
     /// 
     /// Resource Manager Account can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+    /// $ pulumi import alicloud:resourcemanager/account:Account example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
-        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-        /// to get check ids and set them.
+        /// . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         /// </summary>
         [Output("abandonAbleCheckIds")]
         public Output<ImmutableArray<string>> AbandonAbleCheckIds { get; private set; } = null!;
 
         /// <summary>
-        /// The name prefix of account.
+        /// The ID of the check item that can choose to abandon and continue to perform member deletion.
+        /// The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        /// </summary>
+        [Output("abandonableCheckIds")]
+        public Output<ImmutableArray<string>> AbandonableCheckIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Account name prefix. Empty the system randomly generated.
+        /// Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        /// The format of the full account name is @&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        /// The account name must be unique in the resource directory.
         /// </summary>
         [Output("accountNamePrefix")]
         public Output<string?> AccountNamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        /// Member name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder
         /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// Ways for members to join the resource directory. Valid values: `invited`, `created`.
+        /// Whether to force delete the account.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// Ways for members to join the resource directory.  invited, created
         /// </summary>
         [Output("joinMethod")]
         public Output<string> JoinMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the member joined the resource directory.
+        /// The time when the member joined the resource directory
         /// </summary>
         [Output("joinTime")]
         public Output<string> JoinTime { get; private set; } = null!;
 
         /// <summary>
-        /// The modification time of the invitation.
+        /// The modification time of the invitation
         /// </summary>
         [Output("modifyTime")]
         public Output<string> ModifyTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        /// The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         /// </summary>
         [Output("payerAccountId")]
         public Output<string?> PayerAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource directory ID.
+        /// The identity type of the member. Valid values:
+        /// - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        /// - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        /// </summary>
+        [Output("resellAccountType")]
+        public Output<string?> ResellAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource directory ID
         /// </summary>
         [Output("resourceDirectoryId")]
         public Output<string> ResourceDirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+        /// Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** The member name must be unique within the resource directory.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Member type. The value of `ResourceAccount` indicates the resource account.
+        /// Member type. The value of ResourceAccount indicates the resource account
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -192,53 +210,90 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _abandonAbleCheckIds;
 
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
-        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-        /// to get check ids and set them.
+        /// . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         /// </summary>
+        [Obsolete(@"Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.")]
         public InputList<string> AbandonAbleCheckIds
         {
             get => _abandonAbleCheckIds ?? (_abandonAbleCheckIds = new InputList<string>());
             set => _abandonAbleCheckIds = value;
         }
 
+        [Input("abandonableCheckIds")]
+        private InputList<string>? _abandonableCheckIds;
+
         /// <summary>
-        /// The name prefix of account.
+        /// The ID of the check item that can choose to abandon and continue to perform member deletion.
+        /// The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        /// </summary>
+        public InputList<string> AbandonableCheckIds
+        {
+            get => _abandonableCheckIds ?? (_abandonableCheckIds = new InputList<string>());
+            set => _abandonableCheckIds = value;
+        }
+
+        /// <summary>
+        /// Account name prefix. Empty the system randomly generated.
+        /// Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        /// The format of the full account name is @&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        /// The account name must be unique in the resource directory.
         /// </summary>
         [Input("accountNamePrefix")]
         public Input<string>? AccountNamePrefix { get; set; }
 
         /// <summary>
-        /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        /// Member name
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        /// Whether to force delete the account.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         /// </summary>
         [Input("payerAccountId")]
         public Input<string>? PayerAccountId { get; set; }
+
+        /// <summary>
+        /// The identity type of the member. Valid values:
+        /// - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        /// - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        /// </summary>
+        [Input("resellAccountType")]
+        public Input<string>? ResellAccountType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** The member name must be unique within the resource directory.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Member type. The value of ResourceAccount indicates the resource account
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public AccountArgs()
         {
@@ -252,66 +307,97 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _abandonAbleCheckIds;
 
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
-        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-        /// to get check ids and set them.
+        /// . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         /// </summary>
+        [Obsolete(@"Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.")]
         public InputList<string> AbandonAbleCheckIds
         {
             get => _abandonAbleCheckIds ?? (_abandonAbleCheckIds = new InputList<string>());
             set => _abandonAbleCheckIds = value;
         }
 
+        [Input("abandonableCheckIds")]
+        private InputList<string>? _abandonableCheckIds;
+
         /// <summary>
-        /// The name prefix of account.
+        /// The ID of the check item that can choose to abandon and continue to perform member deletion.
+        /// The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        /// </summary>
+        public InputList<string> AbandonableCheckIds
+        {
+            get => _abandonableCheckIds ?? (_abandonableCheckIds = new InputList<string>());
+            set => _abandonableCheckIds = value;
+        }
+
+        /// <summary>
+        /// Account name prefix. Empty the system randomly generated.
+        /// Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        /// The format of the full account name is @&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        /// The account name must be unique in the resource directory.
         /// </summary>
         [Input("accountNamePrefix")]
         public Input<string>? AccountNamePrefix { get; set; }
 
         /// <summary>
-        /// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        /// Member name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// Ways for members to join the resource directory. Valid values: `invited`, `created`.
+        /// Whether to force delete the account.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Ways for members to join the resource directory.  invited, created
         /// </summary>
         [Input("joinMethod")]
         public Input<string>? JoinMethod { get; set; }
 
         /// <summary>
-        /// The time when the member joined the resource directory.
+        /// The time when the member joined the resource directory
         /// </summary>
         [Input("joinTime")]
         public Input<string>? JoinTime { get; set; }
 
         /// <summary>
-        /// The modification time of the invitation.
+        /// The modification time of the invitation
         /// </summary>
         [Input("modifyTime")]
         public Input<string>? ModifyTime { get; set; }
 
         /// <summary>
-        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        /// The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         /// </summary>
         [Input("payerAccountId")]
         public Input<string>? PayerAccountId { get; set; }
 
         /// <summary>
-        /// Resource directory ID.
+        /// The identity type of the member. Valid values:
+        /// - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        /// - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        /// </summary>
+        [Input("resellAccountType")]
+        public Input<string>? ResellAccountType { get; set; }
+
+        /// <summary>
+        /// Resource directory ID
         /// </summary>
         [Input("resourceDirectoryId")]
         public Input<string>? ResourceDirectoryId { get; set; }
 
         /// <summary>
-        /// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+        /// Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -320,9 +406,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** The member name must be unique within the resource directory.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -331,7 +415,9 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// Member type. The value of `ResourceAccount` indicates the resource account.
+        /// Member type. The value of ResourceAccount indicates the resource account
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a Vpc Ipv4 Gateway resource.
     /// 
-    /// For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+    /// For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
     /// 
-    /// &gt; **NOTE:** Available in v1.181.0+.
+    /// &gt; **NOTE:** Available since v1.181.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,17 +29,11 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.ResourceManager.ResourceGroup("default", new()
     ///     {
-    ///         DisplayName = "tf-testAcc-rg665",
+    ///         DisplayName = name,
     ///         ResourceGroupName = name,
-    ///     });
-    /// 
-    ///     var modify = new AliCloud.ResourceManager.ResourceGroup("modify", new()
-    ///     {
-    ///         DisplayName = "tf-testAcc-rg298",
-    ///         ResourceGroupName = $"{name}1",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -51,7 +45,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("default", new()
     ///     {
     ///         Ipv4GatewayName = name,
-    ///         Ipv4GatewayDescription = "tf-testAcc-Ipv4Gateway",
+    ///         Ipv4GatewayDescription = name,
     ///         ResourceGroupId = @default.Id,
     ///         VpcId = defaultNetwork.Id,
     ///     });
@@ -61,7 +55,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Vpc Ipv4 Gateway can be imported using the id, e.g.
+    /// VPC Ipv4 Gateway can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example &lt;id&gt;
@@ -71,7 +65,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Ipv4Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -83,10 +77,16 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+        /// </summary>
+        [Output("internetMode")]
+        public Output<string?> InternetMode { get; private set; } = null!;
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Ipv4GatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the route table associated with IPv4 Gateway.
+        /// ID of the route table associated with IPv4 Gateway
         /// </summary>
         [Output("ipv4GatewayRouteTableId")]
         public Output<string> Ipv4GatewayRouteTableId { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -189,10 +189,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+        /// </summary>
+        [Input("internetMode")]
+        public Input<string>? InternetMode { get; set; }
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
@@ -239,7 +245,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv4GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -251,10 +257,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+        /// </summary>
+        [Input("internetMode")]
+        public Input<string>? InternetMode { get; set; }
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
@@ -275,7 +287,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv4GatewayName { get; set; }
 
         /// <summary>
-        /// ID of the route table associated with IPv4 Gateway.
+        /// ID of the route table associated with IPv4 Gateway
         /// </summary>
         [Input("ipv4GatewayRouteTableId")]
         public Input<string>? Ipv4GatewayRouteTableId { get; set; }
@@ -287,7 +299,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
@@ -32,13 +33,17 @@ import * as utilities from "../utilities";
  *     autoPay: true,
  *     planName: "high",
  * });
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const site = new alicloud.esa.Site("site", {
- *     siteName: "gositecdn.cn",
+ *     siteName: `gositecdn-${_default.result}.cn`,
  *     instanceId: instance.id,
  *     coverage: "overseas",
  *     accessType: "NS",
  * });
- * const _default = new alicloud.esa.HttpRequestHeaderModificationRule("default", {
+ * const defaultHttpRequestHeaderModificationRule = new alicloud.esa.HttpRequestHeaderModificationRule("default", {
  *     ruleName: "example_modify",
  *     requestHeaderModifications: [{
  *         value: "modify1",

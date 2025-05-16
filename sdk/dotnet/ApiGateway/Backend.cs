@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> BackendName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         /// </summary>
         [Output("backendType")]
         public Output<string> BackendType { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// Whether to create an Event bus service association role.
         /// </summary>
         [Output("createEventBridgeServiceLinkedRole")]
-        public Output<bool?> CreateEventBridgeServiceLinkedRole { get; private set; } = null!;
+        public Output<bool> CreateEventBridgeServiceLinkedRole { get; private set; } = null!;
 
         /// <summary>
         /// The description of the Backend.
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> BackendName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         /// </summary>
         [Input("backendType", required: true)]
         public Input<string> BackendType { get; set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? BackendName { get; set; }
 
         /// <summary>
-        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+        /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         /// </summary>
         [Input("backendType")]
         public Input<string>? BackendType { get; set; }

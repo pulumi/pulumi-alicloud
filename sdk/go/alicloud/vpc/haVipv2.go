@@ -16,6 +16,8 @@ import (
 //
 // For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
 //
+// > **NOTE:** Available since v1.205.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

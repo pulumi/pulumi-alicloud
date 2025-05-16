@@ -101,6 +101,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `AGENTLESS`: AGENTLESS detection module
         /// - `SERVERLESS`:Serverless asset module
         /// - `CTDR`: threat analysis and response module
+        /// - `POST_HOST`: Host and container security module
         /// - Value:0 means off, 1 means on
         /// 
         /// &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -237,15 +238,15 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  Step size is 1.
+        /// &gt; **NOTE:**  Step size is 100.
         /// </summary>
         [Output("threatAnalysisFlow")]
         public Output<string?> ThreatAnalysisFlow { get; private set; } = null!;
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        /// &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         /// </summary>
         [Output("threatAnalysisSlsStorage")]
         public Output<string?> ThreatAnalysisSlsStorage { get; private set; } = null!;
@@ -421,6 +422,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `AGENTLESS`: AGENTLESS detection module
         /// - `SERVERLESS`:Serverless asset module
         /// - `CTDR`: threat analysis and response module
+        /// - `POST_HOST`: Host and container security module
         /// - Value:0 means off, 1 means on
         /// 
         /// &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -551,15 +553,15 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  Step size is 1.
+        /// &gt; **NOTE:**  Step size is 100.
         /// </summary>
         [Input("threatAnalysisFlow")]
         public Input<string>? ThreatAnalysisFlow { get; set; }
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        /// &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         /// </summary>
         [Input("threatAnalysisSlsStorage")]
         public Input<string>? ThreatAnalysisSlsStorage { get; set; }
@@ -703,6 +705,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `AGENTLESS`: AGENTLESS detection module
         /// - `SERVERLESS`:Serverless asset module
         /// - `CTDR`: threat analysis and response module
+        /// - `POST_HOST`: Host and container security module
         /// - Value:0 means off, 1 means on
         /// 
         /// &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -839,15 +842,15 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  Step size is 1.
+        /// &gt; **NOTE:**  Step size is 100.
         /// </summary>
         [Input("threatAnalysisFlow")]
         public Input<string>? ThreatAnalysisFlow { get; set; }
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        /// &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         /// </summary>
         [Input("threatAnalysisSlsStorage")]
         public Input<string>? ThreatAnalysisSlsStorage { get; set; }

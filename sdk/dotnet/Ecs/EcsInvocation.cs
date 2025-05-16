@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
     /// 
-    /// &gt; **NOTE:** Available since v1.168.0+.
+    /// &gt; **NOTE:** Available since v1.168.0.
     /// 
     /// ## Example Usage
     /// 
@@ -39,6 +39,9 @@ namespace Pulumi.AliCloud.Ecs
     ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 8,
+    ///         InstanceTypeFamily = "ecs.g6",
     ///     });
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
@@ -64,7 +67,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 

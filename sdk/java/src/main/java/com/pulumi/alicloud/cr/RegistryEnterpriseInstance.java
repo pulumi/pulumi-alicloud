@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
- *             .renewPeriod(0)
- *             .renewalStatus("ManualRenewal")
+ *             .renewPeriod(1)
+ *             .renewalStatus("AutoRenewal")
  *             .instanceType("Advanced")
  *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .build());

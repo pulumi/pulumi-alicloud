@@ -253,14 +253,14 @@ public class HAVip extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * (Available in v1.120.0+) The status of the HaVip instance.
+     * (Available since v1.120.0) The status of the HaVip instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available in v1.120.0+) The status of the HaVip instance.
+     * @return (Available since v1.120.0) The status of the HaVip instance.
      * 
      */
     public Output<String> status() {

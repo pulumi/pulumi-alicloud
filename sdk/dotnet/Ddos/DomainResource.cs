@@ -55,7 +55,12 @@ namespace Pulumi.AliCloud.Ddos
     ///         {
     ///             "177.167.32.11",
     ///         },
-    ///         HttpsExt = "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
+    ///         HttpsExt = @"    {
+    ///     ""Http2"": 1,
+    ///     ""Http2https"": 0,
+    ///     ""Https2http"": 0
+    ///   }
+    /// ",
     ///         ProxyTypes = new[]
     ///         {
     ///             new AliCloud.Ddos.Inputs.DomainResourceProxyTypeArgs
@@ -94,7 +99,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
         /// </summary>
         [Output("certIdentifier")]
         public Output<string?> CertIdentifier { get; private set; } = null!;
@@ -256,7 +261,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
         /// </summary>
         [Input("certIdentifier")]
         public Input<string>? CertIdentifier { get; set; }
@@ -406,7 +411,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// The name of the certificate.
         /// 
-        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
         /// </summary>
         [Input("certIdentifier")]
         public Input<string>? CertIdentifier { get; set; }

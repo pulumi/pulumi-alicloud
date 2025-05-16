@@ -41,8 +41,8 @@ namespace Pulumi.AliCloud.CR
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
-    ///         RenewPeriod = 0,
-    ///         RenewalStatus = "ManualRenewal",
+    ///         RenewPeriod = 1,
+    ///         RenewalStatus = "AutoRenewal",
     ///         InstanceType = "Advanced",
     ///         InstanceName = $"{name}-{@default.Result}",
     ///     });

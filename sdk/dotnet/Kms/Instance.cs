@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Kms
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        /// Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         /// </summary>
         [Output("bindVpcs")]
         public Output<ImmutableArray<Outputs.InstanceBindVpc>> BindVpcs { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> ForceDeleteWithoutBackup { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the resource
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
@@ -82,7 +82,9 @@ namespace Pulumi.AliCloud.Kms
         public Output<int> LogStorage { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// Payment type,valid values:
+        /// - `Subscription`: Prepaid.
+        /// - `PayAsYouGo`: Postpaid.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -94,7 +96,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware).
+        /// KMS Instance commodity type (software/hardware)
         /// </summary>
         [Output("productVersion")]
         public Output<string?> ProductVersion { get; private set; } = null!;
@@ -130,7 +132,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Instance VPC id.
+        /// Instance VPC id
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -142,13 +144,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<int?> VpcNum { get; private set; } = null!;
 
         /// <summary>
-        /// Instance bind vswitches.
+        /// Instance bind vswitches
         /// </summary>
         [Output("vswitchIds")]
         public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
 
         /// <summary>
-        /// zone id.
+        /// zone id
         /// </summary>
         [Output("zoneIds")]
         public Output<ImmutableArray<string>> ZoneIds { get; private set; } = null!;
@@ -203,7 +205,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<Inputs.InstanceBindVpcArgs>? _bindVpcs;
 
         /// <summary>
-        /// Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        /// Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         /// </summary>
         public InputList<Inputs.InstanceBindVpcArgs> BindVpcs
         {
@@ -216,6 +218,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("forceDeleteWithoutBackup")]
         public Input<string>? ForceDeleteWithoutBackup { get; set; }
+
+        /// <summary>
+        /// The name of the resource
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
 
         /// <summary>
         /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -236,7 +244,9 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// Payment type,valid values:
+        /// - `Subscription`: Prepaid.
+        /// - `PayAsYouGo`: Postpaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -248,7 +258,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware).
+        /// KMS Instance commodity type (software/hardware)
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }
@@ -278,7 +288,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? Spec { get; set; }
 
         /// <summary>
-        /// Instance VPC id.
+        /// Instance VPC id
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -293,7 +303,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// Instance bind vswitches.
+        /// Instance bind vswitches
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -305,7 +315,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// zone id.
+        /// zone id
         /// </summary>
         public InputList<string> ZoneIds
         {
@@ -325,7 +335,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<Inputs.InstanceBindVpcGetArgs>? _bindVpcs;
 
         /// <summary>
-        /// Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        /// Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         /// </summary>
         public InputList<Inputs.InstanceBindVpcGetArgs> BindVpcs
         {
@@ -358,7 +368,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ForceDeleteWithoutBackup { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the resource
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -382,7 +392,9 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// Payment type,valid values:
+        /// - `Subscription`: Prepaid.
+        /// - `PayAsYouGo`: Postpaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -394,7 +406,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware).
+        /// KMS Instance commodity type (software/hardware)
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }
@@ -430,7 +442,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Instance VPC id.
+        /// Instance VPC id
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -445,7 +457,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// Instance bind vswitches.
+        /// Instance bind vswitches
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -457,7 +469,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// zone id.
+        /// zone id
         /// </summary>
         public InputList<string> ZoneIds
         {

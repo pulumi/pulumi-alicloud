@@ -106,7 +106,7 @@ type HAVip struct {
 	MasterInstanceId pulumi.StringOutput `pulumi:"masterInstanceId"`
 	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// (Available in v1.120.0+) The status of the HaVip instance.
+	// (Available since v1.120.0) The status of the HaVip instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The list of tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -175,7 +175,7 @@ type havipState struct {
 	MasterInstanceId *string `pulumi:"masterInstanceId"`
 	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// (Available in v1.120.0+) The status of the HaVip instance.
+	// (Available since v1.120.0) The status of the HaVip instance.
 	Status *string `pulumi:"status"`
 	// The list of tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -212,7 +212,7 @@ type HAVipState struct {
 	MasterInstanceId pulumi.StringPtrInput
 	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// (Available in v1.120.0+) The status of the HaVip instance.
+	// (Available since v1.120.0) The status of the HaVip instance.
 	Status pulumi.StringPtrInput
 	// The list of tags.
 	Tags pulumi.StringMapInput
@@ -411,7 +411,7 @@ func (o HAVipOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// (Available in v1.120.0+) The status of the HaVip instance.
+// (Available since v1.120.0) The status of the HaVip instance.
 func (o HAVipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -35,6 +35,21 @@ export type WorkspaceExperiment = import("./workspaceExperiment").WorkspaceExper
 export const WorkspaceExperiment: typeof import("./workspaceExperiment").WorkspaceExperiment = null as any;
 utilities.lazyLoad(exports, ["WorkspaceExperiment"], () => require("./workspaceExperiment"));
 
+export { WorkspaceMemberArgs, WorkspaceMemberState } from "./workspaceMember";
+export type WorkspaceMember = import("./workspaceMember").WorkspaceMember;
+export const WorkspaceMember: typeof import("./workspaceMember").WorkspaceMember = null as any;
+utilities.lazyLoad(exports, ["WorkspaceMember"], () => require("./workspaceMember"));
+
+export { WorkspaceModelArgs, WorkspaceModelState } from "./workspaceModel";
+export type WorkspaceModel = import("./workspaceModel").WorkspaceModel;
+export const WorkspaceModel: typeof import("./workspaceModel").WorkspaceModel = null as any;
+utilities.lazyLoad(exports, ["WorkspaceModel"], () => require("./workspaceModel"));
+
+export { WorkspaceModelVersionArgs, WorkspaceModelVersionState } from "./workspaceModelVersion";
+export type WorkspaceModelVersion = import("./workspaceModelVersion").WorkspaceModelVersion;
+export const WorkspaceModelVersion: typeof import("./workspaceModelVersion").WorkspaceModelVersion = null as any;
+utilities.lazyLoad(exports, ["WorkspaceModelVersion"], () => require("./workspaceModelVersion"));
+
 export { WorkspaceRunArgs, WorkspaceRunState } from "./workspaceRun";
 export type WorkspaceRun = import("./workspaceRun").WorkspaceRun;
 export const WorkspaceRun: typeof import("./workspaceRun").WorkspaceRun = null as any;
@@ -62,6 +77,12 @@ const _module = {
                 return new WorkspaceDatasetversion(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceExperiment:WorkspaceExperiment":
                 return new WorkspaceExperiment(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceMember:WorkspaceMember":
+                return new WorkspaceMember(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceModel:WorkspaceModel":
+                return new WorkspaceModel(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceModelVersion:WorkspaceModelVersion":
+                return new WorkspaceModelVersion(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceRun:WorkspaceRun":
                 return new WorkspaceRun(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace":
@@ -77,5 +98,8 @@ pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceCodeSource", _mo
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDataset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDatasetversion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceExperiment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceMember", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceModel", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceModelVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceRun", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceWorkspace", _module)

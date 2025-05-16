@@ -26,6 +26,7 @@ class ListenerArgs:
                  load_balancer_id: pulumi.Input[builtins.str],
                  protocol: pulumi.Input[builtins.str],
                  acl_id: Optional[pulumi.Input[builtins.str]] = None,
+                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  acl_status: Optional[pulumi.Input[builtins.str]] = None,
                  acl_type: Optional[pulumi.Input[builtins.str]] = None,
                  backend_port: Optional[pulumi.Input[builtins.int]] = None,
@@ -50,8 +51,6 @@ class ListenerArgs:
                  health_check_uri: Optional[pulumi.Input[builtins.str]] = None,
                  healthy_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_port: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_protocol: Optional[pulumi.Input[builtins.str]] = None,
                  listener_forward: Optional[pulumi.Input[builtins.str]] = None,
                  master_slave_server_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_timeout: Optional[pulumi.Input[builtins.int]] = None,
@@ -74,7 +73,12 @@ class ListenerArgs:
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "protocol", protocol)
         if acl_id is not None:
+            warnings.warn("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""acl_id is deprecated: Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
+        if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
+        if acl_ids is not None:
+            pulumi.set(__self__, "acl_ids", acl_ids)
         if acl_status is not None:
             pulumi.set(__self__, "acl_status", acl_status)
         if acl_type is not None:
@@ -123,16 +127,6 @@ class ListenerArgs:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
-        if lb_port is not None:
-            warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
-            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
-        if lb_port is not None:
-            pulumi.set(__self__, "lb_port", lb_port)
-        if lb_protocol is not None:
-            warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
-            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
-        if lb_protocol is not None:
-            pulumi.set(__self__, "lb_protocol", lb_protocol)
         if listener_forward is not None:
             pulumi.set(__self__, "listener_forward", listener_forward)
         if master_slave_server_group_id is not None:
@@ -194,12 +188,22 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="aclId")
+    @_utilities.deprecated("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
     def acl_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
     def acl_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter(name="aclIds")
+    def acl_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "acl_ids")
+
+    @acl_ids.setter
+    def acl_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "acl_ids", value)
 
     @property
     @pulumi.getter(name="aclStatus")
@@ -418,26 +422,6 @@ class ListenerArgs:
         pulumi.set(self, "idle_timeout", value)
 
     @property
-    @pulumi.getter(name="lbPort")
-    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
-    def lb_port(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "lb_port")
-
-    @lb_port.setter
-    def lb_port(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "lb_port", value)
-
-    @property
-    @pulumi.getter(name="lbProtocol")
-    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
-    def lb_protocol(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "lb_protocol")
-
-    @lb_protocol.setter
-    def lb_protocol(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "lb_protocol", value)
-
-    @property
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "listener_forward")
@@ -572,6 +556,7 @@ class ListenerArgs:
 class _ListenerState:
     def __init__(__self__, *,
                  acl_id: Optional[pulumi.Input[builtins.str]] = None,
+                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  acl_status: Optional[pulumi.Input[builtins.str]] = None,
                  acl_type: Optional[pulumi.Input[builtins.str]] = None,
                  backend_port: Optional[pulumi.Input[builtins.int]] = None,
@@ -597,8 +582,6 @@ class _ListenerState:
                  health_check_uri: Optional[pulumi.Input[builtins.str]] = None,
                  healthy_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_port: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_protocol: Optional[pulumi.Input[builtins.str]] = None,
                  listener_forward: Optional[pulumi.Input[builtins.str]] = None,
                  load_balancer_id: Optional[pulumi.Input[builtins.str]] = None,
                  master_slave_server_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -620,7 +603,12 @@ class _ListenerState:
         :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         if acl_id is not None:
+            warnings.warn("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""acl_id is deprecated: Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
+        if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
+        if acl_ids is not None:
+            pulumi.set(__self__, "acl_ids", acl_ids)
         if acl_status is not None:
             pulumi.set(__self__, "acl_status", acl_status)
         if acl_type is not None:
@@ -671,16 +659,6 @@ class _ListenerState:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
-        if lb_port is not None:
-            warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
-            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
-        if lb_port is not None:
-            pulumi.set(__self__, "lb_port", lb_port)
-        if lb_protocol is not None:
-            warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
-            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
-        if lb_protocol is not None:
-            pulumi.set(__self__, "lb_protocol", lb_protocol)
         if listener_forward is not None:
             pulumi.set(__self__, "listener_forward", listener_forward)
         if load_balancer_id is not None:
@@ -719,12 +697,22 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="aclId")
+    @_utilities.deprecated("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
     def acl_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
     def acl_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter(name="aclIds")
+    def acl_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "acl_ids")
+
+    @acl_ids.setter
+    def acl_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "acl_ids", value)
 
     @property
     @pulumi.getter(name="aclStatus")
@@ -952,26 +940,6 @@ class _ListenerState:
         pulumi.set(self, "idle_timeout", value)
 
     @property
-    @pulumi.getter(name="lbPort")
-    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
-    def lb_port(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "lb_port")
-
-    @lb_port.setter
-    def lb_port(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "lb_port", value)
-
-    @property
-    @pulumi.getter(name="lbProtocol")
-    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
-    def lb_protocol(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "lb_protocol")
-
-    @lb_protocol.setter
-    def lb_protocol(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "lb_protocol", value)
-
-    @property
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "listener_forward")
@@ -1127,6 +1095,7 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: Optional[pulumi.Input[builtins.str]] = None,
+                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  acl_status: Optional[pulumi.Input[builtins.str]] = None,
                  acl_type: Optional[pulumi.Input[builtins.str]] = None,
                  backend_port: Optional[pulumi.Input[builtins.int]] = None,
@@ -1152,8 +1121,6 @@ class Listener(pulumi.CustomResource):
                  health_check_uri: Optional[pulumi.Input[builtins.str]] = None,
                  healthy_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_port: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_protocol: Optional[pulumi.Input[builtins.str]] = None,
                  listener_forward: Optional[pulumi.Input[builtins.str]] = None,
                  load_balancer_id: Optional[pulumi.Input[builtins.str]] = None,
                  master_slave_server_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1234,7 +1201,7 @@ class Listener(pulumi.CustomResource):
             },
             acl_status="on",
             acl_type="white",
-            acl_id=listener_acl.id,
+            acl_ids=[listener_acl.id],
             request_timeout=80,
             idle_timeout=30)
         first = alicloud.slb.AclEntryAttachment("first",
@@ -1332,7 +1299,7 @@ class Listener(pulumi.CustomResource):
             },
             acl_status="on",
             acl_type="white",
-            acl_id=listener_acl.id,
+            acl_ids=[listener_acl.id],
             request_timeout=80,
             idle_timeout=30)
         first = alicloud.slb.AclEntryAttachment("first",
@@ -1373,6 +1340,7 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_id: Optional[pulumi.Input[builtins.str]] = None,
+                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  acl_status: Optional[pulumi.Input[builtins.str]] = None,
                  acl_type: Optional[pulumi.Input[builtins.str]] = None,
                  backend_port: Optional[pulumi.Input[builtins.int]] = None,
@@ -1398,8 +1366,6 @@ class Listener(pulumi.CustomResource):
                  health_check_uri: Optional[pulumi.Input[builtins.str]] = None,
                  healthy_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_port: Optional[pulumi.Input[builtins.int]] = None,
-                 lb_protocol: Optional[pulumi.Input[builtins.str]] = None,
                  listener_forward: Optional[pulumi.Input[builtins.str]] = None,
                  load_balancer_id: Optional[pulumi.Input[builtins.str]] = None,
                  master_slave_server_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1426,6 +1392,7 @@ class Listener(pulumi.CustomResource):
             __props__ = ListenerArgs.__new__(ListenerArgs)
 
             __props__.__dict__["acl_id"] = acl_id
+            __props__.__dict__["acl_ids"] = acl_ids
             __props__.__dict__["acl_status"] = acl_status
             __props__.__dict__["acl_type"] = acl_type
             __props__.__dict__["backend_port"] = backend_port
@@ -1453,8 +1420,6 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["health_check_uri"] = health_check_uri
             __props__.__dict__["healthy_threshold"] = healthy_threshold
             __props__.__dict__["idle_timeout"] = idle_timeout
-            __props__.__dict__["lb_port"] = lb_port
-            __props__.__dict__["lb_protocol"] = lb_protocol
             __props__.__dict__["listener_forward"] = listener_forward
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
@@ -1486,6 +1451,7 @@ class Listener(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_id: Optional[pulumi.Input[builtins.str]] = None,
+            acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             acl_status: Optional[pulumi.Input[builtins.str]] = None,
             acl_type: Optional[pulumi.Input[builtins.str]] = None,
             backend_port: Optional[pulumi.Input[builtins.int]] = None,
@@ -1511,8 +1477,6 @@ class Listener(pulumi.CustomResource):
             health_check_uri: Optional[pulumi.Input[builtins.str]] = None,
             healthy_threshold: Optional[pulumi.Input[builtins.int]] = None,
             idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
-            lb_port: Optional[pulumi.Input[builtins.int]] = None,
-            lb_protocol: Optional[pulumi.Input[builtins.str]] = None,
             listener_forward: Optional[pulumi.Input[builtins.str]] = None,
             load_balancer_id: Optional[pulumi.Input[builtins.str]] = None,
             master_slave_server_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1543,6 +1507,7 @@ class Listener(pulumi.CustomResource):
         __props__ = _ListenerState.__new__(_ListenerState)
 
         __props__.__dict__["acl_id"] = acl_id
+        __props__.__dict__["acl_ids"] = acl_ids
         __props__.__dict__["acl_status"] = acl_status
         __props__.__dict__["acl_type"] = acl_type
         __props__.__dict__["backend_port"] = backend_port
@@ -1568,8 +1533,6 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["health_check_uri"] = health_check_uri
         __props__.__dict__["healthy_threshold"] = healthy_threshold
         __props__.__dict__["idle_timeout"] = idle_timeout
-        __props__.__dict__["lb_port"] = lb_port
-        __props__.__dict__["lb_protocol"] = lb_protocol
         __props__.__dict__["listener_forward"] = listener_forward
         __props__.__dict__["load_balancer_id"] = load_balancer_id
         __props__.__dict__["master_slave_server_group_id"] = master_slave_server_group_id
@@ -1590,8 +1553,14 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclId")
-    def acl_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    @_utilities.deprecated("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
+    def acl_id(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "acl_id")
+
+    @property
+    @pulumi.getter(name="aclIds")
+    def acl_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
+        return pulumi.get(self, "acl_ids")
 
     @property
     @pulumi.getter(name="aclStatus")
@@ -1717,18 +1686,6 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[Optional[builtins.int]]:
         return pulumi.get(self, "idle_timeout")
-
-    @property
-    @pulumi.getter(name="lbPort")
-    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
-    def lb_port(self) -> pulumi.Output[Optional[builtins.int]]:
-        return pulumi.get(self, "lb_port")
-
-    @property
-    @pulumi.getter(name="lbProtocol")
-    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
-    def lb_protocol(self) -> pulumi.Output[Optional[builtins.str]]:
-        return pulumi.get(self, "lb_protocol")
 
     @property
     @pulumi.getter(name="listenerForward")

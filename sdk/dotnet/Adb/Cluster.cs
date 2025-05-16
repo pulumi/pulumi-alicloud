@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Adb
     /// environment in the cloud. An ADB cluster can contain multiple user-created
     /// databases.
     /// 
-    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+    /// &gt; **NOTE:** Deprecated since v1.121.0.
     /// 
-    /// &gt; **NOTE:** Available in v1.71.0+.
+    /// &gt; **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
     /// 
     /// ## Example Usage
     /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ComputeResource { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.93.0+) The connection string of the ADB cluster.
+        /// (Available since v1.93.0) The connection string of the ADB cluster.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// (Available since v1.196.0) The connection port of the ADB cluster.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ComputeResource { get; set; }
 
         /// <summary>
-        /// (Available in 1.93.0+) The connection string of the ADB cluster.
+        /// (Available since v1.93.0) The connection string of the ADB cluster.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// (Available since v1.196.0) The connection port of the ADB cluster.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

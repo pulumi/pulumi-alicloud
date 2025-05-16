@@ -161,9 +161,9 @@ type RouteEntry struct {
 	PublishVpc pulumi.BoolOutput `pulumi:"publishVpc"`
 	// The destination network segment of the destination route.
 	RouteDest pulumi.StringOutput `pulumi:"routeDest"`
-	// (Available in 1.161.0+) The type of the vpn route entry.
+	// (Available since v1.161.0) The type of the vpn route entry.
 	RouteEntryType pulumi.StringOutput `pulumi:"routeEntryType"`
-	// (Available in 1.161.0+) The status of the vpn route entry.
+	// (Available since v1.161.0) The status of the vpn route entry.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The id of the vpn gateway.
 	VpnGatewayId pulumi.StringOutput `pulumi:"vpnGatewayId"`
@@ -222,9 +222,9 @@ type routeEntryState struct {
 	PublishVpc *bool `pulumi:"publishVpc"`
 	// The destination network segment of the destination route.
 	RouteDest *string `pulumi:"routeDest"`
-	// (Available in 1.161.0+) The type of the vpn route entry.
+	// (Available since v1.161.0) The type of the vpn route entry.
 	RouteEntryType *string `pulumi:"routeEntryType"`
-	// (Available in 1.161.0+) The status of the vpn route entry.
+	// (Available since v1.161.0) The status of the vpn route entry.
 	Status *string `pulumi:"status"`
 	// The id of the vpn gateway.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
@@ -239,9 +239,9 @@ type RouteEntryState struct {
 	PublishVpc pulumi.BoolPtrInput
 	// The destination network segment of the destination route.
 	RouteDest pulumi.StringPtrInput
-	// (Available in 1.161.0+) The type of the vpn route entry.
+	// (Available since v1.161.0) The type of the vpn route entry.
 	RouteEntryType pulumi.StringPtrInput
-	// (Available in 1.161.0+) The status of the vpn route entry.
+	// (Available since v1.161.0) The status of the vpn route entry.
 	Status pulumi.StringPtrInput
 	// The id of the vpn gateway.
 	VpnGatewayId pulumi.StringPtrInput
@@ -382,12 +382,12 @@ func (o RouteEntryOutput) RouteDest() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteDest }).(pulumi.StringOutput)
 }
 
-// (Available in 1.161.0+) The type of the vpn route entry.
+// (Available since v1.161.0) The type of the vpn route entry.
 func (o RouteEntryOutput) RouteEntryType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteEntryType }).(pulumi.StringOutput)
 }
 
-// (Available in 1.161.0+) The status of the vpn route entry.
+// (Available since v1.161.0) The status of the vpn route entry.
 func (o RouteEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

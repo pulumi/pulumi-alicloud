@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:cloudfirewall/instanceMember:InstanceMember":
 		r = &InstanceMember{}
+	case "alicloud:cloudfirewall/ipsConfig:IpsConfig":
+		r = &IpsConfig{}
 	case "alicloud:cloudfirewall/natFirewall:NatFirewall":
 		r = &NatFirewall{}
 	case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
@@ -94,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/instanceMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/ipsConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

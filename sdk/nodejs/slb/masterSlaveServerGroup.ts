@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
  *
- * > **NOTE:** Available in 1.54.0+
+ * > **NOTE:** Available since v1.54.0+
  *
  * ## Example Usage
  *
@@ -35,7 +35,9 @@ import * as utilities from "../utilities";
  * });
  * const msServerGroupGetInstanceTypes = msServerGroup.then(msServerGroup => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: msServerGroup.zones?.[0]?.id,
- *     eniAmount: 2,
+ *     cpuCoreCount: 2,
+ *     memorySize: 8,
+ *     instanceTypeFamily: "ecs.g6",
  * }));
  * const image = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
@@ -55,7 +57,7 @@ import * as utilities from "../utilities";
  *     vswitchName: slbMasterSlaveServerGroup,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
- *     name: slbMasterSlaveServerGroup,
+ *     securityGroupName: slbMasterSlaveServerGroup,
  *     vpcId: main.id,
  * });
  * const msServerGroupInstance: alicloud.ecs.Instance[] = [];
@@ -124,17 +126,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Block servers
- *
- * The servers mapping supports the following:
- *
- * * `serverIds` - (Required) A list backend server ID (ECS instance ID).
- * * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
- * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
- * * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
- * * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
- * * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
- *
  * ## Import
  *
  * Load balancer master slave server group can be imported using the id, e.g.
@@ -184,7 +175,7 @@ export class MasterSlaveServerGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
     public readonly servers!: pulumi.Output<outputs.slb.MasterSlaveServerGroupServer[] | undefined>;
 
@@ -237,7 +228,7 @@ export interface MasterSlaveServerGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[]>;
 }
@@ -259,7 +250,7 @@ export interface MasterSlaveServerGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[]>;
 }

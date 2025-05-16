@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATED:** This resource has been renamed to ecs.EcsSnapshot from version 1.120.0.
-//
 // Provides an ECS snapshot resource.
 //
 // For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+//
+// > **NOTE:** Deprecated since v1.120.0.
+//
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsSnapshot from version 1.120.0.
 //
 // ## Example Usage
 //
