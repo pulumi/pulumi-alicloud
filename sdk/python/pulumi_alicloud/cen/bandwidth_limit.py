@@ -27,7 +27,7 @@ class BandwidthLimitArgs:
         The set of arguments for constructing a BandwidthLimit resource.
         :param pulumi.Input[builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
-               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+               ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[builtins.str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -41,7 +41,7 @@ class BandwidthLimitArgs:
         """
         The bandwidth configured for the interconnected regions communication.
 
-        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+        ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -84,7 +84,7 @@ class _BandwidthLimitState:
         Input properties used for looking up and filtering BandwidthLimit resources.
         :param pulumi.Input[builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
-               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+               ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[builtins.str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -101,7 +101,7 @@ class _BandwidthLimitState:
         """
         The bandwidth configured for the interconnected regions communication.
 
-        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+        ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -216,7 +216,7 @@ class BandwidthLimit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
-               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+               ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[builtins.str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -352,7 +352,7 @@ class BandwidthLimit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
                
-               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+               ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[builtins.str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -371,7 +371,7 @@ class BandwidthLimit(pulumi.CustomResource):
         """
         The bandwidth configured for the interconnected regions communication.
 
-        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
+        ->**NOTE:** The `cen.BandwidthLimit` resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 

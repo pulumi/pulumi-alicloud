@@ -300,11 +300,12 @@ class DiAlarmRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "terraform_example"
         defaulte_nv8bu = alicloud.dataworks.Project("defaulteNv8bu",
             project_name=name,
             display_name=name,
-            description=name)
+            description=name,
+            pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
             project_id=defaulte_nv8bu.id,
@@ -443,11 +444,12 @@ class DiAlarmRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "terraform_example"
         defaulte_nv8bu = alicloud.dataworks.Project("defaulteNv8bu",
             project_name=name,
             display_name=name,
-            description=name)
+            description=name,
+            pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
             project_id=defaulte_nv8bu.id,

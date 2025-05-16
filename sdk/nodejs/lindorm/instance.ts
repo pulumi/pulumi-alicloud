@@ -97,6 +97,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly archVersion!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     */
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    /**
+     * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     */
+    public readonly autoRenewPeriod!: pulumi.Output<string | undefined>;
+    /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     public readonly coldStorage!: pulumi.Output<number>;
@@ -159,7 +167,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
-     * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      */
     public readonly instanceStorage!: pulumi.Output<string>;
     /**
@@ -301,6 +309,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["arbiterVswitchId"] = state ? state.arbiterVswitchId : undefined;
             resourceInputs["arbiterZoneId"] = state ? state.arbiterZoneId : undefined;
             resourceInputs["archVersion"] = state ? state.archVersion : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["coldStorage"] = state ? state.coldStorage : undefined;
             resourceInputs["coreSingleStorage"] = state ? state.coreSingleStorage : undefined;
             resourceInputs["coreSpec"] = state ? state.coreSpec : undefined;
@@ -361,6 +371,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["arbiterVswitchId"] = args ? args.arbiterVswitchId : undefined;
             resourceInputs["arbiterZoneId"] = args ? args.arbiterZoneId : undefined;
             resourceInputs["archVersion"] = args ? args.archVersion : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["coldStorage"] = args ? args.coldStorage : undefined;
             resourceInputs["coreSingleStorage"] = args ? args.coreSingleStorage : undefined;
             resourceInputs["coreSpec"] = args ? args.coreSpec : undefined;
@@ -430,6 +442,14 @@ export interface InstanceState {
      */
     archVersion?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     */
+    autoRenew?: pulumi.Input<string>;
+    /**
+     * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     */
+    autoRenewPeriod?: pulumi.Input<string>;
+    /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     coldStorage?: pulumi.Input<number>;
@@ -492,7 +512,7 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      */
     instanceStorage?: pulumi.Input<string>;
     /**
@@ -636,6 +656,14 @@ export interface InstanceArgs {
      */
     archVersion?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+     */
+    autoRenew?: pulumi.Input<string>;
+    /**
+     * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+     */
+    autoRenewPeriod?: pulumi.Input<string>;
+    /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     coldStorage?: pulumi.Input<number>;
@@ -674,7 +702,7 @@ export interface InstanceArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+     * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      */
     instanceStorage?: pulumi.Input<string>;
     /**

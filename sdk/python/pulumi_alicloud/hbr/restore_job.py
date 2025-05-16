@@ -883,7 +883,7 @@ class RestoreJob(pulumi.CustomResource):
 
         For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -984,7 +984,7 @@ class RestoreJob(pulumi.CustomResource):
 
         For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 

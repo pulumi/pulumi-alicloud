@@ -26,7 +26,7 @@ import (
 //
 // > **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
 //
-// > **NOTE:** Available in 1.54.0+
+// > **NOTE:** Available since v1.54.0+
 //
 // ## Example Usage
 //
@@ -54,8 +54,10 @@ import (
 //				return err
 //			}
 //			msServerGroupGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(msServerGroup.Zones[0].Id),
-//				EniAmount:        pulumi.IntRef(2),
+//				AvailabilityZone:   pulumi.StringRef(msServerGroup.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(2),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -90,8 +92,8 @@ import (
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(slbMasterSlaveServerGroup),
-//				VpcId: main.ID(),
+//				SecurityGroupName: pulumi.String(slbMasterSlaveServerGroup),
+//				VpcId:             main.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -191,17 +193,6 @@ import (
 //
 // ```
 //
-// ## Block servers
-//
-// The servers mapping supports the following:
-//
-// * `serverIds` - (Required) A list backend server ID (ECS instance ID).
-// * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
-// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
-// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
-// * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
-// * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
-//
 // ## Import
 //
 // Load balancer master slave server group can be imported using the id, e.g.
@@ -218,7 +209,7 @@ type MasterSlaveServerGroup struct {
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Name of the master slave server group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 	Servers MasterSlaveServerGroupServerArrayOutput `pulumi:"servers"`
 }
 
@@ -261,7 +252,7 @@ type masterSlaveServerGroupState struct {
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Name of the master slave server group.
 	Name *string `pulumi:"name"`
-	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 	Servers []MasterSlaveServerGroupServer `pulumi:"servers"`
 }
 
@@ -272,7 +263,7 @@ type MasterSlaveServerGroupState struct {
 	LoadBalancerId pulumi.StringPtrInput
 	// Name of the master slave server group.
 	Name pulumi.StringPtrInput
-	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 	Servers MasterSlaveServerGroupServerArrayInput
 }
 
@@ -287,7 +278,7 @@ type masterSlaveServerGroupArgs struct {
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Name of the master slave server group.
 	Name *string `pulumi:"name"`
-	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 	Servers []MasterSlaveServerGroupServer `pulumi:"servers"`
 }
 
@@ -299,7 +290,7 @@ type MasterSlaveServerGroupArgs struct {
 	LoadBalancerId pulumi.StringInput
 	// Name of the master slave server group.
 	Name pulumi.StringPtrInput
-	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 	Servers MasterSlaveServerGroupServerArrayInput
 }
 
@@ -405,7 +396,7 @@ func (o MasterSlaveServerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MasterSlaveServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
 func (o MasterSlaveServerGroupOutput) Servers() MasterSlaveServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *MasterSlaveServerGroup) MasterSlaveServerGroupServerArrayOutput { return v.Servers }).(MasterSlaveServerGroupServerArrayOutput)
 }

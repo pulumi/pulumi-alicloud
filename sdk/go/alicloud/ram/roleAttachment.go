@@ -43,7 +43,8 @@ import (
 // defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 // AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 // CpuCoreCount: pulumi.IntRef(2),
-// MemorySize: pulumi.Float64Ref(4),
+// MemorySize: pulumi.Float64Ref(8),
+// InstanceTypeFamily: pulumi.StringRef("ecs.g6"),
 // }, nil);
 // if err != nil {
 // return err
@@ -78,7 +79,7 @@ import (
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
+// SecurityGroupName: pulumi.String(name),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {

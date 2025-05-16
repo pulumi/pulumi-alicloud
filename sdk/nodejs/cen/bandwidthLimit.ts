@@ -107,7 +107,7 @@ export class BandwidthLimit extends pulumi.CustomResource {
     /**
      * The bandwidth configured for the interconnected regions communication.
      *
-     * ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+     * ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
      */
     public readonly bandwidthLimit!: pulumi.Output<number>;
     /**
@@ -162,7 +162,7 @@ export interface BandwidthLimitState {
     /**
      * The bandwidth configured for the interconnected regions communication.
      *
-     * ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+     * ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
      */
     bandwidthLimit?: pulumi.Input<number>;
     /**
@@ -182,7 +182,7 @@ export interface BandwidthLimitArgs {
     /**
      * The bandwidth configured for the interconnected regions communication.
      *
-     * ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+     * ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
      */
     bandwidthLimit: pulumi.Input<number>;
     /**

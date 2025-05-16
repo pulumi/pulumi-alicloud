@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.esa.RatePlanInstance;
  * import com.pulumi.alicloud.esa.RatePlanInstanceArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.esa.Site;
  * import com.pulumi.alicloud.esa.SiteArgs;
  * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
@@ -65,14 +67,19 @@ import javax.annotation.Nullable;
  *             .planName("high")
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var resourceHttpBasicConfigurationSetExample = new Site("resourceHttpBasicConfigurationSetExample", SiteArgs.builder()
- *             .siteName("gositecdn.cn")
+ *             .siteName(String.format("gositecdn-%s.cn", default_.result()))
  *             .instanceId(example.id())
  *             .coverage("overseas")
  *             .accessType("NS")
  *             .build());
  * 
- *         var default_ = new HttpsBasicConfiguration("default", HttpsBasicConfigurationArgs.builder()
+ *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
  *             .https("on")
  *             .rule("true")
  *             .ruleName("example2")

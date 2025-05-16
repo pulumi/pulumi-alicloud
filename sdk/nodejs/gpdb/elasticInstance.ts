@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
  * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  *
- * > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+ * > **NOTE:** Deprecated since v1.147.0.
  *
- * > **NOTE:**  Available in 1.127.0+
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
  *
  * ## Example Usage
  *
@@ -136,7 +136,7 @@ export class ElasticInstance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -313,7 +313,7 @@ export interface ElasticInstanceState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      */
     port?: pulumi.Input<string>;
     /**

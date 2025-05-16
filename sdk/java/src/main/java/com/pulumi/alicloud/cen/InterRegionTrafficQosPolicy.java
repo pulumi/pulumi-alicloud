@@ -69,18 +69,18 @@ import javax.annotation.Nullable;
  *             .defaultLinkType("Platinum")
  *             .bandwidthType("DataTransfer")
  *             .cenId(defaultpSZB78.id())
- *             .peerTransitRouterRegionId(defaultksqgSa.id())
+ *             .peerTransitRouterRegionId("cn-hangzhou")
  *             .transitRouterId(defaultUmmxnE.transitRouterId())
  *             .peerTransitRouterId(defaultksqgSa.transitRouterId())
  *             .bandwidth(10)
  *             .build());
  * 
  *         var default_ = new InterRegionTrafficQosPolicy("default", InterRegionTrafficQosPolicyArgs.builder()
- *             .transitRouterAttachmentId(defaultnXZ83y.id())
+ *             .transitRouterAttachmentId(defaultnXZ83y.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName("example1")
  *             .interRegionTrafficQosPolicyDescription("example1")
  *             .bandwidthGuaranteeMode("byBandwidthPercent")
- *             .transitRouterId(defaultnXZ83y.id())
+ *             .transitRouterId(defaultksqgSa.transitRouterId())
  *             .build());
  * 
  *     }

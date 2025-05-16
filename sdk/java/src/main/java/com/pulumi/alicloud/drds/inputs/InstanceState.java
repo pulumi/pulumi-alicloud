@@ -17,14 +17,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     * (Available since v1.196.0) The connection string of the DRDS instance.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return (Available in 1.196.0+) The connection string of the DRDS instance.
+     * @return (Available since v1.196.0) The connection string of the DRDS instance.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -98,14 +98,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     * (Available since v1.196.0) The connection port of the DRDS instance.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the DRDS instance.
+     * @return (Available since v1.196.0) The connection port of the DRDS instance.
      * 
      */
     public Optional<Output<String>> port() {
@@ -222,7 +222,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) The connection string of the DRDS instance.
+         * @param connectionString (Available since v1.196.0) The connection string of the DRDS instance.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.196.0+) The connection string of the DRDS instance.
+         * @param connectionString (Available since v1.196.0) The connection string of the DRDS instance.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the DRDS instance.
+         * @param port (Available since v1.196.0) The connection port of the DRDS instance.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the DRDS instance.
+         * @param port (Available since v1.196.0) The connection port of the DRDS instance.
          * 
          * @return builder
          * 

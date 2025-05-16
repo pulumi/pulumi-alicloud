@@ -16,7 +16,7 @@ import (
 //
 // For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //

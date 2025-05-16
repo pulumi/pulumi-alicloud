@@ -1750,6 +1750,10 @@ export namespace apigateway {
          */
         functionType?: pulumi.Input<string>;
         /**
+         * The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+         */
+        functionVersion?: pulumi.Input<string>;
+        /**
          * The http method of function compute service. Required if `functionType` is `HttpTrigger`.
          */
         method?: pulumi.Input<string>;
@@ -1770,7 +1774,7 @@ export namespace apigateway {
          */
         region: pulumi.Input<string>;
         /**
-         * The service name of function compute service. Required if `functionType` is `FCEvent`.
+         * The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
          */
         serviceName?: pulumi.Input<string>;
         /**
@@ -2929,45 +2933,62 @@ export namespace cdn {
 export namespace cen {
     export interface TrafficMarkingPolicyTrafficMatchRule {
         /**
-         * IP Address Family.
+         * IP Address Family
          */
         addressFamily?: pulumi.Input<string>;
         /**
-         * The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+         * The destination network segment of the traffic message.
+         * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
          */
         dstCidr?: pulumi.Input<string>;
         /**
-         * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         *
+         * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+         *
+         * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
          * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
          * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
          */
         dstPortRanges?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+         * The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+         *
+         * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+         *
+         * > **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
          */
         matchDscp?: pulumi.Input<number>;
         /**
-         * The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+         * The protocol type of the traffic message.
+         * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
          */
         protocol?: pulumi.Input<string>;
         /**
-         * The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+         * The source network segment of the traffic message.
+         * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
          */
         srcCidr?: pulumi.Input<string>;
         /**
-         * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         *
+         * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+         *
+         * The current parameter supports entering up to two port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
          * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
          * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
          */
         srcPortRanges?: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * The description information of the stream classification rule.
+         * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleDescription?: pulumi.Input<string>;
         /**
-         * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * The name of the stream classification rule.
+         * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleName?: pulumi.Input<string>;
     }
@@ -12958,19 +12979,19 @@ export namespace iot {
 export namespace kms {
     export interface InstanceBindVpc {
         /**
-         * region id.
+         * region id
          */
         regionId?: pulumi.Input<string>;
         /**
-         * VPC ID.
+         * VPC ID
          */
         vpcId?: pulumi.Input<string>;
         /**
-         * VPC owner root user ID.
+         * VPC owner root user ID
          */
         vpcOwnerId?: pulumi.Input<string>;
         /**
-         * vswitch id.
+         * vswitch id
          */
         vswitchId?: pulumi.Input<string>;
     }
@@ -15229,6 +15250,28 @@ export namespace pai {
         key?: pulumi.Input<string>;
         /**
          * The value of the tags
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceModelLabel {
+        /**
+         * label key
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * label value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceModelVersionLabel {
+        /**
+         * label key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * label value.
          */
         value?: pulumi.Input<string>;
     }
@@ -17776,11 +17819,29 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
+        /**
+         * Determine if the server is executing. Valid value 0, 1.
+         */
         isBackup?: pulumi.Input<number>;
+        /**
+         * The port used by the backend server. Valid value range: [1-65535].
+         */
         port: pulumi.Input<number>;
+        /**
+         * A list backend server ID (ECS instance ID).
+         */
         serverId: pulumi.Input<string>;
+        /**
+         * The server type of the backend server. Valid value Master, Slave.
+         */
         serverType?: pulumi.Input<string>;
+        /**
+         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         */
         type?: pulumi.Input<string>;
+        /**
+         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         */
         weight?: pulumi.Input<number>;
     }
 

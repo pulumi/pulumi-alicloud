@@ -60,7 +60,7 @@ import (
 //				DefaultLinkType:           pulumi.String("Platinum"),
 //				BandwidthType:             pulumi.String("DataTransfer"),
 //				CenId:                     defaultpSZB78.ID(),
-//				PeerTransitRouterRegionId: defaultksqgSa.ID(),
+//				PeerTransitRouterRegionId: pulumi.String("cn-hangzhou"),
 //				TransitRouterId:           defaultUmmxnE.TransitRouterId,
 //				PeerTransitRouterId:       defaultksqgSa.TransitRouterId,
 //				Bandwidth:                 pulumi.Int(10),
@@ -69,11 +69,11 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewInterRegionTrafficQosPolicy(ctx, "default", &cen.InterRegionTrafficQosPolicyArgs{
-//				TransitRouterAttachmentId:              defaultnXZ83y.ID(),
+//				TransitRouterAttachmentId:              defaultnXZ83y.TransitRouterAttachmentId,
 //				InterRegionTrafficQosPolicyName:        pulumi.String("example1"),
 //				InterRegionTrafficQosPolicyDescription: pulumi.String("example1"),
 //				BandwidthGuaranteeMode:                 pulumi.String("byBandwidthPercent"),
-//				TransitRouterId:                        defaultnXZ83y.ID(),
+//				TransitRouterId:                        defaultksqgSa.TransitRouterId,
 //			})
 //			if err != nil {
 //				return err

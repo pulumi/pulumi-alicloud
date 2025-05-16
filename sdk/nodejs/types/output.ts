@@ -3446,6 +3446,10 @@ export namespace apigateway {
          */
         functionType?: string;
         /**
+         * The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+         */
+        functionVersion?: string;
+        /**
          * The http method of function compute service. Required if `functionType` is `HttpTrigger`.
          */
         method: string;
@@ -3466,7 +3470,7 @@ export namespace apigateway {
          */
         region: string;
         /**
-         * The service name of function compute service. Required if `functionType` is `FCEvent`.
+         * The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
          */
         serviceName?: string;
         /**
@@ -7880,45 +7884,62 @@ export namespace cen {
 
     export interface TrafficMarkingPolicyTrafficMatchRule {
         /**
-         * IP Address Family.
+         * IP Address Family
          */
         addressFamily: string;
         /**
-         * The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+         * The destination network segment of the traffic message.
+         * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
          */
         dstCidr: string;
         /**
-         * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         *
+         * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+         *
+         * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
          * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
          * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
          */
         dstPortRanges: number[];
         /**
-         * The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+         * The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+         *
+         * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+         *
+         * > **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
          */
         matchDscp: number;
         /**
-         * The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+         * The protocol type of the traffic message.
+         * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
          */
         protocol: string;
         /**
-         * The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+         * The source network segment of the traffic message.
+         * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
          */
         srcCidr: string;
         /**
-         * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+         *
+         * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+         *
+         * The current parameter supports entering up to two port numbers. The input format is described as follows:
          * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
          * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
          * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
          */
         srcPortRanges: number[];
         /**
-         * The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * The description information of the stream classification rule.
+         * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleDescription: string;
         /**
-         * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         * The name of the stream classification rule.
+         * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleName: string;
     }
@@ -31686,6 +31707,26 @@ export namespace ess {
          */
         azBalance: boolean;
         /**
+         * (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+         */
+        capacityOptionsCompensateWithOnDemand: boolean;
+        /**
+         * (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+         */
+        capacityOptionsOnDemandBaseCapacity: number;
+        /**
+         * (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+         */
+        capacityOptionsOnDemandPercentageAboveBaseCapacity: number;
+        /**
+         * (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+         */
+        capacityOptionsSpotAutoReplaceOnDemand: boolean;
+        /**
+         * (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+         */
+        compensateWithOnDemand: boolean;
+        /**
          * Default cooldown time of scaling group.
          */
         cooldownTime: number;
@@ -31729,6 +31770,10 @@ export namespace ess {
          * Active launch template ID for scaling group.
          */
         launchTemplateId: string;
+        /**
+         * (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+         */
+        launchTemplateOverrides: outputs.ess.GetScalingGroupsGroupLaunchTemplateOverride[];
         /**
          * Version of active launch template.
          */
@@ -31873,6 +31918,21 @@ export namespace ess {
          * Vswitches id in which the ECS instance launched.
          */
         vswitchIds: string[];
+    }
+
+    export interface GetScalingGroupsGroupLaunchTemplateOverride {
+        /**
+         * (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+         */
+        instanceType: string;
+        /**
+         * (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+         */
+        spotPriceLimit: number;
+        /**
+         * (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+         */
+        weightedCapacity: number;
     }
 
     export interface GetScalingRulesRule {
@@ -38565,19 +38625,19 @@ export namespace kms {
 
     export interface InstanceBindVpc {
         /**
-         * region id.
+         * region id
          */
         regionId?: string;
         /**
-         * VPC ID.
+         * VPC ID
          */
         vpcId?: string;
         /**
-         * VPC owner root user ID.
+         * VPC owner root user ID
          */
         vpcOwnerId?: string;
         /**
-         * vswitch id.
+         * vswitch id
          */
         vswitchId?: string;
     }
@@ -44779,6 +44839,28 @@ export namespace pai {
         key?: string;
         /**
          * The value of the tags
+         */
+        value?: string;
+    }
+
+    export interface WorkspaceModelLabel {
+        /**
+         * label key
+         */
+        key?: string;
+        /**
+         * label value
+         */
+        value?: string;
+    }
+
+    export interface WorkspaceModelVersionLabel {
+        /**
+         * label key.
+         */
+        key?: string;
+        /**
+         * label value.
          */
         value?: string;
     }
@@ -53673,11 +53755,29 @@ export namespace slb {
     }
 
     export interface MasterSlaveServerGroupServer {
+        /**
+         * Determine if the server is executing. Valid value 0, 1.
+         */
         isBackup?: number;
+        /**
+         * The port used by the backend server. Valid value range: [1-65535].
+         */
         port: number;
+        /**
+         * A list backend server ID (ECS instance ID).
+         */
         serverId: string;
+        /**
+         * The server type of the backend server. Valid value Master, Slave.
+         */
         serverType?: string;
+        /**
+         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         */
         type?: string;
+        /**
+         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         */
         weight?: number;
     }
 
@@ -54417,17 +54517,51 @@ export namespace threatdetection {
 
     export interface GetAssetsAsset {
         /**
+         * The ID of the cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the cluster.
+         */
+        clusterName: string;
+        /**
          * The creation time of the resource
          */
         createTime: string;
         /**
-         * The ID of the instance.
+         * The UUID of the asset.
          */
         id: string;
         /**
-         * The UUID of the instance.
+         * The ID of the asset.
+         */
+        instanceId: string;
+        /**
+         * The name of the asset.
+         */
+        instanceName: string;
+        /**
+         * The public IP address of the asset.
+         */
+        internetIp: string;
+        /**
+         * The private IP address of the asset.
+         */
+        intranetIp: string;
+        /**
+         * The status of the asset. Valid values:
+         * - **Running**: running
+         * - **notRunning**: stopped
+         */
+        status: string;
+        /**
+         * The UUID of the asset. Same as `id`.
          */
         uuid: string;
+        /**
+         * The ID of the VPC to which the asset belongs.
+         */
+        vpcInstanceId: string;
     }
 
     export interface GetBackupPoliciesPolicy {
@@ -59190,6 +59324,10 @@ export namespace wafv3 {
     }
 
     export interface GetDomainsDomain {
+        /**
+         * The CNAME assigned by WAF to the domain name.
+         */
+        cname: string;
         /**
          * The name of the domain name to query.
          */

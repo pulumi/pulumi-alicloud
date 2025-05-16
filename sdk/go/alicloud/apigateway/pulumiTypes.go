@@ -252,6 +252,8 @@ type ApiFcServiceConfig struct {
 	FunctionName *string `pulumi:"functionName"`
 	// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
 	FunctionType *string `pulumi:"functionType"`
+	// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+	FunctionVersion *string `pulumi:"functionVersion"`
 	// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
 	Method *string `pulumi:"method"`
 	// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
@@ -262,7 +264,7 @@ type ApiFcServiceConfig struct {
 	Qualifier *string `pulumi:"qualifier"`
 	// The region that the function compute service belongs to.
 	Region string `pulumi:"region"`
-	// The service name of function compute service. Required if `functionType` is `FCEvent`.
+	// The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
 	ServiceName *string `pulumi:"serviceName"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout int `pulumi:"timeout"`
@@ -288,6 +290,8 @@ type ApiFcServiceConfigArgs struct {
 	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
 	// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
 	FunctionType pulumi.StringPtrInput `pulumi:"functionType"`
+	// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+	FunctionVersion pulumi.StringPtrInput `pulumi:"functionVersion"`
 	// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
@@ -298,7 +302,7 @@ type ApiFcServiceConfigArgs struct {
 	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
 	// The region that the function compute service belongs to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The service name of function compute service. Required if `functionType` is `FCEvent`.
+	// The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
@@ -401,6 +405,11 @@ func (o ApiFcServiceConfigOutput) FunctionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionType }).(pulumi.StringPtrOutput)
 }
 
+// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+func (o ApiFcServiceConfigOutput) FunctionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionVersion }).(pulumi.StringPtrOutput)
+}
+
 // The http method of function compute service. Required if `functionType` is `HttpTrigger`.
 func (o ApiFcServiceConfigOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.Method }).(pulumi.StringPtrOutput)
@@ -426,7 +435,7 @@ func (o ApiFcServiceConfigOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The service name of function compute service. Required if `functionType` is `FCEvent`.
+// The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
 func (o ApiFcServiceConfigOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -500,6 +509,16 @@ func (o ApiFcServiceConfigPtrOutput) FunctionType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+func (o ApiFcServiceConfigPtrOutput) FunctionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // The http method of function compute service. Required if `functionType` is `HttpTrigger`.
 func (o ApiFcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
@@ -550,7 +569,7 @@ func (o ApiFcServiceConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service name of function compute service. Required if `functionType` is `FCEvent`.
+// The service name of function compute service. Required if `functionType` is `FCEvent` and `functionVersion` is `2.0`.
 func (o ApiFcServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
 		if v == nil {

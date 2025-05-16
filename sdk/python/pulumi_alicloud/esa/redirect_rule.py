@@ -414,6 +414,7 @@ class RedirectRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -427,12 +428,15 @@ class RedirectRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_redirect_rule_example = alicloud.esa.Site("resource_Site_RedirectRule_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_redirect_rule_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.RedirectRule("default",
+        default_redirect_rule = alicloud.esa.RedirectRule("default",
             status_code="301",
             rule_name="example",
             site_id=resource_site_redirect_rule_example.id,
@@ -497,6 +501,7 @@ class RedirectRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -510,12 +515,15 @@ class RedirectRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_redirect_rule_example = alicloud.esa.Site("resource_Site_RedirectRule_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=resource_redirect_rule_example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.RedirectRule("default",
+        default_redirect_rule = alicloud.esa.RedirectRule("default",
             status_code="301",
             rule_name="example",
             site_id=resource_site_redirect_rule_example.id,

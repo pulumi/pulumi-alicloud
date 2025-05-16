@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanabackupplan).
  * 
- * &gt; **NOTE:** Available in v1.179.0+.
+ * &gt; **NOTE:** Available since v1.179.0.
  * 
  * ## Example Usage
  * 

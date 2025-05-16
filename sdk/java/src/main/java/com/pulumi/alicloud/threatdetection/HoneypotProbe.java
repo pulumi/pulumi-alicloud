@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 

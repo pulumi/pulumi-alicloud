@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
  *
+ * > **NOTE:** Available since v1.24.0.
+ *
  * > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
  *
  * > **NOTE:** Currently, this resource only support `Domestic Site Account`.
@@ -79,7 +81,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     * (Available since v1.196.0) The connection string of the DRDS instance.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -102,7 +104,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly mysqlVersion!: pulumi.Output<number>;
     /**
-     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     * (Available since v1.196.0) The connection port of the DRDS instance.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -191,7 +193,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     * (Available since v1.196.0) The connection string of the DRDS instance.
      */
     connectionString?: pulumi.Input<string>;
     /**
@@ -214,7 +216,7 @@ export interface InstanceState {
      */
     mysqlVersion?: pulumi.Input<number>;
     /**
-     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     * (Available since v1.196.0) The connection port of the DRDS instance.
      */
     port?: pulumi.Input<string>;
     /**

@@ -12,21 +12,39 @@ namespace Pulumi.AliCloud.Slb.Inputs
 
     public sealed class MasterSlaveServerGroupServerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Determine if the server is executing. Valid value 0, 1.
+        /// </summary>
         [Input("isBackup")]
         public Input<int>? IsBackup { get; set; }
 
+        /// <summary>
+        /// The port used by the backend server. Valid value range: [1-65535].
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// A list backend server ID (ECS instance ID).
+        /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
+        /// <summary>
+        /// The server type of the backend server. Valid value Master, Slave.
+        /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
+        /// <summary>
+        /// Type of the backend server. Valid value ecs, eni. Default to eni.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

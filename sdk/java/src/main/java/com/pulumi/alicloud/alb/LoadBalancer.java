@@ -31,6 +31,102 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.alb.AlbFunctions;
+ * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancer;
+ * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerModificationProtectionConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var default1 = new Switch("default1", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("10.4.1.0/24")
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .vswitchName(String.format("%s_1", name))
+ *             .build());
+ * 
+ *         var default2 = new Switch("default2", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("10.4.2.0/24")
+ *             .zoneId(defaultGetZones.zones()[1].id())
+ *             .vswitchName(String.format("%s_2", name))
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+ *             .loadBalancerEdition("Basic")
+ *             .addressType("Internet")
+ *             .vpcId(defaultNetwork.id())
+ *             .addressAllocatedMode("Fixed")
+ *             .resourceGroupId(default_.groups()[0].id())
+ *             .loadBalancerName(name)
+ *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+ *                 .payType("PayAsYouGo")
+ *                 .build())
+ *             .modificationProtectionConfig(LoadBalancerModificationProtectionConfigArgs.builder()
+ *                 .status("NonProtection")
+ *                 .build())
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default1.id())
+ *                     .zoneId(defaultGetZones.zones()[0].id())
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(default2.id())
+ *                     .zoneId(defaultGetZones.zones()[1].id())
+ *                     .build())
+ *             .tags(Map.of("Created", "TF"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.

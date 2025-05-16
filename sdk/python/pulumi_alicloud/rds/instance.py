@@ -162,10 +162,10 @@ class InstanceArgs:
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
-               * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         :param pulumi.Input[builtins.str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -271,7 +271,7 @@ class InstanceArgs:
                > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
                You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[builtins.str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[builtins.str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -710,10 +710,10 @@ class InstanceArgs:
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
-        * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
 
         > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         """
@@ -1260,7 +1260,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1767,10 +1767,10 @@ class _InstanceState:
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
-               * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         :param pulumi.Input[builtins.str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -1784,7 +1784,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
-        :param pulumi.Input[builtins.str] create_time: (Available since 1.204.1) The creation time of db instance.
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.204.1) The creation time of db instance.
         :param pulumi.Input[builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -1798,7 +1798,7 @@ class _InstanceState:
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                - general_essd: general essd.
-        :param pulumi.Input[builtins.str] db_instance_type: (Available since 1.197.0) The type of db instance.
+        :param pulumi.Input[builtins.str] db_instance_type: (Available since v1.197.0) The type of db instance.
         :param pulumi.Input[builtins.bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[builtins.str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -1907,7 +1907,7 @@ class _InstanceState:
                > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
                You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[builtins.str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[builtins.str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1926,7 +1926,7 @@ class _InstanceState:
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[builtins.str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
-        :param pulumi.Input[builtins.str] status: (Available since 1.204.1) The status of db instance.
+        :param pulumi.Input[builtins.str] status: (Available since v1.204.1) The status of db instance.
         :param pulumi.Input[builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
@@ -2290,10 +2290,10 @@ class _InstanceState:
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
-        * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
 
         > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         """
@@ -2384,7 +2384,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available since 1.204.1) The creation time of db instance.
+        (Available since v1.204.1) The creation time of db instance.
         """
         return pulumi.get(self, "create_time")
 
@@ -2442,7 +2442,7 @@ class _InstanceState:
     @pulumi.getter(name="dbInstanceType")
     def db_instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available since 1.197.0) The type of db instance.
+        (Available since v1.197.0) The type of db instance.
         """
         return pulumi.get(self, "db_instance_type")
 
@@ -2948,7 +2948,7 @@ class _InstanceState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -3099,7 +3099,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available since 1.204.1) The status of db instance.
+        (Available since v1.204.1) The status of db instance.
         """
         return pulumi.get(self, "status")
 
@@ -3487,10 +3487,10 @@ class Instance(pulumi.CustomResource):
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
-               * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         :param pulumi.Input[builtins.str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -3624,7 +3624,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
                You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[builtins.str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[builtins.str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -4052,10 +4052,10 @@ class Instance(pulumi.CustomResource):
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
-               * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+               * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+               * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+               * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+               * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
                
                > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         :param pulumi.Input[builtins.str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -4069,7 +4069,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
-        :param pulumi.Input[builtins.str] create_time: (Available since 1.204.1) The creation time of db instance.
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.204.1) The creation time of db instance.
         :param pulumi.Input[builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -4083,7 +4083,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                - general_essd: general essd.
-        :param pulumi.Input[builtins.str] db_instance_type: (Available since 1.197.0) The type of db instance.
+        :param pulumi.Input[builtins.str] db_instance_type: (Available since v1.197.0) The type of db instance.
         :param pulumi.Input[builtins.bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[builtins.str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -4192,7 +4192,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
                You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[builtins.str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[builtins.str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -4211,7 +4211,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** The attribute `ssl_action` will be ignored when setting `instance_charge_type = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
         :param pulumi.Input[builtins.str] ssl_connection_string: The internal or public endpoint for which the server certificate needs to be created or updated.
         :param pulumi.Input[builtins.str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
-        :param pulumi.Input[builtins.str] status: (Available since 1.204.1) The status of db instance.
+        :param pulumi.Input[builtins.str] status: (Available since v1.204.1) The status of db instance.
         :param pulumi.Input[builtins.str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
                - Enable
                - Disable
@@ -4457,10 +4457,10 @@ class Instance(pulumi.CustomResource):
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
-        * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+        * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+        * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+        * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+        * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
 
         > **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         """
@@ -4523,7 +4523,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
         """
-        (Available since 1.204.1) The creation time of db instance.
+        (Available since v1.204.1) The creation time of db instance.
         """
         return pulumi.get(self, "create_time")
 
@@ -4565,7 +4565,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceType")
     def db_instance_type(self) -> pulumi.Output[builtins.str]:
         """
-        (Available since 1.197.0) The type of db instance.
+        (Available since v1.197.0) The type of db instance.
         """
         return pulumi.get(self, "db_instance_type")
 
@@ -4927,7 +4927,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+        , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -5030,7 +5030,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        (Available since 1.204.1) The status of db instance.
+        (Available since v1.204.1) The status of db instance.
         """
         return pulumi.get(self, "status")
 

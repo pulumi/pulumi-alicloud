@@ -19,14 +19,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     @Import(name="bindVpcs")
     private @Nullable Output<List<InstanceBindVpcArgs>> bindVpcs;
 
     /**
-     * @return Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * @return Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     public Optional<Output<List<InstanceBindVpcArgs>>> bindVpcs() {
@@ -94,14 +94,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource.
+     * The name of the resource
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the resource
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -154,14 +154,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * @return Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -184,14 +188,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      * 
      */
     @Import(name="productVersion")
     private @Nullable Output<String> productVersion;
 
     /**
-     * @return KMS Instance commodity type (software/hardware).
+     * @return KMS Instance commodity type (software/hardware)
      * 
      */
     public Optional<Output<String>> productVersion() {
@@ -274,14 +278,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance VPC id.
+     * Instance VPC id
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return Instance VPC id.
+     * @return Instance VPC id
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -304,14 +308,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return Instance bind vswitches.
+     * @return Instance bind vswitches
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -319,14 +323,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * zone id.
+     * zone id
      * 
      */
     @Import(name="zoneIds")
     private @Nullable Output<List<String>> zoneIds;
 
     /**
-     * @return zone id.
+     * @return zone id
      * 
      */
     public Optional<Output<List<String>>> zoneIds() {
@@ -378,7 +382,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -389,7 +393,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -399,7 +403,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -493,7 +497,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the resource.
+         * @param instanceName The name of the resource
          * 
          * @return builder
          * 
@@ -504,7 +508,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the resource.
+         * @param instanceName The name of the resource
          * 
          * @return builder
          * 
@@ -577,7 +581,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * @param paymentType Payment type,valid values:
+         * - `Subscription`: Prepaid.
+         * - `PayAsYouGo`: Postpaid.
          * 
          * @return builder
          * 
@@ -588,7 +594,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * @param paymentType Payment type,valid values:
+         * - `Subscription`: Prepaid.
+         * - `PayAsYouGo`: Postpaid.
          * 
          * @return builder
          * 
@@ -619,7 +627,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware).
+         * @param productVersion KMS Instance commodity type (software/hardware)
          * 
          * @return builder
          * 
@@ -630,7 +638,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware).
+         * @param productVersion KMS Instance commodity type (software/hardware)
          * 
          * @return builder
          * 
@@ -745,7 +753,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id.
+         * @param vpcId Instance VPC id
          * 
          * @return builder
          * 
@@ -756,7 +764,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id.
+         * @param vpcId Instance VPC id
          * 
          * @return builder
          * 
@@ -787,7 +795,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -798,7 +806,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -808,7 +816,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -818,7 +826,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 
@@ -829,7 +837,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 
@@ -839,7 +847,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 

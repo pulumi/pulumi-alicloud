@@ -27,6 +27,7 @@ class InstanceArgs:
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_num: Optional[pulumi.Input[builtins.int]] = None,
                  log: Optional[pulumi.Input[builtins.str]] = None,
                  log_storage: Optional[pulumi.Input[builtins.int]] = None,
@@ -40,17 +41,20 @@ class InstanceArgs:
                  vpc_num: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+        :param pulumi.Input[builtins.str] instance_name: The name of the resource
         :param pulumi.Input[builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] payment_type: Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        :param pulumi.Input[builtins.str] payment_type: Payment type,valid values:
+               - `Subscription`: Prepaid.
+               - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware).
+        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -64,6 +68,8 @@ class InstanceArgs:
             pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         if force_delete_without_backup is not None:
             pulumi.set(__self__, "force_delete_without_backup", force_delete_without_backup)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if key_num is not None:
             pulumi.set(__self__, "key_num", key_num)
         if log is not None:
@@ -91,7 +97,7 @@ class InstanceArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[builtins.str]:
         """
-        Instance VPC id.
+        Instance VPC id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -103,7 +109,7 @@ class InstanceArgs:
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        Instance bind vswitches.
+        Instance bind vswitches
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -115,7 +121,7 @@ class InstanceArgs:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        zone id.
+        zone id
         """
         return pulumi.get(self, "zone_ids")
 
@@ -127,7 +133,7 @@ class InstanceArgs:
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
         """
-        Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         """
         return pulumi.get(self, "bind_vpcs")
 
@@ -146,6 +152,18 @@ class InstanceArgs:
     @force_delete_without_backup.setter
     def force_delete_without_backup(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "force_delete_without_backup", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "instance_name", value)
 
     @property
     @pulumi.getter(name="keyNum")
@@ -187,7 +205,9 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        Payment type,valid values:
+        - `Subscription`: Prepaid.
+        - `PayAsYouGo`: Postpaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -211,7 +231,7 @@ class InstanceArgs:
     @pulumi.getter(name="productVersion")
     def product_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        KMS Instance commodity type (software/hardware).
+        KMS Instance commodity type (software/hardware)
         """
         return pulumi.get(self, "product_version")
 
@@ -306,27 +326,29 @@ class _InstanceState:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[builtins.str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
-        :param pulumi.Input[builtins.str] instance_name: The name of the resource.
+        :param pulumi.Input[builtins.str] instance_name: The name of the resource
         :param pulumi.Input[builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] payment_type: Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        :param pulumi.Input[builtins.str] payment_type: Payment type,valid values:
+               - `Subscription`: Prepaid.
+               - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware).
+        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] status: Instance status.
-        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id.
+        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id
         :param pulumi.Input[builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id
         """
         if bind_vpcs is not None:
             pulumi.set(__self__, "bind_vpcs", bind_vpcs)
@@ -375,7 +397,7 @@ class _InstanceState:
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
         """
-        Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         """
         return pulumi.get(self, "bind_vpcs")
 
@@ -435,7 +457,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the resource.
+        The name of the resource
         """
         return pulumi.get(self, "instance_name")
 
@@ -483,7 +505,9 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        Payment type,valid values:
+        - `Subscription`: Prepaid.
+        - `PayAsYouGo`: Postpaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -507,7 +531,7 @@ class _InstanceState:
     @pulumi.getter(name="productVersion")
     def product_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        KMS Instance commodity type (software/hardware).
+        KMS Instance commodity type (software/hardware)
         """
         return pulumi.get(self, "product_version")
 
@@ -579,7 +603,7 @@ class _InstanceState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Instance VPC id.
+        Instance VPC id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -603,7 +627,7 @@ class _InstanceState:
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Instance bind vswitches.
+        Instance bind vswitches
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -615,7 +639,7 @@ class _InstanceState:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        zone id.
+        zone id
         """
         return pulumi.get(self, "zone_ids")
 
@@ -632,6 +656,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_num: Optional[pulumi.Input[builtins.int]] = None,
                  log: Optional[pulumi.Input[builtins.str]] = None,
                  log_storage: Optional[pulumi.Input[builtins.int]] = None,
@@ -664,22 +689,25 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+        :param pulumi.Input[builtins.str] instance_name: The name of the resource
         :param pulumi.Input[builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] payment_type: Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        :param pulumi.Input[builtins.str] payment_type: Payment type,valid values:
+               - `Subscription`: Prepaid.
+               - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware).
+        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id.
+        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id
         :param pulumi.Input[builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id
         """
         ...
     @overload
@@ -719,6 +747,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_num: Optional[pulumi.Input[builtins.int]] = None,
                  log: Optional[pulumi.Input[builtins.str]] = None,
                  log_storage: Optional[pulumi.Input[builtins.int]] = None,
@@ -744,6 +773,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["bind_vpcs"] = bind_vpcs
             __props__.__dict__["force_delete_without_backup"] = force_delete_without_backup
+            __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["key_num"] = key_num
             __props__.__dict__["log"] = log
             __props__.__dict__["log_storage"] = log_storage
@@ -767,7 +797,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ca_certificate_chain_pem"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_date"] = None
-            __props__.__dict__["instance_name"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:kms/instance:Instance',
@@ -807,27 +836,29 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[builtins.str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
-        :param pulumi.Input[builtins.str] instance_name: The name of the resource.
+        :param pulumi.Input[builtins.str] instance_name: The name of the resource
         :param pulumi.Input[builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] payment_type: Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        :param pulumi.Input[builtins.str] payment_type: Payment type,valid values:
+               - `Subscription`: Prepaid.
+               - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware).
+        :param pulumi.Input[builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[builtins.str] status: Instance status.
-        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id.
+        :param pulumi.Input[builtins.str] vpc_id: Instance VPC id
         :param pulumi.Input[builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: Instance bind vswitches
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zone_ids: zone id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -860,7 +891,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceBindVpc']]]:
         """
-        Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         """
         return pulumi.get(self, "bind_vpcs")
 
@@ -900,7 +931,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of the resource.
+        The name of the resource
         """
         return pulumi.get(self, "instance_name")
 
@@ -932,7 +963,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[builtins.str]:
         """
-        Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        Payment type,valid values:
+        - `Subscription`: Prepaid.
+        - `PayAsYouGo`: Postpaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -948,7 +981,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="productVersion")
     def product_version(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        KMS Instance commodity type (software/hardware).
+        KMS Instance commodity type (software/hardware)
         """
         return pulumi.get(self, "product_version")
 
@@ -996,7 +1029,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[builtins.str]:
         """
-        Instance VPC id.
+        Instance VPC id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1012,7 +1045,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        Instance bind vswitches.
+        Instance bind vswitches
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -1020,7 +1053,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        zone id.
+        zone id
         """
         return pulumi.get(self, "zone_ids")
 

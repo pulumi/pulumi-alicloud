@@ -399,10 +399,14 @@ class NetworkOptimization(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_site = alicloud.esa.Site("default",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default_integer['result']}.cn",
             instance_id=default.sites[0].instance_id,
             coverage="overseas",
             access_type="NS")
@@ -460,10 +464,14 @@ class NetworkOptimization(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_site = alicloud.esa.Site("default",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default_integer['result']}.cn",
             instance_id=default.sites[0].instance_id,
             coverage="overseas",
             access_type="NS")

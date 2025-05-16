@@ -185,7 +185,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[builtins.str] connection_string: (Available in 1.196.0+) The connection string of the DRDS instance.
+        :param pulumi.Input[builtins.str] connection_string: (Available since v1.196.0) The connection string of the DRDS instance.
         :param pulumi.Input[builtins.str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[builtins.str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
@@ -193,7 +193,7 @@ class _InstanceState:
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[builtins.int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the DRDS instance.
         :param pulumi.Input[builtins.str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -232,7 +232,7 @@ class _InstanceState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.196.0+) The connection string of the DRDS instance.
+        (Available since v1.196.0) The connection string of the DRDS instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -295,7 +295,7 @@ class _InstanceState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.196.0+) The connection port of the DRDS instance.
+        (Available since v1.196.0) The connection port of the DRDS instance.
         """
         return pulumi.get(self, "port")
 
@@ -382,6 +382,8 @@ class Instance(pulumi.CustomResource):
 
         For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
 
+        > **NOTE:** Available since v1.24.0.
+
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
@@ -450,6 +452,8 @@ class Instance(pulumi.CustomResource):
         transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
 
         For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
+
+        > **NOTE:** Available since v1.24.0.
 
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
@@ -564,7 +568,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] connection_string: (Available in 1.196.0+) The connection string of the DRDS instance.
+        :param pulumi.Input[builtins.str] connection_string: (Available since v1.196.0) The connection string of the DRDS instance.
         :param pulumi.Input[builtins.str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[builtins.str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
@@ -572,7 +576,7 @@ class Instance(pulumi.CustomResource):
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[builtins.int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the DRDS instance.
         :param pulumi.Input[builtins.str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -606,7 +610,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.196.0+) The connection string of the DRDS instance.
+        (Available since v1.196.0) The connection string of the DRDS instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -649,7 +653,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.196.0+) The connection port of the DRDS instance.
+        (Available since v1.196.0) The connection port of the DRDS instance.
         """
         return pulumi.get(self, "port")
 

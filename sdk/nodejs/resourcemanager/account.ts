@@ -5,14 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
- * For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
+ * Provides a Resource Manager Account resource.
+ *
+ * For information about Resource Manager Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
  *
  * > **NOTE:** Available since v1.83.0.
  *
- * > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
- *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,19 +34,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
- *
- * Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
- * but may not destroy the account. If there are some dependent resource in the account,
- * the deleting account will enter a silence period of 45 days. After the silence period ends,
- * the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
- *
  * ## Import
  *
  * Resource Manager Account can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+ * $ pulumi import alicloud:resourcemanager/account:Account example <id>
  * ```
  */
 export class Account extends pulumi.CustomResource {
@@ -77,57 +71,77 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
-     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-     * to get check ids and set them.
+     * . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+     *
+     * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
     public readonly abandonAbleCheckIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The name prefix of account.
+     * The ID of the check item that can choose to abandon and continue to perform member deletion.
+     * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+     */
+    public readonly abandonableCheckIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Account name prefix. Empty the system randomly generated.
+     * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+     * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+     * The account name must be unique in the resource directory.
      */
     public readonly accountNamePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+     * Member name
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
-     * Ways for members to join the resource directory. Valid values: `invited`, `created`.
+     * Whether to force delete the account.
+     */
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    /**
+     * Ways for members to join the resource directory.  invited, created
      */
     public /*out*/ readonly joinMethod!: pulumi.Output<string>;
     /**
-     * The time when the member joined the resource directory.
+     * The time when the member joined the resource directory
      */
     public /*out*/ readonly joinTime!: pulumi.Output<string>;
     /**
-     * The modification time of the invitation.
+     * The modification time of the invitation
      */
     public /*out*/ readonly modifyTime!: pulumi.Output<string>;
     /**
-     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+     * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
     public readonly payerAccountId!: pulumi.Output<string | undefined>;
     /**
-     * Resource directory ID.
+     * The identity type of the member. Valid values:
+     * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+     * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+     *
+     * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+     */
+    public readonly resellAccountType!: pulumi.Output<string | undefined>;
+    /**
+     * Resource directory ID
      */
     public /*out*/ readonly resourceDirectoryId!: pulumi.Output<string>;
     /**
-     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+     * Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
-     *
-     * > **NOTE:** The member name must be unique within the resource directory.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Member type. The value of `ResourceAccount` indicates the resource account.
+     * Member type. The value of ResourceAccount indicates the resource account
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -143,13 +157,16 @@ export class Account extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["abandonAbleCheckIds"] = state ? state.abandonAbleCheckIds : undefined;
+            resourceInputs["abandonableCheckIds"] = state ? state.abandonableCheckIds : undefined;
             resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["joinMethod"] = state ? state.joinMethod : undefined;
             resourceInputs["joinTime"] = state ? state.joinTime : undefined;
             resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
             resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
+            resourceInputs["resellAccountType"] = state ? state.resellAccountType : undefined;
             resourceInputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -160,17 +177,20 @@ export class Account extends pulumi.CustomResource {
                 throw new Error("Missing required property 'displayName'");
             }
             resourceInputs["abandonAbleCheckIds"] = args ? args.abandonAbleCheckIds : undefined;
+            resourceInputs["abandonableCheckIds"] = args ? args.abandonableCheckIds : undefined;
             resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
+            resourceInputs["resellAccountType"] = args ? args.resellAccountType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["joinMethod"] = undefined /*out*/;
             resourceInputs["joinTime"] = undefined /*out*/;
             resourceInputs["modifyTime"] = undefined /*out*/;
             resourceInputs["resourceDirectoryId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
@@ -182,55 +202,75 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
-     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-     * to get check ids and set them.
+     * . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+     *
+     * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
     abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name prefix of account.
+     * The ID of the check item that can choose to abandon and continue to perform member deletion.
+     * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+     */
+    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Account name prefix. Empty the system randomly generated.
+     * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+     * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+     * The account name must be unique in the resource directory.
      */
     accountNamePrefix?: pulumi.Input<string>;
     /**
-     * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+     * Member name
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder
      */
     folderId?: pulumi.Input<string>;
     /**
-     * Ways for members to join the resource directory. Valid values: `invited`, `created`.
+     * Whether to force delete the account.
+     */
+    forceDelete?: pulumi.Input<boolean>;
+    /**
+     * Ways for members to join the resource directory.  invited, created
      */
     joinMethod?: pulumi.Input<string>;
     /**
-     * The time when the member joined the resource directory.
+     * The time when the member joined the resource directory
      */
     joinTime?: pulumi.Input<string>;
     /**
-     * The modification time of the invitation.
+     * The modification time of the invitation
      */
     modifyTime?: pulumi.Input<string>;
     /**
-     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+     * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
     payerAccountId?: pulumi.Input<string>;
     /**
-     * Resource directory ID.
+     * The identity type of the member. Valid values:
+     * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+     * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+     *
+     * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+     */
+    resellAccountType?: pulumi.Input<string>;
+    /**
+     * Resource directory ID
      */
     resourceDirectoryId?: pulumi.Input<string>;
     /**
-     * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+     * Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
-     *
-     * > **NOTE:** The member name must be unique within the resource directory.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Member type. The value of `ResourceAccount` indicates the resource account.
+     * Member type. The value of ResourceAccount indicates the resource account
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     type?: pulumi.Input<string>;
 }
@@ -240,31 +280,55 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
-     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-     * to get check ids and set them.
+     * . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+     *
+     * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
     abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name prefix of account.
+     * The ID of the check item that can choose to abandon and continue to perform member deletion.
+     * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+     */
+    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Account name prefix. Empty the system randomly generated.
+     * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+     * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+     * The account name must be unique in the resource directory.
      */
     accountNamePrefix?: pulumi.Input<string>;
     /**
-     * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+     * Member name
      */
     displayName: pulumi.Input<string>;
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder
      */
     folderId?: pulumi.Input<string>;
     /**
-     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+     * Whether to force delete the account.
+     */
+    forceDelete?: pulumi.Input<boolean>;
+    /**
+     * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
     payerAccountId?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The identity type of the member. Valid values:
+     * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+     * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
      *
-     * > **NOTE:** The member name must be unique within the resource directory.
+     * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+     */
+    resellAccountType?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Member type. The value of ResourceAccount indicates the resource account
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    type?: pulumi.Input<string>;
 }

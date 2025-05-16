@@ -1891,6 +1891,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/ipsConfig",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/ipsConfig:IpsConfig": "IpsConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/natFirewall",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -6415,6 +6423,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.pai",
   "classes": {
    "alicloud:pai/workspaceExperiment:WorkspaceExperiment": "WorkspaceExperiment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceMember",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceMember:WorkspaceMember": "WorkspaceMember"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceModel",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceModel:WorkspaceModel": "WorkspaceModel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceModelVersion",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceModelVersion:WorkspaceModelVersion": "WorkspaceModelVersion"
   }
  },
  {

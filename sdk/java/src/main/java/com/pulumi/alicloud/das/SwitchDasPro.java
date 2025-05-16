@@ -20,7 +20,9 @@ import javax.annotation.Nullable;
  * 
  * For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
  * 
- * &gt; **NOTE:** Available since v1.193.0.
+ * &gt; **NOTE:** Deprecated since v1.249.0.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been deprecated from version `1.249.0`.
  * 
  * ## Example Usage
  * 

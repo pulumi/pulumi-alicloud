@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
  *
- * > **NOTE:** Available since v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *

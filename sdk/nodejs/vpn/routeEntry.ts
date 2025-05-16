@@ -154,11 +154,11 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     public readonly routeDest!: pulumi.Output<string>;
     /**
-     * (Available in 1.161.0+) The type of the vpn route entry.
+     * (Available since v1.161.0) The type of the vpn route entry.
      */
     public /*out*/ readonly routeEntryType!: pulumi.Output<string>;
     /**
-     * (Available in 1.161.0+) The status of the vpn route entry.
+     * (Available since v1.161.0) The status of the vpn route entry.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -237,11 +237,11 @@ export interface RouteEntryState {
      */
     routeDest?: pulumi.Input<string>;
     /**
-     * (Available in 1.161.0+) The type of the vpn route entry.
+     * (Available since v1.161.0) The type of the vpn route entry.
      */
     routeEntryType?: pulumi.Input<string>;
     /**
-     * (Available in 1.161.0+) The status of the vpn route entry.
+     * (Available since v1.161.0) The status of the vpn route entry.
      */
     status?: pulumi.Input<string>;
     /**

@@ -679,6 +679,61 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.alb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default1 = alicloud.vpc.Switch("default1",
+            vpc_id=default_network.id,
+            cidr_block="10.4.1.0/24",
+            zone_id=default_get_zones.zones[0].id,
+            vswitch_name=f"{name}_1")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="10.4.2.0/24",
+            zone_id=default_get_zones.zones[1].id,
+            vswitch_name=f"{name}_2")
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            load_balancer_edition="Basic",
+            address_type="Internet",
+            vpc_id=default_network.id,
+            address_allocated_mode="Fixed",
+            resource_group_id=default.groups[0].id,
+            load_balancer_name=name,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            modification_protection_config={
+                "status": "NonProtection",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default2.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
+            ],
+            tags={
+                "Created": "TF",
+            })
+        ```
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.
@@ -723,6 +778,61 @@ class LoadBalancer(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createloadbalancer).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.alb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default1 = alicloud.vpc.Switch("default1",
+            vpc_id=default_network.id,
+            cidr_block="10.4.1.0/24",
+            zone_id=default_get_zones.zones[0].id,
+            vswitch_name=f"{name}_1")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="10.4.2.0/24",
+            zone_id=default_get_zones.zones[1].id,
+            vswitch_name=f"{name}_2")
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            load_balancer_edition="Basic",
+            address_type="Internet",
+            vpc_id=default_network.id,
+            address_allocated_mode="Fixed",
+            resource_group_id=default.groups[0].id,
+            load_balancer_name=name,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            modification_protection_config={
+                "status": "NonProtection",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default2.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
+            ],
+            tags={
+                "Created": "TF",
+            })
+        ```
 
         ## Import
 

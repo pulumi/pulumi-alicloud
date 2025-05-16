@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > **NOTE:** Available in v1.162.0+.
+ * > **NOTE:** Available since v1.162.0.
  *
  * > **NOTE:** The maximum number of entries per acl is 300.
  *

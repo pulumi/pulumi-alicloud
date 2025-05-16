@@ -179,14 +179,14 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since 1.119.1+) The status of forward entry.
+     * (Available since v1.119.1) The status of forward entry.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available since 1.119.1+) The status of forward entry.
+     * @return (Available since v1.119.1) The status of forward entry.
      * 
      */
     public Optional<Output<String>> status() {
@@ -450,7 +450,7 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available since 1.119.1+) The status of forward entry.
+         * @param status (Available since v1.119.1) The status of forward entry.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available since 1.119.1+) The status of forward entry.
+         * @param status (Available since v1.119.1) The status of forward entry.
          * 
          * @return builder
          * 

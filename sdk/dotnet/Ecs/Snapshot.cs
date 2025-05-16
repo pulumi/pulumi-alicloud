@@ -10,11 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsSnapshot from version 1.120.0.
-    /// 
     /// Provides an ECS snapshot resource.
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+    /// 
+    /// &gt; **NOTE:** Deprecated since v1.120.0.
+    /// 
+    /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsSnapshot from version 1.120.0.
     /// 
     /// ## Example Usage
     /// 

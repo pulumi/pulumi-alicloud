@@ -5411,6 +5411,16 @@ type GetScalingGroupsGroup struct {
 	AllocationStrategy string `pulumi:"allocationStrategy"`
 	// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
 	AzBalance bool `pulumi:"azBalance"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand bool `pulumi:"capacityOptionsCompensateWithOnDemand"`
+	// (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	CapacityOptionsOnDemandBaseCapacity int `pulumi:"capacityOptionsOnDemandBaseCapacity"`
+	// (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity int `pulumi:"capacityOptionsOnDemandPercentageAboveBaseCapacity"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand bool `pulumi:"capacityOptionsSpotAutoReplaceOnDemand"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand bool `pulumi:"compensateWithOnDemand"`
 	// Default cooldown time of scaling group.
 	CooldownTime int `pulumi:"cooldownTime"`
 	// Creation time of scaling group.
@@ -5433,6 +5443,8 @@ type GetScalingGroupsGroup struct {
 	InitCapacity int `pulumi:"initCapacity"`
 	// Active launch template ID for scaling group.
 	LaunchTemplateId string `pulumi:"launchTemplateId"`
+	// (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+	LaunchTemplateOverrides []GetScalingGroupsGroupLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
 	// Version of active launch template.
 	LaunchTemplateVersion string `pulumi:"launchTemplateVersion"`
 	// Lifecycle state of scaling group.
@@ -5527,6 +5539,16 @@ type GetScalingGroupsGroupArgs struct {
 	AllocationStrategy pulumi.StringInput `pulumi:"allocationStrategy"`
 	// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
 	AzBalance pulumi.BoolInput `pulumi:"azBalance"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand pulumi.BoolInput `pulumi:"capacityOptionsCompensateWithOnDemand"`
+	// (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	CapacityOptionsOnDemandBaseCapacity pulumi.IntInput `pulumi:"capacityOptionsOnDemandBaseCapacity"`
+	// (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity pulumi.IntInput `pulumi:"capacityOptionsOnDemandPercentageAboveBaseCapacity"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand pulumi.BoolInput `pulumi:"capacityOptionsSpotAutoReplaceOnDemand"`
+	// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand pulumi.BoolInput `pulumi:"compensateWithOnDemand"`
 	// Default cooldown time of scaling group.
 	CooldownTime pulumi.IntInput `pulumi:"cooldownTime"`
 	// Creation time of scaling group.
@@ -5549,6 +5571,8 @@ type GetScalingGroupsGroupArgs struct {
 	InitCapacity pulumi.IntInput `pulumi:"initCapacity"`
 	// Active launch template ID for scaling group.
 	LaunchTemplateId pulumi.StringInput `pulumi:"launchTemplateId"`
+	// (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+	LaunchTemplateOverrides GetScalingGroupsGroupLaunchTemplateOverrideArrayInput `pulumi:"launchTemplateOverrides"`
 	// Version of active launch template.
 	LaunchTemplateVersion pulumi.StringInput `pulumi:"launchTemplateVersion"`
 	// Lifecycle state of scaling group.
@@ -5694,6 +5718,31 @@ func (o GetScalingGroupsGroupOutput) AzBalance() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.AzBalance }).(pulumi.BoolOutput)
 }
 
+// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+func (o GetScalingGroupsGroupOutput) CapacityOptionsCompensateWithOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.CapacityOptionsCompensateWithOnDemand }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+func (o GetScalingGroupsGroupOutput) CapacityOptionsOnDemandBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.CapacityOptionsOnDemandBaseCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+func (o GetScalingGroupsGroupOutput) CapacityOptionsOnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.CapacityOptionsOnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+func (o GetScalingGroupsGroupOutput) CapacityOptionsSpotAutoReplaceOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.CapacityOptionsSpotAutoReplaceOnDemand }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+func (o GetScalingGroupsGroupOutput) CompensateWithOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.CompensateWithOnDemand }).(pulumi.BoolOutput)
+}
+
 // Default cooldown time of scaling group.
 func (o GetScalingGroupsGroupOutput) CooldownTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.CooldownTime }).(pulumi.IntOutput)
@@ -5747,6 +5796,13 @@ func (o GetScalingGroupsGroupOutput) InitCapacity() pulumi.IntOutput {
 // Active launch template ID for scaling group.
 func (o GetScalingGroupsGroupOutput) LaunchTemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.LaunchTemplateId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+func (o GetScalingGroupsGroupOutput) LaunchTemplateOverrides() GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) []GetScalingGroupsGroupLaunchTemplateOverride {
+		return v.LaunchTemplateOverrides
+	}).(GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput)
 }
 
 // Version of active launch template.
@@ -5947,6 +6003,121 @@ func (o GetScalingGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetScalingGro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingGroupsGroup {
 		return vs[0].([]GetScalingGroupsGroup)[vs[1].(int)]
 	}).(GetScalingGroupsGroupOutput)
+}
+
+type GetScalingGroupsGroupLaunchTemplateOverride struct {
+	// (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+	InstanceType string `pulumi:"instanceType"`
+	// (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+	SpotPriceLimit float64 `pulumi:"spotPriceLimit"`
+	// (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+	WeightedCapacity int `pulumi:"weightedCapacity"`
+}
+
+// GetScalingGroupsGroupLaunchTemplateOverrideInput is an input type that accepts GetScalingGroupsGroupLaunchTemplateOverrideArgs and GetScalingGroupsGroupLaunchTemplateOverrideOutput values.
+// You can construct a concrete instance of `GetScalingGroupsGroupLaunchTemplateOverrideInput` via:
+//
+//	GetScalingGroupsGroupLaunchTemplateOverrideArgs{...}
+type GetScalingGroupsGroupLaunchTemplateOverrideInput interface {
+	pulumi.Input
+
+	ToGetScalingGroupsGroupLaunchTemplateOverrideOutput() GetScalingGroupsGroupLaunchTemplateOverrideOutput
+	ToGetScalingGroupsGroupLaunchTemplateOverrideOutputWithContext(context.Context) GetScalingGroupsGroupLaunchTemplateOverrideOutput
+}
+
+type GetScalingGroupsGroupLaunchTemplateOverrideArgs struct {
+	// (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+	SpotPriceLimit pulumi.Float64Input `pulumi:"spotPriceLimit"`
+	// (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+	WeightedCapacity pulumi.IntInput `pulumi:"weightedCapacity"`
+}
+
+func (GetScalingGroupsGroupLaunchTemplateOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingGroupsGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i GetScalingGroupsGroupLaunchTemplateOverrideArgs) ToGetScalingGroupsGroupLaunchTemplateOverrideOutput() GetScalingGroupsGroupLaunchTemplateOverrideOutput {
+	return i.ToGetScalingGroupsGroupLaunchTemplateOverrideOutputWithContext(context.Background())
+}
+
+func (i GetScalingGroupsGroupLaunchTemplateOverrideArgs) ToGetScalingGroupsGroupLaunchTemplateOverrideOutputWithContext(ctx context.Context) GetScalingGroupsGroupLaunchTemplateOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingGroupsGroupLaunchTemplateOverrideOutput)
+}
+
+// GetScalingGroupsGroupLaunchTemplateOverrideArrayInput is an input type that accepts GetScalingGroupsGroupLaunchTemplateOverrideArray and GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput values.
+// You can construct a concrete instance of `GetScalingGroupsGroupLaunchTemplateOverrideArrayInput` via:
+//
+//	GetScalingGroupsGroupLaunchTemplateOverrideArray{ GetScalingGroupsGroupLaunchTemplateOverrideArgs{...} }
+type GetScalingGroupsGroupLaunchTemplateOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutput() GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput
+	ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutputWithContext(context.Context) GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput
+}
+
+type GetScalingGroupsGroupLaunchTemplateOverrideArray []GetScalingGroupsGroupLaunchTemplateOverrideInput
+
+func (GetScalingGroupsGroupLaunchTemplateOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingGroupsGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i GetScalingGroupsGroupLaunchTemplateOverrideArray) ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutput() GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput {
+	return i.ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingGroupsGroupLaunchTemplateOverrideArray) ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput)
+}
+
+type GetScalingGroupsGroupLaunchTemplateOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetScalingGroupsGroupLaunchTemplateOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingGroupsGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o GetScalingGroupsGroupLaunchTemplateOverrideOutput) ToGetScalingGroupsGroupLaunchTemplateOverrideOutput() GetScalingGroupsGroupLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o GetScalingGroupsGroupLaunchTemplateOverrideOutput) ToGetScalingGroupsGroupLaunchTemplateOverrideOutputWithContext(ctx context.Context) GetScalingGroupsGroupLaunchTemplateOverrideOutput {
+	return o
+}
+
+// (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+func (o GetScalingGroupsGroupLaunchTemplateOverrideOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroupLaunchTemplateOverride) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+func (o GetScalingGroupsGroupLaunchTemplateOverrideOutput) SpotPriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetScalingGroupsGroupLaunchTemplateOverride) float64 { return v.SpotPriceLimit }).(pulumi.Float64Output)
+}
+
+// (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+func (o GetScalingGroupsGroupLaunchTemplateOverrideOutput) WeightedCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroupLaunchTemplateOverride) int { return v.WeightedCapacity }).(pulumi.IntOutput)
+}
+
+type GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingGroupsGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput) ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutput() GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput) ToGetScalingGroupsGroupLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput) Index(i pulumi.IntInput) GetScalingGroupsGroupLaunchTemplateOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingGroupsGroupLaunchTemplateOverride {
+		return vs[0].([]GetScalingGroupsGroupLaunchTemplateOverride)[vs[1].(int)]
+	}).(GetScalingGroupsGroupLaunchTemplateOverrideOutput)
 }
 
 type GetScalingRulesRule struct {
@@ -6445,6 +6616,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupInput)(nil)).Elem(), GetScalingGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupArrayInput)(nil)).Elem(), GetScalingGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupLaunchTemplateOverrideInput)(nil)).Elem(), GetScalingGroupsGroupLaunchTemplateOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupLaunchTemplateOverrideArrayInput)(nil)).Elem(), GetScalingGroupsGroupLaunchTemplateOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleInput)(nil)).Elem(), GetScalingRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleArrayInput)(nil)).Elem(), GetScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskInput)(nil)).Elem(), GetScheduledTasksTaskArgs{})
@@ -6525,6 +6698,8 @@ func init() {
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetScalingGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingGroupsGroupLaunchTemplateOverrideOutput{})
+	pulumi.RegisterOutputType(GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetScheduledTasksTaskOutput{})

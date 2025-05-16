@@ -62,7 +62,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         For information about Security Center Service Role and how to use it, see [What is Security Center](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -97,7 +97,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         For information about Security Center Service Role and how to use it, see [What is Security Center](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 

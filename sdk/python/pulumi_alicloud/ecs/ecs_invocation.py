@@ -347,7 +347,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
-        > **NOTE:** Available since v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -363,7 +363,10 @@ class EcsInvocation(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=2,
+            memory_size=8,
+            instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -376,7 +379,7 @@ class EcsInvocation(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
@@ -444,7 +447,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
-        > **NOTE:** Available since v1.168.0+.
+        > **NOTE:** Available since v1.168.0.
 
         ## Example Usage
 
@@ -460,7 +463,10 @@ class EcsInvocation(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=2,
+            memory_size=8,
+            instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -473,7 +479,7 @@ class EcsInvocation(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",

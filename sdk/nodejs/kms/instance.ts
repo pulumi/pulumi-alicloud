@@ -50,7 +50,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bindVpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
     public readonly bindVpcs!: pulumi.Output<outputs.kms.InstanceBindVpc[] | undefined>;
     /**
@@ -70,9 +70,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceDeleteWithoutBackup!: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
-    public /*out*/ readonly instanceName!: pulumi.Output<string>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
@@ -86,7 +86,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly logStorage!: pulumi.Output<number>;
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -94,7 +96,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      */
     public readonly productVersion!: pulumi.Output<string | undefined>;
     /**
@@ -118,7 +120,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Instance VPC id.
+     * Instance VPC id
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
@@ -126,11 +128,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vpcNum!: pulumi.Output<number | undefined>;
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      */
     public readonly vswitchIds!: pulumi.Output<string[]>;
     /**
-     * zone id.
+     * zone id
      */
     public readonly zoneIds!: pulumi.Output<string[]>;
 
@@ -181,6 +183,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["bindVpcs"] = args ? args.bindVpcs : undefined;
             resourceInputs["forceDeleteWithoutBackup"] = args ? args.forceDeleteWithoutBackup : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["keyNum"] = args ? args.keyNum : undefined;
             resourceInputs["log"] = args ? args.log : undefined;
             resourceInputs["logStorage"] = args ? args.logStorage : undefined;
@@ -198,7 +201,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["caCertificateChainPem"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endDate"] = undefined /*out*/;
-            resourceInputs["instanceName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -211,7 +213,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bindVpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
     bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
     /**
@@ -231,7 +233,7 @@ export interface InstanceState {
      */
     forceDeleteWithoutBackup?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -247,7 +249,9 @@ export interface InstanceState {
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -255,7 +259,7 @@ export interface InstanceState {
      */
     period?: pulumi.Input<number>;
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      */
     productVersion?: pulumi.Input<string>;
     /**
@@ -279,7 +283,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Instance VPC id.
+     * Instance VPC id
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -287,11 +291,11 @@ export interface InstanceState {
      */
     vpcNum?: pulumi.Input<number>;
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * zone id.
+     * zone id
      */
     zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -301,13 +305,17 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bindVpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
     bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
     /**
      * Whether to force deletion even without backup.
      */
     forceDeleteWithoutBackup?: pulumi.Input<string>;
+    /**
+     * The name of the resource
+     */
+    instanceName?: pulumi.Input<string>;
     /**
      * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
@@ -321,7 +329,9 @@ export interface InstanceArgs {
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -329,7 +339,7 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      */
     productVersion?: pulumi.Input<string>;
     /**
@@ -349,7 +359,7 @@ export interface InstanceArgs {
      */
     spec?: pulumi.Input<number>;
     /**
-     * Instance VPC id.
+     * Instance VPC id
      */
     vpcId: pulumi.Input<string>;
     /**
@@ -357,11 +367,11 @@ export interface InstanceArgs {
      */
     vpcNum?: pulumi.Input<number>;
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      */
     vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * zone id.
+     * zone id
      */
     zoneIds: pulumi.Input<pulumi.Input<string>[]>;
 }

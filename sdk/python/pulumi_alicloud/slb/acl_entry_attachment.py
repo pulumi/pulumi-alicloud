@@ -138,7 +138,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  entry: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > **NOTE:** Available in v1.162.0+.
+        > **NOTE:** Available since v1.162.0.
 
         > **NOTE:** The maximum number of entries per acl is 300.
 
@@ -180,7 +180,7 @@ class AclEntryAttachment(pulumi.CustomResource):
                  args: AclEntryAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** Available in v1.162.0+.
+        > **NOTE:** Available since v1.162.0.
 
         > **NOTE:** The maximum number of entries per acl is 300.
 

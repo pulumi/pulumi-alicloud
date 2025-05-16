@@ -28,31 +28,39 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var virtualHostName = config.Get("virtualHostName") ?? "/";
+    ///     var createInstance = new AliCloud.Amqp.Instance("CreateInstance", new()
     ///     {
-    ///         InstanceType = "professional",
-    ///         MaxTps = "1000",
-    ///         QueueCapacity = "50",
+    ///         RenewalDuration = 1,
+    ///         MaxTps = "3000",
+    ///         PeriodCycle = "Month",
+    ///         MaxConnections = 2000,
     ///         SupportEip = true,
-    ///         MaxEipTps = "128",
+    ///         AutoRenew = false,
+    ///         RenewalStatus = "AutoRenewal",
+    ///         Period = 12,
+    ///         InstanceName = name,
+    ///         SupportTracing = false,
     ///         PaymentType = "Subscription",
-    ///         Period = 1,
+    ///         RenewalDurationUnit = "Month",
+    ///         InstanceType = "enterprise",
+    ///         QueueCapacity = "200",
+    ///         MaxEipTps = "128",
+    ///         StorageSize = "0",
     ///     });
     /// 
-    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
+    ///     var @default = new AliCloud.Amqp.Exchange("default", new()
     ///     {
-    ///         InstanceId = @default.Id,
-    ///         VirtualHostName = "tf-example",
-    ///     });
-    /// 
-    ///     var defaultExchange = new AliCloud.Amqp.Exchange("default", new()
-    ///     {
+    ///         VirtualHostName = virtualHostName,
+    ///         InstanceId = createInstance.Id,
+    ///         Internal = true,
     ///         AutoDeleteState = false,
-    ///         ExchangeName = "tf-example",
-    ///         ExchangeType = "DIRECT",
-    ///         InstanceId = @default.Id,
-    ///         Internal = false,
-    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///         ExchangeName = name,
+    ///         ExchangeType = "X_CONSISTENT_HASH",
+    ///         AlternateExchange = "bakExchange",
+    ///         XDelayedType = "DIRECT",
     ///     });
     /// 
     /// });
@@ -70,57 +78,67 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Exchange : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        /// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         /// </summary>
         [Output("alternateExchange")]
         public Output<string?> AlternateExchange { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        /// * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        /// Specifies whether to automatically delete the exchange. Valid values:
         /// </summary>
         [Output("autoDeleteState")]
         public Output<bool> AutoDeleteState { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// CreateTime
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
+        /// 
+        /// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        /// - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         /// </summary>
         [Output("exchangeName")]
         public Output<string> ExchangeName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the exchange. Valid values:
-        /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        /// The Exchange type. Value:
+        /// - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        /// - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        /// - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        /// - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        /// - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        /// - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         /// </summary>
         [Output("exchangeType")]
         public Output<string> ExchangeType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether an exchange is an internal exchange. Valid values:
-        /// * false: The exchange is not an internal exchange.
-        /// * true: The exchange is an internal exchange.
+        /// Specifies whether the exchange is an internal exchange. Valid values:
         /// </summary>
         [Output("internal")]
         public Output<bool> Internal { get; private set; } = null!;
 
         /// <summary>
-        /// The name of virtual host where an exchange resides.
+        /// The name of the vhost to which the exchange that you want to create belongs.
         /// </summary>
         [Output("virtualHostName")]
         public Output<string> VirtualHostName { get; private set; } = null!;
+
+        /// <summary>
+        /// RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        /// </summary>
+        [Output("xDelayedType")]
+        public Output<string?> XDelayedType { get; private set; } = null!;
 
 
         /// <summary>
@@ -169,57 +187,61 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class ExchangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        /// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         /// </summary>
         [Input("alternateExchange")]
         public Input<string>? AlternateExchange { get; set; }
 
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        /// * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        /// Specifies whether to automatically delete the exchange. Valid values:
         /// </summary>
         [Input("autoDeleteState", required: true)]
         public Input<bool> AutoDeleteState { get; set; } = null!;
 
         /// <summary>
-        /// The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
+        /// 
+        /// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        /// - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         /// </summary>
         [Input("exchangeName", required: true)]
         public Input<string> ExchangeName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the exchange. Valid values:
-        /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        /// The Exchange type. Value:
+        /// - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        /// - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        /// - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        /// - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        /// - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        /// - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         /// </summary>
         [Input("exchangeType", required: true)]
         public Input<string> ExchangeType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether an exchange is an internal exchange. Valid values:
-        /// * false: The exchange is not an internal exchange.
-        /// * true: The exchange is an internal exchange.
+        /// Specifies whether the exchange is an internal exchange. Valid values:
         /// </summary>
         [Input("internal", required: true)]
         public Input<bool> Internal { get; set; } = null!;
 
         /// <summary>
-        /// The name of virtual host where an exchange resides.
+        /// The name of the vhost to which the exchange that you want to create belongs.
         /// </summary>
         [Input("virtualHostName", required: true)]
         public Input<string> VirtualHostName { get; set; } = null!;
+
+        /// <summary>
+        /// RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        /// </summary>
+        [Input("xDelayedType")]
+        public Input<string>? XDelayedType { get; set; }
 
         public ExchangeArgs()
         {
@@ -230,57 +252,67 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class ExchangeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
+        /// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         /// </summary>
         [Input("alternateExchange")]
         public Input<string>? AlternateExchange { get; set; }
 
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. If the last queue that is bound to an exchange is unbound, the exchange is automatically deleted.
-        /// * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
+        /// Specifies whether to automatically delete the exchange. Valid values:
         /// </summary>
         [Input("autoDeleteState")]
         public Input<bool>? AutoDeleteState { get; set; }
 
         /// <summary>
-        /// The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// CreateTime
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
+        /// 
+        /// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        /// - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
         /// </summary>
         [Input("exchangeName")]
         public Input<string>? ExchangeName { get; set; }
 
         /// <summary>
-        /// The type of the exchange. Valid values:
-        /// * FANOUT: An exchange of this type routes all the received messages to all the queues bound to this exchange. You can use a fanout exchange to broadcast messages.
-        /// * DIRECT: An exchange of this type routes a message to the queue whose binding key is exactly the same as the routing key of the message.
-        /// * TOPIC: This type is similar to the direct exchange type. An exchange of this type routes a message to one or more queues based on the fuzzy match or multi-condition match result between the routing key of the message and the binding keys of the current exchange.
-        /// * HEADERS: Headers Exchange uses the Headers property instead of Routing Key for routing matching.
-        /// When binding Headers Exchange and Queue, set the key-value pair of the binding property;
-        /// when sending a message to the Headers Exchange, set the message's Headers property key-value pair and use the message Headers
-        /// The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
+        /// The Exchange type. Value:
+        /// - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
+        /// - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
+        /// - `FANOUT`: This type of routing rule is very simple. It routes all messages sent to the Exchange to all queues bound to it, which is equivalent to the broadcast function.
+        /// - `HEADERS`: This type is similar to the DIRECT type. Headers Exchange uses the Headers attribute instead of Routing Key for route matching. When binding Headers Exchange and Queue, the Key-value pair of the bound attribute is set. When sending a message to Headers Exchange, the Headers attribute Key-value pair of the message is set, and the message is routed to the bound Queue by comparing the Headers attribute Key-value pair with the bound attribute Key-value pair.
+        /// - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
+        /// - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
         /// </summary>
         [Input("exchangeType")]
         public Input<string>? ExchangeType { get; set; }
 
         /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Specifies whether an exchange is an internal exchange. Valid values:
-        /// * false: The exchange is not an internal exchange.
-        /// * true: The exchange is an internal exchange.
+        /// Specifies whether the exchange is an internal exchange. Valid values:
         /// </summary>
         [Input("internal")]
         public Input<bool>? Internal { get; set; }
 
         /// <summary>
-        /// The name of virtual host where an exchange resides.
+        /// The name of the vhost to which the exchange that you want to create belongs.
         /// </summary>
         [Input("virtualHostName")]
         public Input<string>? VirtualHostName { get; set; }
+
+        /// <summary>
+        /// RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
+        /// </summary>
+        [Input("xDelayedType")]
+        public Input<string>? XDelayedType { get; set; }
 
         public ExchangeState()
         {

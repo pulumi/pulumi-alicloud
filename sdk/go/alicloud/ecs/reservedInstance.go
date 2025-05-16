@@ -14,7 +14,7 @@ import (
 
 // Provides an Reserved Instance resource.
 //
-// > **NOTE:** Available in 1.65.0+
+// > **NOTE:** Available since v1.65.0.
 //
 // ## Example Usage
 //

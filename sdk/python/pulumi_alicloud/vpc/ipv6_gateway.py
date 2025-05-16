@@ -346,7 +346,7 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -404,7 +404,7 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 

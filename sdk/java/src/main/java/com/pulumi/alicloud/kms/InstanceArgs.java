@@ -20,14 +20,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     @Import(name="bindVpcs")
     private @Nullable Output<List<InstanceBindVpcArgs>> bindVpcs;
 
     /**
-     * @return Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * @return Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     public Optional<Output<List<InstanceBindVpcArgs>>> bindVpcs() {
@@ -47,6 +47,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> forceDeleteWithoutBackup() {
         return Optional.ofNullable(this.forceDeleteWithoutBackup);
+    }
+
+    /**
+     * The name of the resource
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The name of the resource
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
     }
 
     /**
@@ -95,14 +110,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * @return Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -125,14 +144,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      * 
      */
     @Import(name="productVersion")
     private @Nullable Output<String> productVersion;
 
     /**
-     * @return KMS Instance commodity type (software/hardware).
+     * @return KMS Instance commodity type (software/hardware)
      * 
      */
     public Optional<Output<String>> productVersion() {
@@ -200,14 +219,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance VPC id.
+     * Instance VPC id
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return Instance VPC id.
+     * @return Instance VPC id
      * 
      */
     public Output<String> vpcId() {
@@ -230,14 +249,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      * 
      */
     @Import(name="vswitchIds", required=true)
     private Output<List<String>> vswitchIds;
 
     /**
-     * @return Instance bind vswitches.
+     * @return Instance bind vswitches
      * 
      */
     public Output<List<String>> vswitchIds() {
@@ -245,14 +264,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * zone id.
+     * zone id
      * 
      */
     @Import(name="zoneIds", required=true)
     private Output<List<String>> zoneIds;
 
     /**
-     * @return zone id.
+     * @return zone id
      * 
      */
     public Output<List<String>> zoneIds() {
@@ -264,6 +283,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.bindVpcs = $.bindVpcs;
         this.forceDeleteWithoutBackup = $.forceDeleteWithoutBackup;
+        this.instanceName = $.instanceName;
         this.keyNum = $.keyNum;
         this.log = $.log;
         this.logStorage = $.logStorage;
@@ -299,7 +319,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -310,7 +330,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -320,7 +340,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindVpcs Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+         * @param bindVpcs Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
          * 
          * @return builder
          * 
@@ -348,6 +368,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDeleteWithoutBackup(String forceDeleteWithoutBackup) {
             return forceDeleteWithoutBackup(Output.of(forceDeleteWithoutBackup));
+        }
+
+        /**
+         * @param instanceName The name of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The name of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
         }
 
         /**
@@ -414,7 +455,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * @param paymentType Payment type,valid values:
+         * - `Subscription`: Prepaid.
+         * - `PayAsYouGo`: Postpaid.
          * 
          * @return builder
          * 
@@ -425,7 +468,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * @param paymentType Payment type,valid values:
+         * - `Subscription`: Prepaid.
+         * - `PayAsYouGo`: Postpaid.
          * 
          * @return builder
          * 
@@ -456,7 +501,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware).
+         * @param productVersion KMS Instance commodity type (software/hardware)
          * 
          * @return builder
          * 
@@ -467,7 +512,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware).
+         * @param productVersion KMS Instance commodity type (software/hardware)
          * 
          * @return builder
          * 
@@ -561,7 +606,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id.
+         * @param vpcId Instance VPC id
          * 
          * @return builder
          * 
@@ -572,7 +617,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id.
+         * @param vpcId Instance VPC id
          * 
          * @return builder
          * 
@@ -603,7 +648,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -614,7 +659,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -624,7 +669,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchIds Instance bind vswitches.
+         * @param vswitchIds Instance bind vswitches
          * 
          * @return builder
          * 
@@ -634,7 +679,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 
@@ -645,7 +690,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 
@@ -655,7 +700,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneIds zone id.
+         * @param zoneIds zone id
          * 
          * @return builder
          * 

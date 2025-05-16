@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN Traffic Marking Policy can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
@@ -73,6 +73,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to forcibly delete the traffic marker policy. Valid values:
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// MarkingDscp
@@ -106,7 +112,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// 
         /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         /// </summary>
         [Output("trafficMatchRules")]
@@ -177,6 +182,12 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
+        /// Whether to forcibly delete the traffic marker policy. Valid values:
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// MarkingDscp
         /// </summary>
         [Input("markingDscp", required: true)]
@@ -199,7 +210,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// 
         /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         /// </summary>
         public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleArgs> TrafficMatchRules
@@ -233,6 +243,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether to forcibly delete the traffic marker policy. Valid values:
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// MarkingDscp
@@ -269,7 +285,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// List of stream classification rules.
-        /// 
         /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         /// </summary>
         public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleGetArgs> TrafficMatchRules

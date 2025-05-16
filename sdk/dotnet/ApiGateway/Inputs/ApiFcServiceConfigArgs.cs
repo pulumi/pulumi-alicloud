@@ -37,6 +37,12 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? FunctionType { get; set; }
 
         /// <summary>
+        /// The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+        /// </summary>
+        [Input("functionVersion")]
+        public Input<string>? FunctionVersion { get; set; }
+
+        /// <summary>
         /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
         /// </summary>
         [Input("method")]
@@ -67,7 +73,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The service name of function compute service. Required if `function_type` is `FCEvent`.
+        /// The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

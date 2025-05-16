@@ -39,7 +39,12 @@ import * as utilities from "../utilities";
  *     rsType: 0,
  *     instanceIds: [_default.id],
  *     realServers: ["177.167.32.11"],
- *     httpsExt: "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
+ *     httpsExt: `    {
+ *     "Http2": 1,
+ *     "Http2https": 0,
+ *     "Https2http": 0
+ *   }
+ * `,
  *     proxyTypes: [{
  *         proxyPorts: [443],
  *         proxyType: "https",
@@ -92,7 +97,7 @@ export class DomainResource extends pulumi.CustomResource {
     /**
      * The name of the certificate.
      *
-     * > **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
     public readonly certIdentifier!: pulumi.Output<string | undefined>;
     /**
@@ -235,7 +240,7 @@ export interface DomainResourceState {
     /**
      * The name of the certificate.
      *
-     * > **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
     certIdentifier?: pulumi.Input<string>;
     /**
@@ -315,7 +320,7 @@ export interface DomainResourceArgs {
     /**
      * The name of the certificate.
      *
-     * > **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
     certIdentifier?: pulumi.Input<string>;
     /**

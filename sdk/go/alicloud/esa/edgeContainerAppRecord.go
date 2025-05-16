@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/esa"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -46,8 +49,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			resourceSiteOriginPoolTest, err := esa.NewSite(ctx, "resource_Site_OriginPool_test", &esa.SiteArgs{
-//				SiteName:   pulumi.String(name),
+//				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", defaultInteger.Result),
 //				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),

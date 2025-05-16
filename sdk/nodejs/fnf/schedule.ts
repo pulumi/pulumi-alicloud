@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
  *
- * > **NOTE:** Available since v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *

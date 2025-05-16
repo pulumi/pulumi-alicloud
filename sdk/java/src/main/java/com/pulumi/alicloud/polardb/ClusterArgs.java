@@ -406,14 +406,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     @Import(name="hotStandbyCluster")
     private @Nullable Output<String> hotStandbyCluster;
 
     /**
-     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      * 
      */
     public Optional<Output<String>> hotStandbyCluster() {
@@ -918,6 +920,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * 
+     */
+    @Import(name="standbyAz")
+    private @Nullable Output<String> standbyAz;
+
+    /**
+     * @return The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+     * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+     * 
+     */
+    public Optional<Output<String>> standbyAz() {
+        return Optional.ofNullable(this.standbyAz);
+    }
+
+    /**
      * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
      * 
      */
@@ -1168,6 +1187,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.serverlessSteadySwitch = $.serverlessSteadySwitch;
         this.serverlessType = $.serverlessType;
         this.sourceResourceId = $.sourceResourceId;
+        this.standbyAz = $.standbyAz;
         this.storagePayType = $.storagePayType;
         this.storageSpace = $.storageSpace;
         this.storageType = $.storageType;
@@ -1739,7 +1759,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+         * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
          * 
          * @return builder
          * 
@@ -1750,7 +1771,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+         * &gt; **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
          * 
          * @return builder
          * 
@@ -2472,6 +2494,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceResourceId(String sourceResourceId) {
             return sourceResourceId(Output.of(sourceResourceId));
+        }
+
+        /**
+         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+         * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyAz(@Nullable Output<String> standbyAz) {
+            $.standbyAz = standbyAz;
+            return this;
+        }
+
+        /**
+         * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
+         * &gt; **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyAz(String standbyAz) {
+            return standbyAz(Output.of(standbyAz));
         }
 
         /**

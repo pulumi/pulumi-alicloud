@@ -319,14 +319,14 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
         return this.physicalConnectionId;
     }
     /**
-     * (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      * 
      */
     @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
-     * @return (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
+     * @return (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      * 
      */
     public Output<String> routeTableId() {

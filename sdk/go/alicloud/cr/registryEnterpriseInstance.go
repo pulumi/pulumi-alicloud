@@ -53,8 +53,8 @@ import (
 //			_, err = cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
-//				RenewPeriod:   pulumi.Int(0),
-//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				RenewPeriod:   pulumi.Int(1),
+//				RenewalStatus: pulumi.String("AutoRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
 //				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})

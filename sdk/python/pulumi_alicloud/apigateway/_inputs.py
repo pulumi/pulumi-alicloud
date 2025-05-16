@@ -211,6 +211,10 @@ if not MYPY:
         """
         The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
         """
+        function_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+        """
         method: NotRequired[pulumi.Input[builtins.str]]
         """
         The http method of function compute service. Required if `function_type` is `HttpTrigger`.
@@ -229,7 +233,7 @@ if not MYPY:
         """
         service_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
 elif False:
     ApiFcServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -243,6 +247,7 @@ class ApiFcServiceConfigArgs:
                  function_base_url: Optional[pulumi.Input[builtins.str]] = None,
                  function_name: Optional[pulumi.Input[builtins.str]] = None,
                  function_type: Optional[pulumi.Input[builtins.str]] = None,
+                 function_version: Optional[pulumi.Input[builtins.str]] = None,
                  method: Optional[pulumi.Input[builtins.str]] = None,
                  only_business_path: Optional[pulumi.Input[builtins.bool]] = None,
                  path: Optional[pulumi.Input[builtins.str]] = None,
@@ -255,11 +260,12 @@ class ApiFcServiceConfigArgs:
         :param pulumi.Input[builtins.str] function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param pulumi.Input[builtins.str] function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param pulumi.Input[builtins.str] function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        :param pulumi.Input[builtins.str] function_version: The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
         :param pulumi.Input[builtins.str] method: The http method of function compute service. Required if `function_type` is `HttpTrigger`.
         :param pulumi.Input[builtins.bool] only_business_path: Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
         :param pulumi.Input[builtins.str] path: The path of function compute service. Required if `function_type` is `HttpTrigger`.
         :param pulumi.Input[builtins.str] qualifier: The qualifier of function name of compute service.
-        :param pulumi.Input[builtins.str] service_name: The service name of function compute service. Required if `function_type` is `FCEvent`.
+        :param pulumi.Input[builtins.str] service_name: The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
         pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
@@ -270,6 +276,8 @@ class ApiFcServiceConfigArgs:
             pulumi.set(__self__, "function_name", function_name)
         if function_type is not None:
             pulumi.set(__self__, "function_type", function_type)
+        if function_version is not None:
+            pulumi.set(__self__, "function_version", function_version)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if only_business_path is not None:
@@ -354,6 +362,18 @@ class ApiFcServiceConfigArgs:
         pulumi.set(self, "function_type", value)
 
     @property
+    @pulumi.getter(name="functionVersion")
+    def function_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+        """
+        return pulumi.get(self, "function_version")
+
+    @function_version.setter
+    def function_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "function_version", value)
+
+    @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -405,7 +425,7 @@ class ApiFcServiceConfigArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
         return pulumi.get(self, "service_name")
 

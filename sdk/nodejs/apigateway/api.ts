@@ -144,7 +144,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly requestParameters!: pulumi.Output<outputs.apigateway.ApiRequestParameter[] | undefined>;
     /**
-     * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
     public readonly serviceType!: pulumi.Output<string>;
     /**
@@ -281,7 +281,7 @@ export interface ApiState {
      */
     requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
-     * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
     serviceType?: pulumi.Input<string>;
     /**
@@ -347,7 +347,7 @@ export interface ApiArgs {
      */
     requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
     /**
-     * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+     * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
     serviceType: pulumi.Input<string>;
     /**

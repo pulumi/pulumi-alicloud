@@ -6,6 +6,7 @@ package com.pulumi.alicloud.resourcemanager;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,33 +20,60 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccountArgs Empty = new AccountArgs();
 
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion.
-     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-     * to get check ids and set them.
+     * . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
      * 
      */
+    @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
     @Import(name="abandonAbleCheckIds")
     private @Nullable Output<List<String>> abandonAbleCheckIds;
 
     /**
-     * @return The IDs of the check items that you can choose to ignore for the member deletion.
-     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-     * to get check ids and set them.
+     * @return . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
      * 
      */
+    @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
     public Optional<Output<List<String>>> abandonAbleCheckIds() {
         return Optional.ofNullable(this.abandonAbleCheckIds);
     }
 
     /**
-     * The name prefix of account.
+     * The ID of the check item that can choose to abandon and continue to perform member deletion.
+     * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+     * 
+     */
+    @Import(name="abandonableCheckIds")
+    private @Nullable Output<List<String>> abandonableCheckIds;
+
+    /**
+     * @return The ID of the check item that can choose to abandon and continue to perform member deletion.
+     * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+     * 
+     */
+    public Optional<Output<List<String>>> abandonableCheckIds() {
+        return Optional.ofNullable(this.abandonableCheckIds);
+    }
+
+    /**
+     * Account name prefix. Empty the system randomly generated.
+     * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered &#39;_.-&#39;.
+     * The format of the full account name is {@literal @}&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: &#39;alice {@literal @} rd-3G ****.aliyunid.com&#39;
+     * The account name must be unique in the resource directory.
      * 
      */
     @Import(name="accountNamePrefix")
     private @Nullable Output<String> accountNamePrefix;
 
     /**
-     * @return The name prefix of account.
+     * @return Account name prefix. Empty the system randomly generated.
+     * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered &#39;_.-&#39;.
+     * The format of the full account name is {@literal @}&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: &#39;alice {@literal @} rd-3G ****.aliyunid.com&#39;
+     * The account name must be unique in the resource directory.
      * 
      */
     public Optional<Output<String>> accountNamePrefix() {
@@ -53,14 +81,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+     * Member name
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+     * @return Member name
      * 
      */
     public Output<String> displayName() {
@@ -68,14 +96,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder
      * 
      */
     @Import(name="folderId")
     private @Nullable Output<String> folderId;
 
     /**
-     * @return The ID of the parent folder.
+     * @return The ID of the parent folder
      * 
      */
     public Optional<Output<String>> folderId() {
@@ -83,14 +111,29 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+     * Whether to force delete the account.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Whether to force delete the account.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      * 
      */
     @Import(name="payerAccountId")
     private @Nullable Output<String> payerAccountId;
 
     /**
-     * @return The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+     * @return The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      * 
      */
     public Optional<Output<String>> payerAccountId() {
@@ -98,33 +141,75 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The identity type of the member. Valid values:
+     * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+     * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
      * 
-     * &gt; **NOTE:** The member name must be unique within the resource directory.
+     * &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+     * 
+     */
+    @Import(name="resellAccountType")
+    private @Nullable Output<String> resellAccountType;
+
+    /**
+     * @return The identity type of the member. Valid values:
+     * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+     * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+     * 
+     * &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+     * 
+     */
+    public Optional<Output<String>> resellAccountType() {
+        return Optional.ofNullable(this.resellAccountType);
+    }
+
+    /**
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     * &gt; **NOTE:** The member name must be unique within the resource directory.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Member type. The value of ResourceAccount indicates the resource account
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Member type. The value of ResourceAccount indicates the resource account
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private AccountArgs() {}
 
     private AccountArgs(AccountArgs $) {
         this.abandonAbleCheckIds = $.abandonAbleCheckIds;
+        this.abandonableCheckIds = $.abandonableCheckIds;
         this.accountNamePrefix = $.accountNamePrefix;
         this.displayName = $.displayName;
         this.folderId = $.folderId;
+        this.forceDelete = $.forceDelete;
         this.payerAccountId = $.payerAccountId;
+        this.resellAccountType = $.resellAccountType;
         this.tags = $.tags;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -146,44 +231,87 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
-         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-         * to get check ids and set them.
+         * @param abandonAbleCheckIds . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
         public Builder abandonAbleCheckIds(@Nullable Output<List<String>> abandonAbleCheckIds) {
             $.abandonAbleCheckIds = abandonAbleCheckIds;
             return this;
         }
 
         /**
-         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
-         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-         * to get check ids and set them.
+         * @param abandonAbleCheckIds . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
         public Builder abandonAbleCheckIds(List<String> abandonAbleCheckIds) {
             return abandonAbleCheckIds(Output.of(abandonAbleCheckIds));
         }
 
         /**
-         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
-         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
-         * to get check ids and set them.
+         * @param abandonAbleCheckIds . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
         public Builder abandonAbleCheckIds(String... abandonAbleCheckIds) {
             return abandonAbleCheckIds(List.of(abandonAbleCheckIds));
         }
 
         /**
-         * @param accountNamePrefix The name prefix of account.
+         * @param abandonableCheckIds The ID of the check item that can choose to abandon and continue to perform member deletion.
+         * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonableCheckIds(@Nullable Output<List<String>> abandonableCheckIds) {
+            $.abandonableCheckIds = abandonableCheckIds;
+            return this;
+        }
+
+        /**
+         * @param abandonableCheckIds The ID of the check item that can choose to abandon and continue to perform member deletion.
+         * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonableCheckIds(List<String> abandonableCheckIds) {
+            return abandonableCheckIds(Output.of(abandonableCheckIds));
+        }
+
+        /**
+         * @param abandonableCheckIds The ID of the check item that can choose to abandon and continue to perform member deletion.
+         * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonableCheckIds(String... abandonableCheckIds) {
+            return abandonableCheckIds(List.of(abandonableCheckIds));
+        }
+
+        /**
+         * @param accountNamePrefix Account name prefix. Empty the system randomly generated.
+         * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered &#39;_.-&#39;.
+         * The format of the full account name is {@literal @}&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: &#39;alice {@literal @} rd-3G ****.aliyunid.com&#39;
+         * The account name must be unique in the resource directory.
          * 
          * @return builder
          * 
@@ -194,7 +322,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountNamePrefix The name prefix of account.
+         * @param accountNamePrefix Account name prefix. Empty the system randomly generated.
+         * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered &#39;_.-&#39;.
+         * The format of the full account name is {@literal @}&lt; ResourceDirectoryId&gt;.aliyunid.com, for example: &#39;alice {@literal @} rd-3G ****.aliyunid.com&#39;
+         * The account name must be unique in the resource directory.
          * 
          * @return builder
          * 
@@ -204,7 +335,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+         * @param displayName Member name
          * 
          * @return builder
          * 
@@ -215,7 +346,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+         * @param displayName Member name
          * 
          * @return builder
          * 
@@ -225,7 +356,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderId The ID of the parent folder.
+         * @param folderId The ID of the parent folder
          * 
          * @return builder
          * 
@@ -236,7 +367,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderId The ID of the parent folder.
+         * @param folderId The ID of the parent folder
          * 
          * @return builder
          * 
@@ -246,7 +377,28 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payerAccountId The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+         * @param forceDelete Whether to force delete the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Whether to force delete the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param payerAccountId The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
          * 
          * @return builder
          * 
@@ -257,7 +409,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payerAccountId The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+         * @param payerAccountId The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
          * 
          * @return builder
          * 
@@ -267,9 +419,36 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param resellAccountType The identity type of the member. Valid values:
+         * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+         * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
          * 
-         * &gt; **NOTE:** The member name must be unique within the resource directory.
+         * &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resellAccountType(@Nullable Output<String> resellAccountType) {
+            $.resellAccountType = resellAccountType;
+            return this;
+        }
+
+        /**
+         * @param resellAccountType The identity type of the member. Valid values:
+         * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+         * - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+         * 
+         * &gt; **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resellAccountType(String resellAccountType) {
+            return resellAccountType(Output.of(resellAccountType));
+        }
+
+        /**
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -280,15 +459,38 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * &gt; **NOTE:** The member name must be unique within the resource directory.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param type Member type. The value of ResourceAccount indicates the resource account
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Member type. The value of ResourceAccount indicates the resource account
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public AccountArgs build() {

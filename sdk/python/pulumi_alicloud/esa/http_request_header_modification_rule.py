@@ -284,6 +284,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -297,12 +298,15 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         site = alicloud.esa.Site("site",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=instance.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpRequestHeaderModificationRule("default",
+        default_http_request_header_modification_rule = alicloud.esa.HttpRequestHeaderModificationRule("default",
             rule_name="example_modify",
             request_header_modifications=[{
                 "value": "modify1",
@@ -356,6 +360,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -369,12 +374,15 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         site = alicloud.esa.Site("site",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=instance.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpRequestHeaderModificationRule("default",
+        default_http_request_header_modification_rule = alicloud.esa.HttpRequestHeaderModificationRule("default",
             rule_name="example_modify",
             request_header_modifications=[{
                 "value": "modify1",

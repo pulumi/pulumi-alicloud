@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
     /// 

@@ -83,6 +83,7 @@ class InstanceArgs:
                - `AGENTLESS`: AGENTLESS detection module
                - `SERVERLESS`:Serverless asset module
                - `CTDR`: threat analysis and response module
+               - `POST_HOST`: Host and container security module
                - Value:0 means off, 1 means on
                
                > **NOTE:**  The module value of the unpassed value will not change.
@@ -133,10 +134,10 @@ class InstanceArgs:
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  Step size is 1.
-        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+               > **NOTE:**  Step size is 100.
+        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+               > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -360,6 +361,7 @@ class InstanceArgs:
         - `AGENTLESS`: AGENTLESS detection module
         - `SERVERLESS`:Serverless asset module
         - `CTDR`: threat analysis and response module
+        - `POST_HOST`: Host and container security module
         - Value:0 means off, 1 means on
 
         > **NOTE:**  The module value of the unpassed value will not change.
@@ -586,7 +588,7 @@ class InstanceArgs:
         """
         Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  Step size is 1.
+        > **NOTE:**  Step size is 100.
         """
         return pulumi.get(self, "threat_analysis_flow")
 
@@ -598,9 +600,9 @@ class InstanceArgs:
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 
@@ -765,6 +767,7 @@ class _InstanceState:
                - `AGENTLESS`: AGENTLESS detection module
                - `SERVERLESS`:Serverless asset module
                - `CTDR`: threat analysis and response module
+               - `POST_HOST`: Host and container security module
                - Value:0 means off, 1 means on
                
                > **NOTE:**  The module value of the unpassed value will not change.
@@ -816,10 +819,10 @@ class _InstanceState:
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  Step size is 1.
-        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+               > **NOTE:**  Step size is 100.
+        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+               > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -1060,6 +1063,7 @@ class _InstanceState:
         - `AGENTLESS`: AGENTLESS detection module
         - `SERVERLESS`:Serverless asset module
         - `CTDR`: threat analysis and response module
+        - `POST_HOST`: Host and container security module
         - Value:0 means off, 1 means on
 
         > **NOTE:**  The module value of the unpassed value will not change.
@@ -1298,7 +1302,7 @@ class _InstanceState:
         """
         Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  Step size is 1.
+        > **NOTE:**  Step size is 100.
         """
         return pulumi.get(self, "threat_analysis_flow")
 
@@ -1310,9 +1314,9 @@ class _InstanceState:
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 
@@ -1487,6 +1491,7 @@ class Instance(pulumi.CustomResource):
                - `AGENTLESS`: AGENTLESS detection module
                - `SERVERLESS`:Serverless asset module
                - `CTDR`: threat analysis and response module
+               - `POST_HOST`: Host and container security module
                - Value:0 means off, 1 means on
                
                > **NOTE:**  The module value of the unpassed value will not change.
@@ -1537,10 +1542,10 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  Step size is 1.
-        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+               > **NOTE:**  Step size is 100.
+        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+               > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -1753,6 +1758,7 @@ class Instance(pulumi.CustomResource):
                - `AGENTLESS`: AGENTLESS detection module
                - `SERVERLESS`:Serverless asset module
                - `CTDR`: threat analysis and response module
+               - `POST_HOST`: Host and container security module
                - Value:0 means off, 1 means on
                
                > **NOTE:**  The module value of the unpassed value will not change.
@@ -1804,10 +1810,10 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  Step size is 1.
-        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+               > **NOTE:**  Step size is 100.
+        :param pulumi.Input[builtins.str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
                
-               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+               > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         :param pulumi.Input[builtins.str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -1975,6 +1981,7 @@ class Instance(pulumi.CustomResource):
         - `AGENTLESS`: AGENTLESS detection module
         - `SERVERLESS`:Serverless asset module
         - `CTDR`: threat analysis and response module
+        - `POST_HOST`: Host and container security module
         - Value:0 means off, 1 means on
 
         > **NOTE:**  The module value of the unpassed value will not change.
@@ -2145,7 +2152,7 @@ class Instance(pulumi.CustomResource):
         """
         Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  Step size is 1.
+        > **NOTE:**  Step size is 100.
         """
         return pulumi.get(self, "threat_analysis_flow")
 
@@ -2153,9 +2160,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 
-        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+        > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 

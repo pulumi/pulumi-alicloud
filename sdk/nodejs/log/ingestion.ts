@@ -5,10 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore.
- * [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
+ * Log service ingestion, this service provides the function of importing logs of various data sources(OSS, MaxCompute) into logstore. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
  *
- * > **NOTE:** Available in 1.161.0+
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *

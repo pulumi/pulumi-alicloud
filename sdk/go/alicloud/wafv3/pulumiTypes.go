@@ -997,6 +997,8 @@ func (o DomainRedirectRequestHeaderArrayOutput) Index(i pulumi.IntInput) DomainR
 }
 
 type GetDomainsDomain struct {
+	// The CNAME assigned by WAF to the domain name.
+	Cname string `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain string `pulumi:"domain"`
 	// The ID of the domain. It formats as `<instance_id>:<domain>`.
@@ -1023,6 +1025,8 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
+	// The CNAME assigned by WAF to the domain name.
+	Cname pulumi.StringInput `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// The ID of the domain. It formats as `<instance_id>:<domain>`.
@@ -1086,6 +1090,11 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
+}
+
+// The CNAME assigned by WAF to the domain name.
+func (o GetDomainsDomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Cname }).(pulumi.StringOutput)
 }
 
 // The name of the domain name to query.

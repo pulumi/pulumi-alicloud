@@ -103,6 +103,7 @@ export class Instance extends pulumi.CustomResource {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      *
      * > **NOTE:**  The module value of the unpassed value will not change.
@@ -205,13 +206,13 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  Step size is 1.
+     * > **NOTE:**  Step size is 100.
      */
     public readonly threatAnalysisFlow!: pulumi.Output<string | undefined>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      */
     public readonly threatAnalysisSlsStorage!: pulumi.Output<string | undefined>;
     /**
@@ -414,6 +415,7 @@ export interface InstanceState {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      *
      * > **NOTE:**  The module value of the unpassed value will not change.
@@ -516,13 +518,13 @@ export interface InstanceState {
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  Step size is 1.
+     * > **NOTE:**  Step size is 100.
      */
     threatAnalysisFlow?: pulumi.Input<string>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      */
     threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**
@@ -628,6 +630,7 @@ export interface InstanceArgs {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      *
      * > **NOTE:**  The module value of the unpassed value will not change.
@@ -726,13 +729,13 @@ export interface InstanceArgs {
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  Step size is 1.
+     * > **NOTE:**  Step size is 100.
      */
     threatAnalysisFlow?: pulumi.Input<string>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      *
-     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      */
     threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**

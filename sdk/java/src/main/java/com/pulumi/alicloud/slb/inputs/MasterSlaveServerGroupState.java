@@ -64,14 +64,14 @@ public final class MasterSlaveServerGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<MasterSlaveServerGroupServerArgs>> servers;
 
     /**
-     * @return A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * @return A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      * 
      */
     public Optional<Output<List<MasterSlaveServerGroupServerArgs>>> servers() {
@@ -169,7 +169,7 @@ public final class MasterSlaveServerGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class MasterSlaveServerGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class MasterSlaveServerGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+         * @param servers A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
          * 
          * @return builder
          * 

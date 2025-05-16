@@ -135,7 +135,7 @@ export class ForwardEntry extends pulumi.CustomResource {
      */
     public readonly portBreak!: pulumi.Output<boolean | undefined>;
     /**
-     * (Available since 1.119.1+) The status of forward entry.
+     * (Available since v1.119.1) The status of forward entry.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -249,7 +249,7 @@ export interface ForwardEntryState {
      */
     portBreak?: pulumi.Input<boolean>;
     /**
-     * (Available since 1.119.1+) The status of forward entry.
+     * (Available since v1.119.1) The status of forward entry.
      */
     status?: pulumi.Input<string>;
 }

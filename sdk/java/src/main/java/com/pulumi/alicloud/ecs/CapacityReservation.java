@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Ecs Capacity Reservation and how to use it, see [What is Capacity Reservation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createcapacityreservation).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 

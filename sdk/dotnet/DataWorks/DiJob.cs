@@ -31,12 +31,13 @@ namespace Pulumi.AliCloud.DataWorks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var name = config.Get("name") ?? "terraform_example";
     ///     var defaultMMHL8U = new AliCloud.DataWorks.Project("defaultMMHL8U", new()
     ///     {
-    ///         Description = name,
     ///         ProjectName = name,
     ///         DisplayName = name,
+    ///         Description = name,
+    ///         PaiTaskEnabled = true,
     ///     });
     /// 
     ///     var @default = new AliCloud.DataWorks.DiJob("default", new()

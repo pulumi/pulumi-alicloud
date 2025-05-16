@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
  *
- * > **NOTE:** Available since v1.68.0+.
+ * > **NOTE:** Available since v1.68.0.
  *
  * ## Example Usage
  *

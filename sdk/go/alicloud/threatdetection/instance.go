@@ -63,6 +63,7 @@ type Instance struct {
 	// - `AGENTLESS`: AGENTLESS detection module
 	// - `SERVERLESS`:Serverless asset module
 	// - `CTDR`: threat analysis and response module
+	// - `POST_HOST`: Host and container security module
 	// - Value:0 means off, 1 means on
 	//
 	// > **NOTE:**  The module value of the unpassed value will not change.
@@ -131,11 +132,11 @@ type Instance struct {
 	ThreatAnalysis pulumi.StringPtrOutput `pulumi:"threatAnalysis"`
 	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  Step size is 1.
+	// > **NOTE:**  Step size is 100.
 	ThreatAnalysisFlow pulumi.StringPtrOutput `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+	// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrOutput `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -240,6 +241,7 @@ type instanceState struct {
 	// - `AGENTLESS`: AGENTLESS detection module
 	// - `SERVERLESS`:Serverless asset module
 	// - `CTDR`: threat analysis and response module
+	// - `POST_HOST`: Host and container security module
 	// - Value:0 means off, 1 means on
 	//
 	// > **NOTE:**  The module value of the unpassed value will not change.
@@ -308,11 +310,11 @@ type instanceState struct {
 	ThreatAnalysis *string `pulumi:"threatAnalysis"`
 	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  Step size is 1.
+	// > **NOTE:**  Step size is 100.
 	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+	// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -385,6 +387,7 @@ type InstanceState struct {
 	// - `AGENTLESS`: AGENTLESS detection module
 	// - `SERVERLESS`:Serverless asset module
 	// - `CTDR`: threat analysis and response module
+	// - `POST_HOST`: Host and container security module
 	// - Value:0 means off, 1 means on
 	//
 	// > **NOTE:**  The module value of the unpassed value will not change.
@@ -453,11 +456,11 @@ type InstanceState struct {
 	ThreatAnalysis pulumi.StringPtrInput
 	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  Step size is 1.
+	// > **NOTE:**  Step size is 100.
 	ThreatAnalysisFlow pulumi.StringPtrInput
-	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+	// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
@@ -532,6 +535,7 @@ type instanceArgs struct {
 	// - `AGENTLESS`: AGENTLESS detection module
 	// - `SERVERLESS`:Serverless asset module
 	// - `CTDR`: threat analysis and response module
+	// - `POST_HOST`: Host and container security module
 	// - Value:0 means off, 1 means on
 	//
 	// > **NOTE:**  The module value of the unpassed value will not change.
@@ -598,11 +602,11 @@ type instanceArgs struct {
 	ThreatAnalysis *string `pulumi:"threatAnalysis"`
 	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  Step size is 1.
+	// > **NOTE:**  Step size is 100.
 	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+	// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -674,6 +678,7 @@ type InstanceArgs struct {
 	// - `AGENTLESS`: AGENTLESS detection module
 	// - `SERVERLESS`:Serverless asset module
 	// - `CTDR`: threat analysis and response module
+	// - `POST_HOST`: Host and container security module
 	// - Value:0 means off, 1 means on
 	//
 	// > **NOTE:**  The module value of the unpassed value will not change.
@@ -740,11 +745,11 @@ type InstanceArgs struct {
 	ThreatAnalysis pulumi.StringPtrInput
 	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  Step size is 1.
+	// > **NOTE:**  Step size is 100.
 	ThreatAnalysisFlow pulumi.StringPtrInput
-	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 	//
-	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+	// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
@@ -933,6 +938,7 @@ func (o InstanceOutput) PostPaidFlag() pulumi.IntPtrOutput {
 // - `AGENTLESS`: AGENTLESS detection module
 // - `SERVERLESS`:Serverless asset module
 // - `CTDR`: threat analysis and response module
+// - `POST_HOST`: Host and container security module
 // - Value:0 means off, 1 means on
 //
 // > **NOTE:**  The module value of the unpassed value will not change.
@@ -1052,14 +1058,14 @@ func (o InstanceOutput) ThreatAnalysis() pulumi.StringPtrOutput {
 
 // Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 //
-// > **NOTE:**  Step size is 1.
+// > **NOTE:**  Step size is 100.
 func (o InstanceOutput) ThreatAnalysisFlow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisFlow }).(pulumi.StringPtrOutput)
 }
 
-// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 //
-// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+// > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
 func (o InstanceOutput) ThreatAnalysisSlsStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisSlsStorage }).(pulumi.StringPtrOutput)
 }

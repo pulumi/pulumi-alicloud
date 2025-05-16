@@ -506,11 +506,12 @@ class DiJob(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "terraform_example"
         default_mmhl8_u = alicloud.dataworks.Project("defaultMMHL8U",
-            description=name,
             project_name=name,
-            display_name=name)
+            display_name=name,
+            description=name,
+            pai_task_enabled=True)
         default = alicloud.dataworks.DiJob("default",
             description=name,
             project_id=default_mmhl8_u.id,
@@ -655,11 +656,12 @@ class DiJob(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "terraform_example"
         default_mmhl8_u = alicloud.dataworks.Project("defaultMMHL8U",
-            description=name,
             project_name=name,
-            display_name=name)
+            display_name=name,
+            description=name,
+            pai_task_enabled=True)
         default = alicloud.dataworks.DiJob("default",
             description=name,
             project_id=default_mmhl8_u.id,

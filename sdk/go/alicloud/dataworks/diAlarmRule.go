@@ -38,14 +38,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "terraform_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaulteNv8bu, err := dataworks.NewProject(ctx, "defaulteNv8bu", &dataworks.ProjectArgs{
-//				ProjectName: pulumi.String(name),
-//				DisplayName: pulumi.String(name),
-//				Description: pulumi.String(name),
+//				ProjectName:    pulumi.String(name),
+//				DisplayName:    pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				PaiTaskEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

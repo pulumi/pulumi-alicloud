@@ -245,16 +245,16 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             default_link_type="Platinum",
             bandwidth_type="DataTransfer",
             cen_id=defaultp_szb78.id,
-            peer_transit_router_region_id=defaultksqg_sa.id,
+            peer_transit_router_region_id="cn-hangzhou",
             transit_router_id=default_ummxn_e.transit_router_id,
             peer_transit_router_id=defaultksqg_sa.transit_router_id,
             bandwidth=10)
         default = alicloud.cen.InterRegionTrafficQosPolicy("default",
-            transit_router_attachment_id=defaultn_xz83y.id,
+            transit_router_attachment_id=defaultn_xz83y.transit_router_attachment_id,
             inter_region_traffic_qos_policy_name="example1",
             inter_region_traffic_qos_policy_description="example1",
             bandwidth_guarantee_mode="byBandwidthPercent",
-            transit_router_id=defaultn_xz83y.id)
+            transit_router_id=defaultksqg_sa.transit_router_id)
         ```
 
         ## Import
@@ -305,16 +305,16 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             default_link_type="Platinum",
             bandwidth_type="DataTransfer",
             cen_id=defaultp_szb78.id,
-            peer_transit_router_region_id=defaultksqg_sa.id,
+            peer_transit_router_region_id="cn-hangzhou",
             transit_router_id=default_ummxn_e.transit_router_id,
             peer_transit_router_id=defaultksqg_sa.transit_router_id,
             bandwidth=10)
         default = alicloud.cen.InterRegionTrafficQosPolicy("default",
-            transit_router_attachment_id=defaultn_xz83y.id,
+            transit_router_attachment_id=defaultn_xz83y.transit_router_attachment_id,
             inter_region_traffic_qos_policy_name="example1",
             inter_region_traffic_qos_policy_description="example1",
             bandwidth_guarantee_mode="byBandwidthPercent",
-            transit_router_id=defaultn_xz83y.id)
+            transit_router_id=defaultksqg_sa.transit_router_id)
         ```
 
         ## Import

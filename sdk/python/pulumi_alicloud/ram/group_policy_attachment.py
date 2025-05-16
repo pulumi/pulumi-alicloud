@@ -149,7 +149,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -220,7 +220,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 

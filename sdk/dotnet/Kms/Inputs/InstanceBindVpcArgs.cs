@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Kms.Inputs
     public sealed class InstanceBindVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// region id.
+        /// region id
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// VPC ID.
+        /// VPC ID
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// VPC owner root user ID.
+        /// VPC owner root user ID
         /// </summary>
         [Input("vpcOwnerId")]
         public Input<string>? VpcOwnerId { get; set; }
 
         /// <summary>
-        /// vswitch id.
+        /// vswitch id
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  * environment in the cloud. An ADB cluster can contain multiple user-created
  * databases.
  *
- * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+ * > **NOTE:** Deprecated since v1.121.0.
  *
- * > **NOTE:** Available in v1.71.0+.
+ * > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
  *
  * ## Example Usage
  *
@@ -91,7 +91,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly autoRenewPeriod!: pulumi.Output<number>;
     public readonly computeResource!: pulumi.Output<string | undefined>;
     /**
-     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     * (Available since v1.93.0) The connection string of the ADB cluster.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -285,7 +285,7 @@ export interface ClusterState {
     autoRenewPeriod?: pulumi.Input<number>;
     computeResource?: pulumi.Input<string>;
     /**
-     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     * (Available since v1.93.0) The connection string of the ADB cluster.
      */
     connectionString?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface ClusterState {
      */
     period?: pulumi.Input<number>;
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      */
     port?: pulumi.Input<string>;
     /**

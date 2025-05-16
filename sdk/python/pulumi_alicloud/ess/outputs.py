@@ -55,6 +55,7 @@ __all__ = [
     'GetScalingConfigurationsConfigurationInstancePatternInfoResult',
     'GetScalingConfigurationsConfigurationSpotPriceLimitResult',
     'GetScalingGroupsGroupResult',
+    'GetScalingGroupsGroupLaunchTemplateOverrideResult',
     'GetScalingRulesRuleResult',
     'GetScheduledTasksTaskResult',
 ]
@@ -3478,6 +3479,11 @@ class GetScalingGroupsGroupResult(dict):
                  active_scaling_configuration: builtins.str,
                  allocation_strategy: builtins.str,
                  az_balance: builtins.bool,
+                 capacity_options_compensate_with_on_demand: builtins.bool,
+                 capacity_options_on_demand_base_capacity: builtins.int,
+                 capacity_options_on_demand_percentage_above_base_capacity: builtins.int,
+                 capacity_options_spot_auto_replace_on_demand: builtins.bool,
+                 compensate_with_on_demand: builtins.bool,
                  cooldown_time: builtins.int,
                  creation_time: builtins.str,
                  db_instance_ids: Sequence[builtins.str],
@@ -3489,6 +3495,7 @@ class GetScalingGroupsGroupResult(dict):
                  id: builtins.str,
                  init_capacity: builtins.int,
                  launch_template_id: builtins.str,
+                 launch_template_overrides: Sequence['outputs.GetScalingGroupsGroupLaunchTemplateOverrideResult'],
                  launch_template_version: builtins.str,
                  lifecycle_state: builtins.str,
                  load_balancer_ids: Sequence[builtins.str],
@@ -3530,6 +3537,11 @@ class GetScalingGroupsGroupResult(dict):
         :param builtins.str active_scaling_configuration: Active scaling configuration for scaling group.
         :param builtins.str allocation_strategy: (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
         :param builtins.bool az_balance: (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+        :param builtins.bool capacity_options_compensate_with_on_demand: (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+        :param builtins.int capacity_options_on_demand_base_capacity: (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        :param builtins.int capacity_options_on_demand_percentage_above_base_capacity: (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+        :param builtins.bool capacity_options_spot_auto_replace_on_demand: (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        :param builtins.bool compensate_with_on_demand: (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
         :param builtins.int cooldown_time: Default cooldown time of scaling group.
         :param builtins.str creation_time: Creation time of scaling group.
         :param Sequence[builtins.str] db_instance_ids: Db instances id which the ECS instance attached to.
@@ -3541,6 +3553,7 @@ class GetScalingGroupsGroupResult(dict):
         :param builtins.str id: ID of the scaling group.
         :param builtins.int init_capacity: (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
         :param builtins.str launch_template_id: Active launch template ID for scaling group.
+        :param Sequence['GetScalingGroupsGroupLaunchTemplateOverrideArgs'] launch_template_overrides: (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
         :param builtins.str launch_template_version: Version of active launch template.
         :param builtins.str lifecycle_state: Lifecycle state of scaling group.
         :param Sequence[builtins.str] load_balancer_ids: Slb instances id which the ECS instance attached to.
@@ -3582,6 +3595,11 @@ class GetScalingGroupsGroupResult(dict):
         pulumi.set(__self__, "active_scaling_configuration", active_scaling_configuration)
         pulumi.set(__self__, "allocation_strategy", allocation_strategy)
         pulumi.set(__self__, "az_balance", az_balance)
+        pulumi.set(__self__, "capacity_options_compensate_with_on_demand", capacity_options_compensate_with_on_demand)
+        pulumi.set(__self__, "capacity_options_on_demand_base_capacity", capacity_options_on_demand_base_capacity)
+        pulumi.set(__self__, "capacity_options_on_demand_percentage_above_base_capacity", capacity_options_on_demand_percentage_above_base_capacity)
+        pulumi.set(__self__, "capacity_options_spot_auto_replace_on_demand", capacity_options_spot_auto_replace_on_demand)
+        pulumi.set(__self__, "compensate_with_on_demand", compensate_with_on_demand)
         pulumi.set(__self__, "cooldown_time", cooldown_time)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "db_instance_ids", db_instance_ids)
@@ -3593,6 +3611,7 @@ class GetScalingGroupsGroupResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "init_capacity", init_capacity)
         pulumi.set(__self__, "launch_template_id", launch_template_id)
+        pulumi.set(__self__, "launch_template_overrides", launch_template_overrides)
         pulumi.set(__self__, "launch_template_version", launch_template_version)
         pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         pulumi.set(__self__, "load_balancer_ids", load_balancer_ids)
@@ -3661,6 +3680,46 @@ class GetScalingGroupsGroupResult(dict):
         (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
         """
         return pulumi.get(self, "az_balance")
+
+    @property
+    @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")
+    def capacity_options_compensate_with_on_demand(self) -> builtins.bool:
+        """
+        (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+        """
+        return pulumi.get(self, "capacity_options_compensate_with_on_demand")
+
+    @property
+    @pulumi.getter(name="capacityOptionsOnDemandBaseCapacity")
+    def capacity_options_on_demand_base_capacity(self) -> builtins.int:
+        """
+        (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        """
+        return pulumi.get(self, "capacity_options_on_demand_base_capacity")
+
+    @property
+    @pulumi.getter(name="capacityOptionsOnDemandPercentageAboveBaseCapacity")
+    def capacity_options_on_demand_percentage_above_base_capacity(self) -> builtins.int:
+        """
+        (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+        """
+        return pulumi.get(self, "capacity_options_on_demand_percentage_above_base_capacity")
+
+    @property
+    @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")
+    def capacity_options_spot_auto_replace_on_demand(self) -> builtins.bool:
+        """
+        (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        """
+        return pulumi.get(self, "capacity_options_spot_auto_replace_on_demand")
+
+    @property
+    @pulumi.getter(name="compensateWithOnDemand")
+    def compensate_with_on_demand(self) -> builtins.bool:
+        """
+        (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+        """
+        return pulumi.get(self, "compensate_with_on_demand")
 
     @property
     @pulumi.getter(name="cooldownTime")
@@ -3749,6 +3808,14 @@ class GetScalingGroupsGroupResult(dict):
         Active launch template ID for scaling group.
         """
         return pulumi.get(self, "launch_template_id")
+
+    @property
+    @pulumi.getter(name="launchTemplateOverrides")
+    def launch_template_overrides(self) -> Sequence['outputs.GetScalingGroupsGroupLaunchTemplateOverrideResult']:
+        """
+        (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+        """
+        return pulumi.get(self, "launch_template_overrides")
 
     @property
     @pulumi.getter(name="launchTemplateVersion")
@@ -4037,6 +4104,46 @@ class GetScalingGroupsGroupResult(dict):
         Vswitches id in which the ECS instance launched.
         """
         return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetScalingGroupsGroupLaunchTemplateOverrideResult(dict):
+    def __init__(__self__, *,
+                 instance_type: builtins.str,
+                 spot_price_limit: builtins.float,
+                 weighted_capacity: builtins.int):
+        """
+        :param builtins.str instance_type: (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+        :param builtins.float spot_price_limit: (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+        :param builtins.int weighted_capacity: (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+        """
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> builtins.str:
+        """
+        (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> builtins.float:
+        """
+        (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> builtins.int:
+        """
+        (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
+        """
+        return pulumi.get(self, "weighted_capacity")
 
 
 @pulumi.output_type

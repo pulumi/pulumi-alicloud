@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
  * 

@@ -65,9 +65,11 @@ type CommonBandwithPackage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+	// The percentage of the minimum bandwidth commitment. The value is only `20`.
 	//
-	// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+	// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+	//
+	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio pulumi.IntOutput `pulumi:"ratio"`
 	// The ID of the resource group to which you want to move the resource.
 	//
@@ -161,9 +163,11 @@ type commonBandwithPackageState struct {
 	Name *string `pulumi:"name"`
 	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+	// The percentage of the minimum bandwidth commitment. The value is only `20`.
 	//
-	// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+	// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+	//
+	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio *int `pulumi:"ratio"`
 	// The ID of the resource group to which you want to move the resource.
 	//
@@ -225,9 +229,11 @@ type CommonBandwithPackageState struct {
 	Name pulumi.StringPtrInput
 	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+	// The percentage of the minimum bandwidth commitment. The value is only `20`.
 	//
-	// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+	// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+	//
+	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio pulumi.IntPtrInput
 	// The ID of the resource group to which you want to move the resource.
 	//
@@ -289,9 +295,11 @@ type commonBandwithPackageArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name *string `pulumi:"name"`
-	// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+	// The percentage of the minimum bandwidth commitment. The value is only `20`.
 	//
-	// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+	// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+	//
+	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio *int `pulumi:"ratio"`
 	// The ID of the resource group to which you want to move the resource.
 	//
@@ -348,9 +356,11 @@ type CommonBandwithPackageArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringPtrInput
-	// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+	// The percentage of the minimum bandwidth commitment. The value is only `20`.
 	//
-	// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+	// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+	//
+	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio pulumi.IntPtrInput
 	// The ID of the resource group to which you want to move the resource.
 	//
@@ -526,9 +536,11 @@ func (o CommonBandwithPackageOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+// The percentage of the minimum bandwidth commitment. The value is only `20`.
 //
-// > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+//
+// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 func (o CommonBandwithPackageOutput) Ratio() pulumi.IntOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.IntOutput { return v.Ratio }).(pulumi.IntOutput)
 }

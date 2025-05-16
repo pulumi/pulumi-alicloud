@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.esa.EsaFunctions;
  * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.esa.Site;
  * import com.pulumi.alicloud.esa.SiteArgs;
  * import com.pulumi.alicloud.esa.EdgeContainerApp;
@@ -60,8 +62,13 @@ import javax.annotation.Nullable;
  *             .planSubscribeType("enterpriseplan")
  *             .build());
  * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var resourceSiteOriginPoolTest = new Site("resourceSiteOriginPoolTest", SiteArgs.builder()
- *             .siteName(name)
+ *             .siteName(String.format("gositecdn-%s.cn", defaultInteger.result()))
  *             .instanceId(default_.sites()[0].instanceId())
  *             .coverage("overseas")
  *             .accessType("NS")

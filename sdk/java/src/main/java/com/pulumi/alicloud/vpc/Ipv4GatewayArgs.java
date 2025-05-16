@@ -34,18 +34,33 @@ public final class Ipv4GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    @Import(name="internetMode")
+    private @Nullable Output<String> internetMode;
+
+    /**
+     * @return The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    public Optional<Output<String>> internetMode() {
+        return Optional.ofNullable(this.internetMode);
     }
 
     /**
@@ -128,6 +143,7 @@ public final class Ipv4GatewayArgs extends com.pulumi.resources.ResourceArgs {
     private Ipv4GatewayArgs(Ipv4GatewayArgs $) {
         this.dryRun = $.dryRun;
         this.enabled = $.enabled;
+        this.internetMode = $.internetMode;
         this.ipv4GatewayDescription = $.ipv4GatewayDescription;
         this.ipv4GatewayName = $.ipv4GatewayName;
         this.resourceGroupId = $.resourceGroupId;
@@ -175,7 +191,7 @@ public final class Ipv4GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
          * 
          * @return builder
          * 
@@ -186,13 +202,34 @@ public final class Ipv4GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
          * 
          * @return builder
          * 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param internetMode The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMode(@Nullable Output<String> internetMode) {
+            $.internetMode = internetMode;
+            return this;
+        }
+
+        /**
+         * @param internetMode The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMode(String internetMode) {
+            return internetMode(Output.of(internetMode));
         }
 
         /**

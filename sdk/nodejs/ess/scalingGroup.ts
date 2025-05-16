@@ -157,6 +157,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly capacityOptionsOnDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
+     * The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+     */
+    public readonly capacityOptionsPriceComparisonMode!: pulumi.Output<string>;
+    /**
      * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
      */
     public readonly capacityOptionsSpotAutoReplaceOnDemand!: pulumi.Output<boolean>;
@@ -325,6 +329,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["capacityOptionsCompensateWithOnDemand"] = state ? state.capacityOptionsCompensateWithOnDemand : undefined;
             resourceInputs["capacityOptionsOnDemandBaseCapacity"] = state ? state.capacityOptionsOnDemandBaseCapacity : undefined;
             resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = state ? state.capacityOptionsOnDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["capacityOptionsPriceComparisonMode"] = state ? state.capacityOptionsPriceComparisonMode : undefined;
             resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = state ? state.capacityOptionsSpotAutoReplaceOnDemand : undefined;
             resourceInputs["compensateWithOnDemand"] = state ? state.compensateWithOnDemand : undefined;
             resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
@@ -372,6 +377,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["capacityOptionsCompensateWithOnDemand"] = args ? args.capacityOptionsCompensateWithOnDemand : undefined;
             resourceInputs["capacityOptionsOnDemandBaseCapacity"] = args ? args.capacityOptionsOnDemandBaseCapacity : undefined;
             resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = args ? args.capacityOptionsOnDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["capacityOptionsPriceComparisonMode"] = args ? args.capacityOptionsPriceComparisonMode : undefined;
             resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = args ? args.capacityOptionsSpotAutoReplaceOnDemand : undefined;
             resourceInputs["compensateWithOnDemand"] = args ? args.compensateWithOnDemand : undefined;
             resourceInputs["containerGroupId"] = args ? args.containerGroupId : undefined;
@@ -439,6 +445,10 @@ export interface ScalingGroupState {
      * The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
      */
     capacityOptionsOnDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    /**
+     * The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+     */
+    capacityOptionsPriceComparisonMode?: pulumi.Input<string>;
     /**
      * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
      */
@@ -618,6 +628,10 @@ export interface ScalingGroupArgs {
      * The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
      */
     capacityOptionsOnDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    /**
+     * The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+     */
+    capacityOptionsPriceComparisonMode?: pulumi.Input<string>;
     /**
      * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
      */

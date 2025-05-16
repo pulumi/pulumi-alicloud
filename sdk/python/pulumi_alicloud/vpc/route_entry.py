@@ -329,7 +329,9 @@ class RouteEntry(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(most_recent=True,
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            image_id=default_get_images.images[0].id)
+            cpu_core_count=2,
+            memory_size=8,
+            instance_type_family="ecs.g6")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
@@ -421,7 +423,9 @@ class RouteEntry(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(most_recent=True,
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            image_id=default_get_images.images[0].id)
+            cpu_core_count=2,
+            memory_size=8,
+            instance_type_family="ecs.g6")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")

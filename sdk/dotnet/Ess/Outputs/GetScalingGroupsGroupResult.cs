@@ -30,6 +30,26 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly bool AzBalance;
         /// <summary>
+        /// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        public readonly bool CapacityOptionsCompensateWithOnDemand;
+        /// <summary>
+        /// (Available since v1.249.0) The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        /// </summary>
+        public readonly int CapacityOptionsOnDemandBaseCapacity;
+        /// <summary>
+        /// (Available since v1.249.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+        /// </summary>
+        public readonly int CapacityOptionsOnDemandPercentageAboveBaseCapacity;
+        /// <summary>
+        /// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be replaced with preemptible instances. If you specify CompensateWithOnDemand, it may result in a higher percentage of pay-as-you-go instances compared to the value of OnDemandPercentageAboveBaseCapacity. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify CompensateWithOnDemand, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        /// </summary>
+        public readonly bool CapacityOptionsSpotAutoReplaceOnDemand;
+        /// <summary>
+        /// (Available since v1.249.0) Indicates whether pay-as-you-go instances can be automatically created to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set MultiAZPolicy to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        public readonly bool CompensateWithOnDemand;
+        /// <summary>
         /// Default cooldown time of scaling group.
         /// </summary>
         public readonly int CooldownTime;
@@ -73,6 +93,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Active launch template ID for scaling group.
         /// </summary>
         public readonly string LaunchTemplateId;
+        /// <summary>
+        /// (Available since v1.249.0) The instance types that are specified by using the Extend Launch Template feature.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetScalingGroupsGroupLaunchTemplateOverrideResult> LaunchTemplateOverrides;
         /// <summary>
         /// Version of active launch template.
         /// </summary>
@@ -228,6 +252,16 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             bool azBalance,
 
+            bool capacityOptionsCompensateWithOnDemand,
+
+            int capacityOptionsOnDemandBaseCapacity,
+
+            int capacityOptionsOnDemandPercentageAboveBaseCapacity,
+
+            bool capacityOptionsSpotAutoReplaceOnDemand,
+
+            bool compensateWithOnDemand,
+
             int cooldownTime,
 
             string creationTime,
@@ -249,6 +283,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
             int initCapacity,
 
             string launchTemplateId,
+
+            ImmutableArray<Outputs.GetScalingGroupsGroupLaunchTemplateOverrideResult> launchTemplateOverrides,
 
             string launchTemplateVersion,
 
@@ -326,6 +362,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
             ActiveScalingConfiguration = activeScalingConfiguration;
             AllocationStrategy = allocationStrategy;
             AzBalance = azBalance;
+            CapacityOptionsCompensateWithOnDemand = capacityOptionsCompensateWithOnDemand;
+            CapacityOptionsOnDemandBaseCapacity = capacityOptionsOnDemandBaseCapacity;
+            CapacityOptionsOnDemandPercentageAboveBaseCapacity = capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            CapacityOptionsSpotAutoReplaceOnDemand = capacityOptionsSpotAutoReplaceOnDemand;
+            CompensateWithOnDemand = compensateWithOnDemand;
             CooldownTime = cooldownTime;
             CreationTime = creationTime;
             DbInstanceIds = dbInstanceIds;
@@ -337,6 +378,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Id = id;
             InitCapacity = initCapacity;
             LaunchTemplateId = launchTemplateId;
+            LaunchTemplateOverrides = launchTemplateOverrides;
             LaunchTemplateVersion = launchTemplateVersion;
             LifecycleState = lifecycleState;
             LoadBalancerIds = loadBalancerIds;

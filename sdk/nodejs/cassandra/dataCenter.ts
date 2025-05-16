@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
  *

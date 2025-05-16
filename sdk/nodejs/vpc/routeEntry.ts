@@ -29,9 +29,11 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultGetInstanceTypes = Promise.all([_default, defaultGetImages]).then(([_default, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: _default.zones?.[0]?.id,
- *     imageId: defaultGetImages.images?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 8,
+ *     instanceTypeFamily: "ecs.g6",
  * }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,

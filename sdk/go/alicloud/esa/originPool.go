@@ -27,27 +27,31 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/esa"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "example.site"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			_default, err := esa.GetSites(ctx, &esa.GetSitesArgs{
 //				PlanSubscribeType: pulumi.StringRef("enterpriseplan"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
-//				SiteName:   pulumi.String(name),
+//				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", defaultInteger.Result),
 //				InstanceId: pulumi.String(_default.Sites[0].InstanceId),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),

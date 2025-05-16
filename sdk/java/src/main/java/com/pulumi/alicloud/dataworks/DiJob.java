@@ -72,11 +72,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
+ *         final var name = config.get("name").orElse("terraform_example");
  *         var defaultMMHL8U = new Project("defaultMMHL8U", ProjectArgs.builder()
- *             .description(name)
  *             .projectName(name)
  *             .displayName(name)
+ *             .description(name)
+ *             .paiTaskEnabled(true)
  *             .build());
  * 
  *         var default_ = new DiJob("default", DiJobArgs.builder()

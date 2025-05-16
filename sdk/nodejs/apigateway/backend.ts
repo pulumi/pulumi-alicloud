@@ -69,13 +69,13 @@ export class Backend extends pulumi.CustomResource {
      */
     public readonly backendName!: pulumi.Output<string>;
     /**
-     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      */
     public readonly backendType!: pulumi.Output<string>;
     /**
      * Whether to create an Event bus service association role.
      */
-    public readonly createEventBridgeServiceLinkedRole!: pulumi.Output<boolean | undefined>;
+    public readonly createEventBridgeServiceLinkedRole!: pulumi.Output<boolean>;
     /**
      * The description of the Backend.
      */
@@ -125,7 +125,7 @@ export interface BackendState {
      */
     backendName?: pulumi.Input<string>;
     /**
-     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      */
     backendType?: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface BackendArgs {
      */
     backendName: pulumi.Input<string>;
     /**
-     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      */
     backendType: pulumi.Input<string>;
     /**

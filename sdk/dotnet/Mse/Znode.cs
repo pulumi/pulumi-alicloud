@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// For information about Microservice Engine (MSE) Znode and how to use it, see [What is Znode](https://help.aliyun.com/document_detail/393622.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.162.0+.
+    /// &gt; **NOTE:** Available since v1.162.0.
     /// 
     /// ## Example Usage
     /// 

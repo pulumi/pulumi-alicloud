@@ -103,9 +103,11 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// The percentage of the minimum bandwidth commitment. The value is only `20`.
         /// 
-        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        /// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Output("ratio")]
         public Output<int> Ratio { get; private set; } = null!;
@@ -260,9 +262,11 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// The percentage of the minimum bandwidth commitment. The value is only `20`.
         /// 
-        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        /// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -397,9 +401,11 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// The percentage of the minimum bandwidth commitment. The value is only `20`.
         /// 
-        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        /// This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }

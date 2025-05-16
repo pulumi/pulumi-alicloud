@@ -207,14 +207,14 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Available in 1.196.0+) The connection port of the instance.
+     * (Available since v1.196.0) The connection port of the instance.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the instance.
+     * @return (Available since v1.196.0) The connection port of the instance.
      * 
      */
     public Optional<Output<String>> port() {
@@ -646,7 +646,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * @param port (Available since v1.196.0) The connection port of the instance.
          * 
          * @return builder
          * 
@@ -657,7 +657,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * @param port (Available since v1.196.0) The connection port of the instance.
          * 
          * @return builder
          * 

@@ -119,7 +119,7 @@ export class HAVip extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * (Available in v1.120.0+) The status of the HaVip instance.
+     * (Available since v1.120.0) The status of the HaVip instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -242,7 +242,7 @@ export interface HAVipState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * (Available in v1.120.0+) The status of the HaVip instance.
+     * (Available since v1.120.0) The status of the HaVip instance.
      */
     status?: pulumi.Input<string>;
     /**

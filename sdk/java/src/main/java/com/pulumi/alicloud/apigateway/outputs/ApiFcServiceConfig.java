@@ -35,6 +35,11 @@ public final class ApiFcServiceConfig {
      */
     private @Nullable String functionType;
     /**
+     * @return The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+     * 
+     */
+    private @Nullable String functionVersion;
+    /**
      * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
@@ -60,7 +65,7 @@ public final class ApiFcServiceConfig {
      */
     private String region;
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
      * 
      */
     private @Nullable String serviceName;
@@ -100,6 +105,13 @@ public final class ApiFcServiceConfig {
         return Optional.ofNullable(this.functionType);
     }
     /**
+     * @return The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+     * 
+     */
+    public Optional<String> functionVersion() {
+        return Optional.ofNullable(this.functionVersion);
+    }
+    /**
      * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
@@ -135,7 +147,7 @@ public final class ApiFcServiceConfig {
         return this.region;
     }
     /**
-     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
      * 
      */
     public Optional<String> serviceName() {
@@ -162,6 +174,7 @@ public final class ApiFcServiceConfig {
         private @Nullable String functionBaseUrl;
         private @Nullable String functionName;
         private @Nullable String functionType;
+        private @Nullable String functionVersion;
         private @Nullable String method;
         private @Nullable Boolean onlyBusinessPath;
         private @Nullable String path;
@@ -176,6 +189,7 @@ public final class ApiFcServiceConfig {
     	      this.functionBaseUrl = defaults.functionBaseUrl;
     	      this.functionName = defaults.functionName;
     	      this.functionType = defaults.functionType;
+    	      this.functionVersion = defaults.functionVersion;
     	      this.method = defaults.method;
     	      this.onlyBusinessPath = defaults.onlyBusinessPath;
     	      this.path = defaults.path;
@@ -209,6 +223,12 @@ public final class ApiFcServiceConfig {
         public Builder functionType(@Nullable String functionType) {
 
             this.functionType = functionType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder functionVersion(@Nullable String functionVersion) {
+
+            this.functionVersion = functionVersion;
             return this;
         }
         @CustomType.Setter
@@ -263,6 +283,7 @@ public final class ApiFcServiceConfig {
             _resultValue.functionBaseUrl = functionBaseUrl;
             _resultValue.functionName = functionName;
             _resultValue.functionType = functionType;
+            _resultValue.functionVersion = functionVersion;
             _resultValue.method = method;
             _resultValue.onlyBusinessPath = onlyBusinessPath;
             _resultValue.path = path;

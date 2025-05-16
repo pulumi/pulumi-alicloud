@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
  * 
- * &gt; **NOTE:** Available in 1.54.0+
+ * &gt; **NOTE:** Available since v1.54.0+
  * 
  * ## Example Usage
  * 
@@ -90,7 +90,9 @@ import javax.annotation.Nullable;
  * 
  *         final var msServerGroupGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(msServerGroup.zones()[0].id())
- *             .eniAmount(2)
+ *             .cpuCoreCount(2)
+ *             .memorySize(8)
+ *             .instanceTypeFamily("ecs.g6")
  *             .build());
  * 
  *         final var image = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -113,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
- *             .name(slbMasterSlaveServerGroup)
+ *             .securityGroupName(slbMasterSlaveServerGroup)
  *             .vpcId(main.id())
  *             .build());
  * 
@@ -192,17 +194,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Block servers
- * 
- * The servers mapping supports the following:
- * 
- * * `server_ids` - (Required) A list backend server ID (ECS instance ID).
- * * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
- * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
- * * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
- * * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
- * * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
- * 
  * ## Import
  * 
  * Load balancer master slave server group can be imported using the id, e.g.
@@ -257,14 +248,14 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      * 
      */
     @Export(name="servers", refs={List.class,MasterSlaveServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MasterSlaveServerGroupServer>> servers;
 
     /**
-     * @return A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+     * @return A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      * 
      */
     public Output<Optional<List<MasterSlaveServerGroupServer>>> servers() {

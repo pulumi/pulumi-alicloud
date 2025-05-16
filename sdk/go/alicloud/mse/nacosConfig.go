@@ -15,6 +15,7 @@ import (
 // Provides a Microservice Engine (MSE) Nacos Config resource.
 //
 // For information about Microservice Engine (MSE) Nacos Config and how to use it, see [What is Nacos configuration](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createnacosconfig)
+//
 // > **NOTE:** Available since v1.233.0.
 //
 // ## Example Usage

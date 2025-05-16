@@ -18,14 +18,14 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final Ipv4GatewayState Empty = new Ipv4GatewayState();
 
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -48,18 +48,33 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    @Import(name="internetMode")
+    private @Nullable Output<String> internetMode;
+
+    /**
+     * @return The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+     * 
+     */
+    public Optional<Output<String>> internetMode() {
+        return Optional.ofNullable(this.internetMode);
     }
 
     /**
@@ -108,14 +123,14 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the route table associated with IPv4 Gateway.
+     * ID of the route table associated with IPv4 Gateway
      * 
      */
     @Import(name="ipv4GatewayRouteTableId")
     private @Nullable Output<String> ipv4GatewayRouteTableId;
 
     /**
-     * @return ID of the route table associated with IPv4 Gateway.
+     * @return ID of the route table associated with IPv4 Gateway
      * 
      */
     public Optional<Output<String>> ipv4GatewayRouteTableId() {
@@ -138,14 +153,14 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -188,6 +203,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.enabled = $.enabled;
+        this.internetMode = $.internetMode;
         this.ipv4GatewayDescription = $.ipv4GatewayDescription;
         this.ipv4GatewayId = $.ipv4GatewayId;
         this.ipv4GatewayName = $.ipv4GatewayName;
@@ -217,7 +233,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -228,7 +244,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -259,7 +275,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
          * 
          * @return builder
          * 
@@ -270,13 +286,34 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
          * 
          * @return builder
          * 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param internetMode The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMode(@Nullable Output<String> internetMode) {
+            $.internetMode = internetMode;
+            return this;
+        }
+
+        /**
+         * @param internetMode The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMode(String internetMode) {
+            return internetMode(Output.of(internetMode));
         }
 
         /**
@@ -343,7 +380,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4GatewayRouteTableId ID of the route table associated with IPv4 Gateway.
+         * @param ipv4GatewayRouteTableId ID of the route table associated with IPv4 Gateway
          * 
          * @return builder
          * 
@@ -354,7 +391,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4GatewayRouteTableId ID of the route table associated with IPv4 Gateway.
+         * @param ipv4GatewayRouteTableId ID of the route table associated with IPv4 Gateway
          * 
          * @return builder
          * 
@@ -385,7 +422,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -396,7 +433,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

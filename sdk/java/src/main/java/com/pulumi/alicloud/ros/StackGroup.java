@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
  * 
- * &gt; **NOTE:** Available in v1.107.0+.
+ * &gt; **NOTE:** Available since v1.107.0.
  * 
  * ## Example Usage
  * 

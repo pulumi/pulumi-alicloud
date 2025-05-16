@@ -196,7 +196,7 @@ class Snapshot(pulumi.CustomResource):
 
         For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 
@@ -253,7 +253,7 @@ class Snapshot(pulumi.CustomResource):
 
         For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 

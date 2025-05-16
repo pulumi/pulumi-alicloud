@@ -18,6 +18,8 @@ import (
 //
 // For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
 //
+// > **NOTE:** Available since v1.24.0.
+//
 // > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 //
 // > **NOTE:** Currently, this resource only support `Domestic Site Account`.
@@ -89,7 +91,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	// (Available since v1.196.0) The connection string of the DRDS instance.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -102,7 +104,7 @@ type Instance struct {
 	InstanceSeries pulumi.StringOutput `pulumi:"instanceSeries"`
 	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
 	MysqlVersion pulumi.IntOutput `pulumi:"mysqlVersion"`
-	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	// (Available since v1.196.0) The connection port of the DRDS instance.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -167,7 +169,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	// (Available since v1.196.0) The connection string of the DRDS instance.
 	ConnectionString *string `pulumi:"connectionString"`
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description *string `pulumi:"description"`
@@ -180,7 +182,7 @@ type instanceState struct {
 	InstanceSeries *string `pulumi:"instanceSeries"`
 	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
 	MysqlVersion *int `pulumi:"mysqlVersion"`
-	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	// (Available since v1.196.0) The connection port of the DRDS instance.
 	Port *string `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -201,7 +203,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	// (Available since v1.196.0) The connection string of the DRDS instance.
 	ConnectionString pulumi.StringPtrInput
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description pulumi.StringPtrInput
@@ -214,7 +216,7 @@ type InstanceState struct {
 	InstanceSeries pulumi.StringPtrInput
 	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
 	MysqlVersion pulumi.IntPtrInput
-	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	// (Available since v1.196.0) The connection port of the DRDS instance.
 	Port pulumi.StringPtrInput
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -386,7 +388,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// (Available in 1.196.0+) The connection string of the DRDS instance.
+// (Available since v1.196.0) The connection string of the DRDS instance.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -414,7 +416,7 @@ func (o InstanceOutput) MysqlVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MysqlVersion }).(pulumi.IntOutput)
 }
 
-// (Available in 1.196.0+) The connection port of the DRDS instance.
+// (Available since v1.196.0) The connection port of the DRDS instance.
 func (o InstanceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

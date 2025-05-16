@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Cen
     ///         DefaultLinkType = "Platinum",
     ///         BandwidthType = "DataTransfer",
     ///         CenId = defaultpSZB78.Id,
-    ///         PeerTransitRouterRegionId = defaultksqgSa.Id,
+    ///         PeerTransitRouterRegionId = "cn-hangzhou",
     ///         TransitRouterId = defaultUmmxnE.TransitRouterId,
     ///         PeerTransitRouterId = defaultksqgSa.TransitRouterId,
     ///         Bandwidth = 10,
@@ -55,11 +55,11 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var @default = new AliCloud.Cen.InterRegionTrafficQosPolicy("default", new()
     ///     {
-    ///         TransitRouterAttachmentId = defaultnXZ83y.Id,
+    ///         TransitRouterAttachmentId = defaultnXZ83y.TransitRouterAttachmentId,
     ///         InterRegionTrafficQosPolicyName = "example1",
     ///         InterRegionTrafficQosPolicyDescription = "example1",
     ///         BandwidthGuaranteeMode = "byBandwidthPercent",
-    ///         TransitRouterId = defaultnXZ83y.Id,
+    ///         TransitRouterId = defaultksqgSa.TransitRouterId,
     ///     });
     /// 
     /// });

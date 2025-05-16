@@ -538,6 +538,7 @@ class DomainRedirectRequestHeader(dict):
 @pulumi.output_type
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
+                 cname: builtins.str,
                  domain: builtins.str,
                  id: builtins.str,
                  listens: Sequence['outputs.GetDomainsDomainListenResult'],
@@ -545,6 +546,7 @@ class GetDomainsDomainResult(dict):
                  resource_manager_resource_group_id: builtins.str,
                  status: builtins.str):
         """
+        :param builtins.str cname: The CNAME assigned by WAF to the domain name.
         :param builtins.str domain: The name of the domain name to query.
         :param builtins.str id: The ID of the domain. It formats as `<instance_id>:<domain>`.
         :param Sequence['GetDomainsDomainListenArgs'] listens: Configure listening information
@@ -552,12 +554,21 @@ class GetDomainsDomainResult(dict):
         :param builtins.str resource_manager_resource_group_id: The ID of the resource group.
         :param builtins.str status: The status of the domain.
         """
+        pulumi.set(__self__, "cname", cname)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "listens", listens)
         pulumi.set(__self__, "redirects", redirects)
         pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def cname(self) -> builtins.str:
+        """
+        The CNAME assigned by WAF to the domain name.
+        """
+        return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter

@@ -173,7 +173,7 @@ class _HAVipState:
         :param pulumi.Input[builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[builtins.str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
-        :param pulumi.Input[builtins.str] status: (Available in v1.120.0+) The status of the HaVip instance.
+        :param pulumi.Input[builtins.str] status: (Available since v1.120.0) The status of the HaVip instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[builtins.str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
@@ -351,7 +351,7 @@ class _HAVipState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in v1.120.0+) The status of the HaVip instance.
+        (Available since v1.120.0) The status of the HaVip instance.
         """
         return pulumi.get(self, "status")
 
@@ -589,7 +589,7 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[builtins.str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
-        :param pulumi.Input[builtins.str] status: (Available in v1.120.0+) The status of the HaVip instance.
+        :param pulumi.Input[builtins.str] status: (Available since v1.120.0) The status of the HaVip instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[builtins.str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
@@ -710,7 +710,7 @@ class HAVip(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in v1.120.0+) The status of the HaVip instance.
+        (Available since v1.120.0) The status of the HaVip instance.
         """
         return pulumi.get(self, "status")
 

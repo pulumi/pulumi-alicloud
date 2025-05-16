@@ -9,7 +9,11 @@ import * as utilities from "../utilities";
  *
  * For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
  *
- * > **NOTE:** Available since v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
+ *
+ * > **NOTE:** Deprecated since v1.249.0.
+ *
+ * > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  *
  * ## Example Usage
  *

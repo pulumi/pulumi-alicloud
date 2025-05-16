@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Network Attached Storage (NAS) Mount Target resource.
+    /// Provides a File Storage (NAS) Mount Target resource.
     /// 
     /// File system mount point.
     /// 
-    /// For information about Network Attached Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+    /// For information about File Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.34.0.
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Network Attached Storage (NAS) Mount Target can be imported using the id, e.g.
+    /// File Storage (NAS) Mount Target can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/mountTarget:MountTarget example &lt;file_system_id&gt;:&lt;mount_target_domain&gt;

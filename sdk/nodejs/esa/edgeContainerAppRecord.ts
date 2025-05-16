@@ -18,14 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform.com";
  * const _default = alicloud.esa.getSites({
  *     planSubscribeType: "enterpriseplan",
  * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const resourceSiteOriginPoolTest = new alicloud.esa.Site("resource_Site_OriginPool_test", {
- *     siteName: name,
+ *     siteName: `gositecdn-${defaultInteger.result}.cn`,
  *     instanceId: _default.then(_default => _default.sites?.[0]?.instanceId),
  *     coverage: "overseas",
  *     accessType: "NS",

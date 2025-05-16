@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Esa
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -35,9 +36,15 @@ namespace Pulumi.AliCloud.Esa
     ///         PlanSubscribeType = "enterpriseplan",
     ///     });
     /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var resourceSiteOriginPoolTest = new AliCloud.Esa.Site("resource_Site_OriginPool_test", new()
     ///     {
-    ///         SiteName = name,
+    ///         SiteName = $"gositecdn-{defaultInteger.Result}.cn",
     ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.InstanceId)),
     ///         Coverage = "overseas",
     ///         AccessType = "NS",

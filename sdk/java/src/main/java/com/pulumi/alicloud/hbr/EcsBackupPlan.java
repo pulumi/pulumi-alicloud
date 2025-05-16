@@ -22,7 +22,11 @@ import javax.annotation.Nullable;
  * 
  * For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186574.htm).
  * 
- * &gt; **NOTE:** Available in v1.132.0+.
+ * &gt; **NOTE:** Available since v1.132.0.
+ * 
+ * &gt; **NOTE:** Deprecated since v1.249.0.
+ * 
+ * &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  * 
  * ## Example Usage
  * 

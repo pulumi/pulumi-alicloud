@@ -89,14 +89,14 @@ public class Backend extends com.pulumi.resources.CustomResource {
         return this.backendName;
     }
     /**
-     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+     * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      * 
      */
     @Export(name="backendType", refs={String.class}, tree="[0]")
     private Output<String> backendType;
 
     /**
-     * @return The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
+     * @return The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      * 
      */
     public Output<String> backendType() {
@@ -107,14 +107,14 @@ public class Backend extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="createEventBridgeServiceLinkedRole", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> createEventBridgeServiceLinkedRole;
+    private Output<Boolean> createEventBridgeServiceLinkedRole;
 
     /**
      * @return Whether to create an Event bus service association role.
      * 
      */
-    public Output<Optional<Boolean>> createEventBridgeServiceLinkedRole() {
-        return Codegen.optional(this.createEventBridgeServiceLinkedRole);
+    public Output<Boolean> createEventBridgeServiceLinkedRole() {
+        return this.createEventBridgeServiceLinkedRole;
     }
     /**
      * The description of the Backend.

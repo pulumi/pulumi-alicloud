@@ -157,7 +157,7 @@ class ShortUrl(pulumi.CustomResource):
 
         For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
-        > **NOTE:** Available in v1.178.0+.
+        > **NOTE:** Available since v1.178.0.
 
         ## Example Usage
 
@@ -198,7 +198,7 @@ class ShortUrl(pulumi.CustomResource):
 
         For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
-        > **NOTE:** Available in v1.178.0+.
+        > **NOTE:** Available since v1.178.0.
 
         ## Example Usage
 

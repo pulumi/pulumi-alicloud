@@ -73,11 +73,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
+ *         final var name = config.get("name").orElse("terraform_example");
  *         var defaulteNv8bu = new Project("defaulteNv8bu", ProjectArgs.builder()
  *             .projectName(name)
  *             .displayName(name)
  *             .description(name)
+ *             .paiTaskEnabled(true)
  *             .build());
  * 
  *         var defaultUW8inp = new DiJob("defaultUW8inp", DiJobArgs.builder()

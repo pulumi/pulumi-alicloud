@@ -43,7 +43,7 @@ class ApiArgs:
         :param pulumi.Input[builtins.str] description: The description of the api. Defaults to null.
         :param pulumi.Input[builtins.str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
-        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[builtins.bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
@@ -133,7 +133,7 @@ class ApiArgs:
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         """
         return pulumi.get(self, "service_type")
 
@@ -296,7 +296,7 @@ class _ApiState:
         :param pulumi.Input[builtins.str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
-        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
@@ -493,7 +493,7 @@ class _ApiState:
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         """
         return pulumi.get(self, "service_type")
 
@@ -617,7 +617,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
-        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
@@ -793,7 +793,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
-        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        :param pulumi.Input[builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
@@ -927,7 +927,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
         """
         return pulumi.get(self, "service_type")
 

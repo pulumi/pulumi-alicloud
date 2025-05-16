@@ -167,14 +167,18 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform.com"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_origin_pool_test = alicloud.esa.Site("resource_Site_OriginPool_test",
-            site_name=name,
+            site_name=f"gositecdn-{default_integer['result']}.cn",
             instance_id=default.sites[0].instance_id,
             coverage="overseas",
             access_type="NS")
@@ -233,14 +237,18 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform.com"
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_site_origin_pool_test = alicloud.esa.Site("resource_Site_OriginPool_test",
-            site_name=name,
+            site_name=f"gositecdn-{default_integer['result']}.cn",
             instance_id=default.sites[0].instance_id,
             coverage="overseas",
             access_type="NS")

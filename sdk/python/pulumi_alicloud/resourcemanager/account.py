@@ -22,40 +22,65 @@ class AccountArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[builtins.str],
                  abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  folder_id: Optional[pulumi.Input[builtins.str]] = None,
+                 force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 resell_account_type: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[builtins.str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
-               If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-               to get check ids and set them.
-        :param pulumi.Input[builtins.str] account_name_prefix: The name prefix of account.
-        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[builtins.str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[builtins.str] display_name: Member name
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
+               The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        :param pulumi.Input[builtins.str] account_name_prefix: Account name prefix. Empty the system randomly generated.
+               Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+               The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+               The account name must be unique in the resource directory.
+        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder
+        :param pulumi.Input[builtins.bool] force_delete: Whether to force delete the account.
+        :param pulumi.Input[builtins.str] payer_account_id: The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
+        :param pulumi.Input[builtins.str] resell_account_type: The identity type of the member. Valid values:
+               - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+               - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
                
-               > **NOTE:** The member name must be unique within the resource directory.
+               > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.str] type: Member type. The value of ResourceAccount indicates the resource account
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "display_name", display_name)
         if abandon_able_check_ids is not None:
+            warnings.warn("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""abandon_able_check_ids is deprecated: Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
+        if abandon_able_check_ids is not None:
             pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
+        if abandonable_check_ids is not None:
+            pulumi.set(__self__, "abandonable_check_ids", abandonable_check_ids)
         if account_name_prefix is not None:
             pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if payer_account_id is not None:
             pulumi.set(__self__, "payer_account_id", payer_account_id)
+        if resell_account_type is not None:
+            pulumi.set(__self__, "resell_account_type", resell_account_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
-        Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        Member name
         """
         return pulumi.get(self, "display_name")
 
@@ -65,11 +90,10 @@ class AccountArgs:
 
     @property
     @pulumi.getter(name="abandonAbleCheckIds")
+    @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
     def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
-        If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-        to get check ids and set them.
+        . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         """
         return pulumi.get(self, "abandon_able_check_ids")
 
@@ -78,10 +102,26 @@ class AccountArgs:
         pulumi.set(self, "abandon_able_check_ids", value)
 
     @property
+    @pulumi.getter(name="abandonableCheckIds")
+    def abandonable_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The ID of the check item that can choose to abandon and continue to perform member deletion.
+        The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        """
+        return pulumi.get(self, "abandonable_check_ids")
+
+    @abandonable_check_ids.setter
+    def abandonable_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "abandonable_check_ids", value)
+
+    @property
     @pulumi.getter(name="accountNamePrefix")
     def account_name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name prefix of account.
+        Account name prefix. Empty the system randomly generated.
+        Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        The account name must be unique in the resource directory.
         """
         return pulumi.get(self, "account_name_prefix")
 
@@ -93,7 +133,7 @@ class AccountArgs:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the parent folder.
+        The ID of the parent folder
         """
         return pulumi.get(self, "folder_id")
 
@@ -102,10 +142,22 @@ class AccountArgs:
         pulumi.set(self, "folder_id", value)
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to force delete the account.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         """
         return pulumi.get(self, "payer_account_id")
 
@@ -114,208 +166,26 @@ class AccountArgs:
         pulumi.set(self, "payer_account_id", value)
 
     @property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+    @pulumi.getter(name="resellAccountType")
+    def resell_account_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A mapping of tags to assign to the resource.
+        The identity type of the member. Valid values:
+        - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
 
-        > **NOTE:** The member name must be unique within the resource directory.
+        > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
         """
-        return pulumi.get(self, "tags")
+        return pulumi.get(self, "resell_account_type")
 
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "tags", value)
-
-
-@pulumi.input_type
-class _AccountState:
-    def __init__(__self__, *,
-                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[builtins.str]] = None,
-                 join_method: Optional[pulumi.Input[builtins.str]] = None,
-                 join_time: Optional[pulumi.Input[builtins.str]] = None,
-                 modify_time: Optional[pulumi.Input[builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 resource_directory_id: Optional[pulumi.Input[builtins.str]] = None,
-                 status: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
-               If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-               to get check ids and set them.
-        :param pulumi.Input[builtins.str] account_name_prefix: The name prefix of account.
-        :param pulumi.Input[builtins.str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[builtins.str] join_method: Ways for members to join the resource directory. Valid values: `invited`, `created`.
-        :param pulumi.Input[builtins.str] join_time: The time when the member joined the resource directory.
-        :param pulumi.Input[builtins.str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[builtins.str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-        :param pulumi.Input[builtins.str] resource_directory_id: Resource directory ID.
-        :param pulumi.Input[builtins.str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
-               
-               > **NOTE:** The member name must be unique within the resource directory.
-        :param pulumi.Input[builtins.str] type: Member type. The value of `ResourceAccount` indicates the resource account.
-        """
-        if abandon_able_check_ids is not None:
-            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
-        if account_name_prefix is not None:
-            pulumi.set(__self__, "account_name_prefix", account_name_prefix)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
-        if join_method is not None:
-            pulumi.set(__self__, "join_method", join_method)
-        if join_time is not None:
-            pulumi.set(__self__, "join_time", join_time)
-        if modify_time is not None:
-            pulumi.set(__self__, "modify_time", modify_time)
-        if payer_account_id is not None:
-            pulumi.set(__self__, "payer_account_id", payer_account_id)
-        if resource_directory_id is not None:
-            pulumi.set(__self__, "resource_directory_id", resource_directory_id)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="abandonAbleCheckIds")
-    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
-        If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-        to get check ids and set them.
-        """
-        return pulumi.get(self, "abandon_able_check_ids")
-
-    @abandon_able_check_ids.setter
-    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "abandon_able_check_ids", value)
-
-    @property
-    @pulumi.getter(name="accountNamePrefix")
-    def account_name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name prefix of account.
-        """
-        return pulumi.get(self, "account_name_prefix")
-
-    @account_name_prefix.setter
-    def account_name_prefix(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_name_prefix", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The ID of the parent folder.
-        """
-        return pulumi.get(self, "folder_id")
-
-    @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "folder_id", value)
-
-    @property
-    @pulumi.getter(name="joinMethod")
-    def join_method(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Ways for members to join the resource directory. Valid values: `invited`, `created`.
-        """
-        return pulumi.get(self, "join_method")
-
-    @join_method.setter
-    def join_method(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "join_method", value)
-
-    @property
-    @pulumi.getter(name="joinTime")
-    def join_time(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The time when the member joined the resource directory.
-        """
-        return pulumi.get(self, "join_time")
-
-    @join_time.setter
-    def join_time(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "join_time", value)
-
-    @property
-    @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The modification time of the invitation.
-        """
-        return pulumi.get(self, "modify_time")
-
-    @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "modify_time", value)
-
-    @property
-    @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-        """
-        return pulumi.get(self, "payer_account_id")
-
-    @payer_account_id.setter
-    def payer_account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "payer_account_id", value)
-
-    @property
-    @pulumi.getter(name="resourceDirectoryId")
-    def resource_directory_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Resource directory ID.
-        """
-        return pulumi.get(self, "resource_directory_id")
-
-    @resource_directory_id.setter
-    def resource_directory_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "resource_directory_id", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "status", value)
+    @resell_account_type.setter
+    def resell_account_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resell_account_type", value)
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
-
-        > **NOTE:** The member name must be unique within the resource directory.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -327,7 +197,281 @@ class _AccountState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Member type. The value of `ResourceAccount` indicates the resource account.
+        Member type. The value of ResourceAccount indicates the resource account
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class _AccountState:
+    def __init__(__self__, *,
+                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 folder_id: Optional[pulumi.Input[builtins.str]] = None,
+                 force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+                 join_method: Optional[pulumi.Input[builtins.str]] = None,
+                 join_time: Optional[pulumi.Input[builtins.str]] = None,
+                 modify_time: Optional[pulumi.Input[builtins.str]] = None,
+                 payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resell_account_type: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_directory_id: Optional[pulumi.Input[builtins.str]] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
+               The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        :param pulumi.Input[builtins.str] account_name_prefix: Account name prefix. Empty the system randomly generated.
+               Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+               The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+               The account name must be unique in the resource directory.
+        :param pulumi.Input[builtins.str] display_name: Member name
+        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder
+        :param pulumi.Input[builtins.bool] force_delete: Whether to force delete the account.
+        :param pulumi.Input[builtins.str] join_method: Ways for members to join the resource directory.  invited, created
+        :param pulumi.Input[builtins.str] join_time: The time when the member joined the resource directory
+        :param pulumi.Input[builtins.str] modify_time: The modification time of the invitation
+        :param pulumi.Input[builtins.str] payer_account_id: The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
+        :param pulumi.Input[builtins.str] resell_account_type: The identity type of the member. Valid values:
+               - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+               - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+               
+               > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        :param pulumi.Input[builtins.str] resource_directory_id: Resource directory ID
+        :param pulumi.Input[builtins.str] status: Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.str] type: Member type. The value of ResourceAccount indicates the resource account
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        if abandon_able_check_ids is not None:
+            warnings.warn("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""abandon_able_check_ids is deprecated: Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
+        if abandon_able_check_ids is not None:
+            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
+        if abandonable_check_ids is not None:
+            pulumi.set(__self__, "abandonable_check_ids", abandonable_check_ids)
+        if account_name_prefix is not None:
+            pulumi.set(__self__, "account_name_prefix", account_name_prefix)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
+        if join_method is not None:
+            pulumi.set(__self__, "join_method", join_method)
+        if join_time is not None:
+            pulumi.set(__self__, "join_time", join_time)
+        if modify_time is not None:
+            pulumi.set(__self__, "modify_time", modify_time)
+        if payer_account_id is not None:
+            pulumi.set(__self__, "payer_account_id", payer_account_id)
+        if resell_account_type is not None:
+            pulumi.set(__self__, "resell_account_type", resell_account_type)
+        if resource_directory_id is not None:
+            pulumi.set(__self__, "resource_directory_id", resource_directory_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="abandonAbleCheckIds")
+    @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
+    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+        """
+        return pulumi.get(self, "abandon_able_check_ids")
+
+    @abandon_able_check_ids.setter
+    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "abandon_able_check_ids", value)
+
+    @property
+    @pulumi.getter(name="abandonableCheckIds")
+    def abandonable_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The ID of the check item that can choose to abandon and continue to perform member deletion.
+        The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        """
+        return pulumi.get(self, "abandonable_check_ids")
+
+    @abandonable_check_ids.setter
+    def abandonable_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "abandonable_check_ids", value)
+
+    @property
+    @pulumi.getter(name="accountNamePrefix")
+    def account_name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Account name prefix. Empty the system randomly generated.
+        Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        The account name must be unique in the resource directory.
+        """
+        return pulumi.get(self, "account_name_prefix")
+
+    @account_name_prefix.setter
+    def account_name_prefix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_name_prefix", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Member name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the parent folder
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to force delete the account.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="joinMethod")
+    def join_method(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Ways for members to join the resource directory.  invited, created
+        """
+        return pulumi.get(self, "join_method")
+
+    @join_method.setter
+    def join_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "join_method", value)
+
+    @property
+    @pulumi.getter(name="joinTime")
+    def join_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The time when the member joined the resource directory
+        """
+        return pulumi.get(self, "join_time")
+
+    @join_time.setter
+    def join_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "join_time", value)
+
+    @property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The modification time of the invitation
+        """
+        return pulumi.get(self, "modify_time")
+
+    @modify_time.setter
+    def modify_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modify_time", value)
+
+    @property
+    @pulumi.getter(name="payerAccountId")
+    def payer_account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
+        """
+        return pulumi.get(self, "payer_account_id")
+
+    @payer_account_id.setter
+    def payer_account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "payer_account_id", value)
+
+    @property
+    @pulumi.getter(name="resellAccountType")
+    def resell_account_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The identity type of the member. Valid values:
+        - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+
+        > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "resell_account_type")
+
+    @resell_account_type.setter
+    def resell_account_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resell_account_type", value)
+
+    @property
+    @pulumi.getter(name="resourceDirectoryId")
+    def resource_directory_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Resource directory ID
+        """
+        return pulumi.get(self, "resource_directory_id")
+
+    @resource_directory_id.setter
+    def resource_directory_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource_directory_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Member type. The value of ResourceAccount indicates the resource account
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "type")
 
@@ -343,21 +487,26 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  folder_id: Optional[pulumi.Input[builtins.str]] = None,
+                 force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resell_account_type: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
-        For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
+        Provides a Resource Manager Account resource.
+
+        For information about Resource Manager Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
         > **NOTE:** Available since v1.83.0.
 
-        > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
-
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -380,33 +529,36 @@ class Account(pulumi.CustomResource):
             folder_id=example.ids[0])
         ```
 
-        ### Deleting `resourcemanager.Account` or removing it from your configuration
-
-        Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
-        but may not destroy the account. If there are some dependent resource in the account,
-        the deleting account will enter a silence period of 45 days. After the silence period ends,
-        the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
-
         ## Import
 
         Resource Manager Account can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+        $ pulumi import alicloud:resourcemanager/account:Account example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
-               If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-               to get check ids and set them.
-        :param pulumi.Input[builtins.str] account_name_prefix: The name prefix of account.
-        :param pulumi.Input[builtins.str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[builtins.str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
+               The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        :param pulumi.Input[builtins.str] account_name_prefix: Account name prefix. Empty the system randomly generated.
+               Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+               The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+               The account name must be unique in the resource directory.
+        :param pulumi.Input[builtins.str] display_name: Member name
+        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder
+        :param pulumi.Input[builtins.bool] force_delete: Whether to force delete the account.
+        :param pulumi.Input[builtins.str] payer_account_id: The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
+        :param pulumi.Input[builtins.str] resell_account_type: The identity type of the member. Valid values:
+               - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+               - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
                
-               > **NOTE:** The member name must be unique within the resource directory.
+               > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.str] type: Member type. The value of ResourceAccount indicates the resource account
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -415,14 +567,15 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
-        For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
+        Provides a Resource Manager Account resource.
+
+        For information about Resource Manager Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
         > **NOTE:** Available since v1.83.0.
 
-        > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
-
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -445,19 +598,12 @@ class Account(pulumi.CustomResource):
             folder_id=example.ids[0])
         ```
 
-        ### Deleting `resourcemanager.Account` or removing it from your configuration
-
-        Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
-        but may not destroy the account. If there are some dependent resource in the account,
-        the deleting account will enter a silence period of 45 days. After the silence period ends,
-        the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
-
         ## Import
 
         Resource Manager Account can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+        $ pulumi import alicloud:resourcemanager/account:Account example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -476,11 +622,15 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  folder_id: Optional[pulumi.Input[builtins.str]] = None,
+                 force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resell_account_type: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,19 +641,22 @@ class Account(pulumi.CustomResource):
             __props__ = AccountArgs.__new__(AccountArgs)
 
             __props__.__dict__["abandon_able_check_ids"] = abandon_able_check_ids
+            __props__.__dict__["abandonable_check_ids"] = abandonable_check_ids
             __props__.__dict__["account_name_prefix"] = account_name_prefix
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["payer_account_id"] = payer_account_id
+            __props__.__dict__["resell_account_type"] = resell_account_type
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["type"] = type
             __props__.__dict__["join_method"] = None
             __props__.__dict__["join_time"] = None
             __props__.__dict__["modify_time"] = None
             __props__.__dict__["resource_directory_id"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["type"] = None
         super(Account, __self__).__init__(
             'alicloud:resourcemanager/account:Account',
             resource_name,
@@ -515,13 +668,16 @@ class Account(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             account_name_prefix: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             folder_id: Optional[pulumi.Input[builtins.str]] = None,
+            force_delete: Optional[pulumi.Input[builtins.bool]] = None,
             join_method: Optional[pulumi.Input[builtins.str]] = None,
             join_time: Optional[pulumi.Input[builtins.str]] = None,
             modify_time: Optional[pulumi.Input[builtins.str]] = None,
             payer_account_id: Optional[pulumi.Input[builtins.str]] = None,
+            resell_account_type: Optional[pulumi.Input[builtins.str]] = None,
             resource_directory_id: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -533,35 +689,47 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
-               If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-               to get check ids and set them.
-        :param pulumi.Input[builtins.str] account_name_prefix: The name prefix of account.
-        :param pulumi.Input[builtins.str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[builtins.str] join_method: Ways for members to join the resource directory. Valid values: `invited`, `created`.
-        :param pulumi.Input[builtins.str] join_time: The time when the member joined the resource directory.
-        :param pulumi.Input[builtins.str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[builtins.str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-        :param pulumi.Input[builtins.str] resource_directory_id: Resource directory ID.
-        :param pulumi.Input[builtins.str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandon_able_check_ids: . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] abandonable_check_ids: The ID of the check item that can choose to abandon and continue to perform member deletion.
+               The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        :param pulumi.Input[builtins.str] account_name_prefix: Account name prefix. Empty the system randomly generated.
+               Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+               The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+               The account name must be unique in the resource directory.
+        :param pulumi.Input[builtins.str] display_name: Member name
+        :param pulumi.Input[builtins.str] folder_id: The ID of the parent folder
+        :param pulumi.Input[builtins.bool] force_delete: Whether to force delete the account.
+        :param pulumi.Input[builtins.str] join_method: Ways for members to join the resource directory.  invited, created
+        :param pulumi.Input[builtins.str] join_time: The time when the member joined the resource directory
+        :param pulumi.Input[builtins.str] modify_time: The modification time of the invitation
+        :param pulumi.Input[builtins.str] payer_account_id: The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
+        :param pulumi.Input[builtins.str] resell_account_type: The identity type of the member. Valid values:
+               - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+               - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
                
-               > **NOTE:** The member name must be unique within the resource directory.
-        :param pulumi.Input[builtins.str] type: Member type. The value of `ResourceAccount` indicates the resource account.
+               > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        :param pulumi.Input[builtins.str] resource_directory_id: Resource directory ID
+        :param pulumi.Input[builtins.str] status: Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.str] type: Member type. The value of ResourceAccount indicates the resource account
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccountState.__new__(_AccountState)
 
         __props__.__dict__["abandon_able_check_ids"] = abandon_able_check_ids
+        __props__.__dict__["abandonable_check_ids"] = abandonable_check_ids
         __props__.__dict__["account_name_prefix"] = account_name_prefix
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["join_method"] = join_method
         __props__.__dict__["join_time"] = join_time
         __props__.__dict__["modify_time"] = modify_time
         __props__.__dict__["payer_account_id"] = payer_account_id
+        __props__.__dict__["resell_account_type"] = resell_account_type
         __props__.__dict__["resource_directory_id"] = resource_directory_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -570,19 +738,30 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="abandonAbleCheckIds")
+    @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
     def abandon_able_check_ids(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
-        If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
-        to get check ids and set them.
+        . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         """
         return pulumi.get(self, "abandon_able_check_ids")
+
+    @property
+    @pulumi.getter(name="abandonableCheckIds")
+    def abandonable_check_ids(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        The ID of the check item that can choose to abandon and continue to perform member deletion.
+        The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
+        """
+        return pulumi.get(self, "abandonable_check_ids")
 
     @property
     @pulumi.getter(name="accountNamePrefix")
     def account_name_prefix(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The name prefix of account.
+        Account name prefix. Empty the system randomly generated.
+        Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
+        The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
+        The account name must be unique in the resource directory.
         """
         return pulumi.get(self, "account_name_prefix")
 
@@ -590,7 +769,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
-        Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        Member name
         """
         return pulumi.get(self, "display_name")
 
@@ -598,15 +777,23 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the parent folder.
+        The ID of the parent folder
         """
         return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether to force delete the account.
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter(name="joinMethod")
     def join_method(self) -> pulumi.Output[builtins.str]:
         """
-        Ways for members to join the resource directory. Valid values: `invited`, `created`.
+        Ways for members to join the resource directory.  invited, created
         """
         return pulumi.get(self, "join_method")
 
@@ -614,7 +801,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="joinTime")
     def join_time(self) -> pulumi.Output[builtins.str]:
         """
-        The time when the member joined the resource directory.
+        The time when the member joined the resource directory
         """
         return pulumi.get(self, "join_time")
 
@@ -622,7 +809,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="modifyTime")
     def modify_time(self) -> pulumi.Output[builtins.str]:
         """
-        The modification time of the invitation.
+        The modification time of the invitation
         """
         return pulumi.get(self, "modify_time")
 
@@ -630,15 +817,27 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
+        The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         """
         return pulumi.get(self, "payer_account_id")
+
+    @property
+    @pulumi.getter(name="resellAccountType")
+    def resell_account_type(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The identity type of the member. Valid values:
+        - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        - non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+
+        > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
+        """
+        return pulumi.get(self, "resell_account_type")
 
     @property
     @pulumi.getter(name="resourceDirectoryId")
     def resource_directory_id(self) -> pulumi.Output[builtins.str]:
         """
-        Resource directory ID.
+        Resource directory ID
         """
         return pulumi.get(self, "resource_directory_id")
 
@@ -646,7 +845,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
+        Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
         """
         return pulumi.get(self, "status")
 
@@ -654,9 +853,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        A mapping of tags to assign to the resource.
-
-        > **NOTE:** The member name must be unique within the resource directory.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -664,7 +861,9 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Member type. The value of `ResourceAccount` indicates the resource account.
+        Member type. The value of ResourceAccount indicates the resource account
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "type")
 

@@ -17,44 +17,92 @@ public final class MasterSlaveServerGroupServerArgs extends com.pulumi.resources
 
     public static final MasterSlaveServerGroupServerArgs Empty = new MasterSlaveServerGroupServerArgs();
 
+    /**
+     * Determine if the server is executing. Valid value 0, 1.
+     * 
+     */
     @Import(name="isBackup")
     private @Nullable Output<Integer> isBackup;
 
+    /**
+     * @return Determine if the server is executing. Valid value 0, 1.
+     * 
+     */
     public Optional<Output<Integer>> isBackup() {
         return Optional.ofNullable(this.isBackup);
     }
 
+    /**
+     * The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * A list backend server ID (ECS instance ID).
+     * 
+     */
     @Import(name="serverId", required=true)
     private Output<String> serverId;
 
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public Output<String> serverId() {
         return this.serverId;
     }
 
+    /**
+     * The server type of the backend server. Valid value Master, Slave.
+     * 
+     */
     @Import(name="serverType")
     private @Nullable Output<String> serverType;
 
+    /**
+     * @return The server type of the backend server. Valid value Master, Slave.
+     * 
+     */
     public Optional<Output<String>> serverType() {
         return Optional.ofNullable(this.serverType);
     }
 
+    /**
+     * Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     public Optional<Output<Integer>> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -88,56 +136,128 @@ public final class MasterSlaveServerGroupServerArgs extends com.pulumi.resources
             $ = new MasterSlaveServerGroupServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param isBackup Determine if the server is executing. Valid value 0, 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isBackup(@Nullable Output<Integer> isBackup) {
             $.isBackup = isBackup;
             return this;
         }
 
+        /**
+         * @param isBackup Determine if the server is executing. Valid value 0, 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isBackup(Integer isBackup) {
             return isBackup(Output.of(isBackup));
         }
 
+        /**
+         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param serverId A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverId(Output<String> serverId) {
             $.serverId = serverId;
             return this;
         }
 
+        /**
+         * @param serverId A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverId(String serverId) {
             return serverId(Output.of(serverId));
         }
 
+        /**
+         * @param serverType The server type of the backend server. Valid value Master, Slave.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverType(@Nullable Output<String> serverType) {
             $.serverType = serverType;
             return this;
         }
 
+        /**
+         * @param serverType The server type of the backend server. Valid value Master, Slave.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverType(String serverType) {
             return serverType(Output.of(serverType));
         }
 
+        /**
+         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(@Nullable Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

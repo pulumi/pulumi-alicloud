@@ -221,11 +221,29 @@ class ListenerXForwardedForArgs:
 if not MYPY:
     class MasterSlaveServerGroupServerArgsDict(TypedDict):
         port: pulumi.Input[builtins.int]
+        """
+        The port used by the backend server. Valid value range: [1-65535].
+        """
         server_id: pulumi.Input[builtins.str]
+        """
+        A list backend server ID (ECS instance ID).
+        """
         is_backup: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Determine if the server is executing. Valid value 0, 1.
+        """
         server_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The server type of the backend server. Valid value Master, Slave.
+        """
         type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Type of the backend server. Valid value ecs, eni. Default to eni.
+        """
         weight: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
 elif False:
     MasterSlaveServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -238,6 +256,14 @@ class MasterSlaveServerGroupServerArgs:
                  server_type: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.int] port: The port used by the backend server. Valid value range: [1-65535].
+        :param pulumi.Input[builtins.str] server_id: A list backend server ID (ECS instance ID).
+        :param pulumi.Input[builtins.int] is_backup: Determine if the server is executing. Valid value 0, 1.
+        :param pulumi.Input[builtins.str] server_type: The server type of the backend server. Valid value Master, Slave.
+        :param pulumi.Input[builtins.str] type: Type of the backend server. Valid value ecs, eni. Default to eni.
+        :param pulumi.Input[builtins.int] weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
         if is_backup is not None:
@@ -252,6 +278,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[builtins.int]:
+        """
+        The port used by the backend server. Valid value range: [1-65535].
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -261,6 +290,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Input[builtins.str]:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
@@ -270,6 +302,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter(name="isBackup")
     def is_backup(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Determine if the server is executing. Valid value 0, 1.
+        """
         return pulumi.get(self, "is_backup")
 
     @is_backup.setter
@@ -279,6 +314,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The server type of the backend server. Valid value Master, Slave.
+        """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
@@ -288,6 +326,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of the backend server. Valid value ecs, eni. Default to eni.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -297,6 +338,9 @@ class MasterSlaveServerGroupServerArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter

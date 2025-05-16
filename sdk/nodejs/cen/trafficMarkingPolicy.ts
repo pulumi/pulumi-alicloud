@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN Traffic Marking Policy can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -82,6 +82,10 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to forcibly delete the traffic marker policy. Valid values:
+     */
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    /**
      * MarkingDscp
      */
     public readonly markingDscp!: pulumi.Output<number>;
@@ -103,7 +107,6 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
     public readonly trafficMarkingPolicyName!: pulumi.Output<string | undefined>;
     /**
      * List of stream classification rules.
-     *
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
     public readonly trafficMatchRules!: pulumi.Output<outputs.cen.TrafficMarkingPolicyTrafficMatchRule[] | undefined>;
@@ -127,6 +130,7 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
             const state = argsOrState as TrafficMarkingPolicyState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["markingDscp"] = state ? state.markingDscp : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -147,6 +151,7 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["markingDscp"] = args ? args.markingDscp : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["trafficMarkingPolicyName"] = args ? args.trafficMarkingPolicyName : undefined;
@@ -173,6 +178,10 @@ export interface TrafficMarkingPolicyState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
+     * Whether to forcibly delete the traffic marker policy. Valid values:
+     */
+    force?: pulumi.Input<boolean>;
+    /**
      * MarkingDscp
      */
     markingDscp?: pulumi.Input<number>;
@@ -194,7 +203,6 @@ export interface TrafficMarkingPolicyState {
     trafficMarkingPolicyName?: pulumi.Input<string>;
     /**
      * List of stream classification rules.
-     *
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
     trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[]>;
@@ -217,6 +225,10 @@ export interface TrafficMarkingPolicyArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
+     * Whether to forcibly delete the traffic marker policy. Valid values:
+     */
+    force?: pulumi.Input<boolean>;
+    /**
      * MarkingDscp
      */
     markingDscp: pulumi.Input<number>;
@@ -230,7 +242,6 @@ export interface TrafficMarkingPolicyArgs {
     trafficMarkingPolicyName?: pulumi.Input<string>;
     /**
      * List of stream classification rules.
-     *
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
     trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[]>;

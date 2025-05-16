@@ -27,6 +27,7 @@ class TrafficMarkingPolicyArgs:
                  transit_router_id: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[builtins.bool]] = None,
+                 force: Optional[pulumi.Input[builtins.bool]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[builtins.str]] = None,
                  traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None):
         """
@@ -36,9 +37,9 @@ class TrafficMarkingPolicyArgs:
         :param pulumi.Input[builtins.str] transit_router_id: TransitRouterId
         :param pulumi.Input[builtins.str] description: TrafficMarkingPolicyDescription
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[builtins.bool] force: Whether to forcibly delete the traffic marker policy. Valid values:
         :param pulumi.Input[builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
         :param pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]] traffic_match_rules: List of stream classification rules.
-               
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         """
         pulumi.set(__self__, "marking_dscp", marking_dscp)
@@ -48,6 +49,8 @@ class TrafficMarkingPolicyArgs:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if traffic_marking_policy_name is not None:
             pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
         if traffic_match_rules is not None:
@@ -114,6 +117,18 @@ class TrafficMarkingPolicyArgs:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to forcibly delete the traffic marker policy. Valid values:
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
     @pulumi.getter(name="trafficMarkingPolicyName")
     def traffic_marking_policy_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -130,7 +145,6 @@ class TrafficMarkingPolicyArgs:
     def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
         """
         List of stream classification rules.
-
         You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         """
         return pulumi.get(self, "traffic_match_rules")
@@ -145,6 +159,7 @@ class _TrafficMarkingPolicyState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[builtins.bool]] = None,
+                 force: Optional[pulumi.Input[builtins.bool]] = None,
                  marking_dscp: Optional[pulumi.Input[builtins.int]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -156,13 +171,13 @@ class _TrafficMarkingPolicyState:
         Input properties used for looking up and filtering TrafficMarkingPolicy resources.
         :param pulumi.Input[builtins.str] description: TrafficMarkingPolicyDescription
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[builtins.bool] force: Whether to forcibly delete the traffic marker policy. Valid values:
         :param pulumi.Input[builtins.int] marking_dscp: MarkingDscp
         :param pulumi.Input[builtins.int] priority: Priority
         :param pulumi.Input[builtins.str] status: The status of the resource
         :param pulumi.Input[builtins.str] traffic_marking_policy_id: The first ID of the resource
         :param pulumi.Input[builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
         :param pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]] traffic_match_rules: List of stream classification rules.
-               
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         :param pulumi.Input[builtins.str] transit_router_id: TransitRouterId
         """
@@ -170,6 +185,8 @@ class _TrafficMarkingPolicyState:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if marking_dscp is not None:
             pulumi.set(__self__, "marking_dscp", marking_dscp)
         if priority is not None:
@@ -208,6 +225,18 @@ class _TrafficMarkingPolicyState:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to forcibly delete the traffic marker policy. Valid values:
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "force", value)
 
     @property
     @pulumi.getter(name="markingDscp")
@@ -274,7 +303,6 @@ class _TrafficMarkingPolicyState:
     def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
         """
         List of stream classification rules.
-
         You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         """
         return pulumi.get(self, "traffic_match_rules")
@@ -304,6 +332,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[builtins.bool]] = None,
+                 force: Optional[pulumi.Input[builtins.bool]] = None,
                  marking_dscp: Optional[pulumi.Input[builtins.int]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -340,7 +369,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        CEN Traffic Marking Policy can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -350,11 +379,11 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: TrafficMarkingPolicyDescription
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[builtins.bool] force: Whether to forcibly delete the traffic marker policy. Valid values:
         :param pulumi.Input[builtins.int] marking_dscp: MarkingDscp
         :param pulumi.Input[builtins.int] priority: Priority
         :param pulumi.Input[builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
         :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
-               
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         :param pulumi.Input[builtins.str] transit_router_id: TransitRouterId
         """
@@ -394,7 +423,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        CEN Traffic Marking Policy can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -417,6 +446,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[builtins.bool]] = None,
+                 force: Optional[pulumi.Input[builtins.bool]] = None,
                  marking_dscp: Optional[pulumi.Input[builtins.int]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -433,6 +463,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["force"] = force
             if marking_dscp is None and not opts.urn:
                 raise TypeError("Missing required property 'marking_dscp'")
             __props__.__dict__["marking_dscp"] = marking_dscp
@@ -458,6 +489,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             dry_run: Optional[pulumi.Input[builtins.bool]] = None,
+            force: Optional[pulumi.Input[builtins.bool]] = None,
             marking_dscp: Optional[pulumi.Input[builtins.int]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -474,13 +506,13 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: TrafficMarkingPolicyDescription
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[builtins.bool] force: Whether to forcibly delete the traffic marker policy. Valid values:
         :param pulumi.Input[builtins.int] marking_dscp: MarkingDscp
         :param pulumi.Input[builtins.int] priority: Priority
         :param pulumi.Input[builtins.str] status: The status of the resource
         :param pulumi.Input[builtins.str] traffic_marking_policy_id: The first ID of the resource
         :param pulumi.Input[builtins.str] traffic_marking_policy_name: TrafficMarkingPolicyName
         :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
-               
                You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         :param pulumi.Input[builtins.str] transit_router_id: TransitRouterId
         """
@@ -490,6 +522,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["force"] = force
         __props__.__dict__["marking_dscp"] = marking_dscp
         __props__.__dict__["priority"] = priority
         __props__.__dict__["status"] = status
@@ -514,6 +547,14 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether to forcibly delete the traffic marker policy. Valid values:
+        """
+        return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="markingDscp")
@@ -560,7 +601,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     def traffic_match_rules(self) -> pulumi.Output[Optional[Sequence['outputs.TrafficMarkingPolicyTrafficMatchRule']]]:
         """
         List of stream classification rules.
-
         You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         """
         return pulumi.get(self, "traffic_match_rules")

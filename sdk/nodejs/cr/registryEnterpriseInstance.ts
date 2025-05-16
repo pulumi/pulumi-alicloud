@@ -31,8 +31,8 @@ import * as utilities from "../utilities";
  * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
- *     renewPeriod: 0,
- *     renewalStatus: "ManualRenewal",
+ *     renewPeriod: 1,
+ *     renewalStatus: "AutoRenewal",
  *     instanceType: "Advanced",
  *     instanceName: `${name}-${_default.result}`,
  * });

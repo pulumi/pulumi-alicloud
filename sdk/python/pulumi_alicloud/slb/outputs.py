@@ -235,6 +235,14 @@ class MasterSlaveServerGroupServer(dict):
                  server_type: Optional[builtins.str] = None,
                  type: Optional[builtins.str] = None,
                  weight: Optional[builtins.int] = None):
+        """
+        :param builtins.int port: The port used by the backend server. Valid value range: [1-65535].
+        :param builtins.str server_id: A list backend server ID (ECS instance ID).
+        :param builtins.int is_backup: Determine if the server is executing. Valid value 0, 1.
+        :param builtins.str server_type: The server type of the backend server. Valid value Master, Slave.
+        :param builtins.str type: Type of the backend server. Valid value ecs, eni. Default to eni.
+        :param builtins.int weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
         if is_backup is not None:
@@ -249,31 +257,49 @@ class MasterSlaveServerGroupServer(dict):
     @property
     @pulumi.getter
     def port(self) -> builtins.int:
+        """
+        The port used by the backend server. Valid value range: [1-65535].
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="serverId")
     def server_id(self) -> builtins.str:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_id")
 
     @property
     @pulumi.getter(name="isBackup")
     def is_backup(self) -> Optional[builtins.int]:
+        """
+        Determine if the server is executing. Valid value 0, 1.
+        """
         return pulumi.get(self, "is_backup")
 
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> Optional[builtins.str]:
+        """
+        The server type of the backend server. Valid value Master, Slave.
+        """
         return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[builtins.str]:
+        """
+        Type of the backend server. Valid value ecs, eni. Default to eni.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def weight(self) -> Optional[builtins.int]:
+        """
+        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         return pulumi.get(self, "weight")
 
 

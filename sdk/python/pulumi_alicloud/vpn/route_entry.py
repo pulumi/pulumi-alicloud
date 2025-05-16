@@ -115,8 +115,8 @@ class _RouteEntryState:
         :param pulumi.Input[builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[builtins.str] route_dest: The destination network segment of the destination route.
-        :param pulumi.Input[builtins.str] route_entry_type: (Available in 1.161.0+) The type of the vpn route entry.
-        :param pulumi.Input[builtins.str] status: (Available in 1.161.0+) The status of the vpn route entry.
+        :param pulumi.Input[builtins.str] route_entry_type: (Available since v1.161.0) The type of the vpn route entry.
+        :param pulumi.Input[builtins.str] status: (Available since v1.161.0) The status of the vpn route entry.
         :param pulumi.Input[builtins.str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[builtins.int] weight: The value should be 0 or 100.
         """
@@ -175,7 +175,7 @@ class _RouteEntryState:
     @pulumi.getter(name="routeEntryType")
     def route_entry_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.161.0+) The type of the vpn route entry.
+        (Available since v1.161.0) The type of the vpn route entry.
         """
         return pulumi.get(self, "route_entry_type")
 
@@ -187,7 +187,7 @@ class _RouteEntryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.161.0+) The status of the vpn route entry.
+        (Available since v1.161.0) The status of the vpn route entry.
         """
         return pulumi.get(self, "status")
 
@@ -533,8 +533,8 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[builtins.bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[builtins.str] route_dest: The destination network segment of the destination route.
-        :param pulumi.Input[builtins.str] route_entry_type: (Available in 1.161.0+) The type of the vpn route entry.
-        :param pulumi.Input[builtins.str] status: (Available in 1.161.0+) The status of the vpn route entry.
+        :param pulumi.Input[builtins.str] route_entry_type: (Available since v1.161.0) The type of the vpn route entry.
+        :param pulumi.Input[builtins.str] status: (Available since v1.161.0) The status of the vpn route entry.
         :param pulumi.Input[builtins.str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[builtins.int] weight: The value should be 0 or 100.
         """
@@ -579,7 +579,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="routeEntryType")
     def route_entry_type(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.161.0+) The type of the vpn route entry.
+        (Available since v1.161.0) The type of the vpn route entry.
         """
         return pulumi.get(self, "route_entry_type")
 
@@ -587,7 +587,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.161.0+) The status of the vpn route entry.
+        (Available since v1.161.0) The status of the vpn route entry.
         """
         return pulumi.get(self, "status")
 

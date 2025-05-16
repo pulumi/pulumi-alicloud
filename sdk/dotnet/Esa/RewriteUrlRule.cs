@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Esa
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -41,15 +42,21 @@ namespace Pulumi.AliCloud.Esa
     ///         PlanName = "high",
     ///     });
     /// 
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var resourceRewriteUrlRuleSiteExample = new AliCloud.Esa.Site("resource_RewriteUrlRule_Site_example", new()
     ///     {
-    ///         SiteName = "gositecdn.cn",
+    ///         SiteName = $"gositecdn-{@default.Result}.cn",
     ///         InstanceId = resourceRewriteUrlRuleRatePlanInstanceExample.Id,
     ///         Coverage = "overseas",
     ///         AccessType = "NS",
     ///     });
     /// 
-    ///     var @default = new AliCloud.Esa.RewriteUrlRule("default", new()
+    ///     var defaultRewriteUrlRule = new AliCloud.Esa.RewriteUrlRule("default", new()
     ///     {
     ///         RewriteUriType = "static",
     ///         RewriteQueryStringType = "static",

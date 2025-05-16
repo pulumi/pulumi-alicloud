@@ -13,9 +13,9 @@ namespace Pulumi.AliCloud.Gpdb
     /// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
     /// For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
     /// 
-    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+    /// &gt; **NOTE:** Deprecated since v1.147.0.
     /// 
-    /// &gt; **NOTE:**  Available in 1.127.0+
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
     /// 
     /// ## Example Usage
     /// 
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the instance.
+        /// (Available since v1.196.0) The connection port of the instance.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the instance.
+        /// (Available since v1.196.0) The connection port of the instance.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

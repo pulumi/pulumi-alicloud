@@ -15,7 +15,7 @@ import (
 //
 // For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
 //
-// > **NOTE:** Available in v1.182.0+.
+// > **NOTE:** Available since v1.182.0.
 //
 // ## Example Usage
 //

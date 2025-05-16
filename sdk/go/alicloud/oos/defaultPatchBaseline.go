@@ -16,7 +16,7 @@ import (
 //
 // For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
 //
-// > **NOTE:** Available in v1.203.0+.
+// > **NOTE:** Available since v1.203.0.
 //
 // ## Example Usage
 //

@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN Traffic Marking Policy can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
@@ -117,6 +117,20 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
+    }
+    /**
+     * Whether to forcibly delete the traffic marker policy. Valid values:
+     * 
+     */
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> force;
+
+    /**
+     * @return Whether to forcibly delete the traffic marker policy. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> force() {
+        return Codegen.optional(this.force);
     }
     /**
      * MarkingDscp
@@ -190,7 +204,6 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of stream classification rules.
-     * 
      * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
      * 
      */
@@ -199,7 +212,6 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of stream classification rules.
-     * 
      * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
      * 
      */

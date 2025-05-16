@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +21,18 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     public static final HealthCheckTemplateArgs Empty = new HealthCheckTemplateArgs();
 
     /**
-     * Whether to precheck the API request.
+     * Whether to PreCheck only this request, value:
+     * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+     * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to precheck the API request.
+     * @return Whether to PreCheck only this request, value:
+     * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+     * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -35,14 +40,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
      * 
      */
     @Import(name="healthCheckCodes")
     private @Nullable Output<List<String>> healthCheckCodes;
 
     /**
-     * @return The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * @return The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
      * 
      */
     public Optional<Output<List<String>>> healthCheckCodes() {
@@ -50,14 +55,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+     * The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
      * 
      */
     @Import(name="healthCheckConnectPort")
     private @Nullable Output<Integer> healthCheckConnectPort;
 
     /**
-     * @return The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+     * @return The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
      * 
      */
     public Optional<Output<Integer>> healthCheckConnectPort() {
@@ -65,14 +70,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
      * 
      */
     @Import(name="healthCheckHost")
     private @Nullable Output<String> healthCheckHost;
 
     /**
-     * @return The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * @return The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
      * 
      */
     public Optional<Output<String>> healthCheckHost() {
@@ -80,14 +85,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
      * 
      */
     @Import(name="healthCheckHttpVersion")
     private @Nullable Output<String> healthCheckHttpVersion;
 
     /**
-     * @return The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * @return The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
      * 
      */
     public Optional<Output<String>> healthCheckHttpVersion() {
@@ -95,14 +100,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+     * The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+     * @return The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -110,14 +115,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
      * 
      */
     @Import(name="healthCheckMethod")
     private @Nullable Output<String> healthCheckMethod;
 
     /**
-     * @return The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * @return The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
      * 
      */
     public Optional<Output<String>> healthCheckMethod() {
@@ -125,14 +130,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/).
      * 
      */
     @Import(name="healthCheckPath")
     private @Nullable Output<String> healthCheckPath;
 
     /**
-     * @return The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/).
      * 
      */
     public Optional<Output<String>> healthCheckPath() {
@@ -140,14 +145,22 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+     * The protocol used for the health check. Value:
+     * HTTP (default): Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy.
+     * HTTPS: Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+     * TCP: Sends a SYN handshake packet to check whether the server port is alive.
+     * gRPC: Check whether the server application is healthy by sending a POST or GET request.
      * 
      */
     @Import(name="healthCheckProtocol")
     private @Nullable Output<String> healthCheckProtocol;
 
     /**
-     * @return The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+     * @return The protocol used for the health check. Value:
+     * HTTP (default): Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy.
+     * HTTPS: Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+     * TCP: Sends a SYN handshake packet to check whether the server port is alive.
+     * gRPC: Check whether the server application is healthy by sending a POST or GET request.
      * 
      */
     public Optional<Output<String>> healthCheckProtocol() {
@@ -155,14 +168,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="healthCheckTemplateName", required=true)
     private Output<String> healthCheckTemplateName;
 
     /**
-     * @return The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> healthCheckTemplateName() {
@@ -170,14 +183,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+     * The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
      * 
      */
     @Import(name="healthCheckTimeout")
     private @Nullable Output<Integer> healthCheckTimeout;
 
     /**
-     * @return The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+     * @return The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
      * 
      */
     public Optional<Output<Integer>> healthCheckTimeout() {
@@ -185,14 +198,14 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -200,14 +213,44 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+     * The ID of the resource group
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
      * 
      */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
     /**
-     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
      * 
      */
     public Optional<Output<Integer>> unhealthyThreshold() {
@@ -229,6 +272,8 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         this.healthCheckTemplateName = $.healthCheckTemplateName;
         this.healthCheckTimeout = $.healthCheckTimeout;
         this.healthyThreshold = $.healthyThreshold;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.unhealthyThreshold = $.unhealthyThreshold;
     }
 
@@ -251,7 +296,9 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dryRun Whether to precheck the API request.
+         * @param dryRun Whether to PreCheck only this request, value:
+         * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+         * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
          * 
          * @return builder
          * 
@@ -262,7 +309,9 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dryRun Whether to precheck the API request.
+         * @param dryRun Whether to PreCheck only this request, value:
+         * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+         * false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
          * 
          * @return builder
          * 
@@ -272,7 +321,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckCodes The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckCodes The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
          * 
          * @return builder
          * 
@@ -283,7 +332,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckCodes The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckCodes The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
          * 
          * @return builder
          * 
@@ -293,7 +342,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckCodes The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckCodes The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
          * 
          * @return builder
          * 
@@ -303,7 +352,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckConnectPort The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+         * @param healthCheckConnectPort The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
          * 
          * @return builder
          * 
@@ -314,7 +363,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckConnectPort The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+         * @param healthCheckConnectPort The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
          * 
          * @return builder
          * 
@@ -324,7 +373,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckHost The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckHost The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
          * 
          * @return builder
          * 
@@ -335,7 +384,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckHost The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckHost The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
          * 
          * @return builder
          * 
@@ -345,7 +394,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckHttpVersion The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckHttpVersion The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
          * 
          * @return builder
          * 
@@ -356,7 +405,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckHttpVersion The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckHttpVersion The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
          * 
          * @return builder
          * 
@@ -366,7 +415,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckInterval The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+         * @param healthCheckInterval The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
          * 
          * @return builder
          * 
@@ -377,7 +426,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckInterval The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+         * @param healthCheckInterval The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
          * 
          * @return builder
          * 
@@ -387,7 +436,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckMethod The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckMethod The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
          * 
          * @return builder
          * 
@@ -398,7 +447,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckMethod The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckMethod The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
          * 
          * @return builder
          * 
@@ -408,7 +457,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckPath The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckPath The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/).
          * 
          * @return builder
          * 
@@ -419,7 +468,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckPath The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+         * @param healthCheckPath The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/).
          * 
          * @return builder
          * 
@@ -429,7 +478,11 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckProtocol The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+         * @param healthCheckProtocol The protocol used for the health check. Value:
+         * HTTP (default): Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy.
+         * HTTPS: Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+         * TCP: Sends a SYN handshake packet to check whether the server port is alive.
+         * gRPC: Check whether the server application is healthy by sending a POST or GET request.
          * 
          * @return builder
          * 
@@ -440,7 +493,11 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckProtocol The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+         * @param healthCheckProtocol The protocol used for the health check. Value:
+         * HTTP (default): Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy.
+         * HTTPS: Sends a HEAD or GET request to simulate the browser&#39;s access behavior to check whether the server application is healthy. (Data encryption is more secure than HTTP.)
+         * TCP: Sends a SYN handshake packet to check whether the server port is alive.
+         * gRPC: Check whether the server application is healthy by sending a POST or GET request.
          * 
          * @return builder
          * 
@@ -450,7 +507,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckTemplateName The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param healthCheckTemplateName The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -461,7 +518,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckTemplateName The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param healthCheckTemplateName The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -471,7 +528,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckTimeout The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+         * @param healthCheckTimeout The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
          * 
          * @return builder
          * 
@@ -482,7 +539,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthCheckTimeout The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+         * @param healthCheckTimeout The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
          * 
          * @return builder
          * 
@@ -492,7 +549,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
          * 
          * @return builder
          * 
@@ -503,7 +560,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
          * 
          * @return builder
          * 
@@ -513,7 +570,49 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param unhealthyThreshold Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
          * 
          * @return builder
          * 
@@ -524,7 +623,7 @@ public final class HealthCheckTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+         * @param unhealthyThreshold Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
          * 
          * @return builder
          * 

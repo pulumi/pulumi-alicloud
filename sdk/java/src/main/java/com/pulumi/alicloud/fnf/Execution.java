@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
  * 
- * &gt; **NOTE:** Available since v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0.
  * 
  * ## Example Usage
  * 

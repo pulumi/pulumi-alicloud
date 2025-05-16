@@ -623,6 +623,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -636,12 +637,15 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_http_basic_configuration_set_example = alicloud.esa.Site("resource_HttpBasicConfiguration_set_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpsBasicConfiguration("default",
+        default_https_basic_configuration = alicloud.esa.HttpsBasicConfiguration("default",
             https="on",
             rule="true",
             rule_name="example2",
@@ -717,6 +721,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -730,12 +735,15 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             coverage="overseas",
             auto_pay=True,
             plan_name="high")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         resource_http_basic_configuration_set_example = alicloud.esa.Site("resource_HttpBasicConfiguration_set_example",
-            site_name="gositecdn.cn",
+            site_name=f"gositecdn-{default['result']}.cn",
             instance_id=example.id,
             coverage="overseas",
             access_type="NS")
-        default = alicloud.esa.HttpsBasicConfiguration("default",
+        default_https_basic_configuration = alicloud.esa.HttpsBasicConfiguration("default",
             https="on",
             rule="true",
             rule_name="example2",

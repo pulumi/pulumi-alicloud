@@ -64,9 +64,11 @@ class CommonBandwithPackageArgs:
                
                If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         :param pulumi.Input[builtins.str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
-        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. The value is only `20`.
                
-               > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+               This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+               
+               > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -227,9 +229,11 @@ class CommonBandwithPackageArgs:
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        The percentage of the minimum bandwidth commitment. The value is only `20`.
 
-        > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+
+        > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         """
         return pulumi.get(self, "ratio")
 
@@ -342,9 +346,11 @@ class _CommonBandwithPackageState:
                If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         :param pulumi.Input[builtins.str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
         :param pulumi.Input[builtins.str] payment_type: The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. The value is only `20`.
                
-               > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+               This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+               
+               > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -537,9 +543,11 @@ class _CommonBandwithPackageState:
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        The percentage of the minimum bandwidth commitment. The value is only `20`.
 
-        > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+
+        > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         """
         return pulumi.get(self, "ratio")
 
@@ -672,9 +680,11 @@ class CommonBandwithPackage(pulumi.CustomResource):
                
                If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         :param pulumi.Input[builtins.str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
-        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. The value is only `20`.
                
-               > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+               This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+               
+               > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -818,9 +828,11 @@ class CommonBandwithPackage(pulumi.CustomResource):
                If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         :param pulumi.Input[builtins.str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
         :param pulumi.Input[builtins.str] payment_type: The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        :param pulumi.Input[builtins.int] ratio: The percentage of the minimum bandwidth commitment. The value is only `20`.
                
-               > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+               This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+               
+               > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -959,9 +971,11 @@ class CommonBandwithPackage(pulumi.CustomResource):
     @pulumi.getter
     def ratio(self) -> pulumi.Output[builtins.int]:
         """
-        The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        The percentage of the minimum bandwidth commitment. The value is only `20`.
 
-        > **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
+        This parameter is required when the value of `InternetChargeType` is `PayBy95`.
+
+        > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         """
         return pulumi.get(self, "ratio")
 

@@ -26,6 +26,8 @@ class InstanceArgs:
                  arbiter_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  arbiter_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  arch_version: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew_period: Optional[pulumi.Input[builtins.str]] = None,
                  cold_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_single_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_spec: Optional[pulumi.Input[builtins.str]] = None,
@@ -69,6 +71,8 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        :param pulumi.Input[builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        :param pulumi.Input[builtins.str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         :param pulumi.Input[builtins.int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[builtins.int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[builtins.str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
@@ -79,7 +83,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[builtins.str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance.
-        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_white_lists: The ip white list of instance.
         :param pulumi.Input[builtins.str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         :param pulumi.Input[builtins.int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
@@ -116,6 +120,10 @@ class InstanceArgs:
             pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
         if arch_version is not None:
             pulumi.set(__self__, "arch_version", arch_version)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
         if core_single_storage is not None:
@@ -263,6 +271,30 @@ class InstanceArgs:
         pulumi.set(self, "arch_version", value)
 
     @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
     @pulumi.getter(name="coldStorage")
     def cold_storage(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -364,7 +396,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceStorage")
     def instance_storage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -692,6 +724,8 @@ class _InstanceState:
                  arbiter_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  arbiter_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  arch_version: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew_period: Optional[pulumi.Input[builtins.str]] = None,
                  cold_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_single_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_spec: Optional[pulumi.Input[builtins.str]] = None,
@@ -743,6 +777,8 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        :param pulumi.Input[builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        :param pulumi.Input[builtins.str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         :param pulumi.Input[builtins.int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[builtins.int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[builtins.str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
@@ -760,7 +796,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[builtins.str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance.
-        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_white_lists: The ip white list of instance.
         :param pulumi.Input[builtins.str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         :param pulumi.Input[builtins.int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
@@ -798,6 +834,10 @@ class _InstanceState:
             pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
         if arch_version is not None:
             pulumi.set(__self__, "arch_version", arch_version)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
         if core_single_storage is not None:
@@ -929,6 +969,30 @@ class _InstanceState:
     @arch_version.setter
     def arch_version(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "arch_version", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="coldStorage")
@@ -1116,7 +1180,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceStorage")
     def instance_storage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -1495,6 +1559,8 @@ class Instance(pulumi.CustomResource):
                  arbiter_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  arbiter_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  arch_version: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew_period: Optional[pulumi.Input[builtins.str]] = None,
                  cold_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_single_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_spec: Optional[pulumi.Input[builtins.str]] = None,
@@ -1586,6 +1652,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        :param pulumi.Input[builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        :param pulumi.Input[builtins.str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         :param pulumi.Input[builtins.int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[builtins.int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[builtins.str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
@@ -1597,7 +1665,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[builtins.str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance.
-        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_white_lists: The ip white list of instance.
         :param pulumi.Input[builtins.str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         :param pulumi.Input[builtins.int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
@@ -1698,6 +1766,8 @@ class Instance(pulumi.CustomResource):
                  arbiter_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  arbiter_zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  arch_version: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew: Optional[pulumi.Input[builtins.str]] = None,
+                 auto_renew_period: Optional[pulumi.Input[builtins.str]] = None,
                  cold_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_single_storage: Optional[pulumi.Input[builtins.int]] = None,
                  core_spec: Optional[pulumi.Input[builtins.str]] = None,
@@ -1748,6 +1818,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["arbiter_vswitch_id"] = arbiter_vswitch_id
             __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
             __props__.__dict__["arch_version"] = arch_version
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["cold_storage"] = cold_storage
             __props__.__dict__["core_single_storage"] = core_single_storage
             __props__.__dict__["core_spec"] = core_spec
@@ -1813,6 +1885,8 @@ class Instance(pulumi.CustomResource):
             arbiter_vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
             arbiter_zone_id: Optional[pulumi.Input[builtins.str]] = None,
             arch_version: Optional[pulumi.Input[builtins.str]] = None,
+            auto_renew: Optional[pulumi.Input[builtins.str]] = None,
+            auto_renew_period: Optional[pulumi.Input[builtins.str]] = None,
             cold_storage: Optional[pulumi.Input[builtins.int]] = None,
             core_single_storage: Optional[pulumi.Input[builtins.int]] = None,
             core_spec: Optional[pulumi.Input[builtins.str]] = None,
@@ -1869,6 +1943,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[builtins.str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        :param pulumi.Input[builtins.str] auto_renew: Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        :param pulumi.Input[builtins.str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         :param pulumi.Input[builtins.int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[builtins.int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[builtins.str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
@@ -1886,7 +1962,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[builtins.str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance.
-        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        :param pulumi.Input[builtins.str] instance_storage: The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_white_lists: The ip white list of instance.
         :param pulumi.Input[builtins.str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         :param pulumi.Input[builtins.int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
@@ -1925,6 +2001,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["arbiter_vswitch_id"] = arbiter_vswitch_id
         __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
         __props__.__dict__["arch_version"] = arch_version
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["cold_storage"] = cold_storage
         __props__.__dict__["core_single_storage"] = core_single_storage
         __props__.__dict__["core_spec"] = core_spec
@@ -1996,6 +2074,22 @@ class Instance(pulumi.CustomResource):
         The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         """
         return pulumi.get(self, "arch_version")
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
+        """
+        return pulumi.get(self, "auto_renew_period")
 
     @property
     @pulumi.getter(name="coldStorage")
@@ -2123,7 +2217,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceStorage")
     def instance_storage(self) -> pulumi.Output[builtins.str]:
         """
-        The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
+        The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         """
         return pulumi.get(self, "instance_storage")
 

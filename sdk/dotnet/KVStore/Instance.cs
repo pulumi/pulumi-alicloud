@@ -254,7 +254,9 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// Node type, valid values:
+        /// - `MASTER_SLAVE`: High availability (dual copies)
+        /// - `STAND_ALONE`: Single copy
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
@@ -721,7 +723,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// Node type, valid values:
+        /// - `MASTER_SLAVE`: High availability (dual copies)
+        /// - `STAND_ALONE`: Single copy
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -1181,7 +1185,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        /// Node type, valid values:
+        /// - `MASTER_SLAVE`: High availability (dual copies)
+        /// - `STAND_ALONE`: Single copy
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }

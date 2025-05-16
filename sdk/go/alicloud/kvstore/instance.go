@@ -113,7 +113,9 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// Node type, valid values:
+	// - `MASTER_SLAVE`: High availability (dual copies)
+	// - `STAND_ALONE`: Single copy
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
@@ -313,7 +315,9 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// Node type, valid values:
+	// - `MASTER_SLAVE`: High availability (dual copies)
+	// - `STAND_ALONE`: Single copy
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
@@ -477,7 +481,9 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// Node type, valid values:
+	// - `MASTER_SLAVE`: High availability (dual copies)
+	// - `STAND_ALONE`: Single copy
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
@@ -637,7 +643,9 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// Node type, valid values:
+	// - `MASTER_SLAVE`: High availability (dual copies)
+	// - `STAND_ALONE`: Single copy
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
@@ -790,7 +798,9 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// Node type, valid values:
+	// - `MASTER_SLAVE`: High availability (dual copies)
+	// - `STAND_ALONE`: Single copy
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
@@ -1150,7 +1160,9 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+// Node type, valid values:
+// - `MASTER_SLAVE`: High availability (dual copies)
+// - `STAND_ALONE`: Single copy
 //
 // Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 func (o InstanceOutput) NodeType() pulumi.StringOutput {

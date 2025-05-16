@@ -30,6 +30,7 @@ class ScalingGroupArgs:
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
+                 capacity_options_price_comparison_mode: Optional[pulumi.Input[builtins.str]] = None,
                  capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  container_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -73,6 +74,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        :param pulumi.Input[builtins.str] capacity_options_price_comparison_mode: The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         :param pulumi.Input[builtins.bool] capacity_options_spot_auto_replace_on_demand: Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         :param pulumi.Input[builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.str] container_group_id: The ID of the elastic container instance.
@@ -132,6 +134,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "capacity_options_on_demand_base_capacity", capacity_options_on_demand_base_capacity)
         if capacity_options_on_demand_percentage_above_base_capacity is not None:
             pulumi.set(__self__, "capacity_options_on_demand_percentage_above_base_capacity", capacity_options_on_demand_percentage_above_base_capacity)
+        if capacity_options_price_comparison_mode is not None:
+            pulumi.set(__self__, "capacity_options_price_comparison_mode", capacity_options_price_comparison_mode)
         if capacity_options_spot_auto_replace_on_demand is not None:
             pulumi.set(__self__, "capacity_options_spot_auto_replace_on_demand", capacity_options_spot_auto_replace_on_demand)
         if compensate_with_on_demand is not None:
@@ -295,6 +299,18 @@ class ScalingGroupArgs:
     @capacity_options_on_demand_percentage_above_base_capacity.setter
     def capacity_options_on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_percentage_above_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="capacityOptionsPriceComparisonMode")
+    def capacity_options_price_comparison_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        """
+        return pulumi.get(self, "capacity_options_price_comparison_mode")
+
+    @capacity_options_price_comparison_mode.setter
+    def capacity_options_price_comparison_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "capacity_options_price_comparison_mode", value)
 
     @property
     @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")
@@ -692,6 +708,7 @@ class _ScalingGroupState:
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
+                 capacity_options_price_comparison_mode: Optional[pulumi.Input[builtins.str]] = None,
                  capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  container_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -733,6 +750,7 @@ class _ScalingGroupState:
         :param pulumi.Input[builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        :param pulumi.Input[builtins.str] capacity_options_price_comparison_mode: The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         :param pulumi.Input[builtins.bool] capacity_options_spot_auto_replace_on_demand: Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         :param pulumi.Input[builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.str] container_group_id: The ID of the elastic container instance.
@@ -794,6 +812,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "capacity_options_on_demand_base_capacity", capacity_options_on_demand_base_capacity)
         if capacity_options_on_demand_percentage_above_base_capacity is not None:
             pulumi.set(__self__, "capacity_options_on_demand_percentage_above_base_capacity", capacity_options_on_demand_percentage_above_base_capacity)
+        if capacity_options_price_comparison_mode is not None:
+            pulumi.set(__self__, "capacity_options_price_comparison_mode", capacity_options_price_comparison_mode)
         if capacity_options_spot_auto_replace_on_demand is not None:
             pulumi.set(__self__, "capacity_options_spot_auto_replace_on_demand", capacity_options_spot_auto_replace_on_demand)
         if compensate_with_on_demand is not None:
@@ -935,6 +955,18 @@ class _ScalingGroupState:
     @capacity_options_on_demand_percentage_above_base_capacity.setter
     def capacity_options_on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_percentage_above_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="capacityOptionsPriceComparisonMode")
+    def capacity_options_price_comparison_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        """
+        return pulumi.get(self, "capacity_options_price_comparison_mode")
+
+    @capacity_options_price_comparison_mode.setter
+    def capacity_options_price_comparison_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "capacity_options_price_comparison_mode", value)
 
     @property
     @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")
@@ -1361,6 +1393,7 @@ class ScalingGroup(pulumi.CustomResource):
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
+                 capacity_options_price_comparison_mode: Optional[pulumi.Input[builtins.str]] = None,
                  capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  container_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1490,6 +1523,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        :param pulumi.Input[builtins.str] capacity_options_price_comparison_mode: The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         :param pulumi.Input[builtins.bool] capacity_options_spot_auto_replace_on_demand: Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         :param pulumi.Input[builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.str] container_group_id: The ID of the elastic container instance.
@@ -1653,6 +1687,7 @@ class ScalingGroup(pulumi.CustomResource):
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
+                 capacity_options_price_comparison_mode: Optional[pulumi.Input[builtins.str]] = None,
                  capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
                  container_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1701,6 +1736,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["capacity_options_compensate_with_on_demand"] = capacity_options_compensate_with_on_demand
             __props__.__dict__["capacity_options_on_demand_base_capacity"] = capacity_options_on_demand_base_capacity
             __props__.__dict__["capacity_options_on_demand_percentage_above_base_capacity"] = capacity_options_on_demand_percentage_above_base_capacity
+            __props__.__dict__["capacity_options_price_comparison_mode"] = capacity_options_price_comparison_mode
             __props__.__dict__["capacity_options_spot_auto_replace_on_demand"] = capacity_options_spot_auto_replace_on_demand
             __props__.__dict__["compensate_with_on_demand"] = compensate_with_on_demand
             __props__.__dict__["container_group_id"] = container_group_id
@@ -1754,6 +1790,7 @@ class ScalingGroup(pulumi.CustomResource):
             capacity_options_compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
             capacity_options_on_demand_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
             capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[builtins.int]] = None,
+            capacity_options_price_comparison_mode: Optional[pulumi.Input[builtins.str]] = None,
             capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
             compensate_with_on_demand: Optional[pulumi.Input[builtins.bool]] = None,
             container_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1800,6 +1837,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        :param pulumi.Input[builtins.str] capacity_options_price_comparison_mode: The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         :param pulumi.Input[builtins.bool] capacity_options_spot_auto_replace_on_demand: Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         :param pulumi.Input[builtins.bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[builtins.str] container_group_id: The ID of the elastic container instance.
@@ -1859,6 +1897,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["capacity_options_compensate_with_on_demand"] = capacity_options_compensate_with_on_demand
         __props__.__dict__["capacity_options_on_demand_base_capacity"] = capacity_options_on_demand_base_capacity
         __props__.__dict__["capacity_options_on_demand_percentage_above_base_capacity"] = capacity_options_on_demand_percentage_above_base_capacity
+        __props__.__dict__["capacity_options_price_comparison_mode"] = capacity_options_price_comparison_mode
         __props__.__dict__["capacity_options_spot_auto_replace_on_demand"] = capacity_options_spot_auto_replace_on_demand
         __props__.__dict__["compensate_with_on_demand"] = compensate_with_on_demand
         __props__.__dict__["container_group_id"] = container_group_id
@@ -1941,6 +1980,14 @@ class ScalingGroup(pulumi.CustomResource):
         The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
         """
         return pulumi.get(self, "capacity_options_on_demand_percentage_above_base_capacity")
+
+    @property
+    @pulumi.getter(name="capacityOptionsPriceComparisonMode")
+    def capacity_options_price_comparison_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
+        """
+        return pulumi.get(self, "capacity_options_price_comparison_mode")
 
     @property
     @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")

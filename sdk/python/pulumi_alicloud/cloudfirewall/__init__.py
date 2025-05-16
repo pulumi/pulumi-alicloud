@@ -23,6 +23,7 @@ from .get_vpc_firewall_control_policies import *
 from .get_vpc_firewalls import *
 from .instance import *
 from .instance_member import *
+from .ips_config import *
 from .nat_firewall import *
 from .nat_firewall_control_policy import *
 from .vpc_cen_tr_firewall import *

@@ -863,10 +863,9 @@ class OssExport(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
-        [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
+        Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 
-        > **NOTE:** Available in 1.187.0+
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -958,10 +957,9 @@ class OssExport(pulumi.CustomResource):
                  args: OssExportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
-        [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
+        Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 
-        > **NOTE:** Available in 1.187.0+
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 

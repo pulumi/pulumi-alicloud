@@ -213,6 +213,8 @@ class CaCertificate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         """
+        > **NOTE:** Available since v1.21.0.
+
         A Load Balancer CA Certificate is used by the listener of the protocol https.
 
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
@@ -276,6 +278,8 @@ class CaCertificate(pulumi.CustomResource):
                  args: CaCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE:** Available since v1.21.0.
+
         A Load Balancer CA Certificate is used by the listener of the protocol https.
 
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).

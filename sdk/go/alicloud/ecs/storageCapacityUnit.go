@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Storage Capacity Unit and how to use it, see [What is Storage Capacity Unit](https://www.alibabacloud.com/help/en/doc-detail/161157.html).
 //
-// > **NOTE:** Available in v1.155.0+.
+// > **NOTE:** Available since v1.155.0.
 //
 // ## Example Usage
 //

@@ -14,17 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TrafficMarkingPolicyTrafficMatchRule {
     /**
-     * @return IP Address Family.
+     * @return IP Address Family
      * 
      */
     private @Nullable String addressFamily;
     /**
-     * @return The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+     * @return The destination network segment of the traffic message.
+     * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
      * 
      */
     private @Nullable String dstCidr;
     /**
-     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+     * 
+     * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
      * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
      * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -32,22 +37,32 @@ public final class TrafficMarkingPolicyTrafficMatchRule {
      */
     private @Nullable List<Integer> dstPortRanges;
     /**
-     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+     * 
+     * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+     * 
+     * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
      * 
      */
     private @Nullable Integer matchDscp;
     /**
-     * @return The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+     * @return The protocol type of the traffic message.
+     * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+     * @return The source network segment of the traffic message.
+     * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
      * 
      */
     private @Nullable String srcCidr;
     /**
-     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+     * 
+     * The current parameter supports entering up to two port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
      * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
      * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -55,33 +70,40 @@ public final class TrafficMarkingPolicyTrafficMatchRule {
      */
     private @Nullable List<Integer> srcPortRanges;
     /**
-     * @return The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The description information of the stream classification rule.
+     * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     private @Nullable String trafficMatchRuleDescription;
     /**
-     * @return The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The name of the stream classification rule.
+     * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     private @Nullable String trafficMatchRuleName;
 
     private TrafficMarkingPolicyTrafficMatchRule() {}
     /**
-     * @return IP Address Family.
+     * @return IP Address Family
      * 
      */
     public Optional<String> addressFamily() {
         return Optional.ofNullable(this.addressFamily);
     }
     /**
-     * @return The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+     * @return The destination network segment of the traffic message.
+     * The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
      * 
      */
     public Optional<String> dstCidr() {
         return Optional.ofNullable(this.dstCidr);
     }
     /**
-     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+     * @return The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+     * 
+     * The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
      * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
      * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
@@ -91,28 +113,38 @@ public final class TrafficMarkingPolicyTrafficMatchRule {
         return this.dstPortRanges == null ? List.of() : this.dstPortRanges;
     }
     /**
-     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.&gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+     * @return The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+     * 
+     * The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+     * 
+     * &gt; **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
      * 
      */
     public Optional<Integer> matchDscp() {
         return Optional.ofNullable(this.matchDscp);
     }
     /**
-     * @return The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+     * @return The protocol type of the traffic message.
+     * Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+     * @return The source network segment of the traffic message.
+     * The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
      * 
      */
     public Optional<String> srcCidr() {
         return Optional.ofNullable(this.srcCidr);
     }
     /**
-     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+     * @return The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+     * 
+     * The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
+     * 
+     * The current parameter supports entering up to two port numbers. The input format is described as follows:
      * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
      * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
      * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
@@ -122,14 +154,16 @@ public final class TrafficMarkingPolicyTrafficMatchRule {
         return this.srcPortRanges == null ? List.of() : this.srcPortRanges;
     }
     /**
-     * @return The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The description information of the stream classification rule.
+     * The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     public Optional<String> trafficMatchRuleDescription() {
         return Optional.ofNullable(this.trafficMatchRuleDescription);
     }
     /**
-     * @return The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+     * @return The name of the stream classification rule.
+     * The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
      * 
      */
     public Optional<String> trafficMatchRuleName() {

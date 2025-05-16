@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Kms.Outputs
     public sealed class InstanceBindVpc
     {
         /// <summary>
-        /// region id.
+        /// region id
         /// </summary>
         public readonly string? RegionId;
         /// <summary>
-        /// VPC ID.
+        /// VPC ID
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// VPC owner root user ID.
+        /// VPC owner root user ID
         /// </summary>
         public readonly string? VpcOwnerId;
         /// <summary>
-        /// vswitch id.
+        /// vswitch id
         /// </summary>
         public readonly string? VswitchId;
 

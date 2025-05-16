@@ -42,14 +42,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.93.0+) The connection string of the ADB cluster.
+     * (Available since v1.93.0) The connection string of the ADB cluster.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return (Available in 1.93.0+) The connection string of the ADB cluster.
+     * @return (Available since v1.93.0) The connection string of the ADB cluster.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -297,14 +297,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * @return (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     public Optional<Output<String>> port() {
@@ -509,7 +509,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.93.0+) The connection string of the ADB cluster.
+         * @param connectionString (Available since v1.93.0) The connection string of the ADB cluster.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.93.0+) The connection string of the ADB cluster.
+         * @param connectionString (Available since v1.93.0) The connection string of the ADB cluster.
          * 
          * @return builder
          * 
@@ -854,7 +854,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * @param port (Available since v1.196.0) The connection port of the ADB cluster.
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * @param port (Available since v1.196.0) The connection port of the ADB cluster.
          * 
          * @return builder
          * 

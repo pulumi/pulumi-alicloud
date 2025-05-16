@@ -14,9 +14,9 @@ import (
 
 // Provides a Vpc Ipv4 Gateway resource.
 //
-// For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+// For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -39,20 +39,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_default, err := resourcemanager.NewResourceGroup(ctx, "default", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testAcc-rg665"),
+//				DisplayName:       pulumi.String(name),
 //				ResourceGroupName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = resourcemanager.NewResourceGroup(ctx, "modify", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testAcc-rg298"),
-//				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +59,7 @@ import (
 //			}
 //			_, err = vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName:        pulumi.String(name),
-//				Ipv4GatewayDescription: pulumi.String("tf-testAcc-Ipv4Gateway"),
+//				Ipv4GatewayDescription: pulumi.String(name),
 //				ResourceGroupId:        _default.ID(),
 //				VpcId:                  defaultNetwork.ID(),
 //			})
@@ -81,7 +74,7 @@ import (
 //
 // ## Import
 //
-// Vpc Ipv4 Gateway can be imported using the id, e.g.
+// VPC Ipv4 Gateway can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
@@ -89,23 +82,25 @@ import (
 type Ipv4Gateway struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+	InternetMode pulumi.StringPtrOutput `pulumi:"internetMode"`
 	// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Ipv4GatewayDescription pulumi.StringPtrOutput `pulumi:"ipv4GatewayDescription"`
 	// Resource primary key field.
 	Ipv4GatewayId pulumi.StringOutput `pulumi:"ipv4GatewayId"`
 	// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	Ipv4GatewayName pulumi.StringPtrOutput `pulumi:"ipv4GatewayName"`
-	// ID of the route table associated with IPv4 Gateway.
+	// ID of the route table associated with IPv4 Gateway
 	Ipv4GatewayRouteTableId pulumi.StringOutput `pulumi:"ipv4GatewayRouteTableId"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of the current resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -146,23 +141,25 @@ func GetIpv4Gateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ipv4Gateway resources.
 type ipv4GatewayState struct {
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 	Enabled *bool `pulumi:"enabled"`
+	// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+	InternetMode *string `pulumi:"internetMode"`
 	// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Ipv4GatewayDescription *string `pulumi:"ipv4GatewayDescription"`
 	// Resource primary key field.
 	Ipv4GatewayId *string `pulumi:"ipv4GatewayId"`
 	// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	Ipv4GatewayName *string `pulumi:"ipv4GatewayName"`
-	// ID of the route table associated with IPv4 Gateway.
+	// ID of the route table associated with IPv4 Gateway
 	Ipv4GatewayRouteTableId *string `pulumi:"ipv4GatewayRouteTableId"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tags of the current resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -171,23 +168,25 @@ type ipv4GatewayState struct {
 }
 
 type Ipv4GatewayState struct {
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun pulumi.BoolPtrInput
-	// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 	Enabled pulumi.BoolPtrInput
+	// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+	InternetMode pulumi.StringPtrInput
 	// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Ipv4GatewayDescription pulumi.StringPtrInput
 	// Resource primary key field.
 	Ipv4GatewayId pulumi.StringPtrInput
 	// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	Ipv4GatewayName pulumi.StringPtrInput
-	// ID of the route table associated with IPv4 Gateway.
+	// ID of the route table associated with IPv4 Gateway
 	Ipv4GatewayRouteTableId pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tags of the current resource.
 	Tags pulumi.StringMapInput
@@ -202,8 +201,10 @@ func (Ipv4GatewayState) ElementType() reflect.Type {
 type ipv4GatewayArgs struct {
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 	Enabled *bool `pulumi:"enabled"`
+	// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+	InternetMode *string `pulumi:"internetMode"`
 	// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Ipv4GatewayDescription *string `pulumi:"ipv4GatewayDescription"`
 	// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
@@ -220,8 +221,10 @@ type ipv4GatewayArgs struct {
 type Ipv4GatewayArgs struct {
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun pulumi.BoolPtrInput
-	// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 	Enabled pulumi.BoolPtrInput
+	// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+	InternetMode pulumi.StringPtrInput
 	// The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Ipv4GatewayDescription pulumi.StringPtrInput
 	// The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
@@ -321,7 +324,7 @@ func (o Ipv4GatewayOutput) ToIpv4GatewayOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o Ipv4GatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -331,9 +334,14 @@ func (o Ipv4GatewayOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
 func (o Ipv4GatewayOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
+func (o Ipv4GatewayOutput) InternetMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringPtrOutput { return v.InternetMode }).(pulumi.StringPtrOutput)
 }
 
 // The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
@@ -351,7 +359,7 @@ func (o Ipv4GatewayOutput) Ipv4GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringPtrOutput { return v.Ipv4GatewayName }).(pulumi.StringPtrOutput)
 }
 
-// ID of the route table associated with IPv4 Gateway.
+// ID of the route table associated with IPv4 Gateway
 func (o Ipv4GatewayOutput) Ipv4GatewayRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringOutput { return v.Ipv4GatewayRouteTableId }).(pulumi.StringOutput)
 }
@@ -361,7 +369,7 @@ func (o Ipv4GatewayOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o Ipv4GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

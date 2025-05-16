@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
     /// 
-    /// &gt; **NOTE:** Available in 1.66.0+.
+    /// &gt; **NOTE:** Available since v1.66.0.
     /// 
     /// ## Example Usage
     /// 

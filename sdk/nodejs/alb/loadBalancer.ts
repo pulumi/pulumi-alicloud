@@ -15,6 +15,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.132.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.alb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const default1 = new alicloud.vpc.Switch("default1", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.1.0/24",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     vswitchName: `${name}_1`,
+ * });
+ * const default2 = new alicloud.vpc.Switch("default2", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.2.0/24",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *     vswitchName: `${name}_2`,
+ * });
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     loadBalancerEdition: "Basic",
+ *     addressType: "Internet",
+ *     vpcId: defaultNetwork.id,
+ *     addressAllocatedMode: "Fixed",
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     loadBalancerName: name,
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     modificationProtectionConfig: {
+ *         status: "NonProtection",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: default1.id,
+ *             zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: default2.id,
+ *             zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *         },
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.

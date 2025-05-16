@@ -16,9 +16,9 @@ import (
 // environment in the cloud. An ADB cluster can contain multiple user-created
 // databases.
 //
-// > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+// > **NOTE:** Deprecated since v1.121.0.
 //
-// > **NOTE:** Available in v1.71.0+.
+// > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
 //
 // ## Example Usage
 //
@@ -102,7 +102,7 @@ type Cluster struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntOutput       `pulumi:"autoRenewPeriod"`
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
-	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	// (Available since v1.93.0) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
@@ -137,7 +137,7 @@ type Cluster struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   pulumi.StringOutput `pulumi:"renewalStatus"`
@@ -198,7 +198,7 @@ type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	ComputeResource *string `pulumi:"computeResource"`
-	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	// (Available since v1.93.0) The connection string of the ADB cluster.
 	ConnectionString *string `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
@@ -233,7 +233,7 @@ type clusterState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   *string `pulumi:"renewalStatus"`
@@ -259,7 +259,7 @@ type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
 	ComputeResource pulumi.StringPtrInput
-	// (Available in 1.93.0+) The connection string of the ADB cluster.
+	// (Available since v1.93.0) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringPtrInput
@@ -294,7 +294,7 @@ type ClusterState struct {
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   pulumi.StringPtrInput
@@ -529,7 +529,7 @@ func (o ClusterOutput) ComputeResource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeResource }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.93.0+) The connection string of the ADB cluster.
+// (Available since v1.93.0) The connection string of the ADB cluster.
 func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -627,7 +627,7 @@ func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// (Available in 1.196.0+) The connection port of the ADB cluster.
+// (Available since v1.196.0) The connection port of the ADB cluster.
 func (o ClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

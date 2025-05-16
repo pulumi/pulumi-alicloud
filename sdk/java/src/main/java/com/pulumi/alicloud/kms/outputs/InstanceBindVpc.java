@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceBindVpc {
     /**
-     * @return region id.
+     * @return region id
      * 
      */
     private @Nullable String regionId;
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     private @Nullable String vpcId;
     /**
-     * @return VPC owner root user ID.
+     * @return VPC owner root user ID
      * 
      */
     private @Nullable String vpcOwnerId;
     /**
-     * @return vswitch id.
+     * @return vswitch id
      * 
      */
     private @Nullable String vswitchId;
 
     private InstanceBindVpc() {}
     /**
-     * @return region id.
+     * @return region id
      * 
      */
     public Optional<String> regionId() {
         return Optional.ofNullable(this.regionId);
     }
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return VPC owner root user ID.
+     * @return VPC owner root user ID
      * 
      */
     public Optional<String> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
     /**
-     * @return vswitch id.
+     * @return vswitch id
      * 
      */
     public Optional<String> vswitchId() {

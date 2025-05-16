@@ -16,7 +16,7 @@ import (
 //
 // For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
 //
-// > **NOTE:** Available since v1.149.0+.
+// > **NOTE:** Available since v1.149.0.
 //
 // ## Example Usage
 //
@@ -140,10 +140,10 @@ type RdsCloneDbInstance struct {
 	// * **HighAvailability**: High availability
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
-	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+	// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+	// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 	Category pulumi.StringOutput `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
@@ -374,10 +374,10 @@ type rdsCloneDbInstanceState struct {
 	// * **HighAvailability**: High availability
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
-	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+	// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+	// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 	Category *string `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate *string `pulumi:"certificate"`
@@ -570,10 +570,10 @@ type RdsCloneDbInstanceState struct {
 	// * **HighAvailability**: High availability
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
-	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+	// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+	// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 	Category pulumi.StringPtrInput
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrInput
@@ -770,10 +770,10 @@ type rdsCloneDbInstanceArgs struct {
 	// * **HighAvailability**: High availability
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
-	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+	// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+	// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 	Category *string `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate *string `pulumi:"certificate"`
@@ -965,10 +965,10 @@ type RdsCloneDbInstanceArgs struct {
 	// * **HighAvailability**: High availability
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
-	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+	// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+	// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 	Category pulumi.StringPtrInput
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrInput
@@ -1260,10 +1260,10 @@ func (o RdsCloneDbInstanceOutput) CaType() pulumi.StringOutput {
 // * **HighAvailability**: High availability
 // * **AlwaysOn**: Cluster Edition
 // * **Finance**: Three-node Enterprise Edition.
-// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
-// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
-// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
+// * **serverless_basic**: Serverless Basic Edition. (Available since v1.200.0)
+// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available since v1.207.0)
+// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
+// * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
 func (o RdsCloneDbInstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }

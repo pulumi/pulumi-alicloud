@@ -658,8 +658,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
+            renew_period=1,
+            renewal_status="AutoRenewal",
             instance_type="Advanced",
             instance_name=f"{name}-{default['result']}")
         ```
@@ -736,8 +736,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
+            renew_period=1,
+            renewal_status="AutoRenewal",
             instance_type="Advanced",
             instance_name=f"{name}-{default['result']}")
         ```

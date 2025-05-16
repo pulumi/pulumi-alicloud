@@ -502,7 +502,7 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[builtins.str] connection_string: (Available in 1.93.0+) The connection string of the ADB cluster.
+        :param pulumi.Input[builtins.str] connection_string: (Available since v1.93.0) The connection string of the ADB cluster.
         :param pulumi.Input[builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
         :param pulumi.Input[builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
         :param pulumi.Input[builtins.str] db_node_class: The db_node_class of cluster node.
@@ -513,7 +513,7 @@ class _ClusterState:
         :param pulumi.Input[builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -622,7 +622,7 @@ class _ClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.93.0+) The connection string of the ADB cluster.
+        (Available since v1.93.0) The connection string of the ADB cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -846,7 +846,7 @@ class _ClusterState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Available in 1.196.0+) The connection port of the ADB cluster.
+        (Available since v1.196.0) The connection port of the ADB cluster.
         """
         return pulumi.get(self, "port")
 
@@ -997,9 +997,9 @@ class Cluster(pulumi.CustomResource):
         environment in the cloud. An ADB cluster can contain multiple user-created
         databases.
 
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+        > **NOTE:** Deprecated since v1.121.0.
 
-        > **NOTE:** Available in v1.71.0+.
+        > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
 
         ## Example Usage
 
@@ -1078,9 +1078,9 @@ class Cluster(pulumi.CustomResource):
         environment in the cloud. An ADB cluster can contain multiple user-created
         databases.
 
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+        > **NOTE:** Deprecated since v1.121.0.
 
-        > **NOTE:** Available in v1.71.0+.
+        > **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
 
         ## Example Usage
 
@@ -1267,7 +1267,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[builtins.str] connection_string: (Available in 1.93.0+) The connection string of the ADB cluster.
+        :param pulumi.Input[builtins.str] connection_string: (Available since v1.93.0) The connection string of the ADB cluster.
         :param pulumi.Input[builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
         :param pulumi.Input[builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
         :param pulumi.Input[builtins.str] db_node_class: The db_node_class of cluster node.
@@ -1278,7 +1278,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[builtins.str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[builtins.int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        :param pulumi.Input[builtins.str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
+        :param pulumi.Input[builtins.str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -1345,7 +1345,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.93.0+) The connection string of the ADB cluster.
+        (Available since v1.93.0) The connection string of the ADB cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1485,7 +1485,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[builtins.str]:
         """
-        (Available in 1.196.0+) The connection port of the ADB cluster.
+        (Available since v1.196.0) The connection port of the ADB cluster.
         """
         return pulumi.get(self, "port")
 

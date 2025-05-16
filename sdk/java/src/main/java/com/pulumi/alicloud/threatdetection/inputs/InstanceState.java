@@ -207,6 +207,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      * 
      * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -223,6 +224,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - `AGENTLESS`: AGENTLESS detection module
      * - `SERVERLESS`:Serverless asset module
      * - `CTDR`: threat analysis and response module
+     * - `POST_HOST`: Host and container security module
      * - Value:0 means off, 1 means on
      * 
      * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -535,7 +537,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  Step size is 1.
+     * &gt; **NOTE:**  Step size is 100.
      * 
      */
     @Import(name="threatAnalysisFlow")
@@ -544,7 +546,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  Step size is 1.
+     * &gt; **NOTE:**  Step size is 100.
      * 
      */
     public Optional<Output<String>> threatAnalysisFlow() {
@@ -552,18 +554,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      * 
      */
     @Import(name="threatAnalysisSlsStorage")
     private @Nullable Output<String> threatAnalysisSlsStorage;
 
     /**
-     * @return Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+     * @return Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+     * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      * 
      */
     public Optional<Output<String>> threatAnalysisSlsStorage() {
@@ -998,6 +1000,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - `AGENTLESS`: AGENTLESS detection module
          * - `SERVERLESS`:Serverless asset module
          * - `CTDR`: threat analysis and response module
+         * - `POST_HOST`: Host and container security module
          * - Value:0 means off, 1 means on
          * 
          * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -1018,6 +1021,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - `AGENTLESS`: AGENTLESS detection module
          * - `SERVERLESS`:Serverless asset module
          * - `CTDR`: threat analysis and response module
+         * - `POST_HOST`: Host and container security module
          * - Value:0 means off, 1 means on
          * 
          * &gt; **NOTE:**  The module value of the unpassed value will not change.
@@ -1428,7 +1432,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param threatAnalysisFlow Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
          * 
-         * &gt; **NOTE:**  Step size is 1.
+         * &gt; **NOTE:**  Step size is 100.
          * 
          * @return builder
          * 
@@ -1441,7 +1445,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param threatAnalysisFlow Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
          * 
-         * &gt; **NOTE:**  Step size is 1.
+         * &gt; **NOTE:**  Step size is 100.
          * 
          * @return builder
          * 
@@ -1451,9 +1455,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
          * 
-         * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+         * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
          * 
          * @return builder
          * 
@@ -1464,9 +1468,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
+         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
          * 
-         * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
+         * &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
          * 
          * @return builder
          * 

@@ -88,7 +88,8 @@ type Cluster struct {
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringOutput `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+	// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 	HotStandbyCluster pulumi.StringOutput `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -170,6 +171,9 @@ type Cluster struct {
 	ServerlessType pulumi.StringPtrOutput `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
+	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+	StandbyAz pulumi.StringOutput `pulumi:"standbyAz"`
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
@@ -313,7 +317,8 @@ type clusterState struct {
 	GdnId *string `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+	// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -395,6 +400,9 @@ type clusterState struct {
 	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+	StandbyAz *string `pulumi:"standbyAz"`
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status *string `pulumi:"status"`
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
@@ -500,7 +508,8 @@ type ClusterState struct {
 	GdnId pulumi.StringPtrInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+	// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -582,6 +591,9 @@ type ClusterState struct {
 	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+	StandbyAz pulumi.StringPtrInput
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringPtrInput
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
@@ -685,7 +697,8 @@ type clusterArgs struct {
 	GdnId *string `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+	// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -765,6 +778,9 @@ type clusterArgs struct {
 	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+	StandbyAz *string `pulumi:"standbyAz"`
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
 	StoragePayType *string `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
@@ -859,7 +875,8 @@ type ClusterArgs struct {
 	GdnId pulumi.StringPtrInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+	// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -939,6 +956,9 @@ type ClusterArgs struct {
 	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+	StandbyAz pulumi.StringPtrInput
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
 	StoragePayType pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
@@ -1205,7 +1225,8 @@ func (o ClusterOutput) HotReplicaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotReplicaMode }).(pulumi.StringOutput)
 }
 
-// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
+// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+// > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
 func (o ClusterOutput) HotStandbyCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotStandbyCluster }).(pulumi.StringOutput)
 }
@@ -1384,6 +1405,12 @@ func (o ClusterOutput) ServerlessType() pulumi.StringPtrOutput {
 // The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 func (o ClusterOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
+func (o ClusterOutput) StandbyAz() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StandbyAz }).(pulumi.StringOutput)
 }
 
 // (Available since 1.204.1) PolarDB cluster status.

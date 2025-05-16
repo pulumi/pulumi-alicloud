@@ -183,10 +183,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
      * 
      * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
@@ -200,10 +200,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+     * * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
      * 
      * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
@@ -313,14 +313,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since 1.204.1) The creation time of db instance.
+     * (Available since v1.204.1) The creation time of db instance.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (Available since 1.204.1) The creation time of db instance.
+     * @return (Available since v1.204.1) The creation time of db instance.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -393,14 +393,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since 1.197.0) The type of db instance.
+     * (Available since v1.197.0) The type of db instance.
      * 
      */
     @Import(name="dbInstanceType")
     private @Nullable Output<String> dbInstanceType;
 
     /**
-     * @return (Available since 1.197.0) The type of db instance.
+     * @return (Available since v1.197.0) The type of db instance.
      * 
      */
     public Optional<Output<String>> dbInstanceType() {
@@ -1087,14 +1087,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+     * , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+     * @return , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -1281,14 +1281,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since 1.204.1) The status of db instance.
+     * (Available since v1.204.1) The status of db instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available since 1.204.1) The status of db instance.
+     * @return (Available since v1.204.1) The status of db instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -1976,10 +1976,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
-         * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-         * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-         * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-         * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+         * * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+         * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+         * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+         * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
          * 
          * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
@@ -1997,10 +1997,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
-         * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
-         * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
-         * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
-         * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
+         * * **cluster**: MySQL Cluster Edition. (Available since v1.202.0)
+         * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.200.0)
+         * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since v1.204.0)
+         * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since v1.204.0)
          * 
          * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
@@ -2148,7 +2148,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime (Available since 1.204.1) The creation time of db instance.
+         * @param createTime (Available since v1.204.1) The creation time of db instance.
          * 
          * @return builder
          * 
@@ -2159,7 +2159,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime (Available since 1.204.1) The creation time of db instance.
+         * @param createTime (Available since v1.204.1) The creation time of db instance.
          * 
          * @return builder
          * 
@@ -2252,7 +2252,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceType (Available since 1.197.0) The type of db instance.
+         * @param dbInstanceType (Available since v1.197.0) The type of db instance.
          * 
          * @return builder
          * 
@@ -2263,7 +2263,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceType (Available since 1.197.0) The type of db instance.
+         * @param dbInstanceType (Available since v1.197.0) The type of db instance.
          * 
          * @return builder
          * 
@@ -3182,7 +3182,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -3193,7 +3193,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -3203,7 +3203,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds , Available since v1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -3478,7 +3478,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available since 1.204.1) The status of db instance.
+         * @param status (Available since v1.204.1) The status of db instance.
          * 
          * @return builder
          * 
@@ -3489,7 +3489,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available since 1.204.1) The status of db instance.
+         * @param status (Available since v1.204.1) The status of db instance.
          * 
          * @return builder
          * 

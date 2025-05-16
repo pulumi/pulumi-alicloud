@@ -935,7 +935,7 @@ class Cluster(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.204.0`. Please use new resource emrv2_cluster.
 
-        > **NOTE:** Available in 1.57.0+.
+        > **NOTE:** Available since v1.57.0.
 
         ## Example Usage
 
@@ -1181,7 +1181,7 @@ class Cluster(pulumi.CustomResource):
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
 
-        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
+        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available since v1.168.0.
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 
@@ -1435,7 +1435,7 @@ class Cluster(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.204.0`. Please use new resource emrv2_cluster.
 
-        > **NOTE:** Available in 1.57.0+.
+        > **NOTE:** Available since v1.57.0.
 
         ## Example Usage
 
@@ -1681,7 +1681,7 @@ class Cluster(pulumi.CustomResource):
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
 
-        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
+        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available since v1.168.0.
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 

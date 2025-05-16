@@ -22,7 +22,8 @@ import * as utilities from "../utilities";
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 2,
- *     memorySize: 4,
+ *     memorySize: 8,
+ *     instanceTypeFamily: "ecs.g6",
  * }));
  * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
@@ -42,7 +43,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
+ *     securityGroupName: name,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {

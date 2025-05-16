@@ -225,13 +225,233 @@ func (o WorkspaceDatasetversionLabelArrayOutput) Index(i pulumi.IntInput) Worksp
 	}).(WorkspaceDatasetversionLabelOutput)
 }
 
+type WorkspaceModelLabel struct {
+	// label key
+	Key *string `pulumi:"key"`
+	// label value
+	Value *string `pulumi:"value"`
+}
+
+// WorkspaceModelLabelInput is an input type that accepts WorkspaceModelLabelArgs and WorkspaceModelLabelOutput values.
+// You can construct a concrete instance of `WorkspaceModelLabelInput` via:
+//
+//	WorkspaceModelLabelArgs{...}
+type WorkspaceModelLabelInput interface {
+	pulumi.Input
+
+	ToWorkspaceModelLabelOutput() WorkspaceModelLabelOutput
+	ToWorkspaceModelLabelOutputWithContext(context.Context) WorkspaceModelLabelOutput
+}
+
+type WorkspaceModelLabelArgs struct {
+	// label key
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// label value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkspaceModelLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceModelLabel)(nil)).Elem()
+}
+
+func (i WorkspaceModelLabelArgs) ToWorkspaceModelLabelOutput() WorkspaceModelLabelOutput {
+	return i.ToWorkspaceModelLabelOutputWithContext(context.Background())
+}
+
+func (i WorkspaceModelLabelArgs) ToWorkspaceModelLabelOutputWithContext(ctx context.Context) WorkspaceModelLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceModelLabelOutput)
+}
+
+// WorkspaceModelLabelArrayInput is an input type that accepts WorkspaceModelLabelArray and WorkspaceModelLabelArrayOutput values.
+// You can construct a concrete instance of `WorkspaceModelLabelArrayInput` via:
+//
+//	WorkspaceModelLabelArray{ WorkspaceModelLabelArgs{...} }
+type WorkspaceModelLabelArrayInput interface {
+	pulumi.Input
+
+	ToWorkspaceModelLabelArrayOutput() WorkspaceModelLabelArrayOutput
+	ToWorkspaceModelLabelArrayOutputWithContext(context.Context) WorkspaceModelLabelArrayOutput
+}
+
+type WorkspaceModelLabelArray []WorkspaceModelLabelInput
+
+func (WorkspaceModelLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceModelLabel)(nil)).Elem()
+}
+
+func (i WorkspaceModelLabelArray) ToWorkspaceModelLabelArrayOutput() WorkspaceModelLabelArrayOutput {
+	return i.ToWorkspaceModelLabelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkspaceModelLabelArray) ToWorkspaceModelLabelArrayOutputWithContext(ctx context.Context) WorkspaceModelLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceModelLabelArrayOutput)
+}
+
+type WorkspaceModelLabelOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceModelLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceModelLabel)(nil)).Elem()
+}
+
+func (o WorkspaceModelLabelOutput) ToWorkspaceModelLabelOutput() WorkspaceModelLabelOutput {
+	return o
+}
+
+func (o WorkspaceModelLabelOutput) ToWorkspaceModelLabelOutputWithContext(ctx context.Context) WorkspaceModelLabelOutput {
+	return o
+}
+
+// label key
+func (o WorkspaceModelLabelOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceModelLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// label value
+func (o WorkspaceModelLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceModelLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceModelLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceModelLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceModelLabel)(nil)).Elem()
+}
+
+func (o WorkspaceModelLabelArrayOutput) ToWorkspaceModelLabelArrayOutput() WorkspaceModelLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceModelLabelArrayOutput) ToWorkspaceModelLabelArrayOutputWithContext(ctx context.Context) WorkspaceModelLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceModelLabelArrayOutput) Index(i pulumi.IntInput) WorkspaceModelLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkspaceModelLabel {
+		return vs[0].([]WorkspaceModelLabel)[vs[1].(int)]
+	}).(WorkspaceModelLabelOutput)
+}
+
+type WorkspaceModelVersionLabel struct {
+	// label key.
+	Key *string `pulumi:"key"`
+	// label value.
+	Value *string `pulumi:"value"`
+}
+
+// WorkspaceModelVersionLabelInput is an input type that accepts WorkspaceModelVersionLabelArgs and WorkspaceModelVersionLabelOutput values.
+// You can construct a concrete instance of `WorkspaceModelVersionLabelInput` via:
+//
+//	WorkspaceModelVersionLabelArgs{...}
+type WorkspaceModelVersionLabelInput interface {
+	pulumi.Input
+
+	ToWorkspaceModelVersionLabelOutput() WorkspaceModelVersionLabelOutput
+	ToWorkspaceModelVersionLabelOutputWithContext(context.Context) WorkspaceModelVersionLabelOutput
+}
+
+type WorkspaceModelVersionLabelArgs struct {
+	// label key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// label value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkspaceModelVersionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceModelVersionLabel)(nil)).Elem()
+}
+
+func (i WorkspaceModelVersionLabelArgs) ToWorkspaceModelVersionLabelOutput() WorkspaceModelVersionLabelOutput {
+	return i.ToWorkspaceModelVersionLabelOutputWithContext(context.Background())
+}
+
+func (i WorkspaceModelVersionLabelArgs) ToWorkspaceModelVersionLabelOutputWithContext(ctx context.Context) WorkspaceModelVersionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceModelVersionLabelOutput)
+}
+
+// WorkspaceModelVersionLabelArrayInput is an input type that accepts WorkspaceModelVersionLabelArray and WorkspaceModelVersionLabelArrayOutput values.
+// You can construct a concrete instance of `WorkspaceModelVersionLabelArrayInput` via:
+//
+//	WorkspaceModelVersionLabelArray{ WorkspaceModelVersionLabelArgs{...} }
+type WorkspaceModelVersionLabelArrayInput interface {
+	pulumi.Input
+
+	ToWorkspaceModelVersionLabelArrayOutput() WorkspaceModelVersionLabelArrayOutput
+	ToWorkspaceModelVersionLabelArrayOutputWithContext(context.Context) WorkspaceModelVersionLabelArrayOutput
+}
+
+type WorkspaceModelVersionLabelArray []WorkspaceModelVersionLabelInput
+
+func (WorkspaceModelVersionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceModelVersionLabel)(nil)).Elem()
+}
+
+func (i WorkspaceModelVersionLabelArray) ToWorkspaceModelVersionLabelArrayOutput() WorkspaceModelVersionLabelArrayOutput {
+	return i.ToWorkspaceModelVersionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkspaceModelVersionLabelArray) ToWorkspaceModelVersionLabelArrayOutputWithContext(ctx context.Context) WorkspaceModelVersionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceModelVersionLabelArrayOutput)
+}
+
+type WorkspaceModelVersionLabelOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceModelVersionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceModelVersionLabel)(nil)).Elem()
+}
+
+func (o WorkspaceModelVersionLabelOutput) ToWorkspaceModelVersionLabelOutput() WorkspaceModelVersionLabelOutput {
+	return o
+}
+
+func (o WorkspaceModelVersionLabelOutput) ToWorkspaceModelVersionLabelOutputWithContext(ctx context.Context) WorkspaceModelVersionLabelOutput {
+	return o
+}
+
+// label key.
+func (o WorkspaceModelVersionLabelOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceModelVersionLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// label value.
+func (o WorkspaceModelVersionLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceModelVersionLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceModelVersionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceModelVersionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceModelVersionLabel)(nil)).Elem()
+}
+
+func (o WorkspaceModelVersionLabelArrayOutput) ToWorkspaceModelVersionLabelArrayOutput() WorkspaceModelVersionLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceModelVersionLabelArrayOutput) ToWorkspaceModelVersionLabelArrayOutputWithContext(ctx context.Context) WorkspaceModelVersionLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceModelVersionLabelArrayOutput) Index(i pulumi.IntInput) WorkspaceModelVersionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkspaceModelVersionLabel {
+		return vs[0].([]WorkspaceModelVersionLabel)[vs[1].(int)]
+	}).(WorkspaceModelVersionLabelOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetLabelInput)(nil)).Elem(), WorkspaceDatasetLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetLabelArrayInput)(nil)).Elem(), WorkspaceDatasetLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetversionLabelInput)(nil)).Elem(), WorkspaceDatasetversionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetversionLabelArrayInput)(nil)).Elem(), WorkspaceDatasetversionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelLabelInput)(nil)).Elem(), WorkspaceModelLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelLabelArrayInput)(nil)).Elem(), WorkspaceModelLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelVersionLabelInput)(nil)).Elem(), WorkspaceModelVersionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelVersionLabelArrayInput)(nil)).Elem(), WorkspaceModelVersionLabelArray{})
 	pulumi.RegisterOutputType(WorkspaceDatasetLabelOutput{})
 	pulumi.RegisterOutputType(WorkspaceDatasetLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceDatasetversionLabelOutput{})
 	pulumi.RegisterOutputType(WorkspaceDatasetversionLabelArrayOutput{})
+	pulumi.RegisterOutputType(WorkspaceModelLabelOutput{})
+	pulumi.RegisterOutputType(WorkspaceModelLabelArrayOutput{})
+	pulumi.RegisterOutputType(WorkspaceModelVersionLabelOutput{})
+	pulumi.RegisterOutputType(WorkspaceModelVersionLabelArrayOutput{})
 }

@@ -36,14 +36,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kms/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     @Export(name="bindVpcs", refs={List.class,InstanceBindVpc.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceBindVpc>> bindVpcs;
 
     /**
-     * @return Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+     * @return Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
      * 
      */
     public Output<Optional<List<InstanceBindVpc>>> bindVpcs() {
@@ -106,14 +106,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDeleteWithoutBackup);
     }
     /**
-     * The name of the resource.
+     * The name of the resource
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the resource
      * 
      */
     public Output<String> instanceName() {
@@ -162,14 +162,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.logStorage;
     }
     /**
-     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * @return Payment type,valid values:
+     * - `Subscription`: Prepaid.
+     * - `PayAsYouGo`: Postpaid.
      * 
      */
     public Output<String> paymentType() {
@@ -190,14 +194,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * KMS Instance commodity type (software/hardware).
+     * KMS Instance commodity type (software/hardware)
      * 
      */
     @Export(name="productVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productVersion;
 
     /**
-     * @return KMS Instance commodity type (software/hardware).
+     * @return KMS Instance commodity type (software/hardware)
      * 
      */
     public Output<Optional<String>> productVersion() {
@@ -274,14 +278,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Instance VPC id.
+     * Instance VPC id
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return Instance VPC id.
+     * @return Instance VPC id
      * 
      */
     public Output<String> vpcId() {
@@ -302,28 +306,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vpcNum);
     }
     /**
-     * Instance bind vswitches.
+     * Instance bind vswitches
      * 
      */
     @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vswitchIds;
 
     /**
-     * @return Instance bind vswitches.
+     * @return Instance bind vswitches
      * 
      */
     public Output<List<String>> vswitchIds() {
         return this.vswitchIds;
     }
     /**
-     * zone id.
+     * zone id
      * 
      */
     @Export(name="zoneIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zoneIds;
 
     /**
-     * @return zone id.
+     * @return zone id
      * 
      */
     public Output<List<String>> zoneIds() {

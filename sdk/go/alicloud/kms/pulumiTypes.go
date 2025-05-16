@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceBindVpc struct {
-	// region id.
+	// region id
 	RegionId *string `pulumi:"regionId"`
-	// VPC ID.
+	// VPC ID
 	VpcId *string `pulumi:"vpcId"`
-	// VPC owner root user ID.
+	// VPC owner root user ID
 	VpcOwnerId *string `pulumi:"vpcOwnerId"`
-	// vswitch id.
+	// vswitch id
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -36,13 +36,13 @@ type InstanceBindVpcInput interface {
 }
 
 type InstanceBindVpcArgs struct {
-	// region id.
+	// region id
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
-	// VPC ID.
+	// VPC ID
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// VPC owner root user ID.
+	// VPC owner root user ID
 	VpcOwnerId pulumi.StringPtrInput `pulumi:"vpcOwnerId"`
-	// vswitch id.
+	// vswitch id
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -97,22 +97,22 @@ func (o InstanceBindVpcOutput) ToInstanceBindVpcOutputWithContext(ctx context.Co
 	return o
 }
 
-// region id.
+// region id
 func (o InstanceBindVpcOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBindVpc) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
-// VPC ID.
+// VPC ID
 func (o InstanceBindVpcOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// VPC owner root user ID.
+// VPC owner root user ID
 func (o InstanceBindVpcOutput) VpcOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VpcOwnerId }).(pulumi.StringPtrOutput)
 }
 
-// vswitch id.
+// vswitch id
 func (o InstanceBindVpcOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MasterSlaveServerGroupServer {
+    /**
+     * @return Determine if the server is executing. Valid value 0, 1.
+     * 
+     */
     private @Nullable Integer isBackup;
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     private Integer port;
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     private String serverId;
+    /**
+     * @return The server type of the backend server. Valid value Master, Slave.
+     * 
+     */
     private @Nullable String serverType;
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     private @Nullable Integer weight;
 
     private MasterSlaveServerGroupServer() {}
+    /**
+     * @return Determine if the server is executing. Valid value 0, 1.
+     * 
+     */
     public Optional<Integer> isBackup() {
         return Optional.ofNullable(this.isBackup);
     }
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public String serverId() {
         return this.serverId;
     }
+    /**
+     * @return The server type of the backend server. Valid value Master, Slave.
+     * 
+     */
     public Optional<String> serverType() {
         return Optional.ofNullable(this.serverType);
     }
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     public Optional<Integer> weight() {
         return Optional.ofNullable(this.weight);
     }
