@@ -1071,6 +1071,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    @Import(name="systemDiskBurstingEnabled")
+    private @Nullable Output<Boolean> systemDiskBurstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> systemDiskBurstingEnabled() {
+        return Optional.ofNullable(this.systemDiskBurstingEnabled);
+    }
+
+    /**
      * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
      * 
      */
@@ -1173,6 +1188,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> systemDiskPerformanceLevel() {
         return Optional.ofNullable(this.systemDiskPerformanceLevel);
+    }
+
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     * 
+     */
+    @Import(name="systemDiskProvisionedIops")
+    private @Nullable Output<Integer> systemDiskProvisionedIops;
+
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     * 
+     */
+    public Optional<Output<Integer>> systemDiskProvisionedIops() {
+        return Optional.ofNullable(this.systemDiskProvisionedIops);
     }
 
     /**
@@ -1359,6 +1389,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.stoppedMode = $.stoppedMode;
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
+        this.systemDiskBurstingEnabled = $.systemDiskBurstingEnabled;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskDescription = $.systemDiskDescription;
         this.systemDiskEncryptAlgorithm = $.systemDiskEncryptAlgorithm;
@@ -1366,6 +1397,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.systemDiskKmsKeyId = $.systemDiskKmsKeyId;
         this.systemDiskName = $.systemDiskName;
         this.systemDiskPerformanceLevel = $.systemDiskPerformanceLevel;
+        this.systemDiskProvisionedIops = $.systemDiskProvisionedIops;
         this.systemDiskSize = $.systemDiskSize;
         this.systemDiskStorageClusterId = $.systemDiskStorageClusterId;
         this.tags = $.tags;
@@ -2852,6 +2884,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param systemDiskBurstingEnabled Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskBurstingEnabled(@Nullable Output<Boolean> systemDiskBurstingEnabled) {
+            $.systemDiskBurstingEnabled = systemDiskBurstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param systemDiskBurstingEnabled Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskBurstingEnabled(Boolean systemDiskBurstingEnabled) {
+            return systemDiskBurstingEnabled(Output.of(systemDiskBurstingEnabled));
+        }
+
+        /**
          * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
          * 
          * @return builder
@@ -2996,6 +3049,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder systemDiskPerformanceLevel(String systemDiskPerformanceLevel) {
             return systemDiskPerformanceLevel(Output.of(systemDiskPerformanceLevel));
+        }
+
+        /**
+         * @param systemDiskProvisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(@Nullable Output<Integer> systemDiskProvisionedIops) {
+            $.systemDiskProvisionedIops = systemDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param systemDiskProvisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(Integer systemDiskProvisionedIops) {
+            return systemDiskProvisionedIops(Output.of(systemDiskProvisionedIops));
         }
 
         /**

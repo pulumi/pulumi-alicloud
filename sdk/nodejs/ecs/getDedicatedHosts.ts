@@ -7,23 +7,34 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.91.0+.
+ * > **NOTE:** Available since v1.91.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
- *     nameRegex: "tf-testAcc",
- *     dedicatedHostType: "ddh.g5",
- *     status: "Available",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.ecs.DedicatedHost("default", {
+ *     dedicatedHostType: "ddh.c5",
+ *     description: "From_Terraform",
+ *     dedicatedHostName: name,
+ *     actionOnMaintenance: "Migrate",
+ *     tags: {
+ *         Create: "TF",
+ *         For: "ddh-test",
+ *     },
  * });
- * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
+ * const ids = alicloud.ecs.getDedicatedHostsOutput({
+ *     ids: [_default.id],
+ * });
+ * export const ecsDedicatedHostId0 = ids.apply(ids => ids.hosts?.[0]?.id);
  * ```
  */
 export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
@@ -69,7 +80,7 @@ export interface GetDedicatedHostsArgs {
      */
     nameRegex?: string;
     /**
-     * The reason why the dedicated host resource is locked.
+     * The reason why the dedicated host resource is locked. See `operationLocks` below.
      */
     operationLocks?: inputs.ecs.GetDedicatedHostsOperationLock[];
     /**
@@ -81,7 +92,7 @@ export interface GetDedicatedHostsArgs {
      */
     resourceGroupId?: string;
     /**
-     * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      */
     status?: string;
     /**
@@ -118,9 +129,6 @@ export interface GetDedicatedHostsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of ECS Dedicated Host ids.
-     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
@@ -128,7 +136,7 @@ export interface GetDedicatedHostsResult {
      */
     readonly names: string[];
     /**
-     * (Available in 1.123.1+) The operation_locks. contains the following attribute:
+     * (Available since v1.123.1) The operation_locks. contains the following attribute:
      */
     readonly operationLocks?: outputs.ecs.GetDedicatedHostsOperationLock[];
     readonly outputFile?: string;
@@ -140,27 +148,44 @@ export interface GetDedicatedHostsResult {
      * The service status of the dedicated host.
      */
     readonly status?: string;
+    /**
+     * The tags of the dedicated host.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The zone id of the dedicated host.
+     */
     readonly zoneId?: string;
 }
 /**
- * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.91.0+.
+ * > **NOTE:** Available since v1.91.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
- *     nameRegex: "tf-testAcc",
- *     dedicatedHostType: "ddh.g5",
- *     status: "Available",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.ecs.DedicatedHost("default", {
+ *     dedicatedHostType: "ddh.c5",
+ *     description: "From_Terraform",
+ *     dedicatedHostName: name,
+ *     actionOnMaintenance: "Migrate",
+ *     tags: {
+ *         Create: "TF",
+ *         For: "ddh-test",
+ *     },
  * });
- * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
+ * const ids = alicloud.ecs.getDedicatedHostsOutput({
+ *     ids: [_default.id],
+ * });
+ * export const ecsDedicatedHostId0 = ids.apply(ids => ids.hosts?.[0]?.id);
  * ```
  */
 export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedHostsResult> {
@@ -206,7 +231,7 @@ export interface GetDedicatedHostsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The reason why the dedicated host resource is locked.
+     * The reason why the dedicated host resource is locked. See `operationLocks` below.
      */
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDedicatedHostsOperationLockArgs>[]>;
     /**
@@ -218,7 +243,7 @@ export interface GetDedicatedHostsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      */
     status?: pulumi.Input<string>;
     /**

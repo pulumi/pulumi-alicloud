@@ -13,6 +13,8 @@ import (
 
 // The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 //
+// > **NOTE:** Available since v1.7.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -112,8 +114,7 @@ type GetInstancesResult struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of ECS instance IDs.
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// Image ID the instance is using.
 	ImageId      *string `pulumi:"imageId"`
@@ -238,7 +239,6 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS instance IDs.
 func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

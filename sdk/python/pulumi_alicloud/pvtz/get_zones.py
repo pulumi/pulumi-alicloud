@@ -85,9 +85,6 @@ class GetZonesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[builtins.str]:
-        """
-        A list of zone IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -109,7 +106,7 @@ class GetZonesResult:
     @pulumi.getter
     def names(self) -> Sequence[builtins.str]:
         """
-        A list of zone names.
+        A list of Zone names.
         """
         return pulumi.get(self, "names")
 
@@ -132,7 +129,7 @@ class GetZonesResult:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[builtins.str]:
         """
-        The Id of resource group which the Private Zone belongs.
+        The ID of the resource group to which the zone belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -145,7 +142,7 @@ class GetZonesResult:
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
-        A list of zones. Each element contains the following attributes:
+        A list of Zone. Each element contains the following attributes:
         """
         return pulumi.get(self, "zones")
 
@@ -183,30 +180,40 @@ def get_zones(enable_details: Optional[builtins.bool] = None,
               search_mode: Optional[builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+    This data source provides the Private Zones of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=basic["zoneName"])
-    pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.com"
+    default = alicloud.pvtz.Zone("default", zone_name=name)
+    ids = alicloud.pvtz.get_zones_output(ids=[default.id])
+    pulumi.export("pvtzZonesId0", ids.zones[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to true can output more details.
-    :param Sequence[builtins.str] ids: A list of zone IDs.
-    :param builtins.str keyword: keyword for zone name.
-    :param builtins.str lang: User language.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[builtins.str] ids: A list of Zones IDs.
+    :param builtins.str keyword: The keyword of the zone name.
+    :param builtins.str lang: The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+    :param builtins.str name_regex: A regex string to filter results by Zone name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str query_region_id: query_region_id for zone regionId.
-    :param builtins.str query_vpc_id: query_vpc_id for zone vpcId.
-    :param builtins.str resource_group_id: resource_group_id for zone resourceGroupId.
-    :param builtins.str search_mode: Search mode. Value: 
-           - LIKE: fuzzy search.
-           - EXACT: precise search. It is not filled in by default.
+    :param builtins.str query_region_id: The region ID of the virtual private cloud (VPC) associated with the zone.
+    :param builtins.str query_vpc_id: The ID of the VPC associated with the zone.
+    :param builtins.str resource_group_id: The ID of the resource group to which the zone belongs.
+    :param builtins.str search_mode: The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+           - `LIKE`: Fuzzy search.
+           - `EXACT`: Exact search.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -248,30 +255,40 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[builtins.boo
                      search_mode: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
-    This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+    This data source provides the Private Zones of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=basic["zoneName"])
-    pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.com"
+    default = alicloud.pvtz.Zone("default", zone_name=name)
+    ids = alicloud.pvtz.get_zones_output(ids=[default.id])
+    pulumi.export("pvtzZonesId0", ids.zones[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to true can output more details.
-    :param Sequence[builtins.str] ids: A list of zone IDs.
-    :param builtins.str keyword: keyword for zone name.
-    :param builtins.str lang: User language.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[builtins.str] ids: A list of Zones IDs.
+    :param builtins.str keyword: The keyword of the zone name.
+    :param builtins.str lang: The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+    :param builtins.str name_regex: A regex string to filter results by Zone name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str query_region_id: query_region_id for zone regionId.
-    :param builtins.str query_vpc_id: query_vpc_id for zone vpcId.
-    :param builtins.str resource_group_id: resource_group_id for zone resourceGroupId.
-    :param builtins.str search_mode: Search mode. Value: 
-           - LIKE: fuzzy search.
-           - EXACT: precise search. It is not filled in by default.
+    :param builtins.str query_region_id: The region ID of the virtual private cloud (VPC) associated with the zone.
+    :param builtins.str query_vpc_id: The ID of the VPC associated with the zone.
+    :param builtins.str resource_group_id: The ID of the resource group to which the zone belongs.
+    :param builtins.str search_mode: The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+           - `LIKE`: Fuzzy search.
+           - `EXACT`: Exact search.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

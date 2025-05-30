@@ -40,11 +40,9 @@ class PolicyArgs:
         :param pulumi.Input[builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         :param pulumi.Input[builtins.str] policy_document: The content of the policy. The maximum length is 6144 bytes.
         :param pulumi.Input[builtins.str] policy_name: The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
-        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-               
-               Currently contains:
-               - None: Turn off the rotation mechanism.
-               - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+               - `None`: Turn off the rotation mechanism.
+               - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[builtins.str] version: Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
@@ -160,11 +158,9 @@ class PolicyArgs:
     @pulumi.getter(name="rotateStrategy")
     def rotate_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-
-        Currently contains:
-        - None: Turn off the rotation mechanism.
-        - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        - `None`: Turn off the rotation mechanism.
+        - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         """
         return pulumi.get(self, "rotate_strategy")
 
@@ -240,11 +236,9 @@ class _PolicyState:
         :param pulumi.Input[builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         :param pulumi.Input[builtins.str] policy_document: The content of the policy. The maximum length is 6144 bytes.
         :param pulumi.Input[builtins.str] policy_name: The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
-        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-               
-               Currently contains:
-               - None: Turn off the rotation mechanism.
-               - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+               - `None`: Turn off the rotation mechanism.
+               - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[builtins.str] type: The type of the policy.
@@ -408,11 +402,9 @@ class _PolicyState:
     @pulumi.getter(name="rotateStrategy")
     def rotate_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-
-        Currently contains:
-        - None: Turn off the rotation mechanism.
-        - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        - `None`: Turn off the rotation mechanism.
+        - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         """
         return pulumi.get(self, "rotate_strategy")
 
@@ -564,11 +556,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         :param pulumi.Input[builtins.str] policy_document: The content of the policy. The maximum length is 6144 bytes.
         :param pulumi.Input[builtins.str] policy_name: The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
-        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-               
-               Currently contains:
-               - None: Turn off the rotation mechanism.
-               - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+               - `None`: Turn off the rotation mechanism.
+               - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[builtins.str] version: Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
@@ -725,11 +715,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         :param pulumi.Input[builtins.str] policy_document: The content of the policy. The maximum length is 6144 bytes.
         :param pulumi.Input[builtins.str] policy_name: The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
-        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-               
-               Currently contains:
-               - None: Turn off the rotation mechanism.
-               - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        :param pulumi.Input[builtins.str] rotate_strategy: The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+               - `None`: Turn off the rotation mechanism.
+               - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The list of tags on the policy.
         :param pulumi.Input[builtins.str] type: The type of the policy.
@@ -835,11 +823,9 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="rotateStrategy")
     def rotate_strategy(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-
-        Currently contains:
-        - None: Turn off the rotation mechanism.
-        - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        - `None`: Turn off the rotation mechanism.
+        - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         """
         return pulumi.get(self, "rotate_strategy")
 

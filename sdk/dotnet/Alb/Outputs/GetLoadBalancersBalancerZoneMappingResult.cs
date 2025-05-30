@@ -13,13 +13,20 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerZoneMappingResult
     {
+        /// <summary>
+        /// (Available since v1.250.0) The address of the ALB instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult> LoadBalancerAddresses;
         /// <summary>
-        /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// The ID of the vSwitch that corresponds to the zone.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         public readonly string ZoneId;
 
@@ -27,11 +34,14 @@ namespace Pulumi.AliCloud.Alb.Outputs
         private GetLoadBalancersBalancerZoneMappingResult(
             ImmutableArray<Outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult> loadBalancerAddresses,
 
+            string status,
+
             string vswitchId,
 
             string zoneId)
         {
             LoadBalancerAddresses = loadBalancerAddresses;
+            Status = status;
             VswitchId = vswitchId;
             ZoneId = zoneId;
         }

@@ -14,23 +14,19 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerAccessLogTracingConfig
     {
         /// <summary>
-        /// Xtrace Function.
+        /// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
         /// 
-        /// Value: True **** Or False * *.
-        /// 
-        /// Default Value: False * *.
-        /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
         /// </summary>
         public readonly bool TracingEnabled;
         /// <summary>
-        /// Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
+        /// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
         /// </summary>
         public readonly int? TracingSample;
         /// <summary>
-        /// Xtrace Type Value Is **Zipkin * *.
+        /// Xtrace Type Value Is `Zipkin`.
         /// 
-        /// &gt; **NOTE:**  `tracingenabled` **True When Effective.
+        /// &gt; **NOTE:**  `tracingenabled` valued True When Effective.
         /// </summary>
         public readonly string? TracingType;
 

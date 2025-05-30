@@ -12,11 +12,13 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetDedicatedHosts
     {
         /// <summary>
-        /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
         ///  
-        /// &gt; **NOTE:** Available in v1.91.0+.
+        /// &gt; **NOTE:** Available since v1.91.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -26,17 +28,32 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Ecs.DedicatedHost("default", new()
         ///     {
-        ///         NameRegex = "tf-testAcc",
-        ///         DedicatedHostType = "ddh.g5",
-        ///         Status = "Available",
+        ///         DedicatedHostType = "ddh.c5",
+        ///         Description = "From_Terraform",
+        ///         DedicatedHostName = name,
+        ///         ActionOnMaintenance = "Migrate",
+        ///         Tags = 
+        ///         {
+        ///             { "Create", "TF" },
+        ///             { "For", "ddh-test" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["ecsDedicatedHostId0"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -45,11 +62,13 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
         ///  
-        /// &gt; **NOTE:** Available in v1.91.0+.
+        /// &gt; **NOTE:** Available since v1.91.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,17 +78,32 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Ecs.DedicatedHost("default", new()
         ///     {
-        ///         NameRegex = "tf-testAcc",
-        ///         DedicatedHostType = "ddh.g5",
-        ///         Status = "Available",
+        ///         DedicatedHostType = "ddh.c5",
+        ///         Description = "From_Terraform",
+        ///         DedicatedHostName = name,
+        ///         ActionOnMaintenance = "Migrate",
+        ///         Tags = 
+        ///         {
+        ///             { "Create", "TF" },
+        ///             { "For", "ddh-test" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["ecsDedicatedHostId0"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -78,11 +112,13 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
         ///  
-        /// &gt; **NOTE:** Available in v1.91.0+.
+        /// &gt; **NOTE:** Available since v1.91.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -92,17 +128,32 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Ecs.DedicatedHost("default", new()
         ///     {
-        ///         NameRegex = "tf-testAcc",
-        ///         DedicatedHostType = "ddh.g5",
-        ///         Status = "Available",
+        ///         DedicatedHostType = "ddh.c5",
+        ///         Description = "From_Terraform",
+        ///         DedicatedHostName = name,
+        ///         ActionOnMaintenance = "Migrate",
+        ///         Tags = 
+        ///         {
+        ///             { "Create", "TF" },
+        ///             { "For", "ddh-test" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["ecsDedicatedHostId0"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -154,7 +205,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<Inputs.GetDedicatedHostsOperationLockArgs>? _operationLocks;
 
         /// <summary>
-        /// The reason why the dedicated host resource is locked.
+        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
         /// </summary>
         public List<Inputs.GetDedicatedHostsOperationLockArgs> OperationLocks
         {
@@ -175,7 +226,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        /// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -246,7 +297,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.GetDedicatedHostsOperationLockInputArgs>? _operationLocks;
 
         /// <summary>
-        /// The reason why the dedicated host resource is locked.
+        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
         /// </summary>
         public InputList<Inputs.GetDedicatedHostsOperationLockInputArgs> OperationLocks
         {
@@ -267,7 +318,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        /// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -320,9 +371,6 @@ namespace Pulumi.AliCloud.Ecs
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of ECS Dedicated Host ids.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
@@ -330,7 +378,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>
-        /// (Available in 1.123.1+) The operation_locks. contains the following attribute:
+        /// (Available since v1.123.1) The operation_locks. contains the following attribute:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsOperationLockResult> OperationLocks;
         public readonly string? OutputFile;
@@ -342,7 +390,13 @@ namespace Pulumi.AliCloud.Ecs
         /// The service status of the dedicated host.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the dedicated host.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The zone id of the dedicated host.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

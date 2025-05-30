@@ -13,7 +13,7 @@ import (
 
 // This data source provides the details of the Kubernetes version supported by ACK.
 //
-// > **NOTE:** Available in 1.170.0+.
+// > **NOTE:** Available since v1.170.0.
 //
 // ## Example Usage
 //
@@ -144,7 +144,7 @@ type GetKubernetesVersionArgs struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The ACK released kubernetes version.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
-	// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+	// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
 	Profile *string `pulumi:"profile"`
 }
 
@@ -174,7 +174,7 @@ type GetKubernetesVersionOutputArgs struct {
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
 	// The ACK released kubernetes version.
 	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
-	// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+	// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 }
 

@@ -244,19 +244,15 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 }
 
 type ListenerAccessLogTracingConfig struct {
-	// Xtrace Function.
+	// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
 	TracingEnabled bool `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+	// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
 	TracingSample *int `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin * *.
+	// Xtrace Type Value Is `Zipkin`.
 	//
-	// > **NOTE:**  `tracingenabled` **True When Effective.
+	// > **NOTE:**  `tracingenabled` valued True When Effective.
 	TracingType *string `pulumi:"tracingType"`
 }
 
@@ -272,19 +268,15 @@ type ListenerAccessLogTracingConfigInput interface {
 }
 
 type ListenerAccessLogTracingConfigArgs struct {
-	// Xtrace Function.
+	// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
 	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+	// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
 	TracingSample pulumi.IntPtrInput `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin * *.
+	// Xtrace Type Value Is `Zipkin`.
 	//
-	// > **NOTE:**  `tracingenabled` **True When Effective.
+	// > **NOTE:**  `tracingenabled` valued True When Effective.
 	TracingType pulumi.StringPtrInput `pulumi:"tracingType"`
 }
 
@@ -365,25 +357,21 @@ func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPt
 	}).(ListenerAccessLogTracingConfigPtrOutput)
 }
 
-// Xtrace Function.
+// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 //
-// Value: True **** Or False * *.
-//
-// Default Value: False * *.
-//
-// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
 func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
-// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
 func (o ListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *int { return v.TracingSample }).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is **Zipkin * *.
+// Xtrace Type Value Is `Zipkin`.
 //
-// > **NOTE:**  `tracingenabled` **True When Effective.
+// > **NOTE:**  `tracingenabled` valued True When Effective.
 func (o ListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *string { return v.TracingType }).(pulumi.StringPtrOutput)
 }
@@ -412,13 +400,9 @@ func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracing
 	}).(ListenerAccessLogTracingConfigOutput)
 }
 
-// Xtrace Function.
+// Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 //
-// Value: True **** Or False * *.
-//
-// Default Value: False * *.
-//
-// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *bool {
 		if v == nil {
@@ -428,7 +412,7 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *int {
 		if v == nil {
@@ -438,9 +422,9 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is **Zipkin * *.
+// Xtrace Type Value Is `Zipkin`.
 //
-// > **NOTE:**  `tracingenabled` **True When Effective.
+// > **NOTE:**  `tracingenabled` valued True When Effective.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *string {
 		if v == nil {
@@ -949,7 +933,7 @@ func (o ListenerCertificatesPtrOutput) CertificateId() pulumi.StringPtrOutput {
 type ListenerDefaultAction struct {
 	// Forwarding Action Configurations See `forwardGroupConfig` below.
 	ForwardGroupConfig *ListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
-	// Action Type
+	// The action type. Value: ForwardGroup, indicating forwarding to the server group.
 	Type string `pulumi:"type"`
 }
 
@@ -967,7 +951,7 @@ type ListenerDefaultActionInput interface {
 type ListenerDefaultActionArgs struct {
 	// Forwarding Action Configurations See `forwardGroupConfig` below.
 	ForwardGroupConfig ListenerDefaultActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
-	// Action Type
+	// The action type. Value: ForwardGroup, indicating forwarding to the server group.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1027,7 +1011,7 @@ func (o ListenerDefaultActionOutput) ForwardGroupConfig() ListenerDefaultActionF
 	return o.ApplyT(func(v ListenerDefaultAction) *ListenerDefaultActionForwardGroupConfig { return v.ForwardGroupConfig }).(ListenerDefaultActionForwardGroupConfigPtrOutput)
 }
 
-// Action Type
+// The action type. Value: ForwardGroup, indicating forwarding to the server group.
 func (o ListenerDefaultActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1462,40 +1446,16 @@ type ListenerXForwardedForConfig struct {
 	// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 	XForwardedForClientCertSubjectDnEnabled *bool `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
 	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-	//
-	// true: Yes.
-	//
-	// false (default): No.
-	//
-	// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 	XForwardedForClientSourceIpsEnabled *bool `pulumi:"xForwardedForClientSourceIpsEnabled"`
-	// Specify the trusted proxy IP.
-	//
-	// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 	XForwardedForClientSourceIpsTrusted *string `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled *bool `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
 	XForwardedForEnabled *bool `pulumi:"xForwardedForEnabled"`
 	// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-	//
-	// true: Yes.
-	//
-	// false (default): No.
-	//
-	// HTTP, HTTPS, and QUIC listeners support this parameter.
 	XForwardedForHostEnabled *bool `pulumi:"xForwardedForHostEnabled"`
 	// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-	//
-	// append (default): append.
-	//
-	// remove: Delete.
-	//
-	// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-	//
-	// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-	//
-	// HTTP and HTTPS listeners support this parameter.
 	XForwardedForProcessingMode *string `pulumi:"xForwardedForProcessingMode"`
 	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 	XForwardedForProtoEnabled *bool `pulumi:"xForwardedForProtoEnabled"`
@@ -1534,40 +1494,16 @@ type ListenerXForwardedForConfigArgs struct {
 	// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 	XForwardedForClientCertSubjectDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
 	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-	//
-	// true: Yes.
-	//
-	// false (default): No.
-	//
-	// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 	XForwardedForClientSourceIpsEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSourceIpsEnabled"`
-	// Specify the trusted proxy IP.
-	//
-	// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 	XForwardedForClientSourceIpsTrusted pulumi.StringPtrInput `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
 	XForwardedForEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForEnabled"`
 	// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-	//
-	// true: Yes.
-	//
-	// false (default): No.
-	//
-	// HTTP, HTTPS, and QUIC listeners support this parameter.
 	XForwardedForHostEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForHostEnabled"`
 	// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-	//
-	// append (default): append.
-	//
-	// remove: Delete.
-	//
-	// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-	//
-	// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-	//
-	// HTTP and HTTPS listeners support this parameter.
 	XForwardedForProcessingMode pulumi.StringPtrInput `pulumi:"xForwardedForProcessingMode"`
 	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 	XForwardedForProtoEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForProtoEnabled"`
@@ -1695,19 +1631,11 @@ func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnEnabl
 }
 
 // Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-//
-// true: Yes.
-//
-// false (default): No.
-//
-// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientSourceIpsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the trusted proxy IP.
-//
-// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientSourceIpsTrusted }).(pulumi.StringPtrOutput)
 }
@@ -1723,27 +1651,11 @@ func (o ListenerXForwardedForConfigOutput) XForwardedForEnabled() pulumi.BoolPtr
 }
 
 // Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-//
-// true: Yes.
-//
-// false (default): No.
-//
-// HTTP, HTTPS, and QUIC listeners support this parameter.
 func (o ListenerXForwardedForConfigOutput) XForwardedForHostEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForHostEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-//
-// append (default): append.
-//
-// remove: Delete.
-//
-// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-//
-// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-//
-// HTTP and HTTPS listeners support this parameter.
 func (o ListenerXForwardedForConfigOutput) XForwardedForProcessingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForProcessingMode }).(pulumi.StringPtrOutput)
 }
@@ -1868,12 +1780,6 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnEn
 }
 
 // Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-//
-// true: Yes.
-//
-// false (default): No.
-//
-// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1883,9 +1789,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify the trusted proxy IP.
-//
-// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1916,12 +1820,6 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForEnabled() pulumi.Bool
 }
 
 // Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-//
-// true: Yes.
-//
-// false (default): No.
-//
-// HTTP, HTTPS, and QUIC listeners support this parameter.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForHostEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1932,16 +1830,6 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForHostEnabled() pulumi.
 }
 
 // Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-//
-// append (default): append.
-//
-// remove: Delete.
-//
-// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-//
-// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-//
-// HTTP and HTTPS listeners support this parameter.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForProcessingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -10590,11 +10478,9 @@ func (o GetListenersListenerXforwardedForConfigArrayOutput) Index(i pulumi.IntIn
 type GetLoadBalancersBalancer struct {
 	// The Access Logging Configuration Structure.
 	AccessLogConfigs []GetLoadBalancersBalancerAccessLogConfig `pulumi:"accessLogConfigs"`
-	// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-	// uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-	// instance.
+	// The method in which IP addresses are assigned.
 	AddressAllocatedMode string `pulumi:"addressAllocatedMode"`
-	// The type of IP address that the ALB instance uses to provide services.
+	// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
 	AddressType string `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
 	// public IP address.
@@ -10609,9 +10495,9 @@ type GetLoadBalancersBalancer struct {
 	Id string `pulumi:"id"`
 	// The configuration of the billing method.
 	LoadBalancerBillingConfigs []GetLoadBalancersBalancerLoadBalancerBillingConfig `pulumi:"loadBalancerBillingConfigs"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus string `pulumi:"loadBalancerBusinessStatus"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	// Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus string `pulumi:"loadBalancerBussinessStatus"`
@@ -10627,13 +10513,13 @@ type GetLoadBalancersBalancer struct {
 	ModificationProtectionConfigs []GetLoadBalancersBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfigs"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status string `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
-	// The zones and vSwitches. You must specify at least two zones.
+	// The zones and vSwitches.
 	ZoneMappings []GetLoadBalancersBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -10651,11 +10537,9 @@ type GetLoadBalancersBalancerInput interface {
 type GetLoadBalancersBalancerArgs struct {
 	// The Access Logging Configuration Structure.
 	AccessLogConfigs GetLoadBalancersBalancerAccessLogConfigArrayInput `pulumi:"accessLogConfigs"`
-	// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-	// uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-	// instance.
+	// The method in which IP addresses are assigned.
 	AddressAllocatedMode pulumi.StringInput `pulumi:"addressAllocatedMode"`
-	// The type of IP address that the ALB instance uses to provide services.
+	// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
 	AddressType pulumi.StringInput `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
 	// public IP address.
@@ -10670,9 +10554,9 @@ type GetLoadBalancersBalancerArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The configuration of the billing method.
 	LoadBalancerBillingConfigs GetLoadBalancersBalancerLoadBalancerBillingConfigArrayInput `pulumi:"loadBalancerBillingConfigs"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus pulumi.StringInput `pulumi:"loadBalancerBusinessStatus"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	// Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus pulumi.StringInput `pulumi:"loadBalancerBussinessStatus"`
@@ -10688,13 +10572,13 @@ type GetLoadBalancersBalancerArgs struct {
 	ModificationProtectionConfigs GetLoadBalancersBalancerModificationProtectionConfigArrayInput `pulumi:"modificationProtectionConfigs"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The zones and vSwitches. You must specify at least two zones.
+	// The zones and vSwitches.
 	ZoneMappings GetLoadBalancersBalancerZoneMappingArrayInput `pulumi:"zoneMappings"`
 }
 
@@ -10754,14 +10638,12 @@ func (o GetLoadBalancersBalancerOutput) AccessLogConfigs() GetLoadBalancersBalan
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerAccessLogConfig { return v.AccessLogConfigs }).(GetLoadBalancersBalancerAccessLogConfigArrayOutput)
 }
 
-// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-// uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-// instance.
+// The method in which IP addresses are assigned.
 func (o GetLoadBalancersBalancerOutput) AddressAllocatedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressAllocatedMode }).(pulumi.StringOutput)
 }
 
-// The type of IP address that the ALB instance uses to provide services.
+// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
 func (o GetLoadBalancersBalancerOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressType }).(pulumi.StringOutput)
 }
@@ -10801,12 +10683,12 @@ func (o GetLoadBalancersBalancerOutput) LoadBalancerBillingConfigs() GetLoadBala
 	}).(GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput)
 }
 
-// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerBusinessStatus }).(pulumi.StringOutput)
 }
 
-// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+// Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
 //
 // Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerBussinessStatus() pulumi.StringOutput {
@@ -10847,12 +10729,12 @@ func (o GetLoadBalancersBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -10862,7 +10744,7 @@ func (o GetLoadBalancersBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The zones and vSwitches. You must specify at least two zones.
+// The zones and vSwitches.
 func (o GetLoadBalancersBalancerOutput) ZoneMappings() GetLoadBalancersBalancerZoneMappingArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerZoneMapping { return v.ZoneMappings }).(GetLoadBalancersBalancerZoneMappingArrayOutput)
 }
@@ -11100,7 +10982,7 @@ func (o GetLoadBalancersBalancerDeletionProtectionConfigArrayOutput) Index(i pul
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfig struct {
-	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+	// The billing method of the ALB instance.
 	PayType string `pulumi:"payType"`
 }
 
@@ -11116,7 +10998,7 @@ type GetLoadBalancersBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfigArgs struct {
-	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+	// The billing method of the ALB instance.
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -11171,7 +11053,7 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) ToGetLoadBalanc
 	return o
 }
 
-// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+// The billing method of the ALB instance.
 func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -11199,7 +11081,7 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput) Index(i pu
 type GetLoadBalancersBalancerLoadBalancerOperationLock struct {
 	// The Locking of the Reasons.
 	LockReason string `pulumi:"lockReason"`
-	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+	// The Locking of the Type.
 	LockType string `pulumi:"lockType"`
 }
 
@@ -11217,7 +11099,7 @@ type GetLoadBalancersBalancerLoadBalancerOperationLockInput interface {
 type GetLoadBalancersBalancerLoadBalancerOperationLockArgs struct {
 	// The Locking of the Reasons.
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
-	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+	// The Locking of the Type.
 	LockType pulumi.StringInput `pulumi:"lockType"`
 }
 
@@ -11277,7 +11159,7 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockReason() pu
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
 }
 
-// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+// The Locking of the Type.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockType }).(pulumi.StringOutput)
 }
@@ -11303,11 +11185,9 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfig struct {
-	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+	// The reason for modification protection.
 	Reason string `pulumi:"reason"`
-	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-	// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-	// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status string `pulumi:"status"`
 }
 
@@ -11323,11 +11203,9 @@ type GetLoadBalancersBalancerModificationProtectionConfigInput interface {
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfigArgs struct {
-	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+	// The reason for modification protection.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-	// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-	// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -11382,14 +11260,12 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) ToGetLoadBal
 	return o
 }
 
-// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+// The reason for modification protection.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -11415,10 +11291,13 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigArrayOutput) Index(i
 }
 
 type GetLoadBalancersBalancerZoneMapping struct {
+	// (Available since v1.250.0) The address of the ALB instance.
 	LoadBalancerAddresses []GetLoadBalancersBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	Status string `pulumi:"status"`
+	// The ID of the vSwitch that corresponds to the zone.
 	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -11434,10 +11313,13 @@ type GetLoadBalancersBalancerZoneMappingInput interface {
 }
 
 type GetLoadBalancersBalancerZoneMappingArgs struct {
+	// (Available since v1.250.0) The address of the ALB instance.
 	LoadBalancerAddresses GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the vSwitch that corresponds to the zone.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -11492,18 +11374,24 @@ func (o GetLoadBalancersBalancerZoneMappingOutput) ToGetLoadBalancersBalancerZon
 	return o
 }
 
+// (Available since v1.250.0) The address of the ALB instance.
 func (o GetLoadBalancersBalancerZoneMappingOutput) LoadBalancerAddresses() GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) []GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
 		return v.LoadBalancerAddresses
 	}).(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
-// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+func (o GetLoadBalancersBalancerZoneMappingOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch that corresponds to the zone.
 func (o GetLoadBalancersBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the ALB instance belongs.
+// The zone ID of the resource.
 func (o GetLoadBalancersBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -11529,7 +11417,24 @@ func (o GetLoadBalancersBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetLoadBalancersBalancerZoneMappingLoadBalancerAddress struct {
+	// IPv4 address.
 	Address string `pulumi:"address"`
+	// The elastic IP address (EIP).
+	AllocationId string `pulumi:"allocationId"`
+	// The type of EIP.
+	EipType string `pulumi:"eipType"`
+	// The private IPv4 address.
+	IntranetAddress string `pulumi:"intranetAddress"`
+	// The health status of the private IPv4 address of the ALB instance.
+	IntranetAddressHcStatus string `pulumi:"intranetAddressHcStatus"`
+	// The IPv4 link-local addresses.
+	Ipv4LocalAddresses []string `pulumi:"ipv4LocalAddresses"`
+	// IPv6 address.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The health status of the private IPv6 address of the ALB instance.
+	Ipv6AddressHcStatus string `pulumi:"ipv6AddressHcStatus"`
+	// The IPv6 link-local addresses.
+	Ipv6LocalAddresses []string `pulumi:"ipv6LocalAddresses"`
 }
 
 // GetLoadBalancersBalancerZoneMappingLoadBalancerAddressInput is an input type that accepts GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArgs and GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput values.
@@ -11544,7 +11449,24 @@ type GetLoadBalancersBalancerZoneMappingLoadBalancerAddressInput interface {
 }
 
 type GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArgs struct {
+	// IPv4 address.
 	Address pulumi.StringInput `pulumi:"address"`
+	// The elastic IP address (EIP).
+	AllocationId pulumi.StringInput `pulumi:"allocationId"`
+	// The type of EIP.
+	EipType pulumi.StringInput `pulumi:"eipType"`
+	// The private IPv4 address.
+	IntranetAddress pulumi.StringInput `pulumi:"intranetAddress"`
+	// The health status of the private IPv4 address of the ALB instance.
+	IntranetAddressHcStatus pulumi.StringInput `pulumi:"intranetAddressHcStatus"`
+	// The IPv4 link-local addresses.
+	Ipv4LocalAddresses pulumi.StringArrayInput `pulumi:"ipv4LocalAddresses"`
+	// IPv6 address.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The health status of the private IPv6 address of the ALB instance.
+	Ipv6AddressHcStatus pulumi.StringInput `pulumi:"ipv6AddressHcStatus"`
+	// The IPv6 link-local addresses.
+	Ipv6LocalAddresses pulumi.StringArrayInput `pulumi:"ipv6LocalAddresses"`
 }
 
 func (GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArgs) ElementType() reflect.Type {
@@ -11598,8 +11520,51 @@ func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) ToGetLoadB
 	return o
 }
 
+// IPv4 address.
 func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The elastic IP address (EIP).
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) AllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.AllocationId }).(pulumi.StringOutput)
+}
+
+// The type of EIP.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) EipType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.EipType }).(pulumi.StringOutput)
+}
+
+// The private IPv4 address.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) IntranetAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.IntranetAddress }).(pulumi.StringOutput)
+}
+
+// The health status of the private IPv4 address of the ALB instance.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) IntranetAddressHcStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string {
+		return v.IntranetAddressHcStatus
+	}).(pulumi.StringOutput)
+}
+
+// The IPv4 link-local addresses.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) Ipv4LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) []string { return v.Ipv4LocalAddresses }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 address.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// The health status of the private IPv6 address of the ALB instance.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) Ipv6AddressHcStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) string { return v.Ipv6AddressHcStatus }).(pulumi.StringOutput)
+}
+
+// The IPv6 link-local addresses.
+func (o GetLoadBalancersBalancerZoneMappingLoadBalancerAddressOutput) Ipv6LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMappingLoadBalancerAddress) []string { return v.Ipv6LocalAddresses }).(pulumi.StringArrayOutput)
 }
 
 type GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput struct{ *pulumi.OutputState }

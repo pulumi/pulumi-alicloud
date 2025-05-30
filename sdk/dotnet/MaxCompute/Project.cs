@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.MaxCompute
     ///         DefaultQuota = "默认后付费Quota",
     ///         ProjectName = name,
     ///         Comment = name,
-    ///         ProductType = "PayAsYouGo",
     ///     });
     /// 
     /// });

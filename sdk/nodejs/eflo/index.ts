@@ -60,6 +60,11 @@ export type Vpd = import("./vpd").Vpd;
 export const Vpd: typeof import("./vpd").Vpd = null as any;
 utilities.lazyLoad(exports, ["Vpd"], () => require("./vpd"));
 
+export { VscArgs, VscState } from "./vsc";
+export type Vsc = import("./vsc").Vsc;
+export const Vsc: typeof import("./vsc").Vsc = null as any;
+utilities.lazyLoad(exports, ["Vsc"], () => require("./vsc"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -83,6 +88,8 @@ const _module = {
                 return new Subnet(name, <any>undefined, { urn })
             case "alicloud:eflo/vpd:Vpd":
                 return new Vpd(name, <any>undefined, { urn })
+            case "alicloud:eflo/vsc:Vsc":
+                return new Vsc(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -97,3 +104,4 @@ pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/resource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/vpd", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/vsc", _module)

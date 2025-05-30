@@ -85,6 +85,8 @@ __all__ = [
     'GetServicesServiceNasConfigMountPointResult',
     'GetServicesServiceVpcConfigResult',
     'GetTriggersTriggerResult',
+    'GetV3TriggersTriggerResult',
+    'GetV3TriggersTriggerHttpTriggerResult',
     'GetZonesZoneResult',
 ]
 
@@ -4030,6 +4032,196 @@ class GetTriggersTriggerResult(dict):
         Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetV3TriggersTriggerResult(dict):
+    def __init__(__self__, *,
+                 create_time: builtins.str,
+                 description: builtins.str,
+                 http_trigger: 'outputs.GetV3TriggersTriggerHttpTriggerResult',
+                 id: builtins.str,
+                 invocation_role: builtins.str,
+                 last_modified_time: builtins.str,
+                 qualifier: builtins.str,
+                 source_arn: builtins.str,
+                 status: builtins.str,
+                 target_arn: builtins.str,
+                 trigger_config: builtins.str,
+                 trigger_id: builtins.str,
+                 trigger_name: builtins.str,
+                 trigger_type: builtins.str):
+        """
+        :param builtins.str create_time: Creation time
+        :param builtins.str description: Description of the trigger
+        :param 'GetV3TriggersTriggerHttpTriggerArgs' http_trigger: HTTP trigger information
+        :param builtins.str id: The ID of the resource supplied above.
+        :param builtins.str invocation_role: The role required by the event source (such as OSS) to call the function.
+        :param builtins.str last_modified_time: The last modified time of the trigger
+        :param builtins.str qualifier: The version or alias of the function
+        :param builtins.str source_arn: Trigger Event source ARN
+        :param builtins.str status: The state of the trigger
+        :param builtins.str target_arn: Resource identity of the function
+        :param builtins.str trigger_config: Trigger configuration. The configuration varies for different types of triggers.
+        :param builtins.str trigger_id: Trigger ID
+        :param builtins.str trigger_name: Trigger Name
+        :param builtins.str trigger_type: The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "http_trigger", http_trigger)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invocation_role", invocation_role)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "qualifier", qualifier)
+        pulumi.set(__self__, "source_arn", source_arn)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_arn", target_arn)
+        pulumi.set(__self__, "trigger_config", trigger_config)
+        pulumi.set(__self__, "trigger_id", trigger_id)
+        pulumi.set(__self__, "trigger_name", trigger_name)
+        pulumi.set(__self__, "trigger_type", trigger_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> builtins.str:
+        """
+        Creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        Description of the trigger
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="httpTrigger")
+    def http_trigger(self) -> 'outputs.GetV3TriggersTriggerHttpTriggerResult':
+        """
+        HTTP trigger information
+        """
+        return pulumi.get(self, "http_trigger")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="invocationRole")
+    def invocation_role(self) -> builtins.str:
+        """
+        The role required by the event source (such as OSS) to call the function.
+        """
+        return pulumi.get(self, "invocation_role")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> builtins.str:
+        """
+        The last modified time of the trigger
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> builtins.str:
+        """
+        The version or alias of the function
+        """
+        return pulumi.get(self, "qualifier")
+
+    @property
+    @pulumi.getter(name="sourceArn")
+    def source_arn(self) -> builtins.str:
+        """
+        Trigger Event source ARN
+        """
+        return pulumi.get(self, "source_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The state of the trigger
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> builtins.str:
+        """
+        Resource identity of the function
+        """
+        return pulumi.get(self, "target_arn")
+
+    @property
+    @pulumi.getter(name="triggerConfig")
+    def trigger_config(self) -> builtins.str:
+        """
+        Trigger configuration. The configuration varies for different types of triggers.
+        """
+        return pulumi.get(self, "trigger_config")
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> builtins.str:
+        """
+        Trigger ID
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @property
+    @pulumi.getter(name="triggerName")
+    def trigger_name(self) -> builtins.str:
+        """
+        Trigger Name
+        """
+        return pulumi.get(self, "trigger_name")
+
+    @property
+    @pulumi.getter(name="triggerType")
+    def trigger_type(self) -> builtins.str:
+        """
+        The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
+        """
+        return pulumi.get(self, "trigger_type")
+
+
+@pulumi.output_type
+class GetV3TriggersTriggerHttpTriggerResult(dict):
+    def __init__(__self__, *,
+                 url_internet: builtins.str,
+                 url_intranet: builtins.str):
+        """
+        :param builtins.str url_internet: The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        :param builtins.str url_intranet: The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        pulumi.set(__self__, "url_internet", url_internet)
+        pulumi.set(__self__, "url_intranet", url_intranet)
+
+    @property
+    @pulumi.getter(name="urlInternet")
+    def url_internet(self) -> builtins.str:
+        """
+        The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        """
+        return pulumi.get(self, "url_internet")
+
+    @property
+    @pulumi.getter(name="urlIntranet")
+    def url_intranet(self) -> builtins.str:
+        """
+        The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        return pulumi.get(self, "url_intranet")
 
 
 @pulumi.output_type

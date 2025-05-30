@@ -24,6 +24,7 @@ class ManagedKubernetesArgs:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
                  client_cert: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
@@ -48,6 +49,7 @@ class ManagedKubernetesArgs:
                  operation_policy: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']] = None,
                  pod_cidr: Optional[pulumi.Input[builtins.str]] = None,
                  pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 profile: Optional[pulumi.Input[builtins.str]] = None,
                  proxy_mode: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -67,6 +69,7 @@ class ManagedKubernetesArgs:
         The set of arguments for constructing a ManagedKubernetes resource.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -74,7 +77,7 @@ class ManagedKubernetesArgs:
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-               * ack.standard : Standard managed clusters.
+               * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -95,6 +98,11 @@ class ManagedKubernetesArgs:
         :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[builtins.str] profile: The profile of cluster. Valid values:
+               * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+               * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+               * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+               * `Acs`: ACS cluster.
         :param pulumi.Input[builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -129,6 +137,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "addons", addons)
         if api_audiences is not None:
             pulumi.set(__self__, "api_audiences", api_audiences)
+        if audit_log_config is not None:
+            pulumi.set(__self__, "audit_log_config", audit_log_config)
         if client_cert is not None:
             warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
             pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
@@ -189,6 +199,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "pod_cidr", pod_cidr)
         if pod_vswitch_ids is not None:
             pulumi.set(__self__, "pod_vswitch_ids", pod_vswitch_ids)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if proxy_mode is not None:
             pulumi.set(__self__, "proxy_mode", proxy_mode)
         if resource_group_id is not None:
@@ -248,6 +260,18 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "api_audiences", value)
 
     @property
+    @pulumi.getter(name="auditLogConfig")
+    def audit_log_config(self) -> Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]:
+        """
+        Audit log configuration. See `audit_log_config` below.
+        """
+        return pulumi.get(self, "audit_log_config")
+
+    @audit_log_config.setter
+    def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
+        pulumi.set(self, "audit_log_config", value)
+
+    @property
     @pulumi.getter(name="clientCert")
     @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
     def client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
@@ -305,7 +329,7 @@ class ManagedKubernetesArgs:
     def cluster_spec(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        * ack.standard : Standard managed clusters.
+        * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
         """
         return pulumi.get(self, "cluster_spec")
@@ -542,6 +566,22 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "pod_vswitch_ids", value)
 
     @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The profile of cluster. Valid values:
+        * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        * `Acs`: ACS cluster.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "profile", value)
+
+    @property
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -740,6 +780,7 @@ class _ManagedKubernetesState:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
                  certificate_authority: Optional[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']] = None,
                  client_cert: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
@@ -767,6 +808,7 @@ class _ManagedKubernetesState:
                  operation_policy: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']] = None,
                  pod_cidr: Optional[pulumi.Input[builtins.str]] = None,
                  pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 profile: Optional[pulumi.Input[builtins.str]] = None,
                  proxy_mode: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -792,6 +834,7 @@ class _ManagedKubernetesState:
         Input properties used for looking up and filtering ManagedKubernetes resources.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input['ManagedKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
@@ -800,7 +843,7 @@ class _ManagedKubernetesState:
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-               * ack.standard : Standard managed clusters.
+               * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -823,6 +866,11 @@ class _ManagedKubernetesState:
         :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[builtins.str] profile: The profile of cluster. Valid values:
+               * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+               * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+               * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+               * `Acs`: ACS cluster.
         :param pulumi.Input[builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -863,6 +911,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "addons", addons)
         if api_audiences is not None:
             pulumi.set(__self__, "api_audiences", api_audiences)
+        if audit_log_config is not None:
+            pulumi.set(__self__, "audit_log_config", audit_log_config)
         if certificate_authority is not None:
             warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
             pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
@@ -932,6 +982,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "pod_cidr", pod_cidr)
         if pod_vswitch_ids is not None:
             pulumi.set(__self__, "pod_vswitch_ids", pod_vswitch_ids)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if proxy_mode is not None:
             pulumi.set(__self__, "proxy_mode", proxy_mode)
         if resource_group_id is not None:
@@ -1001,6 +1053,18 @@ class _ManagedKubernetesState:
     @api_audiences.setter
     def api_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "api_audiences", value)
+
+    @property
+    @pulumi.getter(name="auditLogConfig")
+    def audit_log_config(self) -> Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]:
+        """
+        Audit log configuration. See `audit_log_config` below.
+        """
+        return pulumi.get(self, "audit_log_config")
+
+    @audit_log_config.setter
+    def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
+        pulumi.set(self, "audit_log_config", value)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -1073,7 +1137,7 @@ class _ManagedKubernetesState:
     def cluster_spec(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        * ack.standard : Standard managed clusters.
+        * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
         """
         return pulumi.get(self, "cluster_spec")
@@ -1332,6 +1396,22 @@ class _ManagedKubernetesState:
     @pod_vswitch_ids.setter
     def pod_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "pod_vswitch_ids", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The profile of cluster. Valid values:
+        * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        * `Acs`: ACS cluster.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "profile", value)
 
     @property
     @pulumi.getter(name="proxyMode")
@@ -1607,6 +1687,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
                  client_cert: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
@@ -1631,6 +1712,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
                  pod_cidr: Optional[pulumi.Input[builtins.str]] = None,
                  pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 profile: Optional[pulumi.Input[builtins.str]] = None,
                  proxy_mode: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1692,6 +1774,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        :param pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1699,7 +1782,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-               * ack.standard : Standard managed clusters.
+               * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1720,6 +1803,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[builtins.str] profile: The profile of cluster. Valid values:
+               * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+               * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+               * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+               * `Acs`: ACS cluster.
         :param pulumi.Input[builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -1814,6 +1902,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
                  client_cert: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[builtins.str]] = None,
@@ -1838,6 +1927,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
                  pod_cidr: Optional[pulumi.Input[builtins.str]] = None,
                  pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 profile: Optional[pulumi.Input[builtins.str]] = None,
                  proxy_mode: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1864,6 +1954,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
             __props__.__dict__["addons"] = addons
             __props__.__dict__["api_audiences"] = api_audiences
+            __props__.__dict__["audit_log_config"] = audit_log_config
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
@@ -1888,6 +1979,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["operation_policy"] = operation_policy
             __props__.__dict__["pod_cidr"] = pod_cidr
             __props__.__dict__["pod_vswitch_ids"] = pod_vswitch_ids
+            __props__.__dict__["profile"] = profile
             __props__.__dict__["proxy_mode"] = proxy_mode
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
@@ -1924,6 +2016,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
             certificate_authority: Optional[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']]] = None,
             client_cert: Optional[pulumi.Input[builtins.str]] = None,
             client_key: Optional[pulumi.Input[builtins.str]] = None,
@@ -1951,6 +2044,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
             pod_cidr: Optional[pulumi.Input[builtins.str]] = None,
             pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            profile: Optional[pulumi.Input[builtins.str]] = None,
             proxy_mode: Optional[pulumi.Input[builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1981,6 +2075,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
+        :param pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
@@ -1989,7 +2084,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                *Removed params*
         :param pulumi.Input[builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-               * ack.standard : Standard managed clusters.
+               * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -2012,6 +2107,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[builtins.str] profile: The profile of cluster. Valid values:
+               * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+               * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+               * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+               * `Acs`: ACS cluster.
         :param pulumi.Input[builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -2054,6 +2154,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         __props__.__dict__["addons"] = addons
         __props__.__dict__["api_audiences"] = api_audiences
+        __props__.__dict__["audit_log_config"] = audit_log_config
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
@@ -2081,6 +2182,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["operation_policy"] = operation_policy
         __props__.__dict__["pod_cidr"] = pod_cidr
         __props__.__dict__["pod_vswitch_ids"] = pod_vswitch_ids
+        __props__.__dict__["profile"] = profile
         __props__.__dict__["proxy_mode"] = proxy_mode
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
@@ -2119,6 +2221,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
+
+    @property
+    @pulumi.getter(name="auditLogConfig")
+    def audit_log_config(self) -> pulumi.Output['outputs.ManagedKubernetesAuditLogConfig']:
+        """
+        Audit log configuration. See `audit_log_config` below.
+        """
+        return pulumi.get(self, "audit_log_config")
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -2171,7 +2281,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def cluster_spec(self) -> pulumi.Output[builtins.str]:
         """
         The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        * ack.standard : Standard managed clusters.
+        * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
         """
         return pulumi.get(self, "cluster_spec")
@@ -2342,6 +2452,18 @@ class ManagedKubernetes(pulumi.CustomResource):
         [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[builtins.str]:
+        """
+        The profile of cluster. Valid values:
+        * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        * `Acs`: ACS cluster.
+        """
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter(name="proxyMode")

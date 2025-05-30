@@ -1012,7 +1012,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1026,6 +1026,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1041,31 +1043,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1079,7 +1084,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1093,6 +1098,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1108,31 +1115,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1146,7 +1156,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1160,6 +1170,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1175,31 +1187,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1213,7 +1228,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1227,6 +1242,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1242,31 +1259,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1280,7 +1300,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1294,6 +1314,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1309,31 +1331,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1347,7 +1372,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1361,6 +1386,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1376,31 +1403,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1414,7 +1444,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -1428,6 +1458,8 @@ public final class OosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.Parameter;
+     * import com.pulumi.alicloud.oos.ParameterArgs;
      * import com.pulumi.alicloud.oos.OosFunctions;
      * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
      * import java.util.List;
@@ -1443,31 +1475,34 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
-     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex("^my-Parameter")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
-     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
-     *             .resourceGroupId("example_value")
-     *             .build());
-     * 
-     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
-     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids("my-Parameter")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Parameter("default", ParameterArgs.builder()
+     *             .parameterName(name)
+     *             .value("tf-testacc-oos_parameter")
+     *             .type("String")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
-     *                 Map.entry("For", "OosParameter")
+     *                 Map.entry("For", "Parameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }

@@ -11,7 +11,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstance {
@@ -159,7 +158,7 @@ public final class GetInstancesInstance {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private @Nullable Map<String,String> tags;
+    private Map<String,String> tags;
     /**
      * @return ID of the VPC linked to the instances.
      * 
@@ -359,7 +358,7 @@ public final class GetInstancesInstance {
      * 
      */
     public Map<String,String> tags() {
-        return this.tags == null ? Map.of() : this.tags;
+        return this.tags;
     }
     /**
      * @return ID of the VPC linked to the instances.
@@ -406,7 +405,7 @@ public final class GetInstancesInstance {
         private List<String> securityGroups;
         private String spotStrategy;
         private String status;
-        private @Nullable Map<String,String> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -613,8 +612,10 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,String> tags) {
-
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
+            }
             this.tags = tags;
             return this;
         }

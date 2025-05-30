@@ -19,16 +19,14 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetLoadBalancersArgs Empty = new GetLoadBalancersArgs();
 
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid
-     * values: `Intranet`, `Internet`.
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      * 
      */
     @Import(name="addressType")
     private @Nullable Output<String> addressType;
 
     /**
-     * @return The type of IP address that the ALB instance uses to provide services. Valid
-     * values: `Intranet`, `Internet`.
+     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      * 
      */
     public Optional<Output<String>> addressType() {
@@ -36,14 +34,14 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -81,7 +79,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
+     * Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
@@ -92,7 +90,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> loadBalancerBussinessStatus;
 
     /**
-     * @return Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
+     * @return Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
@@ -193,9 +191,17 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -284,8 +290,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid
-         * values: `Intranet`, `Internet`.
+         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
          * 
          * @return builder
          * 
@@ -296,8 +301,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid
-         * values: `Intranet`, `Internet`.
+         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
          * 
          * @return builder
          * 
@@ -307,7 +311,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -318,7 +322,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -380,7 +384,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBussinessStatus Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
+         * @param loadBalancerBussinessStatus Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
          * 
          * @return builder
          * 
@@ -395,7 +399,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBussinessStatus Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
+         * @param loadBalancerBussinessStatus Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
          * 
          * @return builder
          * 
@@ -544,11 +548,23 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

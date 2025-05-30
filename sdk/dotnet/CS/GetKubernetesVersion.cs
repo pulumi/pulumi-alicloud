@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
-        /// &gt; **NOTE:** Available in 1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
-        /// &gt; **NOTE:** Available in 1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
-        /// &gt; **NOTE:** Available in 1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.CS
         public string? KubernetesVersion { get; set; }
 
         /// <summary>
-        /// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+        /// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
         /// </summary>
         [Input("profile")]
         public string? Profile { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubernetesVersion { get; set; }
 
         /// <summary>
-        /// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+        /// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

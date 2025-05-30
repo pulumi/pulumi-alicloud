@@ -134,11 +134,9 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-        /// 
-        /// Currently contains:
-        /// - None: Turn off the rotation mechanism.
-        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        /// - `None`: Turn off the rotation mechanism.
+        /// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Output("rotateStrategy")]
         public Output<string?> RotateStrategy { get; private set; } = null!;
@@ -256,11 +254,9 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-        /// 
-        /// Currently contains:
-        /// - None: Turn off the rotation mechanism.
-        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        /// - `None`: Turn off the rotation mechanism.
+        /// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Input("rotateStrategy")]
         public Input<string>? RotateStrategy { get; set; }
@@ -359,11 +355,9 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-        /// 
-        /// Currently contains:
-        /// - None: Turn off the rotation mechanism.
-        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+        /// - `None`: Turn off the rotation mechanism.
+        /// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Input("rotateStrategy")]
         public Input<string>? RotateStrategy { get; set; }

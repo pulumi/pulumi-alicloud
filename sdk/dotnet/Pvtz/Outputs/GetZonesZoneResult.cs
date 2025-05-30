@@ -14,57 +14,57 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetZonesZoneResult
     {
         /// <summary>
-        /// List of the VPCs is bound to the Private Zone:
+        /// The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneBindVpcResult> BindVpcs;
         /// <summary>
-        /// Time of create of the Private Zone.
+        /// The time when the zone was created.
         /// </summary>
         public readonly int CreateTimestamp;
         public readonly string CreationTime;
         /// <summary>
-        /// ID of the Private Zone.
+        /// The ID of the Private Zone.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether the Private Zone is ptr.
+        /// Indicates whether the zone is a reverse lookup zone.
         /// </summary>
         public readonly bool IsPtr;
         /// <summary>
-        /// Name of the Private Zone.
+        /// The Name of the Zone.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The recursive DNS proxy.
+        /// Indicates whether the recursive resolution proxy for subdomain names is enabled.
         /// </summary>
         public readonly string ProxyPattern;
         /// <summary>
-        /// Count of the Private Zone Record.
+        /// The number of Domain Name System (DNS) records added in the zone.
         /// </summary>
         public readonly int RecordCount;
         /// <summary>
-        /// Remark of the Private Zone.
+        /// The description of the zone.
         /// </summary>
         public readonly string Remark;
         /// <summary>
-        /// resource_group_id for zone resourceGroupId.
+        /// The ID of the resource group to which the zone belongs.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// Whether to turn on secondary DNS.
+        /// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly bool SlaveDns;
         public readonly string UpdateTime;
         /// <summary>
-        /// Time of update of the Private Zone.
+        /// The time when the DNS record was updated.
         /// </summary>
         public readonly int UpdateTimestamp;
         /// <summary>
-        /// ZoneId of the Private Zone.
+        /// The ID of the Zone.
         /// </summary>
         public readonly string ZoneId;
         /// <summary>
-        /// ZoneName of the Private Zone.
+        /// The Name of the Private Zone.
         /// </summary>
         public readonly string ZoneName;
 

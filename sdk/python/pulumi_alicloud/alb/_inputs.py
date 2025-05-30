@@ -257,23 +257,19 @@ if not MYPY:
     class ListenerAccessLogTracingConfigArgsDict(TypedDict):
         tracing_enabled: pulumi.Input[builtins.bool]
         """
-        Xtrace Function.
+        Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
         """
         tracing_sample: NotRequired[pulumi.Input[builtins.int]]
         """
-        Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+        Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
         """
         tracing_type: NotRequired[pulumi.Input[builtins.str]]
         """
-        Xtrace Type Value Is **Zipkin * *.
+        Xtrace Type Value Is `Zipkin`.
 
-        > **NOTE:**  `tracingenabled` **True When Effective.
+        > **NOTE:**  `tracingenabled` valued True When Effective.
         """
 elif False:
     ListenerAccessLogTracingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -285,17 +281,13 @@ class ListenerAccessLogTracingConfigArgs:
                  tracing_sample: Optional[pulumi.Input[builtins.int]] = None,
                  tracing_type: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] tracing_enabled: Xtrace Function.
+        :param pulumi.Input[builtins.bool] tracing_enabled: Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
+        :param pulumi.Input[builtins.int] tracing_sample: Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
+        :param pulumi.Input[builtins.str] tracing_type: Xtrace Type Value Is `Zipkin`.
                
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
-        :param pulumi.Input[builtins.int] tracing_sample: Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
-        :param pulumi.Input[builtins.str] tracing_type: Xtrace Type Value Is **Zipkin * *.
-               
-               > **NOTE:**  `tracingenabled` **True When Effective.
+               > **NOTE:**  `tracingenabled` valued True When Effective.
         """
         pulumi.set(__self__, "tracing_enabled", tracing_enabled)
         if tracing_sample is not None:
@@ -307,13 +299,9 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingEnabled")
     def tracing_enabled(self) -> pulumi.Input[builtins.bool]:
         """
-        Xtrace Function.
+        Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -325,7 +313,7 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingSample")
     def tracing_sample(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+        Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -337,9 +325,9 @@ class ListenerAccessLogTracingConfigArgs:
     @pulumi.getter(name="tracingType")
     def tracing_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Xtrace Type Value Is **Zipkin * *.
+        Xtrace Type Value Is `Zipkin`.
 
-        > **NOTE:**  `tracingenabled` **True When Effective.
+        > **NOTE:**  `tracingenabled` valued True When Effective.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -520,7 +508,7 @@ if not MYPY:
     class ListenerDefaultActionArgsDict(TypedDict):
         type: pulumi.Input[builtins.str]
         """
-        Action Type
+        The action type. Value: ForwardGroup, indicating forwarding to the server group.
         """
         forward_group_config: NotRequired[pulumi.Input['ListenerDefaultActionForwardGroupConfigArgsDict']]
         """
@@ -535,7 +523,7 @@ class ListenerDefaultActionArgs:
                  type: pulumi.Input[builtins.str],
                  forward_group_config: Optional[pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs']] = None):
         """
-        :param pulumi.Input[builtins.str] type: Action Type
+        :param pulumi.Input[builtins.str] type: The action type. Value: ForwardGroup, indicating forwarding to the server group.
         :param pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'] forward_group_config: Forwarding Action Configurations See `forward_group_config` below.
         """
         pulumi.set(__self__, "type", type)
@@ -546,7 +534,7 @@ class ListenerDefaultActionArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[builtins.str]:
         """
-        Action Type
+        The action type. Value: ForwardGroup, indicating forwarding to the server group.
         """
         return pulumi.get(self, "type")
 
@@ -718,18 +706,10 @@ if not MYPY:
         x_forwarded_for_client_source_ips_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
         """
         x_forwarded_for_client_source_ips_trusted: NotRequired[pulumi.Input[builtins.str]]
         """
-        Specify the trusted proxy IP.
-
-        Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         """
         x_forwarded_for_client_src_port_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -742,26 +722,10 @@ if not MYPY:
         x_forwarded_for_host_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        HTTP, HTTPS, and QUIC listeners support this parameter.
         """
         x_forwarded_for_processing_mode: NotRequired[pulumi.Input[builtins.str]]
         """
         Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-
-        append (default): append.
-
-        remove: Delete.
-
-        Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-
-        Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-
-        HTTP and HTTPS listeners support this parameter.
         """
         x_forwarded_for_proto_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -808,35 +772,11 @@ class ListenerXForwardedForConfigArgs:
         :param pulumi.Input[builtins.str] x_forwarded_for_client_cert_subject_dn_alias: The Custom Header Field Name,
         :param pulumi.Input[builtins.bool] x_forwarded_for_client_cert_subject_dn_enabled: Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
         :param pulumi.Input[builtins.bool] x_forwarded_for_client_source_ips_enabled: Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-               
-               true: Yes.
-               
-               false (default): No.
-               
-               Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
-        :param pulumi.Input[builtins.str] x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP.
-               
-               Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        :param pulumi.Input[builtins.str] x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         :param pulumi.Input[builtins.bool] x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         :param pulumi.Input[builtins.bool] x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         :param pulumi.Input[builtins.bool] x_forwarded_for_host_enabled: Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-               
-               true: Yes.
-               
-               false (default): No.
-               
-               HTTP, HTTPS, and QUIC listeners support this parameter.
         :param pulumi.Input[builtins.str] x_forwarded_for_processing_mode: Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-               
-               append (default): append.
-               
-               remove: Delete.
-               
-               Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-               
-               Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-               
-               HTTP and HTTPS listeners support this parameter.
         :param pulumi.Input[builtins.bool] x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         :param pulumi.Input[builtins.bool] x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
         :param pulumi.Input[builtins.bool] x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
@@ -977,12 +917,6 @@ class ListenerXForwardedForConfigArgs:
     def x_forwarded_for_client_source_ips_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_enabled")
 
@@ -994,9 +928,7 @@ class ListenerXForwardedForConfigArgs:
     @pulumi.getter(name="xForwardedForClientSourceIpsTrusted")
     def x_forwarded_for_client_source_ips_trusted(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specify the trusted proxy IP.
-
-        Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_trusted")
 
@@ -1033,12 +965,6 @@ class ListenerXForwardedForConfigArgs:
     def x_forwarded_for_host_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        HTTP, HTTPS, and QUIC listeners support this parameter.
         """
         return pulumi.get(self, "x_forwarded_for_host_enabled")
 
@@ -1051,16 +977,6 @@ class ListenerXForwardedForConfigArgs:
     def x_forwarded_for_processing_mode(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-
-        append (default): append.
-
-        remove: Delete.
-
-        Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-
-        Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-
-        HTTP and HTTPS listeners support this parameter.
         """
         return pulumi.get(self, "x_forwarded_for_processing_mode")
 

@@ -93,14 +93,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The reason why the dedicated host resource is locked.
+     * The reason why the dedicated host resource is locked. See `operation_locks` below.
      * 
      */
     @Import(name="operationLocks")
     private @Nullable List<GetDedicatedHostsOperationLock> operationLocks;
 
     /**
-     * @return The reason why the dedicated host resource is locked.
+     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
      * 
      */
     public Optional<List<GetDedicatedHostsOperationLock>> operationLocks() {
@@ -138,14 +138,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * @return The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      * 
      */
     public Optional<String> status() {
@@ -282,7 +282,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param operationLocks The reason why the dedicated host resource is locked.
+         * @param operationLocks The reason why the dedicated host resource is locked. See `operation_locks` below.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param operationLocks The reason why the dedicated host resource is locked.
+         * @param operationLocks The reason why the dedicated host resource is locked. See `operation_locks` below.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+         * @param status The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
          * 
          * @return builder
          * 

@@ -11,11 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+// This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.91.0+.
+// > **NOTE:** Available since v1.91.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -24,21 +26,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
-//			dedicatedHostsDs, err := ecs.GetDedicatedHosts(ctx, &ecs.GetDedicatedHostsArgs{
-//				NameRegex:         pulumi.StringRef("tf-testAcc"),
-//				DedicatedHostType: pulumi.StringRef("ddh.g5"),
-//				Status:            pulumi.StringRef("Available"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := ecs.NewDedicatedHost(ctx, "default", &ecs.DedicatedHostArgs{
+//				DedicatedHostType:   pulumi.String("ddh.c5"),
+//				Description:         pulumi.String("From_Terraform"),
+//				DedicatedHostName:   pulumi.String(name),
+//				ActionOnMaintenance: pulumi.String("Migrate"),
+//				Tags: pulumi.StringMap{
+//					"Create": pulumi.String("TF"),
+//					"For":    pulumi.String("ddh-test"),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstDedicatedHostsId", dedicatedHostsDs.Hosts[0].Id)
+//			ids := ecs.GetDedicatedHostsOutput(ctx, ecs.GetDedicatedHostsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecsDedicatedHostId0", ids.ApplyT(func(ids ecs.GetDedicatedHostsResult) (*string, error) {
+//				return &ids.Hosts[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -66,13 +85,13 @@ type GetDedicatedHostsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the ECS Dedicated Host name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The reason why the dedicated host resource is locked.
+	// The reason why the dedicated host resource is locked. See `operationLocks` below.
 	OperationLocks []GetDedicatedHostsOperationLock `pulumi:"operationLocks"`
 	// Save the result to the file.
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the ECS Dedicated Host belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+	// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -91,21 +110,22 @@ type GetDedicatedHostsResult struct {
 	// A list of ECS Dedicated Hosts. Each element contains the following attributes:
 	Hosts []GetDedicatedHostsHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of ECS Dedicated Host ids.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of ECS Dedicated Host names.
 	Names []string `pulumi:"names"`
-	// (Available in 1.123.1+) The operation_locks. contains the following attribute:
+	// (Available since v1.123.1) The operation_locks. contains the following attribute:
 	OperationLocks []GetDedicatedHostsOperationLock `pulumi:"operationLocks"`
 	OutputFile     *string                          `pulumi:"outputFile"`
 	// The ID of the resource group to which the dedicated host belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The service status of the dedicated host.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
-	ZoneId *string           `pulumi:"zoneId"`
+	Status *string `pulumi:"status"`
+	// The tags of the dedicated host.
+	Tags map[string]string `pulumi:"tags"`
+	// The zone id of the dedicated host.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetDedicatedHostsOutput(ctx *pulumi.Context, args GetDedicatedHostsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostsResultOutput {
@@ -129,13 +149,13 @@ type GetDedicatedHostsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the ECS Dedicated Host name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The reason why the dedicated host resource is locked.
+	// The reason why the dedicated host resource is locked. See `operationLocks` below.
 	OperationLocks GetDedicatedHostsOperationLockArrayInput `pulumi:"operationLocks"`
 	// Save the result to the file.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group to which the ECS Dedicated Host belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+	// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -187,7 +207,6 @@ func (o GetDedicatedHostsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS Dedicated Host ids.
 func (o GetDedicatedHostsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -201,7 +220,7 @@ func (o GetDedicatedHostsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
-// (Available in 1.123.1+) The operation_locks. contains the following attribute:
+// (Available since v1.123.1) The operation_locks. contains the following attribute:
 func (o GetDedicatedHostsResultOutput) OperationLocks() GetDedicatedHostsOperationLockArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) []GetDedicatedHostsOperationLock { return v.OperationLocks }).(GetDedicatedHostsOperationLockArrayOutput)
 }
@@ -220,10 +239,12 @@ func (o GetDedicatedHostsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the dedicated host.
 func (o GetDedicatedHostsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The zone id of the dedicated host.
 func (o GetDedicatedHostsResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

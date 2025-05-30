@@ -42,6 +42,22 @@ __all__ = [
     'OssExportSinkConfigurationSink',
     'ScheduledSqlSchedule',
     'ScheduledSqlScheduledSqlConfiguration',
+    'GetAlertsAlertResult',
+    'GetAlertsAlertConfigurationResult',
+    'GetAlertsAlertConfigurationAnnotationResult',
+    'GetAlertsAlertConfigurationConditionConfigurationResult',
+    'GetAlertsAlertConfigurationGroupConfigurationResult',
+    'GetAlertsAlertConfigurationJoinConfigurationResult',
+    'GetAlertsAlertConfigurationLabelResult',
+    'GetAlertsAlertConfigurationPolicyConfigurationResult',
+    'GetAlertsAlertConfigurationQueryListResult',
+    'GetAlertsAlertConfigurationSeverityConfigurationResult',
+    'GetAlertsAlertConfigurationSeverityConfigurationEvalConditionResult',
+    'GetAlertsAlertConfigurationSinkAlerthubResult',
+    'GetAlertsAlertConfigurationSinkCmsResult',
+    'GetAlertsAlertConfigurationSinkEventStoreResult',
+    'GetAlertsAlertConfigurationTemplateConfigurationResult',
+    'GetAlertsAlertScheduleResult',
 ]
 
 @pulumi.output_type
@@ -2354,5 +2370,964 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
         SQL time window-end.
         """
         return pulumi.get(self, "to_time_expr")
+
+
+@pulumi.output_type
+class GetAlertsAlertResult(dict):
+    def __init__(__self__, *,
+                 alert_name: builtins.str,
+                 configuration: 'outputs.GetAlertsAlertConfigurationResult',
+                 description: builtins.str,
+                 display_name: builtins.str,
+                 id: builtins.str,
+                 schedule: 'outputs.GetAlertsAlertScheduleResult'):
+        """
+        :param builtins.str alert_name: Alert rule ID, unique under Project
+        :param 'GetAlertsAlertConfigurationArgs' configuration: Detailed configuration of alarm monitoring rules
+        :param builtins.str description: Compatible fields, set to empty strings.
+        :param builtins.str display_name: Display name of the alarm rule
+        :param builtins.str id: The ID of the resource supplied above.
+        :param 'GetAlertsAlertScheduleArgs' schedule: Check the frequency-dependent configuration
+        """
+        pulumi.set(__self__, "alert_name", alert_name)
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> builtins.str:
+        """
+        Alert rule ID, unique under Project
+        """
+        return pulumi.get(self, "alert_name")
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> 'outputs.GetAlertsAlertConfigurationResult':
+        """
+        Detailed configuration of alarm monitoring rules
+        """
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        Compatible fields, set to empty strings.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        Display name of the alarm rule
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> 'outputs.GetAlertsAlertScheduleResult':
+        """
+        Check the frequency-dependent configuration
+        """
+        return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationResult(dict):
+    def __init__(__self__, *,
+                 annotations: Sequence['outputs.GetAlertsAlertConfigurationAnnotationResult'],
+                 auto_annotation: builtins.bool,
+                 condition_configuration: 'outputs.GetAlertsAlertConfigurationConditionConfigurationResult',
+                 dashboard: builtins.str,
+                 group_configuration: 'outputs.GetAlertsAlertConfigurationGroupConfigurationResult',
+                 join_configurations: Sequence['outputs.GetAlertsAlertConfigurationJoinConfigurationResult'],
+                 labels: Sequence['outputs.GetAlertsAlertConfigurationLabelResult'],
+                 mute_until: builtins.int,
+                 no_data_fire: builtins.bool,
+                 no_data_severity: builtins.int,
+                 policy_configuration: 'outputs.GetAlertsAlertConfigurationPolicyConfigurationResult',
+                 query_lists: Sequence['outputs.GetAlertsAlertConfigurationQueryListResult'],
+                 send_resolved: builtins.bool,
+                 severity_configurations: Sequence['outputs.GetAlertsAlertConfigurationSeverityConfigurationResult'],
+                 sink_alerthub: 'outputs.GetAlertsAlertConfigurationSinkAlerthubResult',
+                 sink_cms: 'outputs.GetAlertsAlertConfigurationSinkCmsResult',
+                 sink_event_store: 'outputs.GetAlertsAlertConfigurationSinkEventStoreResult',
+                 tags: Sequence[builtins.str],
+                 template_configuration: 'outputs.GetAlertsAlertConfigurationTemplateConfigurationResult',
+                 threshold: builtins.int,
+                 type: builtins.str,
+                 version: builtins.str):
+        """
+        :param Sequence['GetAlertsAlertConfigurationAnnotationArgs'] annotations: Template Annotations.
+        :param builtins.bool auto_annotation: Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+        :param 'GetAlertsAlertConfigurationConditionConfigurationArgs' condition_configuration: Alarm trigger condition.
+        :param builtins.str dashboard: The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+        :param 'GetAlertsAlertConfigurationGroupConfigurationArgs' group_configuration: Group evaluation configuration.
+        :param Sequence['GetAlertsAlertConfigurationJoinConfigurationArgs'] join_configurations: Set operation configuration.
+        :param Sequence['GetAlertsAlertConfigurationLabelArgs'] labels: Label.
+        :param builtins.int mute_until: Second-level timestamp representing the temporary shutdown deadline.
+        :param builtins.bool no_data_fire: Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+        :param builtins.int no_data_severity: Alarm severity when no data triggers an alarm.
+        :param 'GetAlertsAlertConfigurationPolicyConfigurationArgs' policy_configuration: Alert policy configuration.
+        :param Sequence['GetAlertsAlertConfigurationQueryListArgs'] query_lists: Query the statistical list.
+        :param builtins.bool send_resolved: Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+        :param Sequence['GetAlertsAlertConfigurationSeverityConfigurationArgs'] severity_configurations: Trigger condition, set at least one trigger condition.
+        :param 'GetAlertsAlertConfigurationSinkAlerthubArgs' sink_alerthub: Configuration of Alerts Sent to Alerthub.
+        :param 'GetAlertsAlertConfigurationSinkCmsArgs' sink_cms: Configure alerts sent to CloudMonitor.
+        :param 'GetAlertsAlertConfigurationSinkEventStoreArgs' sink_event_store: Configuration of sending alarms to EventStore.
+        :param Sequence[builtins.str] tags: Customize the category of alarm monitoring rules.
+        :param 'GetAlertsAlertConfigurationTemplateConfigurationArgs' template_configuration: Alarm rule template configuration.
+        :param builtins.int threshold: Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+        :param builtins.str type: Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        :param builtins.str version: Fixed as 2.0.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "auto_annotation", auto_annotation)
+        pulumi.set(__self__, "condition_configuration", condition_configuration)
+        pulumi.set(__self__, "dashboard", dashboard)
+        pulumi.set(__self__, "group_configuration", group_configuration)
+        pulumi.set(__self__, "join_configurations", join_configurations)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "mute_until", mute_until)
+        pulumi.set(__self__, "no_data_fire", no_data_fire)
+        pulumi.set(__self__, "no_data_severity", no_data_severity)
+        pulumi.set(__self__, "policy_configuration", policy_configuration)
+        pulumi.set(__self__, "query_lists", query_lists)
+        pulumi.set(__self__, "send_resolved", send_resolved)
+        pulumi.set(__self__, "severity_configurations", severity_configurations)
+        pulumi.set(__self__, "sink_alerthub", sink_alerthub)
+        pulumi.set(__self__, "sink_cms", sink_cms)
+        pulumi.set(__self__, "sink_event_store", sink_event_store)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "template_configuration", template_configuration)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Sequence['outputs.GetAlertsAlertConfigurationAnnotationResult']:
+        """
+        Template Annotations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="autoAnnotation")
+    def auto_annotation(self) -> builtins.bool:
+        """
+        Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+        """
+        return pulumi.get(self, "auto_annotation")
+
+    @property
+    @pulumi.getter(name="conditionConfiguration")
+    def condition_configuration(self) -> 'outputs.GetAlertsAlertConfigurationConditionConfigurationResult':
+        """
+        Alarm trigger condition.
+        """
+        return pulumi.get(self, "condition_configuration")
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> builtins.str:
+        """
+        The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+        """
+        return pulumi.get(self, "dashboard")
+
+    @property
+    @pulumi.getter(name="groupConfiguration")
+    def group_configuration(self) -> 'outputs.GetAlertsAlertConfigurationGroupConfigurationResult':
+        """
+        Group evaluation configuration.
+        """
+        return pulumi.get(self, "group_configuration")
+
+    @property
+    @pulumi.getter(name="joinConfigurations")
+    def join_configurations(self) -> Sequence['outputs.GetAlertsAlertConfigurationJoinConfigurationResult']:
+        """
+        Set operation configuration.
+        """
+        return pulumi.get(self, "join_configurations")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetAlertsAlertConfigurationLabelResult']:
+        """
+        Label.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="muteUntil")
+    def mute_until(self) -> builtins.int:
+        """
+        Second-level timestamp representing the temporary shutdown deadline.
+        """
+        return pulumi.get(self, "mute_until")
+
+    @property
+    @pulumi.getter(name="noDataFire")
+    def no_data_fire(self) -> builtins.bool:
+        """
+        Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+        """
+        return pulumi.get(self, "no_data_fire")
+
+    @property
+    @pulumi.getter(name="noDataSeverity")
+    def no_data_severity(self) -> builtins.int:
+        """
+        Alarm severity when no data triggers an alarm.
+        """
+        return pulumi.get(self, "no_data_severity")
+
+    @property
+    @pulumi.getter(name="policyConfiguration")
+    def policy_configuration(self) -> 'outputs.GetAlertsAlertConfigurationPolicyConfigurationResult':
+        """
+        Alert policy configuration.
+        """
+        return pulumi.get(self, "policy_configuration")
+
+    @property
+    @pulumi.getter(name="queryLists")
+    def query_lists(self) -> Sequence['outputs.GetAlertsAlertConfigurationQueryListResult']:
+        """
+        Query the statistical list.
+        """
+        return pulumi.get(self, "query_lists")
+
+    @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> builtins.bool:
+        """
+        Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @property
+    @pulumi.getter(name="severityConfigurations")
+    def severity_configurations(self) -> Sequence['outputs.GetAlertsAlertConfigurationSeverityConfigurationResult']:
+        """
+        Trigger condition, set at least one trigger condition.
+        """
+        return pulumi.get(self, "severity_configurations")
+
+    @property
+    @pulumi.getter(name="sinkAlerthub")
+    def sink_alerthub(self) -> 'outputs.GetAlertsAlertConfigurationSinkAlerthubResult':
+        """
+        Configuration of Alerts Sent to Alerthub.
+        """
+        return pulumi.get(self, "sink_alerthub")
+
+    @property
+    @pulumi.getter(name="sinkCms")
+    def sink_cms(self) -> 'outputs.GetAlertsAlertConfigurationSinkCmsResult':
+        """
+        Configure alerts sent to CloudMonitor.
+        """
+        return pulumi.get(self, "sink_cms")
+
+    @property
+    @pulumi.getter(name="sinkEventStore")
+    def sink_event_store(self) -> 'outputs.GetAlertsAlertConfigurationSinkEventStoreResult':
+        """
+        Configuration of sending alarms to EventStore.
+        """
+        return pulumi.get(self, "sink_event_store")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[builtins.str]:
+        """
+        Customize the category of alarm monitoring rules.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateConfiguration")
+    def template_configuration(self) -> 'outputs.GetAlertsAlertConfigurationTemplateConfigurationResult':
+        """
+        Alarm rule template configuration.
+        """
+        return pulumi.get(self, "template_configuration")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> builtins.int:
+        """
+        Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+        """
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> builtins.str:
+        """
+        Fixed as 2.0.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationAnnotationResult(dict):
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str key: Field name.
+        :param builtins.str value: Field value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Field value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationConditionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 condition: builtins.str,
+                 count_condition: builtins.str):
+        """
+        :param builtins.str condition: Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        :param builtins.str count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "count_condition", count_condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> builtins.str:
+        """
+        Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="countCondition")
+    def count_condition(self) -> builtins.str:
+        """
+        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
+        return pulumi.get(self, "count_condition")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationGroupConfigurationResult(dict):
+    def __init__(__self__, *,
+                 fields: Sequence[builtins.str],
+                 type: builtins.str):
+        """
+        :param Sequence[builtins.str] fields: The field used for grouping evaluation.When type is set to custom, fields must be set.
+        :param builtins.str type: Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Sequence[builtins.str]:
+        """
+        The field used for grouping evaluation.When type is set to custom, fields must be set.
+        """
+        return pulumi.get(self, "fields")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationJoinConfigurationResult(dict):
+    def __init__(__self__, *,
+                 condition: builtins.str,
+                 type: builtins.str):
+        """
+        :param builtins.str condition: Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        :param builtins.str type: Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> builtins.str:
+        """
+        Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationLabelResult(dict):
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str key: Field name.
+        :param builtins.str value: Field value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Field value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationPolicyConfigurationResult(dict):
+    def __init__(__self__, *,
+                 action_policy_id: builtins.str,
+                 alert_policy_id: builtins.str,
+                 repeat_interval: builtins.str):
+        """
+        :param builtins.str action_policy_id: The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+        :param builtins.str alert_policy_id: Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+        :param builtins.str repeat_interval: Repeat the waiting time. For example, 5m, 1H, etc.
+        """
+        pulumi.set(__self__, "action_policy_id", action_policy_id)
+        pulumi.set(__self__, "alert_policy_id", alert_policy_id)
+        pulumi.set(__self__, "repeat_interval", repeat_interval)
+
+    @property
+    @pulumi.getter(name="actionPolicyId")
+    def action_policy_id(self) -> builtins.str:
+        """
+        The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+        """
+        return pulumi.get(self, "action_policy_id")
+
+    @property
+    @pulumi.getter(name="alertPolicyId")
+    def alert_policy_id(self) -> builtins.str:
+        """
+        Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+        """
+        return pulumi.get(self, "alert_policy_id")
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> builtins.str:
+        """
+        Repeat the waiting time. For example, 5m, 1H, etc.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationQueryListResult(dict):
+    def __init__(__self__, *,
+                 chart_title: builtins.str,
+                 dashboard_id: builtins.str,
+                 end: builtins.str,
+                 power_sql_mode: builtins.str,
+                 project: builtins.str,
+                 query: builtins.str,
+                 region: builtins.str,
+                 role_arn: builtins.str,
+                 start: builtins.str,
+                 store: builtins.str,
+                 store_type: builtins.str,
+                 time_span_type: builtins.str,
+                 ui: builtins.str):
+        """
+        :param builtins.str chart_title: Chart Name.
+        :param builtins.str dashboard_id: Dashboard ID.
+        :param builtins.str end: End time. When storeType is set to log or metric, end must be set.
+        :param builtins.str power_sql_mode: Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+        :param builtins.str project: Project Name.
+        :param builtins.str query: Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+        :param builtins.str region: Region of the target Project.
+        :param builtins.str role_arn: Roles used to write alarm data to the event Library.
+        :param builtins.str start: Start time. When storeType is set to log or metric, start must be set.
+        :param builtins.str store: Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+        :param builtins.str store_type: Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+        :param builtins.str time_span_type: Time Type.
+        :param builtins.str ui: Use of specific scene alarm front end.
+        """
+        pulumi.set(__self__, "chart_title", chart_title)
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "power_sql_mode", power_sql_mode)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "role_arn", role_arn)
+        pulumi.set(__self__, "start", start)
+        pulumi.set(__self__, "store", store)
+        pulumi.set(__self__, "store_type", store_type)
+        pulumi.set(__self__, "time_span_type", time_span_type)
+        pulumi.set(__self__, "ui", ui)
+
+    @property
+    @pulumi.getter(name="chartTitle")
+    def chart_title(self) -> builtins.str:
+        """
+        Chart Name.
+        """
+        return pulumi.get(self, "chart_title")
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> builtins.str:
+        """
+        Dashboard ID.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def end(self) -> builtins.str:
+        """
+        End time. When storeType is set to log or metric, end must be set.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter(name="powerSqlMode")
+    def power_sql_mode(self) -> builtins.str:
+        """
+        Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+        """
+        return pulumi.get(self, "power_sql_mode")
+
+    @property
+    @pulumi.getter
+    def project(self) -> builtins.str:
+        """
+        Project Name.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def query(self) -> builtins.str:
+        """
+        Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def region(self) -> builtins.str:
+        """
+        Region of the target Project.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> builtins.str:
+        """
+        Roles used to write alarm data to the event Library.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter
+    def start(self) -> builtins.str:
+        """
+        Start time. When storeType is set to log or metric, start must be set.
+        """
+        return pulumi.get(self, "start")
+
+    @property
+    @pulumi.getter
+    def store(self) -> builtins.str:
+        """
+        Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+        """
+        return pulumi.get(self, "store")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> builtins.str:
+        """
+        Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+        """
+        return pulumi.get(self, "store_type")
+
+    @property
+    @pulumi.getter(name="timeSpanType")
+    def time_span_type(self) -> builtins.str:
+        """
+        Time Type.
+        """
+        return pulumi.get(self, "time_span_type")
+
+    @property
+    @pulumi.getter
+    def ui(self) -> builtins.str:
+        """
+        Use of specific scene alarm front end.
+        """
+        return pulumi.get(self, "ui")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationSeverityConfigurationResult(dict):
+    def __init__(__self__, *,
+                 eval_condition: 'outputs.GetAlertsAlertConfigurationSeverityConfigurationEvalConditionResult',
+                 severity: builtins.int):
+        """
+        :param 'GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs' eval_condition: Trigger condition.
+        :param builtins.int severity: Alarm severity.
+        """
+        pulumi.set(__self__, "eval_condition", eval_condition)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="evalCondition")
+    def eval_condition(self) -> 'outputs.GetAlertsAlertConfigurationSeverityConfigurationEvalConditionResult':
+        """
+        Trigger condition.
+        """
+        return pulumi.get(self, "eval_condition")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> builtins.int:
+        """
+        Alarm severity.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationSeverityConfigurationEvalConditionResult(dict):
+    def __init__(__self__, *,
+                 condition: builtins.str,
+                 count_condition: builtins.str):
+        """
+        :param builtins.str condition: Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        :param builtins.str count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "count_condition", count_condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> builtins.str:
+        """
+        Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="countCondition")
+    def count_condition(self) -> builtins.str:
+        """
+        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
+        return pulumi.get(self, "count_condition")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationSinkAlerthubResult(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool):
+        """
+        :param builtins.bool enabled: Open.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Open.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationSinkCmsResult(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool):
+        """
+        :param builtins.bool enabled: Open.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Open.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationSinkEventStoreResult(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 endpoint: builtins.str,
+                 event_store: builtins.str,
+                 project: builtins.str,
+                 role_arn: builtins.str):
+        """
+        :param builtins.bool enabled: Open.
+        :param builtins.str endpoint: SLS service endpoint.
+        :param builtins.str event_store: Event Library Name.
+        :param builtins.str project: Project Name.
+        :param builtins.str role_arn: Roles used to write alarm data to the event Library.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "event_store", event_store)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Open.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> builtins.str:
+        """
+        SLS service endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="eventStore")
+    def event_store(self) -> builtins.str:
+        """
+        Event Library Name.
+        """
+        return pulumi.get(self, "event_store")
+
+    @property
+    @pulumi.getter
+    def project(self) -> builtins.str:
+        """
+        Project Name.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> builtins.str:
+        """
+        Roles used to write alarm data to the event Library.
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetAlertsAlertConfigurationTemplateConfigurationResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, builtins.str],
+                 lang: builtins.str,
+                 template_id: builtins.str,
+                 tokens: Mapping[str, builtins.str],
+                 type: builtins.str,
+                 version: builtins.str):
+        """
+        :param Mapping[str, builtins.str] annotations: Template Annotations.
+        :param builtins.str lang: Template Language.
+        :param builtins.str template_id: Template ID.
+        :param Mapping[str, builtins.str] tokens: Template Variables.
+        :param builtins.str type: Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        :param builtins.str version: Fixed as 2.0.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "lang", lang)
+        pulumi.set(__self__, "template_id", template_id)
+        pulumi.set(__self__, "tokens", tokens)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, builtins.str]:
+        """
+        Template Annotations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def lang(self) -> builtins.str:
+        """
+        Template Language.
+        """
+        return pulumi.get(self, "lang")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> builtins.str:
+        """
+        Template ID.
+        """
+        return pulumi.get(self, "template_id")
+
+    @property
+    @pulumi.getter
+    def tokens(self) -> Mapping[str, builtins.str]:
+        """
+        Template Variables.
+        """
+        return pulumi.get(self, "tokens")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> builtins.str:
+        """
+        Fixed as 2.0.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetAlertsAlertScheduleResult(dict):
+    def __init__(__self__, *,
+                 cron_expression: builtins.str,
+                 delay: builtins.int,
+                 interval: builtins.str,
+                 run_immdiately: builtins.bool,
+                 time_zone: builtins.str,
+                 type: builtins.str):
+        """
+        :param builtins.str cron_expression: Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+        :param builtins.int delay: Timed task execution delay (unit: s).
+        :param builtins.str interval: Fixed interval for scheduling.
+        :param builtins.bool run_immdiately: Dispatch immediately.
+        :param builtins.str time_zone: The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+        :param builtins.str type: Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "run_immdiately", run_immdiately)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> builtins.str:
+        """
+        Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @property
+    @pulumi.getter
+    def delay(self) -> builtins.int:
+        """
+        Timed task execution delay (unit: s).
+        """
+        return pulumi.get(self, "delay")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> builtins.str:
+        """
+        Fixed interval for scheduling.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="runImmdiately")
+    def run_immdiately(self) -> builtins.bool:
+        """
+        Dispatch immediately.
+        """
+        return pulumi.get(self, "run_immdiately")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> builtins.str:
+        """
+        The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+        """
+        return pulumi.get(self, "type")
 
 

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAddon;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAuditLogConfig;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
@@ -96,6 +97,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> apiAudiences() {
         return Codegen.optional(this.apiAudiences);
+    }
+    /**
+     * Audit log configuration. See `audit_log_config` below.
+     * 
+     */
+    @Export(name="auditLogConfig", refs={ManagedKubernetesAuditLogConfig.class}, tree="[0]")
+    private Output<ManagedKubernetesAuditLogConfig> auditLogConfig;
+
+    /**
+     * @return Audit log configuration. See `audit_log_config` below.
+     * 
+     */
+    public Output<ManagedKubernetesAuditLogConfig> auditLogConfig() {
+        return this.auditLogConfig;
     }
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
@@ -189,7 +204,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      * 
      */
@@ -198,7 +213,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      * 
      */
@@ -496,6 +511,28 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> podVswitchIds() {
         return Codegen.optional(this.podVswitchIds);
+    }
+    /**
+     * The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     * 
+     */
+    @Export(name="profile", refs={String.class}, tree="[0]")
+    private Output<String> profile;
+
+    /**
+     * @return The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     * 
+     */
+    public Output<String> profile() {
+        return this.profile;
     }
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.

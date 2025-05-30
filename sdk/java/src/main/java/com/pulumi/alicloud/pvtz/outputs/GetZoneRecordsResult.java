@@ -19,22 +19,18 @@ public final class GetZoneRecordsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of Private Zone Record IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String keyword;
     private @Nullable String lang;
     private @Nullable String outputFile;
     /**
-     * @return A list of zone records. Each element contains the following attributes:
+     * @return A list of Zone Record. Each element contains the following attributes:
      * 
      */
     private List<GetZoneRecordsRecord> records;
     private @Nullable String searchMode;
     /**
-     * @return Status of the Private Zone Record.
+     * @return The state of the Private Zone Record.
      * 
      */
     private @Nullable String status;
@@ -50,10 +46,6 @@ public final class GetZoneRecordsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of Private Zone Record IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -67,7 +59,7 @@ public final class GetZoneRecordsResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of zone records. Each element contains the following attributes:
+     * @return A list of Zone Record. Each element contains the following attributes:
      * 
      */
     public List<GetZoneRecordsRecord> records() {
@@ -77,7 +69,7 @@ public final class GetZoneRecordsResult {
         return Optional.ofNullable(this.searchMode);
     }
     /**
-     * @return Status of the Private Zone Record.
+     * @return The state of the Private Zone Record.
      * 
      */
     public Optional<String> status() {

@@ -17,5 +17,6 @@ from .node_group import *
 from .resource import *
 from .subnet import *
 from .vpd import *
+from .vsc import *
 from ._inputs import *
 from . import outputs

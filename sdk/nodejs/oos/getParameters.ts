@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos Parameters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -19,27 +19,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
- * });
- * export const oosParameterId1 = ids.then(ids => ids.parameters?.[0]?.id);
- * const nameRegex = alicloud.oos.getParameters({
- *     nameRegex: "^my-Parameter",
- * });
- * export const oosParameterId2 = nameRegex.then(nameRegex => nameRegex.parameters?.[0]?.id);
- * const resourceGroupId = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
- *     resourceGroupId: "example_value",
- * });
- * export const oosParameterId3 = resourceGroupId.then(resourceGroupId => resourceGroupId.parameters?.[0]?.id);
- * const tags = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.oos.Parameter("default", {
+ *     parameterName: name,
+ *     value: "tf-testacc-oos_parameter",
+ *     type: "String",
+ *     description: name,
+ *     constraints: `  {
+ *     "AllowedValues": [
+ *         "tf-testacc-oos_parameter"
+ *     ],
+ *     "AllowedPattern": "tf-testacc-oos_parameter",
+ *     "MinLength": 1,
+ *     "MaxLength": 100
+ *   }
+ * `,
  *     tags: {
  *         Created: "TF",
- *         For: "OosParameter",
+ *         For: "Parameter",
  *     },
  * });
- * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
+ * const ids = alicloud.oos.getParametersOutput({
+ *     ids: [_default.id],
+ * });
+ * export const oosSecretParameterId0 = ids.apply(ids => ids.parameters?.[0]?.id);
  * ```
  */
 export function getParameters(args?: GetParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetParametersResult> {
@@ -64,11 +68,11 @@ export function getParameters(args?: GetParametersArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetParametersArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
-     * A list of Parameter IDs. Its element value is same as Parameter Name.
+     * A list of Parameter IDs.
      */
     ids?: string[];
     /**
@@ -87,14 +91,20 @@ export interface GetParametersArgs {
      * The ID of the Resource Group.
      */
     resourceGroupId?: string;
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     */
     sortField?: string;
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     */
     sortOrder?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: string};
     /**
-     * The data type of the common parameter. Valid values: `String` and `StringList`.
+     * The data type of the common parameter. Valid values: `String`, `StringList`.
      */
     type?: string;
 }
@@ -110,20 +120,38 @@ export interface GetParametersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Parameter names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of the common parameter.
+     */
     readonly parameterName?: string;
+    /**
+     * A list of Oos Parameters. Each element contains the following attributes:
+     */
     readonly parameters: outputs.oos.GetParametersParameter[];
+    /**
+     * The ID of the Resource Group.
+     */
     readonly resourceGroupId?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
+    /**
+     * The tags added to the common parameter.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The data type of the common parameter.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Oos Parameters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -133,27 +161,31 @@ export interface GetParametersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
- * });
- * export const oosParameterId1 = ids.then(ids => ids.parameters?.[0]?.id);
- * const nameRegex = alicloud.oos.getParameters({
- *     nameRegex: "^my-Parameter",
- * });
- * export const oosParameterId2 = nameRegex.then(nameRegex => nameRegex.parameters?.[0]?.id);
- * const resourceGroupId = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
- *     resourceGroupId: "example_value",
- * });
- * export const oosParameterId3 = resourceGroupId.then(resourceGroupId => resourceGroupId.parameters?.[0]?.id);
- * const tags = alicloud.oos.getParameters({
- *     ids: ["my-Parameter"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.oos.Parameter("default", {
+ *     parameterName: name,
+ *     value: "tf-testacc-oos_parameter",
+ *     type: "String",
+ *     description: name,
+ *     constraints: `  {
+ *     "AllowedValues": [
+ *         "tf-testacc-oos_parameter"
+ *     ],
+ *     "AllowedPattern": "tf-testacc-oos_parameter",
+ *     "MinLength": 1,
+ *     "MaxLength": 100
+ *   }
+ * `,
  *     tags: {
  *         Created: "TF",
- *         For: "OosParameter",
+ *         For: "Parameter",
  *     },
  * });
- * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
+ * const ids = alicloud.oos.getParametersOutput({
+ *     ids: [_default.id],
+ * });
+ * export const oosSecretParameterId0 = ids.apply(ids => ids.parameters?.[0]?.id);
  * ```
  */
 export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetParametersResult> {
@@ -178,11 +210,11 @@ export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulum
  */
 export interface GetParametersOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of Parameter IDs. Its element value is same as Parameter Name.
+     * A list of Parameter IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -201,14 +233,20 @@ export interface GetParametersOutputArgs {
      * The ID of the Resource Group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     */
     sortField?: pulumi.Input<string>;
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     */
     sortOrder?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The data type of the common parameter. Valid values: `String` and `StringList`.
+     * The data type of the common parameter. Valid values: `String`, `StringList`.
      */
     type?: pulumi.Input<string>;
 }

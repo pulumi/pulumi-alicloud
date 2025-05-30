@@ -1431,7 +1431,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1445,7 +1445,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1460,15 +1477,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1482,7 +1569,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1496,7 +1583,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1511,15 +1615,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1533,7 +1707,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1547,7 +1721,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1562,15 +1753,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1584,7 +1845,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1598,7 +1859,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1613,15 +1891,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1635,7 +1983,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1649,7 +1997,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1664,15 +2029,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1686,7 +2121,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1700,7 +2135,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1715,15 +2167,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }
@@ -1737,7 +2259,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1751,7 +2273,24 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.Eip;
+     * import com.pulumi.alicloud.ecs.EipArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+     * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
+     * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
+     * import com.pulumi.alicloud.alb.LoadBalancer;
+     * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
      * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1766,15 +2305,85 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .enableIpv6(true)
+     *             .build());
+     * 
+     *         var zoneA = new Eip("zoneA", EipArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByTraffic")
+     *             .build());
+     * 
+     *         var zoneASwitch = new Switch("zoneASwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.0.0/18")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .ipv6CidrBlockMask(6)
+     *             .build());
+     * 
+     *         var zoneB = new Switch("zoneB", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.128.0/18")
+     *             .zoneId(defaultGetZones.zones()[1].id())
+     *             .ipv6CidrBlockMask(8)
+     *             .build());
+     * 
+     *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
+     *             .ipv6GatewayName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
+     *             .bandwidth("1000")
+     *             .internetChargeType("PayByBandwidth")
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .loadBalancerEdition("Basic")
+     *             .addressType("Internet")
+     *             .vpcId(defaultIpv6Gateway.vpcId())
+     *             .addressAllocatedMode("Fixed")
+     *             .addressIpVersion("DualStack")
+     *             .ipv6AddressType("Internet")
+     *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+     *             .resourceGroupId(default_.groups()[1].id())
+     *             .loadBalancerName(name)
+     *             .deletionProtectionEnabled(false)
+     *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+     *                 .payType("PayAsYouGo")
+     *                 .build())
+     *             .zoneMappings(            
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneASwitch.id())
+     *                     .zoneId(zoneASwitch.zoneId())
+     *                     .eipType("Common")
+     *                     .allocationId(zoneA.id())
+     *                     .intranetAddress("192.168.10.1")
+     *                     .build(),
+     *                 LoadBalancerZoneMappingArgs.builder()
+     *                     .vswitchId(zoneB.id())
+     *                     .zoneId(zoneB.zoneId())
+     *                     .build())
+     *             .tags(Map.of("Created", "TF"))
+     *             .build());
+     * 
      *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
-     *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex("^my-LoadBalancer")
-     *             .build());
-     * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
      *     }
      * }
      * }

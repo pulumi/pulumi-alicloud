@@ -1403,9 +1403,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:pvtz/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1415,6 +1419,10 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
+     * import com.pulumi.alicloud.pvtz.ZoneRecord;
+     * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
      * import java.util.List;
@@ -1430,12 +1438,28 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .zoneId(basic.id())
-     *             .keyword(foo.value())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
+     *         var defaultZoneRecord = new ZoneRecord("defaultZoneRecord", ZoneRecordArgs.builder()
+     *             .zoneId(default_.id())
+     *             .rr("www")
+     *             .type("MX")
+     *             .value(name)
+     *             .ttl(60)
+     *             .priority(2)
+     *             .remark(name)
+     *             .build());
+     * 
+     *         final var ids = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(defaultZoneRecord.zoneId())
+     *             .ids(defaultZoneRecord.recordId())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
      *     }
      * }
      * }
@@ -1447,9 +1471,13 @@ public final class PvtzFunctions {
         return getZoneRecords(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1459,6 +1487,10 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
+     * import com.pulumi.alicloud.pvtz.ZoneRecord;
+     * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
      * import java.util.List;
@@ -1474,12 +1506,28 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .zoneId(basic.id())
-     *             .keyword(foo.value())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
+     *         var defaultZoneRecord = new ZoneRecord("defaultZoneRecord", ZoneRecordArgs.builder()
+     *             .zoneId(default_.id())
+     *             .rr("www")
+     *             .type("MX")
+     *             .value(name)
+     *             .ttl(60)
+     *             .priority(2)
+     *             .remark(name)
+     *             .build());
+     * 
+     *         final var ids = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(defaultZoneRecord.zoneId())
+     *             .ids(defaultZoneRecord.recordId())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
      *     }
      * }
      * }
@@ -1491,9 +1539,13 @@ public final class PvtzFunctions {
         return getZoneRecordsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1503,6 +1555,10 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
+     * import com.pulumi.alicloud.pvtz.ZoneRecord;
+     * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
      * import java.util.List;
@@ -1518,12 +1574,28 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .zoneId(basic.id())
-     *             .keyword(foo.value())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
+     *         var defaultZoneRecord = new ZoneRecord("defaultZoneRecord", ZoneRecordArgs.builder()
+     *             .zoneId(default_.id())
+     *             .rr("www")
+     *             .type("MX")
+     *             .value(name)
+     *             .ttl(60)
+     *             .priority(2)
+     *             .remark(name)
+     *             .build());
+     * 
+     *         final var ids = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(defaultZoneRecord.zoneId())
+     *             .ids(defaultZoneRecord.recordId())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
      *     }
      * }
      * }
@@ -1535,9 +1607,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", TypeShape.of(GetZoneRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1547,6 +1623,10 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
+     * import com.pulumi.alicloud.pvtz.ZoneRecord;
+     * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
      * import java.util.List;
@@ -1562,12 +1642,28 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .zoneId(basic.id())
-     *             .keyword(foo.value())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
+     *         var defaultZoneRecord = new ZoneRecord("defaultZoneRecord", ZoneRecordArgs.builder()
+     *             .zoneId(default_.id())
+     *             .rr("www")
+     *             .type("MX")
+     *             .value(name)
+     *             .ttl(60)
+     *             .priority(2)
+     *             .remark(name)
+     *             .build());
+     * 
+     *         final var ids = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(defaultZoneRecord.zoneId())
+     *             .ids(defaultZoneRecord.recordId())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
      *     }
      * }
      * }
@@ -1579,9 +1675,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", TypeShape.of(GetZoneRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1591,6 +1691,10 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
+     * import com.pulumi.alicloud.pvtz.ZoneRecord;
+     * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
      * import java.util.List;
@@ -1606,12 +1710,28 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .zoneId(basic.id())
-     *             .keyword(foo.value())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
+     *         var defaultZoneRecord = new ZoneRecord("defaultZoneRecord", ZoneRecordArgs.builder()
+     *             .zoneId(default_.id())
+     *             .rr("www")
+     *             .type("MX")
+     *             .value(name)
+     *             .ttl(60)
+     *             .priority(2)
+     *             .remark(name)
+     *             .build());
+     * 
+     *         final var ids = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(defaultZoneRecord.zoneId())
+     *             .ids(defaultZoneRecord.recordId())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
      *     }
      * }
      * }
@@ -1623,9 +1743,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:pvtz/getZoneRecords:getZoneRecords", TypeShape.of(GetZoneRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1635,6 +1759,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1650,11 +1776,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1666,9 +1798,13 @@ public final class PvtzFunctions {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1678,6 +1814,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1693,11 +1831,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1709,9 +1853,13 @@ public final class PvtzFunctions {
         return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1721,6 +1869,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1736,11 +1886,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1752,9 +1908,13 @@ public final class PvtzFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1764,6 +1924,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1779,11 +1941,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1795,9 +1963,13 @@ public final class PvtzFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1807,6 +1979,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1822,11 +1996,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1838,9 +2018,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1850,6 +2034,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1865,11 +2051,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }
@@ -1881,9 +2073,13 @@ public final class PvtzFunctions {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * This data source provides the Private Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1893,6 +2089,8 @@ public final class PvtzFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.Zone;
+     * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
@@ -1908,11 +2106,17 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(basic.zoneName())
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.com");
+     *         var default_ = new Zone("default", ZoneArgs.builder()
+     *             .zoneName(name)
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
+     *         final var ids = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
      *     }
      * }
      * }

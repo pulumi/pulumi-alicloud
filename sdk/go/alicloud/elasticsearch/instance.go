@@ -50,7 +50,7 @@ type Instance struct {
 	EnableKibanaPublicNetwork pulumi.BoolPtrOutput `pulumi:"enableKibanaPublicNetwork"`
 	// Bool, default to false. When it set to true, the instance can enable public network access。
 	EnablePublic pulumi.BoolPtrOutput `pulumi:"enablePublic"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
@@ -201,7 +201,7 @@ type instanceState struct {
 	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
 	// Bool, default to false. When it set to true, the instance can enable public network access。
 	EnablePublic *bool `pulumi:"enablePublic"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain *string `pulumi:"kibanaDomain"`
@@ -298,7 +298,7 @@ type InstanceState struct {
 	EnableKibanaPublicNetwork pulumi.BoolPtrInput
 	// Bool, default to false. When it set to true, the instance can enable public network access。
 	EnablePublic pulumi.BoolPtrInput
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	InstanceChargeType pulumi.StringPtrInput
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringPtrInput
@@ -397,7 +397,7 @@ type instanceArgs struct {
 	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
 	// Bool, default to false. When it set to true, the instance can enable public network access。
 	EnablePublic *bool `pulumi:"enablePublic"`
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
@@ -481,7 +481,7 @@ type InstanceArgs struct {
 	EnableKibanaPublicNetwork pulumi.BoolPtrInput
 	// Bool, default to false. When it set to true, the instance can enable public network access。
 	EnablePublic pulumi.BoolPtrInput
-	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 	InstanceChargeType pulumi.StringPtrInput
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	KibanaNodeSpec pulumi.StringPtrInput
@@ -694,7 +694,7 @@ func (o InstanceOutput) EnablePublic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnablePublic }).(pulumi.BoolPtrOutput)
 }
 
-// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }

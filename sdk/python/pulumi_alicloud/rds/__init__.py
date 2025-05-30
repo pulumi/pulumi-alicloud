@@ -17,6 +17,7 @@ from .database import *
 from .db_instance_endpoint import *
 from .db_instance_endpoint_address import *
 from .db_node import *
+from .db_proxy_public import *
 from .ddr_instance import *
 from .get_accounts import *
 from .get_character_set_names import *

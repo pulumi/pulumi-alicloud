@@ -21,16 +21,12 @@ public final class GetZonesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of zone IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String keyword;
     private @Nullable String lang;
     private @Nullable String nameRegex;
     /**
-     * @return A list of zone names.
+     * @return A list of Zone names.
      * 
      */
     private List<String> names;
@@ -38,13 +34,13 @@ public final class GetZonesResult {
     private @Nullable String queryRegionId;
     private @Nullable String queryVpcId;
     /**
-     * @return The Id of resource group which the Private Zone belongs.
+     * @return The ID of the resource group to which the zone belongs.
      * 
      */
     private @Nullable String resourceGroupId;
     private @Nullable String searchMode;
     /**
-     * @return A list of zones. Each element contains the following attributes:
+     * @return A list of Zone. Each element contains the following attributes:
      * 
      */
     private List<GetZonesZone> zones;
@@ -60,10 +56,6 @@ public final class GetZonesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of zone IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -77,7 +69,7 @@ public final class GetZonesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of zone names.
+     * @return A list of Zone names.
      * 
      */
     public List<String> names() {
@@ -93,7 +85,7 @@ public final class GetZonesResult {
         return Optional.ofNullable(this.queryVpcId);
     }
     /**
-     * @return The Id of resource group which the Private Zone belongs.
+     * @return The ID of the resource group to which the zone belongs.
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -103,7 +95,7 @@ public final class GetZonesResult {
         return Optional.ofNullable(this.searchMode);
     }
     /**
-     * @return A list of zones. Each element contains the following attributes:
+     * @return A list of Zone. Each element contains the following attributes:
      * 
      */
     public List<GetZonesZone> zones() {

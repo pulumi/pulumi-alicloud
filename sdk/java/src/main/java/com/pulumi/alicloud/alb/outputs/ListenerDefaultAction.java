@@ -19,7 +19,7 @@ public final class ListenerDefaultAction {
      */
     private @Nullable ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
     /**
-     * @return Action Type
+     * @return The action type. Value: ForwardGroup, indicating forwarding to the server group.
      * 
      */
     private String type;
@@ -33,7 +33,7 @@ public final class ListenerDefaultAction {
         return Optional.ofNullable(this.forwardGroupConfig);
     }
     /**
-     * @return Action Type
+     * @return The action type. Value: ForwardGroup, indicating forwarding to the server group.
      * 
      */
     public String type() {

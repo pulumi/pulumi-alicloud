@@ -751,23 +751,19 @@ export namespace alb {
 
     export interface ListenerAccessLogTracingConfig {
         /**
-         * Xtrace Function.
+         * Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
          *
-         * Value: True **** Or False * *.
-         *
-         * Default Value: False * *.
-         *
-         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
          */
         tracingEnabled: pulumi.Input<boolean>;
         /**
-         * Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+         * Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
          */
         tracingSample?: pulumi.Input<number>;
         /**
-         * Xtrace Type Value Is **Zipkin * *.
+         * Xtrace Type Value Is `Zipkin`.
          *
-         * > **NOTE:**  `tracingenabled` **True When Effective.
+         * > **NOTE:**  `tracingenabled` valued True When Effective.
          */
         tracingType?: pulumi.Input<string>;
     }
@@ -814,7 +810,7 @@ export namespace alb {
          */
         forwardGroupConfig?: pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfig>;
         /**
-         * Action Type
+         * The action type. Value: ForwardGroup, indicating forwarding to the server group.
          */
         type: pulumi.Input<string>;
     }
@@ -879,18 +875,10 @@ export namespace alb {
         xForwardedForClientCertSubjectDnEnabled?: pulumi.Input<boolean>;
         /**
          * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-         *
-         * true: Yes.
-         *
-         * false (default): No.
-         *
-         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          */
         xForwardedForClientSourceIpsEnabled?: pulumi.Input<boolean>;
         /**
-         * Specify the trusted proxy IP.
-         *
-         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          */
         xForwardedForClientSourceIpsTrusted?: pulumi.Input<string>;
         /**
@@ -903,26 +891,10 @@ export namespace alb {
         xForwardedForEnabled?: pulumi.Input<boolean>;
         /**
          * Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-         *
-         * true: Yes.
-         *
-         * false (default): No.
-         *
-         * HTTP, HTTPS, and QUIC listeners support this parameter.
          */
         xForwardedForHostEnabled?: pulumi.Input<boolean>;
         /**
          * Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-         *
-         * append (default): append.
-         *
-         * remove: Delete.
-         *
-         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-         *
-         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-         *
-         * HTTP and HTTPS listeners support this parameter.
          */
         xForwardedForProcessingMode?: pulumi.Input<string>;
         /**
@@ -4934,6 +4906,17 @@ export namespace cs {
         version?: pulumi.Input<string>;
     }
 
+    export interface ManagedKubernetesAuditLogConfig {
+        /**
+         * Whether to enable audit logging. Valid values: `true`, `false`.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The SLS project to which the Logstore storing the cluster audit logs belongs.
+         */
+        slsProjectName?: pulumi.Input<string>;
+    }
+
     export interface ManagedKubernetesCertificateAuthority {
         /**
          * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -8217,6 +8200,10 @@ export namespace ecs {
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
+         * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         */
+        burstingEnabled?: pulumi.Input<boolean>;
+        /**
          * The category of the disk:
          */
         category?: pulumi.Input<string>;
@@ -8253,6 +8240,10 @@ export namespace ecs {
          * Default to `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
+        /**
+         * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+         */
+        provisionedIops?: pulumi.Input<number>;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]

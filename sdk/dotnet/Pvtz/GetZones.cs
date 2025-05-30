@@ -12,9 +12,13 @@ namespace Pulumi.AliCloud.Pvtz
     public static class GetZones
     {
         /// <summary>
-        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zones of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -24,14 +28,24 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         Keyword = basic.ZoneName,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstZoneId"] = pvtzZonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ["pvtzZonesId0"] = ids.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -40,9 +54,13 @@ namespace Pulumi.AliCloud.Pvtz
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zones of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -52,14 +70,24 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         Keyword = basic.ZoneName,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstZoneId"] = pvtzZonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ["pvtzZonesId0"] = ids.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -68,9 +96,13 @@ namespace Pulumi.AliCloud.Pvtz
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zones of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -80,14 +112,24 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         Keyword = basic.ZoneName,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZones.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstZoneId"] = pvtzZonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ["pvtzZonesId0"] = ids.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -100,7 +142,7 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -109,7 +151,7 @@ namespace Pulumi.AliCloud.Pvtz
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of zone IDs.
+        /// A list of Zones IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -118,17 +160,20 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// keyword for zone name.
+        /// The keyword of the zone name.
         /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
 
         /// <summary>
-        /// User language.
+        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Zone name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -139,27 +184,27 @@ namespace Pulumi.AliCloud.Pvtz
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// query_region_id for zone regionId.
+        /// The region ID of the virtual private cloud (VPC) associated with the zone.
         /// </summary>
         [Input("queryRegionId")]
         public string? QueryRegionId { get; set; }
 
         /// <summary>
-        /// query_vpc_id for zone vpcId.
+        /// The ID of the VPC associated with the zone.
         /// </summary>
         [Input("queryVpcId")]
         public string? QueryVpcId { get; set; }
 
         /// <summary>
-        /// resource_group_id for zone resourceGroupId.
+        /// The ID of the resource group to which the zone belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
-        /// - LIKE: fuzzy search.
-        /// - EXACT: precise search. It is not filled in by default.
+        /// The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+        /// - `LIKE`: Fuzzy search.
+        /// - `EXACT`: Exact search.
         /// </summary>
         [Input("searchMode")]
         public string? SearchMode { get; set; }
@@ -173,7 +218,7 @@ namespace Pulumi.AliCloud.Pvtz
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -182,7 +227,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of zone IDs.
+        /// A list of Zones IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -191,17 +236,20 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// keyword for zone name.
+        /// The keyword of the zone name.
         /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }
 
         /// <summary>
-        /// User language.
+        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Zone name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -212,27 +260,27 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// query_region_id for zone regionId.
+        /// The region ID of the virtual private cloud (VPC) associated with the zone.
         /// </summary>
         [Input("queryRegionId")]
         public Input<string>? QueryRegionId { get; set; }
 
         /// <summary>
-        /// query_vpc_id for zone vpcId.
+        /// The ID of the VPC associated with the zone.
         /// </summary>
         [Input("queryVpcId")]
         public Input<string>? QueryVpcId { get; set; }
 
         /// <summary>
-        /// resource_group_id for zone resourceGroupId.
+        /// The ID of the resource group to which the zone belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
-        /// - LIKE: fuzzy search.
-        /// - EXACT: precise search. It is not filled in by default.
+        /// The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+        /// - `LIKE`: Fuzzy search.
+        /// - `EXACT`: Exact search.
         /// </summary>
         [Input("searchMode")]
         public Input<string>? SearchMode { get; set; }
@@ -252,27 +300,24 @@ namespace Pulumi.AliCloud.Pvtz
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of zone IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         public readonly string? Lang;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of zone names.
+        /// A list of Zone names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? QueryRegionId;
         public readonly string? QueryVpcId;
         /// <summary>
-        /// The Id of resource group which the Private Zone belongs.
+        /// The ID of the resource group to which the zone belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
         public readonly string? SearchMode;
         /// <summary>
-        /// A list of zones. Each element contains the following attributes:
+        /// A list of Zone. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 

@@ -44,26 +44,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
-     * Access Log Whether to Enable Carry Custom Header Field.
+     * Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      * 
      */
     @Export(name="accessLogRecordCustomizedHeadersEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
-     * @return Access Log Whether to Enable Carry Custom Header Field.
+     * @return Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      * 
      */
     public Output<Optional<Boolean>> accessLogRecordCustomizedHeadersEnabled() {
@@ -200,14 +192,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.http2Enabled;
     }
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      * 
      */
     @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
-     * @return Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * @return Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      * 
      */
     public Output<Integer> idleTimeout() {
@@ -284,14 +276,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.quicConfig;
     }
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> requestTimeout;
 
     /**
-     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     public Output<Integer> requestTimeout() {

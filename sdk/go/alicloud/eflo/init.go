@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Subnet{}
 	case "alicloud:eflo/vpd:Vpd":
 		r = &Vpd{}
+	case "alicloud:eflo/vsc:Vsc":
+		r = &Vsc{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -95,6 +97,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eflo/vpd",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eflo/vsc",
 		&module{version},
 	)
 }

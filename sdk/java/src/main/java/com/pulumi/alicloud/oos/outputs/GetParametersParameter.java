@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetParametersParameter {
     /**
-     * @return The constraints of the common parameter.
+     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String constraints;
@@ -43,7 +43,7 @@ public final class GetParametersParameter {
      */
     private String parameterId;
     /**
-     * @return The name of the common parameter.
+     * @return The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      * 
      */
     private String parameterName;
@@ -63,12 +63,12 @@ public final class GetParametersParameter {
      */
     private String shareType;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The data type of the common parameter.
+     * @return The data type of the common parameter. Valid values: `String`, `StringList`.
      * 
      */
     private String type;
@@ -83,14 +83,14 @@ public final class GetParametersParameter {
      */
     private String updatedDate;
     /**
-     * @return The value of the common parameter.
+     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String value;
 
     private GetParametersParameter() {}
     /**
-     * @return The constraints of the common parameter.
+     * @return The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String constraints() {
@@ -132,7 +132,7 @@ public final class GetParametersParameter {
         return this.parameterId;
     }
     /**
-     * @return The name of the common parameter.
+     * @return The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      * 
      */
     public String parameterName() {
@@ -160,14 +160,14 @@ public final class GetParametersParameter {
         return this.shareType;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The data type of the common parameter.
+     * @return The data type of the common parameter. Valid values: `String`, `StringList`.
      * 
      */
     public String type() {
@@ -188,7 +188,7 @@ public final class GetParametersParameter {
         return this.updatedDate;
     }
     /**
-     * @return The value of the common parameter.
+     * @return (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String value() {

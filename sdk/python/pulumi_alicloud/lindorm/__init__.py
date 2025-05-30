@@ -8,4 +8,5 @@ import typing
 # Export this package's modules as members:
 from .get_instances import *
 from .instance import *
+from .public_network import *
 from . import outputs

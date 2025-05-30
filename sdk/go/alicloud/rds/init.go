@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DbInstanceEndpointAddress{}
 	case "alicloud:rds/dbNode:DbNode":
 		r = &DbNode{}
+	case "alicloud:rds/dbProxyPublic:DbProxyPublic":
+		r = &DbProxyPublic{}
 	case "alicloud:rds/ddrInstance:DdrInstance":
 		r = &DdrInstance{}
 	case "alicloud:rds/instance:Instance":
@@ -133,6 +135,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/dbNode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/dbProxyPublic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

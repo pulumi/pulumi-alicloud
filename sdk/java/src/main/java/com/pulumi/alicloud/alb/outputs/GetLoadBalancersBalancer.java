@@ -24,14 +24,12 @@ public final class GetLoadBalancersBalancer {
      */
     private List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs;
     /**
-     * @return The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-     * uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-     * instance.
+     * @return The method in which IP addresses are assigned.
      * 
      */
     private String addressAllocatedMode;
     /**
-     * @return The type of IP address that the ALB instance uses to provide services.
+     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      * 
      */
     private String addressType;
@@ -67,12 +65,12 @@ public final class GetLoadBalancersBalancer {
      */
     private List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs;
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * @return Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      * 
      */
     private String loadBalancerBusinessStatus;
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+     * @return Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
@@ -111,12 +109,12 @@ public final class GetLoadBalancersBalancer {
      */
     private String resourceGroupId;
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     private String status;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -126,7 +124,7 @@ public final class GetLoadBalancersBalancer {
      */
     private String vpcId;
     /**
-     * @return The zones and vSwitches. You must specify at least two zones.
+     * @return The zones and vSwitches.
      * 
      */
     private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
@@ -140,16 +138,14 @@ public final class GetLoadBalancersBalancer {
         return this.accessLogConfigs;
     }
     /**
-     * @return The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-     * uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-     * instance.
+     * @return The method in which IP addresses are assigned.
      * 
      */
     public String addressAllocatedMode() {
         return this.addressAllocatedMode;
     }
     /**
-     * @return The type of IP address that the ALB instance uses to provide services.
+     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      * 
      */
     public String addressType() {
@@ -199,14 +195,14 @@ public final class GetLoadBalancersBalancer {
         return this.loadBalancerBillingConfigs;
     }
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * @return Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      * 
      */
     public String loadBalancerBusinessStatus() {
         return this.loadBalancerBusinessStatus;
     }
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+     * @return Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
@@ -259,14 +255,14 @@ public final class GetLoadBalancersBalancer {
         return this.resourceGroupId;
     }
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
@@ -280,7 +276,7 @@ public final class GetLoadBalancersBalancer {
         return this.vpcId;
     }
     /**
-     * @return The zones and vSwitches. You must specify at least two zones.
+     * @return The zones and vSwitches.
      * 
      */
     public List<GetLoadBalancersBalancerZoneMapping> zoneMappings() {

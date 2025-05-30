@@ -3587,6 +3587,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/ramRoleAttachment",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ramRoleAttachment:RamRoleAttachment": "RamRoleAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ecs/reservedInstance",
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
@@ -3903,6 +3911,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
    "alicloud:eflo/vpd:Vpd": "Vpd"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/vsc",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/vsc:Vsc": "Vsc"
   }
  },
  {
@@ -5467,6 +5483,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "lindorm/publicNetwork",
+  "fqn": "pulumi_alicloud.lindorm",
+  "classes": {
+   "alicloud:lindorm/publicNetwork:PublicNetwork": "PublicNetwork"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "live/caster",
   "fqn": "pulumi_alicloud.live",
   "classes": {
@@ -6459,6 +6483,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "pai/workspaceUserConfig",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceUserConfig:WorkspaceUserConfig": "WorkspaceUserConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "pai/workspaceWorkspace",
   "fqn": "pulumi_alicloud.pai",
   "classes": {
@@ -6951,6 +6983,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/dbNode:DbNode": "DbNode"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/dbProxyPublic",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/dbProxyPublic:DbProxyPublic": "DbProxyPublic"
   }
  },
  {

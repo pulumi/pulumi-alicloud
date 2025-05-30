@@ -765,6 +765,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
@@ -772,6 +773,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -930,6 +932,53 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> securityIps() {
         return Optional.ofNullable(this.securityIps);
+    }
+
+    /**
+     * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+     * 
+     */
+    @Import(name="serverlessRuleCpuEnlargeThreshold")
+    private @Nullable Output<Integer> serverlessRuleCpuEnlargeThreshold;
+
+    /**
+     * @return CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+     * 
+     */
+    public Optional<Output<Integer>> serverlessRuleCpuEnlargeThreshold() {
+        return Optional.ofNullable(this.serverlessRuleCpuEnlargeThreshold);
+    }
+
+    /**
+     * CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="serverlessRuleCpuShrinkThreshold")
+    private @Nullable Output<Integer> serverlessRuleCpuShrinkThreshold;
+
+    /**
+     * @return CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> serverlessRuleCpuShrinkThreshold() {
+        return Optional.ofNullable(this.serverlessRuleCpuShrinkThreshold);
+    }
+
+    /**
+     * Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="serverlessRuleMode")
+    private @Nullable Output<String> serverlessRuleMode;
+
+    /**
+     * @return Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<String>> serverlessRuleMode() {
+        return Optional.ofNullable(this.serverlessRuleMode);
     }
 
     /**
@@ -1282,6 +1331,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.secondsUntilAutoPause = $.secondsUntilAutoPause;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
+        this.serverlessRuleCpuEnlargeThreshold = $.serverlessRuleCpuEnlargeThreshold;
+        this.serverlessRuleCpuShrinkThreshold = $.serverlessRuleCpuShrinkThreshold;
+        this.serverlessRuleMode = $.serverlessRuleMode;
         this.serverlessSteadySwitch = $.serverlessSteadySwitch;
         this.serverlessType = $.serverlessType;
         this.sourceResourceId = $.sourceResourceId;
@@ -2370,6 +2422,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+         * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -2381,6 +2434,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+         * &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -2623,6 +2677,71 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
+        }
+
+        /**
+         * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+         * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleCpuEnlargeThreshold(@Nullable Output<Integer> serverlessRuleCpuEnlargeThreshold) {
+            $.serverlessRuleCpuEnlargeThreshold = serverlessRuleCpuEnlargeThreshold;
+            return this;
+        }
+
+        /**
+         * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+         * &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleCpuEnlargeThreshold(Integer serverlessRuleCpuEnlargeThreshold) {
+            return serverlessRuleCpuEnlargeThreshold(Output.of(serverlessRuleCpuEnlargeThreshold));
+        }
+
+        /**
+         * @param serverlessRuleCpuShrinkThreshold CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleCpuShrinkThreshold(@Nullable Output<Integer> serverlessRuleCpuShrinkThreshold) {
+            $.serverlessRuleCpuShrinkThreshold = serverlessRuleCpuShrinkThreshold;
+            return this;
+        }
+
+        /**
+         * @param serverlessRuleCpuShrinkThreshold CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleCpuShrinkThreshold(Integer serverlessRuleCpuShrinkThreshold) {
+            return serverlessRuleCpuShrinkThreshold(Output.of(serverlessRuleCpuShrinkThreshold));
+        }
+
+        /**
+         * @param serverlessRuleMode Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleMode(@Nullable Output<String> serverlessRuleMode) {
+            $.serverlessRuleMode = serverlessRuleMode;
+            return this;
+        }
+
+        /**
+         * @param serverlessRuleMode Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessRuleMode(String serverlessRuleMode) {
+            return serverlessRuleMode(Output.of(serverlessRuleMode));
         }
 
         /**

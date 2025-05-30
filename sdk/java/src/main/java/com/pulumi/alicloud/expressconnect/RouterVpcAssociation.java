@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Express Connect Router Express Connect Router Vpc Association resource. Bind relationship object between leased line gateway and VPC.
  * 
- * For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouterAssociation).
+ * For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-createexpressconnectrouterassociation).
  * 
  * &gt; **NOTE:** Available since v1.224.0.
  * 
@@ -97,112 +97,114 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation")
 public class RouterVpcAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * List of allowed route prefixes.
+     * The list of allowed route prefixes.
      * 
      */
     @Export(name="allowedPrefixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrefixes;
 
     /**
-     * @return List of allowed route prefixes.
+     * @return The list of allowed route prefixes.
      * 
      */
     public Output<Optional<List<String>>> allowedPrefixes() {
         return Codegen.optional(this.allowedPrefixes);
     }
     /**
-     * The first ID of the resource.
+     * The ID of the association between the ECR and the VPC.
      * 
      */
     @Export(name="associationId", refs={String.class}, tree="[0]")
     private Output<String> associationId;
 
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the association between the ECR and the VPC.
      * 
      */
     public Output<String> associationId() {
         return this.associationId;
     }
     /**
-     * The region to which the VPC or TR belongs.
+     * The region ID of the resource to be associated.
      * 
      */
     @Export(name="associationRegionId", refs={String.class}, tree="[0]")
     private Output<String> associationRegionId;
 
     /**
-     * @return The region to which the VPC or TR belongs.
+     * @return The region ID of the resource to be associated.
      * 
      */
     public Output<String> associationRegionId() {
         return this.associationRegionId;
     }
     /**
-     * The creation time of the resource.
+     * The time when the association was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The time when the association was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The ID of the leased line gateway instance.
+     * The ECR ID.
      * 
      */
     @Export(name="ecrId", refs={String.class}, tree="[0]")
     private Output<String> ecrId;
 
     /**
-     * @return The ID of the leased line gateway instance.
+     * @return The ECR ID.
      * 
      */
     public Output<String> ecrId() {
         return this.ecrId;
     }
     /**
-     * The status of the resource.
+     * The deployment state of the associated resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The deployment state of the associated resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of the VPC instance.
+     * The VPC ID.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC instance.
+     * @return The VPC ID.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The ID of the Alibaba Cloud account to which the VPC belongs.
+     * The ID of the Alibaba Cloud account that owns the VPC.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
      * 
      */
     @Export(name="vpcOwnerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vpcOwnerId;
 
     /**
-     * @return The ID of the Alibaba Cloud account to which the VPC belongs.
+     * @return The ID of the Alibaba Cloud account that owns the VPC.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
      * 
      */
     public Output<Integer> vpcOwnerId() {

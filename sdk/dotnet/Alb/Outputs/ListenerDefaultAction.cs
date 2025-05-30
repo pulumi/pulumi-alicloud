@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly Outputs.ListenerDefaultActionForwardGroupConfig? ForwardGroupConfig;
         /// <summary>
-        /// Action Type
+        /// The action type. Value: ForwardGroup, indicating forwarding to the server group.
         /// </summary>
         public readonly string Type;
 

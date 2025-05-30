@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionsArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
@@ -54,6 +55,21 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<List<String>>> apiAudiences() {
         return Optional.ofNullable(this.apiAudiences);
+    }
+
+    /**
+     * Audit log configuration. See `audit_log_config` below.
+     * 
+     */
+    @Import(name="auditLogConfig")
+    private @Nullable Output<ManagedKubernetesAuditLogConfigArgs> auditLogConfig;
+
+    /**
+     * @return Audit log configuration. See `audit_log_config` below.
+     * 
+     */
+    public Optional<Output<ManagedKubernetesAuditLogConfigArgs>> auditLogConfig() {
+        return Optional.ofNullable(this.auditLogConfig);
     }
 
     /**
@@ -169,7 +185,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      * 
      */
@@ -178,7 +194,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      * 
      */
@@ -501,6 +517,29 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<List<String>>> podVswitchIds() {
         return Optional.ofNullable(this.podVswitchIds);
+    }
+
+    /**
+     * The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     * 
+     */
+    @Import(name="profile")
+    private @Nullable Output<String> profile;
+
+    /**
+     * @return The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     * 
+     */
+    public Optional<Output<String>> profile() {
+        return Optional.ofNullable(this.profile);
     }
 
     /**
@@ -853,6 +892,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private ManagedKubernetesState(ManagedKubernetesState $) {
         this.addons = $.addons;
         this.apiAudiences = $.apiAudiences;
+        this.auditLogConfig = $.auditLogConfig;
         this.certificateAuthority = $.certificateAuthority;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
@@ -880,6 +920,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.operationPolicy = $.operationPolicy;
         this.podCidr = $.podCidr;
         this.podVswitchIds = $.podVswitchIds;
+        this.profile = $.profile;
         this.proxyMode = $.proxyMode;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
@@ -981,6 +1022,27 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          */
         public Builder apiAudiences(String... apiAudiences) {
             return apiAudiences(List.of(apiAudiences));
+        }
+
+        /**
+         * @param auditLogConfig Audit log configuration. See `audit_log_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogConfig(@Nullable Output<ManagedKubernetesAuditLogConfigArgs> auditLogConfig) {
+            $.auditLogConfig = auditLogConfig;
+            return this;
+        }
+
+        /**
+         * @param auditLogConfig Audit log configuration. See `audit_log_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogConfig(ManagedKubernetesAuditLogConfigArgs auditLogConfig) {
+            return auditLogConfig(Output.of(auditLogConfig));
         }
 
         /**
@@ -1126,7 +1188,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param clusterSpec The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-         * * ack.standard : Standard managed clusters.
+         * * ack.standard : Basic managed clusters.
          * * ack.pro.small : Professional managed clusters.
          * 
          * @return builder
@@ -1139,7 +1201,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param clusterSpec The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-         * * ack.standard : Standard managed clusters.
+         * * ack.standard : Basic managed clusters.
          * * ack.pro.small : Professional managed clusters.
          * 
          * @return builder
@@ -1616,6 +1678,35 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          */
         public Builder podVswitchIds(String... podVswitchIds) {
             return podVswitchIds(List.of(podVswitchIds));
+        }
+
+        /**
+         * @param profile The profile of cluster. Valid values:
+         * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+         * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+         * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+         * * `Acs`: ACS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profile(@Nullable Output<String> profile) {
+            $.profile = profile;
+            return this;
+        }
+
+        /**
+         * @param profile The profile of cluster. Valid values:
+         * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+         * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+         * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+         * * `Acs`: ACS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profile(String profile) {
+            return profile(Output.of(profile));
         }
 
         /**

@@ -19,14 +19,14 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
     public static final RouterVpcAssociationArgs Empty = new RouterVpcAssociationArgs();
 
     /**
-     * List of allowed route prefixes.
+     * The list of allowed route prefixes.
      * 
      */
     @Import(name="allowedPrefixes")
     private @Nullable Output<List<String>> allowedPrefixes;
 
     /**
-     * @return List of allowed route prefixes.
+     * @return The list of allowed route prefixes.
      * 
      */
     public Optional<Output<List<String>>> allowedPrefixes() {
@@ -34,14 +34,14 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region to which the VPC or TR belongs.
+     * The region ID of the resource to be associated.
      * 
      */
     @Import(name="associationRegionId", required=true)
     private Output<String> associationRegionId;
 
     /**
-     * @return The region to which the VPC or TR belongs.
+     * @return The region ID of the resource to be associated.
      * 
      */
     public Output<String> associationRegionId() {
@@ -49,14 +49,14 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the leased line gateway instance.
+     * The ECR ID.
      * 
      */
     @Import(name="ecrId", required=true)
     private Output<String> ecrId;
 
     /**
-     * @return The ID of the leased line gateway instance.
+     * @return The ECR ID.
      * 
      */
     public Output<String> ecrId() {
@@ -64,14 +64,14 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the VPC instance.
+     * The VPC ID.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC instance.
+     * @return The VPC ID.
      * 
      */
     public Output<String> vpcId() {
@@ -79,14 +79,16 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the Alibaba Cloud account to which the VPC belongs.
+     * The ID of the Alibaba Cloud account that owns the VPC.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
      * 
      */
     @Import(name="vpcOwnerId")
     private @Nullable Output<Integer> vpcOwnerId;
 
     /**
-     * @return The ID of the Alibaba Cloud account to which the VPC belongs.
+     * @return The ID of the Alibaba Cloud account that owns the VPC.
+     * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
      * 
      */
     public Optional<Output<Integer>> vpcOwnerId() {
@@ -122,7 +124,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedPrefixes List of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes.
          * 
          * @return builder
          * 
@@ -133,7 +135,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedPrefixes List of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes.
          * 
          * @return builder
          * 
@@ -143,7 +145,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedPrefixes List of allowed route prefixes.
+         * @param allowedPrefixes The list of allowed route prefixes.
          * 
          * @return builder
          * 
@@ -153,7 +155,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param associationRegionId The region to which the VPC or TR belongs.
+         * @param associationRegionId The region ID of the resource to be associated.
          * 
          * @return builder
          * 
@@ -164,7 +166,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param associationRegionId The region to which the VPC or TR belongs.
+         * @param associationRegionId The region ID of the resource to be associated.
          * 
          * @return builder
          * 
@@ -174,7 +176,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecrId The ID of the leased line gateway instance.
+         * @param ecrId The ECR ID.
          * 
          * @return builder
          * 
@@ -185,7 +187,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecrId The ID of the leased line gateway instance.
+         * @param ecrId The ECR ID.
          * 
          * @return builder
          * 
@@ -195,7 +197,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vpcId The ID of the VPC instance.
+         * @param vpcId The VPC ID.
          * 
          * @return builder
          * 
@@ -206,7 +208,7 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vpcId The ID of the VPC instance.
+         * @param vpcId The VPC ID.
          * 
          * @return builder
          * 
@@ -216,7 +218,8 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vpcOwnerId The ID of the Alibaba Cloud account to which the VPC belongs.
+         * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
+         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
          * 
          * @return builder
          * 
@@ -227,7 +230,8 @@ public final class RouterVpcAssociationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vpcOwnerId The ID of the Alibaba Cloud account to which the VPC belongs.
+         * @param vpcOwnerId The ID of the Alibaba Cloud account that owns the VPC.
+         * &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
          * 
          * @return builder
          * 

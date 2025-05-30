@@ -16,7 +16,7 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
      */
     private String lockReason;
     /**
-     * @return The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+     * @return The Locking of the Type.
      * 
      */
     private String lockType;
@@ -30,7 +30,7 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
         return this.lockReason;
     }
     /**
-     * @return The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+     * @return The Locking of the Type.
      * 
      */
     public String lockType() {

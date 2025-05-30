@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
  *
+ * > **NOTE:** Available since v1.7.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -129,9 +131,6 @@ export interface GetInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of ECS instance IDs.
-     */
     readonly ids: string[];
     /**
      * Image ID the instance is using.
@@ -178,6 +177,8 @@ export interface GetInstancesResult {
 }
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+ *
+ * > **NOTE:** Available since v1.7.0.
  *
  * ## Example Usage
  *

@@ -1357,27 +1357,27 @@ func (o GetRulesRuleForwardIpArrayOutput) Index(i pulumi.IntInput) GetRulesRuleF
 }
 
 type GetZoneRecordsRecord struct {
-	// ID of the Private Zone Record.
+	// The ID of the Private Zone Record.
 	Id string `pulumi:"id"`
-	// Priority of the Private Zone Record.
+	// The priority of the MX record.
 	Priority int `pulumi:"priority"`
-	// RecordId of the Private Zone Record.
+	// The ID of the Record.
 	RecordId string `pulumi:"recordId"`
-	// Remark of the Private Zone Record.
+	// The description of the Private Zone Record.
 	Remark string `pulumi:"remark"`
-	// Resource record of the Private Zone Record.
+	// The hostname of the Private Zone Record.
 	ResourceRecord string `pulumi:"resourceRecord"`
-	// Rr of the Private Zone Record.
+	// The hostname of the Private Zone Record.
 	Rr string `pulumi:"rr"`
-	// Resolve record status. Value:
-	// - ENABLE: enable resolution.
-	// - DISABLE: pause parsing.
+	// The status of the Resolve record. Valid values:
+	// - `ENABLE`: Enable resolution.
+	// - `DISABLE`: Pause parsing.
 	Status string `pulumi:"status"`
-	// Ttl of the Private Zone Record.
+	// The time to live (TTL) of the Private Zone Record.
 	Ttl int `pulumi:"ttl"`
-	// Type of the Private Zone Record.
+	// The type of the Private Zone Record.
 	Type string `pulumi:"type"`
-	// Value of the Private Zone Record.
+	// The value of the Private Zone Record.
 	Value string `pulumi:"value"`
 }
 
@@ -1393,27 +1393,27 @@ type GetZoneRecordsRecordInput interface {
 }
 
 type GetZoneRecordsRecordArgs struct {
-	// ID of the Private Zone Record.
+	// The ID of the Private Zone Record.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Priority of the Private Zone Record.
+	// The priority of the MX record.
 	Priority pulumi.IntInput `pulumi:"priority"`
-	// RecordId of the Private Zone Record.
+	// The ID of the Record.
 	RecordId pulumi.StringInput `pulumi:"recordId"`
-	// Remark of the Private Zone Record.
+	// The description of the Private Zone Record.
 	Remark pulumi.StringInput `pulumi:"remark"`
-	// Resource record of the Private Zone Record.
+	// The hostname of the Private Zone Record.
 	ResourceRecord pulumi.StringInput `pulumi:"resourceRecord"`
-	// Rr of the Private Zone Record.
+	// The hostname of the Private Zone Record.
 	Rr pulumi.StringInput `pulumi:"rr"`
-	// Resolve record status. Value:
-	// - ENABLE: enable resolution.
-	// - DISABLE: pause parsing.
+	// The status of the Resolve record. Valid values:
+	// - `ENABLE`: Enable resolution.
+	// - `DISABLE`: Pause parsing.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Ttl of the Private Zone Record.
+	// The time to live (TTL) of the Private Zone Record.
 	Ttl pulumi.IntInput `pulumi:"ttl"`
-	// Type of the Private Zone Record.
+	// The type of the Private Zone Record.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Value of the Private Zone Record.
+	// The value of the Private Zone Record.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1468,54 +1468,54 @@ func (o GetZoneRecordsRecordOutput) ToGetZoneRecordsRecordOutputWithContext(ctx 
 	return o
 }
 
-// ID of the Private Zone Record.
+// The ID of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Priority of the Private Zone Record.
+// The priority of the MX record.
 func (o GetZoneRecordsRecordOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// RecordId of the Private Zone Record.
+// The ID of the Record.
 func (o GetZoneRecordsRecordOutput) RecordId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
 }
 
-// Remark of the Private Zone Record.
+// The description of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Remark }).(pulumi.StringOutput)
 }
 
-// Resource record of the Private Zone Record.
+// The hostname of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) ResourceRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.ResourceRecord }).(pulumi.StringOutput)
 }
 
-// Rr of the Private Zone Record.
+// The hostname of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Rr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Rr }).(pulumi.StringOutput)
 }
 
-// Resolve record status. Value:
-// - ENABLE: enable resolution.
-// - DISABLE: pause parsing.
+// The status of the Resolve record. Valid values:
+// - `ENABLE`: Enable resolution.
+// - `DISABLE`: Pause parsing.
 func (o GetZoneRecordsRecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Ttl of the Private Zone Record.
+// The time to live (TTL) of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
-// Type of the Private Zone Record.
+// The type of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Value of the Private Zone Record.
+// The value of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1541,33 +1541,33 @@ func (o GetZoneRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetZoneRecords
 }
 
 type GetZonesZone struct {
-	// List of the VPCs is bound to the Private Zone:
+	// The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
 	BindVpcs []GetZonesZoneBindVpc `pulumi:"bindVpcs"`
-	// Time of create of the Private Zone.
+	// The time when the zone was created.
 	CreateTimestamp int    `pulumi:"createTimestamp"`
 	CreationTime    string `pulumi:"creationTime"`
-	// ID of the Private Zone.
+	// The ID of the Private Zone.
 	Id string `pulumi:"id"`
-	// Whether the Private Zone is ptr.
+	// Indicates whether the zone is a reverse lookup zone.
 	IsPtr bool `pulumi:"isPtr"`
-	// Name of the Private Zone.
+	// The Name of the Zone.
 	Name string `pulumi:"name"`
-	// The recursive DNS proxy.
+	// Indicates whether the recursive resolution proxy for subdomain names is enabled.
 	ProxyPattern string `pulumi:"proxyPattern"`
-	// Count of the Private Zone Record.
+	// The number of Domain Name System (DNS) records added in the zone.
 	RecordCount int `pulumi:"recordCount"`
-	// Remark of the Private Zone.
+	// The description of the zone.
 	Remark string `pulumi:"remark"`
-	// resource_group_id for zone resourceGroupId.
+	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// Whether to turn on secondary DNS.
+	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
 	SlaveDns   bool   `pulumi:"slaveDns"`
 	UpdateTime string `pulumi:"updateTime"`
-	// Time of update of the Private Zone.
+	// The time when the DNS record was updated.
 	UpdateTimestamp int `pulumi:"updateTimestamp"`
-	// ZoneId of the Private Zone.
+	// The ID of the Zone.
 	ZoneId string `pulumi:"zoneId"`
-	// ZoneName of the Private Zone.
+	// The Name of the Private Zone.
 	ZoneName string `pulumi:"zoneName"`
 }
 
@@ -1583,33 +1583,33 @@ type GetZonesZoneInput interface {
 }
 
 type GetZonesZoneArgs struct {
-	// List of the VPCs is bound to the Private Zone:
+	// The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
 	BindVpcs GetZonesZoneBindVpcArrayInput `pulumi:"bindVpcs"`
-	// Time of create of the Private Zone.
+	// The time when the zone was created.
 	CreateTimestamp pulumi.IntInput    `pulumi:"createTimestamp"`
 	CreationTime    pulumi.StringInput `pulumi:"creationTime"`
-	// ID of the Private Zone.
+	// The ID of the Private Zone.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Whether the Private Zone is ptr.
+	// Indicates whether the zone is a reverse lookup zone.
 	IsPtr pulumi.BoolInput `pulumi:"isPtr"`
-	// Name of the Private Zone.
+	// The Name of the Zone.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The recursive DNS proxy.
+	// Indicates whether the recursive resolution proxy for subdomain names is enabled.
 	ProxyPattern pulumi.StringInput `pulumi:"proxyPattern"`
-	// Count of the Private Zone Record.
+	// The number of Domain Name System (DNS) records added in the zone.
 	RecordCount pulumi.IntInput `pulumi:"recordCount"`
-	// Remark of the Private Zone.
+	// The description of the zone.
 	Remark pulumi.StringInput `pulumi:"remark"`
-	// resource_group_id for zone resourceGroupId.
+	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// Whether to turn on secondary DNS.
+	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
 	SlaveDns   pulumi.BoolInput   `pulumi:"slaveDns"`
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-	// Time of update of the Private Zone.
+	// The time when the DNS record was updated.
 	UpdateTimestamp pulumi.IntInput `pulumi:"updateTimestamp"`
-	// ZoneId of the Private Zone.
+	// The ID of the Zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
-	// ZoneName of the Private Zone.
+	// The Name of the Private Zone.
 	ZoneName pulumi.StringInput `pulumi:"zoneName"`
 }
 
@@ -1664,12 +1664,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 	return o
 }
 
-// List of the VPCs is bound to the Private Zone:
+// The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
 func (o GetZonesZoneOutput) BindVpcs() GetZonesZoneBindVpcArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []GetZonesZoneBindVpc { return v.BindVpcs }).(GetZonesZoneBindVpcArrayOutput)
 }
 
-// Time of create of the Private Zone.
+// The time when the zone was created.
 func (o GetZonesZoneOutput) CreateTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZonesZone) int { return v.CreateTimestamp }).(pulumi.IntOutput)
 }
@@ -1678,42 +1678,42 @@ func (o GetZonesZoneOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// ID of the Private Zone.
+// The ID of the Private Zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Whether the Private Zone is ptr.
+// Indicates whether the zone is a reverse lookup zone.
 func (o GetZonesZoneOutput) IsPtr() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZonesZone) bool { return v.IsPtr }).(pulumi.BoolOutput)
 }
 
-// Name of the Private Zone.
+// The Name of the Zone.
 func (o GetZonesZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The recursive DNS proxy.
+// Indicates whether the recursive resolution proxy for subdomain names is enabled.
 func (o GetZonesZoneOutput) ProxyPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.ProxyPattern }).(pulumi.StringOutput)
 }
 
-// Count of the Private Zone Record.
+// The number of Domain Name System (DNS) records added in the zone.
 func (o GetZonesZoneOutput) RecordCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZonesZone) int { return v.RecordCount }).(pulumi.IntOutput)
 }
 
-// Remark of the Private Zone.
+// The description of the zone.
 func (o GetZonesZoneOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Remark }).(pulumi.StringOutput)
 }
 
-// resource_group_id for zone resourceGroupId.
+// The ID of the resource group to which the zone belongs.
 func (o GetZonesZoneOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Whether to turn on secondary DNS.
+// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
 func (o GetZonesZoneOutput) SlaveDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZonesZone) bool { return v.SlaveDns }).(pulumi.BoolOutput)
 }
@@ -1722,17 +1722,17 @@ func (o GetZonesZoneOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Time of update of the Private Zone.
+// The time when the DNS record was updated.
 func (o GetZonesZoneOutput) UpdateTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZonesZone) int { return v.UpdateTimestamp }).(pulumi.IntOutput)
 }
 
-// ZoneId of the Private Zone.
+// The ID of the Zone.
 func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// ZoneName of the Private Zone.
+// The Name of the Private Zone.
 func (o GetZonesZoneOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneName }).(pulumi.StringOutput)
 }
@@ -1758,12 +1758,13 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 type GetZonesZoneBindVpc struct {
-	// Binding the regionId of VPC.
+	// The region ID of the VPC.
 	RegionId string `pulumi:"regionId"`
-	// Binding the regionName of VPC.
+	// The name of the region where the VPC resides.
 	RegionName string `pulumi:"regionName"`
-	// Binding the vpcId of VPC.
-	VpcId   string `pulumi:"vpcId"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The Name of the VPC.
 	VpcName string `pulumi:"vpcName"`
 }
 
@@ -1779,12 +1780,13 @@ type GetZonesZoneBindVpcInput interface {
 }
 
 type GetZonesZoneBindVpcArgs struct {
-	// Binding the regionId of VPC.
+	// The region ID of the VPC.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Binding the regionName of VPC.
+	// The name of the region where the VPC resides.
 	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// Binding the vpcId of VPC.
-	VpcId   pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The Name of the VPC.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
 }
 
@@ -1839,21 +1841,22 @@ func (o GetZonesZoneBindVpcOutput) ToGetZonesZoneBindVpcOutputWithContext(ctx co
 	return o
 }
 
-// Binding the regionId of VPC.
+// The region ID of the VPC.
 func (o GetZonesZoneBindVpcOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Binding the regionName of VPC.
+// The name of the region where the VPC resides.
 func (o GetZonesZoneBindVpcOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// Binding the vpcId of VPC.
+// The ID of the VPC.
 func (o GetZonesZoneBindVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The Name of the VPC.
 func (o GetZonesZoneBindVpcOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.VpcName }).(pulumi.StringOutput)
 }

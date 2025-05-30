@@ -620,7 +620,7 @@ func (o GetExecutionsExecutionArrayOutput) Index(i pulumi.IntInput) GetExecution
 }
 
 type GetParametersParameter struct {
-	// The constraints of the common parameter.
+	// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 	Constraints string `pulumi:"constraints"`
 	// The time when the common parameter was created.
 	CreateTime string `pulumi:"createTime"`
@@ -632,7 +632,7 @@ type GetParametersParameter struct {
 	Id string `pulumi:"id"`
 	// The ID of the common parameter.
 	ParameterId string `pulumi:"parameterId"`
-	// The name of the common parameter.
+	// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
 	ParameterName string `pulumi:"parameterName"`
 	// The version number of the common parameter.
 	ParameterVersion int `pulumi:"parameterVersion"`
@@ -640,15 +640,15 @@ type GetParametersParameter struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The share type of the common parameter.
 	ShareType string `pulumi:"shareType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The data type of the common parameter.
+	// The data type of the common parameter. Valid values: `String`, `StringList`.
 	Type string `pulumi:"type"`
 	// The user who updated the common parameter.
 	UpdatedBy string `pulumi:"updatedBy"`
 	// The time when the common parameter was updated.
 	UpdatedDate string `pulumi:"updatedDate"`
-	// The value of the common parameter.
+	// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
 	Value string `pulumi:"value"`
 }
 
@@ -664,7 +664,7 @@ type GetParametersParameterInput interface {
 }
 
 type GetParametersParameterArgs struct {
-	// The constraints of the common parameter.
+	// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 	Constraints pulumi.StringInput `pulumi:"constraints"`
 	// The time when the common parameter was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -676,7 +676,7 @@ type GetParametersParameterArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the common parameter.
 	ParameterId pulumi.StringInput `pulumi:"parameterId"`
-	// The name of the common parameter.
+	// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
 	ParameterName pulumi.StringInput `pulumi:"parameterName"`
 	// The version number of the common parameter.
 	ParameterVersion pulumi.IntInput `pulumi:"parameterVersion"`
@@ -684,15 +684,15 @@ type GetParametersParameterArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The share type of the common parameter.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The data type of the common parameter.
+	// The data type of the common parameter. Valid values: `String`, `StringList`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user who updated the common parameter.
 	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
 	// The time when the common parameter was updated.
 	UpdatedDate pulumi.StringInput `pulumi:"updatedDate"`
-	// The value of the common parameter.
+	// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -747,7 +747,7 @@ func (o GetParametersParameterOutput) ToGetParametersParameterOutputWithContext(
 	return o
 }
 
-// The constraints of the common parameter.
+// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 func (o GetParametersParameterOutput) Constraints() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.Constraints }).(pulumi.StringOutput)
 }
@@ -777,7 +777,7 @@ func (o GetParametersParameterOutput) ParameterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.ParameterId }).(pulumi.StringOutput)
 }
 
-// The name of the common parameter.
+// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
 func (o GetParametersParameterOutput) ParameterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.ParameterName }).(pulumi.StringOutput)
 }
@@ -797,12 +797,12 @@ func (o GetParametersParameterOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetParametersParameterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The data type of the common parameter.
+// The data type of the common parameter. Valid values: `String`, `StringList`.
 func (o GetParametersParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -817,7 +817,7 @@ func (o GetParametersParameterOutput) UpdatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.UpdatedDate }).(pulumi.StringOutput)
 }
 
-// The value of the common parameter.
+// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
 func (o GetParametersParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.Value }).(pulumi.StringOutput)
 }

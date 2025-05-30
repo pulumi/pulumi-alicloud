@@ -20,6 +20,11 @@ export type Etl = import("./etl").Etl;
 export const Etl: typeof import("./etl").Etl = null as any;
 utilities.lazyLoad(exports, ["Etl"], () => require("./etl"));
 
+export { GetAlertsArgs, GetAlertsResult, GetAlertsOutputArgs } from "./getAlerts";
+export const getAlerts: typeof import("./getAlerts").getAlerts = null as any;
+export const getAlertsOutput: typeof import("./getAlerts").getAlertsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlerts","getAlertsOutput"], () => require("./getAlerts"));
+
 export { OssExportSinkArgs, OssExportSinkState } from "./ossExportSink";
 export type OssExportSink = import("./ossExportSink").OssExportSink;
 export const OssExportSink: typeof import("./ossExportSink").OssExportSink = null as any;

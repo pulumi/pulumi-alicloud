@@ -1276,6 +1276,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    @Export(name="systemDiskBurstingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> systemDiskBurstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> systemDiskBurstingEnabled() {
+        return Codegen.optional(this.systemDiskBurstingEnabled);
+    }
+    /**
      * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
      * 
      */
@@ -1386,6 +1400,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> systemDiskPerformanceLevel() {
         return this.systemDiskPerformanceLevel;
+    }
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     * 
+     */
+    @Export(name="systemDiskProvisionedIops", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> systemDiskProvisionedIops;
+
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     * 
+     */
+    public Output<Optional<Integer>> systemDiskProvisionedIops() {
+        return Codegen.optional(this.systemDiskProvisionedIops);
     }
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.

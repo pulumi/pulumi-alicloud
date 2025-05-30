@@ -11,44 +11,52 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesZoneBindVpc {
     /**
-     * @return Binding the regionId of VPC.
+     * @return The region ID of the VPC.
      * 
      */
     private String regionId;
     /**
-     * @return Binding the regionName of VPC.
+     * @return The name of the region where the VPC resides.
      * 
      */
     private String regionName;
     /**
-     * @return Binding the vpcId of VPC.
+     * @return The ID of the VPC.
      * 
      */
     private String vpcId;
+    /**
+     * @return The Name of the VPC.
+     * 
+     */
     private String vpcName;
 
     private GetZonesZoneBindVpc() {}
     /**
-     * @return Binding the regionId of VPC.
+     * @return The region ID of the VPC.
      * 
      */
     public String regionId() {
         return this.regionId;
     }
     /**
-     * @return Binding the regionName of VPC.
+     * @return The name of the region where the VPC resides.
      * 
      */
     public String regionName() {
         return this.regionName;
     }
     /**
-     * @return Binding the vpcId of VPC.
+     * @return The ID of the VPC.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return The Name of the VPC.
+     * 
+     */
     public String vpcName() {
         return this.vpcName;
     }

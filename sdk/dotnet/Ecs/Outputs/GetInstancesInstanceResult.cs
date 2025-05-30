@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// ID of the VPC linked to the instances.
         /// </summary>
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, string>? tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

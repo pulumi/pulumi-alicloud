@@ -10620,6 +10620,281 @@ func (o GetTriggersTriggerArrayOutput) Index(i pulumi.IntInput) GetTriggersTrigg
 	}).(GetTriggersTriggerOutput)
 }
 
+type GetV3TriggersTrigger struct {
+	// Creation time
+	CreateTime string `pulumi:"createTime"`
+	// Description of the trigger
+	Description string `pulumi:"description"`
+	// HTTP trigger information
+	HttpTrigger GetV3TriggersTriggerHttpTrigger `pulumi:"httpTrigger"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The role required by the event source (such as OSS) to call the function.
+	InvocationRole string `pulumi:"invocationRole"`
+	// The last modified time of the trigger
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The version or alias of the function
+	Qualifier string `pulumi:"qualifier"`
+	// Trigger Event source ARN
+	SourceArn string `pulumi:"sourceArn"`
+	// The state of the trigger
+	Status string `pulumi:"status"`
+	// Resource identity of the function
+	TargetArn string `pulumi:"targetArn"`
+	// Trigger configuration. The configuration varies for different types of triggers.
+	TriggerConfig string `pulumi:"triggerConfig"`
+	// Trigger ID
+	TriggerId string `pulumi:"triggerId"`
+	// Trigger Name
+	TriggerName string `pulumi:"triggerName"`
+	// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
+	TriggerType string `pulumi:"triggerType"`
+}
+
+// GetV3TriggersTriggerInput is an input type that accepts GetV3TriggersTriggerArgs and GetV3TriggersTriggerOutput values.
+// You can construct a concrete instance of `GetV3TriggersTriggerInput` via:
+//
+//	GetV3TriggersTriggerArgs{...}
+type GetV3TriggersTriggerInput interface {
+	pulumi.Input
+
+	ToGetV3TriggersTriggerOutput() GetV3TriggersTriggerOutput
+	ToGetV3TriggersTriggerOutputWithContext(context.Context) GetV3TriggersTriggerOutput
+}
+
+type GetV3TriggersTriggerArgs struct {
+	// Creation time
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description of the trigger
+	Description pulumi.StringInput `pulumi:"description"`
+	// HTTP trigger information
+	HttpTrigger GetV3TriggersTriggerHttpTriggerInput `pulumi:"httpTrigger"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The role required by the event source (such as OSS) to call the function.
+	InvocationRole pulumi.StringInput `pulumi:"invocationRole"`
+	// The last modified time of the trigger
+	LastModifiedTime pulumi.StringInput `pulumi:"lastModifiedTime"`
+	// The version or alias of the function
+	Qualifier pulumi.StringInput `pulumi:"qualifier"`
+	// Trigger Event source ARN
+	SourceArn pulumi.StringInput `pulumi:"sourceArn"`
+	// The state of the trigger
+	Status pulumi.StringInput `pulumi:"status"`
+	// Resource identity of the function
+	TargetArn pulumi.StringInput `pulumi:"targetArn"`
+	// Trigger configuration. The configuration varies for different types of triggers.
+	TriggerConfig pulumi.StringInput `pulumi:"triggerConfig"`
+	// Trigger ID
+	TriggerId pulumi.StringInput `pulumi:"triggerId"`
+	// Trigger Name
+	TriggerName pulumi.StringInput `pulumi:"triggerName"`
+	// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
+	TriggerType pulumi.StringInput `pulumi:"triggerType"`
+}
+
+func (GetV3TriggersTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3TriggersTrigger)(nil)).Elem()
+}
+
+func (i GetV3TriggersTriggerArgs) ToGetV3TriggersTriggerOutput() GetV3TriggersTriggerOutput {
+	return i.ToGetV3TriggersTriggerOutputWithContext(context.Background())
+}
+
+func (i GetV3TriggersTriggerArgs) ToGetV3TriggersTriggerOutputWithContext(ctx context.Context) GetV3TriggersTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3TriggersTriggerOutput)
+}
+
+// GetV3TriggersTriggerArrayInput is an input type that accepts GetV3TriggersTriggerArray and GetV3TriggersTriggerArrayOutput values.
+// You can construct a concrete instance of `GetV3TriggersTriggerArrayInput` via:
+//
+//	GetV3TriggersTriggerArray{ GetV3TriggersTriggerArgs{...} }
+type GetV3TriggersTriggerArrayInput interface {
+	pulumi.Input
+
+	ToGetV3TriggersTriggerArrayOutput() GetV3TriggersTriggerArrayOutput
+	ToGetV3TriggersTriggerArrayOutputWithContext(context.Context) GetV3TriggersTriggerArrayOutput
+}
+
+type GetV3TriggersTriggerArray []GetV3TriggersTriggerInput
+
+func (GetV3TriggersTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3TriggersTrigger)(nil)).Elem()
+}
+
+func (i GetV3TriggersTriggerArray) ToGetV3TriggersTriggerArrayOutput() GetV3TriggersTriggerArrayOutput {
+	return i.ToGetV3TriggersTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i GetV3TriggersTriggerArray) ToGetV3TriggersTriggerArrayOutputWithContext(ctx context.Context) GetV3TriggersTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3TriggersTriggerArrayOutput)
+}
+
+type GetV3TriggersTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetV3TriggersTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3TriggersTrigger)(nil)).Elem()
+}
+
+func (o GetV3TriggersTriggerOutput) ToGetV3TriggersTriggerOutput() GetV3TriggersTriggerOutput {
+	return o
+}
+
+func (o GetV3TriggersTriggerOutput) ToGetV3TriggersTriggerOutputWithContext(ctx context.Context) GetV3TriggersTriggerOutput {
+	return o
+}
+
+// Creation time
+func (o GetV3TriggersTriggerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the trigger
+func (o GetV3TriggersTriggerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// HTTP trigger information
+func (o GetV3TriggersTriggerOutput) HttpTrigger() GetV3TriggersTriggerHttpTriggerOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) GetV3TriggersTriggerHttpTrigger { return v.HttpTrigger }).(GetV3TriggersTriggerHttpTriggerOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetV3TriggersTriggerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The role required by the event source (such as OSS) to call the function.
+func (o GetV3TriggersTriggerOutput) InvocationRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.InvocationRole }).(pulumi.StringOutput)
+}
+
+// The last modified time of the trigger
+func (o GetV3TriggersTriggerOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The version or alias of the function
+func (o GetV3TriggersTriggerOutput) Qualifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.Qualifier }).(pulumi.StringOutput)
+}
+
+// Trigger Event source ARN
+func (o GetV3TriggersTriggerOutput) SourceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.SourceArn }).(pulumi.StringOutput)
+}
+
+// The state of the trigger
+func (o GetV3TriggersTriggerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Resource identity of the function
+func (o GetV3TriggersTriggerOutput) TargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.TargetArn }).(pulumi.StringOutput)
+}
+
+// Trigger configuration. The configuration varies for different types of triggers.
+func (o GetV3TriggersTriggerOutput) TriggerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.TriggerConfig }).(pulumi.StringOutput)
+}
+
+// Trigger ID
+func (o GetV3TriggersTriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.TriggerId }).(pulumi.StringOutput)
+}
+
+// Trigger Name
+func (o GetV3TriggersTriggerOutput) TriggerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.TriggerName }).(pulumi.StringOutput)
+}
+
+// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
+func (o GetV3TriggersTriggerOutput) TriggerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTrigger) string { return v.TriggerType }).(pulumi.StringOutput)
+}
+
+type GetV3TriggersTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV3TriggersTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3TriggersTrigger)(nil)).Elem()
+}
+
+func (o GetV3TriggersTriggerArrayOutput) ToGetV3TriggersTriggerArrayOutput() GetV3TriggersTriggerArrayOutput {
+	return o
+}
+
+func (o GetV3TriggersTriggerArrayOutput) ToGetV3TriggersTriggerArrayOutputWithContext(ctx context.Context) GetV3TriggersTriggerArrayOutput {
+	return o
+}
+
+func (o GetV3TriggersTriggerArrayOutput) Index(i pulumi.IntInput) GetV3TriggersTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV3TriggersTrigger {
+		return vs[0].([]GetV3TriggersTrigger)[vs[1].(int)]
+	}).(GetV3TriggersTriggerOutput)
+}
+
+type GetV3TriggersTriggerHttpTrigger struct {
+	// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+	UrlInternet string `pulumi:"urlInternet"`
+	// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+	UrlIntranet string `pulumi:"urlIntranet"`
+}
+
+// GetV3TriggersTriggerHttpTriggerInput is an input type that accepts GetV3TriggersTriggerHttpTriggerArgs and GetV3TriggersTriggerHttpTriggerOutput values.
+// You can construct a concrete instance of `GetV3TriggersTriggerHttpTriggerInput` via:
+//
+//	GetV3TriggersTriggerHttpTriggerArgs{...}
+type GetV3TriggersTriggerHttpTriggerInput interface {
+	pulumi.Input
+
+	ToGetV3TriggersTriggerHttpTriggerOutput() GetV3TriggersTriggerHttpTriggerOutput
+	ToGetV3TriggersTriggerHttpTriggerOutputWithContext(context.Context) GetV3TriggersTriggerHttpTriggerOutput
+}
+
+type GetV3TriggersTriggerHttpTriggerArgs struct {
+	// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+	UrlInternet pulumi.StringInput `pulumi:"urlInternet"`
+	// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+	UrlIntranet pulumi.StringInput `pulumi:"urlIntranet"`
+}
+
+func (GetV3TriggersTriggerHttpTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3TriggersTriggerHttpTrigger)(nil)).Elem()
+}
+
+func (i GetV3TriggersTriggerHttpTriggerArgs) ToGetV3TriggersTriggerHttpTriggerOutput() GetV3TriggersTriggerHttpTriggerOutput {
+	return i.ToGetV3TriggersTriggerHttpTriggerOutputWithContext(context.Background())
+}
+
+func (i GetV3TriggersTriggerHttpTriggerArgs) ToGetV3TriggersTriggerHttpTriggerOutputWithContext(ctx context.Context) GetV3TriggersTriggerHttpTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3TriggersTriggerHttpTriggerOutput)
+}
+
+type GetV3TriggersTriggerHttpTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetV3TriggersTriggerHttpTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3TriggersTriggerHttpTrigger)(nil)).Elem()
+}
+
+func (o GetV3TriggersTriggerHttpTriggerOutput) ToGetV3TriggersTriggerHttpTriggerOutput() GetV3TriggersTriggerHttpTriggerOutput {
+	return o
+}
+
+func (o GetV3TriggersTriggerHttpTriggerOutput) ToGetV3TriggersTriggerHttpTriggerOutputWithContext(ctx context.Context) GetV3TriggersTriggerHttpTriggerOutput {
+	return o
+}
+
+// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+func (o GetV3TriggersTriggerHttpTriggerOutput) UrlInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTriggerHttpTrigger) string { return v.UrlInternet }).(pulumi.StringOutput)
+}
+
+// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+func (o GetV3TriggersTriggerHttpTriggerOutput) UrlIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3TriggersTriggerHttpTrigger) string { return v.UrlIntranet }).(pulumi.StringOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -10850,6 +11125,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceVpcConfigInput)(nil)).Elem(), GetServicesServiceVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggersTriggerInput)(nil)).Elem(), GetTriggersTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggersTriggerArrayInput)(nil)).Elem(), GetTriggersTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3TriggersTriggerInput)(nil)).Elem(), GetV3TriggersTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3TriggersTriggerArrayInput)(nil)).Elem(), GetV3TriggersTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3TriggersTriggerHttpTriggerInput)(nil)).Elem(), GetV3TriggersTriggerHttpTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AliasRoutingConfigOutput{})
@@ -10984,6 +11262,9 @@ func init() {
 	pulumi.RegisterOutputType(GetServicesServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(GetTriggersTriggerOutput{})
 	pulumi.RegisterOutputType(GetTriggersTriggerArrayOutput{})
+	pulumi.RegisterOutputType(GetV3TriggersTriggerOutput{})
+	pulumi.RegisterOutputType(GetV3TriggersTriggerArrayOutput{})
+	pulumi.RegisterOutputType(GetV3TriggersTriggerHttpTriggerOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

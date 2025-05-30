@@ -50,6 +50,11 @@ export const getTriggers: typeof import("./getTriggers").getTriggers = null as a
 export const getTriggersOutput: typeof import("./getTriggers").getTriggersOutput = null as any;
 utilities.lazyLoad(exports, ["getTriggers","getTriggersOutput"], () => require("./getTriggers"));
 
+export { GetV3TriggersArgs, GetV3TriggersResult, GetV3TriggersOutputArgs } from "./getV3Triggers";
+export const getV3Triggers: typeof import("./getV3Triggers").getV3Triggers = null as any;
+export const getV3TriggersOutput: typeof import("./getV3Triggers").getV3TriggersOutput = null as any;
+utilities.lazyLoad(exports, ["getV3Triggers","getV3TriggersOutput"], () => require("./getV3Triggers"));
+
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;

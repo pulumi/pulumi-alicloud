@@ -19,6 +19,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
         /// The category of the disk:
         /// </summary>
         [Input("category")]
@@ -70,6 +76,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
         /// The size of the data disk.

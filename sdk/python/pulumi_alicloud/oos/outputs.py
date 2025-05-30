@@ -484,21 +484,21 @@ class GetParametersParameterResult(dict):
                  updated_date: builtins.str,
                  value: builtins.str):
         """
-        :param builtins.str constraints: The constraints of the common parameter.
+        :param builtins.str constraints: The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         :param builtins.str create_time: The time when the common parameter was created.
         :param builtins.str created_by: The user who created the common parameter.
         :param builtins.str description: The description of the common parameter.
         :param builtins.str id: The ID of the Parameter. Its value is same as `parameter_name`.
         :param builtins.str parameter_id: The ID of the common parameter.
-        :param builtins.str parameter_name: The name of the common parameter.
+        :param builtins.str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
         :param builtins.int parameter_version: The version number of the common parameter.
         :param builtins.str resource_group_id: The ID of the Resource Group.
         :param builtins.str share_type: The share type of the common parameter.
-        :param Mapping[str, builtins.str] tags: The tag of the resource.
-        :param builtins.str type: The data type of the common parameter.
+        :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
+        :param builtins.str type: The data type of the common parameter. Valid values: `String`, `StringList`.
         :param builtins.str updated_by: The user who updated the common parameter.
         :param builtins.str updated_date: The time when the common parameter was updated.
-        :param builtins.str value: The value of the common parameter.
+        :param builtins.str value: (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
         """
         pulumi.set(__self__, "constraints", constraints)
         pulumi.set(__self__, "create_time", create_time)
@@ -520,7 +520,7 @@ class GetParametersParameterResult(dict):
     @pulumi.getter
     def constraints(self) -> builtins.str:
         """
-        The constraints of the common parameter.
+        The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "constraints")
 
@@ -568,7 +568,7 @@ class GetParametersParameterResult(dict):
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> builtins.str:
         """
-        The name of the common parameter.
+        The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
         """
         return pulumi.get(self, "parameter_name")
 
@@ -600,7 +600,7 @@ class GetParametersParameterResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -608,7 +608,7 @@ class GetParametersParameterResult(dict):
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        The data type of the common parameter.
+        The data type of the common parameter. Valid values: `String`, `StringList`.
         """
         return pulumi.get(self, "type")
 
@@ -632,7 +632,7 @@ class GetParametersParameterResult(dict):
     @pulumi.getter
     def value(self) -> builtins.str:
         """
-        The value of the common parameter.
+        (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "value")
 

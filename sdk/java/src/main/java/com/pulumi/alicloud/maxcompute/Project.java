@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *             .defaultQuota("默认后付费Quota")
  *             .projectName(name)
  *             .comment(name)
- *             .productType("PayAsYouGo")
  *             .build());
  * 
  *     }

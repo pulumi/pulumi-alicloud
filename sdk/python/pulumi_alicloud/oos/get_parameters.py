@@ -95,6 +95,9 @@ class GetParametersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[builtins.str]:
+        """
+        A list of Parameter names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -105,16 +108,25 @@ class GetParametersResult:
     @property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[builtins.str]:
+        """
+        The name of the common parameter.
+        """
         return pulumi.get(self, "parameter_name")
 
     @property
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetParametersParameterResult']:
+        """
+        A list of Oos Parameters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the Resource Group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
@@ -130,11 +142,17 @@ class GetParametersResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The tags added to the common parameter.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[builtins.str]:
+        """
+        The data type of the common parameter.
+        """
         return pulumi.get(self, "type")
 
 
@@ -173,7 +191,7 @@ def get_parameters(enable_details: Optional[builtins.bool] = None,
     """
     This data source provides the Oos Parameters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 
@@ -183,30 +201,43 @@ def get_parameters(enable_details: Optional[builtins.bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.oos.get_parameters(ids=["my-Parameter"])
-    pulumi.export("oosParameterId1", ids.parameters[0].id)
-    name_regex = alicloud.oos.get_parameters(name_regex="^my-Parameter")
-    pulumi.export("oosParameterId2", name_regex.parameters[0].id)
-    resource_group_id = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        resource_group_id="example_value")
-    pulumi.export("oosParameterId3", resource_group_id.parameters[0].id)
-    tags = alicloud.oos.get_parameters(ids=["my-Parameter"],
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.oos.Parameter("default",
+        parameter_name=name,
+        value="tf-testacc-oos_parameter",
+        type="String",
+        description=name,
+        constraints=\"\"\"  {
+        "AllowedValues": [
+            "tf-testacc-oos_parameter"
+        ],
+        "AllowedPattern": "tf-testacc-oos_parameter",
+        "MinLength": 1,
+        "MaxLength": 100
+      }
+    \"\"\",
         tags={
             "Created": "TF",
-            "For": "OosParameter",
+            "For": "Parameter",
         })
-    pulumi.export("oosParameterId4", tags.parameters[0].id)
+    ids = alicloud.oos.get_parameters_output(ids=[default.id])
+    pulumi.export("oosSecretParameterId0", ids.parameters[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[builtins.str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[builtins.str] ids: A list of Parameter IDs.
     :param builtins.str name_regex: A regex string to filter results by Parameter name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param builtins.str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param builtins.str resource_group_id: The ID of the Resource Group.
+    :param builtins.str sort_field: The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+    :param builtins.str sort_order: The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
     :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
-    :param builtins.str type: The data type of the common parameter. Valid values: `String` and `StringList`.
+    :param builtins.str type: The data type of the common parameter. Valid values: `String`, `StringList`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -250,7 +281,7 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[builtin
     """
     This data source provides the Oos Parameters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 
@@ -260,30 +291,43 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[builtin
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.oos.get_parameters(ids=["my-Parameter"])
-    pulumi.export("oosParameterId1", ids.parameters[0].id)
-    name_regex = alicloud.oos.get_parameters(name_regex="^my-Parameter")
-    pulumi.export("oosParameterId2", name_regex.parameters[0].id)
-    resource_group_id = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        resource_group_id="example_value")
-    pulumi.export("oosParameterId3", resource_group_id.parameters[0].id)
-    tags = alicloud.oos.get_parameters(ids=["my-Parameter"],
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.oos.Parameter("default",
+        parameter_name=name,
+        value="tf-testacc-oos_parameter",
+        type="String",
+        description=name,
+        constraints=\"\"\"  {
+        "AllowedValues": [
+            "tf-testacc-oos_parameter"
+        ],
+        "AllowedPattern": "tf-testacc-oos_parameter",
+        "MinLength": 1,
+        "MaxLength": 100
+      }
+    \"\"\",
         tags={
             "Created": "TF",
-            "For": "OosParameter",
+            "For": "Parameter",
         })
-    pulumi.export("oosParameterId4", tags.parameters[0].id)
+    ids = alicloud.oos.get_parameters_output(ids=[default.id])
+    pulumi.export("oosSecretParameterId0", ids.parameters[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[builtins.str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[builtins.str] ids: A list of Parameter IDs.
     :param builtins.str name_regex: A regex string to filter results by Parameter name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param builtins.str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param builtins.str resource_group_id: The ID of the Resource Group.
+    :param builtins.str sort_field: The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+    :param builtins.str sort_order: The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
     :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
-    :param builtins.str type: The data type of the common parameter. Valid values: `String` and `StringList`.
+    :param builtins.str type: The data type of the common parameter. Valid values: `String`, `StringList`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

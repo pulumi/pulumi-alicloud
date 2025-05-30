@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Express Connect Router Express Connect Router Vpc Association resource. Bind relationship object between leased line gateway and VPC.
  *
- * For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouterAssociation).
+ * For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-createexpressconnectrouterassociation).
  *
  * > **NOTE:** Available since v1.224.0.
  *
@@ -75,35 +75,36 @@ export class RouterVpcAssociation extends pulumi.CustomResource {
     }
 
     /**
-     * List of allowed route prefixes.
+     * The list of allowed route prefixes.
      */
     public readonly allowedPrefixes!: pulumi.Output<string[] | undefined>;
     /**
-     * The first ID of the resource.
+     * The ID of the association between the ECR and the VPC.
      */
     public /*out*/ readonly associationId!: pulumi.Output<string>;
     /**
-     * The region to which the VPC or TR belongs.
+     * The region ID of the resource to be associated.
      */
     public readonly associationRegionId!: pulumi.Output<string>;
     /**
-     * The creation time of the resource.
+     * The time when the association was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The ID of the leased line gateway instance.
+     * The ECR ID.
      */
     public readonly ecrId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The deployment state of the associated resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The ID of the VPC instance.
+     * The VPC ID.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The ID of the Alibaba Cloud account to which the VPC belongs.
+     * The ID of the Alibaba Cloud account that owns the VPC.
+     * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     public readonly vpcOwnerId!: pulumi.Output<number>;
 
@@ -158,35 +159,36 @@ export class RouterVpcAssociation extends pulumi.CustomResource {
  */
 export interface RouterVpcAssociationState {
     /**
-     * List of allowed route prefixes.
+     * The list of allowed route prefixes.
      */
     allowedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The first ID of the resource.
+     * The ID of the association between the ECR and the VPC.
      */
     associationId?: pulumi.Input<string>;
     /**
-     * The region to which the VPC or TR belongs.
+     * The region ID of the resource to be associated.
      */
     associationRegionId?: pulumi.Input<string>;
     /**
-     * The creation time of the resource.
+     * The time when the association was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The ID of the leased line gateway instance.
+     * The ECR ID.
      */
     ecrId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The deployment state of the associated resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the VPC instance.
+     * The VPC ID.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud account to which the VPC belongs.
+     * The ID of the Alibaba Cloud account that owns the VPC.
+     * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     vpcOwnerId?: pulumi.Input<number>;
 }
@@ -196,23 +198,24 @@ export interface RouterVpcAssociationState {
  */
 export interface RouterVpcAssociationArgs {
     /**
-     * List of allowed route prefixes.
+     * The list of allowed route prefixes.
      */
     allowedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The region to which the VPC or TR belongs.
+     * The region ID of the resource to be associated.
      */
     associationRegionId: pulumi.Input<string>;
     /**
-     * The ID of the leased line gateway instance.
+     * The ECR ID.
      */
     ecrId: pulumi.Input<string>;
     /**
-     * The ID of the VPC instance.
+     * The VPC ID.
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud account to which the VPC belongs.
+     * The ID of the Alibaba Cloud account that owns the VPC.
+     * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     vpcOwnerId?: pulumi.Input<number>;
 }

@@ -3,11 +3,15 @@
 
 package com.pulumi.alicloud.ess.outputs;
 
+import com.pulumi.alicloud.ess.outputs.GetScalingRulesRuleHybridMetric;
+import com.pulumi.alicloud.ess.outputs.GetScalingRulesRuleStepAdjustment;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -28,7 +32,27 @@ public final class GetScalingRulesRule {
      */
     private Integer cooldown;
     /**
-     * @return ID of the scaling rule.
+     * @return (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+     * 
+     */
+    private Boolean disableScaleIn;
+    /**
+     * @return (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+     * 
+     */
+    private Integer estimatedInstanceWarmup;
+    /**
+     * @return (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+     * 
+     */
+    private List<GetScalingRulesRuleHybridMetric> hybridMetrics;
+    /**
+     * @return (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+     * 
+     */
+    private String hybridMonitorNamespace;
+    /**
+     * @return (Available since v1.250.0) The reference ID of the metric in the metric expression.
      * 
      */
     private String id;
@@ -38,10 +62,15 @@ public final class GetScalingRulesRule {
      */
     private Integer initialMaxSize;
     /**
-     * @return (Available since v1.242.0) The predefined metric of the scaling rule.
+     * @return (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
      * 
      */
     private String metricName;
+    /**
+     * @return (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+     * 
+     */
+    private String metricType;
     /**
      * @return Min adjustment magnitude of scaling rule.
      * 
@@ -73,6 +102,16 @@ public final class GetScalingRulesRule {
      */
     private Integer predictiveValueBuffer;
     /**
+     * @return (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+     * 
+     */
+    private Integer scaleInEvaluationCount;
+    /**
+     * @return (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+     * 
+     */
+    private Integer scaleOutEvaluationCount;
+    /**
      * @return Scaling group id the scaling rules belong to.
      * 
      */
@@ -82,6 +121,11 @@ public final class GetScalingRulesRule {
      * 
      */
     private String scalingRuleAri;
+    /**
+     * @return (Available since v1.250.0) The step adjustments of the step scaling rule.
+     * 
+     */
+    private List<GetScalingRulesRuleStepAdjustment> stepAdjustments;
     /**
      * @return (Available since v1.242.0) The target value of the metric.
      * 
@@ -116,7 +160,35 @@ public final class GetScalingRulesRule {
         return this.cooldown;
     }
     /**
-     * @return ID of the scaling rule.
+     * @return (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+     * 
+     */
+    public Boolean disableScaleIn() {
+        return this.disableScaleIn;
+    }
+    /**
+     * @return (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+     * 
+     */
+    public Integer estimatedInstanceWarmup() {
+        return this.estimatedInstanceWarmup;
+    }
+    /**
+     * @return (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+     * 
+     */
+    public List<GetScalingRulesRuleHybridMetric> hybridMetrics() {
+        return this.hybridMetrics;
+    }
+    /**
+     * @return (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+     * 
+     */
+    public String hybridMonitorNamespace() {
+        return this.hybridMonitorNamespace;
+    }
+    /**
+     * @return (Available since v1.250.0) The reference ID of the metric in the metric expression.
      * 
      */
     public String id() {
@@ -130,11 +202,18 @@ public final class GetScalingRulesRule {
         return this.initialMaxSize;
     }
     /**
-     * @return (Available since v1.242.0) The predefined metric of the scaling rule.
+     * @return (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
      * 
      */
     public String metricName() {
         return this.metricName;
+    }
+    /**
+     * @return (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+     * 
+     */
+    public String metricType() {
+        return this.metricType;
     }
     /**
      * @return Min adjustment magnitude of scaling rule.
@@ -179,6 +258,20 @@ public final class GetScalingRulesRule {
         return this.predictiveValueBuffer;
     }
     /**
+     * @return (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+     * 
+     */
+    public Integer scaleInEvaluationCount() {
+        return this.scaleInEvaluationCount;
+    }
+    /**
+     * @return (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+     * 
+     */
+    public Integer scaleOutEvaluationCount() {
+        return this.scaleOutEvaluationCount;
+    }
+    /**
      * @return Scaling group id the scaling rules belong to.
      * 
      */
@@ -191,6 +284,13 @@ public final class GetScalingRulesRule {
      */
     public String scalingRuleAri() {
         return this.scalingRuleAri;
+    }
+    /**
+     * @return (Available since v1.250.0) The step adjustments of the step scaling rule.
+     * 
+     */
+    public List<GetScalingRulesRuleStepAdjustment> stepAdjustments() {
+        return this.stepAdjustments;
     }
     /**
      * @return (Available since v1.242.0) The target value of the metric.
@@ -219,17 +319,25 @@ public final class GetScalingRulesRule {
         private String adjustmentType;
         private Integer adjustmentValue;
         private Integer cooldown;
+        private Boolean disableScaleIn;
+        private Integer estimatedInstanceWarmup;
+        private List<GetScalingRulesRuleHybridMetric> hybridMetrics;
+        private String hybridMonitorNamespace;
         private String id;
         private Integer initialMaxSize;
         private String metricName;
+        private String metricType;
         private Integer minAdjustmentMagnitude;
         private String name;
         private String predictiveScalingMode;
         private Integer predictiveTaskBufferTime;
         private String predictiveValueBehavior;
         private Integer predictiveValueBuffer;
+        private Integer scaleInEvaluationCount;
+        private Integer scaleOutEvaluationCount;
         private String scalingGroupId;
         private String scalingRuleAri;
+        private List<GetScalingRulesRuleStepAdjustment> stepAdjustments;
         private Double targetValue;
         private String type;
         public Builder() {}
@@ -238,17 +346,25 @@ public final class GetScalingRulesRule {
     	      this.adjustmentType = defaults.adjustmentType;
     	      this.adjustmentValue = defaults.adjustmentValue;
     	      this.cooldown = defaults.cooldown;
+    	      this.disableScaleIn = defaults.disableScaleIn;
+    	      this.estimatedInstanceWarmup = defaults.estimatedInstanceWarmup;
+    	      this.hybridMetrics = defaults.hybridMetrics;
+    	      this.hybridMonitorNamespace = defaults.hybridMonitorNamespace;
     	      this.id = defaults.id;
     	      this.initialMaxSize = defaults.initialMaxSize;
     	      this.metricName = defaults.metricName;
+    	      this.metricType = defaults.metricType;
     	      this.minAdjustmentMagnitude = defaults.minAdjustmentMagnitude;
     	      this.name = defaults.name;
     	      this.predictiveScalingMode = defaults.predictiveScalingMode;
     	      this.predictiveTaskBufferTime = defaults.predictiveTaskBufferTime;
     	      this.predictiveValueBehavior = defaults.predictiveValueBehavior;
     	      this.predictiveValueBuffer = defaults.predictiveValueBuffer;
+    	      this.scaleInEvaluationCount = defaults.scaleInEvaluationCount;
+    	      this.scaleOutEvaluationCount = defaults.scaleOutEvaluationCount;
     	      this.scalingGroupId = defaults.scalingGroupId;
     	      this.scalingRuleAri = defaults.scalingRuleAri;
+    	      this.stepAdjustments = defaults.stepAdjustments;
     	      this.targetValue = defaults.targetValue;
     	      this.type = defaults.type;
         }
@@ -278,6 +394,41 @@ public final class GetScalingRulesRule {
             return this;
         }
         @CustomType.Setter
+        public Builder disableScaleIn(Boolean disableScaleIn) {
+            if (disableScaleIn == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "disableScaleIn");
+            }
+            this.disableScaleIn = disableScaleIn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder estimatedInstanceWarmup(Integer estimatedInstanceWarmup) {
+            if (estimatedInstanceWarmup == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "estimatedInstanceWarmup");
+            }
+            this.estimatedInstanceWarmup = estimatedInstanceWarmup;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hybridMetrics(List<GetScalingRulesRuleHybridMetric> hybridMetrics) {
+            if (hybridMetrics == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "hybridMetrics");
+            }
+            this.hybridMetrics = hybridMetrics;
+            return this;
+        }
+        public Builder hybridMetrics(GetScalingRulesRuleHybridMetric... hybridMetrics) {
+            return hybridMetrics(List.of(hybridMetrics));
+        }
+        @CustomType.Setter
+        public Builder hybridMonitorNamespace(String hybridMonitorNamespace) {
+            if (hybridMonitorNamespace == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "hybridMonitorNamespace");
+            }
+            this.hybridMonitorNamespace = hybridMonitorNamespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetScalingRulesRule", "id");
@@ -299,6 +450,14 @@ public final class GetScalingRulesRule {
               throw new MissingRequiredPropertyException("GetScalingRulesRule", "metricName");
             }
             this.metricName = metricName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metricType(String metricType) {
+            if (metricType == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "metricType");
+            }
+            this.metricType = metricType;
             return this;
         }
         @CustomType.Setter
@@ -350,6 +509,22 @@ public final class GetScalingRulesRule {
             return this;
         }
         @CustomType.Setter
+        public Builder scaleInEvaluationCount(Integer scaleInEvaluationCount) {
+            if (scaleInEvaluationCount == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "scaleInEvaluationCount");
+            }
+            this.scaleInEvaluationCount = scaleInEvaluationCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scaleOutEvaluationCount(Integer scaleOutEvaluationCount) {
+            if (scaleOutEvaluationCount == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "scaleOutEvaluationCount");
+            }
+            this.scaleOutEvaluationCount = scaleOutEvaluationCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             if (scalingGroupId == null) {
               throw new MissingRequiredPropertyException("GetScalingRulesRule", "scalingGroupId");
@@ -364,6 +539,17 @@ public final class GetScalingRulesRule {
             }
             this.scalingRuleAri = scalingRuleAri;
             return this;
+        }
+        @CustomType.Setter
+        public Builder stepAdjustments(List<GetScalingRulesRuleStepAdjustment> stepAdjustments) {
+            if (stepAdjustments == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "stepAdjustments");
+            }
+            this.stepAdjustments = stepAdjustments;
+            return this;
+        }
+        public Builder stepAdjustments(GetScalingRulesRuleStepAdjustment... stepAdjustments) {
+            return stepAdjustments(List.of(stepAdjustments));
         }
         @CustomType.Setter
         public Builder targetValue(Double targetValue) {
@@ -386,17 +572,25 @@ public final class GetScalingRulesRule {
             _resultValue.adjustmentType = adjustmentType;
             _resultValue.adjustmentValue = adjustmentValue;
             _resultValue.cooldown = cooldown;
+            _resultValue.disableScaleIn = disableScaleIn;
+            _resultValue.estimatedInstanceWarmup = estimatedInstanceWarmup;
+            _resultValue.hybridMetrics = hybridMetrics;
+            _resultValue.hybridMonitorNamespace = hybridMonitorNamespace;
             _resultValue.id = id;
             _resultValue.initialMaxSize = initialMaxSize;
             _resultValue.metricName = metricName;
+            _resultValue.metricType = metricType;
             _resultValue.minAdjustmentMagnitude = minAdjustmentMagnitude;
             _resultValue.name = name;
             _resultValue.predictiveScalingMode = predictiveScalingMode;
             _resultValue.predictiveTaskBufferTime = predictiveTaskBufferTime;
             _resultValue.predictiveValueBehavior = predictiveValueBehavior;
             _resultValue.predictiveValueBuffer = predictiveValueBuffer;
+            _resultValue.scaleInEvaluationCount = scaleInEvaluationCount;
+            _resultValue.scaleOutEvaluationCount = scaleOutEvaluationCount;
             _resultValue.scalingGroupId = scalingGroupId;
             _resultValue.scalingRuleAri = scalingRuleAri;
+            _resultValue.stepAdjustments = stepAdjustments;
             _resultValue.targetValue = targetValue;
             _resultValue.type = type;
             return _resultValue;

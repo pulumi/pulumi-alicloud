@@ -28,10 +28,6 @@ public final class GetInstancesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of ECS instance IDs.
-     * 
-     */
     private List<String> ids;
     /**
      * @return Image ID the instance is using.
@@ -103,10 +99,6 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of ECS instance IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

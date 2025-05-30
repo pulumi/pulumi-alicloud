@@ -338,6 +338,8 @@ type Instance struct {
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	SystemDiskBurstingEnabled pulumi.BoolPtrOutput `pulumi:"systemDiskBurstingEnabled"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -354,6 +356,8 @@ type Instance struct {
 	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringOutput `pulumi:"systemDiskPerformanceLevel"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+	SystemDiskProvisionedIops pulumi.IntPtrOutput `pulumi:"systemDiskProvisionedIops"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -614,6 +618,8 @@ type instanceState struct {
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -630,6 +636,8 @@ type instanceState struct {
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -854,6 +862,8 @@ type InstanceState struct {
 	StoppedMode pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	SystemDiskBurstingEnabled pulumi.BoolPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -870,6 +880,8 @@ type InstanceState struct {
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+	SystemDiskProvisionedIops pulumi.IntPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -1076,6 +1088,8 @@ type instanceArgs struct {
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1090,6 +1104,8 @@ type instanceArgs struct {
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -1293,6 +1309,8 @@ type InstanceArgs struct {
 	StoppedMode pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	SystemDiskBurstingEnabled pulumi.BoolPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1307,6 +1325,8 @@ type InstanceArgs struct {
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+	SystemDiskProvisionedIops pulumi.IntPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -1836,6 +1856,11 @@ func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+func (o InstanceOutput) SystemDiskBurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SystemDiskBurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
 func (o InstanceOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
@@ -1874,6 +1899,11 @@ func (o InstanceOutput) SystemDiskName() pulumi.StringOutput {
 // The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 func (o InstanceOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+func (o InstanceOutput) SystemDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SystemDiskProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
 // Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.

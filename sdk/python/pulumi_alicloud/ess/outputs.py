@@ -57,6 +57,9 @@ __all__ = [
     'GetScalingGroupsGroupResult',
     'GetScalingGroupsGroupLaunchTemplateOverrideResult',
     'GetScalingRulesRuleResult',
+    'GetScalingRulesRuleHybridMetricResult',
+    'GetScalingRulesRuleHybridMetricDimensionResult',
+    'GetScalingRulesRuleStepAdjustmentResult',
     'GetScheduledTasksTaskResult',
 ]
 
@@ -4152,51 +4155,75 @@ class GetScalingRulesRuleResult(dict):
                  adjustment_type: builtins.str,
                  adjustment_value: builtins.int,
                  cooldown: builtins.int,
+                 disable_scale_in: builtins.bool,
+                 estimated_instance_warmup: builtins.int,
+                 hybrid_metrics: Sequence['outputs.GetScalingRulesRuleHybridMetricResult'],
+                 hybrid_monitor_namespace: builtins.str,
                  id: builtins.str,
                  initial_max_size: builtins.int,
                  metric_name: builtins.str,
+                 metric_type: builtins.str,
                  min_adjustment_magnitude: builtins.int,
                  name: builtins.str,
                  predictive_scaling_mode: builtins.str,
                  predictive_task_buffer_time: builtins.int,
                  predictive_value_behavior: builtins.str,
                  predictive_value_buffer: builtins.int,
+                 scale_in_evaluation_count: builtins.int,
+                 scale_out_evaluation_count: builtins.int,
                  scaling_group_id: builtins.str,
                  scaling_rule_ari: builtins.str,
+                 step_adjustments: Sequence['outputs.GetScalingRulesRuleStepAdjustmentResult'],
                  target_value: builtins.float,
                  type: builtins.str):
         """
         :param builtins.str adjustment_type: Adjustment type of the scaling rule.
         :param builtins.int adjustment_value: Adjustment value of the scaling rule.
         :param builtins.int cooldown: Cooldown time of the scaling rule.
-        :param builtins.str id: ID of the scaling rule.
+        :param builtins.bool disable_scale_in: (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+        :param builtins.int estimated_instance_warmup: (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+        :param Sequence['GetScalingRulesRuleHybridMetricArgs'] hybrid_metrics: (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+        :param builtins.str hybrid_monitor_namespace: (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+        :param builtins.str id: (Available since v1.250.0) The reference ID of the metric in the metric expression.
         :param builtins.int initial_max_size: (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
-        :param builtins.str metric_name: (Available since v1.242.0) The predefined metric of the scaling rule.
+        :param builtins.str metric_name: (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+        :param builtins.str metric_type: (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
         :param builtins.int min_adjustment_magnitude: Min adjustment magnitude of scaling rule.
         :param builtins.str name: Name of the scaling rule.
         :param builtins.str predictive_scaling_mode: (Available since v1.242.0) The mode of the predictive scaling rule.
         :param builtins.int predictive_task_buffer_time: (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
         :param builtins.str predictive_value_behavior: (Available since v1.242.0) The action on the predicted maximum value.
         :param builtins.int predictive_value_buffer: (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        :param builtins.int scale_in_evaluation_count: (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+        :param builtins.int scale_out_evaluation_count: (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
         :param builtins.str scaling_group_id: Scaling group id the scaling rules belong to.
         :param builtins.str scaling_rule_ari: Ari of scaling rule.
+        :param Sequence['GetScalingRulesRuleStepAdjustmentArgs'] step_adjustments: (Available since v1.250.0) The step adjustments of the step scaling rule.
         :param builtins.float target_value: (Available since v1.242.0) The target value of the metric.
         :param builtins.str type: Type of scaling rule.
         """
         pulumi.set(__self__, "adjustment_type", adjustment_type)
         pulumi.set(__self__, "adjustment_value", adjustment_value)
         pulumi.set(__self__, "cooldown", cooldown)
+        pulumi.set(__self__, "disable_scale_in", disable_scale_in)
+        pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        pulumi.set(__self__, "hybrid_metrics", hybrid_metrics)
+        pulumi.set(__self__, "hybrid_monitor_namespace", hybrid_monitor_namespace)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "initial_max_size", initial_max_size)
         pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "metric_type", metric_type)
         pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "predictive_scaling_mode", predictive_scaling_mode)
         pulumi.set(__self__, "predictive_task_buffer_time", predictive_task_buffer_time)
         pulumi.set(__self__, "predictive_value_behavior", predictive_value_behavior)
         pulumi.set(__self__, "predictive_value_buffer", predictive_value_buffer)
+        pulumi.set(__self__, "scale_in_evaluation_count", scale_in_evaluation_count)
+        pulumi.set(__self__, "scale_out_evaluation_count", scale_out_evaluation_count)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "scaling_rule_ari", scaling_rule_ari)
+        pulumi.set(__self__, "step_adjustments", step_adjustments)
         pulumi.set(__self__, "target_value", target_value)
         pulumi.set(__self__, "type", type)
 
@@ -4225,10 +4252,42 @@ class GetScalingRulesRuleResult(dict):
         return pulumi.get(self, "cooldown")
 
     @property
+    @pulumi.getter(name="disableScaleIn")
+    def disable_scale_in(self) -> builtins.bool:
+        """
+        (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+        """
+        return pulumi.get(self, "disable_scale_in")
+
+    @property
+    @pulumi.getter(name="estimatedInstanceWarmup")
+    def estimated_instance_warmup(self) -> builtins.int:
+        """
+        (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+        """
+        return pulumi.get(self, "estimated_instance_warmup")
+
+    @property
+    @pulumi.getter(name="hybridMetrics")
+    def hybrid_metrics(self) -> Sequence['outputs.GetScalingRulesRuleHybridMetricResult']:
+        """
+        (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+        """
+        return pulumi.get(self, "hybrid_metrics")
+
+    @property
+    @pulumi.getter(name="hybridMonitorNamespace")
+    def hybrid_monitor_namespace(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+        """
+        return pulumi.get(self, "hybrid_monitor_namespace")
+
+    @property
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        ID of the scaling rule.
+        (Available since v1.250.0) The reference ID of the metric in the metric expression.
         """
         return pulumi.get(self, "id")
 
@@ -4244,9 +4303,17 @@ class GetScalingRulesRuleResult(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> builtins.str:
         """
-        (Available since v1.242.0) The predefined metric of the scaling rule.
+        (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
         """
         return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+        """
+        return pulumi.get(self, "metric_type")
 
     @property
     @pulumi.getter(name="minAdjustmentMagnitude")
@@ -4297,6 +4364,22 @@ class GetScalingRulesRuleResult(dict):
         return pulumi.get(self, "predictive_value_buffer")
 
     @property
+    @pulumi.getter(name="scaleInEvaluationCount")
+    def scale_in_evaluation_count(self) -> builtins.int:
+        """
+        (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+        """
+        return pulumi.get(self, "scale_in_evaluation_count")
+
+    @property
+    @pulumi.getter(name="scaleOutEvaluationCount")
+    def scale_out_evaluation_count(self) -> builtins.int:
+        """
+        (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+        """
+        return pulumi.get(self, "scale_out_evaluation_count")
+
+    @property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> builtins.str:
         """
@@ -4313,6 +4396,14 @@ class GetScalingRulesRuleResult(dict):
         return pulumi.get(self, "scaling_rule_ari")
 
     @property
+    @pulumi.getter(name="stepAdjustments")
+    def step_adjustments(self) -> Sequence['outputs.GetScalingRulesRuleStepAdjustmentResult']:
+        """
+        (Available since v1.250.0) The step adjustments of the step scaling rule.
+        """
+        return pulumi.get(self, "step_adjustments")
+
+    @property
     @pulumi.getter(name="targetValue")
     def target_value(self) -> builtins.float:
         """
@@ -4327,6 +4418,137 @@ class GetScalingRulesRuleResult(dict):
         Type of scaling rule.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetScalingRulesRuleHybridMetricResult(dict):
+    def __init__(__self__, *,
+                 dimensions: Sequence['outputs.GetScalingRulesRuleHybridMetricDimensionResult'],
+                 expression: builtins.str,
+                 id: builtins.str,
+                 metric_name: builtins.str,
+                 statistic: builtins.str):
+        """
+        :param Sequence['GetScalingRulesRuleHybridMetricDimensionArgs'] dimensions: (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+        :param builtins.str expression: (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+        :param builtins.str id: (Available since v1.250.0) The reference ID of the metric in the metric expression.
+        :param builtins.str metric_name: (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+        :param builtins.str statistic: (Available since v1.250.0) The statistical method of the metric data.
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "statistic", statistic)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence['outputs.GetScalingRulesRuleHybridMetricDimensionResult']:
+        """
+        (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The reference ID of the metric in the metric expression.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The statistical method of the metric data.
+        """
+        return pulumi.get(self, "statistic")
+
+
+@pulumi.output_type
+class GetScalingRulesRuleHybridMetricDimensionResult(dict):
+    def __init__(__self__, *,
+                 dimension_key: builtins.str,
+                 dimension_value: builtins.str):
+        """
+        :param builtins.str dimension_key: (Available since v1.250.0) The dimension key of the metric.
+        :param builtins.str dimension_value: (Available since v1.250.0) The dimension value of the metric.
+        """
+        pulumi.set(__self__, "dimension_key", dimension_key)
+        pulumi.set(__self__, "dimension_value", dimension_value)
+
+    @property
+    @pulumi.getter(name="dimensionKey")
+    def dimension_key(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The dimension key of the metric.
+        """
+        return pulumi.get(self, "dimension_key")
+
+    @property
+    @pulumi.getter(name="dimensionValue")
+    def dimension_value(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The dimension value of the metric.
+        """
+        return pulumi.get(self, "dimension_value")
+
+
+@pulumi.output_type
+class GetScalingRulesRuleStepAdjustmentResult(dict):
+    def __init__(__self__, *,
+                 metric_interval_lower_bound: builtins.str,
+                 metric_interval_upper_bound: builtins.str,
+                 scaling_adjustment: builtins.int):
+        """
+        :param builtins.str metric_interval_lower_bound: (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        :param builtins.str metric_interval_upper_bound: (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        :param builtins.int scaling_adjustment: (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+        """
+        pulumi.set(__self__, "metric_interval_lower_bound", metric_interval_lower_bound)
+        pulumi.set(__self__, "metric_interval_upper_bound", metric_interval_upper_bound)
+        pulumi.set(__self__, "scaling_adjustment", scaling_adjustment)
+
+    @property
+    @pulumi.getter(name="metricIntervalLowerBound")
+    def metric_interval_lower_bound(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        """
+        return pulumi.get(self, "metric_interval_lower_bound")
+
+    @property
+    @pulumi.getter(name="metricIntervalUpperBound")
+    def metric_interval_upper_bound(self) -> builtins.str:
+        """
+        (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        """
+        return pulumi.get(self, "metric_interval_upper_bound")
+
+    @property
+    @pulumi.getter(name="scalingAdjustment")
+    def scaling_adjustment(self) -> builtins.int:
+        """
+        (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+        """
+        return pulumi.get(self, "scaling_adjustment")
 
 
 @pulumi.output_type

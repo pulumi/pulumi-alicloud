@@ -18,13 +18,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerAccessLogConfigResult> AccessLogConfigs;
         /// <summary>
-        /// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-        /// uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-        /// instance.
+        /// The method in which IP addresses are assigned.
         /// </summary>
         public readonly string AddressAllocatedMode;
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services.
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
         /// </summary>
         public readonly string AddressType;
         /// <summary>
@@ -53,11 +51,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult> LoadBalancerBillingConfigs;
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
         /// </summary>
         public readonly string LoadBalancerBusinessStatus;
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+        /// Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
         /// </summary>
         public readonly string LoadBalancerBussinessStatus;
         /// <summary>
@@ -85,11 +83,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
@@ -97,7 +95,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones.
+        /// The zones and vSwitches.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerZoneMappingResult> ZoneMappings;
 

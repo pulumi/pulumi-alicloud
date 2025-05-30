@@ -224,11 +224,11 @@ export class Instance extends pulumi.CustomResource {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * **Serverless**
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -946,11 +946,11 @@ export interface InstanceState {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * **Serverless**
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -1452,11 +1452,11 @@ export interface InstanceArgs {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * **Serverless**
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     engineVersion: pulumi.Input<string>;
     /**

@@ -50,13 +50,9 @@ export class Listener extends pulumi.CustomResource {
     }
 
     /**
-     * Access Log Whether to Enable Carry Custom Header Field.
+     * Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      *
-     * Value: True **** Or False * *.
-     *
-     * Default Value: False * *.
-     *
-     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      */
     public readonly accessLogRecordCustomizedHeadersEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -98,7 +94,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly http2Enabled!: pulumi.Output<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      */
     public readonly idleTimeout!: pulumi.Output<number>;
     /**
@@ -122,7 +118,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly quicConfig!: pulumi.Output<outputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     public readonly requestTimeout!: pulumi.Output<number>;
     /**
@@ -222,13 +218,9 @@ export class Listener extends pulumi.CustomResource {
  */
 export interface ListenerState {
     /**
-     * Access Log Whether to Enable Carry Custom Header Field.
+     * Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      *
-     * Value: True **** Or False * *.
-     *
-     * Default Value: False * *.
-     *
-     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
@@ -270,7 +262,7 @@ export interface ListenerState {
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      */
     idleTimeout?: pulumi.Input<number>;
     /**
@@ -294,7 +286,7 @@ export interface ListenerState {
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     requestTimeout?: pulumi.Input<number>;
     /**
@@ -320,13 +312,9 @@ export interface ListenerState {
  */
 export interface ListenerArgs {
     /**
-     * Access Log Whether to Enable Carry Custom Header Field.
+     * Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      *
-     * Value: True **** Or False * *.
-     *
-     * Default Value: False * *.
-     *
-     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
@@ -368,7 +356,7 @@ export interface ListenerArgs {
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      */
     idleTimeout?: pulumi.Input<number>;
     /**
@@ -392,7 +380,7 @@ export interface ListenerArgs {
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
     requestTimeout?: pulumi.Input<number>;
     /**

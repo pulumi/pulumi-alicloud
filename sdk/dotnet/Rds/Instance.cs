@@ -258,11 +258,11 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// - Serverless
-        /// &gt; - MySQL: [ 5.7、8.0 ]
-        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-        /// &gt; - PostgreSQL: [ 14.0 ]
-        /// &gt; - MariaDB does not support creating serverless instances.
+        /// **Serverless**
+        /// - MySQL: [ 5.7、8.0 ]
+        /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// - PostgreSQL: [ 14.0 ]
+        /// - MariaDB does not support creating serverless instances.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -985,11 +985,11 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// - Serverless
-        /// &gt; - MySQL: [ 5.7、8.0 ]
-        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-        /// &gt; - PostgreSQL: [ 14.0 ]
-        /// &gt; - MariaDB does not support creating serverless instances.
+        /// **Serverless**
+        /// - MySQL: [ 5.7、8.0 ]
+        /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// - PostgreSQL: [ 14.0 ]
+        /// - MariaDB does not support creating serverless instances.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -1721,11 +1721,11 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// - Serverless
-        /// &gt; - MySQL: [ 5.7、8.0 ]
-        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-        /// &gt; - PostgreSQL: [ 14.0 ]
-        /// &gt; - MariaDB does not support creating serverless instances.
+        /// **Serverless**
+        /// - MySQL: [ 5.7、8.0 ]
+        /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// - PostgreSQL: [ 14.0 ]
+        /// - MariaDB does not support creating serverless instances.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

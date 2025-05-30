@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
     public sealed class GetParametersParameterResult
     {
         /// <summary>
-        /// The constraints of the common parameter.
+        /// The constraints of the common parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Constraints;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string ParameterId;
         /// <summary>
-        /// The name of the common parameter.
+        /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
         /// </summary>
         public readonly string ParameterName;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string ShareType;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The data type of the common parameter.
+        /// The data type of the common parameter. Valid values: `String`, `StringList`.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string UpdatedDate;
         /// <summary>
-        /// The value of the common parameter.
+        /// (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Value;
 

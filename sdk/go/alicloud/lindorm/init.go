@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:lindorm/instance:Instance":
 		r = &Instance{}
+	case "alicloud:lindorm/publicNetwork:PublicNetwork":
+		r = &PublicNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"lindorm/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"lindorm/publicNetwork",
 		&module{version},
 	)
 }

@@ -14,6 +14,8 @@ import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
 import com.pulumi.alicloud.fc.inputs.GetServicesPlainArgs;
 import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
 import com.pulumi.alicloud.fc.inputs.GetTriggersPlainArgs;
+import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+import com.pulumi.alicloud.fc.inputs.GetV3TriggersPlainArgs;
 import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
 import com.pulumi.alicloud.fc.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.fc.outputs.GetCustomDomainsResult;
@@ -21,6 +23,7 @@ import com.pulumi.alicloud.fc.outputs.GetFunctionsResult;
 import com.pulumi.alicloud.fc.outputs.GetServiceResult;
 import com.pulumi.alicloud.fc.outputs.GetServicesResult;
 import com.pulumi.alicloud.fc.outputs.GetTriggersResult;
+import com.pulumi.alicloud.fc.outputs.GetV3TriggersResult;
 import com.pulumi.alicloud.fc.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1412,6 +1415,451 @@ public final class FcFunctions {
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:fc/getTriggers:getTriggers", TypeShape.of(GetTriggersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
+     * 
+     * &gt; **NOTE:** Available since v1.250.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.V3Function;
+     * import com.pulumi.alicloud.fc.V3FunctionArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+     * import com.pulumi.alicloud.fc.V3Trigger;
+     * import com.pulumi.alicloud.fc.V3TriggerArgs;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var functionName = config.get("functionName").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var triggerName = config.get("triggerName").orElse("exampleTrigger_HTTP");
+     *         var function = new V3Function("function", V3FunctionArgs.builder()
+     *             .memorySize(512)
+     *             .cpu(0.5)
+     *             .handler("index.Handler")
+     *             .code(V3FunctionCodeArgs.builder()
+     *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+     *                 .build())
+     *             .functionName(name)
+     *             .runtime("python3.9")
+     *             .diskSize(512)
+     *             .logConfig(V3FunctionLogConfigArgs.builder()
+     *                 .logBeginRule("None")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultV3Trigger = new V3Trigger("defaultV3Trigger", V3TriggerArgs.builder()
+     *             .functionName(function.functionName())
+     *             .triggerType("http")
+     *             .triggerName("tf-exampleacceu-central-1fcv3trigger28547")
+     *             .description("create")
+     *             .qualifier("LATEST")
+     *             .triggerConfig(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("authType", "anonymous"),
+     *                     jsonProperty("methods", jsonArray(
+     *                         "GET", 
+     *                         "POST"
+     *                     ))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = FcFunctions.getV3Triggers(GetV3TriggersArgs.builder()
+     *             .ids(defaultV3Trigger.id())
+     *             .nameRegex(defaultV3Trigger.triggerName())
+     *             .functionName(functionName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetV3TriggersResult> getV3Triggers(GetV3TriggersArgs args) {
+        return getV3Triggers(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
+     * 
+     * &gt; **NOTE:** Available since v1.250.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.V3Function;
+     * import com.pulumi.alicloud.fc.V3FunctionArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+     * import com.pulumi.alicloud.fc.V3Trigger;
+     * import com.pulumi.alicloud.fc.V3TriggerArgs;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var functionName = config.get("functionName").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var triggerName = config.get("triggerName").orElse("exampleTrigger_HTTP");
+     *         var function = new V3Function("function", V3FunctionArgs.builder()
+     *             .memorySize(512)
+     *             .cpu(0.5)
+     *             .handler("index.Handler")
+     *             .code(V3FunctionCodeArgs.builder()
+     *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+     *                 .build())
+     *             .functionName(name)
+     *             .runtime("python3.9")
+     *             .diskSize(512)
+     *             .logConfig(V3FunctionLogConfigArgs.builder()
+     *                 .logBeginRule("None")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultV3Trigger = new V3Trigger("defaultV3Trigger", V3TriggerArgs.builder()
+     *             .functionName(function.functionName())
+     *             .triggerType("http")
+     *             .triggerName("tf-exampleacceu-central-1fcv3trigger28547")
+     *             .description("create")
+     *             .qualifier("LATEST")
+     *             .triggerConfig(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("authType", "anonymous"),
+     *                     jsonProperty("methods", jsonArray(
+     *                         "GET", 
+     *                         "POST"
+     *                     ))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = FcFunctions.getV3Triggers(GetV3TriggersArgs.builder()
+     *             .ids(defaultV3Trigger.id())
+     *             .nameRegex(defaultV3Trigger.triggerName())
+     *             .functionName(functionName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetV3TriggersResult> getV3TriggersPlain(GetV3TriggersPlainArgs args) {
+        return getV3TriggersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
+     * 
+     * &gt; **NOTE:** Available since v1.250.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.V3Function;
+     * import com.pulumi.alicloud.fc.V3FunctionArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+     * import com.pulumi.alicloud.fc.V3Trigger;
+     * import com.pulumi.alicloud.fc.V3TriggerArgs;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var functionName = config.get("functionName").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var triggerName = config.get("triggerName").orElse("exampleTrigger_HTTP");
+     *         var function = new V3Function("function", V3FunctionArgs.builder()
+     *             .memorySize(512)
+     *             .cpu(0.5)
+     *             .handler("index.Handler")
+     *             .code(V3FunctionCodeArgs.builder()
+     *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+     *                 .build())
+     *             .functionName(name)
+     *             .runtime("python3.9")
+     *             .diskSize(512)
+     *             .logConfig(V3FunctionLogConfigArgs.builder()
+     *                 .logBeginRule("None")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultV3Trigger = new V3Trigger("defaultV3Trigger", V3TriggerArgs.builder()
+     *             .functionName(function.functionName())
+     *             .triggerType("http")
+     *             .triggerName("tf-exampleacceu-central-1fcv3trigger28547")
+     *             .description("create")
+     *             .qualifier("LATEST")
+     *             .triggerConfig(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("authType", "anonymous"),
+     *                     jsonProperty("methods", jsonArray(
+     *                         "GET", 
+     *                         "POST"
+     *                     ))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = FcFunctions.getV3Triggers(GetV3TriggersArgs.builder()
+     *             .ids(defaultV3Trigger.id())
+     *             .nameRegex(defaultV3Trigger.triggerName())
+     *             .functionName(functionName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetV3TriggersResult> getV3Triggers(GetV3TriggersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fc/getV3Triggers:getV3Triggers", TypeShape.of(GetV3TriggersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
+     * 
+     * &gt; **NOTE:** Available since v1.250.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.V3Function;
+     * import com.pulumi.alicloud.fc.V3FunctionArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+     * import com.pulumi.alicloud.fc.V3Trigger;
+     * import com.pulumi.alicloud.fc.V3TriggerArgs;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var functionName = config.get("functionName").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var triggerName = config.get("triggerName").orElse("exampleTrigger_HTTP");
+     *         var function = new V3Function("function", V3FunctionArgs.builder()
+     *             .memorySize(512)
+     *             .cpu(0.5)
+     *             .handler("index.Handler")
+     *             .code(V3FunctionCodeArgs.builder()
+     *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+     *                 .build())
+     *             .functionName(name)
+     *             .runtime("python3.9")
+     *             .diskSize(512)
+     *             .logConfig(V3FunctionLogConfigArgs.builder()
+     *                 .logBeginRule("None")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultV3Trigger = new V3Trigger("defaultV3Trigger", V3TriggerArgs.builder()
+     *             .functionName(function.functionName())
+     *             .triggerType("http")
+     *             .triggerName("tf-exampleacceu-central-1fcv3trigger28547")
+     *             .description("create")
+     *             .qualifier("LATEST")
+     *             .triggerConfig(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("authType", "anonymous"),
+     *                     jsonProperty("methods", jsonArray(
+     *                         "GET", 
+     *                         "POST"
+     *                     ))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = FcFunctions.getV3Triggers(GetV3TriggersArgs.builder()
+     *             .ids(defaultV3Trigger.id())
+     *             .nameRegex(defaultV3Trigger.triggerName())
+     *             .functionName(functionName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetV3TriggersResult> getV3Triggers(GetV3TriggersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fc/getV3Triggers:getV3Triggers", TypeShape.of(GetV3TriggersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)
+     * 
+     * &gt; **NOTE:** Available since v1.250.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.V3Function;
+     * import com.pulumi.alicloud.fc.V3FunctionArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+     * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+     * import com.pulumi.alicloud.fc.V3Trigger;
+     * import com.pulumi.alicloud.fc.V3TriggerArgs;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var functionName = config.get("functionName").orElse("terraform-exampleTriggerResourceAPI");
+     *         final var triggerName = config.get("triggerName").orElse("exampleTrigger_HTTP");
+     *         var function = new V3Function("function", V3FunctionArgs.builder()
+     *             .memorySize(512)
+     *             .cpu(0.5)
+     *             .handler("index.Handler")
+     *             .code(V3FunctionCodeArgs.builder()
+     *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+     *                 .build())
+     *             .functionName(name)
+     *             .runtime("python3.9")
+     *             .diskSize(512)
+     *             .logConfig(V3FunctionLogConfigArgs.builder()
+     *                 .logBeginRule("None")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultV3Trigger = new V3Trigger("defaultV3Trigger", V3TriggerArgs.builder()
+     *             .functionName(function.functionName())
+     *             .triggerType("http")
+     *             .triggerName("tf-exampleacceu-central-1fcv3trigger28547")
+     *             .description("create")
+     *             .qualifier("LATEST")
+     *             .triggerConfig(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("authType", "anonymous"),
+     *                     jsonProperty("methods", jsonArray(
+     *                         "GET", 
+     *                         "POST"
+     *                     ))
+     *                 )))
+     *             .build());
+     * 
+     *         final var default = FcFunctions.getV3Triggers(GetV3TriggersArgs.builder()
+     *             .ids(defaultV3Trigger.id())
+     *             .nameRegex(defaultV3Trigger.triggerName())
+     *             .functionName(functionName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetV3TriggersResult> getV3TriggersPlain(GetV3TriggersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:fc/getV3Triggers:getV3Triggers", TypeShape.of(GetV3TriggersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.

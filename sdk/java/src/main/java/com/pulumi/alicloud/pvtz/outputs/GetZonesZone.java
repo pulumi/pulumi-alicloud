@@ -15,83 +15,83 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesZone {
     /**
-     * @return List of the VPCs is bound to the Private Zone:
+     * @return The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetZonesZoneBindVpc> bindVpcs;
     /**
-     * @return Time of create of the Private Zone.
+     * @return The time when the zone was created.
      * 
      */
     private Integer createTimestamp;
     private String creationTime;
     /**
-     * @return ID of the Private Zone.
+     * @return The ID of the Private Zone.
      * 
      */
     private String id;
     /**
-     * @return Whether the Private Zone is ptr.
+     * @return Indicates whether the zone is a reverse lookup zone.
      * 
      */
     private Boolean isPtr;
     /**
-     * @return Name of the Private Zone.
+     * @return The Name of the Zone.
      * 
      */
     private String name;
     /**
-     * @return The recursive DNS proxy.
+     * @return Indicates whether the recursive resolution proxy for subdomain names is enabled.
      * 
      */
     private String proxyPattern;
     /**
-     * @return Count of the Private Zone Record.
+     * @return The number of Domain Name System (DNS) records added in the zone.
      * 
      */
     private Integer recordCount;
     /**
-     * @return Remark of the Private Zone.
+     * @return The description of the zone.
      * 
      */
     private String remark;
     /**
-     * @return resource_group_id for zone resourceGroupId.
+     * @return The ID of the resource group to which the zone belongs.
      * 
      */
     private String resourceGroupId;
     /**
-     * @return Whether to turn on secondary DNS.
+     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private Boolean slaveDns;
     private String updateTime;
     /**
-     * @return Time of update of the Private Zone.
+     * @return The time when the DNS record was updated.
      * 
      */
     private Integer updateTimestamp;
     /**
-     * @return ZoneId of the Private Zone.
+     * @return The ID of the Zone.
      * 
      */
     private String zoneId;
     /**
-     * @return ZoneName of the Private Zone.
+     * @return The Name of the Private Zone.
      * 
      */
     private String zoneName;
 
     private GetZonesZone() {}
     /**
-     * @return List of the VPCs is bound to the Private Zone:
+     * @return The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetZonesZoneBindVpc> bindVpcs() {
         return this.bindVpcs;
     }
     /**
-     * @return Time of create of the Private Zone.
+     * @return The time when the zone was created.
      * 
      */
     public Integer createTimestamp() {
@@ -101,56 +101,56 @@ public final class GetZonesZone {
         return this.creationTime;
     }
     /**
-     * @return ID of the Private Zone.
+     * @return The ID of the Private Zone.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Whether the Private Zone is ptr.
+     * @return Indicates whether the zone is a reverse lookup zone.
      * 
      */
     public Boolean isPtr() {
         return this.isPtr;
     }
     /**
-     * @return Name of the Private Zone.
+     * @return The Name of the Zone.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The recursive DNS proxy.
+     * @return Indicates whether the recursive resolution proxy for subdomain names is enabled.
      * 
      */
     public String proxyPattern() {
         return this.proxyPattern;
     }
     /**
-     * @return Count of the Private Zone Record.
+     * @return The number of Domain Name System (DNS) records added in the zone.
      * 
      */
     public Integer recordCount() {
         return this.recordCount;
     }
     /**
-     * @return Remark of the Private Zone.
+     * @return The description of the zone.
      * 
      */
     public String remark() {
         return this.remark;
     }
     /**
-     * @return resource_group_id for zone resourceGroupId.
+     * @return The ID of the resource group to which the zone belongs.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * @return Whether to turn on secondary DNS.
+     * @return Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public Boolean slaveDns() {
@@ -160,21 +160,21 @@ public final class GetZonesZone {
         return this.updateTime;
     }
     /**
-     * @return Time of update of the Private Zone.
+     * @return The time when the DNS record was updated.
      * 
      */
     public Integer updateTimestamp() {
         return this.updateTimestamp;
     }
     /**
-     * @return ZoneId of the Private Zone.
+     * @return The ID of the Zone.
      * 
      */
     public String zoneId() {
         return this.zoneId;
     }
     /**
-     * @return ZoneName of the Private Zone.
+     * @return The Name of the Private Zone.
      * 
      */
     public String zoneName() {

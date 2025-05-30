@@ -11,30 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancersBalancerModificationProtectionConfig {
     /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+     * @return The reason for modification protection.
      * 
      */
     private String reason;
     /**
-     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-     * * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-     * * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     private String status;
 
     private GetLoadBalancersBalancerModificationProtectionConfig() {}
     /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+     * @return The reason for modification protection.
      * 
      */
     public String reason() {
         return this.reason;
     }
     /**
-     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-     * * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-     * * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     public String status() {

@@ -1551,13 +1551,11 @@ export namespace alb {
          */
         accessLogConfigs: outputs.alb.GetLoadBalancersBalancerAccessLogConfig[];
         /**
-         * The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-         * uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-         * instance.
+         * The method in which IP addresses are assigned.
          */
         addressAllocatedMode: string;
         /**
-         * The type of IP address that the ALB instance uses to provide services.
+         * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
          */
         addressType: string;
         /**
@@ -1586,11 +1584,11 @@ export namespace alb {
          */
         loadBalancerBillingConfigs: outputs.alb.GetLoadBalancersBalancerLoadBalancerBillingConfig[];
         /**
-         * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+         * Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
          */
         loadBalancerBusinessStatus: string;
         /**
-         * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+         * Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
          *
          * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
          */
@@ -1620,11 +1618,11 @@ export namespace alb {
          */
         resourceGroupId: string;
         /**
-         * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+         * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
          */
         status: string;
         /**
-         * The tag of the resource.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
         /**
@@ -1632,7 +1630,7 @@ export namespace alb {
          */
         vpcId: string;
         /**
-         * The zones and vSwitches. You must specify at least two zones.
+         * The zones and vSwitches.
          */
         zoneMappings: outputs.alb.GetLoadBalancersBalancerZoneMapping[];
     }
@@ -1661,7 +1659,7 @@ export namespace alb {
 
     export interface GetLoadBalancersBalancerLoadBalancerBillingConfig {
         /**
-         * The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+         * The billing method of the ALB instance.
          */
         payType: string;
     }
@@ -1672,38 +1670,78 @@ export namespace alb {
          */
         lockReason: string;
         /**
-         * The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+         * The Locking of the Type.
          */
         lockType: string;
     }
 
     export interface GetLoadBalancersBalancerModificationProtectionConfig {
         /**
-         * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+         * The reason for modification protection.
          */
         reason: string;
         /**
-         * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-         * * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-         * * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+         * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
          */
         status: string;
     }
 
     export interface GetLoadBalancersBalancerZoneMapping {
+        /**
+         * (Available since v1.250.0) The address of the ALB instance.
+         */
         loadBalancerAddresses: outputs.alb.GetLoadBalancersBalancerZoneMappingLoadBalancerAddress[];
         /**
-         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+         */
+        status: string;
+        /**
+         * The ID of the vSwitch that corresponds to the zone.
          */
         vswitchId: string;
         /**
-         * The ID of the zone to which the ALB instance belongs.
+         * The zone ID of the resource.
          */
         zoneId: string;
     }
 
     export interface GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
+        /**
+         * IPv4 address.
+         */
         address: string;
+        /**
+         * The elastic IP address (EIP).
+         */
+        allocationId: string;
+        /**
+         * The type of EIP.
+         */
+        eipType: string;
+        /**
+         * The private IPv4 address.
+         */
+        intranetAddress: string;
+        /**
+         * The health status of the private IPv4 address of the ALB instance.
+         */
+        intranetAddressHcStatus: string;
+        /**
+         * The IPv4 link-local addresses.
+         */
+        ipv4LocalAddresses: string[];
+        /**
+         * IPv6 address.
+         */
+        ipv6Address: string;
+        /**
+         * The health status of the private IPv6 address of the ALB instance.
+         */
+        ipv6AddressHcStatus: string;
+        /**
+         * The IPv6 link-local addresses.
+         */
+        ipv6LocalAddresses: string[];
     }
 
     export interface GetRulesRule {
@@ -2231,23 +2269,19 @@ export namespace alb {
 
     export interface ListenerAccessLogTracingConfig {
         /**
-         * Xtrace Function.
+         * Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
          *
-         * Value: True **** Or False * *.
-         *
-         * Default Value: False * *.
-         *
-         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
          */
         tracingEnabled: boolean;
         /**
-         * Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+         * Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
          */
         tracingSample?: number;
         /**
-         * Xtrace Type Value Is **Zipkin * *.
+         * Xtrace Type Value Is `Zipkin`.
          *
-         * > **NOTE:**  `tracingenabled` **True When Effective.
+         * > **NOTE:**  `tracingenabled` valued True When Effective.
          */
         tracingType?: string;
     }
@@ -2294,7 +2328,7 @@ export namespace alb {
          */
         forwardGroupConfig?: outputs.alb.ListenerDefaultActionForwardGroupConfig;
         /**
-         * Action Type
+         * The action type. Value: ForwardGroup, indicating forwarding to the server group.
          */
         type: string;
     }
@@ -2359,18 +2393,10 @@ export namespace alb {
         xForwardedForClientCertSubjectDnEnabled: boolean;
         /**
          * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-         *
-         * true: Yes.
-         *
-         * false (default): No.
-         *
-         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          */
         xForwardedForClientSourceIpsEnabled?: boolean;
         /**
-         * Specify the trusted proxy IP.
-         *
-         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          */
         xForwardedForClientSourceIpsTrusted?: string;
         /**
@@ -2383,26 +2409,10 @@ export namespace alb {
         xForwardedForEnabled: boolean;
         /**
          * Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-         *
-         * true: Yes.
-         *
-         * false (default): No.
-         *
-         * HTTP, HTTPS, and QUIC listeners support this parameter.
          */
         xForwardedForHostEnabled?: boolean;
         /**
          * Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-         *
-         * append (default): append.
-         *
-         * remove: Delete.
-         *
-         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-         *
-         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-         *
-         * HTTP and HTTPS listeners support this parameter.
          */
         xForwardedForProcessingMode: string;
         /**
@@ -16123,6 +16133,17 @@ export namespace cs {
         version?: string;
     }
 
+    export interface ManagedKubernetesAuditLogConfig {
+        /**
+         * Whether to enable audit logging. Valid values: `true`, `false`.
+         */
+        enabled: boolean;
+        /**
+         * The SLS project to which the Logstore storing the cluster audit logs belongs.
+         */
+        slsProjectName: string;
+    }
+
     export interface ManagedKubernetesCertificateAuthority {
         /**
          * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -23630,7 +23651,7 @@ export namespace ecs {
          */
         autoReleaseTime: string;
         /**
-         * (Available in 1.123.1+) A collection of proprietary host performance indicators.
+         * (Available since v1.123.1) A collection of proprietary host performance indicators.
          */
         capacities: outputs.ecs.GetDedicatedHostsHostCapacity[];
         /**
@@ -23638,7 +23659,7 @@ export namespace ecs {
          */
         cores: number;
         /**
-         * (Available in 1.123.1+) CPU oversold ratio.
+         * (Available since v1.123.1) CPU oversold ratio.
          */
         cpuOverCommitRatio: number;
         /**
@@ -23670,6 +23691,10 @@ export namespace ecs {
          */
         id: string;
         /**
+         * (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+         */
+        instances: outputs.ecs.GetDedicatedHostsHostInstance[];
+        /**
          * The machine code of the dedicated host.
          */
         machineId: string;
@@ -23678,7 +23703,7 @@ export namespace ecs {
          */
         networkAttributes: outputs.ecs.GetDedicatedHostsHostNetworkAttribute[];
         /**
-         * The reason why the dedicated host resource is locked.
+         * The reason why the dedicated host resource is locked. See `operationLocks` below.
          */
         operationLocks: outputs.ecs.GetDedicatedHostsHostOperationLock[];
         /**
@@ -23702,19 +23727,19 @@ export namespace ecs {
          */
         sockets: number;
         /**
-         * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+         * The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
          */
         status: string;
         /**
-         * (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+         * (Available since v1.123.1) A custom instance type family supported by a dedicated host.
          */
         supportedCustomInstanceTypeFamilies: string[];
         /**
-         * (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+         * (Available since v1.123.1) ECS instance type family supported by the dedicated host.
          */
         supportedInstanceTypeFamilies: string[];
         /**
-         * The list of ECS instance
+         * The list of ECS instance.
          */
         supportedInstanceTypesLists: string[];
         /**
@@ -23766,13 +23791,32 @@ export namespace ecs {
         totalVgpus: number;
     }
 
+    export interface GetDedicatedHostsHostInstance {
+        /**
+         * The ID of the ECS instance.
+         */
+        instanceId: string;
+        /**
+         * The ID of the ECS instance owner.
+         */
+        instanceOwnerId: number;
+        /**
+         * The instance type of the ECS instance that was created on the dedicated host.
+         */
+        instanceType: string;
+        /**
+         * The ID of the socket to which the ECS instance belongs.
+         */
+        socketId: string;
+    }
+
     export interface GetDedicatedHostsHostNetworkAttribute {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
          */
         slbUdpTimeout: number;
         /**
-         * (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+         * (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
          */
         udpTimeout: number;
     }
@@ -25947,7 +25991,7 @@ export namespace ecs {
          * });
          * ```
          */
-        tags?: {[key: string]: string};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC linked to the instances.
          */
@@ -26457,6 +26501,10 @@ export namespace ecs {
          */
         autoSnapshotPolicyId?: string;
         /**
+         * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         */
+        burstingEnabled?: boolean;
+        /**
          * The category of the disk:
          */
         category?: string;
@@ -26493,6 +26541,10 @@ export namespace ecs {
          * Default to `PL1`.
          */
         performanceLevel: string;
+        /**
+         * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+         */
+        provisionedIops?: number;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -31949,7 +32001,23 @@ export namespace ess {
          */
         cooldown: number;
         /**
-         * ID of the scaling rule.
+         * (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+         */
+        disableScaleIn: boolean;
+        /**
+         * (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+         */
+        estimatedInstanceWarmup: number;
+        /**
+         * (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+         */
+        hybridMetrics: outputs.ess.GetScalingRulesRuleHybridMetric[];
+        /**
+         * (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+         */
+        hybridMonitorNamespace: string;
+        /**
+         * (Available since v1.250.0) The reference ID of the metric in the metric expression.
          */
         id: string;
         /**
@@ -31957,9 +32025,13 @@ export namespace ess {
          */
         initialMaxSize: number;
         /**
-         * (Available since v1.242.0) The predefined metric of the scaling rule.
+         * (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
          */
         metricName: string;
+        /**
+         * (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+         */
+        metricType: string;
         /**
          * Min adjustment magnitude of scaling rule.
          */
@@ -31985,6 +32057,14 @@ export namespace ess {
          */
         predictiveValueBuffer: number;
         /**
+         * (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+         */
+        scaleInEvaluationCount: number;
+        /**
+         * (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+         */
+        scaleOutEvaluationCount: number;
+        /**
          * Scaling group id the scaling rules belong to.
          */
         scalingGroupId: string;
@@ -31993,6 +32073,10 @@ export namespace ess {
          */
         scalingRuleAri: string;
         /**
+         * (Available since v1.250.0) The step adjustments of the step scaling rule.
+         */
+        stepAdjustments: outputs.ess.GetScalingRulesRuleStepAdjustment[];
+        /**
          * (Available since v1.242.0) The target value of the metric.
          */
         targetValue: number;
@@ -32000,6 +32084,55 @@ export namespace ess {
          * Type of scaling rule.
          */
         type: string;
+    }
+
+    export interface GetScalingRulesRuleHybridMetric {
+        /**
+         * (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+         */
+        dimensions: outputs.ess.GetScalingRulesRuleHybridMetricDimension[];
+        /**
+         * (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+         */
+        expression: string;
+        /**
+         * (Available since v1.250.0) The reference ID of the metric in the metric expression.
+         */
+        id: string;
+        /**
+         * (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+         */
+        metricName: string;
+        /**
+         * (Available since v1.250.0) The statistical method of the metric data.
+         */
+        statistic: string;
+    }
+
+    export interface GetScalingRulesRuleHybridMetricDimension {
+        /**
+         * (Available since v1.250.0) The dimension key of the metric.
+         */
+        dimensionKey: string;
+        /**
+         * (Available since v1.250.0) The dimension value of the metric.
+         */
+        dimensionValue: string;
+    }
+
+    export interface GetScalingRulesRuleStepAdjustment {
+        /**
+         * (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+         */
+        metricIntervalLowerBound: string;
+        /**
+         * (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+         */
+        metricIntervalUpperBound: string;
+        /**
+         * (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+         */
+        scalingAdjustment: number;
     }
 
     export interface GetScheduledTasksTask {
@@ -33674,6 +33807,76 @@ export namespace fc {
          * Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
          */
         type: string;
+    }
+
+    export interface GetV3TriggersTrigger {
+        /**
+         * Creation time
+         */
+        createTime: string;
+        /**
+         * Description of the trigger
+         */
+        description: string;
+        /**
+         * HTTP trigger information
+         */
+        httpTrigger: outputs.fc.GetV3TriggersTriggerHttpTrigger;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The role required by the event source (such as OSS) to call the function.
+         */
+        invocationRole: string;
+        /**
+         * The last modified time of the trigger
+         */
+        lastModifiedTime: string;
+        /**
+         * The version or alias of the function
+         */
+        qualifier: string;
+        /**
+         * Trigger Event source ARN
+         */
+        sourceArn: string;
+        /**
+         * The state of the trigger
+         */
+        status: string;
+        /**
+         * Resource identity of the function
+         */
+        targetArn: string;
+        /**
+         * Trigger configuration. The configuration varies for different types of triggers.
+         */
+        triggerConfig: string;
+        /**
+         * Trigger ID
+         */
+        triggerId: string;
+        /**
+         * Trigger Name
+         */
+        triggerName: string;
+        /**
+         * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
+         */
+        triggerType: string;
+    }
+
+    export interface GetV3TriggersTriggerHttpTrigger {
+        /**
+         * The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+         */
+        urlInternet: string;
+        /**
+         * The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+         */
+        urlIntranet: string;
     }
 
     export interface GetZonesZone {
@@ -42787,7 +42990,7 @@ export namespace oos {
 
     export interface GetParametersParameter {
         /**
-         * The constraints of the common parameter.
+         * The constraints of the common parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
          */
         constraints: string;
         /**
@@ -42811,7 +43014,7 @@ export namespace oos {
          */
         parameterId: string;
         /**
-         * The name of the common parameter.
+         * The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
          */
         parameterName: string;
         /**
@@ -42827,11 +43030,11 @@ export namespace oos {
          */
         shareType: string;
         /**
-         * The tag of the resource.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
         /**
-         * The data type of the common parameter.
+         * The data type of the common parameter. Valid values: `String`, `StringList`.
          */
         type: string;
         /**
@@ -42843,7 +43046,7 @@ export namespace oos {
          */
         updatedDate: string;
         /**
-         * The value of the common parameter.
+         * (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enableDetails` is set to `true`.
          */
         value: string;
     }
@@ -45662,119 +45865,122 @@ export namespace pvtz {
 
     export interface GetZoneRecordsRecord {
         /**
-         * ID of the Private Zone Record.
+         * The ID of the Private Zone Record.
          */
         id: string;
         /**
-         * Priority of the Private Zone Record.
+         * The priority of the MX record.
          */
         priority: number;
         /**
-         * RecordId of the Private Zone Record.
+         * The ID of the Record.
          */
         recordId: string;
         /**
-         * Remark of the Private Zone Record.
+         * The description of the Private Zone Record.
          */
         remark: string;
         /**
-         * Resource record of the Private Zone Record.
+         * The hostname of the Private Zone Record.
          */
         resourceRecord: string;
         /**
-         * Rr of the Private Zone Record.
+         * The hostname of the Private Zone Record.
          */
         rr: string;
         /**
-         * Resolve record status. Value:
-         * - ENABLE: enable resolution.
-         * - DISABLE: pause parsing.
+         * The status of the Resolve record. Valid values:
+         * - `ENABLE`: Enable resolution.
+         * - `DISABLE`: Pause parsing.
          */
         status: string;
         /**
-         * Ttl of the Private Zone Record.
+         * The time to live (TTL) of the Private Zone Record.
          */
         ttl: number;
         /**
-         * Type of the Private Zone Record.
+         * The type of the Private Zone Record.
          */
         type: string;
         /**
-         * Value of the Private Zone Record.
+         * The value of the Private Zone Record.
          */
         value: string;
     }
 
     export interface GetZonesZone {
         /**
-         * List of the VPCs is bound to the Private Zone:
+         * The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
          */
         bindVpcs: outputs.pvtz.GetZonesZoneBindVpc[];
         /**
-         * Time of create of the Private Zone.
+         * The time when the zone was created.
          */
         createTimestamp: number;
         creationTime: string;
         /**
-         * ID of the Private Zone.
+         * The ID of the Private Zone.
          */
         id: string;
         /**
-         * Whether the Private Zone is ptr.
+         * Indicates whether the zone is a reverse lookup zone.
          */
         isPtr: boolean;
         /**
-         * Name of the Private Zone.
+         * The Name of the Zone.
          */
         name: string;
         /**
-         * The recursive DNS proxy.
+         * Indicates whether the recursive resolution proxy for subdomain names is enabled.
          */
         proxyPattern: string;
         /**
-         * Count of the Private Zone Record.
+         * The number of Domain Name System (DNS) records added in the zone.
          */
         recordCount: number;
         /**
-         * Remark of the Private Zone.
+         * The description of the zone.
          */
         remark: string;
         /**
-         * resource_group_id for zone resourceGroupId.
+         * The ID of the resource group to which the zone belongs.
          */
         resourceGroupId: string;
         /**
-         * Whether to turn on secondary DNS.
+         * Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
          */
         slaveDns: boolean;
         updateTime: string;
         /**
-         * Time of update of the Private Zone.
+         * The time when the DNS record was updated.
          */
         updateTimestamp: number;
         /**
-         * ZoneId of the Private Zone.
+         * The ID of the Zone.
          */
         zoneId: string;
         /**
-         * ZoneName of the Private Zone.
+         * The Name of the Private Zone.
          */
         zoneName: string;
     }
 
     export interface GetZonesZoneBindVpc {
         /**
-         * Binding the regionId of VPC.
+         * The region ID of the VPC.
          */
         regionId: string;
         /**
-         * Binding the regionName of VPC.
+         * The name of the region where the VPC resides.
          */
         regionName: string;
         /**
-         * Binding the vpcId of VPC.
+         * The ID of the VPC.
          */
         vpcId: string;
+        /**
+         * The Name of the VPC.
+         */
         vpcName: string;
     }
 
@@ -54247,6 +54453,362 @@ export namespace sls {
          * The ARN role that authorizes writing to the target Logstore.
          */
         roleArn: string;
+    }
+
+    export interface GetAlertsAlert {
+        /**
+         * Alert rule ID, unique under Project
+         */
+        alertName: string;
+        /**
+         * Detailed configuration of alarm monitoring rules
+         */
+        configuration: outputs.sls.GetAlertsAlertConfiguration;
+        /**
+         * Compatible fields, set to empty strings.
+         */
+        description: string;
+        /**
+         * Display name of the alarm rule
+         */
+        displayName: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Check the frequency-dependent configuration
+         */
+        schedule: outputs.sls.GetAlertsAlertSchedule;
+    }
+
+    export interface GetAlertsAlertConfiguration {
+        /**
+         * Template Annotations.
+         */
+        annotations: outputs.sls.GetAlertsAlertConfigurationAnnotation[];
+        /**
+         * Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+         */
+        autoAnnotation: boolean;
+        /**
+         * Alarm trigger condition.
+         */
+        conditionConfiguration: outputs.sls.GetAlertsAlertConfigurationConditionConfiguration;
+        /**
+         * The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+         */
+        dashboard: string;
+        /**
+         * Group evaluation configuration.
+         */
+        groupConfiguration: outputs.sls.GetAlertsAlertConfigurationGroupConfiguration;
+        /**
+         * Set operation configuration.
+         */
+        joinConfigurations: outputs.sls.GetAlertsAlertConfigurationJoinConfiguration[];
+        /**
+         * Label.
+         */
+        labels: outputs.sls.GetAlertsAlertConfigurationLabel[];
+        /**
+         * Second-level timestamp representing the temporary shutdown deadline.
+         */
+        muteUntil: number;
+        /**
+         * Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+         */
+        noDataFire: boolean;
+        /**
+         * Alarm severity when no data triggers an alarm.
+         */
+        noDataSeverity: number;
+        /**
+         * Alert policy configuration.
+         */
+        policyConfiguration: outputs.sls.GetAlertsAlertConfigurationPolicyConfiguration;
+        /**
+         * Query the statistical list.
+         */
+        queryLists: outputs.sls.GetAlertsAlertConfigurationQueryList[];
+        /**
+         * Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+         */
+        sendResolved: boolean;
+        /**
+         * Trigger condition, set at least one trigger condition.
+         */
+        severityConfigurations: outputs.sls.GetAlertsAlertConfigurationSeverityConfiguration[];
+        /**
+         * Configuration of Alerts Sent to Alerthub.
+         */
+        sinkAlerthub: outputs.sls.GetAlertsAlertConfigurationSinkAlerthub;
+        /**
+         * Configure alerts sent to CloudMonitor.
+         */
+        sinkCms: outputs.sls.GetAlertsAlertConfigurationSinkCms;
+        /**
+         * Configuration of sending alarms to EventStore.
+         */
+        sinkEventStore: outputs.sls.GetAlertsAlertConfigurationSinkEventStore;
+        /**
+         * Customize the category of alarm monitoring rules.
+         */
+        tags: string[];
+        /**
+         * Alarm rule template configuration.
+         */
+        templateConfiguration: outputs.sls.GetAlertsAlertConfigurationTemplateConfiguration;
+        /**
+         * Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+         */
+        threshold: number;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type: string;
+        /**
+         * Fixed as 2.0.
+         */
+        version: string;
+    }
+
+    export interface GetAlertsAlertConfigurationAnnotation {
+        /**
+         * Field name.
+         */
+        key: string;
+        /**
+         * Field value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertsAlertConfigurationConditionConfiguration {
+        /**
+         * Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+         */
+        condition: string;
+        /**
+         * The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+         */
+        countCondition: string;
+    }
+
+    export interface GetAlertsAlertConfigurationGroupConfiguration {
+        /**
+         * The field used for grouping evaluation.When type is set to custom, fields must be set.
+         */
+        fields: string[];
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type: string;
+    }
+
+    export interface GetAlertsAlertConfigurationJoinConfiguration {
+        /**
+         * Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+         */
+        condition: string;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type: string;
+    }
+
+    export interface GetAlertsAlertConfigurationLabel {
+        /**
+         * Field name.
+         */
+        key: string;
+        /**
+         * Field value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertsAlertConfigurationPolicyConfiguration {
+        /**
+         * The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+         */
+        actionPolicyId: string;
+        /**
+         * Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+         */
+        alertPolicyId: string;
+        /**
+         * Repeat the waiting time. For example, 5m, 1H, etc.
+         */
+        repeatInterval: string;
+    }
+
+    export interface GetAlertsAlertConfigurationQueryList {
+        /**
+         * Chart Name.
+         */
+        chartTitle: string;
+        /**
+         * Dashboard ID.
+         */
+        dashboardId: string;
+        /**
+         * End time. When storeType is set to log or metric, end must be set.
+         */
+        end: string;
+        /**
+         * Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+         */
+        powerSqlMode: string;
+        /**
+         * Project Name.
+         */
+        project: string;
+        /**
+         * Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+         */
+        query: string;
+        /**
+         * Region of the target Project.
+         */
+        region: string;
+        /**
+         * Roles used to write alarm data to the event Library.
+         */
+        roleArn: string;
+        /**
+         * Start time. When storeType is set to log or metric, start must be set.
+         */
+        start: string;
+        /**
+         * Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+         */
+        store: string;
+        /**
+         * Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+         */
+        storeType: string;
+        /**
+         * Time Type.
+         */
+        timeSpanType: string;
+        /**
+         * Use of specific scene alarm front end.
+         */
+        ui: string;
+    }
+
+    export interface GetAlertsAlertConfigurationSeverityConfiguration {
+        /**
+         * Trigger condition.
+         */
+        evalCondition: outputs.sls.GetAlertsAlertConfigurationSeverityConfigurationEvalCondition;
+        /**
+         * Alarm severity.
+         */
+        severity: number;
+    }
+
+    export interface GetAlertsAlertConfigurationSeverityConfigurationEvalCondition {
+        /**
+         * Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+         */
+        condition: string;
+        /**
+         * The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+         */
+        countCondition: string;
+    }
+
+    export interface GetAlertsAlertConfigurationSinkAlerthub {
+        /**
+         * Open.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetAlertsAlertConfigurationSinkCms {
+        /**
+         * Open.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetAlertsAlertConfigurationSinkEventStore {
+        /**
+         * Open.
+         */
+        enabled: boolean;
+        /**
+         * SLS service endpoint.
+         */
+        endpoint: string;
+        /**
+         * Event Library Name.
+         */
+        eventStore: string;
+        /**
+         * Project Name.
+         */
+        project: string;
+        /**
+         * Roles used to write alarm data to the event Library.
+         */
+        roleArn: string;
+    }
+
+    export interface GetAlertsAlertConfigurationTemplateConfiguration {
+        /**
+         * Template Annotations.
+         */
+        annotations: {[key: string]: string};
+        /**
+         * Template Language.
+         */
+        lang: string;
+        /**
+         * Template ID.
+         */
+        templateId: string;
+        /**
+         * Template Variables.
+         */
+        tokens: {[key: string]: string};
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type: string;
+        /**
+         * Fixed as 2.0.
+         */
+        version: string;
+    }
+
+    export interface GetAlertsAlertSchedule {
+        /**
+         * Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+         */
+        cronExpression: string;
+        /**
+         * Timed task execution delay (unit: s).
+         */
+        delay: number;
+        /**
+         * Fixed interval for scheduling.
+         */
+        interval: string;
+        /**
+         * Dispatch immediately.
+         */
+        runImmdiately: boolean;
+        /**
+         * The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+         */
+        timeZone: string;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type: string;
     }
 
     export interface OssExportSinkConfiguration {

@@ -1594,6 +1594,10 @@ if not MYPY:
         """
         The ID of the automatic snapshot policy applied to the system disk.
         """
+        bursting_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
         category: NotRequired[pulumi.Input[builtins.str]]
         """
         The category of the disk:
@@ -1631,6 +1635,10 @@ if not MYPY:
         - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         Default to `PL1`.
         """
+        provisioned_iops: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+        """
         snapshot_id: NotRequired[pulumi.Input[builtins.str]]
         """
         The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
@@ -1643,6 +1651,7 @@ class InstanceDataDiskArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[builtins.int],
                  auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  category: Optional[pulumi.Input[builtins.str]] = None,
                  delete_with_instance: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -1651,6 +1660,7 @@ class InstanceDataDiskArgs:
                  kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
                  snapshot_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] size: The size of the data disk.
@@ -1660,6 +1670,7 @@ class InstanceDataDiskArgs:
                - cloud_essd：[20, 32768]
                - ephemeral_ssd: [5, 800]
         :param pulumi.Input[builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param pulumi.Input[builtins.str] category: The category of the disk:
         :param pulumi.Input[builtins.bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param pulumi.Input[builtins.str] description: The description of the data disk.
@@ -1673,11 +1684,14 @@ class InstanceDataDiskArgs:
                - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
                - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
                Default to `PL1`.
+        :param pulumi.Input[builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
         :param pulumi.Input[builtins.str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
@@ -1694,6 +1708,8 @@ class InstanceDataDiskArgs:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
 
@@ -1725,6 +1741,18 @@ class InstanceDataDiskArgs:
     @auto_snapshot_policy_id.setter
     def auto_snapshot_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "auto_snapshot_policy_id", value)
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "bursting_enabled", value)
 
     @property
     @pulumi.getter
@@ -1826,6 +1854,18 @@ class InstanceDataDiskArgs:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
 
     @property
     @pulumi.getter(name="snapshotId")

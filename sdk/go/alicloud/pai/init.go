@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceModelVersion{}
 	case "alicloud:pai/workspaceRun:WorkspaceRun":
 		r = &WorkspaceRun{}
+	case "alicloud:pai/workspaceUserConfig:WorkspaceUserConfig":
+		r = &WorkspaceUserConfig{}
 	case "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace":
 		r = &WorkspaceWorkspace{}
 	default:
@@ -104,6 +106,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"pai/workspaceRun",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceUserConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -248,17 +248,13 @@ class ListenerAccessLogTracingConfig(dict):
                  tracing_sample: Optional[builtins.int] = None,
                  tracing_type: Optional[builtins.str] = None):
         """
-        :param builtins.bool tracing_enabled: Xtrace Function.
+        :param builtins.bool tracing_enabled: Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
+        :param builtins.int tracing_sample: Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
+        :param builtins.str tracing_type: Xtrace Type Value Is `Zipkin`.
                
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
-        :param builtins.int tracing_sample: Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
-        :param builtins.str tracing_type: Xtrace Type Value Is **Zipkin * *.
-               
-               > **NOTE:**  `tracingenabled` **True When Effective.
+               > **NOTE:**  `tracingenabled` valued True When Effective.
         """
         pulumi.set(__self__, "tracing_enabled", tracing_enabled)
         if tracing_sample is not None:
@@ -270,13 +266,9 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingEnabled")
     def tracing_enabled(self) -> builtins.bool:
         """
-        Xtrace Function.
+        Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -284,7 +276,7 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingSample")
     def tracing_sample(self) -> Optional[builtins.int]:
         """
-        Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+        Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -292,9 +284,9 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingType")
     def tracing_type(self) -> Optional[builtins.str]:
         """
-        Xtrace Type Value Is **Zipkin * *.
+        Xtrace Type Value Is `Zipkin`.
 
-        > **NOTE:**  `tracingenabled` **True When Effective.
+        > **NOTE:**  `tracingenabled` valued True When Effective.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -492,7 +484,7 @@ class ListenerDefaultAction(dict):
                  type: builtins.str,
                  forward_group_config: Optional['outputs.ListenerDefaultActionForwardGroupConfig'] = None):
         """
-        :param builtins.str type: Action Type
+        :param builtins.str type: The action type. Value: ForwardGroup, indicating forwarding to the server group.
         :param 'ListenerDefaultActionForwardGroupConfigArgs' forward_group_config: Forwarding Action Configurations See `forward_group_config` below.
         """
         pulumi.set(__self__, "type", type)
@@ -503,7 +495,7 @@ class ListenerDefaultAction(dict):
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        Action Type
+        The action type. Value: ForwardGroup, indicating forwarding to the server group.
         """
         return pulumi.get(self, "type")
 
@@ -715,35 +707,11 @@ class ListenerXForwardedForConfig(dict):
         :param builtins.str x_forwarded_for_client_cert_subject_dn_alias: The Custom Header Field Name,
         :param builtins.bool x_forwarded_for_client_cert_subject_dn_enabled: Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
         :param builtins.bool x_forwarded_for_client_source_ips_enabled: Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-               
-               true: Yes.
-               
-               false (default): No.
-               
-               Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
-        :param builtins.str x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP.
-               
-               Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        :param builtins.str x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         :param builtins.bool x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         :param builtins.bool x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         :param builtins.bool x_forwarded_for_host_enabled: Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-               
-               true: Yes.
-               
-               false (default): No.
-               
-               HTTP, HTTPS, and QUIC listeners support this parameter.
         :param builtins.str x_forwarded_for_processing_mode: Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-               
-               append (default): append.
-               
-               remove: Delete.
-               
-               Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-               
-               Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-               
-               HTTP and HTTPS listeners support this parameter.
         :param builtins.bool x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         :param builtins.bool x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
         :param builtins.bool x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
@@ -852,12 +820,6 @@ class ListenerXForwardedForConfig(dict):
     def x_forwarded_for_client_source_ips_enabled(self) -> Optional[builtins.bool]:
         """
         Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_enabled")
 
@@ -865,9 +827,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientSourceIpsTrusted")
     def x_forwarded_for_client_source_ips_trusted(self) -> Optional[builtins.str]:
         """
-        Specify the trusted proxy IP.
-
-        Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_trusted")
 
@@ -892,12 +852,6 @@ class ListenerXForwardedForConfig(dict):
     def x_forwarded_for_host_enabled(self) -> Optional[builtins.bool]:
         """
         Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-
-        true: Yes.
-
-        false (default): No.
-
-        HTTP, HTTPS, and QUIC listeners support this parameter.
         """
         return pulumi.get(self, "x_forwarded_for_host_enabled")
 
@@ -906,16 +860,6 @@ class ListenerXForwardedForConfig(dict):
     def x_forwarded_for_processing_mode(self) -> Optional[builtins.str]:
         """
         Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-
-        append (default): append.
-
-        remove: Delete.
-
-        Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-
-        Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-
-        HTTP and HTTPS listeners support this parameter.
         """
         return pulumi.get(self, "x_forwarded_for_processing_mode")
 
@@ -4462,10 +4406,8 @@ class GetLoadBalancersBalancerResult(dict):
                  zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']):
         """
         :param Sequence['GetLoadBalancersBalancerAccessLogConfigArgs'] access_log_configs: The Access Logging Configuration Structure.
-        :param builtins.str address_allocated_mode: The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-               uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-               instance.
-        :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services.
+        :param builtins.str address_allocated_mode: The method in which IP addresses are assigned.
+        :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
         :param builtins.str bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
                public IP address.
         :param builtins.str create_time: The creation time of the resource.
@@ -4473,18 +4415,18 @@ class GetLoadBalancersBalancerResult(dict):
         :param builtins.str dns_name: DNS Domain Name.
         :param builtins.str id: The ID of the Load Balancer.
         :param Sequence['GetLoadBalancersBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_configs: The configuration of the billing method.
-        :param builtins.str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
-        :param builtins.str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+        :param builtins.str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
+        :param builtins.str load_balancer_bussiness_status: Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
         :param builtins.str load_balancer_edition: The edition of the ALB instance.
         :param builtins.str load_balancer_id: The first ID of the resource.
         :param builtins.str load_balancer_name: The name of the resource.
         :param Sequence['GetLoadBalancersBalancerLoadBalancerOperationLockArgs'] load_balancer_operation_locks: The Load Balancing Operations Lock Configuration.
         :param Sequence['GetLoadBalancersBalancerModificationProtectionConfigArgs'] modification_protection_configs: Modify the Protection Configuration.
         :param builtins.str resource_group_id: The ID of the resource group.
-        :param builtins.str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-        :param Mapping[str, builtins.str] tags: The tag of the resource.
+        :param builtins.str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
         :param builtins.str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-        :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and vSwitches. You must specify at least two zones.
+        :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and vSwitches.
         """
         pulumi.set(__self__, "access_log_configs", access_log_configs)
         pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
@@ -4520,9 +4462,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="addressAllocatedMode")
     def address_allocated_mode(self) -> builtins.str:
         """
-        The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
-        uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
-        instance.
+        The method in which IP addresses are assigned.
         """
         return pulumi.get(self, "address_allocated_mode")
 
@@ -4530,7 +4470,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> builtins.str:
         """
-        The type of IP address that the ALB instance uses to provide services.
+        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
         """
         return pulumi.get(self, "address_type")
 
@@ -4587,7 +4527,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="loadBalancerBusinessStatus")
     def load_balancer_business_status(self) -> builtins.str:
         """
-        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
         """
         return pulumi.get(self, "load_balancer_business_status")
 
@@ -4596,7 +4536,7 @@ class GetLoadBalancersBalancerResult(dict):
     @_utilities.deprecated("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.""")
     def load_balancer_bussiness_status(self) -> builtins.str:
         """
-        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+        Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
         """
         return pulumi.get(self, "load_balancer_bussiness_status")
 
@@ -4652,7 +4592,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         """
         return pulumi.get(self, "status")
 
@@ -4660,7 +4600,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -4676,7 +4616,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']:
         """
-        The zones and vSwitches. You must specify at least two zones.
+        The zones and vSwitches.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -4744,7 +4684,7 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
     def __init__(__self__, *,
                  pay_type: builtins.str):
         """
-        :param builtins.str pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        :param builtins.str pay_type: The billing method of the ALB instance.
         """
         pulumi.set(__self__, "pay_type", pay_type)
 
@@ -4752,7 +4692,7 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
     @pulumi.getter(name="payType")
     def pay_type(self) -> builtins.str:
         """
-        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        The billing method of the ALB instance.
         """
         return pulumi.get(self, "pay_type")
 
@@ -4764,7 +4704,7 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
                  lock_type: builtins.str):
         """
         :param builtins.str lock_reason: The Locking of the Reasons.
-        :param builtins.str lock_type: The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        :param builtins.str lock_type: The Locking of the Type.
         """
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "lock_type", lock_type)
@@ -4781,7 +4721,7 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
     @pulumi.getter(name="lockType")
     def lock_type(self) -> builtins.str:
         """
-        The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        The Locking of the Type.
         """
         return pulumi.get(self, "lock_type")
 
@@ -4792,10 +4732,8 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
                  reason: builtins.str,
                  status: builtins.str):
         """
-        :param builtins.str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
-        :param builtins.str status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-               * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-               * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+        :param builtins.str reason: The reason for modification protection.
+        :param builtins.str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         """
         pulumi.set(__self__, "reason", reason)
         pulumi.set(__self__, "status", status)
@@ -4804,7 +4742,7 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
     @pulumi.getter
     def reason(self) -> builtins.str:
         """
-        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        The reason for modification protection.
         """
         return pulumi.get(self, "reason")
 
@@ -4812,9 +4750,7 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-        * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-        * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+        The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         """
         return pulumi.get(self, "status")
 
@@ -4823,26 +4759,41 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
 class GetLoadBalancersBalancerZoneMappingResult(dict):
     def __init__(__self__, *,
                  load_balancer_addresses: Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult'],
+                 status: builtins.str,
                  vswitch_id: builtins.str,
                  zone_id: builtins.str):
         """
-        :param builtins.str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        :param builtins.str zone_id: The ID of the zone to which the ALB instance belongs.
+        :param Sequence['GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: (Available since v1.250.0) The address of the ALB instance.
+        :param builtins.str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        :param builtins.str vswitch_id: The ID of the vSwitch that corresponds to the zone.
+        :param builtins.str zone_id: The zone ID of the resource.
         """
         pulumi.set(__self__, "load_balancer_addresses", load_balancer_addresses)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="loadBalancerAddresses")
     def load_balancer_addresses(self) -> Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult']:
+        """
+        (Available since v1.250.0) The address of the ALB instance.
+        """
         return pulumi.get(self, "load_balancer_addresses")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> builtins.str:
         """
-        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        The ID of the vSwitch that corresponds to the zone.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -4850,7 +4801,7 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        The ID of the zone to which the ALB instance belongs.
+        The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -4858,13 +4809,107 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
 @pulumi.output_type
 class GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult(dict):
     def __init__(__self__, *,
-                 address: builtins.str):
+                 address: builtins.str,
+                 allocation_id: builtins.str,
+                 eip_type: builtins.str,
+                 intranet_address: builtins.str,
+                 intranet_address_hc_status: builtins.str,
+                 ipv4_local_addresses: Sequence[builtins.str],
+                 ipv6_address: builtins.str,
+                 ipv6_address_hc_status: builtins.str,
+                 ipv6_local_addresses: Sequence[builtins.str]):
+        """
+        :param builtins.str address: IPv4 address.
+        :param builtins.str allocation_id: The elastic IP address (EIP).
+        :param builtins.str eip_type: The type of EIP.
+        :param builtins.str intranet_address: The private IPv4 address.
+        :param builtins.str intranet_address_hc_status: The health status of the private IPv4 address of the ALB instance.
+        :param Sequence[builtins.str] ipv4_local_addresses: The IPv4 link-local addresses.
+        :param builtins.str ipv6_address: IPv6 address.
+        :param builtins.str ipv6_address_hc_status: The health status of the private IPv6 address of the ALB instance.
+        :param Sequence[builtins.str] ipv6_local_addresses: The IPv6 link-local addresses.
+        """
         pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "eip_type", eip_type)
+        pulumi.set(__self__, "intranet_address", intranet_address)
+        pulumi.set(__self__, "intranet_address_hc_status", intranet_address_hc_status)
+        pulumi.set(__self__, "ipv4_local_addresses", ipv4_local_addresses)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
+        pulumi.set(__self__, "ipv6_address_hc_status", ipv6_address_hc_status)
+        pulumi.set(__self__, "ipv6_local_addresses", ipv6_local_addresses)
 
     @property
     @pulumi.getter
     def address(self) -> builtins.str:
+        """
+        IPv4 address.
+        """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> builtins.str:
+        """
+        The elastic IP address (EIP).
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter(name="eipType")
+    def eip_type(self) -> builtins.str:
+        """
+        The type of EIP.
+        """
+        return pulumi.get(self, "eip_type")
+
+    @property
+    @pulumi.getter(name="intranetAddress")
+    def intranet_address(self) -> builtins.str:
+        """
+        The private IPv4 address.
+        """
+        return pulumi.get(self, "intranet_address")
+
+    @property
+    @pulumi.getter(name="intranetAddressHcStatus")
+    def intranet_address_hc_status(self) -> builtins.str:
+        """
+        The health status of the private IPv4 address of the ALB instance.
+        """
+        return pulumi.get(self, "intranet_address_hc_status")
+
+    @property
+    @pulumi.getter(name="ipv4LocalAddresses")
+    def ipv4_local_addresses(self) -> Sequence[builtins.str]:
+        """
+        The IPv4 link-local addresses.
+        """
+        return pulumi.get(self, "ipv4_local_addresses")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> builtins.str:
+        """
+        IPv6 address.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @property
+    @pulumi.getter(name="ipv6AddressHcStatus")
+    def ipv6_address_hc_status(self) -> builtins.str:
+        """
+        The health status of the private IPv6 address of the ALB instance.
+        """
+        return pulumi.get(self, "ipv6_address_hc_status")
+
+    @property
+    @pulumi.getter(name="ipv6LocalAddresses")
+    def ipv6_local_addresses(self) -> Sequence[builtins.str]:
+        """
+        The IPv6 link-local addresses.
+        """
+        return pulumi.get(self, "ipv6_local_addresses")
 
 
 @pulumi.output_type

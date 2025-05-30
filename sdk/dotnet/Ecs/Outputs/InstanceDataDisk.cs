@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
+        /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        /// </summary>
+        public readonly bool? BurstingEnabled;
+        /// <summary>
         /// The category of the disk:
         /// </summary>
         public readonly string? Category;
@@ -55,6 +59,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+        /// </summary>
+        public readonly int? ProvisionedIops;
+        /// <summary>
         /// The size of the data disk.
         /// - cloud：[5, 2000]
         /// - cloud_efficiency：[20, 32768]
@@ -72,6 +80,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         private InstanceDataDisk(
             string? autoSnapshotPolicyId,
 
+            bool? burstingEnabled,
+
             string? category,
 
             bool? deleteWithInstance,
@@ -88,11 +98,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? performanceLevel,
 
+            int? provisionedIops,
+
             int size,
 
             string? snapshotId)
         {
             AutoSnapshotPolicyId = autoSnapshotPolicyId;
+            BurstingEnabled = burstingEnabled;
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;
@@ -101,6 +114,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             KmsKeyId = kmsKeyId;
             Name = name;
             PerformanceLevel = performanceLevel;
+            ProvisionedIops = provisionedIops;
             Size = size;
             SnapshotId = snapshotId;
         }

@@ -114,11 +114,9 @@ type Policy struct {
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
 	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-	//
-	// Currently contains:
-	// - None: Turn off the rotation mechanism.
-	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+	// - `None`: Turn off the rotation mechanism.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy pulumi.StringPtrOutput `pulumi:"rotateStrategy"`
 	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
@@ -188,11 +186,9 @@ type policyState struct {
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName *string `pulumi:"policyName"`
-	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-	//
-	// Currently contains:
-	// - None: Turn off the rotation mechanism.
-	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+	// - `None`: Turn off the rotation mechanism.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
 	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
@@ -233,11 +229,9 @@ type PolicyState struct {
 	PolicyDocument pulumi.StringPtrInput
 	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringPtrInput
-	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-	//
-	// Currently contains:
-	// - None: Turn off the rotation mechanism.
-	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+	// - `None`: Turn off the rotation mechanism.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy pulumi.StringPtrInput
 	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
@@ -276,11 +270,9 @@ type policyArgs struct {
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName *string `pulumi:"policyName"`
-	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-	//
-	// Currently contains:
-	// - None: Turn off the rotation mechanism.
-	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+	// - `None`: Turn off the rotation mechanism.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
 	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
@@ -312,11 +304,9 @@ type PolicyArgs struct {
 	PolicyDocument pulumi.StringPtrInput
 	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringPtrInput
-	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-	//
-	// Currently contains:
-	// - None: Turn off the rotation mechanism.
-	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+	// - `None`: Turn off the rotation mechanism.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy pulumi.StringPtrInput
 	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
@@ -466,11 +456,9 @@ func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-//
-// Currently contains:
-// - None: Turn off the rotation mechanism.
-// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+// - `None`: Turn off the rotation mechanism.
+// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 func (o PolicyOutput) RotateStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.RotateStrategy }).(pulumi.StringPtrOutput)
 }

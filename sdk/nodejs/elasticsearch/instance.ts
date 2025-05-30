@@ -98,7 +98,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly enablePublic!: pulumi.Output<boolean | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -426,7 +426,7 @@ export interface InstanceState {
      */
     enablePublic?: pulumi.Input<boolean>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -616,7 +616,7 @@ export interface InstanceArgs {
      */
     enablePublic?: pulumi.Input<boolean>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**

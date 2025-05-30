@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,47 +28,41 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.Parameter("default", new()
+        ///     {
+        ///         ParameterName = name,
+        ///         Value = "tf-testacc-oos_parameter",
+        ///         Type = "String",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Parameter" },
+        ///         },
+        ///     });
+        /// 
         ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Parameter",
-        ///     });
-        /// 
-        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         ResourceGroupId = "example_value",
-        ///     });
-        /// 
-        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         Tags = 
-        ///         {
-        ///             { "Created", "TF" },
-        ///             { "For", "OosParameter" },
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosSecretParameterId0"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -79,7 +73,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -93,47 +87,41 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.Parameter("default", new()
+        ///     {
+        ///         ParameterName = name,
+        ///         Value = "tf-testacc-oos_parameter",
+        ///         Type = "String",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Parameter" },
+        ///         },
+        ///     });
+        /// 
         ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Parameter",
-        ///     });
-        /// 
-        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         ResourceGroupId = "example_value",
-        ///     });
-        /// 
-        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         Tags = 
-        ///         {
-        ///             { "Created", "TF" },
-        ///             { "For", "OosParameter" },
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosSecretParameterId0"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -144,7 +132,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -158,47 +146,41 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.Parameter("default", new()
+        ///     {
+        ///         ParameterName = name,
+        ///         Value = "tf-testacc-oos_parameter",
+        ///         Type = "String",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Parameter" },
+        ///         },
+        ///     });
+        /// 
         ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Parameter",
-        ///     });
-        /// 
-        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         ResourceGroupId = "example_value",
-        ///     });
-        /// 
-        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Parameter",
-        ///         },
-        ///         Tags = 
-        ///         {
-        ///             { "Created", "TF" },
-        ///             { "For", "OosParameter" },
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
-        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosSecretParameterId0"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -211,7 +193,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetParametersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -220,7 +202,7 @@ namespace Pulumi.AliCloud.Oos
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Parameter IDs. Its element value is same as Parameter Name.
+        /// A list of Parameter IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -252,9 +234,15 @@ namespace Pulumi.AliCloud.Oos
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+        /// </summary>
         [Input("sortField")]
         public string? SortField { get; set; }
 
+        /// <summary>
+        /// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+        /// </summary>
         [Input("sortOrder")]
         public string? SortOrder { get; set; }
 
@@ -271,7 +259,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// The data type of the common parameter. Valid values: `String` and `StringList`.
+        /// The data type of the common parameter. Valid values: `String`, `StringList`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -285,7 +273,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetParametersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -294,7 +282,7 @@ namespace Pulumi.AliCloud.Oos
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Parameter IDs. Its element value is same as Parameter Name.
+        /// A list of Parameter IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -326,9 +314,15 @@ namespace Pulumi.AliCloud.Oos
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+        /// </summary>
         [Input("sortField")]
         public Input<string>? SortField { get; set; }
 
+        /// <summary>
+        /// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+        /// </summary>
         [Input("sortOrder")]
         public Input<string>? SortOrder { get; set; }
 
@@ -345,7 +339,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// The data type of the common parameter. Valid values: `String` and `StringList`.
+        /// The data type of the common parameter. Valid values: `String`, `StringList`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -367,14 +361,32 @@ namespace Pulumi.AliCloud.Oos
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Parameter names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the common parameter.
+        /// </summary>
         public readonly string? ParameterName;
+        /// <summary>
+        /// A list of Oos Parameters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetParametersParameterResult> Parameters;
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly string? SortField;
         public readonly string? SortOrder;
+        /// <summary>
+        /// The tags added to the common parameter.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The data type of the common parameter.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]
