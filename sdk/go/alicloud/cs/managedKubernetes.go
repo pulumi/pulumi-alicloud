@@ -57,6 +57,8 @@ type ManagedKubernetes struct {
 	Addons ManagedKubernetesAddonArrayOutput `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
+	// Audit log configuration. See `auditLogConfig` below.
+	AuditLogConfig ManagedKubernetesAuditLogConfigOutput `pulumi:"auditLogConfig"`
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -78,7 +80,7 @@ type ManagedKubernetes struct {
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
 	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-	// * ack.standard : Standard managed clusters.
+	// * ack.standard : Basic managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
@@ -125,6 +127,12 @@ type ManagedKubernetes struct {
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
+	// The profile of cluster. Valid values:
+	// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// * `Acs`: ACS cluster.
+	Profile pulumi.StringOutput `pulumi:"profile"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -219,6 +227,8 @@ type managedKubernetesState struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences []string `pulumi:"apiAudiences"`
+	// Audit log configuration. See `auditLogConfig` below.
+	AuditLogConfig *ManagedKubernetesAuditLogConfig `pulumi:"auditLogConfig"`
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -240,7 +250,7 @@ type managedKubernetesState struct {
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
 	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-	// * ack.standard : Standard managed clusters.
+	// * ack.standard : Basic managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
@@ -287,6 +297,12 @@ type managedKubernetesState struct {
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
+	// The profile of cluster. Valid values:
+	// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// * `Acs`: ACS cluster.
+	Profile *string `pulumi:"profile"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -352,6 +368,8 @@ type ManagedKubernetesState struct {
 	Addons ManagedKubernetesAddonArrayInput
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences pulumi.StringArrayInput
+	// Audit log configuration. See `auditLogConfig` below.
+	AuditLogConfig ManagedKubernetesAuditLogConfigPtrInput
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -373,7 +391,7 @@ type ManagedKubernetesState struct {
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
 	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-	// * ack.standard : Standard managed clusters.
+	// * ack.standard : Basic managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information.
@@ -420,6 +438,12 @@ type ManagedKubernetesState struct {
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
+	// The profile of cluster. Valid values:
+	// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// * `Acs`: ACS cluster.
+	Profile pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -489,6 +513,8 @@ type managedKubernetesArgs struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences []string `pulumi:"apiAudiences"`
+	// Audit log configuration. See `auditLogConfig` below.
+	AuditLogConfig *ManagedKubernetesAuditLogConfig `pulumi:"auditLogConfig"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -506,7 +532,7 @@ type managedKubernetesArgs struct {
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
 	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-	// * ack.standard : Standard managed clusters.
+	// * ack.standard : Basic managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -549,6 +575,12 @@ type managedKubernetesArgs struct {
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
+	// The profile of cluster. Valid values:
+	// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// * `Acs`: ACS cluster.
+	Profile *string `pulumi:"profile"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -603,6 +635,8 @@ type ManagedKubernetesArgs struct {
 	Addons ManagedKubernetesAddonArrayInput
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences pulumi.StringArrayInput
+	// Audit log configuration. See `auditLogConfig` below.
+	AuditLogConfig ManagedKubernetesAuditLogConfigPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -620,7 +654,7 @@ type ManagedKubernetesArgs struct {
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
 	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-	// * ack.standard : Standard managed clusters.
+	// * ack.standard : Basic managed clusters.
 	// * ack.pro.small : Professional managed clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -663,6 +697,12 @@ type ManagedKubernetesArgs struct {
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
+	// The profile of cluster. Valid values:
+	// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// * `Acs`: ACS cluster.
+	Profile pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -808,6 +848,11 @@ func (o ManagedKubernetesOutput) ApiAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.ApiAudiences }).(pulumi.StringArrayOutput)
 }
 
+// Audit log configuration. See `auditLogConfig` below.
+func (o ManagedKubernetesOutput) AuditLogConfig() ManagedKubernetesAuditLogConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesAuditLogConfigOutput { return v.AuditLogConfig }).(ManagedKubernetesAuditLogConfigOutput)
+}
+
 // (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 //
 // Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -844,7 +889,7 @@ func (o ManagedKubernetesOutput) ClusterDomain() pulumi.StringPtrOutput {
 }
 
 // The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-// * ack.standard : Standard managed clusters.
+// * ack.standard : Basic managed clusters.
 // * ack.pro.small : Professional managed clusters.
 func (o ManagedKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
@@ -955,6 +1000,15 @@ func (o ManagedKubernetesOutput) PodCidr() pulumi.StringPtrOutput {
 // [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 func (o ManagedKubernetesOutput) PodVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.PodVswitchIds }).(pulumi.StringArrayOutput)
+}
+
+// The profile of cluster. Valid values:
+// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+// * `Acs`: ACS cluster.
+func (o ManagedKubernetesOutput) Profile() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.Profile }).(pulumi.StringOutput)
 }
 
 // Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.

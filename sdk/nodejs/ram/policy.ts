@@ -133,11 +133,9 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-     *
-     * Currently contains:
-     * - None: Turn off the rotation mechanism.
-     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+     * - `None`: Turn off the rotation mechanism.
+     * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
     public readonly rotateStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -261,11 +259,9 @@ export interface PolicyState {
      */
     policyName?: pulumi.Input<string>;
     /**
-     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-     *
-     * Currently contains:
-     * - None: Turn off the rotation mechanism.
-     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+     * - `None`: Turn off the rotation mechanism.
+     * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
     rotateStrategy?: pulumi.Input<string>;
     /**
@@ -327,11 +323,9 @@ export interface PolicyArgs {
      */
     policyName?: pulumi.Input<string>;
     /**
-     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-     *
-     * Currently contains:
-     * - None: Turn off the rotation mechanism.
-     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+     * - `None`: Turn off the rotation mechanism.
+     * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
     rotateStrategy?: pulumi.Input<string>;
     /**

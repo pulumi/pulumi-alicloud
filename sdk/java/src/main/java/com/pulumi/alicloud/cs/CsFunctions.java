@@ -1429,7 +1429,7 @@ public final class CsFunctions {
     /**
      * This data source provides the details of the Kubernetes version supported by ACK.
      * 
-     * &gt; **NOTE:** Available in 1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -1588,7 +1588,7 @@ public final class CsFunctions {
     /**
      * This data source provides the details of the Kubernetes version supported by ACK.
      * 
-     * &gt; **NOTE:** Available in 1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -1747,7 +1747,7 @@ public final class CsFunctions {
     /**
      * This data source provides the details of the Kubernetes version supported by ACK.
      * 
-     * &gt; **NOTE:** Available in 1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -1906,7 +1906,7 @@ public final class CsFunctions {
     /**
      * This data source provides the details of the Kubernetes version supported by ACK.
      * 
-     * &gt; **NOTE:** Available in 1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 
@@ -2065,7 +2065,7 @@ public final class CsFunctions {
     /**
      * This data source provides the details of the Kubernetes version supported by ACK.
      * 
-     * &gt; **NOTE:** Available in 1.170.0+.
+     * &gt; **NOTE:** Available since v1.170.0.
      * 
      * ## Example Usage
      * 

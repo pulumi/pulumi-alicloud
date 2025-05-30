@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+// This data source provides the Private Zones of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.13.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -22,18 +26,31 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pvtzZonesDs, err := pvtz.GetZones(ctx, &pvtz.GetZonesArgs{
-//				Keyword: pulumi.StringRef(basic.ZoneName),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example.com"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := pvtz.NewZone(ctx, "default", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstZoneId", pvtzZonesDs.Zones[0].Id)
+//			ids := pvtz.GetZonesOutput(ctx, pvtz.GetZonesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("pvtzZonesId0", ids.ApplyT(func(ids pvtz.GetZonesResult) (*string, error) {
+//				return &ids.Zones[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -51,26 +68,27 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of zone IDs.
+	// A list of Zones IDs.
 	Ids []string `pulumi:"ids"`
-	// keyword for zone name.
+	// The keyword of the zone name.
 	Keyword *string `pulumi:"keyword"`
-	// User language.
-	Lang      *string `pulumi:"lang"`
+	// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+	Lang *string `pulumi:"lang"`
+	// A regex string to filter results by Zone name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// query_region_id for zone regionId.
+	// The region ID of the virtual private cloud (VPC) associated with the zone.
 	QueryRegionId *string `pulumi:"queryRegionId"`
-	// query_vpc_id for zone vpcId.
+	// The ID of the VPC associated with the zone.
 	QueryVpcId *string `pulumi:"queryVpcId"`
-	// resource_group_id for zone resourceGroupId.
+	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Search mode. Value:
-	// - LIKE: fuzzy search.
-	// - EXACT: precise search. It is not filled in by default.
+	// The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+	// - `LIKE`: Fuzzy search.
+	// - `EXACT`: Exact search.
 	SearchMode *string `pulumi:"searchMode"`
 }
 
@@ -78,21 +96,20 @@ type GetZonesArgs struct {
 type GetZonesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of zone IDs.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	Keyword   *string  `pulumi:"keyword"`
 	Lang      *string  `pulumi:"lang"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of zone names.
+	// A list of Zone names.
 	Names         []string `pulumi:"names"`
 	OutputFile    *string  `pulumi:"outputFile"`
 	QueryRegionId *string  `pulumi:"queryRegionId"`
 	QueryVpcId    *string  `pulumi:"queryVpcId"`
-	// The Id of resource group which the Private Zone belongs.
+	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	SearchMode      *string `pulumi:"searchMode"`
-	// A list of zones. Each element contains the following attributes:
+	// A list of Zone. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
 
@@ -107,26 +124,27 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of zone IDs.
+	// A list of Zones IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// keyword for zone name.
+	// The keyword of the zone name.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
-	// User language.
-	Lang      pulumi.StringPtrInput `pulumi:"lang"`
+	// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// A regex string to filter results by Zone name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// query_region_id for zone regionId.
+	// The region ID of the virtual private cloud (VPC) associated with the zone.
 	QueryRegionId pulumi.StringPtrInput `pulumi:"queryRegionId"`
-	// query_vpc_id for zone vpcId.
+	// The ID of the VPC associated with the zone.
 	QueryVpcId pulumi.StringPtrInput `pulumi:"queryVpcId"`
-	// resource_group_id for zone resourceGroupId.
+	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// Search mode. Value:
-	// - LIKE: fuzzy search.
-	// - EXACT: precise search. It is not filled in by default.
+	// The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+	// - `LIKE`: Fuzzy search.
+	// - `EXACT`: Exact search.
 	SearchMode pulumi.StringPtrInput `pulumi:"searchMode"`
 }
 
@@ -158,7 +176,6 @@ func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of zone IDs.
 func (o GetZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -175,7 +192,7 @@ func (o GetZonesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of zone names.
+// A list of Zone names.
 func (o GetZonesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -192,7 +209,7 @@ func (o GetZonesResultOutput) QueryVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.QueryVpcId }).(pulumi.StringPtrOutput)
 }
 
-// The Id of resource group which the Private Zone belongs.
+// The ID of the resource group to which the zone belongs.
 func (o GetZonesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -201,7 +218,7 @@ func (o GetZonesResultOutput) SearchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.SearchMode }).(pulumi.StringPtrOutput)
 }
 
-// A list of zones. Each element contains the following attributes:
+// A list of Zone. Each element contains the following attributes:
 func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
 }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -19,12 +19,76 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.alb.getLoadBalancers({});
- * export const albLoadBalancerId1 = ids.then(ids => ids.balancers?.[0]?.id);
- * const nameRegex = alicloud.alb.getLoadBalancers({
- *     nameRegex: "^my-LoadBalancer",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.alb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ *     enableIpv6: true,
  * });
- * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
+ * const zoneA = new alicloud.ecs.Eip("zone_a", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByTraffic",
+ * });
+ * const zoneASwitch = new alicloud.vpc.Switch("zone_a", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.0.0/18",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     ipv6CidrBlockMask: 6,
+ * });
+ * const zoneB = new alicloud.vpc.Switch("zone_b", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.128.0/18",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *     ipv6CidrBlockMask: 8,
+ * });
+ * const defaultIpv6Gateway = new alicloud.vpc.Ipv6Gateway("default", {
+ *     ipv6GatewayName: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
+ *     bandwidth: "1000",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     loadBalancerEdition: "Basic",
+ *     addressType: "Internet",
+ *     vpcId: defaultIpv6Gateway.vpcId,
+ *     addressAllocatedMode: "Fixed",
+ *     addressIpVersion: "DualStack",
+ *     ipv6AddressType: "Internet",
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[1]?.id),
+ *     loadBalancerName: name,
+ *     deletionProtectionEnabled: false,
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: zoneASwitch.id,
+ *             zoneId: zoneASwitch.zoneId,
+ *             eipType: "Common",
+ *             allocationId: zoneA.id,
+ *             intranetAddress: "192.168.10.1",
+ *         },
+ *         {
+ *             vswitchId: zoneB.id,
+ *             zoneId: zoneB.zoneId,
+ *         },
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * const ids = alicloud.alb.getLoadBalancersOutput({
+ *     ids: [defaultLoadBalancer.id],
+ * });
+ * export const albLoadBalancersId0 = ids.apply(ids => ids.balancers?.[0]?.id);
  * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
@@ -54,12 +118,11 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
  */
 export interface GetLoadBalancersArgs {
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid
-     * values: `Intranet`, `Internet`.
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      */
     addressType?: string;
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -71,7 +134,7 @@ export interface GetLoadBalancersArgs {
      */
     loadBalancerBusinessStatus?: string;
     /**
-     * Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+     * Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
@@ -100,6 +163,9 @@ export interface GetLoadBalancersArgs {
      * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -119,7 +185,13 @@ export interface GetLoadBalancersArgs {
  * A collection of values returned by getLoadBalancers.
  */
 export interface GetLoadBalancersResult {
+    /**
+     * The type of IP address that the ALB instance uses to provide services.
+     */
     readonly addressType?: string;
+    /**
+     * A list of Alb Load Balancers. Each element contains the following attributes:
+     */
     readonly balancers: outputs.alb.GetLoadBalancersBalancer[];
     readonly enableDetails?: boolean;
     /**
@@ -127,27 +199,53 @@ export interface GetLoadBalancersResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * (Available since v1.142.0) Load Balancing of the Service Status.
+     */
     readonly loadBalancerBusinessStatus?: string;
     /**
+     * (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
+     *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     readonly loadBalancerBussinessStatus?: string;
     readonly loadBalancerIds?: string[];
+    /**
+     * The name of the resource.
+     */
     readonly loadBalancerName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Load Balancer names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * (Available since v1.250.0) The zone status.
+     */
     readonly status?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     */
     readonly vpcId?: string;
     readonly vpcIds?: string[];
+    /**
+     * The ID of the zone to which the ALB instance belongs.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -157,12 +255,76 @@ export interface GetLoadBalancersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.alb.getLoadBalancers({});
- * export const albLoadBalancerId1 = ids.then(ids => ids.balancers?.[0]?.id);
- * const nameRegex = alicloud.alb.getLoadBalancers({
- *     nameRegex: "^my-LoadBalancer",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.alb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ *     enableIpv6: true,
  * });
- * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
+ * const zoneA = new alicloud.ecs.Eip("zone_a", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByTraffic",
+ * });
+ * const zoneASwitch = new alicloud.vpc.Switch("zone_a", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.0.0/18",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     ipv6CidrBlockMask: 6,
+ * });
+ * const zoneB = new alicloud.vpc.Switch("zone_b", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.128.0/18",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *     ipv6CidrBlockMask: 8,
+ * });
+ * const defaultIpv6Gateway = new alicloud.vpc.Ipv6Gateway("default", {
+ *     ipv6GatewayName: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
+ *     bandwidth: "1000",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     loadBalancerEdition: "Basic",
+ *     addressType: "Internet",
+ *     vpcId: defaultIpv6Gateway.vpcId,
+ *     addressAllocatedMode: "Fixed",
+ *     addressIpVersion: "DualStack",
+ *     ipv6AddressType: "Internet",
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[1]?.id),
+ *     loadBalancerName: name,
+ *     deletionProtectionEnabled: false,
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: zoneASwitch.id,
+ *             zoneId: zoneASwitch.zoneId,
+ *             eipType: "Common",
+ *             allocationId: zoneA.id,
+ *             intranetAddress: "192.168.10.1",
+ *         },
+ *         {
+ *             vswitchId: zoneB.id,
+ *             zoneId: zoneB.zoneId,
+ *         },
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * const ids = alicloud.alb.getLoadBalancersOutput({
+ *     ids: [defaultLoadBalancer.id],
+ * });
+ * export const albLoadBalancersId0 = ids.apply(ids => ids.balancers?.[0]?.id);
  * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
@@ -192,12 +354,11 @@ export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?:
  */
 export interface GetLoadBalancersOutputArgs {
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid
-     * values: `Intranet`, `Internet`.
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      */
     addressType?: pulumi.Input<string>;
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -209,7 +370,7 @@ export interface GetLoadBalancersOutputArgs {
      */
     loadBalancerBusinessStatus?: pulumi.Input<string>;
     /**
-     * Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+     * Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
@@ -238,6 +399,9 @@ export interface GetLoadBalancersOutputArgs {
      * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.

@@ -460,6 +460,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     */
+    public readonly systemDiskBurstingEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      */
     public readonly systemDiskCategory!: pulumi.Output<string>;
@@ -491,6 +495,10 @@ export class Instance extends pulumi.CustomResource {
      * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string>;
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     */
+    public readonly systemDiskProvisionedIops!: pulumi.Output<number | undefined>;
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
@@ -613,6 +621,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stoppedMode"] = state ? state.stoppedMode : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
+            resourceInputs["systemDiskBurstingEnabled"] = state ? state.systemDiskBurstingEnabled : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
             resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
@@ -621,6 +630,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
+            resourceInputs["systemDiskProvisionedIops"] = state ? state.systemDiskProvisionedIops : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             resourceInputs["systemDiskStorageClusterId"] = state ? state.systemDiskStorageClusterId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -692,6 +702,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["stoppedMode"] = args ? args.stoppedMode : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
+            resourceInputs["systemDiskBurstingEnabled"] = args ? args.systemDiskBurstingEnabled : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
             resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
@@ -699,6 +710,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
+            resourceInputs["systemDiskProvisionedIops"] = args ? args.systemDiskProvisionedIops : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             resourceInputs["systemDiskStorageClusterId"] = args ? args.systemDiskStorageClusterId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -1077,6 +1089,10 @@ export interface InstanceState {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     */
+    systemDiskBurstingEnabled?: pulumi.Input<boolean>;
+    /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      */
     systemDiskCategory?: pulumi.Input<string>;
@@ -1108,6 +1124,10 @@ export interface InstanceState {
      * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     */
+    systemDiskProvisionedIops?: pulumi.Input<number>;
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
@@ -1452,6 +1472,10 @@ export interface InstanceArgs {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     */
+    systemDiskBurstingEnabled?: pulumi.Input<boolean>;
+    /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
      */
     systemDiskCategory?: pulumi.Input<string>;
@@ -1479,6 +1503,10 @@ export interface InstanceArgs {
      * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+     */
+    systemDiskProvisionedIops?: pulumi.Input<number>;
     /**
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */

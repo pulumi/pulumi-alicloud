@@ -55,6 +55,11 @@ export type WorkspaceRun = import("./workspaceRun").WorkspaceRun;
 export const WorkspaceRun: typeof import("./workspaceRun").WorkspaceRun = null as any;
 utilities.lazyLoad(exports, ["WorkspaceRun"], () => require("./workspaceRun"));
 
+export { WorkspaceUserConfigArgs, WorkspaceUserConfigState } from "./workspaceUserConfig";
+export type WorkspaceUserConfig = import("./workspaceUserConfig").WorkspaceUserConfig;
+export const WorkspaceUserConfig: typeof import("./workspaceUserConfig").WorkspaceUserConfig = null as any;
+utilities.lazyLoad(exports, ["WorkspaceUserConfig"], () => require("./workspaceUserConfig"));
+
 export { WorkspaceWorkspaceArgs, WorkspaceWorkspaceState } from "./workspaceWorkspace";
 export type WorkspaceWorkspace = import("./workspaceWorkspace").WorkspaceWorkspace;
 export const WorkspaceWorkspace: typeof import("./workspaceWorkspace").WorkspaceWorkspace = null as any;
@@ -85,6 +90,8 @@ const _module = {
                 return new WorkspaceModelVersion(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceRun:WorkspaceRun":
                 return new WorkspaceRun(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceUserConfig:WorkspaceUserConfig":
+                return new WorkspaceUserConfig(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace":
                 return new WorkspaceWorkspace(name, <any>undefined, { urn })
             default:
@@ -102,4 +109,5 @@ pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceMember", _module
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceModel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceModelVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceRun", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceUserConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceWorkspace", _module)

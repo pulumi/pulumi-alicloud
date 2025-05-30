@@ -26,7 +26,23 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int Cooldown;
         /// <summary>
-        /// ID of the scaling rule.
+        /// (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+        /// </summary>
+        public readonly bool DisableScaleIn;
+        /// <summary>
+        /// (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+        /// </summary>
+        public readonly int EstimatedInstanceWarmup;
+        /// <summary>
+        /// (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetScalingRulesRuleHybridMetricResult> HybridMetrics;
+        /// <summary>
+        /// (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+        /// </summary>
+        public readonly string HybridMonitorNamespace;
+        /// <summary>
+        /// (Available since v1.250.0) The reference ID of the metric in the metric expression.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -34,9 +50,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int InitialMaxSize;
         /// <summary>
-        /// (Available since v1.242.0) The predefined metric of the scaling rule.
+        /// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
         /// </summary>
         public readonly string MetricName;
+        /// <summary>
+        /// (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+        /// </summary>
+        public readonly string MetricType;
         /// <summary>
         /// Min adjustment magnitude of scaling rule.
         /// </summary>
@@ -62,6 +82,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int PredictiveValueBuffer;
         /// <summary>
+        /// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+        /// </summary>
+        public readonly int ScaleInEvaluationCount;
+        /// <summary>
+        /// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+        /// </summary>
+        public readonly int ScaleOutEvaluationCount;
+        /// <summary>
         /// Scaling group id the scaling rules belong to.
         /// </summary>
         public readonly string ScalingGroupId;
@@ -69,6 +97,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Ari of scaling rule.
         /// </summary>
         public readonly string ScalingRuleAri;
+        /// <summary>
+        /// (Available since v1.250.0) The step adjustments of the step scaling rule.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetScalingRulesRuleStepAdjustmentResult> StepAdjustments;
         /// <summary>
         /// (Available since v1.242.0) The target value of the metric.
         /// </summary>
@@ -86,11 +118,21 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int cooldown,
 
+            bool disableScaleIn,
+
+            int estimatedInstanceWarmup,
+
+            ImmutableArray<Outputs.GetScalingRulesRuleHybridMetricResult> hybridMetrics,
+
+            string hybridMonitorNamespace,
+
             string id,
 
             int initialMaxSize,
 
             string metricName,
+
+            string metricType,
 
             int minAdjustmentMagnitude,
 
@@ -104,9 +146,15 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int predictiveValueBuffer,
 
+            int scaleInEvaluationCount,
+
+            int scaleOutEvaluationCount,
+
             string scalingGroupId,
 
             string scalingRuleAri,
+
+            ImmutableArray<Outputs.GetScalingRulesRuleStepAdjustmentResult> stepAdjustments,
 
             double targetValue,
 
@@ -115,17 +163,25 @@ namespace Pulumi.AliCloud.Ess.Outputs
             AdjustmentType = adjustmentType;
             AdjustmentValue = adjustmentValue;
             Cooldown = cooldown;
+            DisableScaleIn = disableScaleIn;
+            EstimatedInstanceWarmup = estimatedInstanceWarmup;
+            HybridMetrics = hybridMetrics;
+            HybridMonitorNamespace = hybridMonitorNamespace;
             Id = id;
             InitialMaxSize = initialMaxSize;
             MetricName = metricName;
+            MetricType = metricType;
             MinAdjustmentMagnitude = minAdjustmentMagnitude;
             Name = name;
             PredictiveScalingMode = predictiveScalingMode;
             PredictiveTaskBufferTime = predictiveTaskBufferTime;
             PredictiveValueBehavior = predictiveValueBehavior;
             PredictiveValueBuffer = predictiveValueBuffer;
+            ScaleInEvaluationCount = scaleInEvaluationCount;
+            ScaleOutEvaluationCount = scaleOutEvaluationCount;
             ScalingGroupId = scalingGroupId;
             ScalingRuleAri = scalingRuleAri;
+            StepAdjustments = stepAdjustments;
             TargetValue = targetValue;
             Type = type;
         }

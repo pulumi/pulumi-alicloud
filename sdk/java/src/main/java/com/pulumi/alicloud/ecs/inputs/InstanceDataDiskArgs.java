@@ -34,6 +34,21 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+
+    /**
      * The category of the disk:
      * 
      */
@@ -164,6 +179,21 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
      * The size of the data disk.
      * - cloud：[5, 2000]
      * - cloud_efficiency：[20, 32768]
@@ -207,6 +237,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     private InstanceDataDiskArgs(InstanceDataDiskArgs $) {
         this.autoSnapshotPolicyId = $.autoSnapshotPolicyId;
+        this.burstingEnabled = $.burstingEnabled;
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
@@ -215,6 +246,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
+        this.provisionedIops = $.provisionedIops;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
     }
@@ -256,6 +288,27 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             return autoSnapshotPolicyId(Output.of(autoSnapshotPolicyId));
+        }
+
+        /**
+         * @param burstingEnabled Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param burstingEnabled Specifies whether to enable the performance burst feature for the system disk. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
         }
 
         /**
@@ -434,6 +487,27 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
+        }
+
+        /**
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
         }
 
         /**

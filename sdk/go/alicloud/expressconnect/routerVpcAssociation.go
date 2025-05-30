@@ -14,7 +14,7 @@ import (
 
 // Provides a Express Connect Router Express Connect Router Vpc Association resource. Bind relationship object between leased line gateway and VPC.
 //
-// For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouterAssociation).
+// For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-createexpressconnectrouterassociation).
 //
 // > **NOTE:** Available since v1.224.0.
 //
@@ -89,21 +89,22 @@ import (
 type RouterVpcAssociation struct {
 	pulumi.CustomResourceState
 
-	// List of allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes pulumi.StringArrayOutput `pulumi:"allowedPrefixes"`
-	// The first ID of the resource.
+	// The ID of the association between the ECR and the VPC.
 	AssociationId pulumi.StringOutput `pulumi:"associationId"`
-	// The region to which the VPC or TR belongs.
+	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringOutput `pulumi:"associationRegionId"`
-	// The creation time of the resource.
+	// The time when the association was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The ID of the leased line gateway instance.
+	// The ECR ID.
 	EcrId pulumi.StringOutput `pulumi:"ecrId"`
-	// The status of the resource.
+	// The deployment state of the associated resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the VPC instance.
+	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntOutput `pulumi:"vpcOwnerId"`
 }
 
@@ -146,40 +147,42 @@ func GetRouterVpcAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterVpcAssociation resources.
 type routerVpcAssociationState struct {
-	// List of allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
-	// The first ID of the resource.
+	// The ID of the association between the ECR and the VPC.
 	AssociationId *string `pulumi:"associationId"`
-	// The region to which the VPC or TR belongs.
+	// The region ID of the resource to be associated.
 	AssociationRegionId *string `pulumi:"associationRegionId"`
-	// The creation time of the resource.
+	// The time when the association was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The ID of the leased line gateway instance.
+	// The ECR ID.
 	EcrId *string `pulumi:"ecrId"`
-	// The status of the resource.
+	// The deployment state of the associated resource.
 	Status *string `pulumi:"status"`
-	// The ID of the VPC instance.
+	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
 
 type RouterVpcAssociationState struct {
-	// List of allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes pulumi.StringArrayInput
-	// The first ID of the resource.
+	// The ID of the association between the ECR and the VPC.
 	AssociationId pulumi.StringPtrInput
-	// The region to which the VPC or TR belongs.
+	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringPtrInput
-	// The creation time of the resource.
+	// The time when the association was created.
 	CreateTime pulumi.StringPtrInput
-	// The ID of the leased line gateway instance.
+	// The ECR ID.
 	EcrId pulumi.StringPtrInput
-	// The status of the resource.
+	// The deployment state of the associated resource.
 	Status pulumi.StringPtrInput
-	// The ID of the VPC instance.
+	// The VPC ID.
 	VpcId pulumi.StringPtrInput
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
 
@@ -188,29 +191,31 @@ func (RouterVpcAssociationState) ElementType() reflect.Type {
 }
 
 type routerVpcAssociationArgs struct {
-	// List of allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
-	// The region to which the VPC or TR belongs.
+	// The region ID of the resource to be associated.
 	AssociationRegionId string `pulumi:"associationRegionId"`
-	// The ID of the leased line gateway instance.
+	// The ECR ID.
 	EcrId string `pulumi:"ecrId"`
-	// The ID of the VPC instance.
+	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
 
 // The set of arguments for constructing a RouterVpcAssociation resource.
 type RouterVpcAssociationArgs struct {
-	// List of allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes pulumi.StringArrayInput
-	// The region to which the VPC or TR belongs.
+	// The region ID of the resource to be associated.
 	AssociationRegionId pulumi.StringInput
-	// The ID of the leased line gateway instance.
+	// The ECR ID.
 	EcrId pulumi.StringInput
-	// The ID of the VPC instance.
+	// The VPC ID.
 	VpcId pulumi.StringInput
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
 
@@ -301,42 +306,43 @@ func (o RouterVpcAssociationOutput) ToRouterVpcAssociationOutputWithContext(ctx 
 	return o
 }
 
-// List of allowed route prefixes.
+// The list of allowed route prefixes.
 func (o RouterVpcAssociationOutput) AllowedPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringArrayOutput { return v.AllowedPrefixes }).(pulumi.StringArrayOutput)
 }
 
-// The first ID of the resource.
+// The ID of the association between the ECR and the VPC.
 func (o RouterVpcAssociationOutput) AssociationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.AssociationId }).(pulumi.StringOutput)
 }
 
-// The region to which the VPC or TR belongs.
+// The region ID of the resource to be associated.
 func (o RouterVpcAssociationOutput) AssociationRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.AssociationRegionId }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource.
+// The time when the association was created.
 func (o RouterVpcAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the leased line gateway instance.
+// The ECR ID.
 func (o RouterVpcAssociationOutput) EcrId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.EcrId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The deployment state of the associated resource.
 func (o RouterVpcAssociationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC instance.
+// The VPC ID.
 func (o RouterVpcAssociationOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ID of the Alibaba Cloud account to which the VPC belongs.
+// The ID of the Alibaba Cloud account that owns the VPC.
+// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 func (o RouterVpcAssociationOutput) VpcOwnerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.IntOutput { return v.VpcOwnerId }).(pulumi.IntOutput)
 }

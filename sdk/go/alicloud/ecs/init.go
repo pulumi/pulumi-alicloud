@@ -109,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KeyPairAttachment{}
 	case "alicloud:ecs/launchTemplate:LaunchTemplate":
 		r = &LaunchTemplate{}
+	case "alicloud:ecs/ramRoleAttachment:RamRoleAttachment":
+		r = &RamRoleAttachment{}
 	case "alicloud:ecs/reservedInstance:ReservedInstance":
 		r = &ReservedInstance{}
 	case "alicloud:ecs/securityGroup:SecurityGroup":
@@ -352,6 +354,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/launchTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ramRoleAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

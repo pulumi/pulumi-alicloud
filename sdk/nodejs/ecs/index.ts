@@ -395,6 +395,11 @@ export type LaunchTemplate = import("./launchTemplate").LaunchTemplate;
 export const LaunchTemplate: typeof import("./launchTemplate").LaunchTemplate = null as any;
 utilities.lazyLoad(exports, ["LaunchTemplate"], () => require("./launchTemplate"));
 
+export { RamRoleAttachmentArgs, RamRoleAttachmentState } from "./ramRoleAttachment";
+export type RamRoleAttachment = import("./ramRoleAttachment").RamRoleAttachment;
+export const RamRoleAttachment: typeof import("./ramRoleAttachment").RamRoleAttachment = null as any;
+utilities.lazyLoad(exports, ["RamRoleAttachment"], () => require("./ramRoleAttachment"));
+
 export { ReservedInstanceArgs, ReservedInstanceState } from "./reservedInstance";
 export type ReservedInstance = import("./reservedInstance").ReservedInstance;
 export const ReservedInstance: typeof import("./reservedInstance").ReservedInstance = null as any;
@@ -518,6 +523,8 @@ const _module = {
                 return new KeyPairAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/launchTemplate:LaunchTemplate":
                 return new LaunchTemplate(name, <any>undefined, { urn })
+            case "alicloud:ecs/ramRoleAttachment:RamRoleAttachment":
+                return new RamRoleAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/reservedInstance:ReservedInstance":
                 return new ReservedInstance(name, <any>undefined, { urn })
             case "alicloud:ecs/securityGroup:SecurityGroup":
@@ -579,6 +586,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/keyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/keyPairAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/launchTemplate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ramRoleAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/reservedInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/securityGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/securityGroupRule", _module)

@@ -45,6 +45,7 @@ __all__ = [
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDedicatedHostsHostCapacityResult',
+    'GetDedicatedHostsHostInstanceResult',
     'GetDedicatedHostsHostNetworkAttributeResult',
     'GetDedicatedHostsHostOperationLockResult',
     'GetDedicatedHostsOperationLockResult',
@@ -1257,12 +1258,16 @@ class InstanceDataDisk(dict):
         suggest = None
         if key == "autoSnapshotPolicyId":
             suggest = "auto_snapshot_policy_id"
+        elif key == "burstingEnabled":
+            suggest = "bursting_enabled"
         elif key == "deleteWithInstance":
             suggest = "delete_with_instance"
         elif key == "kmsKeyId":
             suggest = "kms_key_id"
         elif key == "performanceLevel":
             suggest = "performance_level"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
         elif key == "snapshotId":
             suggest = "snapshot_id"
 
@@ -1280,6 +1285,7 @@ class InstanceDataDisk(dict):
     def __init__(__self__, *,
                  size: builtins.int,
                  auto_snapshot_policy_id: Optional[builtins.str] = None,
+                 bursting_enabled: Optional[builtins.bool] = None,
                  category: Optional[builtins.str] = None,
                  delete_with_instance: Optional[builtins.bool] = None,
                  description: Optional[builtins.str] = None,
@@ -1288,6 +1294,7 @@ class InstanceDataDisk(dict):
                  kms_key_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
                  performance_level: Optional[builtins.str] = None,
+                 provisioned_iops: Optional[builtins.int] = None,
                  snapshot_id: Optional[builtins.str] = None):
         """
         :param builtins.int size: The size of the data disk.
@@ -1297,6 +1304,7 @@ class InstanceDataDisk(dict):
                - cloud_essd：[20, 32768]
                - ephemeral_ssd: [5, 800]
         :param builtins.str auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param builtins.bool bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param builtins.str category: The category of the disk:
         :param builtins.bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param builtins.str description: The description of the data disk.
@@ -1310,11 +1318,14 @@ class InstanceDataDisk(dict):
                - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
                - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
                Default to `PL1`.
+        :param builtins.int provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
         :param builtins.str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
@@ -1331,6 +1342,8 @@ class InstanceDataDisk(dict):
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
 
@@ -1354,6 +1367,14 @@ class InstanceDataDisk(dict):
         The ID of the automatic snapshot policy applied to the system disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
+        return pulumi.get(self, "bursting_enabled")
 
     @property
     @pulumi.getter
@@ -1423,6 +1444,14 @@ class InstanceDataDisk(dict):
         Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[builtins.int]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="snapshotId")
@@ -2724,6 +2753,7 @@ class GetDedicatedHostsHostResult(dict):
                  expired_time: builtins.str,
                  gpu_spec: builtins.str,
                  id: builtins.str,
+                 instances: Sequence['outputs.GetDedicatedHostsHostInstanceResult'],
                  machine_id: builtins.str,
                  network_attributes: Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult'],
                  operation_locks: Sequence['outputs.GetDedicatedHostsHostOperationLockResult'],
@@ -2742,9 +2772,9 @@ class GetDedicatedHostsHostResult(dict):
         :param builtins.str action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
         :param builtins.str auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment.
         :param builtins.str auto_release_time: The automatic release time of the dedicated host.
-        :param Sequence['GetDedicatedHostsHostCapacityArgs'] capacities: (Available in 1.123.1+) A collection of proprietary host performance indicators.
+        :param Sequence['GetDedicatedHostsHostCapacityArgs'] capacities: (Available since v1.123.1) A collection of proprietary host performance indicators.
         :param builtins.int cores: A mapping of tags to assign to the resource.
-        :param builtins.float cpu_over_commit_ratio: (Available in 1.123.1+) CPU oversold ratio.
+        :param builtins.float cpu_over_commit_ratio: (Available since v1.123.1) CPU oversold ratio.
         :param builtins.str dedicated_host_id: The ID of ECS Dedicated Host.
         :param builtins.str dedicated_host_name: The name of ECS Dedicated Host.
         :param builtins.str dedicated_host_type: The type of the dedicated host.
@@ -2752,18 +2782,19 @@ class GetDedicatedHostsHostResult(dict):
         :param builtins.str expired_time: The expiration time of the subscription dedicated host.
         :param builtins.str gpu_spec: The GPU model.
         :param builtins.str id: ID of the ECS Dedicated Host.
+        :param Sequence['GetDedicatedHostsHostInstanceArgs'] instances: (Available since v1.250.0) The ECS instances that were created on the dedicated host.
         :param builtins.str machine_id: The machine code of the dedicated host.
         :param Sequence['GetDedicatedHostsHostNetworkAttributeArgs'] network_attributes: dedicated host network parameters. contains the following attributes:
-        :param Sequence['GetDedicatedHostsHostOperationLockArgs'] operation_locks: The reason why the dedicated host resource is locked.
+        :param Sequence['GetDedicatedHostsHostOperationLockArgs'] operation_locks: The reason why the dedicated host resource is locked. See `operation_locks` below.
         :param builtins.str payment_type: The billing method of the dedicated host.
         :param builtins.int physical_gpus: The number of physical GPUs.
         :param builtins.str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
         :param builtins.str sale_cycle: The unit of the subscription billing method.
         :param builtins.int sockets: The number of physical CPUs.
-        :param builtins.str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-        :param Sequence[builtins.str] supported_custom_instance_type_families: (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
-        :param Sequence[builtins.str] supported_instance_type_families: (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
-        :param Sequence[builtins.str] supported_instance_types_lists: The list of ECS instance
+        :param builtins.str status: The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        :param Sequence[builtins.str] supported_custom_instance_type_families: (Available since v1.123.1) A custom instance type family supported by a dedicated host.
+        :param Sequence[builtins.str] supported_instance_type_families: (Available since v1.123.1) ECS instance type family supported by the dedicated host.
+        :param Sequence[builtins.str] supported_instance_types_lists: The list of ECS instance.
         :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
         :param builtins.str zone_id: The zone ID of the ECS Dedicated Host.
         """
@@ -2780,6 +2811,7 @@ class GetDedicatedHostsHostResult(dict):
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "gpu_spec", gpu_spec)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "machine_id", machine_id)
         pulumi.set(__self__, "network_attributes", network_attributes)
         pulumi.set(__self__, "operation_locks", operation_locks)
@@ -2823,7 +2855,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter
     def capacities(self) -> Sequence['outputs.GetDedicatedHostsHostCapacityResult']:
         """
-        (Available in 1.123.1+) A collection of proprietary host performance indicators.
+        (Available since v1.123.1) A collection of proprietary host performance indicators.
         """
         return pulumi.get(self, "capacities")
 
@@ -2839,7 +2871,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="cpuOverCommitRatio")
     def cpu_over_commit_ratio(self) -> builtins.float:
         """
-        (Available in 1.123.1+) CPU oversold ratio.
+        (Available since v1.123.1) CPU oversold ratio.
         """
         return pulumi.get(self, "cpu_over_commit_ratio")
 
@@ -2900,6 +2932,14 @@ class GetDedicatedHostsHostResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.GetDedicatedHostsHostInstanceResult']:
+        """
+        (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+        """
+        return pulumi.get(self, "instances")
+
+    @property
     @pulumi.getter(name="machineId")
     def machine_id(self) -> builtins.str:
         """
@@ -2919,7 +2959,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Sequence['outputs.GetDedicatedHostsHostOperationLockResult']:
         """
-        The reason why the dedicated host resource is locked.
+        The reason why the dedicated host resource is locked. See `operation_locks` below.
         """
         return pulumi.get(self, "operation_locks")
 
@@ -2967,7 +3007,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
         """
         return pulumi.get(self, "status")
 
@@ -2975,7 +3015,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="supportedCustomInstanceTypeFamilies")
     def supported_custom_instance_type_families(self) -> Sequence[builtins.str]:
         """
-        (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+        (Available since v1.123.1) A custom instance type family supported by a dedicated host.
         """
         return pulumi.get(self, "supported_custom_instance_type_families")
 
@@ -2983,7 +3023,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="supportedInstanceTypeFamilies")
     def supported_instance_type_families(self) -> Sequence[builtins.str]:
         """
-        (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+        (Available since v1.123.1) ECS instance type family supported by the dedicated host.
         """
         return pulumi.get(self, "supported_instance_type_families")
 
@@ -2991,7 +3031,7 @@ class GetDedicatedHostsHostResult(dict):
     @pulumi.getter(name="supportedInstanceTypesLists")
     def supported_instance_types_lists(self) -> Sequence[builtins.str]:
         """
-        The list of ECS instance
+        The list of ECS instance.
         """
         return pulumi.get(self, "supported_instance_types_lists")
 
@@ -3119,13 +3159,64 @@ class GetDedicatedHostsHostCapacityResult(dict):
 
 
 @pulumi.output_type
+class GetDedicatedHostsHostInstanceResult(dict):
+    def __init__(__self__, *,
+                 instance_id: builtins.str,
+                 instance_owner_id: builtins.int,
+                 instance_type: builtins.str,
+                 socket_id: builtins.str):
+        """
+        :param builtins.str instance_id: The ID of the ECS instance.
+        :param builtins.int instance_owner_id: The ID of the ECS instance owner.
+        :param builtins.str instance_type: The instance type of the ECS instance that was created on the dedicated host.
+        :param builtins.str socket_id: The ID of the socket to which the ECS instance belongs.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_owner_id", instance_owner_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "socket_id", socket_id)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> builtins.str:
+        """
+        The ID of the ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceOwnerId")
+    def instance_owner_id(self) -> builtins.int:
+        """
+        The ID of the ECS instance owner.
+        """
+        return pulumi.get(self, "instance_owner_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> builtins.str:
+        """
+        The instance type of the ECS instance that was created on the dedicated host.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="socketId")
+    def socket_id(self) -> builtins.str:
+        """
+        The ID of the socket to which the ECS instance belongs.
+        """
+        return pulumi.get(self, "socket_id")
+
+
+@pulumi.output_type
 class GetDedicatedHostsHostNetworkAttributeResult(dict):
     def __init__(__self__, *,
                  slb_udp_timeout: builtins.int,
                  udp_timeout: builtins.int):
         """
         :param builtins.int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
-        :param builtins.int udp_timeout: (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+        :param builtins.int udp_timeout: (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         """
         pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
         pulumi.set(__self__, "udp_timeout", udp_timeout)
@@ -3142,7 +3233,7 @@ class GetDedicatedHostsHostNetworkAttributeResult(dict):
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> builtins.int:
         """
-        (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+        (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         """
         return pulumi.get(self, "udp_timeout")
 
@@ -9114,9 +9205,9 @@ class GetInstancesInstanceResult(dict):
                  security_groups: Sequence[builtins.str],
                  spot_strategy: builtins.str,
                  status: builtins.str,
+                 tags: Mapping[str, builtins.str],
                  vpc_id: builtins.str,
-                 vswitch_id: builtins.str,
-                 tags: Optional[Mapping[str, builtins.str]] = None):
+                 vswitch_id: builtins.str):
         """
         :param builtins.str availability_zone: Availability zone where instances are located.
         :param builtins.str creation_time: Instance creation time.
@@ -9139,8 +9230,6 @@ class GetInstancesInstanceResult(dict):
         :param Sequence[builtins.str] security_groups: List of security group IDs the instance belongs to.
         :param builtins.str spot_strategy: Spot strategy the instance is using.
         :param builtins.str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
-        :param builtins.str vpc_id: ID of the VPC linked to the instances.
-        :param builtins.str vswitch_id: ID of the vSwitch linked to the instances.
         :param Mapping[str, builtins.str] tags: A map of tags assigned to the ECS instances. It must be in the format:
                ```python
                import pulumi
@@ -9151,6 +9240,8 @@ class GetInstancesInstanceResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
+        :param builtins.str vpc_id: ID of the VPC linked to the instances.
+        :param builtins.str vswitch_id: ID of the vSwitch linked to the instances.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -9173,10 +9264,9 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "security_groups", security_groups)
         pulumi.set(__self__, "spot_strategy", spot_strategy)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -9347,6 +9437,23 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, builtins.str]:
+        """
+        A map of tags assigned to the ECS instances. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        tagged_instances = alicloud.ecs.get_instances(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> builtins.str:
         """
@@ -9361,23 +9468,6 @@ class GetInstancesInstanceResult(dict):
         ID of the vSwitch linked to the instances.
         """
         return pulumi.get(self, "vswitch_id")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, builtins.str]]:
-        """
-        A map of tags assigned to the ECS instances. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        tagged_instances = alicloud.ecs.get_instances(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
-        """
-        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

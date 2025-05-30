@@ -6127,12 +6127,22 @@ type GetScalingRulesRule struct {
 	AdjustmentValue int `pulumi:"adjustmentValue"`
 	// Cooldown time of the scaling rule.
 	Cooldown int `pulumi:"cooldown"`
-	// ID of the scaling rule.
+	// (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+	DisableScaleIn bool `pulumi:"disableScaleIn"`
+	// (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+	EstimatedInstanceWarmup int `pulumi:"estimatedInstanceWarmup"`
+	// (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+	HybridMetrics []GetScalingRulesRuleHybridMetric `pulumi:"hybridMetrics"`
+	// (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+	HybridMonitorNamespace string `pulumi:"hybridMonitorNamespace"`
+	// (Available since v1.250.0) The reference ID of the metric in the metric expression.
 	Id string `pulumi:"id"`
 	// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
 	InitialMaxSize int `pulumi:"initialMaxSize"`
-	// (Available since v1.242.0) The predefined metric of the scaling rule.
+	// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
 	MetricName string `pulumi:"metricName"`
+	// (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+	MetricType string `pulumi:"metricType"`
 	// Min adjustment magnitude of scaling rule.
 	MinAdjustmentMagnitude int `pulumi:"minAdjustmentMagnitude"`
 	// Name of the scaling rule.
@@ -6145,10 +6155,16 @@ type GetScalingRulesRule struct {
 	PredictiveValueBehavior string `pulumi:"predictiveValueBehavior"`
 	// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
 	PredictiveValueBuffer int `pulumi:"predictiveValueBuffer"`
+	// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+	ScaleInEvaluationCount int `pulumi:"scaleInEvaluationCount"`
+	// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+	ScaleOutEvaluationCount int `pulumi:"scaleOutEvaluationCount"`
 	// Scaling group id the scaling rules belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Ari of scaling rule.
 	ScalingRuleAri string `pulumi:"scalingRuleAri"`
+	// (Available since v1.250.0) The step adjustments of the step scaling rule.
+	StepAdjustments []GetScalingRulesRuleStepAdjustment `pulumi:"stepAdjustments"`
 	// (Available since v1.242.0) The target value of the metric.
 	TargetValue float64 `pulumi:"targetValue"`
 	// Type of scaling rule.
@@ -6173,12 +6189,22 @@ type GetScalingRulesRuleArgs struct {
 	AdjustmentValue pulumi.IntInput `pulumi:"adjustmentValue"`
 	// Cooldown time of the scaling rule.
 	Cooldown pulumi.IntInput `pulumi:"cooldown"`
-	// ID of the scaling rule.
+	// (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+	DisableScaleIn pulumi.BoolInput `pulumi:"disableScaleIn"`
+	// (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+	EstimatedInstanceWarmup pulumi.IntInput `pulumi:"estimatedInstanceWarmup"`
+	// (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+	HybridMetrics GetScalingRulesRuleHybridMetricArrayInput `pulumi:"hybridMetrics"`
+	// (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+	HybridMonitorNamespace pulumi.StringInput `pulumi:"hybridMonitorNamespace"`
+	// (Available since v1.250.0) The reference ID of the metric in the metric expression.
 	Id pulumi.StringInput `pulumi:"id"`
 	// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
 	InitialMaxSize pulumi.IntInput `pulumi:"initialMaxSize"`
-	// (Available since v1.242.0) The predefined metric of the scaling rule.
+	// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
 	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+	MetricType pulumi.StringInput `pulumi:"metricType"`
 	// Min adjustment magnitude of scaling rule.
 	MinAdjustmentMagnitude pulumi.IntInput `pulumi:"minAdjustmentMagnitude"`
 	// Name of the scaling rule.
@@ -6191,10 +6217,16 @@ type GetScalingRulesRuleArgs struct {
 	PredictiveValueBehavior pulumi.StringInput `pulumi:"predictiveValueBehavior"`
 	// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
 	PredictiveValueBuffer pulumi.IntInput `pulumi:"predictiveValueBuffer"`
+	// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+	ScaleInEvaluationCount pulumi.IntInput `pulumi:"scaleInEvaluationCount"`
+	// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+	ScaleOutEvaluationCount pulumi.IntInput `pulumi:"scaleOutEvaluationCount"`
 	// Scaling group id the scaling rules belong to.
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 	// Ari of scaling rule.
 	ScalingRuleAri pulumi.StringInput `pulumi:"scalingRuleAri"`
+	// (Available since v1.250.0) The step adjustments of the step scaling rule.
+	StepAdjustments GetScalingRulesRuleStepAdjustmentArrayInput `pulumi:"stepAdjustments"`
 	// (Available since v1.242.0) The target value of the metric.
 	TargetValue pulumi.Float64Input `pulumi:"targetValue"`
 	// Type of scaling rule.
@@ -6267,7 +6299,27 @@ func (o GetScalingRulesRuleOutput) Cooldown() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) int { return v.Cooldown }).(pulumi.IntOutput)
 }
 
-// ID of the scaling rule.
+// (Available since v1.250.0) Indicates whether scale-in is disabled. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values: true, false.
+func (o GetScalingRulesRuleOutput) DisableScaleIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) bool { return v.DisableScaleIn }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.250.0) The warm-up period during which a series of preparation measures are taken on new instances. Auto Scaling does not monitor the metric data of instances that are being warmed up.
+func (o GetScalingRulesRuleOutput) EstimatedInstanceWarmup() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.EstimatedInstanceWarmup }).(pulumi.IntOutput)
+}
+
+// (Available since v1.250.0) The Hybrid Cloud Monitoring metrics.
+func (o GetScalingRulesRuleOutput) HybridMetrics() GetScalingRulesRuleHybridMetricArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) []GetScalingRulesRuleHybridMetric { return v.HybridMetrics }).(GetScalingRulesRuleHybridMetricArrayOutput)
+}
+
+// (Available since v1.250.0) The ID of the Hybrid Cloud Monitoring namespace.
+func (o GetScalingRulesRuleOutput) HybridMonitorNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.HybridMonitorNamespace }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The reference ID of the metric in the metric expression.
 func (o GetScalingRulesRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6277,9 +6329,14 @@ func (o GetScalingRulesRuleOutput) InitialMaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) int { return v.InitialMaxSize }).(pulumi.IntOutput)
 }
 
-// (Available since v1.242.0) The predefined metric of the scaling rule.
+// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
 func (o GetScalingRulesRuleOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The type of the event-triggered task that is associated with the scaling rule.
+func (o GetScalingRulesRuleOutput) MetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.MetricType }).(pulumi.StringOutput)
 }
 
 // Min adjustment magnitude of scaling rule.
@@ -6312,6 +6369,16 @@ func (o GetScalingRulesRuleOutput) PredictiveValueBuffer() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) int { return v.PredictiveValueBuffer }).(pulumi.IntOutput)
 }
 
+// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-in operation.
+func (o GetScalingRulesRuleOutput) ScaleInEvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.ScaleInEvaluationCount }).(pulumi.IntOutput)
+}
+
+// (Available since v1.250.0) After you create a target tracking scaling rule, an event-triggered task is automatically created and associated with the scaling rule. This parameter defines the number of consecutive times the alert condition must be satisfied before the event-triggered task initiates a scale-out operation.
+func (o GetScalingRulesRuleOutput) ScaleOutEvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.ScaleOutEvaluationCount }).(pulumi.IntOutput)
+}
+
 // Scaling group id the scaling rules belong to.
 func (o GetScalingRulesRuleOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingGroupId }).(pulumi.StringOutput)
@@ -6320,6 +6387,11 @@ func (o GetScalingRulesRuleOutput) ScalingGroupId() pulumi.StringOutput {
 // Ari of scaling rule.
 func (o GetScalingRulesRuleOutput) ScalingRuleAri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingRuleAri }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The step adjustments of the step scaling rule.
+func (o GetScalingRulesRuleOutput) StepAdjustments() GetScalingRulesRuleStepAdjustmentArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) []GetScalingRulesRuleStepAdjustment { return v.StepAdjustments }).(GetScalingRulesRuleStepAdjustmentArrayOutput)
 }
 
 // (Available since v1.242.0) The target value of the metric.
@@ -6350,6 +6422,362 @@ func (o GetScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetScalingRules
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingRulesRule {
 		return vs[0].([]GetScalingRulesRule)[vs[1].(int)]
 	}).(GetScalingRulesRuleOutput)
+}
+
+type GetScalingRulesRuleHybridMetric struct {
+	// (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+	Dimensions []GetScalingRulesRuleHybridMetricDimension `pulumi:"dimensions"`
+	// (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+	Expression string `pulumi:"expression"`
+	// (Available since v1.250.0) The reference ID of the metric in the metric expression.
+	Id string `pulumi:"id"`
+	// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+	MetricName string `pulumi:"metricName"`
+	// (Available since v1.250.0) The statistical method of the metric data.
+	Statistic string `pulumi:"statistic"`
+}
+
+// GetScalingRulesRuleHybridMetricInput is an input type that accepts GetScalingRulesRuleHybridMetricArgs and GetScalingRulesRuleHybridMetricOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleHybridMetricInput` via:
+//
+//	GetScalingRulesRuleHybridMetricArgs{...}
+type GetScalingRulesRuleHybridMetricInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleHybridMetricOutput() GetScalingRulesRuleHybridMetricOutput
+	ToGetScalingRulesRuleHybridMetricOutputWithContext(context.Context) GetScalingRulesRuleHybridMetricOutput
+}
+
+type GetScalingRulesRuleHybridMetricArgs struct {
+	// (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+	Dimensions GetScalingRulesRuleHybridMetricDimensionArrayInput `pulumi:"dimensions"`
+	// (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// (Available since v1.250.0) The reference ID of the metric in the metric expression.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// (Available since v1.250.0) The statistical method of the metric data.
+	Statistic pulumi.StringInput `pulumi:"statistic"`
+}
+
+func (GetScalingRulesRuleHybridMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleHybridMetric)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleHybridMetricArgs) ToGetScalingRulesRuleHybridMetricOutput() GetScalingRulesRuleHybridMetricOutput {
+	return i.ToGetScalingRulesRuleHybridMetricOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleHybridMetricArgs) ToGetScalingRulesRuleHybridMetricOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleHybridMetricOutput)
+}
+
+// GetScalingRulesRuleHybridMetricArrayInput is an input type that accepts GetScalingRulesRuleHybridMetricArray and GetScalingRulesRuleHybridMetricArrayOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleHybridMetricArrayInput` via:
+//
+//	GetScalingRulesRuleHybridMetricArray{ GetScalingRulesRuleHybridMetricArgs{...} }
+type GetScalingRulesRuleHybridMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleHybridMetricArrayOutput() GetScalingRulesRuleHybridMetricArrayOutput
+	ToGetScalingRulesRuleHybridMetricArrayOutputWithContext(context.Context) GetScalingRulesRuleHybridMetricArrayOutput
+}
+
+type GetScalingRulesRuleHybridMetricArray []GetScalingRulesRuleHybridMetricInput
+
+func (GetScalingRulesRuleHybridMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleHybridMetric)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleHybridMetricArray) ToGetScalingRulesRuleHybridMetricArrayOutput() GetScalingRulesRuleHybridMetricArrayOutput {
+	return i.ToGetScalingRulesRuleHybridMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleHybridMetricArray) ToGetScalingRulesRuleHybridMetricArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleHybridMetricArrayOutput)
+}
+
+type GetScalingRulesRuleHybridMetricOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleHybridMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleHybridMetric)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleHybridMetricOutput) ToGetScalingRulesRuleHybridMetricOutput() GetScalingRulesRuleHybridMetricOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricOutput) ToGetScalingRulesRuleHybridMetricOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricOutput {
+	return o
+}
+
+// (Available since v1.250.0) The metric dimensions. You can use this parameter to specify the monitored resources.
+func (o GetScalingRulesRuleHybridMetricOutput) Dimensions() GetScalingRulesRuleHybridMetricDimensionArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetric) []GetScalingRulesRuleHybridMetricDimension {
+		return v.Dimensions
+	}).(GetScalingRulesRuleHybridMetricDimensionArrayOutput)
+}
+
+// (Available since v1.250.0) The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression is written in Reverse Polish Notation (RPN) format and includes only the following operators: +, -, *, /.
+func (o GetScalingRulesRuleHybridMetricOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetric) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The reference ID of the metric in the metric expression.
+func (o GetScalingRulesRuleHybridMetricOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetric) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
+func (o GetScalingRulesRuleHybridMetricOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetric) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The statistical method of the metric data.
+func (o GetScalingRulesRuleHybridMetricOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetric) string { return v.Statistic }).(pulumi.StringOutput)
+}
+
+type GetScalingRulesRuleHybridMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleHybridMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleHybridMetric)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleHybridMetricArrayOutput) ToGetScalingRulesRuleHybridMetricArrayOutput() GetScalingRulesRuleHybridMetricArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricArrayOutput) ToGetScalingRulesRuleHybridMetricArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricArrayOutput) Index(i pulumi.IntInput) GetScalingRulesRuleHybridMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingRulesRuleHybridMetric {
+		return vs[0].([]GetScalingRulesRuleHybridMetric)[vs[1].(int)]
+	}).(GetScalingRulesRuleHybridMetricOutput)
+}
+
+type GetScalingRulesRuleHybridMetricDimension struct {
+	// (Available since v1.250.0) The dimension key of the metric.
+	DimensionKey string `pulumi:"dimensionKey"`
+	// (Available since v1.250.0) The dimension value of the metric.
+	DimensionValue string `pulumi:"dimensionValue"`
+}
+
+// GetScalingRulesRuleHybridMetricDimensionInput is an input type that accepts GetScalingRulesRuleHybridMetricDimensionArgs and GetScalingRulesRuleHybridMetricDimensionOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleHybridMetricDimensionInput` via:
+//
+//	GetScalingRulesRuleHybridMetricDimensionArgs{...}
+type GetScalingRulesRuleHybridMetricDimensionInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleHybridMetricDimensionOutput() GetScalingRulesRuleHybridMetricDimensionOutput
+	ToGetScalingRulesRuleHybridMetricDimensionOutputWithContext(context.Context) GetScalingRulesRuleHybridMetricDimensionOutput
+}
+
+type GetScalingRulesRuleHybridMetricDimensionArgs struct {
+	// (Available since v1.250.0) The dimension key of the metric.
+	DimensionKey pulumi.StringInput `pulumi:"dimensionKey"`
+	// (Available since v1.250.0) The dimension value of the metric.
+	DimensionValue pulumi.StringInput `pulumi:"dimensionValue"`
+}
+
+func (GetScalingRulesRuleHybridMetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleHybridMetricDimensionArgs) ToGetScalingRulesRuleHybridMetricDimensionOutput() GetScalingRulesRuleHybridMetricDimensionOutput {
+	return i.ToGetScalingRulesRuleHybridMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleHybridMetricDimensionArgs) ToGetScalingRulesRuleHybridMetricDimensionOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleHybridMetricDimensionOutput)
+}
+
+// GetScalingRulesRuleHybridMetricDimensionArrayInput is an input type that accepts GetScalingRulesRuleHybridMetricDimensionArray and GetScalingRulesRuleHybridMetricDimensionArrayOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleHybridMetricDimensionArrayInput` via:
+//
+//	GetScalingRulesRuleHybridMetricDimensionArray{ GetScalingRulesRuleHybridMetricDimensionArgs{...} }
+type GetScalingRulesRuleHybridMetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleHybridMetricDimensionArrayOutput() GetScalingRulesRuleHybridMetricDimensionArrayOutput
+	ToGetScalingRulesRuleHybridMetricDimensionArrayOutputWithContext(context.Context) GetScalingRulesRuleHybridMetricDimensionArrayOutput
+}
+
+type GetScalingRulesRuleHybridMetricDimensionArray []GetScalingRulesRuleHybridMetricDimensionInput
+
+func (GetScalingRulesRuleHybridMetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleHybridMetricDimensionArray) ToGetScalingRulesRuleHybridMetricDimensionArrayOutput() GetScalingRulesRuleHybridMetricDimensionArrayOutput {
+	return i.ToGetScalingRulesRuleHybridMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleHybridMetricDimensionArray) ToGetScalingRulesRuleHybridMetricDimensionArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleHybridMetricDimensionArrayOutput)
+}
+
+type GetScalingRulesRuleHybridMetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleHybridMetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleHybridMetricDimensionOutput) ToGetScalingRulesRuleHybridMetricDimensionOutput() GetScalingRulesRuleHybridMetricDimensionOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricDimensionOutput) ToGetScalingRulesRuleHybridMetricDimensionOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricDimensionOutput {
+	return o
+}
+
+// (Available since v1.250.0) The dimension key of the metric.
+func (o GetScalingRulesRuleHybridMetricDimensionOutput) DimensionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetricDimension) string { return v.DimensionKey }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The dimension value of the metric.
+func (o GetScalingRulesRuleHybridMetricDimensionOutput) DimensionValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleHybridMetricDimension) string { return v.DimensionValue }).(pulumi.StringOutput)
+}
+
+type GetScalingRulesRuleHybridMetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleHybridMetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleHybridMetricDimensionArrayOutput) ToGetScalingRulesRuleHybridMetricDimensionArrayOutput() GetScalingRulesRuleHybridMetricDimensionArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricDimensionArrayOutput) ToGetScalingRulesRuleHybridMetricDimensionArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleHybridMetricDimensionArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleHybridMetricDimensionArrayOutput) Index(i pulumi.IntInput) GetScalingRulesRuleHybridMetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingRulesRuleHybridMetricDimension {
+		return vs[0].([]GetScalingRulesRuleHybridMetricDimension)[vs[1].(int)]
+	}).(GetScalingRulesRuleHybridMetricDimensionOutput)
+}
+
+type GetScalingRulesRuleStepAdjustment struct {
+	// (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	MetricIntervalLowerBound string `pulumi:"metricIntervalLowerBound"`
+	// (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	MetricIntervalUpperBound string `pulumi:"metricIntervalUpperBound"`
+	// (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+	ScalingAdjustment int `pulumi:"scalingAdjustment"`
+}
+
+// GetScalingRulesRuleStepAdjustmentInput is an input type that accepts GetScalingRulesRuleStepAdjustmentArgs and GetScalingRulesRuleStepAdjustmentOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleStepAdjustmentInput` via:
+//
+//	GetScalingRulesRuleStepAdjustmentArgs{...}
+type GetScalingRulesRuleStepAdjustmentInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleStepAdjustmentOutput() GetScalingRulesRuleStepAdjustmentOutput
+	ToGetScalingRulesRuleStepAdjustmentOutputWithContext(context.Context) GetScalingRulesRuleStepAdjustmentOutput
+}
+
+type GetScalingRulesRuleStepAdjustmentArgs struct {
+	// (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	MetricIntervalLowerBound pulumi.StringInput `pulumi:"metricIntervalLowerBound"`
+	// (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	MetricIntervalUpperBound pulumi.StringInput `pulumi:"metricIntervalUpperBound"`
+	// (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+	ScalingAdjustment pulumi.IntInput `pulumi:"scalingAdjustment"`
+}
+
+func (GetScalingRulesRuleStepAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleStepAdjustment)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleStepAdjustmentArgs) ToGetScalingRulesRuleStepAdjustmentOutput() GetScalingRulesRuleStepAdjustmentOutput {
+	return i.ToGetScalingRulesRuleStepAdjustmentOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleStepAdjustmentArgs) ToGetScalingRulesRuleStepAdjustmentOutputWithContext(ctx context.Context) GetScalingRulesRuleStepAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleStepAdjustmentOutput)
+}
+
+// GetScalingRulesRuleStepAdjustmentArrayInput is an input type that accepts GetScalingRulesRuleStepAdjustmentArray and GetScalingRulesRuleStepAdjustmentArrayOutput values.
+// You can construct a concrete instance of `GetScalingRulesRuleStepAdjustmentArrayInput` via:
+//
+//	GetScalingRulesRuleStepAdjustmentArray{ GetScalingRulesRuleStepAdjustmentArgs{...} }
+type GetScalingRulesRuleStepAdjustmentArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingRulesRuleStepAdjustmentArrayOutput() GetScalingRulesRuleStepAdjustmentArrayOutput
+	ToGetScalingRulesRuleStepAdjustmentArrayOutputWithContext(context.Context) GetScalingRulesRuleStepAdjustmentArrayOutput
+}
+
+type GetScalingRulesRuleStepAdjustmentArray []GetScalingRulesRuleStepAdjustmentInput
+
+func (GetScalingRulesRuleStepAdjustmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleStepAdjustment)(nil)).Elem()
+}
+
+func (i GetScalingRulesRuleStepAdjustmentArray) ToGetScalingRulesRuleStepAdjustmentArrayOutput() GetScalingRulesRuleStepAdjustmentArrayOutput {
+	return i.ToGetScalingRulesRuleStepAdjustmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingRulesRuleStepAdjustmentArray) ToGetScalingRulesRuleStepAdjustmentArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleStepAdjustmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleStepAdjustmentArrayOutput)
+}
+
+type GetScalingRulesRuleStepAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleStepAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesRuleStepAdjustment)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleStepAdjustmentOutput) ToGetScalingRulesRuleStepAdjustmentOutput() GetScalingRulesRuleStepAdjustmentOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleStepAdjustmentOutput) ToGetScalingRulesRuleStepAdjustmentOutputWithContext(ctx context.Context) GetScalingRulesRuleStepAdjustmentOutput {
+	return o
+}
+
+// (Available since v1.250.0) The lower limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+func (o GetScalingRulesRuleStepAdjustmentOutput) MetricIntervalLowerBound() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleStepAdjustment) string { return v.MetricIntervalLowerBound }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The upper limit of each step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+func (o GetScalingRulesRuleStepAdjustmentOutput) MetricIntervalUpperBound() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleStepAdjustment) string { return v.MetricIntervalUpperBound }).(pulumi.StringOutput)
+}
+
+// (Available since v1.250.0) The number of instances that are scaled in each step adjustment.
+func (o GetScalingRulesRuleStepAdjustmentOutput) ScalingAdjustment() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRuleStepAdjustment) int { return v.ScalingAdjustment }).(pulumi.IntOutput)
+}
+
+type GetScalingRulesRuleStepAdjustmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesRuleStepAdjustmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingRulesRuleStepAdjustment)(nil)).Elem()
+}
+
+func (o GetScalingRulesRuleStepAdjustmentArrayOutput) ToGetScalingRulesRuleStepAdjustmentArrayOutput() GetScalingRulesRuleStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleStepAdjustmentArrayOutput) ToGetScalingRulesRuleStepAdjustmentArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o GetScalingRulesRuleStepAdjustmentArrayOutput) Index(i pulumi.IntInput) GetScalingRulesRuleStepAdjustmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingRulesRuleStepAdjustment {
+		return vs[0].([]GetScalingRulesRuleStepAdjustment)[vs[1].(int)]
+	}).(GetScalingRulesRuleStepAdjustmentOutput)
 }
 
 type GetScheduledTasksTask struct {
@@ -6620,6 +7048,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupLaunchTemplateOverrideArrayInput)(nil)).Elem(), GetScalingGroupsGroupLaunchTemplateOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleInput)(nil)).Elem(), GetScalingRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleArrayInput)(nil)).Elem(), GetScalingRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleHybridMetricInput)(nil)).Elem(), GetScalingRulesRuleHybridMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleHybridMetricArrayInput)(nil)).Elem(), GetScalingRulesRuleHybridMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleHybridMetricDimensionInput)(nil)).Elem(), GetScalingRulesRuleHybridMetricDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleHybridMetricDimensionArrayInput)(nil)).Elem(), GetScalingRulesRuleHybridMetricDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleStepAdjustmentInput)(nil)).Elem(), GetScalingRulesRuleStepAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleStepAdjustmentArrayInput)(nil)).Elem(), GetScalingRulesRuleStepAdjustmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskInput)(nil)).Elem(), GetScheduledTasksTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskArrayInput)(nil)).Elem(), GetScheduledTasksTaskArray{})
 	pulumi.RegisterOutputType(AlarmExpressionOutput{})
@@ -6702,6 +7136,12 @@ func init() {
 	pulumi.RegisterOutputType(GetScalingGroupsGroupLaunchTemplateOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleHybridMetricOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleHybridMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleHybridMetricDimensionOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleHybridMetricDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleStepAdjustmentOutput{})
+	pulumi.RegisterOutputType(GetScalingRulesRuleStepAdjustmentArrayOutput{})
 	pulumi.RegisterOutputType(GetScheduledTasksTaskOutput{})
 	pulumi.RegisterOutputType(GetScheduledTasksTaskArrayOutput{})
 }

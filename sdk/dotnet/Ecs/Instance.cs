@@ -604,6 +604,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        /// </summary>
+        [Output("systemDiskBurstingEnabled")]
+        public Output<bool?> SystemDiskBurstingEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Output("systemDiskCategory")]
@@ -650,6 +656,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("systemDiskPerformanceLevel")]
         public Output<string> SystemDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        /// </summary>
+        [Output("systemDiskProvisionedIops")]
+        public Output<int?> SystemDiskProvisionedIops { get; private set; } = null!;
 
         /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
@@ -1213,6 +1225,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        /// </summary>
+        [Input("systemDiskBurstingEnabled")]
+        public Input<bool>? SystemDiskBurstingEnabled { get; set; }
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -1253,6 +1271,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        /// </summary>
+        [Input("systemDiskProvisionedIops")]
+        public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
@@ -1852,6 +1876,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        /// </summary>
+        [Input("systemDiskBurstingEnabled")]
+        public Input<bool>? SystemDiskBurstingEnabled { get; set; }
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -1898,6 +1928,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        /// </summary>
+        [Input("systemDiskProvisionedIops")]
+        public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.

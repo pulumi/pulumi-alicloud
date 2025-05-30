@@ -16,7 +16,7 @@ public final class GetDedicatedHostsHostNetworkAttribute {
      */
     private Integer slbUdpTimeout;
     /**
-     * @return (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+     * @return (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
      * 
      */
     private Integer udpTimeout;
@@ -30,7 +30,7 @@ public final class GetDedicatedHostsHostNetworkAttribute {
         return this.slbUdpTimeout;
     }
     /**
-     * @return (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+     * @return (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
      * 
      */
     public Integer udpTimeout() {

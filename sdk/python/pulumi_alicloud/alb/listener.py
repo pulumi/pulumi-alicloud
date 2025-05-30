@@ -49,13 +49,9 @@ class ListenerArgs:
         :param pulumi.Input[builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[builtins.str] load_balancer_id: The SLB Instance Id.
-        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field.
+        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
-               
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]] ca_certificates: The list of certificates. See `ca_certificates` below.
@@ -64,10 +60,10 @@ class ListenerArgs:
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         :param pulumi.Input[builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
@@ -167,13 +163,9 @@ class ListenerArgs:
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
     def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Access Log Whether to Enable Carry Custom Header Field.
+        Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -282,7 +274,7 @@ class ListenerArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -318,7 +310,7 @@ class ListenerArgs:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -401,13 +393,9 @@ class _ListenerState:
                  x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
-        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field.
+        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
-               
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]] ca_certificates: The list of certificates. See `ca_certificates` below.
@@ -417,13 +405,13 @@ class _ListenerState:
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         :param pulumi.Input[builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
@@ -479,13 +467,9 @@ class _ListenerState:
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
     def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Access Log Whether to Enable Carry Custom Header Field.
+        Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -606,7 +590,7 @@ class _ListenerState:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -678,7 +662,7 @@ class _ListenerState:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -780,13 +764,9 @@ class Listener(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field.
+        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
-               
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
         :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
@@ -796,13 +776,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         :param pulumi.Input[builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
@@ -941,13 +921,9 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field.
+        :param pulumi.Input[builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
-               Value: True **** Or False * *.
-               
-               Default Value: False * *.
-               
-               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         :param pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']] access_log_tracing_config: Xtrace Configuration Information. See `access_log_tracing_config` below.
         :param pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']] acl_config: The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]] ca_certificates: The list of certificates. See `ca_certificates` below.
@@ -957,13 +933,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[builtins.bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         :param pulumi.Input[builtins.bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
-        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        :param pulumi.Input[builtins.int] idle_timeout: Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         :param pulumi.Input[builtins.str] listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         :param pulumi.Input[builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         :param pulumi.Input[builtins.str] load_balancer_id: The SLB Instance Id.
         :param pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']] quic_config: Configuration Associated with the QuIC Listening See `quic_config` below.
-        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        :param pulumi.Input[builtins.int] request_timeout: The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[builtins.str] security_policy_id: Security Policy
         :param pulumi.Input[builtins.str] status: The Current IP Address of the Listened State
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
@@ -1000,13 +976,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
     def access_log_record_customized_headers_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Access Log Whether to Enable Carry Custom Header Field.
+        Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 
-        Value: True **** Or False * *.
-
-        Default Value: False * *.
-
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -1087,7 +1059,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[builtins.int]:
         """
-        Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -1135,7 +1107,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[builtins.int]:
         """
-        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 

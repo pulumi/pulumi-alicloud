@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+// This data source provides the Private Zone Records of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.13.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -22,19 +26,44 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			recordsDs, err := pvtz.GetZoneRecords(ctx, &pvtz.GetZoneRecordsArgs{
-//				ZoneId:  basic.Id,
-//				Keyword: pulumi.StringRef(foo.Value),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example.com"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := pvtz.NewZone(ctx, "default", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstRecordId", recordsDs.Records[0].Id)
+//			defaultZoneRecord, err := pvtz.NewZoneRecord(ctx, "default", &pvtz.ZoneRecordArgs{
+//				ZoneId:   _default.ID(),
+//				Rr:       pulumi.String("www"),
+//				Type:     pulumi.String("MX"),
+//				Value:    pulumi.String(name),
+//				Ttl:      pulumi.Int(60),
+//				Priority: pulumi.Int(2),
+//				Remark:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := pvtz.GetZoneRecordsOutput(ctx, pvtz.GetZoneRecordsOutputArgs{
+//				ZoneId: defaultZoneRecord.ZoneId,
+//				Ids: pulumi.StringArray{
+//					defaultZoneRecord.RecordId,
+//				},
+//			}, nil)
+//			ctx.Export("pvtzZoneRecordsId0", ids.ApplyT(func(ids pvtz.GetZoneRecordsResult) (*string, error) {
+//				return &ids.Records[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -54,41 +83,40 @@ func GetZoneRecords(ctx *pulumi.Context, args *GetZoneRecordsArgs, opts ...pulum
 type GetZoneRecordsArgs struct {
 	// A list of Private Zone Record IDs.
 	Ids []string `pulumi:"ids"`
-	// Keyword for record rr and value.
+	// The keyword for record rr and value.
 	Keyword *string `pulumi:"keyword"`
-	// User language.
+	// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
 	Lang *string `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Search mode. Value:
-	// - LIKE: fuzzy search.
-	// - EXACT: precise search. It is not filled in by default.
+	// The search mode. Default value: `EXACT`. Valid values:
+	// - `LIKE`: Fuzzy search.
+	// - `EXACT`: Exact search.
 	SearchMode *string `pulumi:"searchMode"`
-	// Resolve record status. Value:
-	// - ENABLE: enable resolution.
-	// - DISABLE: pause parsing.
+	// The status of the Resolve record. Valid values:
+	// - `ENABLE`: Enable resolution.
+	// - `DISABLE`: Pause parsing.
 	Status *string `pulumi:"status"`
-	// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+	// The tag used to search for DNS records.
 	Tag *string `pulumi:"tag"`
-	// User ip.
+	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// ID of the Private Zone.
+	// The ID of the private zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneRecords.
 type GetZoneRecordsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of Private Zone Record IDs.
+	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	Keyword    *string  `pulumi:"keyword"`
 	Lang       *string  `pulumi:"lang"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A list of zone records. Each element contains the following attributes:
+	// A list of Zone Record. Each element contains the following attributes:
 	Records    []GetZoneRecordsRecord `pulumi:"records"`
 	SearchMode *string                `pulumi:"searchMode"`
-	// Status of the Private Zone Record.
+	// The state of the Private Zone Record.
 	Status       *string `pulumi:"status"`
 	Tag          *string `pulumi:"tag"`
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -108,25 +136,25 @@ func GetZoneRecordsOutput(ctx *pulumi.Context, args GetZoneRecordsOutputArgs, op
 type GetZoneRecordsOutputArgs struct {
 	// A list of Private Zone Record IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Keyword for record rr and value.
+	// The keyword for record rr and value.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
-	// User language.
+	// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Search mode. Value:
-	// - LIKE: fuzzy search.
-	// - EXACT: precise search. It is not filled in by default.
+	// The search mode. Default value: `EXACT`. Valid values:
+	// - `LIKE`: Fuzzy search.
+	// - `EXACT`: Exact search.
 	SearchMode pulumi.StringPtrInput `pulumi:"searchMode"`
-	// Resolve record status. Value:
-	// - ENABLE: enable resolution.
-	// - DISABLE: pause parsing.
+	// The status of the Resolve record. Valid values:
+	// - `ENABLE`: Enable resolution.
+	// - `DISABLE`: Pause parsing.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+	// The tag used to search for DNS records.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// User ip.
+	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
-	// ID of the Private Zone.
+	// The ID of the private zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -154,7 +182,6 @@ func (o GetZoneRecordsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Private Zone Record IDs.
 func (o GetZoneRecordsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -171,7 +198,7 @@ func (o GetZoneRecordsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A list of zone records. Each element contains the following attributes:
+// A list of Zone Record. Each element contains the following attributes:
 func (o GetZoneRecordsResultOutput) Records() GetZoneRecordsRecordArrayOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) []GetZoneRecordsRecord { return v.Records }).(GetZoneRecordsRecordArrayOutput)
 }
@@ -180,7 +207,7 @@ func (o GetZoneRecordsResultOutput) SearchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.SearchMode }).(pulumi.StringPtrOutput)
 }
 
-// Status of the Private Zone Record.
+// The state of the Private Zone Record.
 func (o GetZoneRecordsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZoneRecordsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

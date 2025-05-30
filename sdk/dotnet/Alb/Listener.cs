@@ -28,13 +28,9 @@ namespace Pulumi.AliCloud.Alb
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
         /// 
-        /// Value: True **** Or False * *.
-        /// 
-        /// Default Value: False * *.
-        /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         /// </summary>
         [Output("accessLogRecordCustomizedHeadersEnabled")]
         public Output<bool?> AccessLogRecordCustomizedHeadersEnabled { get; private set; } = null!;
@@ -94,7 +90,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool> Http2Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
@@ -130,7 +126,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerQuicConfig> QuicConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int> RequestTimeout { get; private set; } = null!;
@@ -206,13 +202,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
         /// 
-        /// Value: True **** Or False * *.
-        /// 
-        /// Default Value: False * *.
-        /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
@@ -284,7 +276,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -320,7 +312,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
@@ -364,13 +356,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Log Whether to Enable Carry Custom Header Field.
+        /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
         /// 
-        /// Value: True **** Or False * *.
-        /// 
-        /// Default Value: False * *.
-        /// 
-        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
@@ -442,7 +430,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -478,7 +466,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerQuicConfigGetArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }

@@ -87,11 +87,17 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[builtins.str]:
+        """
+        The type of IP address that the ALB instance uses to provide services.
+        """
         return pulumi.get(self, "address_type")
 
     @property
     @pulumi.getter
     def balancers(self) -> Sequence['outputs.GetLoadBalancersBalancerResult']:
+        """
+        A list of Alb Load Balancers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "balancers")
 
     @property
@@ -115,12 +121,18 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="loadBalancerBusinessStatus")
     def load_balancer_business_status(self) -> Optional[builtins.str]:
+        """
+        (Available since v1.142.0) Load Balancing of the Service Status.
+        """
         return pulumi.get(self, "load_balancer_business_status")
 
     @property
     @pulumi.getter(name="loadBalancerBussinessStatus")
     @_utilities.deprecated("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
     def load_balancer_bussiness_status(self) -> Optional[builtins.str]:
+        """
+        (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
+        """
         return pulumi.get(self, "load_balancer_bussiness_status")
 
     @property
@@ -131,6 +143,9 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[builtins.str]:
+        """
+        The name of the resource.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @property
@@ -141,6 +156,9 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[builtins.str]:
+        """
+        A list of Load Balancer names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -151,21 +169,33 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
+        """
+        (Available since v1.250.0) The zone status.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property
@@ -176,6 +206,9 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the zone to which the ALB instance belongs.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -224,7 +257,7 @@ def get_load_balancers(address_type: Optional[builtins.str] = None,
     """
     This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -234,25 +267,84 @@ def get_load_balancers(address_type: Optional[builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.alb.get_load_balancers()
-    pulumi.export("albLoadBalancerId1", ids.balancers[0].id)
-    name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
-    pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups()
+    default_get_zones = alicloud.alb.get_zones()
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16",
+        enable_ipv6=True)
+    zone_a = alicloud.ecs.Eip("zone_a",
+        bandwidth="10",
+        internet_charge_type="PayByTraffic")
+    zone_a_switch = alicloud.vpc.Switch("zone_a",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.0.0/18",
+        zone_id=default_get_zones.zones[0].id,
+        ipv6_cidr_block_mask=6)
+    zone_b = alicloud.vpc.Switch("zone_b",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.128.0/18",
+        zone_id=default_get_zones.zones[1].id,
+        ipv6_cidr_block_mask=8)
+    default_ipv6_gateway = alicloud.vpc.Ipv6Gateway("default",
+        ipv6_gateway_name=name,
+        vpc_id=default_network.id)
+    default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+        bandwidth="1000",
+        internet_charge_type="PayByBandwidth")
+    default_load_balancer = alicloud.alb.LoadBalancer("default",
+        load_balancer_edition="Basic",
+        address_type="Internet",
+        vpc_id=default_ipv6_gateway.vpc_id,
+        address_allocated_mode="Fixed",
+        address_ip_version="DualStack",
+        ipv6_address_type="Internet",
+        bandwidth_package_id=default_common_bandwith_package.id,
+        resource_group_id=default.groups[1].id,
+        load_balancer_name=name,
+        deletion_protection_enabled=False,
+        load_balancer_billing_config={
+            "pay_type": "PayAsYouGo",
+        },
+        zone_mappings=[
+            {
+                "vswitch_id": zone_a_switch.id,
+                "zone_id": zone_a_switch.zone_id,
+                "eip_type": "Common",
+                "allocation_id": zone_a.id,
+                "intranet_address": "192.168.10.1",
+            },
+            {
+                "vswitch_id": zone_b.id,
+                "zone_id": zone_b.zone_id,
+            },
+        ],
+        tags={
+            "Created": "TF",
+        })
+    ids = alicloud.alb.get_load_balancers_output(ids=[default_load_balancer.id])
+    pulumi.export("albLoadBalancersId0", ids.balancers[0].id)
     ```
 
 
-    :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services. Valid
-           values: `Intranet`, `Internet`.
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[builtins.str] ids: A list of Load Balancer IDs.
     :param builtins.str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
-    :param builtins.str load_balancer_bussiness_status: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+    :param builtins.str load_balancer_bussiness_status: Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
     :param Sequence[builtins.str] load_balancer_ids: The load balancer ids.
     :param builtins.str load_balancer_name: The name of the resource.
     :param builtins.str name_regex: A regex string to filter results by Load Balancer name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param builtins.str resource_group_id: The ID of the resource group.
     :param builtins.str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+    :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
     :param builtins.str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[builtins.str] vpc_ids: The vpc ids.
     :param builtins.str zone_id: The zone ID of the resource.
@@ -314,7 +406,7 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[built
     """
     This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -324,25 +416,84 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[built
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.alb.get_load_balancers()
-    pulumi.export("albLoadBalancerId1", ids.balancers[0].id)
-    name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
-    pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups()
+    default_get_zones = alicloud.alb.get_zones()
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16",
+        enable_ipv6=True)
+    zone_a = alicloud.ecs.Eip("zone_a",
+        bandwidth="10",
+        internet_charge_type="PayByTraffic")
+    zone_a_switch = alicloud.vpc.Switch("zone_a",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.0.0/18",
+        zone_id=default_get_zones.zones[0].id,
+        ipv6_cidr_block_mask=6)
+    zone_b = alicloud.vpc.Switch("zone_b",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.128.0/18",
+        zone_id=default_get_zones.zones[1].id,
+        ipv6_cidr_block_mask=8)
+    default_ipv6_gateway = alicloud.vpc.Ipv6Gateway("default",
+        ipv6_gateway_name=name,
+        vpc_id=default_network.id)
+    default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+        bandwidth="1000",
+        internet_charge_type="PayByBandwidth")
+    default_load_balancer = alicloud.alb.LoadBalancer("default",
+        load_balancer_edition="Basic",
+        address_type="Internet",
+        vpc_id=default_ipv6_gateway.vpc_id,
+        address_allocated_mode="Fixed",
+        address_ip_version="DualStack",
+        ipv6_address_type="Internet",
+        bandwidth_package_id=default_common_bandwith_package.id,
+        resource_group_id=default.groups[1].id,
+        load_balancer_name=name,
+        deletion_protection_enabled=False,
+        load_balancer_billing_config={
+            "pay_type": "PayAsYouGo",
+        },
+        zone_mappings=[
+            {
+                "vswitch_id": zone_a_switch.id,
+                "zone_id": zone_a_switch.zone_id,
+                "eip_type": "Common",
+                "allocation_id": zone_a.id,
+                "intranet_address": "192.168.10.1",
+            },
+            {
+                "vswitch_id": zone_b.id,
+                "zone_id": zone_b.zone_id,
+            },
+        ],
+        tags={
+            "Created": "TF",
+        })
+    ids = alicloud.alb.get_load_balancers_output(ids=[default_load_balancer.id])
+    pulumi.export("albLoadBalancersId0", ids.balancers[0].id)
     ```
 
 
-    :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services. Valid
-           values: `Intranet`, `Internet`.
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param builtins.str address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[builtins.str] ids: A list of Load Balancer IDs.
     :param builtins.str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
-    :param builtins.str load_balancer_bussiness_status: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+    :param builtins.str load_balancer_bussiness_status: Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
     :param Sequence[builtins.str] load_balancer_ids: The load balancer ids.
     :param builtins.str load_balancer_name: The name of the resource.
     :param builtins.str name_regex: A regex string to filter results by Load Balancer name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param builtins.str resource_group_id: The ID of the resource group.
     :param builtins.str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+    :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
     :param builtins.str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[builtins.str] vpc_ids: The vpc ids.
     :param builtins.str zone_id: The zone ID of the resource.

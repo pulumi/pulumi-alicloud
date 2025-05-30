@@ -1445,11 +1445,13 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1459,6 +1461,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1474,14 +1478,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1493,11 +1507,13 @@ public final class EcsFunctions {
         return getDedicatedHosts(GetDedicatedHostsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1507,6 +1523,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1522,14 +1540,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1541,11 +1569,13 @@ public final class EcsFunctions {
         return getDedicatedHostsPlain(GetDedicatedHostsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1555,6 +1585,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1570,14 +1602,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1589,11 +1631,13 @@ public final class EcsFunctions {
         return getDedicatedHosts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1603,6 +1647,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1618,14 +1664,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1637,11 +1693,13 @@ public final class EcsFunctions {
         return getDedicatedHostsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1651,6 +1709,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1666,14 +1726,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1685,11 +1755,13 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1699,6 +1771,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1714,14 +1788,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -1733,11 +1817,13 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.91.0+.
+     * &gt; **NOTE:** Available since v1.91.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1747,6 +1833,8 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.DedicatedHost;
+     * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
@@ -1762,14 +1850,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex("tf-testAcc")
-     *             .dedicatedHostType("ddh.g5")
-     *             .status("Available")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+     *             .dedicatedHostType("ddh.c5")
+     *             .description("From_Terraform")
+     *             .dedicatedHostName(name)
+     *             .actionOnMaintenance("Migrate")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Create", "TF"),
+     *                 Map.entry("For", "ddh-test")
+     *             ))
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
+     *         final var ids = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
      *     }
      * }
      * }
@@ -10884,6 +10982,8 @@ public final class EcsFunctions {
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
+     * &gt; **NOTE:** Available since v1.7.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -10928,6 +11028,8 @@ public final class EcsFunctions {
     }
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0.
      * 
      * ## Example Usage
      * 
@@ -10974,6 +11076,8 @@ public final class EcsFunctions {
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
+     * &gt; **NOTE:** Available since v1.7.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11018,6 +11122,8 @@ public final class EcsFunctions {
     }
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0.
      * 
      * ## Example Usage
      * 
@@ -11064,6 +11170,8 @@ public final class EcsFunctions {
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
+     * &gt; **NOTE:** Available since v1.7.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11109,6 +11217,8 @@ public final class EcsFunctions {
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
+     * &gt; **NOTE:** Available since v1.7.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11153,6 +11263,8 @@ public final class EcsFunctions {
     }
     /**
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0.
      * 
      * ## Example Usage
      * 

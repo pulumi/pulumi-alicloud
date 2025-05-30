@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Oos Parameters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // ## Example Usage
 //
@@ -26,50 +26,49 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := oos.NewParameter(ctx, "default", &oos.ParameterArgs{
+//				ParameterName: pulumi.String(name),
+//				Value:         pulumi.String("tf-testacc-oos_parameter"),
+//				Type:          pulumi.String("String"),
+//				Description:   pulumi.String(name),
+//				Constraints: pulumi.String(`  {
+//	    "AllowedValues": [
+//	        "tf-testacc-oos_parameter"
+//	    ],
+//	    "AllowedPattern": "tf-testacc-oos_parameter",
+//	    "MinLength": 1,
+//	    "MaxLength": 100
+//	  }
+//
+// `),
+//
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Parameter"),
 //				},
-//			}, nil)
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("oosParameterId1", ids.Parameters[0].Id)
-//			nameRegex, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				NameRegex: pulumi.StringRef("^my-Parameter"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId2", nameRegex.Parameters[0].Id)
-//			resourceGroupId, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
-//				},
-//				ResourceGroupId: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId3", resourceGroupId.Parameters[0].Id)
-//			tags, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
-//				},
-//				Tags: map[string]interface{}{
-//					"Created": "TF",
-//					"For":     "OosParameter",
+//			ids := oos.GetParametersOutput(ctx, oos.GetParametersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId4", tags.Parameters[0].Id)
+//			ctx.Export("oosSecretParameterId0", ids.ApplyT(func(ids oos.GetParametersResult) (*string, error) {
+//				return &ids.Parameters[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -87,9 +86,9 @@ func GetParameters(ctx *pulumi.Context, args *GetParametersArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getParameters.
 type GetParametersArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of Parameter IDs. Its element value is same as Parameter Name.
+	// A list of Parameter IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Parameter name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -99,11 +98,13 @@ type GetParametersArgs struct {
 	ParameterName *string `pulumi:"parameterName"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	SortField       *string `pulumi:"sortField"`
-	SortOrder       *string `pulumi:"sortOrder"`
+	// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+	SortField *string `pulumi:"sortField"`
+	// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+	SortOrder *string `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The data type of the common parameter. Valid values: `String` and `StringList`.
+	// The data type of the common parameter. Valid values: `String`, `StringList`.
 	Type *string `pulumi:"type"`
 }
 
@@ -111,18 +112,24 @@ type GetParametersArgs struct {
 type GetParametersResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                   `pulumi:"id"`
-	Ids             []string                 `pulumi:"ids"`
-	NameRegex       *string                  `pulumi:"nameRegex"`
-	Names           []string                 `pulumi:"names"`
-	OutputFile      *string                  `pulumi:"outputFile"`
-	ParameterName   *string                  `pulumi:"parameterName"`
-	Parameters      []GetParametersParameter `pulumi:"parameters"`
-	ResourceGroupId *string                  `pulumi:"resourceGroupId"`
-	SortField       *string                  `pulumi:"sortField"`
-	SortOrder       *string                  `pulumi:"sortOrder"`
-	Tags            map[string]string        `pulumi:"tags"`
-	Type            *string                  `pulumi:"type"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Parameter names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the common parameter.
+	ParameterName *string `pulumi:"parameterName"`
+	// A list of Oos Parameters. Each element contains the following attributes:
+	Parameters []GetParametersParameter `pulumi:"parameters"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SortField       *string `pulumi:"sortField"`
+	SortOrder       *string `pulumi:"sortOrder"`
+	// The tags added to the common parameter.
+	Tags map[string]string `pulumi:"tags"`
+	// The data type of the common parameter.
+	Type *string `pulumi:"type"`
 }
 
 func GetParametersOutput(ctx *pulumi.Context, args GetParametersOutputArgs, opts ...pulumi.InvokeOption) GetParametersResultOutput {
@@ -136,9 +143,9 @@ func GetParametersOutput(ctx *pulumi.Context, args GetParametersOutputArgs, opts
 
 // A collection of arguments for invoking getParameters.
 type GetParametersOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of Parameter IDs. Its element value is same as Parameter Name.
+	// A list of Parameter IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Parameter name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -148,11 +155,13 @@ type GetParametersOutputArgs struct {
 	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	SortField       pulumi.StringPtrInput `pulumi:"sortField"`
-	SortOrder       pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+	SortField pulumi.StringPtrInput `pulumi:"sortField"`
+	// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The data type of the common parameter. Valid values: `String` and `StringList`.
+	// The data type of the common parameter. Valid values: `String`, `StringList`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -192,6 +201,7 @@ func (o GetParametersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Parameter names.
 func (o GetParametersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetParametersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -200,14 +210,17 @@ func (o GetParametersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the common parameter.
 func (o GetParametersResultOutput) ParameterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Oos Parameters. Each element contains the following attributes:
 func (o GetParametersResultOutput) Parameters() GetParametersParameterArrayOutput {
 	return o.ApplyT(func(v GetParametersResult) []GetParametersParameter { return v.Parameters }).(GetParametersParameterArrayOutput)
 }
 
+// The ID of the Resource Group.
 func (o GetParametersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -220,10 +233,12 @@ func (o GetParametersResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
+// The tags added to the common parameter.
 func (o GetParametersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetParametersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The data type of the common parameter.
 func (o GetParametersResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

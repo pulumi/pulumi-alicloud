@@ -16,6 +16,7 @@ from .workspace_member import *
 from .workspace_model import *
 from .workspace_model_version import *
 from .workspace_run import *
+from .workspace_user_config import *
 from .workspace_workspace import *
 from ._inputs import *
 from . import outputs

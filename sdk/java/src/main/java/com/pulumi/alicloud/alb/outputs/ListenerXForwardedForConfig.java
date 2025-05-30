@@ -55,18 +55,10 @@ public final class ListenerXForwardedForConfig {
     /**
      * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
      * 
-     * true: Yes.
-     * 
-     * false (default): No.
-     * 
-     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
-     * 
      */
     private @Nullable Boolean xForwardedForClientSourceIpsEnabled;
     /**
-     * @return Specify the trusted proxy IP.
-     * 
-     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     private @Nullable String xForwardedForClientSourceIpsTrusted;
@@ -83,26 +75,10 @@ public final class ListenerXForwardedForConfig {
     /**
      * @return Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
      * 
-     * true: Yes.
-     * 
-     * false (default): No.
-     * 
-     * HTTP, HTTPS, and QUIC listeners support this parameter.
-     * 
      */
     private @Nullable Boolean xForwardedForHostEnabled;
     /**
      * @return Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-     * 
-     * append (default): append.
-     * 
-     * remove: Delete.
-     * 
-     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-     * 
-     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-     * 
-     * HTTP and HTTPS listeners support this parameter.
      * 
      */
     private @Nullable String xForwardedForProcessingMode;
@@ -182,20 +158,12 @@ public final class ListenerXForwardedForConfig {
     /**
      * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
      * 
-     * true: Yes.
-     * 
-     * false (default): No.
-     * 
-     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
-     * 
      */
     public Optional<Boolean> xForwardedForClientSourceIpsEnabled() {
         return Optional.ofNullable(this.xForwardedForClientSourceIpsEnabled);
     }
     /**
-     * @return Specify the trusted proxy IP.
-     * 
-     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     public Optional<String> xForwardedForClientSourceIpsTrusted() {
@@ -218,28 +186,12 @@ public final class ListenerXForwardedForConfig {
     /**
      * @return Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
      * 
-     * true: Yes.
-     * 
-     * false (default): No.
-     * 
-     * HTTP, HTTPS, and QUIC listeners support this parameter.
-     * 
      */
     public Optional<Boolean> xForwardedForHostEnabled() {
         return Optional.ofNullable(this.xForwardedForHostEnabled);
     }
     /**
      * @return Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-     * 
-     * append (default): append.
-     * 
-     * remove: Delete.
-     * 
-     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
-     * 
-     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
-     * 
-     * HTTP and HTTPS listeners support this parameter.
      * 
      */
     public Optional<String> xForwardedForProcessingMode() {

@@ -75,6 +75,9 @@ class ClusterArgs:
                  seconds_until_auto_pause: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_mode: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -162,6 +165,7 @@ class ClusterArgs:
                > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+               > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
@@ -174,6 +178,10 @@ class ClusterArgs:
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_enlarge_threshold: CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+               > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_shrink_threshold: CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[builtins.str] serverless_rule_mode: Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] serverless_steady_switch: Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -302,6 +310,12 @@ class ClusterArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if serverless_rule_cpu_enlarge_threshold is not None:
+            pulumi.set(__self__, "serverless_rule_cpu_enlarge_threshold", serverless_rule_cpu_enlarge_threshold)
+        if serverless_rule_cpu_shrink_threshold is not None:
+            pulumi.set(__self__, "serverless_rule_cpu_shrink_threshold", serverless_rule_cpu_shrink_threshold)
+        if serverless_rule_mode is not None:
+            pulumi.set(__self__, "serverless_rule_mode", serverless_rule_mode)
         if serverless_steady_switch is not None:
             pulumi.set(__self__, "serverless_steady_switch", serverless_steady_switch)
         if serverless_type is not None:
@@ -870,6 +884,7 @@ class ClusterArgs:
     def resource_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -998,6 +1013,43 @@ class ClusterArgs:
     @security_ips.setter
     def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuEnlargeThreshold")
+    def serverless_rule_cpu_enlarge_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_enlarge_threshold")
+
+    @serverless_rule_cpu_enlarge_threshold.setter
+    def serverless_rule_cpu_enlarge_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "serverless_rule_cpu_enlarge_threshold", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuShrinkThreshold")
+    def serverless_rule_cpu_shrink_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_shrink_threshold")
+
+    @serverless_rule_cpu_shrink_threshold.setter
+    def serverless_rule_cpu_shrink_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "serverless_rule_cpu_shrink_threshold", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleMode")
+    def serverless_rule_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_mode")
+
+    @serverless_rule_mode.setter
+    def serverless_rule_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "serverless_rule_mode", value)
 
     @property
     @pulumi.getter(name="serverlessSteadySwitch")
@@ -1260,6 +1312,9 @@ class _ClusterState:
                  seconds_until_auto_pause: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_mode: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1353,6 +1408,7 @@ class _ClusterState:
                > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+               > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
@@ -1365,6 +1421,10 @@ class _ClusterState:
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_enlarge_threshold: CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+               > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_shrink_threshold: CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[builtins.str] serverless_rule_mode: Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] serverless_steady_switch: Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -1508,6 +1568,12 @@ class _ClusterState:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if serverless_rule_cpu_enlarge_threshold is not None:
+            pulumi.set(__self__, "serverless_rule_cpu_enlarge_threshold", serverless_rule_cpu_enlarge_threshold)
+        if serverless_rule_cpu_shrink_threshold is not None:
+            pulumi.set(__self__, "serverless_rule_cpu_shrink_threshold", serverless_rule_cpu_shrink_threshold)
+        if serverless_rule_mode is not None:
+            pulumi.set(__self__, "serverless_rule_mode", serverless_rule_mode)
         if serverless_steady_switch is not None:
             pulumi.set(__self__, "serverless_steady_switch", serverless_steady_switch)
         if serverless_type is not None:
@@ -2128,6 +2194,7 @@ class _ClusterState:
     def resource_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -2256,6 +2323,43 @@ class _ClusterState:
     @security_ips.setter
     def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuEnlargeThreshold")
+    def serverless_rule_cpu_enlarge_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_enlarge_threshold")
+
+    @serverless_rule_cpu_enlarge_threshold.setter
+    def serverless_rule_cpu_enlarge_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "serverless_rule_cpu_enlarge_threshold", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuShrinkThreshold")
+    def serverless_rule_cpu_shrink_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_shrink_threshold")
+
+    @serverless_rule_cpu_shrink_threshold.setter
+    def serverless_rule_cpu_shrink_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "serverless_rule_cpu_shrink_threshold", value)
+
+    @property
+    @pulumi.getter(name="serverlessRuleMode")
+    def serverless_rule_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_mode")
+
+    @serverless_rule_mode.setter
+    def serverless_rule_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "serverless_rule_mode", value)
 
     @property
     @pulumi.getter(name="serverlessSteadySwitch")
@@ -2543,6 +2647,9 @@ class Cluster(pulumi.CustomResource):
                  seconds_until_auto_pause: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_mode: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2640,6 +2747,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+               > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
@@ -2652,6 +2760,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_enlarge_threshold: CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+               > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_shrink_threshold: CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[builtins.str] serverless_rule_mode: Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] serverless_steady_switch: Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -2760,6 +2872,9 @@ class Cluster(pulumi.CustomResource):
                  seconds_until_auto_pause: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 serverless_rule_mode: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
                  serverless_type: Optional[pulumi.Input[builtins.str]] = None,
                  source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2844,6 +2959,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["seconds_until_auto_pause"] = seconds_until_auto_pause
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["serverless_rule_cpu_enlarge_threshold"] = serverless_rule_cpu_enlarge_threshold
+            __props__.__dict__["serverless_rule_cpu_shrink_threshold"] = serverless_rule_cpu_shrink_threshold
+            __props__.__dict__["serverless_rule_mode"] = serverless_rule_mode
             __props__.__dict__["serverless_steady_switch"] = serverless_steady_switch
             __props__.__dict__["serverless_type"] = serverless_type
             __props__.__dict__["source_resource_id"] = source_resource_id
@@ -2933,6 +3051,9 @@ class Cluster(pulumi.CustomResource):
             seconds_until_auto_pause: Optional[pulumi.Input[builtins.int]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[builtins.int]] = None,
+            serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[builtins.int]] = None,
+            serverless_rule_mode: Optional[pulumi.Input[builtins.str]] = None,
             serverless_steady_switch: Optional[pulumi.Input[builtins.str]] = None,
             serverless_type: Optional[pulumi.Input[builtins.str]] = None,
             source_resource_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3031,6 +3152,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+               > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[builtins.int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[builtins.int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
@@ -3043,6 +3165,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_enlarge_threshold: CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+               > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        :param pulumi.Input[builtins.int] serverless_rule_cpu_shrink_threshold: CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[builtins.str] serverless_rule_mode: Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         :param pulumi.Input[builtins.str] serverless_steady_switch: Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
                > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
         :param pulumi.Input[builtins.str] serverless_type: The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
@@ -3133,6 +3259,9 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["seconds_until_auto_pause"] = seconds_until_auto_pause
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["serverless_rule_cpu_enlarge_threshold"] = serverless_rule_cpu_enlarge_threshold
+        __props__.__dict__["serverless_rule_cpu_shrink_threshold"] = serverless_rule_cpu_shrink_threshold
+        __props__.__dict__["serverless_rule_mode"] = serverless_rule_mode
         __props__.__dict__["serverless_steady_switch"] = serverless_steady_switch
         __props__.__dict__["serverless_type"] = serverless_type
         __props__.__dict__["source_resource_id"] = source_resource_id
@@ -3552,6 +3681,7 @@ class Cluster(pulumi.CustomResource):
     def resource_group_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -3636,6 +3766,31 @@ class Cluster(pulumi.CustomResource):
         Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuEnlargeThreshold")
+    def serverless_rule_cpu_enlarge_threshold(self) -> pulumi.Output[builtins.int]:
+        """
+        CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_enlarge_threshold")
+
+    @property
+    @pulumi.getter(name="serverlessRuleCpuShrinkThreshold")
+    def serverless_rule_cpu_shrink_threshold(self) -> pulumi.Output[builtins.int]:
+        """
+        CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_cpu_shrink_threshold")
+
+    @property
+    @pulumi.getter(name="serverlessRuleMode")
+    def serverless_rule_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_rule_mode")
 
     @property
     @pulumi.getter(name="serverlessSteadySwitch")

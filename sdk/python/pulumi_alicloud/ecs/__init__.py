@@ -84,6 +84,7 @@ from .instance import *
 from .key_pair import *
 from .key_pair_attachment import *
 from .launch_template import *
+from .ram_role_attachment import *
 from .reserved_instance import *
 from .security_group import *
 from .security_group_rule import *

@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
+        /// Audit log configuration. See `audit_log_config` below.
+        /// </summary>
+        [Output("auditLogConfig")]
+        public Output<Outputs.ManagedKubernetesAuditLogConfig> AuditLogConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Output("certificateAuthority")]
@@ -99,7 +105,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
+        /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
         /// </summary>
         [Output("clusterSpec")]
@@ -228,6 +234,16 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The profile of cluster. Valid values:
+        /// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        /// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        /// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        /// * `Acs`: ACS cluster.
+        /// </summary>
+        [Output("profile")]
+        public Output<string> Profile { get; private set; } = null!;
 
         /// <summary>
         /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
@@ -438,6 +454,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Audit log configuration. See `audit_log_config` below.
+        /// </summary>
+        [Input("auditLogConfig")]
+        public Input<Inputs.ManagedKubernetesAuditLogConfigArgs>? AuditLogConfig { get; set; }
+
+        /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
@@ -465,7 +487,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
+        /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
         /// </summary>
         [Input("clusterSpec")]
@@ -600,6 +622,16 @@ namespace Pulumi.AliCloud.CS
             get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
             set => _podVswitchIds = value;
         }
+
+        /// <summary>
+        /// The profile of cluster. Valid values:
+        /// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        /// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        /// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        /// * `Acs`: ACS cluster.
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
 
         /// <summary>
         /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
@@ -766,6 +798,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Audit log configuration. See `audit_log_config` below.
+        /// </summary>
+        [Input("auditLogConfig")]
+        public Input<Inputs.ManagedKubernetesAuditLogConfigGetArgs>? AuditLogConfig { get; set; }
+
+        /// <summary>
         /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
@@ -799,7 +837,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
+        /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
         /// </summary>
         [Input("clusterSpec")]
@@ -946,6 +984,16 @@ namespace Pulumi.AliCloud.CS
             get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
             set => _podVswitchIds = value;
         }
+
+        /// <summary>
+        /// The profile of cluster. Valid values:
+        /// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        /// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        /// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        /// * `Acs`: ACS cluster.
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
 
         /// <summary>
         /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.

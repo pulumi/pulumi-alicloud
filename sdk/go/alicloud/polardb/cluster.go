@@ -141,6 +141,7 @@ type Cluster struct {
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+	// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
@@ -164,6 +165,13 @@ type Cluster struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
+	// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+	// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+	ServerlessRuleCpuEnlargeThreshold pulumi.IntOutput `pulumi:"serverlessRuleCpuEnlargeThreshold"`
+	// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+	ServerlessRuleCpuShrinkThreshold pulumi.IntOutput `pulumi:"serverlessRuleCpuShrinkThreshold"`
+	// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+	ServerlessRuleMode pulumi.StringOutput `pulumi:"serverlessRuleMode"`
 	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
 	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
 	ServerlessSteadySwitch pulumi.StringPtrOutput `pulumi:"serverlessSteadySwitch"`
@@ -370,6 +378,7 @@ type clusterState struct {
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+	// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
@@ -393,6 +402,13 @@ type clusterState struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
+	// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+	// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+	ServerlessRuleCpuEnlargeThreshold *int `pulumi:"serverlessRuleCpuEnlargeThreshold"`
+	// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+	ServerlessRuleCpuShrinkThreshold *int `pulumi:"serverlessRuleCpuShrinkThreshold"`
+	// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+	ServerlessRuleMode *string `pulumi:"serverlessRuleMode"`
 	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
 	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
 	ServerlessSteadySwitch *string `pulumi:"serverlessSteadySwitch"`
@@ -561,6 +577,7 @@ type ClusterState struct {
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+	// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
@@ -584,6 +601,13 @@ type ClusterState struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
+	// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+	// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+	ServerlessRuleCpuEnlargeThreshold pulumi.IntPtrInput
+	// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+	ServerlessRuleCpuShrinkThreshold pulumi.IntPtrInput
+	// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+	ServerlessRuleMode pulumi.StringPtrInput
 	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
 	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
 	ServerlessSteadySwitch pulumi.StringPtrInput
@@ -748,6 +772,7 @@ type clusterArgs struct {
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+	// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
@@ -771,6 +796,13 @@ type clusterArgs struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
+	// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+	// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+	ServerlessRuleCpuEnlargeThreshold *int `pulumi:"serverlessRuleCpuEnlargeThreshold"`
+	// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+	ServerlessRuleCpuShrinkThreshold *int `pulumi:"serverlessRuleCpuShrinkThreshold"`
+	// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+	ServerlessRuleMode *string `pulumi:"serverlessRuleMode"`
 	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
 	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
 	ServerlessSteadySwitch *string `pulumi:"serverlessSteadySwitch"`
@@ -926,6 +958,7 @@ type ClusterArgs struct {
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+	// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
@@ -949,6 +982,13 @@ type ClusterArgs struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
+	// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+	// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+	ServerlessRuleCpuEnlargeThreshold pulumi.IntPtrInput
+	// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+	ServerlessRuleCpuShrinkThreshold pulumi.IntPtrInput
+	// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+	ServerlessRuleMode pulumi.StringPtrInput
 	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
 	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
 	ServerlessSteadySwitch pulumi.StringPtrInput
@@ -1335,6 +1375,7 @@ func (o ClusterOutput) RenewalStatus() pulumi.StringPtrOutput {
 }
 
 // The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+// > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
 func (o ClusterOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -1389,6 +1430,22 @@ func (o ClusterOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 // Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+// > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+func (o ClusterOutput) ServerlessRuleCpuEnlargeThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ServerlessRuleCpuEnlargeThreshold }).(pulumi.IntOutput)
+}
+
+// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ServerlessRuleCpuShrinkThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ServerlessRuleCpuShrinkThreshold }).(pulumi.IntOutput)
+}
+
+// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ServerlessRuleMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ServerlessRuleMode }).(pulumi.StringOutput)
 }
 
 // Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.

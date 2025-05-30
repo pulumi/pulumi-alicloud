@@ -255,6 +255,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -299,6 +300,19 @@ export class Cluster extends pulumi.CustomResource {
      * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     public readonly securityIps!: pulumi.Output<string[]>;
+    /**
+     * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+     */
+    public readonly serverlessRuleCpuEnlargeThreshold!: pulumi.Output<number>;
+    /**
+     * CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+     */
+    public readonly serverlessRuleCpuShrinkThreshold!: pulumi.Output<number>;
+    /**
+     * Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+     */
+    public readonly serverlessRuleMode!: pulumi.Output<string>;
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
      * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
@@ -452,6 +466,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secondsUntilAutoPause"] = state ? state.secondsUntilAutoPause : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = state ? state.serverlessRuleCpuEnlargeThreshold : undefined;
+            resourceInputs["serverlessRuleCpuShrinkThreshold"] = state ? state.serverlessRuleCpuShrinkThreshold : undefined;
+            resourceInputs["serverlessRuleMode"] = state ? state.serverlessRuleMode : undefined;
             resourceInputs["serverlessSteadySwitch"] = state ? state.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = state ? state.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
@@ -534,6 +551,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secondsUntilAutoPause"] = args ? args.secondsUntilAutoPause : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = args ? args.serverlessRuleCpuEnlargeThreshold : undefined;
+            resourceInputs["serverlessRuleCpuShrinkThreshold"] = args ? args.serverlessRuleCpuShrinkThreshold : undefined;
+            resourceInputs["serverlessRuleMode"] = args ? args.serverlessRuleMode : undefined;
             resourceInputs["serverlessSteadySwitch"] = args ? args.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = args ? args.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
@@ -778,6 +798,7 @@ export interface ClusterState {
     renewalStatus?: pulumi.Input<string>;
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -822,6 +843,19 @@ export interface ClusterState {
      * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+     */
+    serverlessRuleCpuEnlargeThreshold?: pulumi.Input<number>;
+    /**
+     * CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+     */
+    serverlessRuleCpuShrinkThreshold?: pulumi.Input<number>;
+    /**
+     * Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+     */
+    serverlessRuleMode?: pulumi.Input<string>;
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
      * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
@@ -1106,6 +1140,7 @@ export interface ClusterArgs {
     renewalStatus?: pulumi.Input<string>;
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -1150,6 +1185,19 @@ export interface ClusterArgs {
      * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
+     */
+    serverlessRuleCpuEnlargeThreshold?: pulumi.Input<number>;
+    /**
+     * CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+     */
+    serverlessRuleCpuShrinkThreshold?: pulumi.Input<number>;
+    /**
+     * Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+     */
+    serverlessRuleMode?: pulumi.Input<string>;
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
      * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.

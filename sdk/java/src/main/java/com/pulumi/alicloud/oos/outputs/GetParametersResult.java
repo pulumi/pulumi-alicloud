@@ -24,14 +24,38 @@ public final class GetParametersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Parameter names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the common parameter.
+     * 
+     */
     private @Nullable String parameterName;
+    /**
+     * @return A list of Oos Parameters. Each element contains the following attributes:
+     * 
+     */
     private List<GetParametersParameter> parameters;
+    /**
+     * @return The ID of the Resource Group.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
+    /**
+     * @return The tags added to the common parameter.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The data type of the common parameter.
+     * 
+     */
     private @Nullable String type;
 
     private GetParametersResult() {}
@@ -51,18 +75,34 @@ public final class GetParametersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Parameter names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the common parameter.
+     * 
+     */
     public Optional<String> parameterName() {
         return Optional.ofNullable(this.parameterName);
     }
+    /**
+     * @return A list of Oos Parameters. Each element contains the following attributes:
+     * 
+     */
     public List<GetParametersParameter> parameters() {
         return this.parameters;
     }
+    /**
+     * @return The ID of the Resource Group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -72,9 +112,17 @@ public final class GetParametersResult {
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
+    /**
+     * @return The tags added to the common parameter.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The data type of the common parameter.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -28,13 +28,9 @@ import (
 type Listener struct {
 	pulumi.CustomResourceState
 
-	// Access Log Whether to Enable Carry Custom Header Field.
+	// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrOutput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See `accessLogTracingConfig` below.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
@@ -56,7 +52,7 @@ type Listener struct {
 	GzipEnabled pulumi.BoolOutput `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolOutput `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
@@ -68,7 +64,7 @@ type Listener struct {
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigOutput `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
@@ -122,13 +118,9 @@ func GetListener(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
-	// Access Log Whether to Enable Carry Custom Header Field.
+	// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See `accessLogTracingConfig` below.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
@@ -150,7 +142,7 @@ type listenerState struct {
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription *string `pulumi:"listenerDescription"`
@@ -162,7 +154,7 @@ type listenerState struct {
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -175,13 +167,9 @@ type listenerState struct {
 }
 
 type ListenerState struct {
-	// Access Log Whether to Enable Carry Custom Header Field.
+	// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See `accessLogTracingConfig` below.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
@@ -203,7 +191,7 @@ type ListenerState struct {
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 	IdleTimeout pulumi.IntPtrInput
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrInput
@@ -215,7 +203,7 @@ type ListenerState struct {
 	LoadBalancerId pulumi.StringPtrInput
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy
 	SecurityPolicyId pulumi.StringPtrInput
@@ -232,13 +220,9 @@ func (ListenerState) ElementType() reflect.Type {
 }
 
 type listenerArgs struct {
-	// Access Log Whether to Enable Carry Custom Header Field.
+	// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See `accessLogTracingConfig` below.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
@@ -260,7 +244,7 @@ type listenerArgs struct {
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription *string `pulumi:"listenerDescription"`
@@ -272,7 +256,7 @@ type listenerArgs struct {
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
@@ -286,13 +270,9 @@ type listenerArgs struct {
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
-	// Access Log Whether to Enable Carry Custom Header Field.
+	// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 	//
-	// Value: True **** Or False * *.
-	//
-	// Default Value: False * *.
-	//
-	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See `accessLogTracingConfig` below.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
@@ -314,7 +294,7 @@ type ListenerArgs struct {
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
 	Http2Enabled pulumi.BoolPtrInput
-	// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+	// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 	IdleTimeout pulumi.IntPtrInput
 	// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
 	ListenerDescription pulumi.StringPtrInput
@@ -326,7 +306,7 @@ type ListenerArgs struct {
 	LoadBalancerId pulumi.StringInput
 	// Configuration Associated with the QuIC Listening See `quicConfig` below.
 	QuicConfig ListenerQuicConfigPtrInput
-	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+	// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy
 	SecurityPolicyId pulumi.StringPtrInput
@@ -425,13 +405,9 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
-// Access Log Whether to Enable Carry Custom Header Field.
+// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 //
-// Value: True **** Or False * *.
-//
-// Default Value: False * *.
-//
-// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
 func (o ListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -483,7 +459,7 @@ func (o ListenerOutput) Http2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.Http2Enabled }).(pulumi.BoolOutput)
 }
 
-// Specify the Connection Idle Timeout Value: 1 to 60 miao.
+// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
 func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.IdleTimeout }).(pulumi.IntOutput)
 }
@@ -513,7 +489,7 @@ func (o ListenerOutput) QuicConfig() ListenerQuicConfigOutput {
 	return o.ApplyT(func(v *Listener) ListenerQuicConfigOutput { return v.QuicConfig }).(ListenerQuicConfigOutput)
 }
 
-// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.RequestTimeout }).(pulumi.IntOutput)
 }

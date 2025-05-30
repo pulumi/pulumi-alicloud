@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancersBalancerLoadBalancerBillingConfig {
     /**
-     * @return The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+     * @return The billing method of the ALB instance.
      * 
      */
     private String payType;
 
     private GetLoadBalancersBalancerLoadBalancerBillingConfig() {}
     /**
-     * @return The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+     * @return The billing method of the ALB instance.
      * 
      */
     public String payType() {

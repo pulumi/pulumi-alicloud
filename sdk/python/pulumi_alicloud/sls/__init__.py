@@ -9,6 +9,7 @@ import typing
 from .alert import *
 from .collection_policy import *
 from .etl import *
+from .get_alerts import *
 from .oss_export_sink import *
 from .scheduled_sql import *
 from ._inputs import *

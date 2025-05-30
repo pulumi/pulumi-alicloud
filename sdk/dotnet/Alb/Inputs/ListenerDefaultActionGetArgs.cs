@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.ListenerDefaultActionForwardGroupConfigGetArgs>? ForwardGroupConfig { get; set; }
 
         /// <summary>
-        /// Action Type
+        /// The action type. Value: ForwardGroup, indicating forwarding to the server group.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -33,14 +33,14 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Action Type
+     * The action type. Value: ForwardGroup, indicating forwarding to the server group.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Action Type
+     * @return The action type. Value: ForwardGroup, indicating forwarding to the server group.
      * 
      */
     public Output<String> type() {
@@ -94,7 +94,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Action Type
+         * @param type The action type. Value: ForwardGroup, indicating forwarding to the server group.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Action Type
+         * @param type The action type. Value: ForwardGroup, indicating forwarding to the server group.
          * 
          * @return builder
          * 

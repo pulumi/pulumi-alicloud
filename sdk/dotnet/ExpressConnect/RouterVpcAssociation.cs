@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// <summary>
     /// Provides a Express Connect Router Express Connect Router Vpc Association resource. Bind relationship object between leased line gateway and VPC.
     /// 
-    /// For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouterAssociation).
+    /// For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-createexpressconnectrouterassociation).
     /// 
     /// &gt; **NOTE:** Available since v1.224.0.
     /// 
@@ -72,49 +72,50 @@ namespace Pulumi.AliCloud.ExpressConnect
     public partial class RouterVpcAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of allowed route prefixes.
+        /// The list of allowed route prefixes.
         /// </summary>
         [Output("allowedPrefixes")]
         public Output<ImmutableArray<string>> AllowedPrefixes { get; private set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the association between the ECR and the VPC.
         /// </summary>
         [Output("associationId")]
         public Output<string> AssociationId { get; private set; } = null!;
 
         /// <summary>
-        /// The region to which the VPC or TR belongs.
+        /// The region ID of the resource to be associated.
         /// </summary>
         [Output("associationRegionId")]
         public Output<string> AssociationRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The time when the association was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the leased line gateway instance.
+        /// The ECR ID.
         /// </summary>
         [Output("ecrId")]
         public Output<string> EcrId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The deployment state of the associated resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC instance.
+        /// The VPC ID.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the VPC belongs.
+        /// The ID of the Alibaba Cloud account that owns the VPC.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         /// </summary>
         [Output("vpcOwnerId")]
         public Output<int> VpcOwnerId { get; private set; } = null!;
@@ -169,7 +170,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<string>? _allowedPrefixes;
 
         /// <summary>
-        /// List of allowed route prefixes.
+        /// The list of allowed route prefixes.
         /// </summary>
         public InputList<string> AllowedPrefixes
         {
@@ -178,25 +179,26 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The region to which the VPC or TR belongs.
+        /// The region ID of the resource to be associated.
         /// </summary>
         [Input("associationRegionId", required: true)]
         public Input<string> AssociationRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the leased line gateway instance.
+        /// The ECR ID.
         /// </summary>
         [Input("ecrId", required: true)]
         public Input<string> EcrId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC instance.
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the VPC belongs.
+        /// The ID of the Alibaba Cloud account that owns the VPC.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         /// </summary>
         [Input("vpcOwnerId")]
         public Input<int>? VpcOwnerId { get; set; }
@@ -213,7 +215,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<string>? _allowedPrefixes;
 
         /// <summary>
-        /// List of allowed route prefixes.
+        /// The list of allowed route prefixes.
         /// </summary>
         public InputList<string> AllowedPrefixes
         {
@@ -222,43 +224,44 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the association between the ECR and the VPC.
         /// </summary>
         [Input("associationId")]
         public Input<string>? AssociationId { get; set; }
 
         /// <summary>
-        /// The region to which the VPC or TR belongs.
+        /// The region ID of the resource to be associated.
         /// </summary>
         [Input("associationRegionId")]
         public Input<string>? AssociationRegionId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The time when the association was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The ID of the leased line gateway instance.
+        /// The ECR ID.
         /// </summary>
         [Input("ecrId")]
         public Input<string>? EcrId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The deployment state of the associated resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPC instance.
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the VPC belongs.
+        /// The ID of the Alibaba Cloud account that owns the VPC.
+        /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         /// </summary>
         [Input("vpcOwnerId")]
         public Input<int>? VpcOwnerId { get; set; }

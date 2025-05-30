@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsHostCapacity;
+import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsHostInstance;
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsHostNetworkAttribute;
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsHostOperationLock;
 import com.pulumi.core.annotations.CustomType;
@@ -33,7 +34,7 @@ public final class GetDedicatedHostsHost {
      */
     private String autoReleaseTime;
     /**
-     * @return (Available in 1.123.1+) A collection of proprietary host performance indicators.
+     * @return (Available since v1.123.1) A collection of proprietary host performance indicators.
      * 
      */
     private List<GetDedicatedHostsHostCapacity> capacities;
@@ -43,7 +44,7 @@ public final class GetDedicatedHostsHost {
      */
     private Integer cores;
     /**
-     * @return (Available in 1.123.1+) CPU oversold ratio.
+     * @return (Available since v1.123.1) CPU oversold ratio.
      * 
      */
     private Double cpuOverCommitRatio;
@@ -83,6 +84,11 @@ public final class GetDedicatedHostsHost {
      */
     private String id;
     /**
+     * @return (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+     * 
+     */
+    private List<GetDedicatedHostsHostInstance> instances;
+    /**
      * @return The machine code of the dedicated host.
      * 
      */
@@ -93,7 +99,7 @@ public final class GetDedicatedHostsHost {
      */
     private List<GetDedicatedHostsHostNetworkAttribute> networkAttributes;
     /**
-     * @return The reason why the dedicated host resource is locked.
+     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
      * 
      */
     private List<GetDedicatedHostsHostOperationLock> operationLocks;
@@ -123,22 +129,22 @@ public final class GetDedicatedHostsHost {
      */
     private Integer sockets;
     /**
-     * @return The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * @return The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      * 
      */
     private String status;
     /**
-     * @return (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+     * @return (Available since v1.123.1) A custom instance type family supported by a dedicated host.
      * 
      */
     private List<String> supportedCustomInstanceTypeFamilies;
     /**
-     * @return (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+     * @return (Available since v1.123.1) ECS instance type family supported by the dedicated host.
      * 
      */
     private List<String> supportedInstanceTypeFamilies;
     /**
-     * @return The list of ECS instance
+     * @return The list of ECS instance.
      * 
      */
     private List<String> supportedInstanceTypesLists;
@@ -176,7 +182,7 @@ public final class GetDedicatedHostsHost {
         return this.autoReleaseTime;
     }
     /**
-     * @return (Available in 1.123.1+) A collection of proprietary host performance indicators.
+     * @return (Available since v1.123.1) A collection of proprietary host performance indicators.
      * 
      */
     public List<GetDedicatedHostsHostCapacity> capacities() {
@@ -190,7 +196,7 @@ public final class GetDedicatedHostsHost {
         return this.cores;
     }
     /**
-     * @return (Available in 1.123.1+) CPU oversold ratio.
+     * @return (Available since v1.123.1) CPU oversold ratio.
      * 
      */
     public Double cpuOverCommitRatio() {
@@ -246,6 +252,13 @@ public final class GetDedicatedHostsHost {
         return this.id;
     }
     /**
+     * @return (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+     * 
+     */
+    public List<GetDedicatedHostsHostInstance> instances() {
+        return this.instances;
+    }
+    /**
      * @return The machine code of the dedicated host.
      * 
      */
@@ -260,7 +273,7 @@ public final class GetDedicatedHostsHost {
         return this.networkAttributes;
     }
     /**
-     * @return The reason why the dedicated host resource is locked.
+     * @return The reason why the dedicated host resource is locked. See `operation_locks` below.
      * 
      */
     public List<GetDedicatedHostsHostOperationLock> operationLocks() {
@@ -302,28 +315,28 @@ public final class GetDedicatedHostsHost {
         return this.sockets;
     }
     /**
-     * @return The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     * @return The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+     * @return (Available since v1.123.1) A custom instance type family supported by a dedicated host.
      * 
      */
     public List<String> supportedCustomInstanceTypeFamilies() {
         return this.supportedCustomInstanceTypeFamilies;
     }
     /**
-     * @return (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+     * @return (Available since v1.123.1) ECS instance type family supported by the dedicated host.
      * 
      */
     public List<String> supportedInstanceTypeFamilies() {
         return this.supportedInstanceTypeFamilies;
     }
     /**
-     * @return The list of ECS instance
+     * @return The list of ECS instance.
      * 
      */
     public List<String> supportedInstanceTypesLists() {
@@ -366,6 +379,7 @@ public final class GetDedicatedHostsHost {
         private String expiredTime;
         private String gpuSpec;
         private String id;
+        private List<GetDedicatedHostsHostInstance> instances;
         private String machineId;
         private List<GetDedicatedHostsHostNetworkAttribute> networkAttributes;
         private List<GetDedicatedHostsHostOperationLock> operationLocks;
@@ -396,6 +410,7 @@ public final class GetDedicatedHostsHost {
     	      this.expiredTime = defaults.expiredTime;
     	      this.gpuSpec = defaults.gpuSpec;
     	      this.id = defaults.id;
+    	      this.instances = defaults.instances;
     	      this.machineId = defaults.machineId;
     	      this.networkAttributes = defaults.networkAttributes;
     	      this.operationLocks = defaults.operationLocks;
@@ -518,6 +533,17 @@ public final class GetDedicatedHostsHost {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder instances(List<GetDedicatedHostsHostInstance> instances) {
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "instances");
+            }
+            this.instances = instances;
+            return this;
+        }
+        public Builder instances(GetDedicatedHostsHostInstance... instances) {
+            return instances(List.of(instances));
         }
         @CustomType.Setter
         public Builder machineId(String machineId) {
@@ -661,6 +687,7 @@ public final class GetDedicatedHostsHost {
             _resultValue.expiredTime = expiredTime;
             _resultValue.gpuSpec = gpuSpec;
             _resultValue.id = id;
+            _resultValue.instances = instances;
             _resultValue.machineId = machineId;
             _resultValue.networkAttributes = networkAttributes;
             _resultValue.operationLocks = operationLocks;

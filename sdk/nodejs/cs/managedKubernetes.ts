@@ -84,6 +84,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly apiAudiences!: pulumi.Output<string[] | undefined>;
     /**
+     * Audit log configuration. See `auditLogConfig` below.
+     */
+    public readonly auditLogConfig!: pulumi.Output<outputs.cs.ManagedKubernetesAuditLogConfig>;
+    /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -115,7 +119,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly clusterDomain!: pulumi.Output<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
     public readonly clusterSpec!: pulumi.Output<string>;
@@ -203,6 +207,14 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     */
+    public readonly profile!: pulumi.Output<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
@@ -317,6 +329,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             const state = argsOrState as ManagedKubernetesState | undefined;
             resourceInputs["addons"] = state ? state.addons : undefined;
             resourceInputs["apiAudiences"] = state ? state.apiAudiences : undefined;
+            resourceInputs["auditLogConfig"] = state ? state.auditLogConfig : undefined;
             resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             resourceInputs["clientCert"] = state ? state.clientCert : undefined;
             resourceInputs["clientKey"] = state ? state.clientKey : undefined;
@@ -344,6 +357,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["operationPolicy"] = state ? state.operationPolicy : undefined;
             resourceInputs["podCidr"] = state ? state.podCidr : undefined;
             resourceInputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
+            resourceInputs["profile"] = state ? state.profile : undefined;
             resourceInputs["proxyMode"] = state ? state.proxyMode : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retainResources"] = state ? state.retainResources : undefined;
@@ -369,6 +383,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
             resourceInputs["addons"] = args ? args.addons : undefined;
             resourceInputs["apiAudiences"] = args ? args.apiAudiences : undefined;
+            resourceInputs["auditLogConfig"] = args ? args.auditLogConfig : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
@@ -393,6 +408,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["operationPolicy"] = args ? args.operationPolicy : undefined;
             resourceInputs["podCidr"] = args ? args.podCidr : undefined;
             resourceInputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
+            resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["proxyMode"] = args ? args.proxyMode : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
@@ -436,6 +452,10 @@ export interface ManagedKubernetesState {
      */
     apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Audit log configuration. See `auditLogConfig` below.
+     */
+    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
+    /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -467,7 +487,7 @@ export interface ManagedKubernetesState {
     clusterDomain?: pulumi.Input<string>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
     clusterSpec?: pulumi.Input<string>;
@@ -555,6 +575,14 @@ export interface ManagedKubernetesState {
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     */
+    profile?: pulumi.Input<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
@@ -668,6 +696,10 @@ export interface ManagedKubernetesArgs {
      */
     apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Audit log configuration. See `auditLogConfig` below.
+     */
+    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
+    /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -693,7 +725,7 @@ export interface ManagedKubernetesArgs {
     clusterDomain?: pulumi.Input<string>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
+     * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
     clusterSpec?: pulumi.Input<string>;
@@ -773,6 +805,14 @@ export interface ManagedKubernetesArgs {
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The profile of cluster. Valid values:
+     * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+     * * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+     * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+     * * `Acs`: ACS cluster.
+     */
+    profile?: pulumi.Input<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */

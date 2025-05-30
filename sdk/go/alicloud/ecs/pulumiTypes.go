@@ -2147,6 +2147,8 @@ func (o ImageImportDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageI
 type InstanceDataDisk struct {
 	// The ID of the automatic snapshot policy applied to the system disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// The category of the disk:
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
@@ -2168,6 +2170,8 @@ type InstanceDataDisk struct {
 	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	//   Default to `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -2193,6 +2197,8 @@ type InstanceDataDiskInput interface {
 type InstanceDataDiskArgs struct {
 	// The ID of the automatic snapshot policy applied to the system disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
 	// The category of the disk:
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
@@ -2214,6 +2220,8 @@ type InstanceDataDiskArgs struct {
 	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	//   Default to `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -2281,6 +2289,11 @@ func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable the performance burst feature for the system disk. Valid values:
+func (o InstanceDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The category of the disk:
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -2324,6 +2337,11 @@ func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
 //     Default to `PL1`.
 func (o InstanceDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+func (o InstanceDataDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
 // The size of the data disk.
@@ -4731,11 +4749,11 @@ type GetDedicatedHostsHost struct {
 	AutoPlacement string `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
-	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	// (Available since v1.123.1) A collection of proprietary host performance indicators.
 	Capacities []GetDedicatedHostsHostCapacity `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores int `pulumi:"cores"`
-	// (Available in 1.123.1+) CPU oversold ratio.
+	// (Available since v1.123.1) CPU oversold ratio.
 	CpuOverCommitRatio float64 `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId string `pulumi:"dedicatedHostId"`
@@ -4751,11 +4769,13 @@ type GetDedicatedHostsHost struct {
 	GpuSpec string `pulumi:"gpuSpec"`
 	// ID of the ECS Dedicated Host.
 	Id string `pulumi:"id"`
+	// (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+	Instances []GetDedicatedHostsHostInstance `pulumi:"instances"`
 	// The machine code of the dedicated host.
 	MachineId string `pulumi:"machineId"`
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes []GetDedicatedHostsHostNetworkAttribute `pulumi:"networkAttributes"`
-	// The reason why the dedicated host resource is locked.
+	// The reason why the dedicated host resource is locked. See `operationLocks` below.
 	OperationLocks []GetDedicatedHostsHostOperationLock `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType string `pulumi:"paymentType"`
@@ -4767,13 +4787,13 @@ type GetDedicatedHostsHost struct {
 	SaleCycle string `pulumi:"saleCycle"`
 	// The number of physical CPUs.
 	Sockets int `pulumi:"sockets"`
-	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+	// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status string `pulumi:"status"`
-	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	// (Available since v1.123.1) A custom instance type family supported by a dedicated host.
 	SupportedCustomInstanceTypeFamilies []string `pulumi:"supportedCustomInstanceTypeFamilies"`
-	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	// (Available since v1.123.1) ECS instance type family supported by the dedicated host.
 	SupportedInstanceTypeFamilies []string `pulumi:"supportedInstanceTypeFamilies"`
-	// The list of ECS instance
+	// The list of ECS instance.
 	SupportedInstanceTypesLists []string `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -4799,11 +4819,11 @@ type GetDedicatedHostsHostArgs struct {
 	AutoPlacement pulumi.StringInput `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
-	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	// (Available since v1.123.1) A collection of proprietary host performance indicators.
 	Capacities GetDedicatedHostsHostCapacityArrayInput `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores pulumi.IntInput `pulumi:"cores"`
-	// (Available in 1.123.1+) CPU oversold ratio.
+	// (Available since v1.123.1) CPU oversold ratio.
 	CpuOverCommitRatio pulumi.Float64Input `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
@@ -4819,11 +4839,13 @@ type GetDedicatedHostsHostArgs struct {
 	GpuSpec pulumi.StringInput `pulumi:"gpuSpec"`
 	// ID of the ECS Dedicated Host.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+	Instances GetDedicatedHostsHostInstanceArrayInput `pulumi:"instances"`
 	// The machine code of the dedicated host.
 	MachineId pulumi.StringInput `pulumi:"machineId"`
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes GetDedicatedHostsHostNetworkAttributeArrayInput `pulumi:"networkAttributes"`
-	// The reason why the dedicated host resource is locked.
+	// The reason why the dedicated host resource is locked. See `operationLocks` below.
 	OperationLocks GetDedicatedHostsHostOperationLockArrayInput `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
@@ -4835,13 +4857,13 @@ type GetDedicatedHostsHostArgs struct {
 	SaleCycle pulumi.StringInput `pulumi:"saleCycle"`
 	// The number of physical CPUs.
 	Sockets pulumi.IntInput `pulumi:"sockets"`
-	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+	// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	// (Available since v1.123.1) A custom instance type family supported by a dedicated host.
 	SupportedCustomInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedCustomInstanceTypeFamilies"`
-	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	// (Available since v1.123.1) ECS instance type family supported by the dedicated host.
 	SupportedInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedInstanceTypeFamilies"`
-	// The list of ECS instance
+	// The list of ECS instance.
 	SupportedInstanceTypesLists pulumi.StringArrayInput `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -4915,7 +4937,7 @@ func (o GetDedicatedHostsHostOutput) AutoReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
 }
 
-// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+// (Available since v1.123.1) A collection of proprietary host performance indicators.
 func (o GetDedicatedHostsHostOutput) Capacities() GetDedicatedHostsHostCapacityArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostCapacity { return v.Capacities }).(GetDedicatedHostsHostCapacityArrayOutput)
 }
@@ -4925,7 +4947,7 @@ func (o GetDedicatedHostsHostOutput) Cores() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) int { return v.Cores }).(pulumi.IntOutput)
 }
 
-// (Available in 1.123.1+) CPU oversold ratio.
+// (Available since v1.123.1) CPU oversold ratio.
 func (o GetDedicatedHostsHostOutput) CpuOverCommitRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDedicatedHostsHost) float64 { return v.CpuOverCommitRatio }).(pulumi.Float64Output)
 }
@@ -4965,6 +4987,11 @@ func (o GetDedicatedHostsHostOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+func (o GetDedicatedHostsHostOutput) Instances() GetDedicatedHostsHostInstanceArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostInstance { return v.Instances }).(GetDedicatedHostsHostInstanceArrayOutput)
+}
+
 // The machine code of the dedicated host.
 func (o GetDedicatedHostsHostOutput) MachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.MachineId }).(pulumi.StringOutput)
@@ -4975,7 +5002,7 @@ func (o GetDedicatedHostsHostOutput) NetworkAttributes() GetDedicatedHostsHostNe
 	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostNetworkAttribute { return v.NetworkAttributes }).(GetDedicatedHostsHostNetworkAttributeArrayOutput)
 }
 
-// The reason why the dedicated host resource is locked.
+// The reason why the dedicated host resource is locked. See `operationLocks` below.
 func (o GetDedicatedHostsHostOutput) OperationLocks() GetDedicatedHostsHostOperationLockArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostOperationLock { return v.OperationLocks }).(GetDedicatedHostsHostOperationLockArrayOutput)
 }
@@ -5005,22 +5032,22 @@ func (o GetDedicatedHostsHostOutput) Sockets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) int { return v.Sockets }).(pulumi.IntOutput)
 }
 
-// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 func (o GetDedicatedHostsHostOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+// (Available since v1.123.1) A custom instance type family supported by a dedicated host.
 func (o GetDedicatedHostsHostOutput) SupportedCustomInstanceTypeFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedCustomInstanceTypeFamilies }).(pulumi.StringArrayOutput)
 }
 
-// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+// (Available since v1.123.1) ECS instance type family supported by the dedicated host.
 func (o GetDedicatedHostsHostOutput) SupportedInstanceTypeFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypeFamilies }).(pulumi.StringArrayOutput)
 }
 
-// The list of ECS instance
+// The list of ECS instance.
 func (o GetDedicatedHostsHostOutput) SupportedInstanceTypesLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypesLists }).(pulumi.StringArrayOutput)
 }
@@ -5224,10 +5251,134 @@ func (o GetDedicatedHostsHostCapacityArrayOutput) Index(i pulumi.IntInput) GetDe
 	}).(GetDedicatedHostsHostCapacityOutput)
 }
 
+type GetDedicatedHostsHostInstance struct {
+	// The ID of the ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The ID of the ECS instance owner.
+	InstanceOwnerId int `pulumi:"instanceOwnerId"`
+	// The instance type of the ECS instance that was created on the dedicated host.
+	InstanceType string `pulumi:"instanceType"`
+	// The ID of the socket to which the ECS instance belongs.
+	SocketId string `pulumi:"socketId"`
+}
+
+// GetDedicatedHostsHostInstanceInput is an input type that accepts GetDedicatedHostsHostInstanceArgs and GetDedicatedHostsHostInstanceOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostInstanceInput` via:
+//
+//	GetDedicatedHostsHostInstanceArgs{...}
+type GetDedicatedHostsHostInstanceInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostInstanceOutput() GetDedicatedHostsHostInstanceOutput
+	ToGetDedicatedHostsHostInstanceOutputWithContext(context.Context) GetDedicatedHostsHostInstanceOutput
+}
+
+type GetDedicatedHostsHostInstanceArgs struct {
+	// The ID of the ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the ECS instance owner.
+	InstanceOwnerId pulumi.IntInput `pulumi:"instanceOwnerId"`
+	// The instance type of the ECS instance that was created on the dedicated host.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The ID of the socket to which the ECS instance belongs.
+	SocketId pulumi.StringInput `pulumi:"socketId"`
+}
+
+func (GetDedicatedHostsHostInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostInstance)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostInstanceArgs) ToGetDedicatedHostsHostInstanceOutput() GetDedicatedHostsHostInstanceOutput {
+	return i.ToGetDedicatedHostsHostInstanceOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostInstanceArgs) ToGetDedicatedHostsHostInstanceOutputWithContext(ctx context.Context) GetDedicatedHostsHostInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostInstanceOutput)
+}
+
+// GetDedicatedHostsHostInstanceArrayInput is an input type that accepts GetDedicatedHostsHostInstanceArray and GetDedicatedHostsHostInstanceArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostInstanceArrayInput` via:
+//
+//	GetDedicatedHostsHostInstanceArray{ GetDedicatedHostsHostInstanceArgs{...} }
+type GetDedicatedHostsHostInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostInstanceArrayOutput() GetDedicatedHostsHostInstanceArrayOutput
+	ToGetDedicatedHostsHostInstanceArrayOutputWithContext(context.Context) GetDedicatedHostsHostInstanceArrayOutput
+}
+
+type GetDedicatedHostsHostInstanceArray []GetDedicatedHostsHostInstanceInput
+
+func (GetDedicatedHostsHostInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostInstance)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostInstanceArray) ToGetDedicatedHostsHostInstanceArrayOutput() GetDedicatedHostsHostInstanceArrayOutput {
+	return i.ToGetDedicatedHostsHostInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostInstanceArray) ToGetDedicatedHostsHostInstanceArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostInstanceArrayOutput)
+}
+
+type GetDedicatedHostsHostInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostInstance)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostInstanceOutput) ToGetDedicatedHostsHostInstanceOutput() GetDedicatedHostsHostInstanceOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostInstanceOutput) ToGetDedicatedHostsHostInstanceOutputWithContext(ctx context.Context) GetDedicatedHostsHostInstanceOutput {
+	return o
+}
+
+// The ID of the ECS instance.
+func (o GetDedicatedHostsHostInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the ECS instance owner.
+func (o GetDedicatedHostsHostInstanceOutput) InstanceOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostInstance) int { return v.InstanceOwnerId }).(pulumi.IntOutput)
+}
+
+// The instance type of the ECS instance that was created on the dedicated host.
+func (o GetDedicatedHostsHostInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The ID of the socket to which the ECS instance belongs.
+func (o GetDedicatedHostsHostInstanceOutput) SocketId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostInstance) string { return v.SocketId }).(pulumi.StringOutput)
+}
+
+type GetDedicatedHostsHostInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostInstance)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostInstanceArrayOutput) ToGetDedicatedHostsHostInstanceArrayOutput() GetDedicatedHostsHostInstanceArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostInstanceArrayOutput) ToGetDedicatedHostsHostInstanceArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostInstanceArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostInstanceArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostInstance {
+		return vs[0].([]GetDedicatedHostsHostInstance)[vs[1].(int)]
+	}).(GetDedicatedHostsHostInstanceOutput)
+}
+
 type GetDedicatedHostsHostNetworkAttribute struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
 	SlbUdpTimeout int `pulumi:"slbUdpTimeout"`
-	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	// (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
 	UdpTimeout int `pulumi:"udpTimeout"`
 }
 
@@ -5245,7 +5396,7 @@ type GetDedicatedHostsHostNetworkAttributeInput interface {
 type GetDedicatedHostsHostNetworkAttributeArgs struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
 	SlbUdpTimeout pulumi.IntInput `pulumi:"slbUdpTimeout"`
-	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	// (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
 	UdpTimeout pulumi.IntInput `pulumi:"udpTimeout"`
 }
 
@@ -5305,7 +5456,7 @@ func (o GetDedicatedHostsHostNetworkAttributeOutput) SlbUdpTimeout() pulumi.IntO
 	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.SlbUdpTimeout }).(pulumi.IntOutput)
 }
 
-// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+// (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
 func (o GetDedicatedHostsHostNetworkAttributeOutput) UdpTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.UdpTimeout }).(pulumi.IntOutput)
 }
@@ -16496,6 +16647,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostArrayInput)(nil)).Elem(), GetDedicatedHostsHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostCapacityInput)(nil)).Elem(), GetDedicatedHostsHostCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostCapacityArrayInput)(nil)).Elem(), GetDedicatedHostsHostCapacityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostInstanceInput)(nil)).Elem(), GetDedicatedHostsHostInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostInstanceArrayInput)(nil)).Elem(), GetDedicatedHostsHostInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostNetworkAttributeInput)(nil)).Elem(), GetDedicatedHostsHostNetworkAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostNetworkAttributeArrayInput)(nil)).Elem(), GetDedicatedHostsHostNetworkAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostOperationLockInput)(nil)).Elem(), GetDedicatedHostsHostOperationLockArgs{})
@@ -16669,6 +16822,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostInstanceOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOperationLockOutput{})

@@ -33,14 +33,14 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Keyword for record rr and value.
+     * The keyword for record rr and value.
      * 
      */
     @Import(name="keyword")
     private @Nullable Output<String> keyword;
 
     /**
-     * @return Keyword for record rr and value.
+     * @return The keyword for record rr and value.
      * 
      */
     public Optional<Output<String>> keyword() {
@@ -48,14 +48,14 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return User language.
+     * @return The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -78,18 +78,18 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Search mode. Value:
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. Default value: `EXACT`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      * 
      */
     @Import(name="searchMode")
     private @Nullable Output<String> searchMode;
 
     /**
-     * @return Search mode. Value:
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * @return The search mode. Default value: `EXACT`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      * 
      */
     public Optional<Output<String>> searchMode() {
@@ -97,18 +97,18 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * @return The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      * 
      */
     public Optional<Output<String>> status() {
@@ -116,14 +116,14 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * It is not filled in by default, and queries the current zone resolution records. Fill in &#34;ecs&#34; to query the host name record list under the VPC associated with the current zone.
+     * The tag used to search for DNS records.
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return It is not filled in by default, and queries the current zone resolution records. Fill in &#34;ecs&#34; to query the host name record list under the VPC associated with the current zone.
+     * @return The tag used to search for DNS records.
      * 
      */
     public Optional<Output<String>> tag() {
@@ -131,14 +131,14 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * User ip.
+     * The IP address of the client.
      * 
      */
     @Import(name="userClientIp")
     private @Nullable Output<String> userClientIp;
 
     /**
-     * @return User ip.
+     * @return The IP address of the client.
      * 
      */
     public Optional<Output<String>> userClientIp() {
@@ -146,14 +146,14 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * ID of the Private Zone.
+     * The ID of the private zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return ID of the Private Zone.
+     * @return The ID of the private zone.
      * 
      */
     public Output<String> zoneId() {
@@ -224,7 +224,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword Keyword for record rr and value.
+         * @param keyword The keyword for record rr and value.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword Keyword for record rr and value.
+         * @param keyword The keyword for record rr and value.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lang User language.
+         * @param lang The language of the response. Default value: `en`. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lang User language.
+         * @param lang The language of the response. Default value: `en`. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -287,9 +287,9 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param searchMode Search mode. Value:
-         * - LIKE: fuzzy search.
-         * - EXACT: precise search. It is not filled in by default.
+         * @param searchMode The search mode. Default value: `EXACT`. Valid values:
+         * - `LIKE`: Fuzzy search.
+         * - `EXACT`: Exact search.
          * 
          * @return builder
          * 
@@ -300,9 +300,9 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param searchMode Search mode. Value:
-         * - LIKE: fuzzy search.
-         * - EXACT: precise search. It is not filled in by default.
+         * @param searchMode The search mode. Default value: `EXACT`. Valid values:
+         * - `LIKE`: Fuzzy search.
+         * - `EXACT`: Exact search.
          * 
          * @return builder
          * 
@@ -312,9 +312,9 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Resolve record status. Value:
-         * - ENABLE: enable resolution.
-         * - DISABLE: pause parsing.
+         * @param status The status of the Resolve record. Valid values:
+         * - `ENABLE`: Enable resolution.
+         * - `DISABLE`: Pause parsing.
          * 
          * @return builder
          * 
@@ -325,9 +325,9 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Resolve record status. Value:
-         * - ENABLE: enable resolution.
-         * - DISABLE: pause parsing.
+         * @param status The status of the Resolve record. Valid values:
+         * - `ENABLE`: Enable resolution.
+         * - `DISABLE`: Pause parsing.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tag It is not filled in by default, and queries the current zone resolution records. Fill in &#34;ecs&#34; to query the host name record list under the VPC associated with the current zone.
+         * @param tag The tag used to search for DNS records.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tag It is not filled in by default, and queries the current zone resolution records. Fill in &#34;ecs&#34; to query the host name record list under the VPC associated with the current zone.
+         * @param tag The tag used to search for DNS records.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param userClientIp User ip.
+         * @param userClientIp The IP address of the client.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param userClientIp User ip.
+         * @param userClientIp The IP address of the client.
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId ID of the Private Zone.
+         * @param zoneId The ID of the private zone.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class GetZoneRecordsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId ID of the Private Zone.
+         * @param zoneId The ID of the private zone.
          * 
          * @return builder
          * 

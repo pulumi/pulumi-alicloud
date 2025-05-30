@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AutoReleaseTime;
         /// <summary>
-        /// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+        /// (Available since v1.123.1) A collection of proprietary host performance indicators.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostCapacityResult> Capacities;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int Cores;
         /// <summary>
-        /// (Available in 1.123.1+) CPU oversold ratio.
+        /// (Available since v1.123.1) CPU oversold ratio.
         /// </summary>
         public readonly double CpuOverCommitRatio;
         /// <summary>
@@ -66,6 +66,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available since v1.250.0) The ECS instances that were created on the dedicated host.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDedicatedHostsHostInstanceResult> Instances;
+        /// <summary>
         /// The machine code of the dedicated host.
         /// </summary>
         public readonly string MachineId;
@@ -74,7 +78,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostNetworkAttributeResult> NetworkAttributes;
         /// <summary>
-        /// The reason why the dedicated host resource is locked.
+        /// The reason why the dedicated host resource is locked. See `operation_locks` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostsHostOperationLockResult> OperationLocks;
         /// <summary>
@@ -98,19 +102,19 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int Sockets;
         /// <summary>
-        /// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+        /// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+        /// (Available since v1.123.1) A custom instance type family supported by a dedicated host.
         /// </summary>
         public readonly ImmutableArray<string> SupportedCustomInstanceTypeFamilies;
         /// <summary>
-        /// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+        /// (Available since v1.123.1) ECS instance type family supported by the dedicated host.
         /// </summary>
         public readonly ImmutableArray<string> SupportedInstanceTypeFamilies;
         /// <summary>
-        /// The list of ECS instance
+        /// The list of ECS instance.
         /// </summary>
         public readonly ImmutableArray<string> SupportedInstanceTypesLists;
         /// <summary>
@@ -149,6 +153,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             string gpuSpec,
 
             string id,
+
+            ImmutableArray<Outputs.GetDedicatedHostsHostInstanceResult> instances,
 
             string machineId,
 
@@ -191,6 +197,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             ExpiredTime = expiredTime;
             GpuSpec = gpuSpec;
             Id = id;
+            Instances = instances;
             MachineId = machineId;
             NetworkAttributes = networkAttributes;
             OperationLocks = operationLocks;

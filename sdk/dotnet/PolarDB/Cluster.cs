@@ -325,6 +325,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -390,6 +391,25 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
+
+        /// <summary>
+        /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// </summary>
+        [Output("serverlessRuleCpuEnlargeThreshold")]
+        public Output<int> ServerlessRuleCpuEnlargeThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("serverlessRuleCpuShrinkThreshold")]
+        public Output<int> ServerlessRuleCpuShrinkThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("serverlessRuleMode")]
+        public Output<string> ServerlessRuleMode { get; private set; } = null!;
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
@@ -847,6 +867,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -924,6 +945,25 @@ namespace Pulumi.AliCloud.PolarDB
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// </summary>
+        [Input("serverlessRuleCpuEnlargeThreshold")]
+        public Input<int>? ServerlessRuleCpuEnlargeThreshold { get; set; }
+
+        /// <summary>
+        /// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessRuleCpuShrinkThreshold")]
+        public Input<int>? ServerlessRuleCpuShrinkThreshold { get; set; }
+
+        /// <summary>
+        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessRuleMode")]
+        public Input<string>? ServerlessRuleMode { get; set; }
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
@@ -1365,6 +1405,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+        /// &gt; **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -1442,6 +1483,25 @@ namespace Pulumi.AliCloud.PolarDB
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
+        /// </summary>
+        [Input("serverlessRuleCpuEnlargeThreshold")]
+        public Input<int>? ServerlessRuleCpuEnlargeThreshold { get; set; }
+
+        /// <summary>
+        /// CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessRuleCpuShrinkThreshold")]
+        public Input<int>? ServerlessRuleCpuShrinkThreshold { get; set; }
+
+        /// <summary>
+        /// Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessRuleMode")]
+        public Input<string>? ServerlessRuleMode { get; set; }
 
         /// <summary>
         /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.

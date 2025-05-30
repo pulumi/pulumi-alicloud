@@ -7,19 +7,35 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const recordsDs = alicloud.pvtz.getZoneRecords({
- *     zoneId: basic.id,
- *     keyword: foo.value,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.com";
+ * const _default = new alicloud.pvtz.Zone("default", {zoneName: name});
+ * const defaultZoneRecord = new alicloud.pvtz.ZoneRecord("default", {
+ *     zoneId: _default.id,
+ *     rr: "www",
+ *     type: "MX",
+ *     value: name,
+ *     ttl: 60,
+ *     priority: 2,
+ *     remark: name,
  * });
- * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
+ * const ids = alicloud.pvtz.getZoneRecordsOutput({
+ *     zoneId: defaultZoneRecord.zoneId,
+ *     ids: [defaultZoneRecord.recordId],
+ * });
+ * export const pvtzZoneRecordsId0 = ids.apply(ids => ids.records?.[0]?.id);
  * ```
  */
 export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
@@ -46,11 +62,11 @@ export interface GetZoneRecordsArgs {
      */
     ids?: string[];
     /**
-     * Keyword for record rr and value.
+     * The keyword for record rr and value.
      */
     keyword?: string;
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
     lang?: string;
     /**
@@ -58,27 +74,27 @@ export interface GetZoneRecordsArgs {
      */
     outputFile?: string;
     /**
-     * Search mode. Value: 
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. Default value: `EXACT`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      */
     searchMode?: string;
     /**
-     * Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      */
     status?: string;
     /**
-     * It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+     * The tag used to search for DNS records.
      */
     tag?: string;
     /**
-     * User ip.
+     * The IP address of the client.
      */
     userClientIp?: string;
     /**
-     * ID of the Private Zone.
+     * The ID of the private zone.
      */
     zoneId: string;
 }
@@ -91,20 +107,17 @@ export interface GetZoneRecordsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of Private Zone Record IDs.
-     */
     readonly ids: string[];
     readonly keyword?: string;
     readonly lang?: string;
     readonly outputFile?: string;
     /**
-     * A list of zone records. Each element contains the following attributes:
+     * A list of Zone Record. Each element contains the following attributes:
      */
     readonly records: outputs.pvtz.GetZoneRecordsRecord[];
     readonly searchMode?: string;
     /**
-     * Status of the Private Zone Record.
+     * The state of the Private Zone Record.
      */
     readonly status?: string;
     readonly tag?: string;
@@ -112,19 +125,35 @@ export interface GetZoneRecordsResult {
     readonly zoneId: string;
 }
 /**
- * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ * This data source provides the Private Zone Records of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const recordsDs = alicloud.pvtz.getZoneRecords({
- *     zoneId: basic.id,
- *     keyword: foo.value,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.com";
+ * const _default = new alicloud.pvtz.Zone("default", {zoneName: name});
+ * const defaultZoneRecord = new alicloud.pvtz.ZoneRecord("default", {
+ *     zoneId: _default.id,
+ *     rr: "www",
+ *     type: "MX",
+ *     value: name,
+ *     ttl: 60,
+ *     priority: 2,
+ *     remark: name,
  * });
- * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
+ * const ids = alicloud.pvtz.getZoneRecordsOutput({
+ *     zoneId: defaultZoneRecord.zoneId,
+ *     ids: [defaultZoneRecord.recordId],
+ * });
+ * export const pvtzZoneRecordsId0 = ids.apply(ids => ids.records?.[0]?.id);
  * ```
  */
 export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneRecordsResult> {
@@ -151,11 +180,11 @@ export interface GetZoneRecordsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Keyword for record rr and value.
+     * The keyword for record rr and value.
      */
     keyword?: pulumi.Input<string>;
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
     lang?: pulumi.Input<string>;
     /**
@@ -163,27 +192,27 @@ export interface GetZoneRecordsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Search mode. Value: 
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. Default value: `EXACT`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      */
     searchMode?: pulumi.Input<string>;
     /**
-     * Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      */
     status?: pulumi.Input<string>;
     /**
-     * It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+     * The tag used to search for DNS records.
      */
     tag?: pulumi.Input<string>;
     /**
-     * User ip.
+     * The IP address of the client.
      */
     userClientIp?: pulumi.Input<string>;
     /**
-     * ID of the Private Zone.
+     * The ID of the private zone.
      */
     zoneId: pulumi.Input<string>;
 }

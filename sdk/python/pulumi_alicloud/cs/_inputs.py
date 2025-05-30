@@ -52,6 +52,8 @@ __all__ = [
     'KubernetesRuntimeArgsDict',
     'ManagedKubernetesAddonArgs',
     'ManagedKubernetesAddonArgsDict',
+    'ManagedKubernetesAuditLogConfigArgs',
+    'ManagedKubernetesAuditLogConfigArgsDict',
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesCertificateAuthorityArgsDict',
     'ManagedKubernetesConnectionsArgs',
@@ -1846,6 +1848,58 @@ class ManagedKubernetesAddonArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class ManagedKubernetesAuditLogConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to enable audit logging. Valid values: `true`, `false`.
+        """
+        sls_project_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The SLS project to which the Logstore storing the cluster audit logs belongs.
+        """
+elif False:
+    ManagedKubernetesAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ManagedKubernetesAuditLogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 sls_project_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable audit logging. Valid values: `true`, `false`.
+        :param pulumi.Input[builtins.str] sls_project_name: The SLS project to which the Logstore storing the cluster audit logs belongs.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_project_name is not None:
+            pulumi.set(__self__, "sls_project_name", sls_project_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to enable audit logging. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="slsProjectName")
+    def sls_project_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The SLS project to which the Logstore storing the cluster audit logs belongs.
+        """
+        return pulumi.get(self, "sls_project_name")
+
+    @sls_project_name.setter
+    def sls_project_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "sls_project_name", value)
 
 
 if not MYPY:

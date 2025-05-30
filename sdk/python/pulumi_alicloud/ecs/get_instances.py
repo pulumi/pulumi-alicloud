@@ -111,9 +111,6 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[builtins.str]:
-        """
-        A list of ECS instance IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -265,6 +262,8 @@ def get_instances(availability_zone: Optional[builtins.str] = None,
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 
+    > **NOTE:** Available since v1.7.0.
+
     ## Example Usage
 
     ```python
@@ -358,6 +357,8 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[built
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+
+    > **NOTE:** Available since v1.7.0.
 
     ## Example Usage
 

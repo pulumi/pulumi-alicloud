@@ -14,17 +14,20 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetZonesZoneBindVpcResult
     {
         /// <summary>
-        /// Binding the regionId of VPC.
+        /// The region ID of the VPC.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Binding the regionName of VPC.
+        /// The name of the region where the VPC resides.
         /// </summary>
         public readonly string RegionName;
         /// <summary>
-        /// Binding the vpcId of VPC.
+        /// The ID of the VPC.
         /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// The Name of the VPC.
+        /// </summary>
         public readonly string VpcName;
 
         [OutputConstructor]

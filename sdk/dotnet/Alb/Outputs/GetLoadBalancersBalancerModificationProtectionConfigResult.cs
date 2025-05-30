@@ -14,13 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetLoadBalancersBalancerModificationProtectionConfigResult
     {
         /// <summary>
-        /// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        /// The reason for modification protection.
         /// </summary>
         public readonly string Reason;
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-        /// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
-        /// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         /// </summary>
         public readonly string Status;
 

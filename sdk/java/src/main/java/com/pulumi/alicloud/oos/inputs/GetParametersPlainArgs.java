@@ -18,14 +18,14 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetParametersPlainArgs Empty = new GetParametersPlainArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -33,14 +33,14 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * A list of Parameter IDs. Its element value is same as Parameter Name.
+     * A list of Parameter IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of Parameter IDs. Its element value is same as Parameter Name.
+     * @return A list of Parameter IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -107,16 +107,32 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     * 
+     */
     @Import(name="sortField")
     private @Nullable String sortField;
 
+    /**
+     * @return The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     * 
+     */
     public Optional<String> sortField() {
         return Optional.ofNullable(this.sortField);
     }
 
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable String sortOrder;
 
+    /**
+     * @return The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     * 
+     */
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -137,14 +153,14 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The data type of the common parameter. Valid values: `String` and `StringList`.
+     * The data type of the common parameter. Valid values: `String`, `StringList`.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return The data type of the common parameter. Valid values: `String` and `StringList`.
+     * @return The data type of the common parameter. Valid values: `String`, `StringList`.
      * 
      */
     public Optional<String> type() {
@@ -185,7 +201,7 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -196,7 +212,7 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of Parameter IDs. Its element value is same as Parameter Name.
+         * @param ids A list of Parameter IDs.
          * 
          * @return builder
          * 
@@ -207,7 +223,7 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of Parameter IDs. Its element value is same as Parameter Name.
+         * @param ids A list of Parameter IDs.
          * 
          * @return builder
          * 
@@ -260,11 +276,23 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
+        /**
+         * @param sortField The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortField(@Nullable String sortField) {
             $.sortField = sortField;
             return this;
         }
 
+        /**
+         * @param sortOrder The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable String sortOrder) {
             $.sortOrder = sortOrder;
             return this;
@@ -282,7 +310,7 @@ public final class GetParametersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param type The data type of the common parameter. Valid values: `String` and `StringList`.
+         * @param type The data type of the common parameter. Valid values: `String`, `StringList`.
          * 
          * @return builder
          * 

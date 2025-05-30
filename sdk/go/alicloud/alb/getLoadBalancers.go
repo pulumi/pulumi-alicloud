@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -25,24 +25,120 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetLoadBalancers(ctx, &alb.GetLoadBalancersArgs{}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("albLoadBalancerId1", ids.Balancers[0].Id)
-//			nameRegex, err := alb.GetLoadBalancers(ctx, &alb.GetLoadBalancersArgs{
-//				NameRegex: pulumi.StringRef("^my-LoadBalancer"),
+//			defaultGetZones, err := alb.GetZones(ctx, &alb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:    pulumi.String(name),
+//				CidrBlock:  pulumi.String("192.168.0.0/16"),
+//				EnableIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			zoneA, err := ecs.NewEip(ctx, "zone_a", &ecs.EipArgs{
+//				Bandwidth:          pulumi.String("10"),
+//				InternetChargeType: pulumi.String("PayByTraffic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			zoneASwitch, err := vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
+//				VswitchName:       pulumi.String(name),
+//				VpcId:             defaultNetwork.ID(),
+//				CidrBlock:         pulumi.String("192.168.0.0/18"),
+//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
+//				Ipv6CidrBlockMask: pulumi.Int(6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			zoneB, err := vpc.NewSwitch(ctx, "zone_b", &vpc.SwitchArgs{
+//				VswitchName:       pulumi.String(name),
+//				VpcId:             defaultNetwork.ID(),
+//				CidrBlock:         pulumi.String("192.168.128.0/18"),
+//				ZoneId:            pulumi.String(defaultGetZones.Zones[1].Id),
+//				Ipv6CidrBlockMask: pulumi.Int(8),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//				Ipv6GatewayName: pulumi.String(name),
+//				VpcId:           defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:          pulumi.String("1000"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
+//				LoadBalancerEdition:       pulumi.String("Basic"),
+//				AddressType:               pulumi.String("Internet"),
+//				VpcId:                     defaultIpv6Gateway.VpcId,
+//				AddressAllocatedMode:      pulumi.String("Fixed"),
+//				AddressIpVersion:          pulumi.String("DualStack"),
+//				Ipv6AddressType:           pulumi.String("Internet"),
+//				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
+//				ResourceGroupId:           pulumi.String(_default.Groups[1].Id),
+//				LoadBalancerName:          pulumi.String(name),
+//				DeletionProtectionEnabled: pulumi.Bool(false),
+//				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
+//					PayType: pulumi.String("PayAsYouGo"),
+//				},
+//				ZoneMappings: alb.LoadBalancerZoneMappingArray{
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId:       zoneASwitch.ID(),
+//						ZoneId:          zoneASwitch.ZoneId,
+//						EipType:         pulumi.String("Common"),
+//						AllocationId:    zoneA.ID(),
+//						IntranetAddress: pulumi.String("192.168.10.1"),
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: zoneB.ID(),
+//						ZoneId:    zoneB.ZoneId,
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := alb.GetLoadBalancersOutput(ctx, alb.GetLoadBalancersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultLoadBalancer.ID(),
+//				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albLoadBalancerId2", nameRegex.Balancers[0].Id)
+//			ctx.Export("albLoadBalancersId0", ids.ApplyT(func(ids alb.GetLoadBalancersResult) (*string, error) {
+//				return &ids.Balancers[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -60,16 +156,15 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
-	// The type of IP address that the ALB instance uses to provide services. Valid
-	// values: `Intranet`, `Internet`.
+	// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
 	AddressType *string `pulumi:"addressType"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Load Balancer IDs.
 	Ids []string `pulumi:"ids"`
 	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus *string `pulumi:"loadBalancerBusinessStatus"`
-	// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+	// Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus *string `pulumi:"loadBalancerBussinessStatus"`
@@ -84,8 +179,9 @@ type GetLoadBalancersArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
 	// The vpc ids.
@@ -96,26 +192,38 @@ type GetLoadBalancersArgs struct {
 
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
-	AddressType   *string                    `pulumi:"addressType"`
+	// The type of IP address that the ALB instance uses to provide services.
+	AddressType *string `pulumi:"addressType"`
+	// A list of Alb Load Balancers. Each element contains the following attributes:
 	Balancers     []GetLoadBalancersBalancer `pulumi:"balancers"`
 	EnableDetails *bool                      `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string   `pulumi:"id"`
-	Ids                        []string `pulumi:"ids"`
-	LoadBalancerBusinessStatus *string  `pulumi:"loadBalancerBusinessStatus"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// (Available since v1.142.0) Load Balancing of the Service Status.
+	LoadBalancerBusinessStatus *string `pulumi:"loadBalancerBusinessStatus"`
+	// (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
+	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
-	LoadBalancerBussinessStatus *string           `pulumi:"loadBalancerBussinessStatus"`
-	LoadBalancerIds             []string          `pulumi:"loadBalancerIds"`
-	LoadBalancerName            *string           `pulumi:"loadBalancerName"`
-	NameRegex                   *string           `pulumi:"nameRegex"`
-	Names                       []string          `pulumi:"names"`
-	OutputFile                  *string           `pulumi:"outputFile"`
-	ResourceGroupId             *string           `pulumi:"resourceGroupId"`
-	Status                      *string           `pulumi:"status"`
-	Tags                        map[string]string `pulumi:"tags"`
-	VpcId                       *string           `pulumi:"vpcId"`
-	VpcIds                      []string          `pulumi:"vpcIds"`
-	ZoneId                      *string           `pulumi:"zoneId"`
+	LoadBalancerBussinessStatus *string  `pulumi:"loadBalancerBussinessStatus"`
+	LoadBalancerIds             []string `pulumi:"loadBalancerIds"`
+	// The name of the resource.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
+	NameRegex        *string `pulumi:"nameRegex"`
+	// A list of Load Balancer names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// (Available since v1.250.0) The zone status.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+	VpcId  *string  `pulumi:"vpcId"`
+	VpcIds []string `pulumi:"vpcIds"`
+	// The ID of the zone to which the ALB instance belongs.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
@@ -129,16 +237,15 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersOutputArgs struct {
-	// The type of IP address that the ALB instance uses to provide services. Valid
-	// values: `Intranet`, `Internet`.
+	// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
 	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Load Balancer IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBusinessStatus"`
-	// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+	// Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBussinessStatus"`
@@ -154,7 +261,8 @@ type GetLoadBalancersOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The vpc ids.
@@ -182,10 +290,12 @@ func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutputWithContext(
 	return o
 }
 
+// The type of IP address that the ALB instance uses to provide services.
 func (o GetLoadBalancersResultOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alb Load Balancers. Each element contains the following attributes:
 func (o GetLoadBalancersResultOutput) Balancers() GetLoadBalancersBalancerArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersBalancer { return v.Balancers }).(GetLoadBalancersBalancerArrayOutput)
 }
@@ -203,10 +313,13 @@ func (o GetLoadBalancersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// (Available since v1.142.0) Load Balancing of the Service Status.
 func (o GetLoadBalancersResultOutput) LoadBalancerBusinessStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerBusinessStatus }).(pulumi.StringPtrOutput)
 }
 
+// (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
+//
 // Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
 func (o GetLoadBalancersResultOutput) LoadBalancerBussinessStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerBussinessStatus }).(pulumi.StringPtrOutput)
@@ -216,6 +329,7 @@ func (o GetLoadBalancersResultOutput) LoadBalancerIds() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the resource.
 func (o GetLoadBalancersResultOutput) LoadBalancerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
 }
@@ -224,6 +338,7 @@ func (o GetLoadBalancersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Load Balancer names.
 func (o GetLoadBalancersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -232,18 +347,22 @@ func (o GetLoadBalancersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetLoadBalancersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.250.0) The zone status.
 func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 func (o GetLoadBalancersResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
@@ -252,6 +371,7 @@ func (o GetLoadBalancersResultOutput) VpcIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.VpcIds }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the zone to which the ALB instance belongs.
 func (o GetLoadBalancersResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

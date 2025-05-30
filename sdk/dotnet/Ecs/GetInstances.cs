@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
         /// 
+        /// &gt; **NOTE:** Available since v1.7.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,6 +46,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
         /// 
+        /// &gt; **NOTE:** Available since v1.7.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,6 +77,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+        /// 
+        /// &gt; **NOTE:** Available since v1.7.0.
         /// 
         /// ## Example Usage
         /// 
@@ -362,9 +368,6 @@ namespace Pulumi.AliCloud.Ecs
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of ECS instance IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// Image ID the instance is using.

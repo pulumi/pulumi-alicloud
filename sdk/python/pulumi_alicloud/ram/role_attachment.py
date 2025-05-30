@@ -107,7 +107,9 @@ class RoleAttachment(pulumi.CustomResource):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Deprecated since v1.250.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.250.0`. Please use new resource alicloud_ecs_ram_role_attachment.
 
         ## Example Usage
 
@@ -196,7 +198,9 @@ class RoleAttachment(pulumi.CustomResource):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
 
-        > **NOTE:** Available since v1.0.0+.
+        > **NOTE:** Deprecated since v1.250.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.250.0`. Please use new resource alicloud_ecs_ram_role_attachment.
 
         ## Example Usage
 

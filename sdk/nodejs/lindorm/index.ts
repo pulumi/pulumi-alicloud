@@ -15,6 +15,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { PublicNetworkArgs, PublicNetworkState } from "./publicNetwork";
+export type PublicNetwork = import("./publicNetwork").PublicNetwork;
+export const PublicNetwork: typeof import("./publicNetwork").PublicNetwork = null as any;
+utilities.lazyLoad(exports, ["PublicNetwork"], () => require("./publicNetwork"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,9 +27,12 @@ const _module = {
         switch (type) {
             case "alicloud:lindorm/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:lindorm/publicNetwork:PublicNetwork":
+                return new PublicNetwork(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "lindorm/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "lindorm/publicNetwork", _module)

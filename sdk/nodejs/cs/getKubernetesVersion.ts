@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the details of the Kubernetes version supported by ACK.
  *
- * > **NOTE:** Available in 1.170.0+.
+ * > **NOTE:** Available since v1.170.0.
  *
  * ## Example Usage
  *
@@ -87,7 +87,7 @@ export interface GetKubernetesVersionArgs {
      */
     kubernetesVersion?: string;
     /**
-     * The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+     * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      */
     profile?: string;
 }
@@ -111,7 +111,7 @@ export interface GetKubernetesVersionResult {
 /**
  * This data source provides the details of the Kubernetes version supported by ACK.
  *
- * > **NOTE:** Available in 1.170.0+.
+ * > **NOTE:** Available since v1.170.0.
  *
  * ## Example Usage
  *
@@ -189,7 +189,7 @@ export interface GetKubernetesVersionOutputArgs {
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
-     * The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+     * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      */
     profile?: pulumi.Input<string>;
 }

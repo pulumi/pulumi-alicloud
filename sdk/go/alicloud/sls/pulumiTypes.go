@@ -5281,6 +5281,1671 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTimeExpr() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAlertsAlert struct {
+	// Alert rule ID, unique under Project
+	AlertName string `pulumi:"alertName"`
+	// Detailed configuration of alarm monitoring rules
+	Configuration GetAlertsAlertConfiguration `pulumi:"configuration"`
+	// Compatible fields, set to empty strings.
+	Description string `pulumi:"description"`
+	// Display name of the alarm rule
+	DisplayName string `pulumi:"displayName"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Check the frequency-dependent configuration
+	Schedule GetAlertsAlertSchedule `pulumi:"schedule"`
+}
+
+// GetAlertsAlertInput is an input type that accepts GetAlertsAlertArgs and GetAlertsAlertOutput values.
+// You can construct a concrete instance of `GetAlertsAlertInput` via:
+//
+//	GetAlertsAlertArgs{...}
+type GetAlertsAlertInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertOutput() GetAlertsAlertOutput
+	ToGetAlertsAlertOutputWithContext(context.Context) GetAlertsAlertOutput
+}
+
+type GetAlertsAlertArgs struct {
+	// Alert rule ID, unique under Project
+	AlertName pulumi.StringInput `pulumi:"alertName"`
+	// Detailed configuration of alarm monitoring rules
+	Configuration GetAlertsAlertConfigurationInput `pulumi:"configuration"`
+	// Compatible fields, set to empty strings.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Display name of the alarm rule
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Check the frequency-dependent configuration
+	Schedule GetAlertsAlertScheduleInput `pulumi:"schedule"`
+}
+
+func (GetAlertsAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlert)(nil)).Elem()
+}
+
+func (i GetAlertsAlertArgs) ToGetAlertsAlertOutput() GetAlertsAlertOutput {
+	return i.ToGetAlertsAlertOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertArgs) ToGetAlertsAlertOutputWithContext(ctx context.Context) GetAlertsAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertOutput)
+}
+
+// GetAlertsAlertArrayInput is an input type that accepts GetAlertsAlertArray and GetAlertsAlertArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertArrayInput` via:
+//
+//	GetAlertsAlertArray{ GetAlertsAlertArgs{...} }
+type GetAlertsAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertArrayOutput() GetAlertsAlertArrayOutput
+	ToGetAlertsAlertArrayOutputWithContext(context.Context) GetAlertsAlertArrayOutput
+}
+
+type GetAlertsAlertArray []GetAlertsAlertInput
+
+func (GetAlertsAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlert)(nil)).Elem()
+}
+
+func (i GetAlertsAlertArray) ToGetAlertsAlertArrayOutput() GetAlertsAlertArrayOutput {
+	return i.ToGetAlertsAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertArray) ToGetAlertsAlertArrayOutputWithContext(ctx context.Context) GetAlertsAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertArrayOutput)
+}
+
+type GetAlertsAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlert)(nil)).Elem()
+}
+
+func (o GetAlertsAlertOutput) ToGetAlertsAlertOutput() GetAlertsAlertOutput {
+	return o
+}
+
+func (o GetAlertsAlertOutput) ToGetAlertsAlertOutputWithContext(ctx context.Context) GetAlertsAlertOutput {
+	return o
+}
+
+// Alert rule ID, unique under Project
+func (o GetAlertsAlertOutput) AlertName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlert) string { return v.AlertName }).(pulumi.StringOutput)
+}
+
+// Detailed configuration of alarm monitoring rules
+func (o GetAlertsAlertOutput) Configuration() GetAlertsAlertConfigurationOutput {
+	return o.ApplyT(func(v GetAlertsAlert) GetAlertsAlertConfiguration { return v.Configuration }).(GetAlertsAlertConfigurationOutput)
+}
+
+// Compatible fields, set to empty strings.
+func (o GetAlertsAlertOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlert) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of the alarm rule
+func (o GetAlertsAlertOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlert) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetAlertsAlertOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlert) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Check the frequency-dependent configuration
+func (o GetAlertsAlertOutput) Schedule() GetAlertsAlertScheduleOutput {
+	return o.ApplyT(func(v GetAlertsAlert) GetAlertsAlertSchedule { return v.Schedule }).(GetAlertsAlertScheduleOutput)
+}
+
+type GetAlertsAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlert)(nil)).Elem()
+}
+
+func (o GetAlertsAlertArrayOutput) ToGetAlertsAlertArrayOutput() GetAlertsAlertArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertArrayOutput) ToGetAlertsAlertArrayOutputWithContext(ctx context.Context) GetAlertsAlertArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlert {
+		return vs[0].([]GetAlertsAlert)[vs[1].(int)]
+	}).(GetAlertsAlertOutput)
+}
+
+type GetAlertsAlertConfiguration struct {
+	// Template Annotations.
+	Annotations []GetAlertsAlertConfigurationAnnotation `pulumi:"annotations"`
+	// Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+	AutoAnnotation bool `pulumi:"autoAnnotation"`
+	// Alarm trigger condition.
+	ConditionConfiguration GetAlertsAlertConfigurationConditionConfiguration `pulumi:"conditionConfiguration"`
+	// The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+	Dashboard string `pulumi:"dashboard"`
+	// Group evaluation configuration.
+	GroupConfiguration GetAlertsAlertConfigurationGroupConfiguration `pulumi:"groupConfiguration"`
+	// Set operation configuration.
+	JoinConfigurations []GetAlertsAlertConfigurationJoinConfiguration `pulumi:"joinConfigurations"`
+	// Label.
+	Labels []GetAlertsAlertConfigurationLabel `pulumi:"labels"`
+	// Second-level timestamp representing the temporary shutdown deadline.
+	MuteUntil int `pulumi:"muteUntil"`
+	// Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+	NoDataFire bool `pulumi:"noDataFire"`
+	// Alarm severity when no data triggers an alarm.
+	NoDataSeverity int `pulumi:"noDataSeverity"`
+	// Alert policy configuration.
+	PolicyConfiguration GetAlertsAlertConfigurationPolicyConfiguration `pulumi:"policyConfiguration"`
+	// Query the statistical list.
+	QueryLists []GetAlertsAlertConfigurationQueryList `pulumi:"queryLists"`
+	// Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+	SendResolved bool `pulumi:"sendResolved"`
+	// Trigger condition, set at least one trigger condition.
+	SeverityConfigurations []GetAlertsAlertConfigurationSeverityConfiguration `pulumi:"severityConfigurations"`
+	// Configuration of Alerts Sent to Alerthub.
+	SinkAlerthub GetAlertsAlertConfigurationSinkAlerthub `pulumi:"sinkAlerthub"`
+	// Configure alerts sent to CloudMonitor.
+	SinkCms GetAlertsAlertConfigurationSinkCms `pulumi:"sinkCms"`
+	// Configuration of sending alarms to EventStore.
+	SinkEventStore GetAlertsAlertConfigurationSinkEventStore `pulumi:"sinkEventStore"`
+	// Customize the category of alarm monitoring rules.
+	Tags []string `pulumi:"tags"`
+	// Alarm rule template configuration.
+	TemplateConfiguration GetAlertsAlertConfigurationTemplateConfiguration `pulumi:"templateConfiguration"`
+	// Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+	Threshold int `pulumi:"threshold"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type string `pulumi:"type"`
+	// Fixed as 2.0.
+	Version string `pulumi:"version"`
+}
+
+// GetAlertsAlertConfigurationInput is an input type that accepts GetAlertsAlertConfigurationArgs and GetAlertsAlertConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationArgs{...}
+type GetAlertsAlertConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationOutput() GetAlertsAlertConfigurationOutput
+	ToGetAlertsAlertConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationArgs struct {
+	// Template Annotations.
+	Annotations GetAlertsAlertConfigurationAnnotationArrayInput `pulumi:"annotations"`
+	// Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+	AutoAnnotation pulumi.BoolInput `pulumi:"autoAnnotation"`
+	// Alarm trigger condition.
+	ConditionConfiguration GetAlertsAlertConfigurationConditionConfigurationInput `pulumi:"conditionConfiguration"`
+	// The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+	Dashboard pulumi.StringInput `pulumi:"dashboard"`
+	// Group evaluation configuration.
+	GroupConfiguration GetAlertsAlertConfigurationGroupConfigurationInput `pulumi:"groupConfiguration"`
+	// Set operation configuration.
+	JoinConfigurations GetAlertsAlertConfigurationJoinConfigurationArrayInput `pulumi:"joinConfigurations"`
+	// Label.
+	Labels GetAlertsAlertConfigurationLabelArrayInput `pulumi:"labels"`
+	// Second-level timestamp representing the temporary shutdown deadline.
+	MuteUntil pulumi.IntInput `pulumi:"muteUntil"`
+	// Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+	NoDataFire pulumi.BoolInput `pulumi:"noDataFire"`
+	// Alarm severity when no data triggers an alarm.
+	NoDataSeverity pulumi.IntInput `pulumi:"noDataSeverity"`
+	// Alert policy configuration.
+	PolicyConfiguration GetAlertsAlertConfigurationPolicyConfigurationInput `pulumi:"policyConfiguration"`
+	// Query the statistical list.
+	QueryLists GetAlertsAlertConfigurationQueryListArrayInput `pulumi:"queryLists"`
+	// Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+	SendResolved pulumi.BoolInput `pulumi:"sendResolved"`
+	// Trigger condition, set at least one trigger condition.
+	SeverityConfigurations GetAlertsAlertConfigurationSeverityConfigurationArrayInput `pulumi:"severityConfigurations"`
+	// Configuration of Alerts Sent to Alerthub.
+	SinkAlerthub GetAlertsAlertConfigurationSinkAlerthubInput `pulumi:"sinkAlerthub"`
+	// Configure alerts sent to CloudMonitor.
+	SinkCms GetAlertsAlertConfigurationSinkCmsInput `pulumi:"sinkCms"`
+	// Configuration of sending alarms to EventStore.
+	SinkEventStore GetAlertsAlertConfigurationSinkEventStoreInput `pulumi:"sinkEventStore"`
+	// Customize the category of alarm monitoring rules.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Alarm rule template configuration.
+	TemplateConfiguration GetAlertsAlertConfigurationTemplateConfigurationInput `pulumi:"templateConfiguration"`
+	// Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Fixed as 2.0.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetAlertsAlertConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationArgs) ToGetAlertsAlertConfigurationOutput() GetAlertsAlertConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationArgs) ToGetAlertsAlertConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationOutput) ToGetAlertsAlertConfigurationOutput() GetAlertsAlertConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationOutput) ToGetAlertsAlertConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationOutput {
+	return o
+}
+
+// Template Annotations.
+func (o GetAlertsAlertConfigurationOutput) Annotations() GetAlertsAlertConfigurationAnnotationArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []GetAlertsAlertConfigurationAnnotation { return v.Annotations }).(GetAlertsAlertConfigurationAnnotationArrayOutput)
+}
+
+// Whether to turn on automatic labeling.true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling.false: Turn off the automatic annotation function.
+func (o GetAlertsAlertConfigurationOutput) AutoAnnotation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) bool { return v.AutoAnnotation }).(pulumi.BoolOutput)
+}
+
+// Alarm trigger condition.
+func (o GetAlertsAlertConfigurationOutput) ConditionConfiguration() GetAlertsAlertConfigurationConditionConfigurationOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationConditionConfiguration {
+		return v.ConditionConfiguration
+	}).(GetAlertsAlertConfigurationConditionConfigurationOutput)
+}
+
+// The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+func (o GetAlertsAlertConfigurationOutput) Dashboard() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) string { return v.Dashboard }).(pulumi.StringOutput)
+}
+
+// Group evaluation configuration.
+func (o GetAlertsAlertConfigurationOutput) GroupConfiguration() GetAlertsAlertConfigurationGroupConfigurationOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationGroupConfiguration {
+		return v.GroupConfiguration
+	}).(GetAlertsAlertConfigurationGroupConfigurationOutput)
+}
+
+// Set operation configuration.
+func (o GetAlertsAlertConfigurationOutput) JoinConfigurations() GetAlertsAlertConfigurationJoinConfigurationArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []GetAlertsAlertConfigurationJoinConfiguration {
+		return v.JoinConfigurations
+	}).(GetAlertsAlertConfigurationJoinConfigurationArrayOutput)
+}
+
+// Label.
+func (o GetAlertsAlertConfigurationOutput) Labels() GetAlertsAlertConfigurationLabelArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []GetAlertsAlertConfigurationLabel { return v.Labels }).(GetAlertsAlertConfigurationLabelArrayOutput)
+}
+
+// Second-level timestamp representing the temporary shutdown deadline.
+func (o GetAlertsAlertConfigurationOutput) MuteUntil() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) int { return v.MuteUntil }).(pulumi.IntOutput)
+}
+
+// Whether no data triggers an alarm.true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated.false (default): Turn off the no data alarm function.
+func (o GetAlertsAlertConfigurationOutput) NoDataFire() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) bool { return v.NoDataFire }).(pulumi.BoolOutput)
+}
+
+// Alarm severity when no data triggers an alarm.
+func (o GetAlertsAlertConfigurationOutput) NoDataSeverity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) int { return v.NoDataSeverity }).(pulumi.IntOutput)
+}
+
+// Alert policy configuration.
+func (o GetAlertsAlertConfigurationOutput) PolicyConfiguration() GetAlertsAlertConfigurationPolicyConfigurationOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationPolicyConfiguration {
+		return v.PolicyConfiguration
+	}).(GetAlertsAlertConfigurationPolicyConfigurationOutput)
+}
+
+// Query the statistical list.
+func (o GetAlertsAlertConfigurationOutput) QueryLists() GetAlertsAlertConfigurationQueryListArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []GetAlertsAlertConfigurationQueryList { return v.QueryLists }).(GetAlertsAlertConfigurationQueryListArrayOutput)
+}
+
+// Whether to send a recovery notification.true: A recovery alarm is triggered when the alarm is restored.false (default): Turn off the alarm recovery notification function.
+func (o GetAlertsAlertConfigurationOutput) SendResolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) bool { return v.SendResolved }).(pulumi.BoolOutput)
+}
+
+// Trigger condition, set at least one trigger condition.
+func (o GetAlertsAlertConfigurationOutput) SeverityConfigurations() GetAlertsAlertConfigurationSeverityConfigurationArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []GetAlertsAlertConfigurationSeverityConfiguration {
+		return v.SeverityConfigurations
+	}).(GetAlertsAlertConfigurationSeverityConfigurationArrayOutput)
+}
+
+// Configuration of Alerts Sent to Alerthub.
+func (o GetAlertsAlertConfigurationOutput) SinkAlerthub() GetAlertsAlertConfigurationSinkAlerthubOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationSinkAlerthub { return v.SinkAlerthub }).(GetAlertsAlertConfigurationSinkAlerthubOutput)
+}
+
+// Configure alerts sent to CloudMonitor.
+func (o GetAlertsAlertConfigurationOutput) SinkCms() GetAlertsAlertConfigurationSinkCmsOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationSinkCms { return v.SinkCms }).(GetAlertsAlertConfigurationSinkCmsOutput)
+}
+
+// Configuration of sending alarms to EventStore.
+func (o GetAlertsAlertConfigurationOutput) SinkEventStore() GetAlertsAlertConfigurationSinkEventStoreOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationSinkEventStore { return v.SinkEventStore }).(GetAlertsAlertConfigurationSinkEventStoreOutput)
+}
+
+// Customize the category of alarm monitoring rules.
+func (o GetAlertsAlertConfigurationOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Alarm rule template configuration.
+func (o GetAlertsAlertConfigurationOutput) TemplateConfiguration() GetAlertsAlertConfigurationTemplateConfigurationOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) GetAlertsAlertConfigurationTemplateConfiguration {
+		return v.TemplateConfiguration
+	}).(GetAlertsAlertConfigurationTemplateConfigurationOutput)
+}
+
+// Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+func (o GetAlertsAlertConfigurationOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+func (o GetAlertsAlertConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Fixed as 2.0.
+func (o GetAlertsAlertConfigurationOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfiguration) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationAnnotation struct {
+	// Field name.
+	Key string `pulumi:"key"`
+	// Field value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertsAlertConfigurationAnnotationInput is an input type that accepts GetAlertsAlertConfigurationAnnotationArgs and GetAlertsAlertConfigurationAnnotationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationAnnotationInput` via:
+//
+//	GetAlertsAlertConfigurationAnnotationArgs{...}
+type GetAlertsAlertConfigurationAnnotationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationAnnotationOutput() GetAlertsAlertConfigurationAnnotationOutput
+	ToGetAlertsAlertConfigurationAnnotationOutputWithContext(context.Context) GetAlertsAlertConfigurationAnnotationOutput
+}
+
+type GetAlertsAlertConfigurationAnnotationArgs struct {
+	// Field name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Field value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertsAlertConfigurationAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationAnnotation)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationAnnotationArgs) ToGetAlertsAlertConfigurationAnnotationOutput() GetAlertsAlertConfigurationAnnotationOutput {
+	return i.ToGetAlertsAlertConfigurationAnnotationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationAnnotationArgs) ToGetAlertsAlertConfigurationAnnotationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationAnnotationOutput)
+}
+
+// GetAlertsAlertConfigurationAnnotationArrayInput is an input type that accepts GetAlertsAlertConfigurationAnnotationArray and GetAlertsAlertConfigurationAnnotationArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationAnnotationArrayInput` via:
+//
+//	GetAlertsAlertConfigurationAnnotationArray{ GetAlertsAlertConfigurationAnnotationArgs{...} }
+type GetAlertsAlertConfigurationAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationAnnotationArrayOutput() GetAlertsAlertConfigurationAnnotationArrayOutput
+	ToGetAlertsAlertConfigurationAnnotationArrayOutputWithContext(context.Context) GetAlertsAlertConfigurationAnnotationArrayOutput
+}
+
+type GetAlertsAlertConfigurationAnnotationArray []GetAlertsAlertConfigurationAnnotationInput
+
+func (GetAlertsAlertConfigurationAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationAnnotation)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationAnnotationArray) ToGetAlertsAlertConfigurationAnnotationArrayOutput() GetAlertsAlertConfigurationAnnotationArrayOutput {
+	return i.ToGetAlertsAlertConfigurationAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationAnnotationArray) ToGetAlertsAlertConfigurationAnnotationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationAnnotationArrayOutput)
+}
+
+type GetAlertsAlertConfigurationAnnotationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationAnnotation)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationAnnotationOutput) ToGetAlertsAlertConfigurationAnnotationOutput() GetAlertsAlertConfigurationAnnotationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationAnnotationOutput) ToGetAlertsAlertConfigurationAnnotationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationAnnotationOutput {
+	return o
+}
+
+// Field name.
+func (o GetAlertsAlertConfigurationAnnotationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationAnnotation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Field value.
+func (o GetAlertsAlertConfigurationAnnotationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationAnnotation) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationAnnotation)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationAnnotationArrayOutput) ToGetAlertsAlertConfigurationAnnotationArrayOutput() GetAlertsAlertConfigurationAnnotationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationAnnotationArrayOutput) ToGetAlertsAlertConfigurationAnnotationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationAnnotationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationAnnotationArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertConfigurationAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlertConfigurationAnnotation {
+		return vs[0].([]GetAlertsAlertConfigurationAnnotation)[vs[1].(int)]
+	}).(GetAlertsAlertConfigurationAnnotationOutput)
+}
+
+type GetAlertsAlertConfigurationConditionConfiguration struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition string `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+	CountCondition string `pulumi:"countCondition"`
+}
+
+// GetAlertsAlertConfigurationConditionConfigurationInput is an input type that accepts GetAlertsAlertConfigurationConditionConfigurationArgs and GetAlertsAlertConfigurationConditionConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationConditionConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationConditionConfigurationArgs{...}
+type GetAlertsAlertConfigurationConditionConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationConditionConfigurationOutput() GetAlertsAlertConfigurationConditionConfigurationOutput
+	ToGetAlertsAlertConfigurationConditionConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationConditionConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationConditionConfigurationArgs struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+	CountCondition pulumi.StringInput `pulumi:"countCondition"`
+}
+
+func (GetAlertsAlertConfigurationConditionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationConditionConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationConditionConfigurationArgs) ToGetAlertsAlertConfigurationConditionConfigurationOutput() GetAlertsAlertConfigurationConditionConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationConditionConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationConditionConfigurationArgs) ToGetAlertsAlertConfigurationConditionConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationConditionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationConditionConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationConditionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationConditionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationConditionConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationConditionConfigurationOutput) ToGetAlertsAlertConfigurationConditionConfigurationOutput() GetAlertsAlertConfigurationConditionConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationConditionConfigurationOutput) ToGetAlertsAlertConfigurationConditionConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationConditionConfigurationOutput {
+	return o
+}
+
+// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+func (o GetAlertsAlertConfigurationConditionConfigurationOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationConditionConfiguration) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+func (o GetAlertsAlertConfigurationConditionConfigurationOutput) CountCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationConditionConfiguration) string { return v.CountCondition }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationGroupConfiguration struct {
+	// The field used for grouping evaluation.When type is set to custom, fields must be set.
+	Fields []string `pulumi:"fields"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertsAlertConfigurationGroupConfigurationInput is an input type that accepts GetAlertsAlertConfigurationGroupConfigurationArgs and GetAlertsAlertConfigurationGroupConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationGroupConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationGroupConfigurationArgs{...}
+type GetAlertsAlertConfigurationGroupConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationGroupConfigurationOutput() GetAlertsAlertConfigurationGroupConfigurationOutput
+	ToGetAlertsAlertConfigurationGroupConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationGroupConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationGroupConfigurationArgs struct {
+	// The field used for grouping evaluation.When type is set to custom, fields must be set.
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertsAlertConfigurationGroupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationGroupConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationGroupConfigurationArgs) ToGetAlertsAlertConfigurationGroupConfigurationOutput() GetAlertsAlertConfigurationGroupConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationGroupConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationGroupConfigurationArgs) ToGetAlertsAlertConfigurationGroupConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationGroupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationGroupConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationGroupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationGroupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationGroupConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationGroupConfigurationOutput) ToGetAlertsAlertConfigurationGroupConfigurationOutput() GetAlertsAlertConfigurationGroupConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationGroupConfigurationOutput) ToGetAlertsAlertConfigurationGroupConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationGroupConfigurationOutput {
+	return o
+}
+
+// The field used for grouping evaluation.When type is set to custom, fields must be set.
+func (o GetAlertsAlertConfigurationGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+func (o GetAlertsAlertConfigurationGroupConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationGroupConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationJoinConfiguration struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition string `pulumi:"condition"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertsAlertConfigurationJoinConfigurationInput is an input type that accepts GetAlertsAlertConfigurationJoinConfigurationArgs and GetAlertsAlertConfigurationJoinConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationJoinConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationJoinConfigurationArgs{...}
+type GetAlertsAlertConfigurationJoinConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationJoinConfigurationOutput() GetAlertsAlertConfigurationJoinConfigurationOutput
+	ToGetAlertsAlertConfigurationJoinConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationJoinConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationJoinConfigurationArgs struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertsAlertConfigurationJoinConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationJoinConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationJoinConfigurationArgs) ToGetAlertsAlertConfigurationJoinConfigurationOutput() GetAlertsAlertConfigurationJoinConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationJoinConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationJoinConfigurationArgs) ToGetAlertsAlertConfigurationJoinConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationJoinConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationJoinConfigurationOutput)
+}
+
+// GetAlertsAlertConfigurationJoinConfigurationArrayInput is an input type that accepts GetAlertsAlertConfigurationJoinConfigurationArray and GetAlertsAlertConfigurationJoinConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationJoinConfigurationArrayInput` via:
+//
+//	GetAlertsAlertConfigurationJoinConfigurationArray{ GetAlertsAlertConfigurationJoinConfigurationArgs{...} }
+type GetAlertsAlertConfigurationJoinConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationJoinConfigurationArrayOutput() GetAlertsAlertConfigurationJoinConfigurationArrayOutput
+	ToGetAlertsAlertConfigurationJoinConfigurationArrayOutputWithContext(context.Context) GetAlertsAlertConfigurationJoinConfigurationArrayOutput
+}
+
+type GetAlertsAlertConfigurationJoinConfigurationArray []GetAlertsAlertConfigurationJoinConfigurationInput
+
+func (GetAlertsAlertConfigurationJoinConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationJoinConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationJoinConfigurationArray) ToGetAlertsAlertConfigurationJoinConfigurationArrayOutput() GetAlertsAlertConfigurationJoinConfigurationArrayOutput {
+	return i.ToGetAlertsAlertConfigurationJoinConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationJoinConfigurationArray) ToGetAlertsAlertConfigurationJoinConfigurationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationJoinConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationJoinConfigurationArrayOutput)
+}
+
+type GetAlertsAlertConfigurationJoinConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationJoinConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationJoinConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationJoinConfigurationOutput) ToGetAlertsAlertConfigurationJoinConfigurationOutput() GetAlertsAlertConfigurationJoinConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationJoinConfigurationOutput) ToGetAlertsAlertConfigurationJoinConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationJoinConfigurationOutput {
+	return o
+}
+
+// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+func (o GetAlertsAlertConfigurationJoinConfigurationOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationJoinConfiguration) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+func (o GetAlertsAlertConfigurationJoinConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationJoinConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationJoinConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationJoinConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationJoinConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationJoinConfigurationArrayOutput) ToGetAlertsAlertConfigurationJoinConfigurationArrayOutput() GetAlertsAlertConfigurationJoinConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationJoinConfigurationArrayOutput) ToGetAlertsAlertConfigurationJoinConfigurationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationJoinConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationJoinConfigurationArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertConfigurationJoinConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlertConfigurationJoinConfiguration {
+		return vs[0].([]GetAlertsAlertConfigurationJoinConfiguration)[vs[1].(int)]
+	}).(GetAlertsAlertConfigurationJoinConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationLabel struct {
+	// Field name.
+	Key string `pulumi:"key"`
+	// Field value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertsAlertConfigurationLabelInput is an input type that accepts GetAlertsAlertConfigurationLabelArgs and GetAlertsAlertConfigurationLabelOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationLabelInput` via:
+//
+//	GetAlertsAlertConfigurationLabelArgs{...}
+type GetAlertsAlertConfigurationLabelInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationLabelOutput() GetAlertsAlertConfigurationLabelOutput
+	ToGetAlertsAlertConfigurationLabelOutputWithContext(context.Context) GetAlertsAlertConfigurationLabelOutput
+}
+
+type GetAlertsAlertConfigurationLabelArgs struct {
+	// Field name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Field value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertsAlertConfigurationLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationLabel)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationLabelArgs) ToGetAlertsAlertConfigurationLabelOutput() GetAlertsAlertConfigurationLabelOutput {
+	return i.ToGetAlertsAlertConfigurationLabelOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationLabelArgs) ToGetAlertsAlertConfigurationLabelOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationLabelOutput)
+}
+
+// GetAlertsAlertConfigurationLabelArrayInput is an input type that accepts GetAlertsAlertConfigurationLabelArray and GetAlertsAlertConfigurationLabelArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationLabelArrayInput` via:
+//
+//	GetAlertsAlertConfigurationLabelArray{ GetAlertsAlertConfigurationLabelArgs{...} }
+type GetAlertsAlertConfigurationLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationLabelArrayOutput() GetAlertsAlertConfigurationLabelArrayOutput
+	ToGetAlertsAlertConfigurationLabelArrayOutputWithContext(context.Context) GetAlertsAlertConfigurationLabelArrayOutput
+}
+
+type GetAlertsAlertConfigurationLabelArray []GetAlertsAlertConfigurationLabelInput
+
+func (GetAlertsAlertConfigurationLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationLabel)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationLabelArray) ToGetAlertsAlertConfigurationLabelArrayOutput() GetAlertsAlertConfigurationLabelArrayOutput {
+	return i.ToGetAlertsAlertConfigurationLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationLabelArray) ToGetAlertsAlertConfigurationLabelArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationLabelArrayOutput)
+}
+
+type GetAlertsAlertConfigurationLabelOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationLabel)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationLabelOutput) ToGetAlertsAlertConfigurationLabelOutput() GetAlertsAlertConfigurationLabelOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationLabelOutput) ToGetAlertsAlertConfigurationLabelOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationLabelOutput {
+	return o
+}
+
+// Field name.
+func (o GetAlertsAlertConfigurationLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Field value.
+func (o GetAlertsAlertConfigurationLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationLabel)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationLabelArrayOutput) ToGetAlertsAlertConfigurationLabelArrayOutput() GetAlertsAlertConfigurationLabelArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationLabelArrayOutput) ToGetAlertsAlertConfigurationLabelArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationLabelArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationLabelArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertConfigurationLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlertConfigurationLabel {
+		return vs[0].([]GetAlertsAlertConfigurationLabel)[vs[1].(int)]
+	}).(GetAlertsAlertConfigurationLabelOutput)
+}
+
+type GetAlertsAlertConfigurationPolicyConfiguration struct {
+	// The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+	ActionPolicyId string `pulumi:"actionPolicyId"`
+	// Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+	AlertPolicyId string `pulumi:"alertPolicyId"`
+	// Repeat the waiting time. For example, 5m, 1H, etc.
+	RepeatInterval string `pulumi:"repeatInterval"`
+}
+
+// GetAlertsAlertConfigurationPolicyConfigurationInput is an input type that accepts GetAlertsAlertConfigurationPolicyConfigurationArgs and GetAlertsAlertConfigurationPolicyConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationPolicyConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationPolicyConfigurationArgs{...}
+type GetAlertsAlertConfigurationPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationPolicyConfigurationOutput() GetAlertsAlertConfigurationPolicyConfigurationOutput
+	ToGetAlertsAlertConfigurationPolicyConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationPolicyConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationPolicyConfigurationArgs struct {
+	// The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+	ActionPolicyId pulumi.StringInput `pulumi:"actionPolicyId"`
+	// Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+	AlertPolicyId pulumi.StringInput `pulumi:"alertPolicyId"`
+	// Repeat the waiting time. For example, 5m, 1H, etc.
+	RepeatInterval pulumi.StringInput `pulumi:"repeatInterval"`
+}
+
+func (GetAlertsAlertConfigurationPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationPolicyConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationPolicyConfigurationArgs) ToGetAlertsAlertConfigurationPolicyConfigurationOutput() GetAlertsAlertConfigurationPolicyConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationPolicyConfigurationArgs) ToGetAlertsAlertConfigurationPolicyConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationPolicyConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationPolicyConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationPolicyConfigurationOutput) ToGetAlertsAlertConfigurationPolicyConfigurationOutput() GetAlertsAlertConfigurationPolicyConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationPolicyConfigurationOutput) ToGetAlertsAlertConfigurationPolicyConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationPolicyConfigurationOutput {
+	return o
+}
+
+// The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+func (o GetAlertsAlertConfigurationPolicyConfigurationOutput) ActionPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationPolicyConfiguration) string { return v.ActionPolicyId }).(pulumi.StringOutput)
+}
+
+// Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
+func (o GetAlertsAlertConfigurationPolicyConfigurationOutput) AlertPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationPolicyConfiguration) string { return v.AlertPolicyId }).(pulumi.StringOutput)
+}
+
+// Repeat the waiting time. For example, 5m, 1H, etc.
+func (o GetAlertsAlertConfigurationPolicyConfigurationOutput) RepeatInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationPolicyConfiguration) string { return v.RepeatInterval }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationQueryList struct {
+	// Chart Name.
+	ChartTitle string `pulumi:"chartTitle"`
+	// Dashboard ID.
+	DashboardId string `pulumi:"dashboardId"`
+	// End time. When storeType is set to log or metric, end must be set.
+	End string `pulumi:"end"`
+	// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+	PowerSqlMode string `pulumi:"powerSqlMode"`
+	// Project Name.
+	Project string `pulumi:"project"`
+	// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+	Query string `pulumi:"query"`
+	// Region of the target Project.
+	Region string `pulumi:"region"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn string `pulumi:"roleArn"`
+	// Start time. When storeType is set to log or metric, start must be set.
+	Start string `pulumi:"start"`
+	// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+	Store string `pulumi:"store"`
+	// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+	StoreType string `pulumi:"storeType"`
+	// Time Type.
+	TimeSpanType string `pulumi:"timeSpanType"`
+	// Use of specific scene alarm front end.
+	Ui string `pulumi:"ui"`
+}
+
+// GetAlertsAlertConfigurationQueryListInput is an input type that accepts GetAlertsAlertConfigurationQueryListArgs and GetAlertsAlertConfigurationQueryListOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationQueryListInput` via:
+//
+//	GetAlertsAlertConfigurationQueryListArgs{...}
+type GetAlertsAlertConfigurationQueryListInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationQueryListOutput() GetAlertsAlertConfigurationQueryListOutput
+	ToGetAlertsAlertConfigurationQueryListOutputWithContext(context.Context) GetAlertsAlertConfigurationQueryListOutput
+}
+
+type GetAlertsAlertConfigurationQueryListArgs struct {
+	// Chart Name.
+	ChartTitle pulumi.StringInput `pulumi:"chartTitle"`
+	// Dashboard ID.
+	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+	// End time. When storeType is set to log or metric, end must be set.
+	End pulumi.StringInput `pulumi:"end"`
+	// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+	PowerSqlMode pulumi.StringInput `pulumi:"powerSqlMode"`
+	// Project Name.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+	Query pulumi.StringInput `pulumi:"query"`
+	// Region of the target Project.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// Start time. When storeType is set to log or metric, start must be set.
+	Start pulumi.StringInput `pulumi:"start"`
+	// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+	Store pulumi.StringInput `pulumi:"store"`
+	// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+	StoreType pulumi.StringInput `pulumi:"storeType"`
+	// Time Type.
+	TimeSpanType pulumi.StringInput `pulumi:"timeSpanType"`
+	// Use of specific scene alarm front end.
+	Ui pulumi.StringInput `pulumi:"ui"`
+}
+
+func (GetAlertsAlertConfigurationQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationQueryList)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationQueryListArgs) ToGetAlertsAlertConfigurationQueryListOutput() GetAlertsAlertConfigurationQueryListOutput {
+	return i.ToGetAlertsAlertConfigurationQueryListOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationQueryListArgs) ToGetAlertsAlertConfigurationQueryListOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationQueryListOutput)
+}
+
+// GetAlertsAlertConfigurationQueryListArrayInput is an input type that accepts GetAlertsAlertConfigurationQueryListArray and GetAlertsAlertConfigurationQueryListArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationQueryListArrayInput` via:
+//
+//	GetAlertsAlertConfigurationQueryListArray{ GetAlertsAlertConfigurationQueryListArgs{...} }
+type GetAlertsAlertConfigurationQueryListArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationQueryListArrayOutput() GetAlertsAlertConfigurationQueryListArrayOutput
+	ToGetAlertsAlertConfigurationQueryListArrayOutputWithContext(context.Context) GetAlertsAlertConfigurationQueryListArrayOutput
+}
+
+type GetAlertsAlertConfigurationQueryListArray []GetAlertsAlertConfigurationQueryListInput
+
+func (GetAlertsAlertConfigurationQueryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationQueryList)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationQueryListArray) ToGetAlertsAlertConfigurationQueryListArrayOutput() GetAlertsAlertConfigurationQueryListArrayOutput {
+	return i.ToGetAlertsAlertConfigurationQueryListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationQueryListArray) ToGetAlertsAlertConfigurationQueryListArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationQueryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationQueryListArrayOutput)
+}
+
+type GetAlertsAlertConfigurationQueryListOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationQueryList)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationQueryListOutput) ToGetAlertsAlertConfigurationQueryListOutput() GetAlertsAlertConfigurationQueryListOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationQueryListOutput) ToGetAlertsAlertConfigurationQueryListOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationQueryListOutput {
+	return o
+}
+
+// Chart Name.
+func (o GetAlertsAlertConfigurationQueryListOutput) ChartTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.ChartTitle }).(pulumi.StringOutput)
+}
+
+// Dashboard ID.
+func (o GetAlertsAlertConfigurationQueryListOutput) DashboardId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// End time. When storeType is set to log or metric, end must be set.
+func (o GetAlertsAlertConfigurationQueryListOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+func (o GetAlertsAlertConfigurationQueryListOutput) PowerSqlMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.PowerSqlMode }).(pulumi.StringOutput)
+}
+
+// Project Name.
+func (o GetAlertsAlertConfigurationQueryListOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+func (o GetAlertsAlertConfigurationQueryListOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Region of the target Project.
+func (o GetAlertsAlertConfigurationQueryListOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Roles used to write alarm data to the event Library.
+func (o GetAlertsAlertConfigurationQueryListOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Start time. When storeType is set to log or metric, start must be set.
+func (o GetAlertsAlertConfigurationQueryListOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+func (o GetAlertsAlertConfigurationQueryListOutput) Store() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Store }).(pulumi.StringOutput)
+}
+
+// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+func (o GetAlertsAlertConfigurationQueryListOutput) StoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.StoreType }).(pulumi.StringOutput)
+}
+
+// Time Type.
+func (o GetAlertsAlertConfigurationQueryListOutput) TimeSpanType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.TimeSpanType }).(pulumi.StringOutput)
+}
+
+// Use of specific scene alarm front end.
+func (o GetAlertsAlertConfigurationQueryListOutput) Ui() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationQueryList) string { return v.Ui }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationQueryListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationQueryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationQueryList)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationQueryListArrayOutput) ToGetAlertsAlertConfigurationQueryListArrayOutput() GetAlertsAlertConfigurationQueryListArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationQueryListArrayOutput) ToGetAlertsAlertConfigurationQueryListArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationQueryListArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationQueryListArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertConfigurationQueryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlertConfigurationQueryList {
+		return vs[0].([]GetAlertsAlertConfigurationQueryList)[vs[1].(int)]
+	}).(GetAlertsAlertConfigurationQueryListOutput)
+}
+
+type GetAlertsAlertConfigurationSeverityConfiguration struct {
+	// Trigger condition.
+	EvalCondition GetAlertsAlertConfigurationSeverityConfigurationEvalCondition `pulumi:"evalCondition"`
+	// Alarm severity.
+	Severity int `pulumi:"severity"`
+}
+
+// GetAlertsAlertConfigurationSeverityConfigurationInput is an input type that accepts GetAlertsAlertConfigurationSeverityConfigurationArgs and GetAlertsAlertConfigurationSeverityConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSeverityConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationSeverityConfigurationArgs{...}
+type GetAlertsAlertConfigurationSeverityConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSeverityConfigurationOutput() GetAlertsAlertConfigurationSeverityConfigurationOutput
+	ToGetAlertsAlertConfigurationSeverityConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationSeverityConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationArgs struct {
+	// Trigger condition.
+	EvalCondition GetAlertsAlertConfigurationSeverityConfigurationEvalConditionInput `pulumi:"evalCondition"`
+	// Alarm severity.
+	Severity pulumi.IntInput `pulumi:"severity"`
+}
+
+func (GetAlertsAlertConfigurationSeverityConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationArgs) ToGetAlertsAlertConfigurationSeverityConfigurationOutput() GetAlertsAlertConfigurationSeverityConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationSeverityConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationArgs) ToGetAlertsAlertConfigurationSeverityConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSeverityConfigurationOutput)
+}
+
+// GetAlertsAlertConfigurationSeverityConfigurationArrayInput is an input type that accepts GetAlertsAlertConfigurationSeverityConfigurationArray and GetAlertsAlertConfigurationSeverityConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSeverityConfigurationArrayInput` via:
+//
+//	GetAlertsAlertConfigurationSeverityConfigurationArray{ GetAlertsAlertConfigurationSeverityConfigurationArgs{...} }
+type GetAlertsAlertConfigurationSeverityConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutput() GetAlertsAlertConfigurationSeverityConfigurationArrayOutput
+	ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutputWithContext(context.Context) GetAlertsAlertConfigurationSeverityConfigurationArrayOutput
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationArray []GetAlertsAlertConfigurationSeverityConfigurationInput
+
+func (GetAlertsAlertConfigurationSeverityConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationSeverityConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationArray) ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutput() GetAlertsAlertConfigurationSeverityConfigurationArrayOutput {
+	return i.ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationArray) ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSeverityConfigurationArrayOutput)
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSeverityConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationOutput) ToGetAlertsAlertConfigurationSeverityConfigurationOutput() GetAlertsAlertConfigurationSeverityConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationOutput) ToGetAlertsAlertConfigurationSeverityConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationOutput {
+	return o
+}
+
+// Trigger condition.
+func (o GetAlertsAlertConfigurationSeverityConfigurationOutput) EvalCondition() GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSeverityConfiguration) GetAlertsAlertConfigurationSeverityConfigurationEvalCondition {
+		return v.EvalCondition
+	}).(GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput)
+}
+
+// Alarm severity.
+func (o GetAlertsAlertConfigurationSeverityConfigurationOutput) Severity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSeverityConfiguration) int { return v.Severity }).(pulumi.IntOutput)
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSeverityConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertsAlertConfigurationSeverityConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationArrayOutput) ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutput() GetAlertsAlertConfigurationSeverityConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationArrayOutput) ToGetAlertsAlertConfigurationSeverityConfigurationArrayOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationArrayOutput) Index(i pulumi.IntInput) GetAlertsAlertConfigurationSeverityConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertsAlertConfigurationSeverityConfiguration {
+		return vs[0].([]GetAlertsAlertConfigurationSeverityConfiguration)[vs[1].(int)]
+	}).(GetAlertsAlertConfigurationSeverityConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationEvalCondition struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition string `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+	CountCondition string `pulumi:"countCondition"`
+}
+
+// GetAlertsAlertConfigurationSeverityConfigurationEvalConditionInput is an input type that accepts GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs and GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSeverityConfigurationEvalConditionInput` via:
+//
+//	GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs{...}
+type GetAlertsAlertConfigurationSeverityConfigurationEvalConditionInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput() GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput
+	ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutputWithContext(context.Context) GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs struct {
+	// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+	CountCondition pulumi.StringInput `pulumi:"countCondition"`
+}
+
+func (GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfigurationEvalCondition)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs) ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput() GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput {
+	return i.ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs) ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput)
+}
+
+type GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfigurationEvalCondition)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput) ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput() GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput) ToGetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput {
+	return o
+}
+
+// Data matching expression.When the data content does not need to be determined, set it to an empty string.In other cases, it needs to be set as an expression, for example, errCnt> 10.
+func (o GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSeverityConfigurationEvalCondition) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions.If data exists, it is satisfied. Set it to an empty string.In other cases, it needs to be set as an expression, such as__count__> 3.
+func (o GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput) CountCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSeverityConfigurationEvalCondition) string { return v.CountCondition }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationSinkAlerthub struct {
+	// Open.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetAlertsAlertConfigurationSinkAlerthubInput is an input type that accepts GetAlertsAlertConfigurationSinkAlerthubArgs and GetAlertsAlertConfigurationSinkAlerthubOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSinkAlerthubInput` via:
+//
+//	GetAlertsAlertConfigurationSinkAlerthubArgs{...}
+type GetAlertsAlertConfigurationSinkAlerthubInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSinkAlerthubOutput() GetAlertsAlertConfigurationSinkAlerthubOutput
+	ToGetAlertsAlertConfigurationSinkAlerthubOutputWithContext(context.Context) GetAlertsAlertConfigurationSinkAlerthubOutput
+}
+
+type GetAlertsAlertConfigurationSinkAlerthubArgs struct {
+	// Open.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetAlertsAlertConfigurationSinkAlerthubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkAlerthub)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSinkAlerthubArgs) ToGetAlertsAlertConfigurationSinkAlerthubOutput() GetAlertsAlertConfigurationSinkAlerthubOutput {
+	return i.ToGetAlertsAlertConfigurationSinkAlerthubOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSinkAlerthubArgs) ToGetAlertsAlertConfigurationSinkAlerthubOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkAlerthubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSinkAlerthubOutput)
+}
+
+type GetAlertsAlertConfigurationSinkAlerthubOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSinkAlerthubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkAlerthub)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSinkAlerthubOutput) ToGetAlertsAlertConfigurationSinkAlerthubOutput() GetAlertsAlertConfigurationSinkAlerthubOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSinkAlerthubOutput) ToGetAlertsAlertConfigurationSinkAlerthubOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkAlerthubOutput {
+	return o
+}
+
+// Open.
+func (o GetAlertsAlertConfigurationSinkAlerthubOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkAlerthub) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetAlertsAlertConfigurationSinkCms struct {
+	// Open.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetAlertsAlertConfigurationSinkCmsInput is an input type that accepts GetAlertsAlertConfigurationSinkCmsArgs and GetAlertsAlertConfigurationSinkCmsOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSinkCmsInput` via:
+//
+//	GetAlertsAlertConfigurationSinkCmsArgs{...}
+type GetAlertsAlertConfigurationSinkCmsInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSinkCmsOutput() GetAlertsAlertConfigurationSinkCmsOutput
+	ToGetAlertsAlertConfigurationSinkCmsOutputWithContext(context.Context) GetAlertsAlertConfigurationSinkCmsOutput
+}
+
+type GetAlertsAlertConfigurationSinkCmsArgs struct {
+	// Open.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetAlertsAlertConfigurationSinkCmsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkCms)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSinkCmsArgs) ToGetAlertsAlertConfigurationSinkCmsOutput() GetAlertsAlertConfigurationSinkCmsOutput {
+	return i.ToGetAlertsAlertConfigurationSinkCmsOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSinkCmsArgs) ToGetAlertsAlertConfigurationSinkCmsOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkCmsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSinkCmsOutput)
+}
+
+type GetAlertsAlertConfigurationSinkCmsOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSinkCmsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkCms)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSinkCmsOutput) ToGetAlertsAlertConfigurationSinkCmsOutput() GetAlertsAlertConfigurationSinkCmsOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSinkCmsOutput) ToGetAlertsAlertConfigurationSinkCmsOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkCmsOutput {
+	return o
+}
+
+// Open.
+func (o GetAlertsAlertConfigurationSinkCmsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkCms) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetAlertsAlertConfigurationSinkEventStore struct {
+	// Open.
+	Enabled bool `pulumi:"enabled"`
+	// SLS service endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// Event Library Name.
+	EventStore string `pulumi:"eventStore"`
+	// Project Name.
+	Project string `pulumi:"project"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// GetAlertsAlertConfigurationSinkEventStoreInput is an input type that accepts GetAlertsAlertConfigurationSinkEventStoreArgs and GetAlertsAlertConfigurationSinkEventStoreOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationSinkEventStoreInput` via:
+//
+//	GetAlertsAlertConfigurationSinkEventStoreArgs{...}
+type GetAlertsAlertConfigurationSinkEventStoreInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationSinkEventStoreOutput() GetAlertsAlertConfigurationSinkEventStoreOutput
+	ToGetAlertsAlertConfigurationSinkEventStoreOutputWithContext(context.Context) GetAlertsAlertConfigurationSinkEventStoreOutput
+}
+
+type GetAlertsAlertConfigurationSinkEventStoreArgs struct {
+	// Open.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// SLS service endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Event Library Name.
+	EventStore pulumi.StringInput `pulumi:"eventStore"`
+	// Project Name.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetAlertsAlertConfigurationSinkEventStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkEventStore)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationSinkEventStoreArgs) ToGetAlertsAlertConfigurationSinkEventStoreOutput() GetAlertsAlertConfigurationSinkEventStoreOutput {
+	return i.ToGetAlertsAlertConfigurationSinkEventStoreOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationSinkEventStoreArgs) ToGetAlertsAlertConfigurationSinkEventStoreOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkEventStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationSinkEventStoreOutput)
+}
+
+type GetAlertsAlertConfigurationSinkEventStoreOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationSinkEventStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationSinkEventStore)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) ToGetAlertsAlertConfigurationSinkEventStoreOutput() GetAlertsAlertConfigurationSinkEventStoreOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) ToGetAlertsAlertConfigurationSinkEventStoreOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationSinkEventStoreOutput {
+	return o
+}
+
+// Open.
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkEventStore) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// SLS service endpoint.
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkEventStore) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Event Library Name.
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) EventStore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkEventStore) string { return v.EventStore }).(pulumi.StringOutput)
+}
+
+// Project Name.
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkEventStore) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Roles used to write alarm data to the event Library.
+func (o GetAlertsAlertConfigurationSinkEventStoreOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationSinkEventStore) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertConfigurationTemplateConfiguration struct {
+	// Template Annotations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Template Language.
+	Lang string `pulumi:"lang"`
+	// Template ID.
+	TemplateId string `pulumi:"templateId"`
+	// Template Variables.
+	Tokens map[string]string `pulumi:"tokens"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type string `pulumi:"type"`
+	// Fixed as 2.0.
+	Version string `pulumi:"version"`
+}
+
+// GetAlertsAlertConfigurationTemplateConfigurationInput is an input type that accepts GetAlertsAlertConfigurationTemplateConfigurationArgs and GetAlertsAlertConfigurationTemplateConfigurationOutput values.
+// You can construct a concrete instance of `GetAlertsAlertConfigurationTemplateConfigurationInput` via:
+//
+//	GetAlertsAlertConfigurationTemplateConfigurationArgs{...}
+type GetAlertsAlertConfigurationTemplateConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertConfigurationTemplateConfigurationOutput() GetAlertsAlertConfigurationTemplateConfigurationOutput
+	ToGetAlertsAlertConfigurationTemplateConfigurationOutputWithContext(context.Context) GetAlertsAlertConfigurationTemplateConfigurationOutput
+}
+
+type GetAlertsAlertConfigurationTemplateConfigurationArgs struct {
+	// Template Annotations.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Template Language.
+	Lang pulumi.StringInput `pulumi:"lang"`
+	// Template ID.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// Template Variables.
+	Tokens pulumi.StringMapInput `pulumi:"tokens"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Fixed as 2.0.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetAlertsAlertConfigurationTemplateConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationTemplateConfiguration)(nil)).Elem()
+}
+
+func (i GetAlertsAlertConfigurationTemplateConfigurationArgs) ToGetAlertsAlertConfigurationTemplateConfigurationOutput() GetAlertsAlertConfigurationTemplateConfigurationOutput {
+	return i.ToGetAlertsAlertConfigurationTemplateConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertConfigurationTemplateConfigurationArgs) ToGetAlertsAlertConfigurationTemplateConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationTemplateConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertConfigurationTemplateConfigurationOutput)
+}
+
+type GetAlertsAlertConfigurationTemplateConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertConfigurationTemplateConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertConfigurationTemplateConfiguration)(nil)).Elem()
+}
+
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) ToGetAlertsAlertConfigurationTemplateConfigurationOutput() GetAlertsAlertConfigurationTemplateConfigurationOutput {
+	return o
+}
+
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) ToGetAlertsAlertConfigurationTemplateConfigurationOutputWithContext(ctx context.Context) GetAlertsAlertConfigurationTemplateConfigurationOutput {
+	return o
+}
+
+// Template Annotations.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Template Language.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) Lang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) string { return v.Lang }).(pulumi.StringOutput)
+}
+
+// Template ID.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// Template Variables.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) Tokens() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) map[string]string { return v.Tokens }).(pulumi.StringMapOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Fixed as 2.0.
+func (o GetAlertsAlertConfigurationTemplateConfigurationOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertConfigurationTemplateConfiguration) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetAlertsAlertSchedule struct {
+	// Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+	CronExpression string `pulumi:"cronExpression"`
+	// Timed task execution delay (unit: s).
+	Delay int `pulumi:"delay"`
+	// Fixed interval for scheduling.
+	Interval string `pulumi:"interval"`
+	// Dispatch immediately.
+	RunImmdiately bool `pulumi:"runImmdiately"`
+	// The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+	TimeZone string `pulumi:"timeZone"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertsAlertScheduleInput is an input type that accepts GetAlertsAlertScheduleArgs and GetAlertsAlertScheduleOutput values.
+// You can construct a concrete instance of `GetAlertsAlertScheduleInput` via:
+//
+//	GetAlertsAlertScheduleArgs{...}
+type GetAlertsAlertScheduleInput interface {
+	pulumi.Input
+
+	ToGetAlertsAlertScheduleOutput() GetAlertsAlertScheduleOutput
+	ToGetAlertsAlertScheduleOutputWithContext(context.Context) GetAlertsAlertScheduleOutput
+}
+
+type GetAlertsAlertScheduleArgs struct {
+	// Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Timed task execution delay (unit: s).
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Fixed interval for scheduling.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Dispatch immediately.
+	RunImmdiately pulumi.BoolInput `pulumi:"runImmdiately"`
+	// The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertsAlertScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertSchedule)(nil)).Elem()
+}
+
+func (i GetAlertsAlertScheduleArgs) ToGetAlertsAlertScheduleOutput() GetAlertsAlertScheduleOutput {
+	return i.ToGetAlertsAlertScheduleOutputWithContext(context.Background())
+}
+
+func (i GetAlertsAlertScheduleArgs) ToGetAlertsAlertScheduleOutputWithContext(ctx context.Context) GetAlertsAlertScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertsAlertScheduleOutput)
+}
+
+type GetAlertsAlertScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetAlertsAlertScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertsAlertSchedule)(nil)).Elem()
+}
+
+func (o GetAlertsAlertScheduleOutput) ToGetAlertsAlertScheduleOutput() GetAlertsAlertScheduleOutput {
+	return o
+}
+
+func (o GetAlertsAlertScheduleOutput) ToGetAlertsAlertScheduleOutputWithContext(ctx context.Context) GetAlertsAlertScheduleOutput {
+	return o
+}
+
+// Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00.When type is set to Cron, cronExpression must be set.
+func (o GetAlertsAlertScheduleOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// Timed task execution delay (unit: s).
+func (o GetAlertsAlertScheduleOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Fixed interval for scheduling.
+func (o GetAlertsAlertScheduleOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Dispatch immediately.
+func (o GetAlertsAlertScheduleOutput) RunImmdiately() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) bool { return v.RunImmdiately }).(pulumi.BoolOutput)
+}
+
+// The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+func (o GetAlertsAlertScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+func (o GetAlertsAlertScheduleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertsAlertSchedule) string { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationInput)(nil)).Elem(), AlertConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationPtrInput)(nil)).Elem(), AlertConfigurationArgs{})
@@ -5332,6 +6997,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlSchedulePtrInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationPtrInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertInput)(nil)).Elem(), GetAlertsAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertArrayInput)(nil)).Elem(), GetAlertsAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationAnnotationInput)(nil)).Elem(), GetAlertsAlertConfigurationAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationAnnotationArrayInput)(nil)).Elem(), GetAlertsAlertConfigurationAnnotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationConditionConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationConditionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationGroupConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationJoinConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationJoinConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationJoinConfigurationArrayInput)(nil)).Elem(), GetAlertsAlertConfigurationJoinConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationLabelInput)(nil)).Elem(), GetAlertsAlertConfigurationLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationLabelArrayInput)(nil)).Elem(), GetAlertsAlertConfigurationLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationPolicyConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationPolicyConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationQueryListInput)(nil)).Elem(), GetAlertsAlertConfigurationQueryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationQueryListArrayInput)(nil)).Elem(), GetAlertsAlertConfigurationQueryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationSeverityConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfigurationArrayInput)(nil)).Elem(), GetAlertsAlertConfigurationSeverityConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSeverityConfigurationEvalConditionInput)(nil)).Elem(), GetAlertsAlertConfigurationSeverityConfigurationEvalConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSinkAlerthubInput)(nil)).Elem(), GetAlertsAlertConfigurationSinkAlerthubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSinkCmsInput)(nil)).Elem(), GetAlertsAlertConfigurationSinkCmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSinkEventStoreInput)(nil)).Elem(), GetAlertsAlertConfigurationSinkEventStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationTemplateConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationTemplateConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertScheduleInput)(nil)).Elem(), GetAlertsAlertScheduleArgs{})
 	pulumi.RegisterOutputType(AlertConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationAnnotationOutput{})
@@ -5382,4 +7069,26 @@ func init() {
 	pulumi.RegisterOutputType(ScheduledSqlSchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationAnnotationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationConditionConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationGroupConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationJoinConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationJoinConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationLabelOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationQueryListOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationQueryListArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSeverityConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSeverityConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSeverityConfigurationEvalConditionOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSinkAlerthubOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSinkCmsOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSinkEventStoreOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertConfigurationTemplateConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAlertsAlertScheduleOutput{})
 }

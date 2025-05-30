@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int SlbUdpTimeout;
         /// <summary>
-        /// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+        /// (Available since v1.123.1) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         /// </summary>
         public readonly int UdpTimeout;
 

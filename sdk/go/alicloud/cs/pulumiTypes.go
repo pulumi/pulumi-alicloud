@@ -2653,6 +2653,162 @@ func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 	}).(ManagedKubernetesAddonOutput)
 }
 
+type ManagedKubernetesAuditLogConfig struct {
+	// Whether to enable audit logging. Valid values: `true`, `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// The SLS project to which the Logstore storing the cluster audit logs belongs.
+	SlsProjectName *string `pulumi:"slsProjectName"`
+}
+
+// ManagedKubernetesAuditLogConfigInput is an input type that accepts ManagedKubernetesAuditLogConfigArgs and ManagedKubernetesAuditLogConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesAuditLogConfigInput` via:
+//
+//	ManagedKubernetesAuditLogConfigArgs{...}
+type ManagedKubernetesAuditLogConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesAuditLogConfigOutput() ManagedKubernetesAuditLogConfigOutput
+	ToManagedKubernetesAuditLogConfigOutputWithContext(context.Context) ManagedKubernetesAuditLogConfigOutput
+}
+
+type ManagedKubernetesAuditLogConfigArgs struct {
+	// Whether to enable audit logging. Valid values: `true`, `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The SLS project to which the Logstore storing the cluster audit logs belongs.
+	SlsProjectName pulumi.StringPtrInput `pulumi:"slsProjectName"`
+}
+
+func (ManagedKubernetesAuditLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAuditLogConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesAuditLogConfigArgs) ToManagedKubernetesAuditLogConfigOutput() ManagedKubernetesAuditLogConfigOutput {
+	return i.ToManagedKubernetesAuditLogConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesAuditLogConfigArgs) ToManagedKubernetesAuditLogConfigOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAuditLogConfigOutput)
+}
+
+func (i ManagedKubernetesAuditLogConfigArgs) ToManagedKubernetesAuditLogConfigPtrOutput() ManagedKubernetesAuditLogConfigPtrOutput {
+	return i.ToManagedKubernetesAuditLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesAuditLogConfigArgs) ToManagedKubernetesAuditLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAuditLogConfigOutput).ToManagedKubernetesAuditLogConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesAuditLogConfigPtrInput is an input type that accepts ManagedKubernetesAuditLogConfigArgs, ManagedKubernetesAuditLogConfigPtr and ManagedKubernetesAuditLogConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesAuditLogConfigPtrInput` via:
+//
+//	        ManagedKubernetesAuditLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesAuditLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesAuditLogConfigPtrOutput() ManagedKubernetesAuditLogConfigPtrOutput
+	ToManagedKubernetesAuditLogConfigPtrOutputWithContext(context.Context) ManagedKubernetesAuditLogConfigPtrOutput
+}
+
+type managedKubernetesAuditLogConfigPtrType ManagedKubernetesAuditLogConfigArgs
+
+func ManagedKubernetesAuditLogConfigPtr(v *ManagedKubernetesAuditLogConfigArgs) ManagedKubernetesAuditLogConfigPtrInput {
+	return (*managedKubernetesAuditLogConfigPtrType)(v)
+}
+
+func (*managedKubernetesAuditLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesAuditLogConfig)(nil)).Elem()
+}
+
+func (i *managedKubernetesAuditLogConfigPtrType) ToManagedKubernetesAuditLogConfigPtrOutput() ManagedKubernetesAuditLogConfigPtrOutput {
+	return i.ToManagedKubernetesAuditLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesAuditLogConfigPtrType) ToManagedKubernetesAuditLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAuditLogConfigPtrOutput)
+}
+
+type ManagedKubernetesAuditLogConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesAuditLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAuditLogConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesAuditLogConfigOutput) ToManagedKubernetesAuditLogConfigOutput() ManagedKubernetesAuditLogConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesAuditLogConfigOutput) ToManagedKubernetesAuditLogConfigOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesAuditLogConfigOutput) ToManagedKubernetesAuditLogConfigPtrOutput() ManagedKubernetesAuditLogConfigPtrOutput {
+	return o.ToManagedKubernetesAuditLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesAuditLogConfigOutput) ToManagedKubernetesAuditLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesAuditLogConfig) *ManagedKubernetesAuditLogConfig {
+		return &v
+	}).(ManagedKubernetesAuditLogConfigPtrOutput)
+}
+
+// Whether to enable audit logging. Valid values: `true`, `false`.
+func (o ManagedKubernetesAuditLogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesAuditLogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The SLS project to which the Logstore storing the cluster audit logs belongs.
+func (o ManagedKubernetesAuditLogConfigOutput) SlsProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesAuditLogConfig) *string { return v.SlsProjectName }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesAuditLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesAuditLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesAuditLogConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesAuditLogConfigPtrOutput) ToManagedKubernetesAuditLogConfigPtrOutput() ManagedKubernetesAuditLogConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesAuditLogConfigPtrOutput) ToManagedKubernetesAuditLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesAuditLogConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesAuditLogConfigPtrOutput) Elem() ManagedKubernetesAuditLogConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetesAuditLogConfig) ManagedKubernetesAuditLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesAuditLogConfig
+		return ret
+	}).(ManagedKubernetesAuditLogConfigOutput)
+}
+
+// Whether to enable audit logging. Valid values: `true`, `false`.
+func (o ManagedKubernetesAuditLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesAuditLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SLS project to which the Logstore storing the cluster audit logs belongs.
+func (o ManagedKubernetesAuditLogConfigPtrOutput) SlsProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesAuditLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProjectName
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedKubernetesCertificateAuthority struct {
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
@@ -13624,6 +13780,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimePtrInput)(nil)).Elem(), KubernetesRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonInput)(nil)).Elem(), ManagedKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonArrayInput)(nil)).Elem(), ManagedKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAuditLogConfigInput)(nil)).Elem(), ManagedKubernetesAuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAuditLogConfigPtrInput)(nil)).Elem(), ManagedKubernetesAuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
@@ -13783,6 +13941,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesRuntimePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAuditLogConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAuditLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})

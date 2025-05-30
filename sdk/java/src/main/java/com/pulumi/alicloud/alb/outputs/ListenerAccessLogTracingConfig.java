@@ -15,54 +15,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerAccessLogTracingConfig {
     /**
-     * @return Xtrace Function.
+     * @return Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
      * 
      */
     private Boolean tracingEnabled;
     /**
-     * @return Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
+     * @return Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
      * 
      */
     private @Nullable Integer tracingSample;
     /**
-     * @return Xtrace Type Value Is **Zipkin * *.
+     * @return Xtrace Type Value Is `Zipkin`.
      * 
-     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
+     * &gt; **NOTE:**  `tracingenabled` valued True When Effective.
      * 
      */
     private @Nullable String tracingType;
 
     private ListenerAccessLogTracingConfig() {}
     /**
-     * @return Xtrace Function.
+     * @return Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
      * 
      */
     public Boolean tracingEnabled() {
         return this.tracingEnabled;
     }
     /**
-     * @return Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
+     * @return Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
      * 
      */
     public Optional<Integer> tracingSample() {
         return Optional.ofNullable(this.tracingSample);
     }
     /**
-     * @return Xtrace Type Value Is **Zipkin * *.
+     * @return Xtrace Type Value Is `Zipkin`.
      * 
-     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
+     * &gt; **NOTE:**  `tracingenabled` valued True When Effective.
      * 
      */
     public Optional<String> tracingType() {

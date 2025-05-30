@@ -7,18 +7,25 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+ * This data source provides the Private Zones of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const pvtzZonesDs = alicloud.pvtz.getZones({
- *     keyword: basic.zoneName,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.com";
+ * const _default = new alicloud.pvtz.Zone("default", {zoneName: name});
+ * const ids = alicloud.pvtz.getZonesOutput({
+ *     ids: [_default.id],
  * });
- * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
+ * export const pvtzZonesId0 = ids.apply(ids => ids.zones?.[0]?.id);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -43,42 +50,45 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
-     * A list of zone IDs.
+     * A list of Zones IDs.
      */
     ids?: string[];
     /**
-     * keyword for zone name.
+     * The keyword of the zone name.
      */
     keyword?: string;
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
     lang?: string;
+    /**
+     * A regex string to filter results by Zone name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
     /**
-     * query_region_id for zone regionId.
+     * The region ID of the virtual private cloud (VPC) associated with the zone.
      */
     queryRegionId?: string;
     /**
-     * query_vpc_id for zone vpcId.
+     * The ID of the VPC associated with the zone.
      */
     queryVpcId?: string;
     /**
-     * resource_group_id for zone resourceGroupId.
+     * The ID of the resource group to which the zone belongs.
      */
     resourceGroupId?: string;
     /**
-     * Search mode. Value: 
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      */
     searchMode?: string;
 }
@@ -92,43 +102,47 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of zone IDs.
-     */
     readonly ids: string[];
     readonly keyword?: string;
     readonly lang?: string;
     readonly nameRegex?: string;
     /**
-     * A list of zone names.
+     * A list of Zone names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     readonly queryRegionId?: string;
     readonly queryVpcId?: string;
     /**
-     * The Id of resource group which the Private Zone belongs.
+     * The ID of the resource group to which the zone belongs.
      */
     readonly resourceGroupId?: string;
     readonly searchMode?: string;
     /**
-     * A list of zones. Each element contains the following attributes:
+     * A list of Zone. Each element contains the following attributes:
      */
     readonly zones: outputs.pvtz.GetZonesZone[];
 }
 /**
- * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+ * This data source provides the Private Zones of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.13.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const pvtzZonesDs = alicloud.pvtz.getZones({
- *     keyword: basic.zoneName,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.com";
+ * const _default = new alicloud.pvtz.Zone("default", {zoneName: name});
+ * const ids = alicloud.pvtz.getZonesOutput({
+ *     ids: [_default.id],
  * });
- * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
+ * export const pvtzZonesId0 = ids.apply(ids => ids.zones?.[0]?.id);
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
@@ -153,42 +167,45 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
  */
 export interface GetZonesOutputArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of zone IDs.
+     * A list of Zones IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * keyword for zone name.
+     * The keyword of the zone name.
      */
     keyword?: pulumi.Input<string>;
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Zone name.
+     */
     nameRegex?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * query_region_id for zone regionId.
+     * The region ID of the virtual private cloud (VPC) associated with the zone.
      */
     queryRegionId?: pulumi.Input<string>;
     /**
-     * query_vpc_id for zone vpcId.
+     * The ID of the VPC associated with the zone.
      */
     queryVpcId?: pulumi.Input<string>;
     /**
-     * resource_group_id for zone resourceGroupId.
+     * The ID of the resource group to which the zone belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Search mode. Value: 
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      */
     searchMode?: pulumi.Input<string>;
 }

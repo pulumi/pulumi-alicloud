@@ -35,6 +35,7 @@ __all__ = [
     'KubernetesPermissionPermission',
     'KubernetesRuntime',
     'ManagedKubernetesAddon',
+    'ManagedKubernetesAuditLogConfig',
     'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
     'ManagedKubernetesDeleteOption',
@@ -1360,6 +1361,54 @@ class ManagedKubernetesAddon(dict):
         It specifies the version of the component.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ManagedKubernetesAuditLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsProjectName":
+            suggest = "sls_project_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesAuditLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesAuditLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesAuditLogConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[builtins.bool] = None,
+                 sls_project_name: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enabled: Whether to enable audit logging. Valid values: `true`, `false`.
+        :param builtins.str sls_project_name: The SLS project to which the Logstore storing the cluster audit logs belongs.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_project_name is not None:
+            pulumi.set(__self__, "sls_project_name", sls_project_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether to enable audit logging. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="slsProjectName")
+    def sls_project_name(self) -> Optional[builtins.str]:
+        """
+        The SLS project to which the Logstore storing the cluster audit logs belongs.
+        """
+        return pulumi.get(self, "sls_project_name")
 
 
 @pulumi.output_type

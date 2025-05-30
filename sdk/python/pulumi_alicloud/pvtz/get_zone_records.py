@@ -74,9 +74,6 @@ class GetZoneRecordsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[builtins.str]:
-        """
-        A list of Private Zone Record IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -98,7 +95,7 @@ class GetZoneRecordsResult:
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetZoneRecordsRecordResult']:
         """
-        A list of zone records. Each element contains the following attributes:
+        A list of Zone Record. Each element contains the following attributes:
         """
         return pulumi.get(self, "records")
 
@@ -111,7 +108,7 @@ class GetZoneRecordsResult:
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
         """
-        Status of the Private Zone Record.
+        The state of the Private Zone Record.
         """
         return pulumi.get(self, "status")
 
@@ -161,33 +158,50 @@ def get_zone_records(ids: Optional[Sequence[builtins.str]] = None,
                      zone_id: Optional[builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneRecordsResult:
     """
-    This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+    This data source provides the Private Zone Records of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    records_ds = alicloud.pvtz.get_zone_records(zone_id=basic["id"],
-        keyword=foo["value"])
-    pulumi.export("firstRecordId", records_ds.records[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.com"
+    default = alicloud.pvtz.Zone("default", zone_name=name)
+    default_zone_record = alicloud.pvtz.ZoneRecord("default",
+        zone_id=default.id,
+        rr="www",
+        type="MX",
+        value=name,
+        ttl=60,
+        priority=2,
+        remark=name)
+    ids = alicloud.pvtz.get_zone_records_output(zone_id=default_zone_record.zone_id,
+        ids=[default_zone_record.record_id])
+    pulumi.export("pvtzZoneRecordsId0", ids.records[0].id)
     ```
 
 
     :param Sequence[builtins.str] ids: A list of Private Zone Record IDs.
-    :param builtins.str keyword: Keyword for record rr and value.
-    :param builtins.str lang: User language.
+    :param builtins.str keyword: The keyword for record rr and value.
+    :param builtins.str lang: The language of the response. Default value: `en`. Valid values: `en`, `zh`.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str search_mode: Search mode. Value: 
-           - LIKE: fuzzy search.
-           - EXACT: precise search. It is not filled in by default.
-    :param builtins.str status: Resolve record status. Value:
-           - ENABLE: enable resolution.
-           - DISABLE: pause parsing.
-    :param builtins.str tag: It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
-    :param builtins.str user_client_ip: User ip.
-    :param builtins.str zone_id: ID of the Private Zone.
+    :param builtins.str search_mode: The search mode. Default value: `EXACT`. Valid values:
+           - `LIKE`: Fuzzy search.
+           - `EXACT`: Exact search.
+    :param builtins.str status: The status of the Resolve record. Valid values:
+           - `ENABLE`: Enable resolution.
+           - `DISABLE`: Pause parsing.
+    :param builtins.str tag: The tag used to search for DNS records.
+    :param builtins.str user_client_ip: The IP address of the client.
+    :param builtins.str zone_id: The ID of the private zone.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -225,33 +239,50 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[builtin
                             zone_id: Optional[pulumi.Input[builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneRecordsResult]:
     """
-    This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+    This data source provides the Private Zone Records of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    records_ds = alicloud.pvtz.get_zone_records(zone_id=basic["id"],
-        keyword=foo["value"])
-    pulumi.export("firstRecordId", records_ds.records[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.com"
+    default = alicloud.pvtz.Zone("default", zone_name=name)
+    default_zone_record = alicloud.pvtz.ZoneRecord("default",
+        zone_id=default.id,
+        rr="www",
+        type="MX",
+        value=name,
+        ttl=60,
+        priority=2,
+        remark=name)
+    ids = alicloud.pvtz.get_zone_records_output(zone_id=default_zone_record.zone_id,
+        ids=[default_zone_record.record_id])
+    pulumi.export("pvtzZoneRecordsId0", ids.records[0].id)
     ```
 
 
     :param Sequence[builtins.str] ids: A list of Private Zone Record IDs.
-    :param builtins.str keyword: Keyword for record rr and value.
-    :param builtins.str lang: User language.
+    :param builtins.str keyword: The keyword for record rr and value.
+    :param builtins.str lang: The language of the response. Default value: `en`. Valid values: `en`, `zh`.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str search_mode: Search mode. Value: 
-           - LIKE: fuzzy search.
-           - EXACT: precise search. It is not filled in by default.
-    :param builtins.str status: Resolve record status. Value:
-           - ENABLE: enable resolution.
-           - DISABLE: pause parsing.
-    :param builtins.str tag: It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
-    :param builtins.str user_client_ip: User ip.
-    :param builtins.str zone_id: ID of the Private Zone.
+    :param builtins.str search_mode: The search mode. Default value: `EXACT`. Valid values:
+           - `LIKE`: Fuzzy search.
+           - `EXACT`: Exact search.
+    :param builtins.str status: The status of the Resolve record. Valid values:
+           - `ENABLE`: Enable resolution.
+           - `DISABLE`: Pause parsing.
+    :param builtins.str tag: The tag used to search for DNS records.
+    :param builtins.str user_client_ip: The IP address of the client.
+    :param builtins.str zone_id: The ID of the private zone.
     """
     __args__ = dict()
     __args__['ids'] = ids

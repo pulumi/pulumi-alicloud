@@ -661,18 +661,18 @@ class GetZoneRecordsRecordResult(dict):
                  type: builtins.str,
                  value: builtins.str):
         """
-        :param builtins.str id: ID of the Private Zone Record.
-        :param builtins.int priority: Priority of the Private Zone Record.
-        :param builtins.str record_id: RecordId of the Private Zone Record.
-        :param builtins.str remark: Remark of the Private Zone Record.
-        :param builtins.str resource_record: Resource record of the Private Zone Record.
-        :param builtins.str rr: Rr of the Private Zone Record.
-        :param builtins.str status: Resolve record status. Value:
-               - ENABLE: enable resolution.
-               - DISABLE: pause parsing.
-        :param builtins.int ttl: Ttl of the Private Zone Record.
-        :param builtins.str type: Type of the Private Zone Record.
-        :param builtins.str value: Value of the Private Zone Record.
+        :param builtins.str id: The ID of the Private Zone Record.
+        :param builtins.int priority: The priority of the MX record.
+        :param builtins.str record_id: The ID of the Record.
+        :param builtins.str remark: The description of the Private Zone Record.
+        :param builtins.str resource_record: The hostname of the Private Zone Record.
+        :param builtins.str rr: The hostname of the Private Zone Record.
+        :param builtins.str status: The status of the Resolve record. Valid values:
+               - `ENABLE`: Enable resolution.
+               - `DISABLE`: Pause parsing.
+        :param builtins.int ttl: The time to live (TTL) of the Private Zone Record.
+        :param builtins.str type: The type of the Private Zone Record.
+        :param builtins.str value: The value of the Private Zone Record.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "priority", priority)
@@ -689,7 +689,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        ID of the Private Zone Record.
+        The ID of the Private Zone Record.
         """
         return pulumi.get(self, "id")
 
@@ -697,7 +697,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def priority(self) -> builtins.int:
         """
-        Priority of the Private Zone Record.
+        The priority of the MX record.
         """
         return pulumi.get(self, "priority")
 
@@ -705,7 +705,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter(name="recordId")
     def record_id(self) -> builtins.str:
         """
-        RecordId of the Private Zone Record.
+        The ID of the Record.
         """
         return pulumi.get(self, "record_id")
 
@@ -713,7 +713,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def remark(self) -> builtins.str:
         """
-        Remark of the Private Zone Record.
+        The description of the Private Zone Record.
         """
         return pulumi.get(self, "remark")
 
@@ -721,7 +721,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter(name="resourceRecord")
     def resource_record(self) -> builtins.str:
         """
-        Resource record of the Private Zone Record.
+        The hostname of the Private Zone Record.
         """
         return pulumi.get(self, "resource_record")
 
@@ -729,7 +729,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def rr(self) -> builtins.str:
         """
-        Rr of the Private Zone Record.
+        The hostname of the Private Zone Record.
         """
         return pulumi.get(self, "rr")
 
@@ -737,9 +737,9 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        Resolve record status. Value:
-        - ENABLE: enable resolution.
-        - DISABLE: pause parsing.
+        The status of the Resolve record. Valid values:
+        - `ENABLE`: Enable resolution.
+        - `DISABLE`: Pause parsing.
         """
         return pulumi.get(self, "status")
 
@@ -747,7 +747,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def ttl(self) -> builtins.int:
         """
-        Ttl of the Private Zone Record.
+        The time to live (TTL) of the Private Zone Record.
         """
         return pulumi.get(self, "ttl")
 
@@ -755,7 +755,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        Type of the Private Zone Record.
+        The type of the Private Zone Record.
         """
         return pulumi.get(self, "type")
 
@@ -763,7 +763,7 @@ class GetZoneRecordsRecordResult(dict):
     @pulumi.getter
     def value(self) -> builtins.str:
         """
-        Value of the Private Zone Record.
+        The value of the Private Zone Record.
         """
         return pulumi.get(self, "value")
 
@@ -787,19 +787,19 @@ class GetZonesZoneResult(dict):
                  zone_id: builtins.str,
                  zone_name: builtins.str):
         """
-        :param Sequence['GetZonesZoneBindVpcArgs'] bind_vpcs: List of the VPCs is bound to the Private Zone:
-        :param builtins.int create_timestamp: Time of create of the Private Zone.
-        :param builtins.str id: ID of the Private Zone.
-        :param builtins.bool is_ptr: Whether the Private Zone is ptr.
-        :param builtins.str name: Name of the Private Zone.
-        :param builtins.str proxy_pattern: The recursive DNS proxy.
-        :param builtins.int record_count: Count of the Private Zone Record.
-        :param builtins.str remark: Remark of the Private Zone.
-        :param builtins.str resource_group_id: resource_group_id for zone resourceGroupId.
-        :param builtins.bool slave_dns: Whether to turn on secondary DNS.
-        :param builtins.int update_timestamp: Time of update of the Private Zone.
-        :param builtins.str zone_id: ZoneId of the Private Zone.
-        :param builtins.str zone_name: ZoneName of the Private Zone.
+        :param Sequence['GetZonesZoneBindVpcArgs'] bind_vpcs: The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
+        :param builtins.int create_timestamp: The time when the zone was created.
+        :param builtins.str id: The ID of the Private Zone.
+        :param builtins.bool is_ptr: Indicates whether the zone is a reverse lookup zone.
+        :param builtins.str name: The Name of the Zone.
+        :param builtins.str proxy_pattern: Indicates whether the recursive resolution proxy for subdomain names is enabled.
+        :param builtins.int record_count: The number of Domain Name System (DNS) records added in the zone.
+        :param builtins.str remark: The description of the zone.
+        :param builtins.str resource_group_id: The ID of the resource group to which the zone belongs.
+        :param builtins.bool slave_dns: Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
+        :param builtins.int update_timestamp: The time when the DNS record was updated.
+        :param builtins.str zone_id: The ID of the Zone.
+        :param builtins.str zone_name: The Name of the Private Zone.
         """
         pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         pulumi.set(__self__, "create_timestamp", create_timestamp)
@@ -821,7 +821,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> Sequence['outputs.GetZonesZoneBindVpcResult']:
         """
-        List of the VPCs is bound to the Private Zone:
+        The VPCs associated with the zone. **Note:** `bind_vpcs` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "bind_vpcs")
 
@@ -829,7 +829,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="createTimestamp")
     def create_timestamp(self) -> builtins.int:
         """
-        Time of create of the Private Zone.
+        The time when the zone was created.
         """
         return pulumi.get(self, "create_timestamp")
 
@@ -842,7 +842,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        ID of the Private Zone.
+        The ID of the Private Zone.
         """
         return pulumi.get(self, "id")
 
@@ -850,7 +850,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="isPtr")
     def is_ptr(self) -> builtins.bool:
         """
-        Whether the Private Zone is ptr.
+        Indicates whether the zone is a reverse lookup zone.
         """
         return pulumi.get(self, "is_ptr")
 
@@ -858,7 +858,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        Name of the Private Zone.
+        The Name of the Zone.
         """
         return pulumi.get(self, "name")
 
@@ -866,7 +866,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="proxyPattern")
     def proxy_pattern(self) -> builtins.str:
         """
-        The recursive DNS proxy.
+        Indicates whether the recursive resolution proxy for subdomain names is enabled.
         """
         return pulumi.get(self, "proxy_pattern")
 
@@ -874,7 +874,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="recordCount")
     def record_count(self) -> builtins.int:
         """
-        Count of the Private Zone Record.
+        The number of Domain Name System (DNS) records added in the zone.
         """
         return pulumi.get(self, "record_count")
 
@@ -882,7 +882,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter
     def remark(self) -> builtins.str:
         """
-        Remark of the Private Zone.
+        The description of the zone.
         """
         return pulumi.get(self, "remark")
 
@@ -890,7 +890,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> builtins.str:
         """
-        resource_group_id for zone resourceGroupId.
+        The ID of the resource group to which the zone belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -898,7 +898,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="slaveDns")
     def slave_dns(self) -> builtins.bool:
         """
-        Whether to turn on secondary DNS.
+        Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "slave_dns")
 
@@ -911,7 +911,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="updateTimestamp")
     def update_timestamp(self) -> builtins.int:
         """
-        Time of update of the Private Zone.
+        The time when the DNS record was updated.
         """
         return pulumi.get(self, "update_timestamp")
 
@@ -919,7 +919,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        ZoneId of the Private Zone.
+        The ID of the Zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -927,7 +927,7 @@ class GetZonesZoneResult(dict):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> builtins.str:
         """
-        ZoneName of the Private Zone.
+        The Name of the Private Zone.
         """
         return pulumi.get(self, "zone_name")
 
@@ -940,9 +940,10 @@ class GetZonesZoneBindVpcResult(dict):
                  vpc_id: builtins.str,
                  vpc_name: builtins.str):
         """
-        :param builtins.str region_id: Binding the regionId of VPC.
-        :param builtins.str region_name: Binding the regionName of VPC.
-        :param builtins.str vpc_id: Binding the vpcId of VPC.
+        :param builtins.str region_id: The region ID of the VPC.
+        :param builtins.str region_name: The name of the region where the VPC resides.
+        :param builtins.str vpc_id: The ID of the VPC.
+        :param builtins.str vpc_name: The Name of the VPC.
         """
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "region_name", region_name)
@@ -953,7 +954,7 @@ class GetZonesZoneBindVpcResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> builtins.str:
         """
-        Binding the regionId of VPC.
+        The region ID of the VPC.
         """
         return pulumi.get(self, "region_id")
 
@@ -961,7 +962,7 @@ class GetZonesZoneBindVpcResult(dict):
     @pulumi.getter(name="regionName")
     def region_name(self) -> builtins.str:
         """
-        Binding the regionName of VPC.
+        The name of the region where the VPC resides.
         """
         return pulumi.get(self, "region_name")
 
@@ -969,13 +970,16 @@ class GetZonesZoneBindVpcResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> builtins.str:
         """
-        Binding the vpcId of VPC.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> builtins.str:
+        """
+        The Name of the VPC.
+        """
         return pulumi.get(self, "vpc_name")
 
 

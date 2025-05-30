@@ -84,6 +84,7 @@ class InstanceArgs:
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  stopped_mode: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  system_disk_category: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_description: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_encrypt_algorithm: Optional[pulumi.Input[builtins.str]] = None,
@@ -91,6 +92,7 @@ class InstanceArgs:
                  system_disk_kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_name: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_storage_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -212,6 +214,7 @@ class InstanceArgs:
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param pulumi.Input[builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         :param pulumi.Input[builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -219,6 +222,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[builtins.str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        :param pulumi.Input[builtins.int] system_disk_provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -364,6 +368,8 @@ class InstanceArgs:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+        if system_disk_bursting_enabled is not None:
+            pulumi.set(__self__, "system_disk_bursting_enabled", system_disk_bursting_enabled)
         if system_disk_category is not None:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
@@ -378,6 +384,8 @@ class InstanceArgs:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        if system_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "system_disk_provisioned_iops", system_disk_provisioned_iops)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
         if system_disk_storage_cluster_id is not None:
@@ -1190,6 +1198,18 @@ class InstanceArgs:
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @property
+    @pulumi.getter(name="systemDiskBurstingEnabled")
+    def system_disk_bursting_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
+        return pulumi.get(self, "system_disk_bursting_enabled")
+
+    @system_disk_bursting_enabled.setter
+    def system_disk_bursting_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "system_disk_bursting_enabled", value)
+
+    @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -1272,6 +1292,18 @@ class InstanceArgs:
     @system_disk_performance_level.setter
     def system_disk_performance_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
+
+    @system_disk_provisioned_iops.setter
+    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @property
     @pulumi.getter(name="systemDiskSize")
@@ -1441,6 +1473,7 @@ class _InstanceState:
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  stopped_mode: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  system_disk_category: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_description: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_encrypt_algorithm: Optional[pulumi.Input[builtins.str]] = None,
@@ -1449,6 +1482,7 @@ class _InstanceState:
                  system_disk_kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_name: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_storage_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1581,6 +1615,7 @@ class _InstanceState:
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param pulumi.Input[builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         :param pulumi.Input[builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -1589,6 +1624,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[builtins.str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        :param pulumi.Input[builtins.int] system_disk_provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -1756,6 +1792,8 @@ class _InstanceState:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+        if system_disk_bursting_enabled is not None:
+            pulumi.set(__self__, "system_disk_bursting_enabled", system_disk_bursting_enabled)
         if system_disk_category is not None:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
@@ -1772,6 +1810,8 @@ class _InstanceState:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        if system_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "system_disk_provisioned_iops", system_disk_provisioned_iops)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
         if system_disk_storage_cluster_id is not None:
@@ -2716,6 +2756,18 @@ class _InstanceState:
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @property
+    @pulumi.getter(name="systemDiskBurstingEnabled")
+    def system_disk_bursting_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
+        return pulumi.get(self, "system_disk_bursting_enabled")
+
+    @system_disk_bursting_enabled.setter
+    def system_disk_bursting_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "system_disk_bursting_enabled", value)
+
+    @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -2810,6 +2862,18 @@ class _InstanceState:
     @system_disk_performance_level.setter
     def system_disk_performance_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
+
+    @system_disk_provisioned_iops.setter
+    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @property
     @pulumi.getter(name="systemDiskSize")
@@ -2971,6 +3035,7 @@ class Instance(pulumi.CustomResource):
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  stopped_mode: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  system_disk_category: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_description: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_encrypt_algorithm: Optional[pulumi.Input[builtins.str]] = None,
@@ -2978,6 +3043,7 @@ class Instance(pulumi.CustomResource):
                  system_disk_kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_name: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_storage_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -3178,6 +3244,7 @@ class Instance(pulumi.CustomResource):
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param pulumi.Input[builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         :param pulumi.Input[builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -3185,6 +3252,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[builtins.str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        :param pulumi.Input[builtins.int] system_disk_provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -3361,6 +3429,7 @@ class Instance(pulumi.CustomResource):
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  stopped_mode: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  system_disk_category: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_description: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_encrypt_algorithm: Optional[pulumi.Input[builtins.str]] = None,
@@ -3368,6 +3437,7 @@ class Instance(pulumi.CustomResource):
                  system_disk_kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_name: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[builtins.str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  system_disk_storage_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -3446,6 +3516,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["status"] = status
             __props__.__dict__["stopped_mode"] = stopped_mode
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
+            __props__.__dict__["system_disk_bursting_enabled"] = system_disk_bursting_enabled
             __props__.__dict__["system_disk_category"] = system_disk_category
             __props__.__dict__["system_disk_description"] = system_disk_description
             __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
@@ -3453,6 +3524,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
             __props__.__dict__["system_disk_name"] = system_disk_name
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+            __props__.__dict__["system_disk_provisioned_iops"] = system_disk_provisioned_iops
             __props__.__dict__["system_disk_size"] = system_disk_size
             __props__.__dict__["system_disk_storage_cluster_id"] = system_disk_storage_cluster_id
             __props__.__dict__["tags"] = tags
@@ -3557,6 +3629,7 @@ class Instance(pulumi.CustomResource):
             status: Optional[pulumi.Input[builtins.str]] = None,
             stopped_mode: Optional[pulumi.Input[builtins.str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+            system_disk_bursting_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             system_disk_category: Optional[pulumi.Input[builtins.str]] = None,
             system_disk_description: Optional[pulumi.Input[builtins.str]] = None,
             system_disk_encrypt_algorithm: Optional[pulumi.Input[builtins.str]] = None,
@@ -3565,6 +3638,7 @@ class Instance(pulumi.CustomResource):
             system_disk_kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
             system_disk_name: Optional[pulumi.Input[builtins.str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[builtins.str]] = None,
+            system_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
             system_disk_size: Optional[pulumi.Input[builtins.int]] = None,
             system_disk_storage_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -3702,6 +3776,7 @@ class Instance(pulumi.CustomResource):
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
                * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[builtins.bool] system_disk_bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
         :param pulumi.Input[builtins.str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         :param pulumi.Input[builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -3710,6 +3785,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[builtins.str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
+        :param pulumi.Input[builtins.int] system_disk_provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
         :param pulumi.Input[builtins.int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         :param pulumi.Input[builtins.str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -3802,6 +3878,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["stopped_mode"] = stopped_mode
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
+        __props__.__dict__["system_disk_bursting_enabled"] = system_disk_bursting_enabled
         __props__.__dict__["system_disk_category"] = system_disk_category
         __props__.__dict__["system_disk_description"] = system_disk_description
         __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
@@ -3810,6 +3887,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
         __props__.__dict__["system_disk_name"] = system_disk_name
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+        __props__.__dict__["system_disk_provisioned_iops"] = system_disk_provisioned_iops
         __props__.__dict__["system_disk_size"] = system_disk_size
         __props__.__dict__["system_disk_storage_cluster_id"] = system_disk_storage_cluster_id
         __props__.__dict__["tags"] = tags
@@ -4456,6 +4534,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "system_disk_auto_snapshot_policy_id")
 
     @property
+    @pulumi.getter(name="systemDiskBurstingEnabled")
+    def system_disk_bursting_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        """
+        return pulumi.get(self, "system_disk_bursting_enabled")
+
+    @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[builtins.str]:
         """
@@ -4518,6 +4604,14 @@ class Instance(pulumi.CustomResource):
         The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         """
         return pulumi.get(self, "system_disk_performance_level")
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
 
     @property
     @pulumi.getter(name="systemDiskSize")

@@ -46,14 +46,14 @@ public final class GetKubernetesVersionPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+     * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      * 
      */
     @Import(name="profile")
     private @Nullable String profile;
 
     /**
-     * @return The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+     * @return The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      * 
      */
     public Optional<String> profile() {
@@ -109,7 +109,7 @@ public final class GetKubernetesVersionPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param profile The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
+         * @param profile The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
          * 
          * @return builder
          * 

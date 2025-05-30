@@ -146,11 +146,11 @@ type Instance struct {
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
-	// - Serverless
-	// > - MySQL: [ 5.7、8.0 ]
-	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-	// > - PostgreSQL: [ 14.0 ]
-	// > - MariaDB does not support creating serverless instances.
+	//   **Serverless**
+	// - MySQL: [ 5.7、8.0 ]
+	// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// - PostgreSQL: [ 14.0 ]
+	// - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Specifies whether to enable forcible switching. Valid values:
 	// - Yes
@@ -542,11 +542,11 @@ type instanceState struct {
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
-	// - Serverless
-	// > - MySQL: [ 5.7、8.0 ]
-	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-	// > - PostgreSQL: [ 14.0 ]
-	// > - MariaDB does not support creating serverless instances.
+	//   **Serverless**
+	// - MySQL: [ 5.7、8.0 ]
+	// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// - PostgreSQL: [ 14.0 ]
+	// - MariaDB does not support creating serverless instances.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to enable forcible switching. Valid values:
 	// - Yes
@@ -886,11 +886,11 @@ type InstanceState struct {
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
-	// - Serverless
-	// > - MySQL: [ 5.7、8.0 ]
-	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-	// > - PostgreSQL: [ 14.0 ]
-	// > - MariaDB does not support creating serverless instances.
+	//   **Serverless**
+	// - MySQL: [ 5.7、8.0 ]
+	// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// - PostgreSQL: [ 14.0 ]
+	// - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to enable forcible switching. Valid values:
 	// - Yes
@@ -1228,11 +1228,11 @@ type instanceArgs struct {
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
-	// - Serverless
-	// > - MySQL: [ 5.7、8.0 ]
-	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-	// > - PostgreSQL: [ 14.0 ]
-	// > - MariaDB does not support creating serverless instances.
+	//   **Serverless**
+	// - MySQL: [ 5.7、8.0 ]
+	// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// - PostgreSQL: [ 14.0 ]
+	// - MariaDB does not support creating serverless instances.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Specifies whether to enable forcible switching. Valid values:
 	// - Yes
@@ -1563,11 +1563,11 @@ type InstanceArgs struct {
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
-	// - Serverless
-	// > - MySQL: [ 5.7、8.0 ]
-	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-	// > - PostgreSQL: [ 14.0 ]
-	// > - MariaDB does not support creating serverless instances.
+	//   **Serverless**
+	// - MySQL: [ 5.7、8.0 ]
+	// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// - PostgreSQL: [ 14.0 ]
+	// - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringInput
 	// Specifies whether to enable forcible switching. Valid values:
 	// - Yes
@@ -2069,15 +2069,15 @@ func (o InstanceOutput) Engine() pulumi.StringOutput {
 }
 
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-// - MySQL: [ 5.5、5.6、5.7、8.0 ]
-// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
-// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
-// - MariaDB: [ 10.3 ]
-// - Serverless
-// > - MySQL: [ 5.7、8.0 ]
-// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-// > - PostgreSQL: [ 14.0 ]
-// > - MariaDB does not support creating serverless instances.
+//   - MySQL: [ 5.5、5.6、5.7、8.0 ]
+//   - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+//   - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+//   - MariaDB: [ 10.3 ]
+//     **Serverless**
+//   - MySQL: [ 5.7、8.0 ]
+//   - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+//   - PostgreSQL: [ 14.0 ]
+//   - MariaDB does not support creating serverless instances.
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }

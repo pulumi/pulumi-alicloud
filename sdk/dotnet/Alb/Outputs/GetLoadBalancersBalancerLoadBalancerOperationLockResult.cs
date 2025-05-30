@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string LockReason;
         /// <summary>
-        /// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        /// The Locking of the Type.
         /// </summary>
         public readonly string LockType;
 

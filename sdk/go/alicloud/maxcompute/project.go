@@ -45,7 +45,6 @@ import (
 //				DefaultQuota: pulumi.String("默认后付费Quota"),
 //				ProjectName:  pulumi.String(name),
 //				Comment:      pulumi.String(name),
-//				ProductType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err

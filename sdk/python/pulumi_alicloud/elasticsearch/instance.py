@@ -77,7 +77,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
         :param pulumi.Input[builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
-        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
@@ -362,7 +362,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -725,7 +725,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
         :param pulumi.Input[builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
-        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[builtins.str] kibana_domain: Kibana console domain (Internet access supported).
         :param pulumi.Input[builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[builtins.int] kibana_port: Kibana console port.
@@ -1026,7 +1026,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1490,7 +1490,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
         :param pulumi.Input[builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
-        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
@@ -1736,7 +1736,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
         :param pulumi.Input[builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
-        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[builtins.str] kibana_domain: Kibana console domain (Internet access supported).
         :param pulumi.Input[builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[builtins.int] kibana_port: Kibana console port.
@@ -1939,7 +1939,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         """
         return pulumi.get(self, "instance_charge_type")
 

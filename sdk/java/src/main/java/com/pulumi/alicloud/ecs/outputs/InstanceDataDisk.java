@@ -20,6 +20,11 @@ public final class InstanceDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
+     * @return Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    private @Nullable Boolean burstingEnabled;
+    /**
      * @return The category of the disk:
      * 
      */
@@ -65,6 +70,11 @@ public final class InstanceDataDisk {
      */
     private @Nullable String performanceLevel;
     /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+     * 
+     */
+    private @Nullable Integer provisionedIops;
+    /**
      * @return The size of the data disk.
      * - cloud：[5, 2000]
      * - cloud_efficiency：[20, 32768]
@@ -87,6 +97,13 @@ public final class InstanceDataDisk {
      */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
+    }
+    /**
+     * @return Specifies whether to enable the performance burst feature for the system disk. Valid values:
+     * 
+     */
+    public Optional<Boolean> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
     }
     /**
      * @return The category of the disk:
@@ -150,6 +167,13 @@ public final class InstanceDataDisk {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+     * 
+     */
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+    /**
      * @return The size of the data disk.
      * - cloud：[5, 2000]
      * - cloud_efficiency：[20, 32768]
@@ -179,6 +203,7 @@ public final class InstanceDataDisk {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
+        private @Nullable Boolean burstingEnabled;
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
         private @Nullable String description;
@@ -187,12 +212,14 @@ public final class InstanceDataDisk {
         private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String performanceLevel;
+        private @Nullable Integer provisionedIops;
         private Integer size;
         private @Nullable String snapshotId;
         public Builder() {}
         public Builder(InstanceDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
+    	      this.burstingEnabled = defaults.burstingEnabled;
     	      this.category = defaults.category;
     	      this.deleteWithInstance = defaults.deleteWithInstance;
     	      this.description = defaults.description;
@@ -201,6 +228,7 @@ public final class InstanceDataDisk {
     	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
+    	      this.provisionedIops = defaults.provisionedIops;
     	      this.size = defaults.size;
     	      this.snapshotId = defaults.snapshotId;
         }
@@ -209,6 +237,12 @@ public final class InstanceDataDisk {
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
 
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder burstingEnabled(@Nullable Boolean burstingEnabled) {
+
+            this.burstingEnabled = burstingEnabled;
             return this;
         }
         @CustomType.Setter
@@ -260,6 +294,12 @@ public final class InstanceDataDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(Integer size) {
             if (size == null) {
               throw new MissingRequiredPropertyException("InstanceDataDisk", "size");
@@ -276,6 +316,7 @@ public final class InstanceDataDisk {
         public InstanceDataDisk build() {
             final var _resultValue = new InstanceDataDisk();
             _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.burstingEnabled = burstingEnabled;
             _resultValue.category = category;
             _resultValue.deleteWithInstance = deleteWithInstance;
             _resultValue.description = description;
@@ -284,6 +325,7 @@ public final class InstanceDataDisk {
             _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
+            _resultValue.provisionedIops = provisionedIops;
             _resultValue.size = size;
             _resultValue.snapshotId = snapshotId;
             return _resultValue;

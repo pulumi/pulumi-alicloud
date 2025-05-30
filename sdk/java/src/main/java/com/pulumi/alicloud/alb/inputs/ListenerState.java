@@ -27,26 +27,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * Access Log Whether to Enable Carry Custom Header Field.
+     * Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      * 
      */
     @Import(name="accessLogRecordCustomizedHeadersEnabled")
     private @Nullable Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
-     * @return Access Log Whether to Enable Carry Custom Header Field.
+     * @return Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
      * 
-     * Value: True **** Or False * *.
-     * 
-     * Default Value: False * *.
-     * 
-     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      * 
      */
     public Optional<Output<Boolean>> accessLogRecordCustomizedHeadersEnabled() {
@@ -197,14 +189,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      * 
      */
     @Import(name="idleTimeout")
     private @Nullable Output<Integer> idleTimeout;
 
     /**
-     * @return Specify the Connection Idle Timeout Value: 1 to 60 miao.
+     * @return Specify the Connection Idle Timeout Value: 1 to 60 seconds.
      * 
      */
     public Optional<Output<Integer>> idleTimeout() {
@@ -287,14 +279,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     @Import(name="requestTimeout")
     private @Nullable Output<Integer> requestTimeout;
 
     /**
-     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     public Optional<Output<Integer>> requestTimeout() {
@@ -406,13 +398,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field.
+         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
          * 
-         * Value: True **** Or False * *.
-         * 
-         * Default Value: False * *.
-         * 
-         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
          * 
          * @return builder
          * 
@@ -423,13 +411,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field.
+         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
          * 
-         * Value: True **** Or False * *.
-         * 
-         * Default Value: False * *.
-         * 
-         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
          * 
          * @return builder
          * 
@@ -656,7 +640,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 miao.
+         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 seconds.
          * 
          * @return builder
          * 
@@ -667,7 +651,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 miao.
+         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 seconds.
          * 
          * @return builder
          * 
@@ -782,7 +766,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
          * 
          * @return builder
          * 
@@ -793,7 +777,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
          * 
          * @return builder
          * 

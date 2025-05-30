@@ -60,6 +60,11 @@ export type DbNode = import("./dbNode").DbNode;
 export const DbNode: typeof import("./dbNode").DbNode = null as any;
 utilities.lazyLoad(exports, ["DbNode"], () => require("./dbNode"));
 
+export { DbProxyPublicArgs, DbProxyPublicState } from "./dbProxyPublic";
+export type DbProxyPublic = import("./dbProxyPublic").DbProxyPublic;
+export const DbProxyPublic: typeof import("./dbProxyPublic").DbProxyPublic = null as any;
+utilities.lazyLoad(exports, ["DbProxyPublic"], () => require("./dbProxyPublic"));
+
 export { DdrInstanceArgs, DdrInstanceState } from "./ddrInstance";
 export type DdrInstance = import("./ddrInstance").DdrInstance;
 export const DdrInstance: typeof import("./ddrInstance").DdrInstance = null as any;
@@ -222,6 +227,8 @@ const _module = {
                 return new DbInstanceEndpointAddress(name, <any>undefined, { urn })
             case "alicloud:rds/dbNode:DbNode":
                 return new DbNode(name, <any>undefined, { urn })
+            case "alicloud:rds/dbProxyPublic:DbProxyPublic":
+                return new DbProxyPublic(name, <any>undefined, { urn })
             case "alicloud:rds/ddrInstance:DdrInstance":
                 return new DdrInstance(name, <any>undefined, { urn })
             case "alicloud:rds/instance:Instance":
@@ -262,6 +269,7 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbNode", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/dbProxyPublic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/ddrInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsAccount", _module)

@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancersResult {
+    /**
+     * @return The type of IP address that the ALB instance uses to provide services.
+     * 
+     */
     private @Nullable String addressType;
+    /**
+     * @return A list of Alb Load Balancers. Each element contains the following attributes:
+     * 
+     */
     private List<GetLoadBalancersBalancer> balancers;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,8 +33,14 @@ public final class GetLoadBalancersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return (Available since v1.142.0) Load Balancing of the Service Status.
+     * 
+     */
     private @Nullable String loadBalancerBusinessStatus;
     /**
+     * @return (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
+     * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
@@ -34,21 +48,57 @@ public final class GetLoadBalancersResult {
     @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
     private @Nullable String loadBalancerBussinessStatus;
     private @Nullable List<String> loadBalancerIds;
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private @Nullable String loadBalancerName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Load Balancer names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return (Available since v1.250.0) The zone status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     * 
+     */
     private @Nullable String vpcId;
     private @Nullable List<String> vpcIds;
+    /**
+     * @return The ID of the zone to which the ALB instance belongs.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetLoadBalancersResult() {}
+    /**
+     * @return The type of IP address that the ALB instance uses to provide services.
+     * 
+     */
     public Optional<String> addressType() {
         return Optional.ofNullable(this.addressType);
     }
+    /**
+     * @return A list of Alb Load Balancers. Each element contains the following attributes:
+     * 
+     */
     public List<GetLoadBalancersBalancer> balancers() {
         return this.balancers;
     }
@@ -65,10 +115,16 @@ public final class GetLoadBalancersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return (Available since v1.142.0) Load Balancing of the Service Status.
+     * 
+     */
     public Optional<String> loadBalancerBusinessStatus() {
         return Optional.ofNullable(this.loadBalancerBusinessStatus);
     }
     /**
+     * @return (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
+     * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
@@ -80,33 +136,61 @@ public final class GetLoadBalancersResult {
     public List<String> loadBalancerIds() {
         return this.loadBalancerIds == null ? List.of() : this.loadBalancerIds;
     }
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public Optional<String> loadBalancerName() {
         return Optional.ofNullable(this.loadBalancerName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Load Balancer names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return (Available since v1.250.0) The zone status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
     public List<String> vpcIds() {
         return this.vpcIds == null ? List.of() : this.vpcIds;
     }
+    /**
+     * @return The ID of the zone to which the ALB instance belongs.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

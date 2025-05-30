@@ -41,10 +41,6 @@ public final class GetDedicatedHostsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of ECS Dedicated Host ids.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
@@ -53,7 +49,7 @@ public final class GetDedicatedHostsResult {
      */
     private List<String> names;
     /**
-     * @return (Available in 1.123.1+) The operation_locks. contains the following attribute:
+     * @return (Available since v1.123.1) The operation_locks. contains the following attribute:
      * 
      */
     private @Nullable List<GetDedicatedHostsOperationLock> operationLocks;
@@ -68,7 +64,15 @@ public final class GetDedicatedHostsResult {
      * 
      */
     private @Nullable String status;
+    /**
+     * @return The tags of the dedicated host.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The zone id of the dedicated host.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetDedicatedHostsResult() {}
@@ -107,10 +111,6 @@ public final class GetDedicatedHostsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of ECS Dedicated Host ids.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -125,7 +125,7 @@ public final class GetDedicatedHostsResult {
         return this.names;
     }
     /**
-     * @return (Available in 1.123.1+) The operation_locks. contains the following attribute:
+     * @return (Available since v1.123.1) The operation_locks. contains the following attribute:
      * 
      */
     public List<GetDedicatedHostsOperationLock> operationLocks() {
@@ -148,9 +148,17 @@ public final class GetDedicatedHostsResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the dedicated host.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The zone id of the dedicated host.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

@@ -12,126 +12,126 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneRecordsRecord {
     /**
-     * @return ID of the Private Zone Record.
+     * @return The ID of the Private Zone Record.
      * 
      */
     private String id;
     /**
-     * @return Priority of the Private Zone Record.
+     * @return The priority of the MX record.
      * 
      */
     private Integer priority;
     /**
-     * @return RecordId of the Private Zone Record.
+     * @return The ID of the Record.
      * 
      */
     private String recordId;
     /**
-     * @return Remark of the Private Zone Record.
+     * @return The description of the Private Zone Record.
      * 
      */
     private String remark;
     /**
-     * @return Resource record of the Private Zone Record.
+     * @return The hostname of the Private Zone Record.
      * 
      */
     private String resourceRecord;
     /**
-     * @return Rr of the Private Zone Record.
+     * @return The hostname of the Private Zone Record.
      * 
      */
     private String rr;
     /**
-     * @return Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * @return The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      * 
      */
     private String status;
     /**
-     * @return Ttl of the Private Zone Record.
+     * @return The time to live (TTL) of the Private Zone Record.
      * 
      */
     private Integer ttl;
     /**
-     * @return Type of the Private Zone Record.
+     * @return The type of the Private Zone Record.
      * 
      */
     private String type;
     /**
-     * @return Value of the Private Zone Record.
+     * @return The value of the Private Zone Record.
      * 
      */
     private String value;
 
     private GetZoneRecordsRecord() {}
     /**
-     * @return ID of the Private Zone Record.
+     * @return The ID of the Private Zone Record.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Priority of the Private Zone Record.
+     * @return The priority of the MX record.
      * 
      */
     public Integer priority() {
         return this.priority;
     }
     /**
-     * @return RecordId of the Private Zone Record.
+     * @return The ID of the Record.
      * 
      */
     public String recordId() {
         return this.recordId;
     }
     /**
-     * @return Remark of the Private Zone Record.
+     * @return The description of the Private Zone Record.
      * 
      */
     public String remark() {
         return this.remark;
     }
     /**
-     * @return Resource record of the Private Zone Record.
+     * @return The hostname of the Private Zone Record.
      * 
      */
     public String resourceRecord() {
         return this.resourceRecord;
     }
     /**
-     * @return Rr of the Private Zone Record.
+     * @return The hostname of the Private Zone Record.
      * 
      */
     public String rr() {
         return this.rr;
     }
     /**
-     * @return Resolve record status. Value:
-     * - ENABLE: enable resolution.
-     * - DISABLE: pause parsing.
+     * @return The status of the Resolve record. Valid values:
+     * - `ENABLE`: Enable resolution.
+     * - `DISABLE`: Pause parsing.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return Ttl of the Private Zone Record.
+     * @return The time to live (TTL) of the Private Zone Record.
      * 
      */
     public Integer ttl() {
         return this.ttl;
     }
     /**
-     * @return Type of the Private Zone Record.
+     * @return The type of the Private Zone Record.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Value of the Private Zone Record.
+     * @return The value of the Private Zone Record.
      * 
      */
     public String value() {

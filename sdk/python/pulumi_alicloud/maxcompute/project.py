@@ -464,8 +464,7 @@ class Project(pulumi.CustomResource):
         default = alicloud.maxcompute.Project("default",
             default_quota="默认后付费Quota",
             project_name=name,
-            comment=name,
-            product_type="PayAsYouGo")
+            comment=name)
         ```
 
         ## Import
@@ -521,8 +520,7 @@ class Project(pulumi.CustomResource):
         default = alicloud.maxcompute.Project("default",
             default_quota="默认后付费Quota",
             project_name=name,
-            comment=name,
-            product_type="PayAsYouGo")
+            comment=name)
         ```
 
         ## Import

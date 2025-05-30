@@ -242,22 +242,18 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return this.policyName;
     }
     /**
-     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-     * 
-     * Currently contains:
-     * - None: Turn off the rotation mechanism.
-     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+     * - `None`: Turn off the rotation mechanism.
+     * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
     @Export(name="rotateStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotateStrategy;
 
     /**
-     * @return The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
-     * 
-     * Currently contains:
-     * - None: Turn off the rotation mechanism.
-     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+     * @return The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
+     * - `None`: Turn off the rotation mechanism.
+     * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
     public Output<Optional<String>> rotateStrategy() {

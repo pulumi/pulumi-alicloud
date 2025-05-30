@@ -14,45 +14,45 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetZoneRecordsRecordResult
     {
         /// <summary>
-        /// ID of the Private Zone Record.
+        /// The ID of the Private Zone Record.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Priority of the Private Zone Record.
+        /// The priority of the MX record.
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// RecordId of the Private Zone Record.
+        /// The ID of the Record.
         /// </summary>
         public readonly string RecordId;
         /// <summary>
-        /// Remark of the Private Zone Record.
+        /// The description of the Private Zone Record.
         /// </summary>
         public readonly string Remark;
         /// <summary>
-        /// Resource record of the Private Zone Record.
+        /// The hostname of the Private Zone Record.
         /// </summary>
         public readonly string ResourceRecord;
         /// <summary>
-        /// Rr of the Private Zone Record.
+        /// The hostname of the Private Zone Record.
         /// </summary>
         public readonly string Rr;
         /// <summary>
-        /// Resolve record status. Value:
-        /// - ENABLE: enable resolution.
-        /// - DISABLE: pause parsing.
+        /// The status of the Resolve record. Valid values:
+        /// - `ENABLE`: Enable resolution.
+        /// - `DISABLE`: Pause parsing.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Ttl of the Private Zone Record.
+        /// The time to live (TTL) of the Private Zone Record.
         /// </summary>
         public readonly int Ttl;
         /// <summary>
-        /// Type of the Private Zone Record.
+        /// The type of the Private Zone Record.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Value of the Private Zone Record.
+        /// The value of the Private Zone Record.
         /// </summary>
         public readonly string Value;
 

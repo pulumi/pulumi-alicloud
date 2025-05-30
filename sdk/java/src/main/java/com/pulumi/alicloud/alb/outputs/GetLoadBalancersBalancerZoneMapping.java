@@ -12,31 +12,51 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerZoneMapping {
+    /**
+     * @return (Available since v1.250.0) The address of the ALB instance.
+     * 
+     */
     private List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
     /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * 
+     */
+    private String status;
+    /**
+     * @return The ID of the vSwitch that corresponds to the zone.
      * 
      */
     private String vswitchId;
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     private String zoneId;
 
     private GetLoadBalancersBalancerZoneMapping() {}
+    /**
+     * @return (Available since v1.250.0) The address of the ALB instance.
+     * 
+     */
     public List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
         return this.loadBalancerAddresses;
     }
     /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return The ID of the vSwitch that corresponds to the zone.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     public String zoneId() {
@@ -53,12 +73,14 @@ public final class GetLoadBalancersBalancerZoneMapping {
     @CustomType.Builder
     public static final class Builder {
         private List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
+        private String status;
         private String vswitchId;
         private String zoneId;
         public Builder() {}
         public Builder(GetLoadBalancersBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.loadBalancerAddresses = defaults.loadBalancerAddresses;
+    	      this.status = defaults.status;
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
@@ -73,6 +95,14 @@ public final class GetLoadBalancersBalancerZoneMapping {
         }
         public Builder loadBalancerAddresses(GetLoadBalancersBalancerZoneMappingLoadBalancerAddress... loadBalancerAddresses) {
             return loadBalancerAddresses(List.of(loadBalancerAddresses));
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "status");
+            }
+            this.status = status;
+            return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
@@ -93,6 +123,7 @@ public final class GetLoadBalancersBalancerZoneMapping {
         public GetLoadBalancersBalancerZoneMapping build() {
             final var _resultValue = new GetLoadBalancersBalancerZoneMapping();
             _resultValue.loadBalancerAddresses = loadBalancerAddresses;
+            _resultValue.status = status;
             _resultValue.vswitchId = vswitchId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

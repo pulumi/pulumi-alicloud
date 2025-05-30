@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,17 +28,104 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke();
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     var defaultGetZones = AliCloud.Alb.GetZones.Invoke();
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-LoadBalancer",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///         EnableIpv6 = true,
+        ///     });
+        /// 
+        ///     var zoneA = new AliCloud.Ecs.Eip("zone_a", new()
+        ///     {
+        ///         Bandwidth = "10",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
+        /// 
+        ///     var zoneASwitch = new AliCloud.Vpc.Switch("zone_a", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.0.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         Ipv6CidrBlockMask = 6,
+        ///     });
+        /// 
+        ///     var zoneB = new AliCloud.Vpc.Switch("zone_b", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.128.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+        ///         Ipv6CidrBlockMask = 8,
+        ///     });
+        /// 
+        ///     var defaultIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("default", new()
+        ///     {
+        ///         Ipv6GatewayName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
+        ///     {
+        ///         Bandwidth = "1000",
+        ///         InternetChargeType = "PayByBandwidth",
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+        ///     {
+        ///         LoadBalancerEdition = "Basic",
+        ///         AddressType = "Internet",
+        ///         VpcId = defaultIpv6Gateway.VpcId,
+        ///         AddressAllocatedMode = "Fixed",
+        ///         AddressIpVersion = "DualStack",
+        ///         Ipv6AddressType = "Internet",
+        ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id)),
+        ///         LoadBalancerName = name,
+        ///         DeletionProtectionEnabled = false,
+        ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+        ///         {
+        ///             PayType = "PayAsYouGo",
+        ///         },
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneASwitch.Id,
+        ///                 ZoneId = zoneASwitch.ZoneId,
+        ///                 EipType = "Common",
+        ///                 AllocationId = zoneA.Id,
+        ///                 IntranetAddress = "192.168.10.1",
+        ///             },
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneB.Id,
+        ///                 ZoneId = zoneB.ZoneId,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultLoadBalancer.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
-        ///         ["albLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["albLoadBalancersId0"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -49,7 +136,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -63,17 +150,104 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke();
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     var defaultGetZones = AliCloud.Alb.GetZones.Invoke();
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-LoadBalancer",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///         EnableIpv6 = true,
+        ///     });
+        /// 
+        ///     var zoneA = new AliCloud.Ecs.Eip("zone_a", new()
+        ///     {
+        ///         Bandwidth = "10",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
+        /// 
+        ///     var zoneASwitch = new AliCloud.Vpc.Switch("zone_a", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.0.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         Ipv6CidrBlockMask = 6,
+        ///     });
+        /// 
+        ///     var zoneB = new AliCloud.Vpc.Switch("zone_b", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.128.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+        ///         Ipv6CidrBlockMask = 8,
+        ///     });
+        /// 
+        ///     var defaultIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("default", new()
+        ///     {
+        ///         Ipv6GatewayName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
+        ///     {
+        ///         Bandwidth = "1000",
+        ///         InternetChargeType = "PayByBandwidth",
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+        ///     {
+        ///         LoadBalancerEdition = "Basic",
+        ///         AddressType = "Internet",
+        ///         VpcId = defaultIpv6Gateway.VpcId,
+        ///         AddressAllocatedMode = "Fixed",
+        ///         AddressIpVersion = "DualStack",
+        ///         Ipv6AddressType = "Internet",
+        ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id)),
+        ///         LoadBalancerName = name,
+        ///         DeletionProtectionEnabled = false,
+        ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+        ///         {
+        ///             PayType = "PayAsYouGo",
+        ///         },
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneASwitch.Id,
+        ///                 ZoneId = zoneASwitch.ZoneId,
+        ///                 EipType = "Common",
+        ///                 AllocationId = zoneA.Id,
+        ///                 IntranetAddress = "192.168.10.1",
+        ///             },
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneB.Id,
+        ///                 ZoneId = zoneB.ZoneId,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultLoadBalancer.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
-        ///         ["albLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["albLoadBalancersId0"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -84,7 +258,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,17 +272,104 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke();
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
         /// 
-        ///     var nameRegex = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     var defaultGetZones = AliCloud.Alb.GetZones.Invoke();
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-LoadBalancer",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///         EnableIpv6 = true,
+        ///     });
+        /// 
+        ///     var zoneA = new AliCloud.Ecs.Eip("zone_a", new()
+        ///     {
+        ///         Bandwidth = "10",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
+        /// 
+        ///     var zoneASwitch = new AliCloud.Vpc.Switch("zone_a", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.0.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         Ipv6CidrBlockMask = 6,
+        ///     });
+        /// 
+        ///     var zoneB = new AliCloud.Vpc.Switch("zone_b", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.128.0/18",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+        ///         Ipv6CidrBlockMask = 8,
+        ///     });
+        /// 
+        ///     var defaultIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("default", new()
+        ///     {
+        ///         Ipv6GatewayName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
+        ///     {
+        ///         Bandwidth = "1000",
+        ///         InternetChargeType = "PayByBandwidth",
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+        ///     {
+        ///         LoadBalancerEdition = "Basic",
+        ///         AddressType = "Internet",
+        ///         VpcId = defaultIpv6Gateway.VpcId,
+        ///         AddressAllocatedMode = "Fixed",
+        ///         AddressIpVersion = "DualStack",
+        ///         Ipv6AddressType = "Internet",
+        ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id)),
+        ///         LoadBalancerName = name,
+        ///         DeletionProtectionEnabled = false,
+        ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+        ///         {
+        ///             PayType = "PayAsYouGo",
+        ///         },
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneASwitch.Id,
+        ///                 ZoneId = zoneASwitch.ZoneId,
+        ///                 EipType = "Common",
+        ///                 AllocationId = zoneA.Id,
+        ///                 IntranetAddress = "192.168.10.1",
+        ///             },
+        ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+        ///             {
+        ///                 VswitchId = zoneB.Id,
+        ///                 ZoneId = zoneB.ZoneId,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultLoadBalancer.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
-        ///         ["albLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["albLoadBalancersId0"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -121,14 +382,13 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services. Valid
-        /// values: `Intranet`, `Internet`.
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
         /// </summary>
         [Input("addressType")]
         public string? AddressType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -152,7 +412,7 @@ namespace Pulumi.AliCloud.Alb
         public string? LoadBalancerBusinessStatus { get; set; }
 
         /// <summary>
-        /// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+        /// Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public string? LoadBalancerBussinessStatus { get; set; }
@@ -201,6 +461,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -240,14 +504,13 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services. Valid
-        /// values: `Intranet`, `Internet`.
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -271,7 +534,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerBusinessStatus { get; set; }
 
         /// <summary>
-        /// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
+        /// Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public Input<string>? LoadBalancerBussinessStatus { get; set; }
@@ -320,6 +583,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -360,7 +627,13 @@ namespace Pulumi.AliCloud.Alb
     [OutputType]
     public sealed class GetLoadBalancersResult
     {
+        /// <summary>
+        /// The type of IP address that the ALB instance uses to provide services.
+        /// </summary>
         public readonly string? AddressType;
+        /// <summary>
+        /// A list of Alb Load Balancers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerResult> Balancers;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -368,18 +641,45 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// (Available since v1.142.0) Load Balancing of the Service Status.
+        /// </summary>
         public readonly string? LoadBalancerBusinessStatus;
+        /// <summary>
+        /// (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
+        /// </summary>
         public readonly string? LoadBalancerBussinessStatus;
         public readonly ImmutableArray<string> LoadBalancerIds;
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
         public readonly string? LoadBalancerName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Load Balancer names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// (Available since v1.250.0) The zone status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+        /// </summary>
         public readonly string? VpcId;
         public readonly ImmutableArray<string> VpcIds;
+        /// <summary>
+        /// The ID of the zone to which the ALB instance belongs.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

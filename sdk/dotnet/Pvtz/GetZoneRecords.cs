@@ -12,9 +12,13 @@ namespace Pulumi.AliCloud.Pvtz
     public static class GetZoneRecords
     {
         /// <summary>
-        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zone Records of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -24,15 +28,36 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         ZoneId = basic.Id,
-        ///         Keyword = foo.Value,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var defaultZoneRecord = new AliCloud.Pvtz.ZoneRecord("default", new()
+        ///     {
+        ///         ZoneId = @default.Id,
+        ///         Rr = "www",
+        ///         Type = "MX",
+        ///         Value = name,
+        ///         Ttl = 60,
+        ///         Priority = 2,
+        ///         Remark = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     {
+        ///         ZoneId = defaultZoneRecord.ZoneId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultZoneRecord.RecordId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///         ["pvtzZoneRecordsId0"] = ids.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -41,9 +66,13 @@ namespace Pulumi.AliCloud.Pvtz
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zone Records of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -53,15 +82,36 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         ZoneId = basic.Id,
-        ///         Keyword = foo.Value,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var defaultZoneRecord = new AliCloud.Pvtz.ZoneRecord("default", new()
+        ///     {
+        ///         ZoneId = @default.Id,
+        ///         Rr = "www",
+        ///         Type = "MX",
+        ///         Value = name,
+        ///         Ttl = 60,
+        ///         Priority = 2,
+        ///         Remark = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     {
+        ///         ZoneId = defaultZoneRecord.ZoneId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultZoneRecord.RecordId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///         ["pvtzZoneRecordsId0"] = ids.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -70,9 +120,13 @@ namespace Pulumi.AliCloud.Pvtz
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// This data source provides the Private Zone Records of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -82,15 +136,36 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.com";
+        ///     var @default = new AliCloud.Pvtz.Zone("default", new()
         ///     {
-        ///         ZoneId = basic.Id,
-        ///         Keyword = foo.Value,
+        ///         ZoneName = name,
+        ///     });
+        /// 
+        ///     var defaultZoneRecord = new AliCloud.Pvtz.ZoneRecord("default", new()
+        ///     {
+        ///         ZoneId = @default.Id,
+        ///         Rr = "www",
+        ///         Type = "MX",
+        ///         Value = name,
+        ///         Ttl = 60,
+        ///         Priority = 2,
+        ///         Remark = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     {
+        ///         ZoneId = defaultZoneRecord.ZoneId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultZoneRecord.RecordId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///         ["pvtzZoneRecordsId0"] = ids.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -115,13 +190,13 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// Keyword for record rr and value.
+        /// The keyword for record rr and value.
         /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
 
         /// <summary>
-        /// User language.
+        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -133,35 +208,35 @@ namespace Pulumi.AliCloud.Pvtz
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
-        /// - LIKE: fuzzy search.
-        /// - EXACT: precise search. It is not filled in by default.
+        /// The search mode. Default value: `EXACT`. Valid values:
+        /// - `LIKE`: Fuzzy search.
+        /// - `EXACT`: Exact search.
         /// </summary>
         [Input("searchMode")]
         public string? SearchMode { get; set; }
 
         /// <summary>
-        /// Resolve record status. Value:
-        /// - ENABLE: enable resolution.
-        /// - DISABLE: pause parsing.
+        /// The status of the Resolve record. Valid values:
+        /// - `ENABLE`: Enable resolution.
+        /// - `DISABLE`: Pause parsing.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+        /// The tag used to search for DNS records.
         /// </summary>
         [Input("tag")]
         public string? Tag { get; set; }
 
         /// <summary>
-        /// User ip.
+        /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public string? UserClientIp { get; set; }
 
         /// <summary>
-        /// ID of the Private Zone.
+        /// The ID of the private zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -187,13 +262,13 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         /// <summary>
-        /// Keyword for record rr and value.
+        /// The keyword for record rr and value.
         /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }
 
         /// <summary>
-        /// User language.
+        /// The language of the response. Default value: `en`. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -205,35 +280,35 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
-        /// - LIKE: fuzzy search.
-        /// - EXACT: precise search. It is not filled in by default.
+        /// The search mode. Default value: `EXACT`. Valid values:
+        /// - `LIKE`: Fuzzy search.
+        /// - `EXACT`: Exact search.
         /// </summary>
         [Input("searchMode")]
         public Input<string>? SearchMode { get; set; }
 
         /// <summary>
-        /// Resolve record status. Value:
-        /// - ENABLE: enable resolution.
-        /// - DISABLE: pause parsing.
+        /// The status of the Resolve record. Valid values:
+        /// - `ENABLE`: Enable resolution.
+        /// - `DISABLE`: Pause parsing.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+        /// The tag used to search for DNS records.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// User ip.
+        /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
-        /// ID of the Private Zone.
+        /// The ID of the private zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -252,20 +327,17 @@ namespace Pulumi.AliCloud.Pvtz
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of Private Zone Record IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         public readonly string? Lang;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of zone records. Each element contains the following attributes:
+        /// A list of Zone Record. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZoneRecordsRecordResult> Records;
         public readonly string? SearchMode;
         /// <summary>
-        /// Status of the Private Zone Record.
+        /// The state of the Private Zone Record.
         /// </summary>
         public readonly string? Status;
         public readonly string? Tag;

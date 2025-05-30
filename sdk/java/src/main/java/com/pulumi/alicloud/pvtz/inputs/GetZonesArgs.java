@@ -18,14 +18,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesArgs Empty = new GetZonesArgs();
 
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `false`. Set it to true can output more details.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -33,14 +33,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of zone IDs.
+     * A list of Zones IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of zone IDs.
+     * @return A list of Zones IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -48,14 +48,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * keyword for zone name.
+     * The keyword of the zone name.
      * 
      */
     @Import(name="keyword")
     private @Nullable Output<String> keyword;
 
     /**
-     * @return keyword for zone name.
+     * @return The keyword of the zone name.
      * 
      */
     public Optional<Output<String>> keyword() {
@@ -63,23 +63,31 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * User language.
+     * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return User language.
+     * @return The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      * 
      */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
 
+    /**
+     * A regex string to filter results by Zone name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Zone name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -100,14 +108,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * query_region_id for zone regionId.
+     * The region ID of the virtual private cloud (VPC) associated with the zone.
      * 
      */
     @Import(name="queryRegionId")
     private @Nullable Output<String> queryRegionId;
 
     /**
-     * @return query_region_id for zone regionId.
+     * @return The region ID of the virtual private cloud (VPC) associated with the zone.
      * 
      */
     public Optional<Output<String>> queryRegionId() {
@@ -115,14 +123,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * query_vpc_id for zone vpcId.
+     * The ID of the VPC associated with the zone.
      * 
      */
     @Import(name="queryVpcId")
     private @Nullable Output<String> queryVpcId;
 
     /**
-     * @return query_vpc_id for zone vpcId.
+     * @return The ID of the VPC associated with the zone.
      * 
      */
     public Optional<Output<String>> queryVpcId() {
@@ -130,14 +138,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * resource_group_id for zone resourceGroupId.
+     * The ID of the resource group to which the zone belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return resource_group_id for zone resourceGroupId.
+     * @return The ID of the resource group to which the zone belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -145,18 +153,18 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Search mode. Value:
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      * 
      */
     @Import(name="searchMode")
     private @Nullable Output<String> searchMode;
 
     /**
-     * @return Search mode. Value:
-     * - LIKE: fuzzy search.
-     * - EXACT: precise search. It is not filled in by default.
+     * @return The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+     * - `LIKE`: Fuzzy search.
+     * - `EXACT`: Exact search.
      * 
      */
     public Optional<Output<String>> searchMode() {
@@ -197,7 +205,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to true can output more details.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -208,7 +216,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to true can output more details.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -218,7 +226,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of zone IDs.
+         * @param ids A list of Zones IDs.
          * 
          * @return builder
          * 
@@ -229,7 +237,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of zone IDs.
+         * @param ids A list of Zones IDs.
          * 
          * @return builder
          * 
@@ -239,7 +247,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of zone IDs.
+         * @param ids A list of Zones IDs.
          * 
          * @return builder
          * 
@@ -249,7 +257,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword keyword for zone name.
+         * @param keyword The keyword of the zone name.
          * 
          * @return builder
          * 
@@ -260,7 +268,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyword keyword for zone name.
+         * @param keyword The keyword of the zone name.
          * 
          * @return builder
          * 
@@ -270,7 +278,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lang User language.
+         * @param lang The language of the response. Default value: `en`. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -281,7 +289,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lang User language.
+         * @param lang The language of the response. Default value: `en`. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -290,11 +298,23 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
             return lang(Output.of(lang));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Zone name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Zone name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -321,7 +341,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryRegionId query_region_id for zone regionId.
+         * @param queryRegionId The region ID of the virtual private cloud (VPC) associated with the zone.
          * 
          * @return builder
          * 
@@ -332,7 +352,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryRegionId query_region_id for zone regionId.
+         * @param queryRegionId The region ID of the virtual private cloud (VPC) associated with the zone.
          * 
          * @return builder
          * 
@@ -342,7 +362,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryVpcId query_vpc_id for zone vpcId.
+         * @param queryVpcId The ID of the VPC associated with the zone.
          * 
          * @return builder
          * 
@@ -353,7 +373,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryVpcId query_vpc_id for zone vpcId.
+         * @param queryVpcId The ID of the VPC associated with the zone.
          * 
          * @return builder
          * 
@@ -363,7 +383,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId resource_group_id for zone resourceGroupId.
+         * @param resourceGroupId The ID of the resource group to which the zone belongs.
          * 
          * @return builder
          * 
@@ -374,7 +394,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId resource_group_id for zone resourceGroupId.
+         * @param resourceGroupId The ID of the resource group to which the zone belongs.
          * 
          * @return builder
          * 
@@ -384,9 +404,9 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param searchMode Search mode. Value:
-         * - LIKE: fuzzy search.
-         * - EXACT: precise search. It is not filled in by default.
+         * @param searchMode The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+         * - `LIKE`: Fuzzy search.
+         * - `EXACT`: Exact search.
          * 
          * @return builder
          * 
@@ -397,9 +417,9 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param searchMode Search mode. Value:
-         * - LIKE: fuzzy search.
-         * - EXACT: precise search. It is not filled in by default.
+         * @param searchMode The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
+         * - `LIKE`: Fuzzy search.
+         * - `EXACT`: Exact search.
          * 
          * @return builder
          * 
