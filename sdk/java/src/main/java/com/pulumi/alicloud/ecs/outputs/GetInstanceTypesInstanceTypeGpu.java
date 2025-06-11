@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeGpu {
+    /**
+     * @return The number of local storage devices that an instance has been attached to.
+     * 
+     */
     private String amount;
+    /**
+     * @return The category of local storage that an instance has been attached to.
+     * 
+     */
     private String category;
 
     private GetInstanceTypesInstanceTypeGpu() {}
+    /**
+     * @return The number of local storage devices that an instance has been attached to.
+     * 
+     */
     public String amount() {
         return this.amount;
     }
+    /**
+     * @return The category of local storage that an instance has been attached to.
+     * 
+     */
     public String category() {
         return this.category;
     }

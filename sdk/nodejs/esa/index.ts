@@ -75,6 +75,11 @@ export type ImageTransform = import("./imageTransform").ImageTransform;
 export const ImageTransform: typeof import("./imageTransform").ImageTransform = null as any;
 utilities.lazyLoad(exports, ["ImageTransform"], () => require("./imageTransform"));
 
+export { KvArgs, KvState } from "./kv";
+export type Kv = import("./kv").Kv;
+export const Kv: typeof import("./kv").Kv = null as any;
+utilities.lazyLoad(exports, ["Kv"], () => require("./kv"));
+
 export { KvNamespaceArgs, KvNamespaceState } from "./kvNamespace";
 export type KvNamespace = import("./kvNamespace").KvNamespace;
 export const KvNamespace: typeof import("./kvNamespace").KvNamespace = null as any;
@@ -125,6 +130,16 @@ export type RewriteUrlRule = import("./rewriteUrlRule").RewriteUrlRule;
 export const RewriteUrlRule: typeof import("./rewriteUrlRule").RewriteUrlRule = null as any;
 utilities.lazyLoad(exports, ["RewriteUrlRule"], () => require("./rewriteUrlRule"));
 
+export { RoutineArgs, RoutineState } from "./routine";
+export type Routine = import("./routine").Routine;
+export const Routine: typeof import("./routine").Routine = null as any;
+utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
+
+export { RoutineRouteArgs, RoutineRouteState } from "./routineRoute";
+export type RoutineRoute = import("./routineRoute").RoutineRoute;
+export const RoutineRoute: typeof import("./routineRoute").RoutineRoute = null as any;
+utilities.lazyLoad(exports, ["RoutineRoute"], () => require("./routineRoute"));
+
 export { ScheduledPreloadExecutionArgs, ScheduledPreloadExecutionState } from "./scheduledPreloadExecution";
 export type ScheduledPreloadExecution = import("./scheduledPreloadExecution").ScheduledPreloadExecution;
 export const ScheduledPreloadExecution: typeof import("./scheduledPreloadExecution").ScheduledPreloadExecution = null as any;
@@ -144,6 +159,11 @@ export { SiteDeliveryTaskArgs, SiteDeliveryTaskState } from "./siteDeliveryTask"
 export type SiteDeliveryTask = import("./siteDeliveryTask").SiteDeliveryTask;
 export const SiteDeliveryTask: typeof import("./siteDeliveryTask").SiteDeliveryTask = null as any;
 utilities.lazyLoad(exports, ["SiteDeliveryTask"], () => require("./siteDeliveryTask"));
+
+export { VideoProcessingArgs, VideoProcessingState } from "./videoProcessing";
+export type VideoProcessing = import("./videoProcessing").VideoProcessing;
+export const VideoProcessing: typeof import("./videoProcessing").VideoProcessing = null as any;
+utilities.lazyLoad(exports, ["VideoProcessing"], () => require("./videoProcessing"));
 
 export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
 export type WaitingRoom = import("./waitingRoom").WaitingRoom;
@@ -191,6 +211,8 @@ const _module = {
                 return new HttpsBasicConfiguration(name, <any>undefined, { urn })
             case "alicloud:esa/imageTransform:ImageTransform":
                 return new ImageTransform(name, <any>undefined, { urn })
+            case "alicloud:esa/kv:Kv":
+                return new Kv(name, <any>undefined, { urn })
             case "alicloud:esa/kvNamespace:KvNamespace":
                 return new KvNamespace(name, <any>undefined, { urn })
             case "alicloud:esa/list:List":
@@ -211,6 +233,10 @@ const _module = {
                 return new RedirectRule(name, <any>undefined, { urn })
             case "alicloud:esa/rewriteUrlRule:RewriteUrlRule":
                 return new RewriteUrlRule(name, <any>undefined, { urn })
+            case "alicloud:esa/routine:Routine":
+                return new Routine(name, <any>undefined, { urn })
+            case "alicloud:esa/routineRoute:RoutineRoute":
+                return new RoutineRoute(name, <any>undefined, { urn })
             case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
                 return new ScheduledPreloadExecution(name, <any>undefined, { urn })
             case "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob":
@@ -219,6 +245,8 @@ const _module = {
                 return new Site(name, <any>undefined, { urn })
             case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
+            case "alicloud:esa/videoProcessing:VideoProcessing":
+                return new VideoProcessing(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -243,6 +271,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/httpResponseHeaderModific
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpsApplicationConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpsBasicConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/imageTransform", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/kv", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/list", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/networkOptimization", _module)
@@ -253,10 +282,13 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/ratePlanInstance", _modul
 pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/redirectRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/rewriteUrlRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/routine", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/routineRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomRule", _module)

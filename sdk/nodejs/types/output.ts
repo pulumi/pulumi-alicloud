@@ -25798,9 +25798,7 @@ export namespace ecs {
          */
         availabilityZones: string[];
         /**
-         * The burstable instance attribution:
-         * - initial_credit: The initial CPU credit of a burstable instance.
-         * - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+         * The burstable instance attribution.
          */
         burstableInstance: outputs.ecs.GetInstanceTypesInstanceTypeBurstableInstance;
         /**
@@ -25829,8 +25827,6 @@ export namespace ecs {
         family: string;
         /**
          * The GPU attribution of an instance type:
-         * - amount: The amount of GPU of an instance type.
-         * - category: The category of GPU of an instance type.
          */
         gpu: outputs.ecs.GetInstanceTypesInstanceTypeGpu;
         /**
@@ -25838,10 +25834,7 @@ export namespace ecs {
          */
         id: string;
         /**
-         * Local storage of an instance type:
-         * - capacity: The capacity of a local storage in GB.
-         * - amount:  The number of local storage devices that an instance has been attached to.
-         * - category: The category of local storage that an instance has been attached to.
+         * Local storage of an instance type.
          */
         localStorage: outputs.ecs.GetInstanceTypesInstanceTypeLocalStorage;
         /**
@@ -25853,9 +25846,7 @@ export namespace ecs {
          */
         memorySize: number;
         /**
-         * Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-         * - required: The cloud disk can be attached by using the NVMe protocol.
-         * - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+         * Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
          */
         nvmeSupport: string;
         /**
@@ -25877,18 +25868,39 @@ export namespace ecs {
     }
 
     export interface GetInstanceTypesInstanceTypeBurstableInstance {
+        /**
+         * The compute performance benchmark CPU credit of a burstable instance.
+         */
         baselineCredit: string;
+        /**
+         * The initial CPU credit of a burstable instance.
+         */
         initialCredit: string;
     }
 
     export interface GetInstanceTypesInstanceTypeGpu {
+        /**
+         * The number of local storage devices that an instance has been attached to.
+         */
         amount: string;
+        /**
+         * The category of local storage that an instance has been attached to.
+         */
         category: string;
     }
 
     export interface GetInstanceTypesInstanceTypeLocalStorage {
+        /**
+         * The number of local storage devices that an instance has been attached to.
+         */
         amount: string;
+        /**
+         * The capacity of a local storage in GB.
+         */
         capacity: string;
+        /**
+         * The category of local storage that an instance has been attached to.
+         */
         category: string;
     }
 

@@ -51,7 +51,7 @@ class InstanceArgs:
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
         :param pulumi.Input[builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -163,7 +163,7 @@ class InstanceArgs:
     @pulumi.getter
     def storage(self) -> pulumi.Input[builtins.str]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 
@@ -347,7 +347,7 @@ class _InstanceState:
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -563,7 +563,7 @@ class _InstanceState:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 
@@ -652,7 +652,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -798,7 +798,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        :param pulumi.Input[builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -946,7 +946,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def storage(self) -> pulumi.Output[builtins.str]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 

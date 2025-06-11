@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HttpsBasicConfiguration{}
 	case "alicloud:esa/imageTransform:ImageTransform":
 		r = &ImageTransform{}
+	case "alicloud:esa/kv:Kv":
+		r = &Kv{}
 	case "alicloud:esa/kvNamespace:KvNamespace":
 		r = &KvNamespace{}
 	case "alicloud:esa/list:List":
@@ -67,6 +69,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RedirectRule{}
 	case "alicloud:esa/rewriteUrlRule:RewriteUrlRule":
 		r = &RewriteUrlRule{}
+	case "alicloud:esa/routine:Routine":
+		r = &Routine{}
+	case "alicloud:esa/routineRoute:RoutineRoute":
+		r = &RoutineRoute{}
 	case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
 		r = &ScheduledPreloadExecution{}
 	case "alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob":
@@ -75,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Site{}
 	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
 		r = &SiteDeliveryTask{}
+	case "alicloud:esa/videoProcessing:VideoProcessing":
+		r = &VideoProcessing{}
 	case "alicloud:esa/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
 	case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -161,6 +169,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/kv",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/kvNamespace",
 		&module{version},
 	)
@@ -211,6 +224,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/routine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/routineRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/scheduledPreloadExecution",
 		&module{version},
 	)
@@ -227,6 +250,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/siteDeliveryTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/videoProcessing",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

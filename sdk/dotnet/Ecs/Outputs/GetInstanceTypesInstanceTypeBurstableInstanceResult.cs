@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetInstanceTypesInstanceTypeBurstableInstanceResult
     {
+        /// <summary>
+        /// The compute performance benchmark CPU credit of a burstable instance.
+        /// </summary>
         public readonly string BaselineCredit;
+        /// <summary>
+        /// The initial CPU credit of a burstable instance.
+        /// </summary>
         public readonly string InitialCredit;
 
         [OutputConstructor]

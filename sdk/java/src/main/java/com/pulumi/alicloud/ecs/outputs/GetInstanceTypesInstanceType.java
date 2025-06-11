@@ -22,9 +22,7 @@ public final class GetInstanceTypesInstanceType {
      */
     private List<String> availabilityZones;
     /**
-     * @return The burstable instance attribution:
-     * - initial_credit: The initial CPU credit of a burstable instance.
-     * - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+     * @return The burstable instance attribution.
      * 
      */
     private GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
@@ -60,8 +58,6 @@ public final class GetInstanceTypesInstanceType {
     private String family;
     /**
      * @return The GPU attribution of an instance type:
-     * - amount: The amount of GPU of an instance type.
-     * - category: The category of GPU of an instance type.
      * 
      */
     private GetInstanceTypesInstanceTypeGpu gpu;
@@ -71,10 +67,7 @@ public final class GetInstanceTypesInstanceType {
      */
     private String id;
     /**
-     * @return Local storage of an instance type:
-     * - capacity: The capacity of a local storage in GB.
-     * - amount:  The number of local storage devices that an instance has been attached to.
-     * - category: The category of local storage that an instance has been attached to.
+     * @return Local storage of an instance type.
      * 
      */
     private GetInstanceTypesInstanceTypeLocalStorage localStorage;
@@ -89,9 +82,7 @@ public final class GetInstanceTypesInstanceType {
      */
     private Double memorySize;
     /**
-     * @return Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-     * - required: The cloud disk can be attached by using the NVMe protocol.
-     * - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+     * @return Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
      * 
      */
     private String nvmeSupport;
@@ -125,9 +116,7 @@ public final class GetInstanceTypesInstanceType {
         return this.availabilityZones;
     }
     /**
-     * @return The burstable instance attribution:
-     * - initial_credit: The initial CPU credit of a burstable instance.
-     * - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+     * @return The burstable instance attribution.
      * 
      */
     public GetInstanceTypesInstanceTypeBurstableInstance burstableInstance() {
@@ -177,8 +166,6 @@ public final class GetInstanceTypesInstanceType {
     }
     /**
      * @return The GPU attribution of an instance type:
-     * - amount: The amount of GPU of an instance type.
-     * - category: The category of GPU of an instance type.
      * 
      */
     public GetInstanceTypesInstanceTypeGpu gpu() {
@@ -192,10 +179,7 @@ public final class GetInstanceTypesInstanceType {
         return this.id;
     }
     /**
-     * @return Local storage of an instance type:
-     * - capacity: The capacity of a local storage in GB.
-     * - amount:  The number of local storage devices that an instance has been attached to.
-     * - category: The category of local storage that an instance has been attached to.
+     * @return Local storage of an instance type.
      * 
      */
     public GetInstanceTypesInstanceTypeLocalStorage localStorage() {
@@ -216,9 +200,7 @@ public final class GetInstanceTypesInstanceType {
         return this.memorySize;
     }
     /**
-     * @return Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-     * - required: The cloud disk can be attached by using the NVMe protocol.
-     * - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+     * @return Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
      * 
      */
     public String nvmeSupport() {

@@ -13835,9 +13835,7 @@ func (o GetInstanceTypeFamiliesFamilyArrayOutput) Index(i pulumi.IntInput) GetIn
 type GetInstanceTypesInstanceType struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The burstable instance attribution:
-	// - initial_credit: The initial CPU credit of a burstable instance.
-	// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+	// The burstable instance attribution.
 	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstance `pulumi:"burstableInstance"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount int `pulumi:"cpuCoreCount"`
@@ -13852,23 +13850,16 @@ type GetInstanceTypesInstanceType struct {
 	// The instance type family.
 	Family string `pulumi:"family"`
 	// The GPU attribution of an instance type:
-	// - amount: The amount of GPU of an instance type.
-	// - category: The category of GPU of an instance type.
 	Gpu GetInstanceTypesInstanceTypeGpu `pulumi:"gpu"`
 	// ID of the instance type.
 	Id string `pulumi:"id"`
-	// Local storage of an instance type:
-	// - capacity: The capacity of a local storage in GB.
-	// - amount:  The number of local storage devices that an instance has been attached to.
-	// - category: The category of local storage that an instance has been attached to.
+	// Local storage of an instance type.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorage"`
 	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
 	MaximumQueueNumberPerEni int `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize float64 `pulumi:"memorySize"`
-	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-	// - required: The cloud disk can be attached by using the NVMe protocol.
-	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
 	NvmeSupport string `pulumi:"nvmeSupport"`
 	// The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
 	Price string `pulumi:"price"`
@@ -13894,9 +13885,7 @@ type GetInstanceTypesInstanceTypeInput interface {
 type GetInstanceTypesInstanceTypeArgs struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The burstable instance attribution:
-	// - initial_credit: The initial CPU credit of a burstable instance.
-	// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+	// The burstable instance attribution.
 	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstanceInput `pulumi:"burstableInstance"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
@@ -13911,23 +13900,16 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// The instance type family.
 	Family pulumi.StringInput `pulumi:"family"`
 	// The GPU attribution of an instance type:
-	// - amount: The amount of GPU of an instance type.
-	// - category: The category of GPU of an instance type.
 	Gpu GetInstanceTypesInstanceTypeGpuInput `pulumi:"gpu"`
 	// ID of the instance type.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Local storage of an instance type:
-	// - capacity: The capacity of a local storage in GB.
-	// - amount:  The number of local storage devices that an instance has been attached to.
-	// - category: The category of local storage that an instance has been attached to.
+	// Local storage of an instance type.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorageInput `pulumi:"localStorage"`
 	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
 	MaximumQueueNumberPerEni pulumi.IntInput `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64Input `pulumi:"memorySize"`
-	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-	// - required: The cloud disk can be attached by using the NVMe protocol.
-	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
 	NvmeSupport pulumi.StringInput `pulumi:"nvmeSupport"`
 	// The price of instance type. **Note:** `price` takes effect only if `sortedBy` is set to `Price`.
 	Price pulumi.StringInput `pulumi:"price"`
@@ -13995,9 +13977,7 @@ func (o GetInstanceTypesInstanceTypeOutput) AvailabilityZones() pulumi.StringArr
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The burstable instance attribution:
-// - initial_credit: The initial CPU credit of a burstable instance.
-// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+// The burstable instance attribution.
 func (o GetInstanceTypesInstanceTypeOutput) BurstableInstance() GetInstanceTypesInstanceTypeBurstableInstanceOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeBurstableInstance {
 		return v.BurstableInstance
@@ -14035,8 +14015,6 @@ func (o GetInstanceTypesInstanceTypeOutput) Family() pulumi.StringOutput {
 }
 
 // The GPU attribution of an instance type:
-// - amount: The amount of GPU of an instance type.
-// - category: The category of GPU of an instance type.
 func (o GetInstanceTypesInstanceTypeOutput) Gpu() GetInstanceTypesInstanceTypeGpuOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeGpu { return v.Gpu }).(GetInstanceTypesInstanceTypeGpuOutput)
 }
@@ -14046,10 +14024,7 @@ func (o GetInstanceTypesInstanceTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Local storage of an instance type:
-// - capacity: The capacity of a local storage in GB.
-// - amount:  The number of local storage devices that an instance has been attached to.
-// - category: The category of local storage that an instance has been attached to.
+// Local storage of an instance type.
 func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInstanceTypeLocalStorageOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
@@ -14064,9 +14039,7 @@ func (o GetInstanceTypesInstanceTypeOutput) MemorySize() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) float64 { return v.MemorySize }).(pulumi.Float64Output)
 }
 
-// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-// - required: The cloud disk can be attached by using the NVMe protocol.
-// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
 func (o GetInstanceTypesInstanceTypeOutput) NvmeSupport() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.NvmeSupport }).(pulumi.StringOutput)
 }
@@ -14112,8 +14085,10 @@ func (o GetInstanceTypesInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceTypesInstanceTypeBurstableInstance struct {
+	// The compute performance benchmark CPU credit of a burstable instance.
 	BaselineCredit string `pulumi:"baselineCredit"`
-	InitialCredit  string `pulumi:"initialCredit"`
+	// The initial CPU credit of a burstable instance.
+	InitialCredit string `pulumi:"initialCredit"`
 }
 
 // GetInstanceTypesInstanceTypeBurstableInstanceInput is an input type that accepts GetInstanceTypesInstanceTypeBurstableInstanceArgs and GetInstanceTypesInstanceTypeBurstableInstanceOutput values.
@@ -14128,8 +14103,10 @@ type GetInstanceTypesInstanceTypeBurstableInstanceInput interface {
 }
 
 type GetInstanceTypesInstanceTypeBurstableInstanceArgs struct {
+	// The compute performance benchmark CPU credit of a burstable instance.
 	BaselineCredit pulumi.StringInput `pulumi:"baselineCredit"`
-	InitialCredit  pulumi.StringInput `pulumi:"initialCredit"`
+	// The initial CPU credit of a burstable instance.
+	InitialCredit pulumi.StringInput `pulumi:"initialCredit"`
 }
 
 func (GetInstanceTypesInstanceTypeBurstableInstanceArgs) ElementType() reflect.Type {
@@ -14158,16 +14135,20 @@ func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) ToGetInstanceTypesI
 	return o
 }
 
+// The compute performance benchmark CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) BaselineCredit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.BaselineCredit }).(pulumi.StringOutput)
 }
 
+// The initial CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) InitialCredit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.InitialCredit }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeGpu struct {
-	Amount   string `pulumi:"amount"`
+	// The number of local storage devices that an instance has been attached to.
+	Amount string `pulumi:"amount"`
+	// The category of local storage that an instance has been attached to.
 	Category string `pulumi:"category"`
 }
 
@@ -14183,7 +14164,9 @@ type GetInstanceTypesInstanceTypeGpuInput interface {
 }
 
 type GetInstanceTypesInstanceTypeGpuArgs struct {
-	Amount   pulumi.StringInput `pulumi:"amount"`
+	// The number of local storage devices that an instance has been attached to.
+	Amount pulumi.StringInput `pulumi:"amount"`
+	// The category of local storage that an instance has been attached to.
 	Category pulumi.StringInput `pulumi:"category"`
 }
 
@@ -14213,17 +14196,22 @@ func (o GetInstanceTypesInstanceTypeGpuOutput) ToGetInstanceTypesInstanceTypeGpu
 	return o
 }
 
+// The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Amount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Amount }).(pulumi.StringOutput)
 }
 
+// The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Category }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeLocalStorage struct {
-	Amount   string `pulumi:"amount"`
+	// The number of local storage devices that an instance has been attached to.
+	Amount string `pulumi:"amount"`
+	// The capacity of a local storage in GB.
 	Capacity string `pulumi:"capacity"`
+	// The category of local storage that an instance has been attached to.
 	Category string `pulumi:"category"`
 }
 
@@ -14239,8 +14227,11 @@ type GetInstanceTypesInstanceTypeLocalStorageInput interface {
 }
 
 type GetInstanceTypesInstanceTypeLocalStorageArgs struct {
-	Amount   pulumi.StringInput `pulumi:"amount"`
+	// The number of local storage devices that an instance has been attached to.
+	Amount pulumi.StringInput `pulumi:"amount"`
+	// The capacity of a local storage in GB.
 	Capacity pulumi.StringInput `pulumi:"capacity"`
+	// The category of local storage that an instance has been attached to.
 	Category pulumi.StringInput `pulumi:"category"`
 }
 
@@ -14270,14 +14261,17 @@ func (o GetInstanceTypesInstanceTypeLocalStorageOutput) ToGetInstanceTypesInstan
 	return o
 }
 
+// The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Amount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Amount }).(pulumi.StringOutput)
 }
 
+// The capacity of a local storage in GB.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Capacity }).(pulumi.StringOutput)
 }
 
+// The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Category }).(pulumi.StringOutput)
 }

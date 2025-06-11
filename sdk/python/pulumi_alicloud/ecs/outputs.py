@@ -8917,9 +8917,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
                  total_eni_queue_quantity: builtins.int):
         """
         :param Sequence[builtins.str] availability_zones: List of availability zones that support the instance type.
-        :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution:
-               - initial_credit: The initial CPU credit of a burstable instance.
-               - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+        :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution.
         :param builtins.int cpu_core_count: Filter the results to a specific number of cpu cores.
         :param builtins.int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
         :param builtins.int eni_ipv6_address_quantity: (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
@@ -8927,18 +8925,11 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param builtins.int eni_quantity: (Available since v1.239.0) The maximum number of ENIs per instance.
         :param builtins.str family: The instance type family.
         :param 'GetInstanceTypesInstanceTypeGpuArgs' gpu: The GPU attribution of an instance type:
-               - amount: The amount of GPU of an instance type.
-               - category: The category of GPU of an instance type.
         :param builtins.str id: ID of the instance type.
-        :param 'GetInstanceTypesInstanceTypeLocalStorageArgs' local_storage: Local storage of an instance type:
-               - capacity: The capacity of a local storage in GB.
-               - amount:  The number of local storage devices that an instance has been attached to.
-               - category: The category of local storage that an instance has been attached to.
+        :param 'GetInstanceTypesInstanceTypeLocalStorageArgs' local_storage: Local storage of an instance type.
         :param builtins.int maximum_queue_number_per_eni: (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
         :param builtins.float memory_size: Filter the results to a specific memory size in GB.
-        :param builtins.str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-               - required: The cloud disk can be attached by using the NVMe protocol.
-               - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+        :param builtins.str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
         :param builtins.str price: The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
         :param builtins.int primary_eni_queue_number: (Available since v1.239.0) The default number of queues per primary ENI.
         :param builtins.int secondary_eni_queue_number: (Available since v1.239.0) The default number of queues per secondary ENI.
@@ -8975,9 +8966,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @pulumi.getter(name="burstableInstance")
     def burstable_instance(self) -> 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult':
         """
-        The burstable instance attribution:
-        - initial_credit: The initial CPU credit of a burstable instance.
-        - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
+        The burstable instance attribution.
         """
         return pulumi.get(self, "burstable_instance")
 
@@ -9034,8 +9023,6 @@ class GetInstanceTypesInstanceTypeResult(dict):
     def gpu(self) -> 'outputs.GetInstanceTypesInstanceTypeGpuResult':
         """
         The GPU attribution of an instance type:
-        - amount: The amount of GPU of an instance type.
-        - category: The category of GPU of an instance type.
         """
         return pulumi.get(self, "gpu")
 
@@ -9051,10 +9038,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @pulumi.getter(name="localStorage")
     def local_storage(self) -> 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult':
         """
-        Local storage of an instance type:
-        - capacity: The capacity of a local storage in GB.
-        - amount:  The number of local storage devices that an instance has been attached to.
-        - category: The category of local storage that an instance has been attached to.
+        Local storage of an instance type.
         """
         return pulumi.get(self, "local_storage")
 
@@ -9078,9 +9062,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @pulumi.getter(name="nvmeSupport")
     def nvme_support(self) -> builtins.str:
         """
-        Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
-        - required: The cloud disk can be attached by using the NVMe protocol.
-        - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+        Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
         """
         return pulumi.get(self, "nvme_support")
 
@@ -9122,17 +9104,27 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
     def __init__(__self__, *,
                  baseline_credit: builtins.str,
                  initial_credit: builtins.str):
+        """
+        :param builtins.str baseline_credit: The compute performance benchmark CPU credit of a burstable instance.
+        :param builtins.str initial_credit: The initial CPU credit of a burstable instance.
+        """
         pulumi.set(__self__, "baseline_credit", baseline_credit)
         pulumi.set(__self__, "initial_credit", initial_credit)
 
     @property
     @pulumi.getter(name="baselineCredit")
     def baseline_credit(self) -> builtins.str:
+        """
+        The compute performance benchmark CPU credit of a burstable instance.
+        """
         return pulumi.get(self, "baseline_credit")
 
     @property
     @pulumi.getter(name="initialCredit")
     def initial_credit(self) -> builtins.str:
+        """
+        The initial CPU credit of a burstable instance.
+        """
         return pulumi.get(self, "initial_credit")
 
 
@@ -9141,17 +9133,27 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
     def __init__(__self__, *,
                  amount: builtins.str,
                  category: builtins.str):
+        """
+        :param builtins.str amount: The number of local storage devices that an instance has been attached to.
+        :param builtins.str category: The category of local storage that an instance has been attached to.
+        """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "category", category)
 
     @property
     @pulumi.getter
     def amount(self) -> builtins.str:
+        """
+        The number of local storage devices that an instance has been attached to.
+        """
         return pulumi.get(self, "amount")
 
     @property
     @pulumi.getter
     def category(self) -> builtins.str:
+        """
+        The category of local storage that an instance has been attached to.
+        """
         return pulumi.get(self, "category")
 
 
@@ -9161,6 +9163,11 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
                  amount: builtins.str,
                  capacity: builtins.str,
                  category: builtins.str):
+        """
+        :param builtins.str amount: The number of local storage devices that an instance has been attached to.
+        :param builtins.str capacity: The capacity of a local storage in GB.
+        :param builtins.str category: The category of local storage that an instance has been attached to.
+        """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "category", category)
@@ -9168,16 +9175,25 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
     @property
     @pulumi.getter
     def amount(self) -> builtins.str:
+        """
+        The number of local storage devices that an instance has been attached to.
+        """
         return pulumi.get(self, "amount")
 
     @property
     @pulumi.getter
     def capacity(self) -> builtins.str:
+        """
+        The capacity of a local storage in GB.
+        """
         return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter
     def category(self) -> builtins.str:
+        """
+        The category of local storage that an instance has been attached to.
+        """
         return pulumi.get(self, "category")
 
 

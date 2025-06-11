@@ -57,7 +57,7 @@ type Instance struct {
 	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
 	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringOutput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -151,7 +151,7 @@ type instanceState struct {
 	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
 	// and you can use tolist to convert it to a list.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage *string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -195,7 +195,7 @@ type InstanceState struct {
 	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
 	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -243,7 +243,7 @@ type instanceArgs struct {
 	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
 	// and you can use tolist to convert it to a list.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -288,7 +288,7 @@ type InstanceArgs struct {
 	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
 	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -460,7 +460,7 @@ func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
 func (o InstanceOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }

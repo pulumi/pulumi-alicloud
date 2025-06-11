@@ -100,6 +100,24 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CacheArchitectureMode { get; private set; } = null!;
 
         /// <summary>
+        /// Site cache hold switch. Value:
+        /// </summary>
+        [Output("cacheReserveEnable")]
+        public Output<string?> CacheReserveEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the cache instance.
+        /// </summary>
+        [Output("cacheReserveInstanceId")]
+        public Output<string?> CacheReserveInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the custom CacheTag name ignores case. Value range:
+        /// </summary>
+        [Output("caseInsensitive")]
+        public Output<string?> CaseInsensitive { get; private set; } = null!;
+
+        /// <summary>
         /// The service location. Valid values:
         /// </summary>
         [Output("coverage")]
@@ -110,6 +128,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable mainland China network access optimization, the default is off. Value range:
+        /// </summary>
+        [Output("crossBorderOptimization")]
+        public Output<string?> CrossBorderOptimization { get; private set; } = null!;
+
+        /// <summary>
+        /// Development mode configuration function switch. Value range:
+        /// </summary>
+        [Output("developmentMode")]
+        public Output<string?> DevelopmentMode { get; private set; } = null!;
+
+        /// <summary>
+        /// CNAME flattening mode. Possible values:
+        /// </summary>
+        [Output("flattenMode")]
+        public Output<string?> FlattenMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the associated package instance.
@@ -124,16 +160,36 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> Ipv6Enable { get; private set; } = null!;
 
         /// <summary>
+        /// The region in which Ipv6 is enabled. The default value is x.x:
+        /// - 'x.x': Global.
+        /// - 'Cn.cn ': Mainland China.
+        /// </summary>
+        [Output("ipv6Region")]
+        public Output<string> Ipv6Region { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Release the search engine crawler configuration. Value:
+        /// </summary>
+        [Output("seoBypass")]
+        public Output<string?> SeoBypass { get; private set; } = null!;
+
+        /// <summary>
         /// The website name.
         /// </summary>
         [Output("siteName")]
         public Output<string> SiteName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        /// </summary>
+        [Output("siteNameExclusive")]
+        public Output<string?> SiteNameExclusive { get; private set; } = null!;
 
         /// <summary>
         /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
@@ -148,10 +204,22 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Custom CacheTag name.
+        /// </summary>
+        [Output("tagName")]
+        public Output<string?> TagName { get; private set; } = null!;
+
+        /// <summary>
         /// Resource tags
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Version management enabled. When true, version management is turned on for the table site.
+        /// </summary>
+        [Output("versionManagement")]
+        public Output<bool?> VersionManagement { get; private set; } = null!;
 
 
         /// <summary>
@@ -226,10 +294,46 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CacheArchitectureMode { get; set; }
 
         /// <summary>
+        /// Site cache hold switch. Value:
+        /// </summary>
+        [Input("cacheReserveEnable")]
+        public Input<string>? CacheReserveEnable { get; set; }
+
+        /// <summary>
+        /// The ID of the cache instance.
+        /// </summary>
+        [Input("cacheReserveInstanceId")]
+        public Input<string>? CacheReserveInstanceId { get; set; }
+
+        /// <summary>
+        /// Whether the custom CacheTag name ignores case. Value range:
+        /// </summary>
+        [Input("caseInsensitive")]
+        public Input<string>? CaseInsensitive { get; set; }
+
+        /// <summary>
         /// The service location. Valid values:
         /// </summary>
         [Input("coverage")]
         public Input<string>? Coverage { get; set; }
+
+        /// <summary>
+        /// Whether to enable mainland China network access optimization, the default is off. Value range:
+        /// </summary>
+        [Input("crossBorderOptimization")]
+        public Input<string>? CrossBorderOptimization { get; set; }
+
+        /// <summary>
+        /// Development mode configuration function switch. Value range:
+        /// </summary>
+        [Input("developmentMode")]
+        public Input<string>? DevelopmentMode { get; set; }
+
+        /// <summary>
+        /// CNAME flattening mode. Possible values:
+        /// </summary>
+        [Input("flattenMode")]
+        public Input<string>? FlattenMode { get; set; }
 
         /// <summary>
         /// The ID of the associated package instance.
@@ -244,10 +348,24 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Ipv6Enable { get; set; }
 
         /// <summary>
+        /// The region in which Ipv6 is enabled. The default value is x.x:
+        /// - 'x.x': Global.
+        /// - 'Cn.cn ': Mainland China.
+        /// </summary>
+        [Input("ipv6Region")]
+        public Input<string>? Ipv6Region { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Release the search engine crawler configuration. Value:
+        /// </summary>
+        [Input("seoBypass")]
+        public Input<string>? SeoBypass { get; set; }
 
         /// <summary>
         /// The website name.
@@ -256,10 +374,22 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> SiteName { get; set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        /// </summary>
+        [Input("siteNameExclusive")]
+        public Input<string>? SiteNameExclusive { get; set; }
+
+        /// <summary>
         /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
+
+        /// <summary>
+        /// Custom CacheTag name.
+        /// </summary>
+        [Input("tagName")]
+        public Input<string>? TagName { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -272,6 +402,12 @@ namespace Pulumi.AliCloud.Esa
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Version management enabled. When true, version management is turned on for the table site.
+        /// </summary>
+        [Input("versionManagement")]
+        public Input<bool>? VersionManagement { get; set; }
 
         public SiteArgs()
         {
@@ -308,6 +444,24 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CacheArchitectureMode { get; set; }
 
         /// <summary>
+        /// Site cache hold switch. Value:
+        /// </summary>
+        [Input("cacheReserveEnable")]
+        public Input<string>? CacheReserveEnable { get; set; }
+
+        /// <summary>
+        /// The ID of the cache instance.
+        /// </summary>
+        [Input("cacheReserveInstanceId")]
+        public Input<string>? CacheReserveInstanceId { get; set; }
+
+        /// <summary>
+        /// Whether the custom CacheTag name ignores case. Value range:
+        /// </summary>
+        [Input("caseInsensitive")]
+        public Input<string>? CaseInsensitive { get; set; }
+
+        /// <summary>
         /// The service location. Valid values:
         /// </summary>
         [Input("coverage")]
@@ -318,6 +472,24 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether to enable mainland China network access optimization, the default is off. Value range:
+        /// </summary>
+        [Input("crossBorderOptimization")]
+        public Input<string>? CrossBorderOptimization { get; set; }
+
+        /// <summary>
+        /// Development mode configuration function switch. Value range:
+        /// </summary>
+        [Input("developmentMode")]
+        public Input<string>? DevelopmentMode { get; set; }
+
+        /// <summary>
+        /// CNAME flattening mode. Possible values:
+        /// </summary>
+        [Input("flattenMode")]
+        public Input<string>? FlattenMode { get; set; }
 
         /// <summary>
         /// The ID of the associated package instance.
@@ -332,16 +504,36 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Ipv6Enable { get; set; }
 
         /// <summary>
+        /// The region in which Ipv6 is enabled. The default value is x.x:
+        /// - 'x.x': Global.
+        /// - 'Cn.cn ': Mainland China.
+        /// </summary>
+        [Input("ipv6Region")]
+        public Input<string>? Ipv6Region { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// Release the search engine crawler configuration. Value:
+        /// </summary>
+        [Input("seoBypass")]
+        public Input<string>? SeoBypass { get; set; }
+
+        /// <summary>
         /// The website name.
         /// </summary>
         [Input("siteName")]
         public Input<string>? SiteName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        /// </summary>
+        [Input("siteNameExclusive")]
+        public Input<string>? SiteNameExclusive { get; set; }
 
         /// <summary>
         /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
@@ -355,6 +547,12 @@ namespace Pulumi.AliCloud.Esa
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// Custom CacheTag name.
+        /// </summary>
+        [Input("tagName")]
+        public Input<string>? TagName { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -366,6 +564,12 @@ namespace Pulumi.AliCloud.Esa
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Version management enabled. When true, version management is turned on for the table site.
+        /// </summary>
+        [Input("versionManagement")]
+        public Input<bool>? VersionManagement { get; set; }
 
         public SiteState()
         {

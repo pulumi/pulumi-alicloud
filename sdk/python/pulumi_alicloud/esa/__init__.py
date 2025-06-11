@@ -20,6 +20,7 @@ from .http_response_header_modification_rule import *
 from .https_application_configuration import *
 from .https_basic_configuration import *
 from .image_transform import *
+from .kv import *
 from .kv_namespace import *
 from .list import *
 from .network_optimization import *
@@ -30,10 +31,13 @@ from .rate_plan_instance import *
 from .record import *
 from .redirect_rule import *
 from .rewrite_url_rule import *
+from .routine import *
+from .routine_route import *
 from .scheduled_preload_execution import *
 from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
+from .video_processing import *
 from .waiting_room import *
 from .waiting_room_event import *
 from .waiting_room_rule import *
