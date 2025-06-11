@@ -4629,6 +4629,9 @@
             "alicloud_esa_image_transform": {
                 "current": "alicloud:esa/imageTransform:ImageTransform"
             },
+            "alicloud_esa_kv": {
+                "current": "alicloud:esa/kv:Kv"
+            },
             "alicloud_esa_kv_namespace": {
                 "current": "alicloud:esa/kvNamespace:KvNamespace"
             },
@@ -4684,6 +4687,12 @@
             "alicloud_esa_rewrite_url_rule": {
                 "current": "alicloud:esa/rewriteUrlRule:RewriteUrlRule"
             },
+            "alicloud_esa_routine": {
+                "current": "alicloud:esa/routine:Routine"
+            },
+            "alicloud_esa_routine_route": {
+                "current": "alicloud:esa/routineRoute:RoutineRoute"
+            },
             "alicloud_esa_scheduled_preload_execution": {
                 "current": "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution"
             },
@@ -4726,6 +4735,9 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "alicloud_esa_video_processing": {
+                "current": "alicloud:esa/videoProcessing:VideoProcessing"
             },
             "alicloud_esa_waiting_room": {
                 "current": "alicloud:esa/waitingRoom:WaitingRoom",
