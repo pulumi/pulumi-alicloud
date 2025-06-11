@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeLocalStorage {
+    /**
+     * @return The number of local storage devices that an instance has been attached to.
+     * 
+     */
     private String amount;
+    /**
+     * @return The capacity of a local storage in GB.
+     * 
+     */
     private String capacity;
+    /**
+     * @return The category of local storage that an instance has been attached to.
+     * 
+     */
     private String category;
 
     private GetInstanceTypesInstanceTypeLocalStorage() {}
+    /**
+     * @return The number of local storage devices that an instance has been attached to.
+     * 
+     */
     public String amount() {
         return this.amount;
     }
+    /**
+     * @return The capacity of a local storage in GB.
+     * 
+     */
     public String capacity() {
         return this.capacity;
     }
+    /**
+     * @return The category of local storage that an instance has been attached to.
+     * 
+     */
     public String category() {
         return this.category;
     }

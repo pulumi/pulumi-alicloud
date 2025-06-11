@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -162,6 +163,48 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.cacheArchitectureMode;
     }
     /**
+     * Site cache hold switch. Value:
+     * 
+     */
+    @Export(name="cacheReserveEnable", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cacheReserveEnable;
+
+    /**
+     * @return Site cache hold switch. Value:
+     * 
+     */
+    public Output<Optional<String>> cacheReserveEnable() {
+        return Codegen.optional(this.cacheReserveEnable);
+    }
+    /**
+     * The ID of the cache instance.
+     * 
+     */
+    @Export(name="cacheReserveInstanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cacheReserveInstanceId;
+
+    /**
+     * @return The ID of the cache instance.
+     * 
+     */
+    public Output<Optional<String>> cacheReserveInstanceId() {
+        return Codegen.optional(this.cacheReserveInstanceId);
+    }
+    /**
+     * Whether the custom CacheTag name ignores case. Value range:
+     * 
+     */
+    @Export(name="caseInsensitive", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> caseInsensitive;
+
+    /**
+     * @return Whether the custom CacheTag name ignores case. Value range:
+     * 
+     */
+    public Output<Optional<String>> caseInsensitive() {
+        return Codegen.optional(this.caseInsensitive);
+    }
+    /**
      * The service location. Valid values:
      * 
      */
@@ -188,6 +231,48 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether to enable mainland China network access optimization, the default is off. Value range:
+     * 
+     */
+    @Export(name="crossBorderOptimization", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> crossBorderOptimization;
+
+    /**
+     * @return Whether to enable mainland China network access optimization, the default is off. Value range:
+     * 
+     */
+    public Output<Optional<String>> crossBorderOptimization() {
+        return Codegen.optional(this.crossBorderOptimization);
+    }
+    /**
+     * Development mode configuration function switch. Value range:
+     * 
+     */
+    @Export(name="developmentMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> developmentMode;
+
+    /**
+     * @return Development mode configuration function switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> developmentMode() {
+        return Codegen.optional(this.developmentMode);
+    }
+    /**
+     * CNAME flattening mode. Possible values:
+     * 
+     */
+    @Export(name="flattenMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> flattenMode;
+
+    /**
+     * @return CNAME flattening mode. Possible values:
+     * 
+     */
+    public Output<Optional<String>> flattenMode() {
+        return Codegen.optional(this.flattenMode);
     }
     /**
      * The ID of the associated package instance.
@@ -218,6 +303,24 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.ipv6Enable;
     }
     /**
+     * The region in which Ipv6 is enabled. The default value is x.x:
+     * - &#39;x.x&#39;: Global.
+     * - &#39;Cn.cn &#39;: Mainland China.
+     * 
+     */
+    @Export(name="ipv6Region", refs={String.class}, tree="[0]")
+    private Output<String> ipv6Region;
+
+    /**
+     * @return The region in which Ipv6 is enabled. The default value is x.x:
+     * - &#39;x.x&#39;: Global.
+     * - &#39;Cn.cn &#39;: Mainland China.
+     * 
+     */
+    public Output<String> ipv6Region() {
+        return this.ipv6Region;
+    }
+    /**
      * The ID of the resource group
      * 
      */
@@ -232,6 +335,20 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * Release the search engine crawler configuration. Value:
+     * 
+     */
+    @Export(name="seoBypass", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> seoBypass;
+
+    /**
+     * @return Release the search engine crawler configuration. Value:
+     * 
+     */
+    public Output<Optional<String>> seoBypass() {
+        return Codegen.optional(this.seoBypass);
+    }
+    /**
      * The website name.
      * 
      */
@@ -244,6 +361,20 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<String> siteName() {
         return this.siteName;
+    }
+    /**
+     * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     * 
+     */
+    @Export(name="siteNameExclusive", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> siteNameExclusive;
+
+    /**
+     * @return Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     * 
+     */
+    public Output<Optional<String>> siteNameExclusive() {
+        return Codegen.optional(this.siteNameExclusive);
     }
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
@@ -274,6 +405,20 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * Custom CacheTag name.
+     * 
+     */
+    @Export(name="tagName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tagName;
+
+    /**
+     * @return Custom CacheTag name.
+     * 
+     */
+    public Output<Optional<String>> tagName() {
+        return Codegen.optional(this.tagName);
+    }
+    /**
      * Resource tags
      * 
      */
@@ -286,6 +431,20 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Version management enabled. When true, version management is turned on for the table site.
+     * 
+     */
+    @Export(name="versionManagement", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> versionManagement;
+
+    /**
+     * @return Version management enabled. When true, version management is turned on for the table site.
+     * 
+     */
+    public Output<Optional<Boolean>> versionManagement() {
+        return Codegen.optional(this.versionManagement);
     }
 
     /**

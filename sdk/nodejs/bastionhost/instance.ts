@@ -105,7 +105,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
     public readonly storage!: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface InstanceState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
     storage?: pulumi.Input<string>;
     /**
@@ -338,7 +338,7 @@ export interface InstanceArgs {
      */
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
     storage: pulumi.Input<string>;
     /**

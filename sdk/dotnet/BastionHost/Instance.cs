@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         /// </summary>
         [Output("storage")]
         public Output<string> Storage { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         /// </summary>
         [Input("storage", required: true)]
         public Input<string> Storage { get; set; } = null!;
@@ -431,7 +431,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

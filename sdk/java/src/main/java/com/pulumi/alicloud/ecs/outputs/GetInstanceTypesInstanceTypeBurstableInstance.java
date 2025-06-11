@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeBurstableInstance {
+    /**
+     * @return The compute performance benchmark CPU credit of a burstable instance.
+     * 
+     */
     private String baselineCredit;
+    /**
+     * @return The initial CPU credit of a burstable instance.
+     * 
+     */
     private String initialCredit;
 
     private GetInstanceTypesInstanceTypeBurstableInstance() {}
+    /**
+     * @return The compute performance benchmark CPU credit of a burstable instance.
+     * 
+     */
     public String baselineCredit() {
         return this.baselineCredit;
     }
+    /**
+     * @return The initial CPU credit of a burstable instance.
+     * 
+     */
     public String initialCredit() {
         return this.initialCredit;
     }

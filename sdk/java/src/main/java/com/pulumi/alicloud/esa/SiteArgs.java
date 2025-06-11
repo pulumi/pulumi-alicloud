@@ -6,6 +6,7 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -83,6 +84,51 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Site cache hold switch. Value:
+     * 
+     */
+    @Import(name="cacheReserveEnable")
+    private @Nullable Output<String> cacheReserveEnable;
+
+    /**
+     * @return Site cache hold switch. Value:
+     * 
+     */
+    public Optional<Output<String>> cacheReserveEnable() {
+        return Optional.ofNullable(this.cacheReserveEnable);
+    }
+
+    /**
+     * The ID of the cache instance.
+     * 
+     */
+    @Import(name="cacheReserveInstanceId")
+    private @Nullable Output<String> cacheReserveInstanceId;
+
+    /**
+     * @return The ID of the cache instance.
+     * 
+     */
+    public Optional<Output<String>> cacheReserveInstanceId() {
+        return Optional.ofNullable(this.cacheReserveInstanceId);
+    }
+
+    /**
+     * Whether the custom CacheTag name ignores case. Value range:
+     * 
+     */
+    @Import(name="caseInsensitive")
+    private @Nullable Output<String> caseInsensitive;
+
+    /**
+     * @return Whether the custom CacheTag name ignores case. Value range:
+     * 
+     */
+    public Optional<Output<String>> caseInsensitive() {
+        return Optional.ofNullable(this.caseInsensitive);
+    }
+
+    /**
      * The service location. Valid values:
      * 
      */
@@ -95,6 +141,51 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> coverage() {
         return Optional.ofNullable(this.coverage);
+    }
+
+    /**
+     * Whether to enable mainland China network access optimization, the default is off. Value range:
+     * 
+     */
+    @Import(name="crossBorderOptimization")
+    private @Nullable Output<String> crossBorderOptimization;
+
+    /**
+     * @return Whether to enable mainland China network access optimization, the default is off. Value range:
+     * 
+     */
+    public Optional<Output<String>> crossBorderOptimization() {
+        return Optional.ofNullable(this.crossBorderOptimization);
+    }
+
+    /**
+     * Development mode configuration function switch. Value range:
+     * 
+     */
+    @Import(name="developmentMode")
+    private @Nullable Output<String> developmentMode;
+
+    /**
+     * @return Development mode configuration function switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> developmentMode() {
+        return Optional.ofNullable(this.developmentMode);
+    }
+
+    /**
+     * CNAME flattening mode. Possible values:
+     * 
+     */
+    @Import(name="flattenMode")
+    private @Nullable Output<String> flattenMode;
+
+    /**
+     * @return CNAME flattening mode. Possible values:
+     * 
+     */
+    public Optional<Output<String>> flattenMode() {
+        return Optional.ofNullable(this.flattenMode);
     }
 
     /**
@@ -128,6 +219,25 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region in which Ipv6 is enabled. The default value is x.x:
+     * - &#39;x.x&#39;: Global.
+     * - &#39;Cn.cn &#39;: Mainland China.
+     * 
+     */
+    @Import(name="ipv6Region")
+    private @Nullable Output<String> ipv6Region;
+
+    /**
+     * @return The region in which Ipv6 is enabled. The default value is x.x:
+     * - &#39;x.x&#39;: Global.
+     * - &#39;Cn.cn &#39;: Mainland China.
+     * 
+     */
+    public Optional<Output<String>> ipv6Region() {
+        return Optional.ofNullable(this.ipv6Region);
+    }
+
+    /**
      * The ID of the resource group
      * 
      */
@@ -140,6 +250,21 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Release the search engine crawler configuration. Value:
+     * 
+     */
+    @Import(name="seoBypass")
+    private @Nullable Output<String> seoBypass;
+
+    /**
+     * @return Release the search engine crawler configuration. Value:
+     * 
+     */
+    public Optional<Output<String>> seoBypass() {
+        return Optional.ofNullable(this.seoBypass);
     }
 
     /**
@@ -158,6 +283,21 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     * 
+     */
+    @Import(name="siteNameExclusive")
+    private @Nullable Output<String> siteNameExclusive;
+
+    /**
+     * @return Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     * 
+     */
+    public Optional<Output<String>> siteNameExclusive() {
+        return Optional.ofNullable(this.siteNameExclusive);
+    }
+
+    /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      * 
      */
@@ -170,6 +310,21 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> siteVersion() {
         return Optional.ofNullable(this.siteVersion);
+    }
+
+    /**
+     * Custom CacheTag name.
+     * 
+     */
+    @Import(name="tagName")
+    private @Nullable Output<String> tagName;
+
+    /**
+     * @return Custom CacheTag name.
+     * 
+     */
+    public Optional<Output<String>> tagName() {
+        return Optional.ofNullable(this.tagName);
     }
 
     /**
@@ -187,6 +342,21 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Version management enabled. When true, version management is turned on for the table site.
+     * 
+     */
+    @Import(name="versionManagement")
+    private @Nullable Output<Boolean> versionManagement;
+
+    /**
+     * @return Version management enabled. When true, version management is turned on for the table site.
+     * 
+     */
+    public Optional<Output<Boolean>> versionManagement() {
+        return Optional.ofNullable(this.versionManagement);
+    }
+
     private SiteArgs() {}
 
     private SiteArgs(SiteArgs $) {
@@ -194,13 +364,24 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         this.addClientGeolocationHeader = $.addClientGeolocationHeader;
         this.addRealClientIpHeader = $.addRealClientIpHeader;
         this.cacheArchitectureMode = $.cacheArchitectureMode;
+        this.cacheReserveEnable = $.cacheReserveEnable;
+        this.cacheReserveInstanceId = $.cacheReserveInstanceId;
+        this.caseInsensitive = $.caseInsensitive;
         this.coverage = $.coverage;
+        this.crossBorderOptimization = $.crossBorderOptimization;
+        this.developmentMode = $.developmentMode;
+        this.flattenMode = $.flattenMode;
         this.instanceId = $.instanceId;
         this.ipv6Enable = $.ipv6Enable;
+        this.ipv6Region = $.ipv6Region;
         this.resourceGroupId = $.resourceGroupId;
+        this.seoBypass = $.seoBypass;
         this.siteName = $.siteName;
+        this.siteNameExclusive = $.siteNameExclusive;
         this.siteVersion = $.siteVersion;
+        this.tagName = $.tagName;
         this.tags = $.tags;
+        this.versionManagement = $.versionManagement;
     }
 
     public static Builder builder() {
@@ -310,6 +491,69 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cacheReserveEnable Site cache hold switch. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserveEnable(@Nullable Output<String> cacheReserveEnable) {
+            $.cacheReserveEnable = cacheReserveEnable;
+            return this;
+        }
+
+        /**
+         * @param cacheReserveEnable Site cache hold switch. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserveEnable(String cacheReserveEnable) {
+            return cacheReserveEnable(Output.of(cacheReserveEnable));
+        }
+
+        /**
+         * @param cacheReserveInstanceId The ID of the cache instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserveInstanceId(@Nullable Output<String> cacheReserveInstanceId) {
+            $.cacheReserveInstanceId = cacheReserveInstanceId;
+            return this;
+        }
+
+        /**
+         * @param cacheReserveInstanceId The ID of the cache instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserveInstanceId(String cacheReserveInstanceId) {
+            return cacheReserveInstanceId(Output.of(cacheReserveInstanceId));
+        }
+
+        /**
+         * @param caseInsensitive Whether the custom CacheTag name ignores case. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseInsensitive(@Nullable Output<String> caseInsensitive) {
+            $.caseInsensitive = caseInsensitive;
+            return this;
+        }
+
+        /**
+         * @param caseInsensitive Whether the custom CacheTag name ignores case. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseInsensitive(String caseInsensitive) {
+            return caseInsensitive(Output.of(caseInsensitive));
+        }
+
+        /**
          * @param coverage The service location. Valid values:
          * 
          * @return builder
@@ -328,6 +572,69 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder coverage(String coverage) {
             return coverage(Output.of(coverage));
+        }
+
+        /**
+         * @param crossBorderOptimization Whether to enable mainland China network access optimization, the default is off. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderOptimization(@Nullable Output<String> crossBorderOptimization) {
+            $.crossBorderOptimization = crossBorderOptimization;
+            return this;
+        }
+
+        /**
+         * @param crossBorderOptimization Whether to enable mainland China network access optimization, the default is off. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossBorderOptimization(String crossBorderOptimization) {
+            return crossBorderOptimization(Output.of(crossBorderOptimization));
+        }
+
+        /**
+         * @param developmentMode Development mode configuration function switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developmentMode(@Nullable Output<String> developmentMode) {
+            $.developmentMode = developmentMode;
+            return this;
+        }
+
+        /**
+         * @param developmentMode Development mode configuration function switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developmentMode(String developmentMode) {
+            return developmentMode(Output.of(developmentMode));
+        }
+
+        /**
+         * @param flattenMode CNAME flattening mode. Possible values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flattenMode(@Nullable Output<String> flattenMode) {
+            $.flattenMode = flattenMode;
+            return this;
+        }
+
+        /**
+         * @param flattenMode CNAME flattening mode. Possible values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flattenMode(String flattenMode) {
+            return flattenMode(Output.of(flattenMode));
         }
 
         /**
@@ -373,6 +680,31 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipv6Region The region in which Ipv6 is enabled. The default value is x.x:
+         * - &#39;x.x&#39;: Global.
+         * - &#39;Cn.cn &#39;: Mainland China.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Region(@Nullable Output<String> ipv6Region) {
+            $.ipv6Region = ipv6Region;
+            return this;
+        }
+
+        /**
+         * @param ipv6Region The region in which Ipv6 is enabled. The default value is x.x:
+         * - &#39;x.x&#39;: Global.
+         * - &#39;Cn.cn &#39;: Mainland China.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Region(String ipv6Region) {
+            return ipv6Region(Output.of(ipv6Region));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
@@ -391,6 +723,27 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param seoBypass Release the search engine crawler configuration. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder seoBypass(@Nullable Output<String> seoBypass) {
+            $.seoBypass = seoBypass;
+            return this;
+        }
+
+        /**
+         * @param seoBypass Release the search engine crawler configuration. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder seoBypass(String seoBypass) {
+            return seoBypass(Output.of(seoBypass));
         }
 
         /**
@@ -415,6 +768,27 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param siteNameExclusive Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteNameExclusive(@Nullable Output<String> siteNameExclusive) {
+            $.siteNameExclusive = siteNameExclusive;
+            return this;
+        }
+
+        /**
+         * @param siteNameExclusive Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteNameExclusive(String siteNameExclusive) {
+            return siteNameExclusive(Output.of(siteNameExclusive));
+        }
+
+        /**
          * @param siteVersion The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
          * 
          * @return builder
@@ -436,6 +810,27 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tagName Custom CacheTag name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagName(@Nullable Output<String> tagName) {
+            $.tagName = tagName;
+            return this;
+        }
+
+        /**
+         * @param tagName Custom CacheTag name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagName(String tagName) {
+            return tagName(Output.of(tagName));
+        }
+
+        /**
          * @param tags Resource tags
          * 
          * @return builder
@@ -454,6 +849,27 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param versionManagement Version management enabled. When true, version management is turned on for the table site.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionManagement(@Nullable Output<Boolean> versionManagement) {
+            $.versionManagement = versionManagement;
+            return this;
+        }
+
+        /**
+         * @param versionManagement Version management enabled. When true, version management is turned on for the table site.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionManagement(Boolean versionManagement) {
+            return versionManagement(Output.of(versionManagement));
         }
 
         public SiteArgs build() {

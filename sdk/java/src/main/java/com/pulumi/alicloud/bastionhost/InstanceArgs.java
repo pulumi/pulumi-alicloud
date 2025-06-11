@@ -241,14 +241,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     @Import(name="storage", required=true)
     private Output<String> storage;
 
     /**
-     * @return The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * @return The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     public Output<String> storage() {
@@ -661,7 +661,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
          * 
          * @return builder
          * 
@@ -672,7 +672,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
          * 
          * @return builder
          * 

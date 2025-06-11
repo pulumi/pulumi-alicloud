@@ -103,24 +103,48 @@ type Site struct {
 	AddRealClientIpHeader pulumi.StringPtrOutput `pulumi:"addRealClientIpHeader"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringOutput `pulumi:"cacheArchitectureMode"`
+	// Site cache hold switch. Value:
+	CacheReserveEnable pulumi.StringPtrOutput `pulumi:"cacheReserveEnable"`
+	// The ID of the cache instance.
+	CacheReserveInstanceId pulumi.StringPtrOutput `pulumi:"cacheReserveInstanceId"`
+	// Whether the custom CacheTag name ignores case. Value range:
+	CaseInsensitive pulumi.StringPtrOutput `pulumi:"caseInsensitive"`
 	// The service location. Valid values:
 	Coverage pulumi.StringPtrOutput `pulumi:"coverage"`
 	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether to enable mainland China network access optimization, the default is off. Value range:
+	CrossBorderOptimization pulumi.StringPtrOutput `pulumi:"crossBorderOptimization"`
+	// Development mode configuration function switch. Value range:
+	DevelopmentMode pulumi.StringPtrOutput `pulumi:"developmentMode"`
+	// CNAME flattening mode. Possible values:
+	FlattenMode pulumi.StringPtrOutput `pulumi:"flattenMode"`
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
 	Ipv6Enable pulumi.StringOutput `pulumi:"ipv6Enable"`
+	// The region in which Ipv6 is enabled. The default value is x.x:
+	// - 'x.x': Global.
+	// - 'Cn.cn ': Mainland China.
+	Ipv6Region pulumi.StringOutput `pulumi:"ipv6Region"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Release the search engine crawler configuration. Value:
+	SeoBypass pulumi.StringPtrOutput `pulumi:"seoBypass"`
 	// The website name.
 	SiteName pulumi.StringOutput `pulumi:"siteName"`
+	// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+	SiteNameExclusive pulumi.StringPtrOutput `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Custom CacheTag name.
+	TagName pulumi.StringPtrOutput `pulumi:"tagName"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Version management enabled. When true, version management is turned on for the table site.
+	VersionManagement pulumi.BoolPtrOutput `pulumi:"versionManagement"`
 }
 
 // NewSite registers a new resource with the given unique name, arguments, and options.
@@ -169,24 +193,48 @@ type siteState struct {
 	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
+	// Site cache hold switch. Value:
+	CacheReserveEnable *string `pulumi:"cacheReserveEnable"`
+	// The ID of the cache instance.
+	CacheReserveInstanceId *string `pulumi:"cacheReserveInstanceId"`
+	// Whether the custom CacheTag name ignores case. Value range:
+	CaseInsensitive *string `pulumi:"caseInsensitive"`
 	// The service location. Valid values:
 	Coverage *string `pulumi:"coverage"`
 	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether to enable mainland China network access optimization, the default is off. Value range:
+	CrossBorderOptimization *string `pulumi:"crossBorderOptimization"`
+	// Development mode configuration function switch. Value range:
+	DevelopmentMode *string `pulumi:"developmentMode"`
+	// CNAME flattening mode. Possible values:
+	FlattenMode *string `pulumi:"flattenMode"`
 	// The ID of the associated package instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
 	Ipv6Enable *string `pulumi:"ipv6Enable"`
+	// The region in which Ipv6 is enabled. The default value is x.x:
+	// - 'x.x': Global.
+	// - 'Cn.cn ': Mainland China.
+	Ipv6Region *string `pulumi:"ipv6Region"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Release the search engine crawler configuration. Value:
+	SeoBypass *string `pulumi:"seoBypass"`
 	// The website name.
 	SiteName *string `pulumi:"siteName"`
+	// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+	SiteNameExclusive *string `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
+	// Custom CacheTag name.
+	TagName *string `pulumi:"tagName"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Version management enabled. When true, version management is turned on for the table site.
+	VersionManagement *bool `pulumi:"versionManagement"`
 }
 
 type SiteState struct {
@@ -200,24 +248,48 @@ type SiteState struct {
 	AddRealClientIpHeader pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
+	// Site cache hold switch. Value:
+	CacheReserveEnable pulumi.StringPtrInput
+	// The ID of the cache instance.
+	CacheReserveInstanceId pulumi.StringPtrInput
+	// Whether the custom CacheTag name ignores case. Value range:
+	CaseInsensitive pulumi.StringPtrInput
 	// The service location. Valid values:
 	Coverage pulumi.StringPtrInput
 	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether to enable mainland China network access optimization, the default is off. Value range:
+	CrossBorderOptimization pulumi.StringPtrInput
+	// Development mode configuration function switch. Value range:
+	DevelopmentMode pulumi.StringPtrInput
+	// CNAME flattening mode. Possible values:
+	FlattenMode pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringPtrInput
 	// Specifies whether to enable IPv6. Valid values:
 	Ipv6Enable pulumi.StringPtrInput
+	// The region in which Ipv6 is enabled. The default value is x.x:
+	// - 'x.x': Global.
+	// - 'Cn.cn ': Mainland China.
+	Ipv6Region pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// Release the search engine crawler configuration. Value:
+	SeoBypass pulumi.StringPtrInput
 	// The website name.
 	SiteName pulumi.StringPtrInput
+	// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+	SiteNameExclusive pulumi.StringPtrInput
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
+	// Custom CacheTag name.
+	TagName pulumi.StringPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
+	// Version management enabled. When true, version management is turned on for the table site.
+	VersionManagement pulumi.BoolPtrInput
 }
 
 func (SiteState) ElementType() reflect.Type {
@@ -235,20 +307,44 @@ type siteArgs struct {
 	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
+	// Site cache hold switch. Value:
+	CacheReserveEnable *string `pulumi:"cacheReserveEnable"`
+	// The ID of the cache instance.
+	CacheReserveInstanceId *string `pulumi:"cacheReserveInstanceId"`
+	// Whether the custom CacheTag name ignores case. Value range:
+	CaseInsensitive *string `pulumi:"caseInsensitive"`
 	// The service location. Valid values:
 	Coverage *string `pulumi:"coverage"`
+	// Whether to enable mainland China network access optimization, the default is off. Value range:
+	CrossBorderOptimization *string `pulumi:"crossBorderOptimization"`
+	// Development mode configuration function switch. Value range:
+	DevelopmentMode *string `pulumi:"developmentMode"`
+	// CNAME flattening mode. Possible values:
+	FlattenMode *string `pulumi:"flattenMode"`
 	// The ID of the associated package instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Specifies whether to enable IPv6. Valid values:
 	Ipv6Enable *string `pulumi:"ipv6Enable"`
+	// The region in which Ipv6 is enabled. The default value is x.x:
+	// - 'x.x': Global.
+	// - 'Cn.cn ': Mainland China.
+	Ipv6Region *string `pulumi:"ipv6Region"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Release the search engine crawler configuration. Value:
+	SeoBypass *string `pulumi:"seoBypass"`
 	// The website name.
 	SiteName string `pulumi:"siteName"`
+	// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+	SiteNameExclusive *string `pulumi:"siteNameExclusive"`
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
+	// Custom CacheTag name.
+	TagName *string `pulumi:"tagName"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
+	// Version management enabled. When true, version management is turned on for the table site.
+	VersionManagement *bool `pulumi:"versionManagement"`
 }
 
 // The set of arguments for constructing a Site resource.
@@ -263,20 +359,44 @@ type SiteArgs struct {
 	AddRealClientIpHeader pulumi.StringPtrInput
 	// Multi-level cache architecture mode. Possible values:
 	CacheArchitectureMode pulumi.StringPtrInput
+	// Site cache hold switch. Value:
+	CacheReserveEnable pulumi.StringPtrInput
+	// The ID of the cache instance.
+	CacheReserveInstanceId pulumi.StringPtrInput
+	// Whether the custom CacheTag name ignores case. Value range:
+	CaseInsensitive pulumi.StringPtrInput
 	// The service location. Valid values:
 	Coverage pulumi.StringPtrInput
+	// Whether to enable mainland China network access optimization, the default is off. Value range:
+	CrossBorderOptimization pulumi.StringPtrInput
+	// Development mode configuration function switch. Value range:
+	DevelopmentMode pulumi.StringPtrInput
+	// CNAME flattening mode. Possible values:
+	FlattenMode pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringInput
 	// Specifies whether to enable IPv6. Valid values:
 	Ipv6Enable pulumi.StringPtrInput
+	// The region in which Ipv6 is enabled. The default value is x.x:
+	// - 'x.x': Global.
+	// - 'Cn.cn ': Mainland China.
+	Ipv6Region pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// Release the search engine crawler configuration. Value:
+	SeoBypass pulumi.StringPtrInput
 	// The website name.
 	SiteName pulumi.StringInput
+	// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+	SiteNameExclusive pulumi.StringPtrInput
 	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
 	SiteVersion pulumi.IntPtrInput
+	// Custom CacheTag name.
+	TagName pulumi.StringPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
+	// Version management enabled. When true, version management is turned on for the table site.
+	VersionManagement pulumi.BoolPtrInput
 }
 
 func (SiteArgs) ElementType() reflect.Type {
@@ -388,6 +508,21 @@ func (o SiteOutput) CacheArchitectureMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.CacheArchitectureMode }).(pulumi.StringOutput)
 }
 
+// Site cache hold switch. Value:
+func (o SiteOutput) CacheReserveEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CacheReserveEnable }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the cache instance.
+func (o SiteOutput) CacheReserveInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CacheReserveInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Whether the custom CacheTag name ignores case. Value range:
+func (o SiteOutput) CaseInsensitive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CaseInsensitive }).(pulumi.StringPtrOutput)
+}
+
 // The service location. Valid values:
 func (o SiteOutput) Coverage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.Coverage }).(pulumi.StringPtrOutput)
@@ -396,6 +531,21 @@ func (o SiteOutput) Coverage() pulumi.StringPtrOutput {
 // The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 func (o SiteOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether to enable mainland China network access optimization, the default is off. Value range:
+func (o SiteOutput) CrossBorderOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.CrossBorderOptimization }).(pulumi.StringPtrOutput)
+}
+
+// Development mode configuration function switch. Value range:
+func (o SiteOutput) DevelopmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
+}
+
+// CNAME flattening mode. Possible values:
+func (o SiteOutput) FlattenMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.FlattenMode }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the associated package instance.
@@ -408,14 +558,31 @@ func (o SiteOutput) Ipv6Enable() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Ipv6Enable }).(pulumi.StringOutput)
 }
 
+// The region in which Ipv6 is enabled. The default value is x.x:
+// - 'x.x': Global.
+// - 'Cn.cn ': Mainland China.
+func (o SiteOutput) Ipv6Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Ipv6Region }).(pulumi.StringOutput)
+}
+
 // The ID of the resource group
 func (o SiteOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Release the search engine crawler configuration. Value:
+func (o SiteOutput) SeoBypass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.SeoBypass }).(pulumi.StringPtrOutput)
+}
+
 // The website name.
 func (o SiteOutput) SiteName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.SiteName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+func (o SiteOutput) SiteNameExclusive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.SiteNameExclusive }).(pulumi.StringPtrOutput)
 }
 
 // The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
@@ -428,9 +595,19 @@ func (o SiteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// Custom CacheTag name.
+func (o SiteOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.TagName }).(pulumi.StringPtrOutput)
+}
+
 // Resource tags
 func (o SiteOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Version management enabled. When true, version management is turned on for the table site.
+func (o SiteOutput) VersionManagement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.BoolPtrOutput { return v.VersionManagement }).(pulumi.BoolPtrOutput)
 }
 
 type SiteArrayOutput struct{ *pulumi.OutputState }

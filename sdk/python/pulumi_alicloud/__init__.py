@@ -4195,6 +4195,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/kv",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/kv:Kv": "Kv"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/kvNamespace",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4275,6 +4283,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/routine",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/routine:Routine": "Routine"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/routineRoute",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/routineRoute:RoutineRoute": "RoutineRoute"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/scheduledPreloadExecution",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4303,6 +4327,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/siteDeliveryTask:SiteDeliveryTask": "SiteDeliveryTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/videoProcessing",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/videoProcessing:VideoProcessing": "VideoProcessing"
   }
  },
  {

@@ -26,11 +26,22 @@ class SiteArgs:
                  add_client_geolocation_header: Optional[pulumi.Input[builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_insensitive: Optional[pulumi.Input[builtins.str]] = None,
                  coverage: Optional[pulumi.Input[builtins.str]] = None,
+                 cross_border_optimization: Optional[pulumi.Input[builtins.str]] = None,
+                 development_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 flatten_mode: Optional[pulumi.Input[builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 ipv6_region: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 seo_bypass: Optional[pulumi.Input[builtins.str]] = None,
+                 site_name_exclusive: Optional[pulumi.Input[builtins.str]] = None,
                  site_version: Optional[pulumi.Input[builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 tag_name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 version_management: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a Site resource.
         :param pulumi.Input[builtins.str] instance_id: The ID of the associated package instance.
@@ -41,11 +52,24 @@ class SiteArgs:
         :param pulumi.Input[builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[builtins.str] cache_reserve_enable: Site cache hold switch. Value:
+        :param pulumi.Input[builtins.str] cache_reserve_instance_id: The ID of the cache instance.
+        :param pulumi.Input[builtins.str] case_insensitive: Whether the custom CacheTag name ignores case. Value range:
         :param pulumi.Input[builtins.str] coverage: The service location. Valid values:
+        :param pulumi.Input[builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
+        :param pulumi.Input[builtins.str] development_mode: Development mode configuration function switch. Value range:
+        :param pulumi.Input[builtins.str] flatten_mode: CNAME flattening mode. Possible values:
         :param pulumi.Input[builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
+        :param pulumi.Input[builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
+               - 'x.x': Global.
+               - 'Cn.cn ': Mainland China.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
+        :param pulumi.Input[builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input[builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Resource tags
+        :param pulumi.Input[builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "site_name", site_name)
@@ -57,16 +81,38 @@ class SiteArgs:
             pulumi.set(__self__, "add_real_client_ip_header", add_real_client_ip_header)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
+        if cache_reserve_enable is not None:
+            pulumi.set(__self__, "cache_reserve_enable", cache_reserve_enable)
+        if cache_reserve_instance_id is not None:
+            pulumi.set(__self__, "cache_reserve_instance_id", cache_reserve_instance_id)
+        if case_insensitive is not None:
+            pulumi.set(__self__, "case_insensitive", case_insensitive)
         if coverage is not None:
             pulumi.set(__self__, "coverage", coverage)
+        if cross_border_optimization is not None:
+            pulumi.set(__self__, "cross_border_optimization", cross_border_optimization)
+        if development_mode is not None:
+            pulumi.set(__self__, "development_mode", development_mode)
+        if flatten_mode is not None:
+            pulumi.set(__self__, "flatten_mode", flatten_mode)
         if ipv6_enable is not None:
             pulumi.set(__self__, "ipv6_enable", ipv6_enable)
+        if ipv6_region is not None:
+            pulumi.set(__self__, "ipv6_region", ipv6_region)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if seo_bypass is not None:
+            pulumi.set(__self__, "seo_bypass", seo_bypass)
+        if site_name_exclusive is not None:
+            pulumi.set(__self__, "site_name_exclusive", site_name_exclusive)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
+        if tag_name is not None:
+            pulumi.set(__self__, "tag_name", tag_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if version_management is not None:
+            pulumi.set(__self__, "version_management", version_management)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -143,6 +189,42 @@ class SiteArgs:
         pulumi.set(self, "cache_architecture_mode", value)
 
     @property
+    @pulumi.getter(name="cacheReserveEnable")
+    def cache_reserve_enable(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Site cache hold switch. Value:
+        """
+        return pulumi.get(self, "cache_reserve_enable")
+
+    @cache_reserve_enable.setter
+    def cache_reserve_enable(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cache_reserve_enable", value)
+
+    @property
+    @pulumi.getter(name="cacheReserveInstanceId")
+    def cache_reserve_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the cache instance.
+        """
+        return pulumi.get(self, "cache_reserve_instance_id")
+
+    @cache_reserve_instance_id.setter
+    def cache_reserve_instance_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cache_reserve_instance_id", value)
+
+    @property
+    @pulumi.getter(name="caseInsensitive")
+    def case_insensitive(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Whether the custom CacheTag name ignores case. Value range:
+        """
+        return pulumi.get(self, "case_insensitive")
+
+    @case_insensitive.setter
+    def case_insensitive(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "case_insensitive", value)
+
+    @property
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -153,6 +235,42 @@ class SiteArgs:
     @coverage.setter
     def coverage(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "coverage", value)
+
+    @property
+    @pulumi.getter(name="crossBorderOptimization")
+    def cross_border_optimization(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Whether to enable mainland China network access optimization, the default is off. Value range:
+        """
+        return pulumi.get(self, "cross_border_optimization")
+
+    @cross_border_optimization.setter
+    def cross_border_optimization(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cross_border_optimization", value)
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Development mode configuration function switch. Value range:
+        """
+        return pulumi.get(self, "development_mode")
+
+    @development_mode.setter
+    def development_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "development_mode", value)
+
+    @property
+    @pulumi.getter(name="flattenMode")
+    def flatten_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        CNAME flattening mode. Possible values:
+        """
+        return pulumi.get(self, "flatten_mode")
+
+    @flatten_mode.setter
+    def flatten_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "flatten_mode", value)
 
     @property
     @pulumi.getter(name="ipv6Enable")
@@ -167,6 +285,20 @@ class SiteArgs:
         pulumi.set(self, "ipv6_enable", value)
 
     @property
+    @pulumi.getter(name="ipv6Region")
+    def ipv6_region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which Ipv6 is enabled. The default value is x.x:
+        - 'x.x': Global.
+        - 'Cn.cn ': Mainland China.
+        """
+        return pulumi.get(self, "ipv6_region")
+
+    @ipv6_region.setter
+    def ipv6_region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ipv6_region", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -177,6 +309,30 @@ class SiteArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="seoBypass")
+    def seo_bypass(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Release the search engine crawler configuration. Value:
+        """
+        return pulumi.get(self, "seo_bypass")
+
+    @seo_bypass.setter
+    def seo_bypass(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seo_bypass", value)
+
+    @property
+    @pulumi.getter(name="siteNameExclusive")
+    def site_name_exclusive(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        """
+        return pulumi.get(self, "site_name_exclusive")
+
+    @site_name_exclusive.setter
+    def site_name_exclusive(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "site_name_exclusive", value)
 
     @property
     @pulumi.getter(name="siteVersion")
@@ -191,6 +347,18 @@ class SiteArgs:
         pulumi.set(self, "site_version", value)
 
     @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom CacheTag name.
+        """
+        return pulumi.get(self, "tag_name")
+
+    @tag_name.setter
+    def tag_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "tag_name", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -202,6 +370,18 @@ class SiteArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="versionManagement")
+    def version_management(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Version management enabled. When true, version management is turned on for the table site.
+        """
+        return pulumi.get(self, "version_management")
+
+    @version_management.setter
+    def version_management(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "version_management", value)
+
 
 @pulumi.input_type
 class _SiteState:
@@ -210,15 +390,26 @@ class _SiteState:
                  add_client_geolocation_header: Optional[pulumi.Input[builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_insensitive: Optional[pulumi.Input[builtins.str]] = None,
                  coverage: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 cross_border_optimization: Optional[pulumi.Input[builtins.str]] = None,
+                 development_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 flatten_mode: Optional[pulumi.Input[builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 ipv6_region: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 seo_bypass: Optional[pulumi.Input[builtins.str]] = None,
                  site_name: Optional[pulumi.Input[builtins.str]] = None,
+                 site_name_exclusive: Optional[pulumi.Input[builtins.str]] = None,
                  site_version: Optional[pulumi.Input[builtins.int]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 tag_name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 version_management: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Site resources.
         :param pulumi.Input[builtins.str] access_type: The DNS setup. Valid values:
@@ -227,15 +418,28 @@ class _SiteState:
         :param pulumi.Input[builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[builtins.str] cache_reserve_enable: Site cache hold switch. Value:
+        :param pulumi.Input[builtins.str] cache_reserve_instance_id: The ID of the cache instance.
+        :param pulumi.Input[builtins.str] case_insensitive: Whether the custom CacheTag name ignores case. Value range:
         :param pulumi.Input[builtins.str] coverage: The service location. Valid values:
         :param pulumi.Input[builtins.str] create_time: The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
+        :param pulumi.Input[builtins.str] development_mode: Development mode configuration function switch. Value range:
+        :param pulumi.Input[builtins.str] flatten_mode: CNAME flattening mode. Possible values:
         :param pulumi.Input[builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
+        :param pulumi.Input[builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
+               - 'x.x': Global.
+               - 'Cn.cn ': Mainland China.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[builtins.str] site_name: The website name.
+        :param pulumi.Input[builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Resource tags
+        :param pulumi.Input[builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
@@ -245,24 +449,46 @@ class _SiteState:
             pulumi.set(__self__, "add_real_client_ip_header", add_real_client_ip_header)
         if cache_architecture_mode is not None:
             pulumi.set(__self__, "cache_architecture_mode", cache_architecture_mode)
+        if cache_reserve_enable is not None:
+            pulumi.set(__self__, "cache_reserve_enable", cache_reserve_enable)
+        if cache_reserve_instance_id is not None:
+            pulumi.set(__self__, "cache_reserve_instance_id", cache_reserve_instance_id)
+        if case_insensitive is not None:
+            pulumi.set(__self__, "case_insensitive", case_insensitive)
         if coverage is not None:
             pulumi.set(__self__, "coverage", coverage)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_border_optimization is not None:
+            pulumi.set(__self__, "cross_border_optimization", cross_border_optimization)
+        if development_mode is not None:
+            pulumi.set(__self__, "development_mode", development_mode)
+        if flatten_mode is not None:
+            pulumi.set(__self__, "flatten_mode", flatten_mode)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if ipv6_enable is not None:
             pulumi.set(__self__, "ipv6_enable", ipv6_enable)
+        if ipv6_region is not None:
+            pulumi.set(__self__, "ipv6_region", ipv6_region)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if seo_bypass is not None:
+            pulumi.set(__self__, "seo_bypass", seo_bypass)
         if site_name is not None:
             pulumi.set(__self__, "site_name", site_name)
+        if site_name_exclusive is not None:
+            pulumi.set(__self__, "site_name_exclusive", site_name_exclusive)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tag_name is not None:
+            pulumi.set(__self__, "tag_name", tag_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if version_management is not None:
+            pulumi.set(__self__, "version_management", version_management)
 
     @property
     @pulumi.getter(name="accessType")
@@ -315,6 +541,42 @@ class _SiteState:
         pulumi.set(self, "cache_architecture_mode", value)
 
     @property
+    @pulumi.getter(name="cacheReserveEnable")
+    def cache_reserve_enable(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Site cache hold switch. Value:
+        """
+        return pulumi.get(self, "cache_reserve_enable")
+
+    @cache_reserve_enable.setter
+    def cache_reserve_enable(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cache_reserve_enable", value)
+
+    @property
+    @pulumi.getter(name="cacheReserveInstanceId")
+    def cache_reserve_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the cache instance.
+        """
+        return pulumi.get(self, "cache_reserve_instance_id")
+
+    @cache_reserve_instance_id.setter
+    def cache_reserve_instance_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cache_reserve_instance_id", value)
+
+    @property
+    @pulumi.getter(name="caseInsensitive")
+    def case_insensitive(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Whether the custom CacheTag name ignores case. Value range:
+        """
+        return pulumi.get(self, "case_insensitive")
+
+    @case_insensitive.setter
+    def case_insensitive(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "case_insensitive", value)
+
+    @property
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -337,6 +599,42 @@ class _SiteState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="crossBorderOptimization")
+    def cross_border_optimization(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Whether to enable mainland China network access optimization, the default is off. Value range:
+        """
+        return pulumi.get(self, "cross_border_optimization")
+
+    @cross_border_optimization.setter
+    def cross_border_optimization(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cross_border_optimization", value)
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Development mode configuration function switch. Value range:
+        """
+        return pulumi.get(self, "development_mode")
+
+    @development_mode.setter
+    def development_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "development_mode", value)
+
+    @property
+    @pulumi.getter(name="flattenMode")
+    def flatten_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        CNAME flattening mode. Possible values:
+        """
+        return pulumi.get(self, "flatten_mode")
+
+    @flatten_mode.setter
+    def flatten_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "flatten_mode", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -363,6 +661,20 @@ class _SiteState:
         pulumi.set(self, "ipv6_enable", value)
 
     @property
+    @pulumi.getter(name="ipv6Region")
+    def ipv6_region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which Ipv6 is enabled. The default value is x.x:
+        - 'x.x': Global.
+        - 'Cn.cn ': Mainland China.
+        """
+        return pulumi.get(self, "ipv6_region")
+
+    @ipv6_region.setter
+    def ipv6_region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ipv6_region", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -375,6 +687,18 @@ class _SiteState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="seoBypass")
+    def seo_bypass(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Release the search engine crawler configuration. Value:
+        """
+        return pulumi.get(self, "seo_bypass")
+
+    @seo_bypass.setter
+    def seo_bypass(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seo_bypass", value)
+
+    @property
     @pulumi.getter(name="siteName")
     def site_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -385,6 +709,18 @@ class _SiteState:
     @site_name.setter
     def site_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "site_name", value)
+
+    @property
+    @pulumi.getter(name="siteNameExclusive")
+    def site_name_exclusive(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        """
+        return pulumi.get(self, "site_name_exclusive")
+
+    @site_name_exclusive.setter
+    def site_name_exclusive(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "site_name_exclusive", value)
 
     @property
     @pulumi.getter(name="siteVersion")
@@ -411,6 +747,18 @@ class _SiteState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom CacheTag name.
+        """
+        return pulumi.get(self, "tag_name")
+
+    @tag_name.setter
+    def tag_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "tag_name", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -421,6 +769,18 @@ class _SiteState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="versionManagement")
+    def version_management(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Version management enabled. When true, version management is turned on for the table site.
+        """
+        return pulumi.get(self, "version_management")
+
+    @version_management.setter
+    def version_management(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "version_management", value)
 
 
 @pulumi.type_token("alicloud:esa/site:Site")
@@ -433,13 +793,24 @@ class Site(pulumi.CustomResource):
                  add_client_geolocation_header: Optional[pulumi.Input[builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_insensitive: Optional[pulumi.Input[builtins.str]] = None,
                  coverage: Optional[pulumi.Input[builtins.str]] = None,
+                 cross_border_optimization: Optional[pulumi.Input[builtins.str]] = None,
+                 development_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 flatten_mode: Optional[pulumi.Input[builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 ipv6_region: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 seo_bypass: Optional[pulumi.Input[builtins.str]] = None,
                  site_name: Optional[pulumi.Input[builtins.str]] = None,
+                 site_name_exclusive: Optional[pulumi.Input[builtins.str]] = None,
                  site_version: Optional[pulumi.Input[builtins.int]] = None,
+                 tag_name: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 version_management: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         Provides a ESA Site resource.
@@ -497,13 +868,26 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[builtins.str] cache_reserve_enable: Site cache hold switch. Value:
+        :param pulumi.Input[builtins.str] cache_reserve_instance_id: The ID of the cache instance.
+        :param pulumi.Input[builtins.str] case_insensitive: Whether the custom CacheTag name ignores case. Value range:
         :param pulumi.Input[builtins.str] coverage: The service location. Valid values:
+        :param pulumi.Input[builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
+        :param pulumi.Input[builtins.str] development_mode: Development mode configuration function switch. Value range:
+        :param pulumi.Input[builtins.str] flatten_mode: CNAME flattening mode. Possible values:
         :param pulumi.Input[builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
+        :param pulumi.Input[builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
+               - 'x.x': Global.
+               - 'Cn.cn ': Mainland China.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[builtins.str] site_name: The website name.
+        :param pulumi.Input[builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
+        :param pulumi.Input[builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Resource tags
+        :param pulumi.Input[builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
         """
         ...
     @overload
@@ -578,13 +962,24 @@ class Site(pulumi.CustomResource):
                  add_client_geolocation_header: Optional[pulumi.Input[builtins.str]] = None,
                  add_real_client_ip_header: Optional[pulumi.Input[builtins.str]] = None,
                  cache_architecture_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 cache_reserve_instance_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_insensitive: Optional[pulumi.Input[builtins.str]] = None,
                  coverage: Optional[pulumi.Input[builtins.str]] = None,
+                 cross_border_optimization: Optional[pulumi.Input[builtins.str]] = None,
+                 development_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 flatten_mode: Optional[pulumi.Input[builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[builtins.str]] = None,
+                 ipv6_region: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 seo_bypass: Optional[pulumi.Input[builtins.str]] = None,
                  site_name: Optional[pulumi.Input[builtins.str]] = None,
+                 site_name_exclusive: Optional[pulumi.Input[builtins.str]] = None,
                  site_version: Optional[pulumi.Input[builtins.int]] = None,
+                 tag_name: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 version_management: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -598,17 +993,28 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["add_client_geolocation_header"] = add_client_geolocation_header
             __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
             __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
+            __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
+            __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
+            __props__.__dict__["case_insensitive"] = case_insensitive
             __props__.__dict__["coverage"] = coverage
+            __props__.__dict__["cross_border_optimization"] = cross_border_optimization
+            __props__.__dict__["development_mode"] = development_mode
+            __props__.__dict__["flatten_mode"] = flatten_mode
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["ipv6_enable"] = ipv6_enable
+            __props__.__dict__["ipv6_region"] = ipv6_region
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["seo_bypass"] = seo_bypass
             if site_name is None and not opts.urn:
                 raise TypeError("Missing required property 'site_name'")
             __props__.__dict__["site_name"] = site_name
+            __props__.__dict__["site_name_exclusive"] = site_name_exclusive
             __props__.__dict__["site_version"] = site_version
+            __props__.__dict__["tag_name"] = tag_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["version_management"] = version_management
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Site, __self__).__init__(
@@ -625,15 +1031,26 @@ class Site(pulumi.CustomResource):
             add_client_geolocation_header: Optional[pulumi.Input[builtins.str]] = None,
             add_real_client_ip_header: Optional[pulumi.Input[builtins.str]] = None,
             cache_architecture_mode: Optional[pulumi.Input[builtins.str]] = None,
+            cache_reserve_enable: Optional[pulumi.Input[builtins.str]] = None,
+            cache_reserve_instance_id: Optional[pulumi.Input[builtins.str]] = None,
+            case_insensitive: Optional[pulumi.Input[builtins.str]] = None,
             coverage: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
+            cross_border_optimization: Optional[pulumi.Input[builtins.str]] = None,
+            development_mode: Optional[pulumi.Input[builtins.str]] = None,
+            flatten_mode: Optional[pulumi.Input[builtins.str]] = None,
             instance_id: Optional[pulumi.Input[builtins.str]] = None,
             ipv6_enable: Optional[pulumi.Input[builtins.str]] = None,
+            ipv6_region: Optional[pulumi.Input[builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
+            seo_bypass: Optional[pulumi.Input[builtins.str]] = None,
             site_name: Optional[pulumi.Input[builtins.str]] = None,
+            site_name_exclusive: Optional[pulumi.Input[builtins.str]] = None,
             site_version: Optional[pulumi.Input[builtins.int]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None) -> 'Site':
+            tag_name: Optional[pulumi.Input[builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            version_management: Optional[pulumi.Input[builtins.bool]] = None) -> 'Site':
         """
         Get an existing Site resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -647,15 +1064,28 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[builtins.str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
         :param pulumi.Input[builtins.str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[builtins.str] cache_reserve_enable: Site cache hold switch. Value:
+        :param pulumi.Input[builtins.str] cache_reserve_instance_id: The ID of the cache instance.
+        :param pulumi.Input[builtins.str] case_insensitive: Whether the custom CacheTag name ignores case. Value range:
         :param pulumi.Input[builtins.str] coverage: The service location. Valid values:
         :param pulumi.Input[builtins.str] create_time: The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[builtins.str] cross_border_optimization: Whether to enable mainland China network access optimization, the default is off. Value range:
+        :param pulumi.Input[builtins.str] development_mode: Development mode configuration function switch. Value range:
+        :param pulumi.Input[builtins.str] flatten_mode: CNAME flattening mode. Possible values:
         :param pulumi.Input[builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[builtins.str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
+        :param pulumi.Input[builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
+               - 'x.x': Global.
+               - 'Cn.cn ': Mainland China.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[builtins.str] site_name: The website name.
+        :param pulumi.Input[builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
         :param pulumi.Input[builtins.int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] tag_name: Custom CacheTag name.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Resource tags
+        :param pulumi.Input[builtins.bool] version_management: Version management enabled. When true, version management is turned on for the table site.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -665,15 +1095,26 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["add_client_geolocation_header"] = add_client_geolocation_header
         __props__.__dict__["add_real_client_ip_header"] = add_real_client_ip_header
         __props__.__dict__["cache_architecture_mode"] = cache_architecture_mode
+        __props__.__dict__["cache_reserve_enable"] = cache_reserve_enable
+        __props__.__dict__["cache_reserve_instance_id"] = cache_reserve_instance_id
+        __props__.__dict__["case_insensitive"] = case_insensitive
         __props__.__dict__["coverage"] = coverage
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_border_optimization"] = cross_border_optimization
+        __props__.__dict__["development_mode"] = development_mode
+        __props__.__dict__["flatten_mode"] = flatten_mode
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ipv6_enable"] = ipv6_enable
+        __props__.__dict__["ipv6_region"] = ipv6_region
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["seo_bypass"] = seo_bypass
         __props__.__dict__["site_name"] = site_name
+        __props__.__dict__["site_name_exclusive"] = site_name_exclusive
         __props__.__dict__["site_version"] = site_version
         __props__.__dict__["status"] = status
+        __props__.__dict__["tag_name"] = tag_name
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["version_management"] = version_management
         return Site(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -711,6 +1152,30 @@ class Site(pulumi.CustomResource):
         return pulumi.get(self, "cache_architecture_mode")
 
     @property
+    @pulumi.getter(name="cacheReserveEnable")
+    def cache_reserve_enable(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Site cache hold switch. Value:
+        """
+        return pulumi.get(self, "cache_reserve_enable")
+
+    @property
+    @pulumi.getter(name="cacheReserveInstanceId")
+    def cache_reserve_instance_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The ID of the cache instance.
+        """
+        return pulumi.get(self, "cache_reserve_instance_id")
+
+    @property
+    @pulumi.getter(name="caseInsensitive")
+    def case_insensitive(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Whether the custom CacheTag name ignores case. Value range:
+        """
+        return pulumi.get(self, "case_insensitive")
+
+    @property
     @pulumi.getter
     def coverage(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -725,6 +1190,30 @@ class Site(pulumi.CustomResource):
         The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossBorderOptimization")
+    def cross_border_optimization(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Whether to enable mainland China network access optimization, the default is off. Value range:
+        """
+        return pulumi.get(self, "cross_border_optimization")
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Development mode configuration function switch. Value range:
+        """
+        return pulumi.get(self, "development_mode")
+
+    @property
+    @pulumi.getter(name="flattenMode")
+    def flatten_mode(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        CNAME flattening mode. Possible values:
+        """
+        return pulumi.get(self, "flatten_mode")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -743,6 +1232,16 @@ class Site(pulumi.CustomResource):
         return pulumi.get(self, "ipv6_enable")
 
     @property
+    @pulumi.getter(name="ipv6Region")
+    def ipv6_region(self) -> pulumi.Output[builtins.str]:
+        """
+        The region in which Ipv6 is enabled. The default value is x.x:
+        - 'x.x': Global.
+        - 'Cn.cn ': Mainland China.
+        """
+        return pulumi.get(self, "ipv6_region")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[builtins.str]:
         """
@@ -751,12 +1250,28 @@ class Site(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="seoBypass")
+    def seo_bypass(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Release the search engine crawler configuration. Value:
+        """
+        return pulumi.get(self, "seo_bypass")
+
+    @property
     @pulumi.getter(name="siteName")
     def site_name(self) -> pulumi.Output[builtins.str]:
         """
         The website name.
         """
         return pulumi.get(self, "site_name")
+
+    @property
+    @pulumi.getter(name="siteNameExclusive")
+    def site_name_exclusive(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+        """
+        return pulumi.get(self, "site_name_exclusive")
 
     @property
     @pulumi.getter(name="siteVersion")
@@ -775,10 +1290,26 @@ class Site(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Custom CacheTag name.
+        """
+        return pulumi.get(self, "tag_name")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
         Resource tags
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="versionManagement")
+    def version_management(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Version management enabled. When true, version management is turned on for the table site.
+        """
+        return pulumi.get(self, "version_management")
 

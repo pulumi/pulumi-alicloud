@@ -237,14 +237,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output<String> storage;
 
     /**
-     * @return The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * @return The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     public Output<String> storage() {

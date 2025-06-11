@@ -100,6 +100,18 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly cacheArchitectureMode!: pulumi.Output<string>;
     /**
+     * Site cache hold switch. Value:
+     */
+    public readonly cacheReserveEnable!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the cache instance.
+     */
+    public readonly cacheReserveInstanceId!: pulumi.Output<string | undefined>;
+    /**
+     * Whether the custom CacheTag name ignores case. Value range:
+     */
+    public readonly caseInsensitive!: pulumi.Output<string | undefined>;
+    /**
      * The service location. Valid values:
      */
     public readonly coverage!: pulumi.Output<string | undefined>;
@@ -107,6 +119,18 @@ export class Site extends pulumi.CustomResource {
      * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Whether to enable mainland China network access optimization, the default is off. Value range:
+     */
+    public readonly crossBorderOptimization!: pulumi.Output<string | undefined>;
+    /**
+     * Development mode configuration function switch. Value range:
+     */
+    public readonly developmentMode!: pulumi.Output<string | undefined>;
+    /**
+     * CNAME flattening mode. Possible values:
+     */
+    public readonly flattenMode!: pulumi.Output<string | undefined>;
     /**
      * The ID of the associated package instance.
      */
@@ -116,13 +140,27 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly ipv6Enable!: pulumi.Output<string>;
     /**
+     * The region in which Ipv6 is enabled. The default value is x.x:
+     * - 'x.x': Global.
+     * - 'Cn.cn ': Mainland China.
+     */
+    public readonly ipv6Region!: pulumi.Output<string>;
+    /**
      * The ID of the resource group
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * Release the search engine crawler configuration. Value:
+     */
+    public readonly seoBypass!: pulumi.Output<string | undefined>;
+    /**
      * The website name.
      */
     public readonly siteName!: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     */
+    public readonly siteNameExclusive!: pulumi.Output<string | undefined>;
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
@@ -132,9 +170,17 @@ export class Site extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Custom CacheTag name.
+     */
+    public readonly tagName!: pulumi.Output<string | undefined>;
+    /**
      * Resource tags
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Version management enabled. When true, version management is turned on for the table site.
+     */
+    public readonly versionManagement!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Site resource with the given unique name, arguments, and options.
@@ -153,15 +199,26 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["addClientGeolocationHeader"] = state ? state.addClientGeolocationHeader : undefined;
             resourceInputs["addRealClientIpHeader"] = state ? state.addRealClientIpHeader : undefined;
             resourceInputs["cacheArchitectureMode"] = state ? state.cacheArchitectureMode : undefined;
+            resourceInputs["cacheReserveEnable"] = state ? state.cacheReserveEnable : undefined;
+            resourceInputs["cacheReserveInstanceId"] = state ? state.cacheReserveInstanceId : undefined;
+            resourceInputs["caseInsensitive"] = state ? state.caseInsensitive : undefined;
             resourceInputs["coverage"] = state ? state.coverage : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossBorderOptimization"] = state ? state.crossBorderOptimization : undefined;
+            resourceInputs["developmentMode"] = state ? state.developmentMode : undefined;
+            resourceInputs["flattenMode"] = state ? state.flattenMode : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["ipv6Region"] = state ? state.ipv6Region : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["seoBypass"] = state ? state.seoBypass : undefined;
             resourceInputs["siteName"] = state ? state.siteName : undefined;
+            resourceInputs["siteNameExclusive"] = state ? state.siteNameExclusive : undefined;
             resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tagName"] = state ? state.tagName : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["versionManagement"] = state ? state.versionManagement : undefined;
         } else {
             const args = argsOrState as SiteArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -174,13 +231,24 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["addClientGeolocationHeader"] = args ? args.addClientGeolocationHeader : undefined;
             resourceInputs["addRealClientIpHeader"] = args ? args.addRealClientIpHeader : undefined;
             resourceInputs["cacheArchitectureMode"] = args ? args.cacheArchitectureMode : undefined;
+            resourceInputs["cacheReserveEnable"] = args ? args.cacheReserveEnable : undefined;
+            resourceInputs["cacheReserveInstanceId"] = args ? args.cacheReserveInstanceId : undefined;
+            resourceInputs["caseInsensitive"] = args ? args.caseInsensitive : undefined;
             resourceInputs["coverage"] = args ? args.coverage : undefined;
+            resourceInputs["crossBorderOptimization"] = args ? args.crossBorderOptimization : undefined;
+            resourceInputs["developmentMode"] = args ? args.developmentMode : undefined;
+            resourceInputs["flattenMode"] = args ? args.flattenMode : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
+            resourceInputs["ipv6Region"] = args ? args.ipv6Region : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["seoBypass"] = args ? args.seoBypass : undefined;
             resourceInputs["siteName"] = args ? args.siteName : undefined;
+            resourceInputs["siteNameExclusive"] = args ? args.siteNameExclusive : undefined;
             resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
+            resourceInputs["tagName"] = args ? args.tagName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["versionManagement"] = args ? args.versionManagement : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -212,6 +280,18 @@ export interface SiteState {
      */
     cacheArchitectureMode?: pulumi.Input<string>;
     /**
+     * Site cache hold switch. Value:
+     */
+    cacheReserveEnable?: pulumi.Input<string>;
+    /**
+     * The ID of the cache instance.
+     */
+    cacheReserveInstanceId?: pulumi.Input<string>;
+    /**
+     * Whether the custom CacheTag name ignores case. Value range:
+     */
+    caseInsensitive?: pulumi.Input<string>;
+    /**
      * The service location. Valid values:
      */
     coverage?: pulumi.Input<string>;
@@ -219,6 +299,18 @@ export interface SiteState {
      * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether to enable mainland China network access optimization, the default is off. Value range:
+     */
+    crossBorderOptimization?: pulumi.Input<string>;
+    /**
+     * Development mode configuration function switch. Value range:
+     */
+    developmentMode?: pulumi.Input<string>;
+    /**
+     * CNAME flattening mode. Possible values:
+     */
+    flattenMode?: pulumi.Input<string>;
     /**
      * The ID of the associated package instance.
      */
@@ -228,13 +320,27 @@ export interface SiteState {
      */
     ipv6Enable?: pulumi.Input<string>;
     /**
+     * The region in which Ipv6 is enabled. The default value is x.x:
+     * - 'x.x': Global.
+     * - 'Cn.cn ': Mainland China.
+     */
+    ipv6Region?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * Release the search engine crawler configuration. Value:
+     */
+    seoBypass?: pulumi.Input<string>;
+    /**
      * The website name.
      */
     siteName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     */
+    siteNameExclusive?: pulumi.Input<string>;
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
@@ -244,9 +350,17 @@ export interface SiteState {
      */
     status?: pulumi.Input<string>;
     /**
+     * Custom CacheTag name.
+     */
+    tagName?: pulumi.Input<string>;
+    /**
      * Resource tags
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Version management enabled. When true, version management is turned on for the table site.
+     */
+    versionManagement?: pulumi.Input<boolean>;
 }
 
 /**
@@ -272,9 +386,33 @@ export interface SiteArgs {
      */
     cacheArchitectureMode?: pulumi.Input<string>;
     /**
+     * Site cache hold switch. Value:
+     */
+    cacheReserveEnable?: pulumi.Input<string>;
+    /**
+     * The ID of the cache instance.
+     */
+    cacheReserveInstanceId?: pulumi.Input<string>;
+    /**
+     * Whether the custom CacheTag name ignores case. Value range:
+     */
+    caseInsensitive?: pulumi.Input<string>;
+    /**
      * The service location. Valid values:
      */
     coverage?: pulumi.Input<string>;
+    /**
+     * Whether to enable mainland China network access optimization, the default is off. Value range:
+     */
+    crossBorderOptimization?: pulumi.Input<string>;
+    /**
+     * Development mode configuration function switch. Value range:
+     */
+    developmentMode?: pulumi.Input<string>;
+    /**
+     * CNAME flattening mode. Possible values:
+     */
+    flattenMode?: pulumi.Input<string>;
     /**
      * The ID of the associated package instance.
      */
@@ -284,19 +422,41 @@ export interface SiteArgs {
      */
     ipv6Enable?: pulumi.Input<string>;
     /**
+     * The region in which Ipv6 is enabled. The default value is x.x:
+     * - 'x.x': Global.
+     * - 'Cn.cn ': Mainland China.
+     */
+    ipv6Region?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Release the search engine crawler configuration. Value:
+     */
+    seoBypass?: pulumi.Input<string>;
     /**
      * The website name.
      */
     siteName: pulumi.Input<string>;
     /**
+     * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
+     */
+    siteNameExclusive?: pulumi.Input<string>;
+    /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
+     * Custom CacheTag name.
+     */
+    tagName?: pulumi.Input<string>;
+    /**
      * Resource tags
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Version management enabled. When true, version management is turned on for the table site.
+     */
+    versionManagement?: pulumi.Input<boolean>;
 }
