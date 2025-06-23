@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> DesiredSize { get; private set; } = null!;
 
         /// <summary>
+        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// </summary>
+        [Output("efloNodeGroup")]
+        public Output<Outputs.NodePoolEfloNodeGroup?> EfloNodeGroup { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to force deletion.
         /// </summary>
         [Output("forceDelete")]
@@ -107,7 +113,8 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
-        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        /// - `Ubuntu`: Ubuntu image.
+        /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         /// </summary>
         [Output("imageType")]
         public Output<string> ImageType { get; private set; } = null!;
@@ -122,7 +129,7 @@ namespace Pulumi.AliCloud.CS
         /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -481,6 +488,14 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.NodePoolTeeConfig> TeeConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Node pool type, value range:
+        /// -'ess': common node pool (including hosting function and auto scaling function).
+        /// -'lingjun': Lingjun node pool.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the node after expansion can be scheduled.
         /// </summary>
         [Output("unschedulable")]
@@ -616,6 +631,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
+        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// </summary>
+        [Input("efloNodeGroup")]
+        public Input<Inputs.NodePoolEfloNodeGroupArgs>? EfloNodeGroup { get; set; }
+
+        /// <summary>
         /// Whether to force deletion.
         /// </summary>
         [Input("forceDelete")]
@@ -643,7 +664,8 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
-        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        /// - `Ubuntu`: Ubuntu image.
+        /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -660,7 +682,7 @@ namespace Pulumi.AliCloud.CS
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
-        [Input("instanceTypes", required: true)]
+        [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
 
         /// <summary>
@@ -1085,6 +1107,14 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.NodePoolTeeConfigArgs>? TeeConfig { get; set; }
 
         /// <summary>
+        /// Node pool type, value range:
+        /// -'ess': common node pool (including hosting function and auto scaling function).
+        /// -'lingjun': Lingjun node pool.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// Whether the node after expansion can be scheduled.
         /// </summary>
         [Input("unschedulable")]
@@ -1102,7 +1132,7 @@ namespace Pulumi.AliCloud.CS
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        [Input("vswitchIds", required: true)]
+        [Input("vswitchIds")]
         private InputList<string>? _vswitchIds;
 
         /// <summary>
@@ -1183,6 +1213,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
+        /// Lingjun node pool configuration. See `eflo_node_group` below.
+        /// </summary>
+        [Input("efloNodeGroup")]
+        public Input<Inputs.NodePoolEfloNodeGroupGetArgs>? EfloNodeGroup { get; set; }
+
+        /// <summary>
         /// Whether to force deletion.
         /// </summary>
         [Input("forceDelete")]
@@ -1210,7 +1246,8 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
-        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        /// - `Ubuntu`: Ubuntu image.
+        /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1662,6 +1699,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("teeConfig")]
         public Input<Inputs.NodePoolTeeConfigGetArgs>? TeeConfig { get; set; }
+
+        /// <summary>
+        /// Node pool type, value range:
+        /// -'ess': common node pool (including hosting function and auto scaling function).
+        /// -'lingjun': Lingjun node pool.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Whether the node after expansion can be scheduled.

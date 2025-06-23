@@ -15,13 +15,10 @@ var _ = internal.GetEnvOrDefault
 
 type CustomDataDisk struct {
 	// Instance storage type
-	//
 	// local_ssd: local SSD disk
-	//
 	// cloud_essd:ESSD PL1 cloud disk
 	Category *string `pulumi:"category"`
 	// Cloud Disk Performance
-	//
 	// Currently only supports PL1
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// Instance storage space. Unit: GB.
@@ -41,13 +38,10 @@ type CustomDataDiskInput interface {
 
 type CustomDataDiskArgs struct {
 	// Instance storage type
-	//
 	// local_ssd: local SSD disk
-	//
 	// cloud_essd:ESSD PL1 cloud disk
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Cloud Disk Performance
-	//
 	// Currently only supports PL1
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// Instance storage space. Unit: GB.
@@ -106,16 +100,13 @@ func (o CustomDataDiskOutput) ToCustomDataDiskOutputWithContext(ctx context.Cont
 }
 
 // Instance storage type
-//
 // local_ssd: local SSD disk
-//
 // cloud_essd:ESSD PL1 cloud disk
 func (o CustomDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Disk Performance
-//
 // Currently only supports PL1
 func (o CustomDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)

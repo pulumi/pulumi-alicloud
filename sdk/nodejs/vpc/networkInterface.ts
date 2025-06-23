@@ -137,6 +137,7 @@ export class NetworkInterface extends pulumi.CustomResource {
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
+    public readonly sourceDestCheck!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -180,6 +181,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["sourceDestCheck"] = state ? state.sourceDestCheck : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -207,6 +209,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["sourceDestCheck"] = args ? args.sourceDestCheck : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["mac"] = undefined /*out*/;
@@ -275,6 +278,7 @@ export interface NetworkInterfaceState {
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceDestCheck?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -340,6 +344,7 @@ export interface NetworkInterfaceArgs {
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceDestCheck?: pulumi.Input<boolean>;
     /**
      * A mapping of tags to assign to the resource.
      */

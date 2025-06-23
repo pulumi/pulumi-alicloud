@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }
@@ -153,11 +153,11 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class GetServiceResult
     {
         /// <summary>
-        /// The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+        /// The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
         /// </summary>
         public readonly string ChangingAffectTime;
         /// <summary>
-        /// The billing method to be effective.
+        /// The metering method for the next cycle.
         /// </summary>
         public readonly string ChangingChargeType;
         public readonly string? Enable;

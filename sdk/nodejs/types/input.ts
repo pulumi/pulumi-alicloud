@@ -5126,6 +5126,17 @@ export namespace cs {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface NodePoolEfloNodeGroup {
+        /**
+         * The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+         */
+        clusterId?: pulumi.Input<string>;
+        /**
+         * When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+         */
+        groupId?: pulumi.Input<string>;
+    }
+
     export interface NodePoolKubeletConfiguration {
         /**
          * Allowed sysctl mode whitelist.
@@ -7983,6 +7994,10 @@ export namespace ecs {
          */
         encrypted?: pulumi.Input<boolean>;
         /**
+         * The ID of the KMS key used for the data disk.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
          * The name of the data disk.
          */
         name?: pulumi.Input<string>;
@@ -8048,6 +8063,10 @@ export namespace ecs {
          * The Iops.
          */
         iops?: pulumi.Input<string>;
+        /**
+         * The ID of the KMS key to use for the system disk.
+         */
+        kmsKeyId?: pulumi.Input<string>;
         /**
          * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
          */
@@ -8335,6 +8354,7 @@ export namespace ecs {
          * Default to false
          */
         encrypted?: pulumi.Input<boolean>;
+        kmsKeyId?: pulumi.Input<string>;
         /**
          * The name of the data disk.
          */
@@ -8408,6 +8428,7 @@ export namespace ecs {
          */
         encrypted?: pulumi.Input<boolean>;
         iops?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string>;
         /**
          * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
          */
@@ -15703,15 +15724,12 @@ export namespace rds {
     export interface CustomDataDisk {
         /**
          * Instance storage type
-         *
          * local_ssd: local SSD disk
-         *
          * cloud_essd:ESSD PL1 cloud disk
          */
         category?: pulumi.Input<string>;
         /**
          * Cloud Disk Performance
-         *
          * Currently only supports PL1
          */
         performanceLevel?: pulumi.Input<string>;

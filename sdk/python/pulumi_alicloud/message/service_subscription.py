@@ -33,9 +33,11 @@ class ServiceSubscriptionArgs:
         """
         The set of arguments for constructing a ServiceSubscription resource.
         :param pulumi.Input[builtins.str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
-               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - `Email Format`: mail:directmail:{MailAddress}
+               - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+               - `Queue Format`: A queue name.
+               - `MPush Format`: An AppKey.
+               - `Sms Format`: A mobile number
+               - `Email Format`: An email address.
         :param pulumi.Input[builtins.str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         :param pulumi.Input[builtins.str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[builtins.str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -64,9 +66,11 @@ class ServiceSubscriptionArgs:
     def endpoint(self) -> pulumi.Input[builtins.str]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
-        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - `Email Format`: mail:directmail:{MailAddress}
+        - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+        - `Queue Format`: A queue name.
+        - `MPush Format`: An AppKey.
+        - `Sms Format`: A mobile number
+        - `Email Format`: An email address.
         """
         return pulumi.get(self, "endpoint")
 
@@ -178,9 +182,11 @@ class _ServiceSubscriptionState:
         :param pulumi.Input[builtins.int] create_time: (Available since v1.244.0) The time when the subscription was created.
         :param pulumi.Input['ServiceSubscriptionDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[builtins.str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
-               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - `Email Format`: mail:directmail:{MailAddress}
+               - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+               - `Queue Format`: A queue name.
+               - `MPush Format`: An AppKey.
+               - `Sms Format`: A mobile number
+               - `Email Format`: An email address.
         :param pulumi.Input[builtins.str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[builtins.str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[builtins.str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
@@ -238,9 +244,11 @@ class _ServiceSubscriptionState:
     def endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
-        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - `Email Format`: mail:directmail:{MailAddress}
+        - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+        - `Queue Format`: A queue name.
+        - `MPush Format`: An AppKey.
+        - `Sms Format`: A mobile number
+        - `Email Format`: An email address.
         """
         return pulumi.get(self, "endpoint")
 
@@ -341,7 +349,7 @@ class ServiceSubscription(pulumi.CustomResource):
         """
         Provides a Message Service Subscription resource.
 
-        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -383,9 +391,11 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[builtins.str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
-               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - `Email Format`: mail:directmail:{MailAddress}
+               - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+               - `Queue Format`: A queue name.
+               - `MPush Format`: An AppKey.
+               - `Sms Format`: A mobile number
+               - `Email Format`: An email address.
         :param pulumi.Input[builtins.str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[builtins.str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[builtins.str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
@@ -404,7 +414,7 @@ class ServiceSubscription(pulumi.CustomResource):
         """
         Provides a Message Service Subscription resource.
 
-        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -520,9 +530,11 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] create_time: (Available since v1.244.0) The time when the subscription was created.
         :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[builtins.str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
-               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - `Email Format`: mail:directmail:{MailAddress}
+               - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+               - `Queue Format`: A queue name.
+               - `MPush Format`: An AppKey.
+               - `Sms Format`: A mobile number
+               - `Email Format`: An email address.
         :param pulumi.Input[builtins.str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[builtins.str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[builtins.str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
@@ -568,9 +580,11 @@ class ServiceSubscription(pulumi.CustomResource):
     def endpoint(self) -> pulumi.Output[builtins.str]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
-        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - `Email Format`: mail:directmail:{MailAddress}
+        - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+        - `Queue Format`: A queue name.
+        - `MPush Format`: An AppKey.
+        - `Sms Format`: A mobile number
+        - `Email Format`: An email address.
         """
         return pulumi.get(self, "endpoint")
 

@@ -23,8 +23,6 @@ __all__ = ['NodePoolArgs', 'NodePool']
 class NodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[builtins.str],
-                 instance_types: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
-                 vswitch_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[builtins.int]] = None,
                  cis_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -33,12 +31,14 @@ class NodePoolArgs:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
                  desired_size: Optional[pulumi.Input[builtins.str]] = None,
+                 eflo_node_group: Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  format_disk: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  image_type: Optional[pulumi.Input[builtins.str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[builtins.bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[builtins.int]] = None,
@@ -92,14 +92,14 @@ class NodePoolArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  tee_config: Optional[pulumi.Input['NodePoolTeeConfigArgs']] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[builtins.str]] = None):
+                 user_data: Optional[pulumi.Input[builtins.str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a NodePool resource.
         :param pulumi.Input[builtins.str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         :param pulumi.Input[builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
@@ -108,6 +108,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[builtins.str] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input['NodePoolEfloNodeGroupArgs'] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
         :param pulumi.Input[builtins.bool] force_delete: Whether to force deletion.
         :param pulumi.Input[builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[builtins.str] image_id: The custom image ID. The system-provided image is used by default.
@@ -120,9 +121,11 @@ class NodePoolArgs:
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
-               - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+               - `Ubuntu`: Ubuntu image.
+               - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[builtins.int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
@@ -196,13 +199,15 @@ class NodePoolArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[builtins.str] type: Node pool type, value range:
+               -'ess': common node pool (including hosting function and auto scaling function).
+               -'lingjun': Lingjun node pool.
         :param pulumi.Input[builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[builtins.str] user_data: Node custom data, base64-encoded.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -222,6 +227,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if desired_size is not None:
             pulumi.set(__self__, "desired_size", desired_size)
+        if eflo_node_group is not None:
+            pulumi.set(__self__, "eflo_node_group", eflo_node_group)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if format_disk is not None:
@@ -234,6 +241,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
         if internet_charge_type is not None:
@@ -352,12 +361,16 @@ class NodePoolArgs:
             pulumi.set(__self__, "taints", taints)
         if tee_config is not None:
             pulumi.set(__self__, "tee_config", tee_config)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if unschedulable is not None:
             pulumi.set(__self__, "unschedulable", unschedulable)
         if update_nodes is not None:
             pulumi.set(__self__, "update_nodes", update_nodes)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -370,30 +383,6 @@ class NodePoolArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
-        """
-        In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        """
-        return pulumi.get(self, "instance_types")
-
-    @instance_types.setter
-    def instance_types(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
-        pulumi.set(self, "instance_types", value)
-
-    @property
-    @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
-        """
-        The vswitches used by node pool workers.
-        """
-        return pulumi.get(self, "vswitch_ids")
-
-    @vswitch_ids.setter
-    def vswitch_ids(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
-        pulumi.set(self, "vswitch_ids", value)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -493,6 +482,18 @@ class NodePoolArgs:
         pulumi.set(self, "desired_size", value)
 
     @property
+    @pulumi.getter(name="efloNodeGroup")
+    def eflo_node_group(self) -> Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]:
+        """
+        Lingjun node pool configuration. See `eflo_node_group` below.
+        """
+        return pulumi.get(self, "eflo_node_group")
+
+    @eflo_node_group.setter
+    def eflo_node_group(self, value: Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]):
+        pulumi.set(self, "eflo_node_group", value)
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -541,7 +542,8 @@ class NodePoolArgs:
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
-        - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        - `Ubuntu`: Ubuntu image.
+        - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -572,6 +574,18 @@ class NodePoolArgs:
     @instance_charge_type.setter
     def instance_charge_type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "instance_types", value)
 
     @property
     @pulumi.getter
@@ -1235,6 +1249,20 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Node pool type, value range:
+        -'ess': common node pool (including hosting function and auto scaling function).
+        -'lingjun': Lingjun node pool.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
     def unschedulable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether the node after expansion can be scheduled.
@@ -1269,6 +1297,18 @@ class NodePoolArgs:
     def user_data(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "user_data", value)
 
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The vswitches used by node pool workers.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
 
 @pulumi.input_type
 class _NodePoolState:
@@ -1282,6 +1322,7 @@ class _NodePoolState:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
                  desired_size: Optional[pulumi.Input[builtins.str]] = None,
+                 eflo_node_group: Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  format_disk: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1344,6 +1385,7 @@ class _NodePoolState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  tee_config: Optional[pulumi.Input['NodePoolTeeConfigArgs']] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -1359,6 +1401,7 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[builtins.str] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input['NodePoolEfloNodeGroupArgs'] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
         :param pulumi.Input[builtins.bool] force_delete: Whether to force deletion.
         :param pulumi.Input[builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[builtins.str] image_id: The custom image ID. The system-provided image is used by default.
@@ -1371,7 +1414,8 @@ class _NodePoolState:
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
-               - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+               - `Ubuntu`: Ubuntu image.
+               - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1450,6 +1494,9 @@ class _NodePoolState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[builtins.str] type: Node pool type, value range:
+               -'ess': common node pool (including hosting function and auto scaling function).
+               -'lingjun': Lingjun node pool.
         :param pulumi.Input[builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[builtins.str] user_data: Node custom data, base64-encoded.
@@ -1476,6 +1523,8 @@ class _NodePoolState:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if desired_size is not None:
             pulumi.set(__self__, "desired_size", desired_size)
+        if eflo_node_group is not None:
+            pulumi.set(__self__, "eflo_node_group", eflo_node_group)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if format_disk is not None:
@@ -1612,6 +1661,8 @@ class _NodePoolState:
             pulumi.set(__self__, "taints", taints)
         if tee_config is not None:
             pulumi.set(__self__, "tee_config", tee_config)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if unschedulable is not None:
             pulumi.set(__self__, "unschedulable", unschedulable)
         if update_nodes is not None:
@@ -1731,6 +1782,18 @@ class _NodePoolState:
         pulumi.set(self, "desired_size", value)
 
     @property
+    @pulumi.getter(name="efloNodeGroup")
+    def eflo_node_group(self) -> Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]:
+        """
+        Lingjun node pool configuration. See `eflo_node_group` below.
+        """
+        return pulumi.get(self, "eflo_node_group")
+
+    @eflo_node_group.setter
+    def eflo_node_group(self, value: Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]):
+        pulumi.set(self, "eflo_node_group", value)
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -1779,7 +1842,8 @@ class _NodePoolState:
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
-        - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        - `Ubuntu`: Ubuntu image.
+        - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -2509,6 +2573,20 @@ class _NodePoolState:
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Node pool type, value range:
+        -'ess': common node pool (including hosting function and auto scaling function).
+        -'lingjun': Lingjun node pool.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
     def unschedulable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether the node after expansion can be scheduled.
@@ -2571,6 +2649,7 @@ class NodePool(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
                  desired_size: Optional[pulumi.Input[builtins.str]] = None,
+                 eflo_node_group: Optional[pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  format_disk: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2631,6 +2710,7 @@ class NodePool(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
                  tee_config: Optional[pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -2660,6 +2740,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[builtins.str] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
         :param pulumi.Input[builtins.bool] force_delete: Whether to force deletion.
         :param pulumi.Input[builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[builtins.str] image_id: The custom image ID. The system-provided image is used by default.
@@ -2672,7 +2753,8 @@ class NodePool(pulumi.CustomResource):
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
-               - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+               - `Ubuntu`: Ubuntu image.
+               - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -2749,6 +2831,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[builtins.str] type: Node pool type, value range:
+               -'ess': common node pool (including hosting function and auto scaling function).
+               -'lingjun': Lingjun node pool.
         :param pulumi.Input[builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[builtins.str] user_data: Node custom data, base64-encoded.
@@ -2797,6 +2882,7 @@ class NodePool(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
                  desired_size: Optional[pulumi.Input[builtins.str]] = None,
+                 eflo_node_group: Optional[pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  format_disk: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2857,6 +2943,7 @@ class NodePool(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
                  tee_config: Optional[pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -2881,14 +2968,13 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["desired_size"] = desired_size
+            __props__.__dict__["eflo_node_group"] = eflo_node_group
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["format_disk"] = format_disk
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_type"] = image_type
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["instance_charge_type"] = instance_charge_type
-            if instance_types is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_types'")
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["instances"] = instances
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -2943,11 +3029,10 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
             __props__.__dict__["tee_config"] = tee_config
+            __props__.__dict__["type"] = type
             __props__.__dict__["unschedulable"] = unschedulable
             __props__.__dict__["update_nodes"] = update_nodes
             __props__.__dict__["user_data"] = user_data
-            if vswitch_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'vswitch_ids'")
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["node_pool_id"] = None
             __props__.__dict__["scaling_group_id"] = None
@@ -2972,6 +3057,7 @@ class NodePool(pulumi.CustomResource):
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
             desired_size: Optional[pulumi.Input[builtins.str]] = None,
+            eflo_node_group: Optional[pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']]] = None,
             force_delete: Optional[pulumi.Input[builtins.bool]] = None,
             format_disk: Optional[pulumi.Input[builtins.bool]] = None,
             image_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3034,6 +3120,7 @@ class NodePool(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]]] = None,
             tee_config: Optional[pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']]] = None,
+            type: Optional[pulumi.Input[builtins.str]] = None,
             unschedulable: Optional[pulumi.Input[builtins.bool]] = None,
             update_nodes: Optional[pulumi.Input[builtins.bool]] = None,
             user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -3054,6 +3141,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[builtins.str] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
         :param pulumi.Input[builtins.bool] force_delete: Whether to force deletion.
         :param pulumi.Input[builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[builtins.str] image_id: The custom image ID. The system-provided image is used by default.
@@ -3066,7 +3154,8 @@ class NodePool(pulumi.CustomResource):
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
-               - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+               - `Ubuntu`: Ubuntu image.
+               - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         :param pulumi.Input[builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -3145,6 +3234,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
+        :param pulumi.Input[builtins.str] type: Node pool type, value range:
+               -'ess': common node pool (including hosting function and auto scaling function).
+               -'lingjun': Lingjun node pool.
         :param pulumi.Input[builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[builtins.str] user_data: Node custom data, base64-encoded.
@@ -3163,6 +3255,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["desired_size"] = desired_size
+        __props__.__dict__["eflo_node_group"] = eflo_node_group
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["format_disk"] = format_disk
         __props__.__dict__["image_id"] = image_id
@@ -3225,6 +3318,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
         __props__.__dict__["tee_config"] = tee_config
+        __props__.__dict__["type"] = type
         __props__.__dict__["unschedulable"] = unschedulable
         __props__.__dict__["update_nodes"] = update_nodes
         __props__.__dict__["user_data"] = user_data
@@ -3305,6 +3399,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "desired_size")
 
     @property
+    @pulumi.getter(name="efloNodeGroup")
+    def eflo_node_group(self) -> pulumi.Output[Optional['outputs.NodePoolEfloNodeGroup']]:
+        """
+        Lingjun node pool configuration. See `eflo_node_group` below.
+        """
+        return pulumi.get(self, "eflo_node_group")
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
@@ -3341,7 +3443,8 @@ class NodePool(pulumi.CustomResource):
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
-        - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+        - `Ubuntu`: Ubuntu image.
+        - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -3355,7 +3458,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Output[builtins.str]:
         """
         Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         """
@@ -3363,7 +3466,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Output[Sequence[builtins.str]]:
+    def instance_types(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
         In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         """
@@ -3835,6 +3938,16 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def type(self) -> pulumi.Output[builtins.str]:
+        """
+        Node pool type, value range:
+        -'ess': common node pool (including hosting function and auto scaling function).
+        -'lingjun': Lingjun node pool.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
     def unschedulable(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether the node after expansion can be scheduled.
@@ -3859,7 +3972,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
+    def vswitch_ids(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
         The vswitches used by node pool workers.
         """

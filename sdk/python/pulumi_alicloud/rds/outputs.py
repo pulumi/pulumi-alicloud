@@ -81,12 +81,9 @@ class CustomDataDisk(dict):
                  size: Optional[builtins.int] = None):
         """
         :param builtins.str category: Instance storage type
-               
                local_ssd: local SSD disk
-               
                cloud_essd:ESSD PL1 cloud disk
         :param builtins.str performance_level: Cloud Disk Performance
-               
                Currently only supports PL1
         :param builtins.int size: Instance storage space. Unit: GB.
         """
@@ -102,9 +99,7 @@ class CustomDataDisk(dict):
     def category(self) -> Optional[builtins.str]:
         """
         Instance storage type
-
         local_ssd: local SSD disk
-
         cloud_essd:ESSD PL1 cloud disk
         """
         return pulumi.get(self, "category")
@@ -114,7 +109,6 @@ class CustomDataDisk(dict):
     def performance_level(self) -> Optional[builtins.str]:
         """
         Cloud Disk Performance
-
         Currently only supports PL1
         """
         return pulumi.get(self, "performance_level")

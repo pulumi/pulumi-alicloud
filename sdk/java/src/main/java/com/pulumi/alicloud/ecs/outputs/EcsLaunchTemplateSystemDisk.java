@@ -39,6 +39,11 @@ public final class EcsLaunchTemplateSystemDisk {
      */
     private @Nullable String iops;
     /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
+    private @Nullable String kmsKeyId;
+    /**
      * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
@@ -91,6 +96,13 @@ public final class EcsLaunchTemplateSystemDisk {
         return Optional.ofNullable(this.iops);
     }
     /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+    /**
      * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
@@ -126,6 +138,7 @@ public final class EcsLaunchTemplateSystemDisk {
         private @Nullable String description;
         private @Nullable Boolean encrypted;
         private @Nullable String iops;
+        private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String performanceLevel;
         private @Nullable Integer size;
@@ -137,6 +150,7 @@ public final class EcsLaunchTemplateSystemDisk {
     	      this.description = defaults.description;
     	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
+    	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
     	      this.size = defaults.size;
@@ -173,6 +187,12 @@ public final class EcsLaunchTemplateSystemDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
+            this.kmsKeyId = kmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -197,6 +217,7 @@ public final class EcsLaunchTemplateSystemDisk {
             _resultValue.description = description;
             _resultValue.encrypted = encrypted;
             _resultValue.iops = iops;
+            _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
             _resultValue.size = size;

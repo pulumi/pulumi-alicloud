@@ -90,7 +90,9 @@ type Vault struct {
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringOutput `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+	// The type of Vault. Valid values:
+	// - `STANDARD`: Standard backup vault.
+	// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 	VaultType pulumi.StringOutput `pulumi:"vaultType"`
 	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
 	WormEnabled pulumi.BoolPtrOutput `pulumi:"wormEnabled"`
@@ -151,7 +153,9 @@ type vaultState struct {
 	VaultName *string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+	// The type of Vault. Valid values:
+	// - `STANDARD`: Standard backup vault.
+	// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 	VaultType *string `pulumi:"vaultType"`
 	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
 	WormEnabled *bool `pulumi:"wormEnabled"`
@@ -180,7 +184,9 @@ type VaultState struct {
 	VaultName pulumi.StringPtrInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+	// The type of Vault. Valid values:
+	// - `STANDARD`: Standard backup vault.
+	// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 	VaultType pulumi.StringPtrInput
 	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
 	WormEnabled pulumi.BoolPtrInput
@@ -207,7 +213,9 @@ type vaultArgs struct {
 	VaultName string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+	// The type of Vault. Valid values:
+	// - `STANDARD`: Standard backup vault.
+	// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 	VaultType *string `pulumi:"vaultType"`
 	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
 	WormEnabled *bool `pulumi:"wormEnabled"`
@@ -231,7 +239,9 @@ type VaultArgs struct {
 	VaultName pulumi.StringInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+	// The type of Vault. Valid values:
+	// - `STANDARD`: Standard backup vault.
+	// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 	VaultType pulumi.StringPtrInput
 	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
 	WormEnabled pulumi.BoolPtrInput
@@ -376,7 +386,9 @@ func (o VaultOutput) VaultStorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultStorageClass }).(pulumi.StringOutput)
 }
 
-// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+// The type of Vault. Valid values:
+// - `STANDARD`: Standard backup vault.
+// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
 func (o VaultOutput) VaultType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultType }).(pulumi.StringOutput)
 }

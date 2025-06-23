@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -310,6 +311,12 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> securityGroups() {
         return this.securityGroups;
+    }
+    @Export(name="sourceDestCheck", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sourceDestCheck;
+
+    public Output<Optional<Boolean>> sourceDestCheck() {
+        return Codegen.optional(this.sourceDestCheck);
     }
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;

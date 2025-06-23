@@ -75,7 +75,7 @@ class GetTransitRouterVpnAttachmentsResult:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[builtins.str]:
         """
-        The ID of the Cloud Enterprise Network (CEN) instance.
+        (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -90,9 +90,6 @@ class GetTransitRouterVpnAttachmentsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[builtins.str]:
-        """
-        A list of Transit Router Vpn Attachment IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -117,7 +114,7 @@ class GetTransitRouterVpnAttachmentsResult:
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
         """
-        Status
+        The status of the VPN connection.
         """
         return pulumi.get(self, "status")
 
@@ -125,7 +122,7 @@ class GetTransitRouterVpnAttachmentsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, builtins.str]]:
         """
-        The tag of the resource
+        (Available since v1.245.0) The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -133,7 +130,7 @@ class GetTransitRouterVpnAttachmentsResult:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[builtins.str]:
         """
-        The ID of the VPN attachment.
+        (Available since v1.245.0) The ID of the VPN attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -177,7 +174,7 @@ def get_transit_router_vpn_attachments(cen_id: Optional[builtins.str] = None,
     """
     This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 
-    > **NOTE:** Available since v1.245.0.
+    > **NOTE:** Available since v1.183.0.
 
     ## Example Usage
 
@@ -189,41 +186,102 @@ def get_transit_router_vpn_attachments(cen_id: Optional[builtins.str] = None,
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
-    default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
-    defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
+    default = alicloud.get_account()
+    default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+    default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default_instance.id)
+    default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
         cidr="192.168.10.0/24",
-        transit_router_id=default_m8_zo6_h.transit_router_id)
-    default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
-        ip_address="0.0.0.0",
-        customer_gateway_name="example-vpn-attachment")
-    defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
-        customer_gateway_id=default_meo_c_iz.id,
-        vpn_attachment_name="example-vpn-attachment",
-        local_subnet="10.0.1.0/24",
-        remote_subnet="10.0.2.0/24")
+        transit_router_id=default_transit_router.transit_router_id,
+        publish_cidr_route=True)
+    default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+        ip_address="1.1.1.8",
+        customer_gateway_name=name,
+        opts = pulumi.ResourceOptions(depends_on=[default_transit_router_cidr]))
+    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
+        network_type="public",
+        local_subnet="0.0.0.0/0",
+        enable_tunnels_bgp=False,
+        vpn_attachment_name=name,
+        tunnel_options_specifications=[
+            {
+                "customer_gateway_id": default_customer_gateway.id,
+                "enable_dpd": True,
+                "enable_nat_traversal": True,
+                "tunnel_index": 1,
+                "tunnel_ike_config": {
+                    "remote_id": "2.2.2.2",
+                    "ike_enc_alg": "aes",
+                    "ike_mode": "main",
+                    "ike_version": "ikev1",
+                    "local_id": "1.1.1.1",
+                    "ike_auth_alg": "md5",
+                    "ike_lifetime": 86100,
+                    "ike_pfs": "group2",
+                    "psk": "12345678",
+                },
+                "tunnel_ipsec_config": {
+                    "ipsec_auth_alg": "md5",
+                    "ipsec_enc_alg": "aes",
+                    "ipsec_lifetime": 86200,
+                    "ipsec_pfs": "group5",
+                },
+            },
+            {
+                "enable_nat_traversal": True,
+                "tunnel_index": 2,
+                "tunnel_ike_config": {
+                    "local_id": "4.4.4.4",
+                    "remote_id": "5.5.5.5",
+                    "ike_lifetime": 86400,
+                    "ike_pfs": "group5",
+                    "ike_mode": "main",
+                    "ike_version": "ikev2",
+                    "psk": "32333442",
+                    "ike_auth_alg": "md5",
+                    "ike_enc_alg": "aes",
+                },
+                "tunnel_ipsec_config": {
+                    "ipsec_enc_alg": "aes",
+                    "ipsec_lifetime": 86400,
+                    "ipsec_pfs": "group5",
+                    "ipsec_auth_alg": "sha256",
+                },
+                "customer_gateway_id": default_customer_gateway.id,
+                "enable_dpd": True,
+            },
+        ],
+        remote_subnet="0.0.0.0/0")
     default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
-        vpn_owner_id=default_m8_zo6_h.id,
-        cen_id=default_m8_zo6_h.id,
-        transit_router_attachment_description="example-vpn-attachment",
-        transit_router_id=default_m8_zo6_h.transit_router_id,
-        vpn_id=defaultvr_pzdh.id,
         auto_publish_route_enabled=False,
+        transit_router_attachment_description=name,
+        transit_router_attachment_name=name,
+        cen_id=default_transit_router.cen_id,
+        transit_router_id=default_transit_router.transit_router_id,
+        vpn_id=default_gateway_vpn_attachment.id,
+        vpn_owner_id=default.id,
         charge_type="POSTPAY",
-        transit_router_attachment_name="example-vpn-attachment")
-    default = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
-        cen_id=default_m8_zo6_h.id,
-        transit_router_id=default_m8_zo6_h.transit_router_id)
-    pulumi.export("alicloudCenTransitRouterVpnAttachmentExampleId", default.attachments[0].id)
+        tags={
+            "Created": "TF",
+            "For": "VpnAttachment",
+        })
+    ids = pulumi.Output.all(
+        id=default_transit_router_vpn_attachment.id,
+        cen_id=default_transit_router_vpn_attachment.cen_id,
+        transit_router_id=default_transit_router_vpn_attachment.transit_router_id
+    ).apply(lambda resolved_outputs: alicloud.cen.get_transit_router_vpn_attachments_output(ids=[resolved_outputs['id']],
+        cen_id=resolved_outputs['cen_id'],
+        transit_router_id=resolved_outputs['transit_router_id']))
+
+    pulumi.export("cenTransitRouterVpnAttachmentId0", ids.attachments[0].id)
     ```
 
 
     :param builtins.str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
     :param Sequence[builtins.str] ids: A list of Transit Router Vpn Attachment IDs.
-    :param builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param builtins.str name_regex: A regex string to filter results by Transit Router Vpn Attachment name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
-    :param Mapping[str, builtins.str] tags: The tag of the resource
+    :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
+    :param Mapping[str, builtins.str] tags: The tag of the resource.
     :param builtins.str transit_router_attachment_id: The ID of the VPN attachment.
     :param builtins.str transit_router_id: The ID of the transit router.
     """
@@ -263,7 +321,7 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[Opti
     """
     This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 
-    > **NOTE:** Available since v1.245.0.
+    > **NOTE:** Available since v1.183.0.
 
     ## Example Usage
 
@@ -275,41 +333,102 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[Opti
     name = config.get("name")
     if name is None:
         name = "terraform-example"
-    defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
-    default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
-    defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
+    default = alicloud.get_account()
+    default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+    default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default_instance.id)
+    default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
         cidr="192.168.10.0/24",
-        transit_router_id=default_m8_zo6_h.transit_router_id)
-    default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
-        ip_address="0.0.0.0",
-        customer_gateway_name="example-vpn-attachment")
-    defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
-        customer_gateway_id=default_meo_c_iz.id,
-        vpn_attachment_name="example-vpn-attachment",
-        local_subnet="10.0.1.0/24",
-        remote_subnet="10.0.2.0/24")
+        transit_router_id=default_transit_router.transit_router_id,
+        publish_cidr_route=True)
+    default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+        ip_address="1.1.1.8",
+        customer_gateway_name=name,
+        opts = pulumi.ResourceOptions(depends_on=[default_transit_router_cidr]))
+    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
+        network_type="public",
+        local_subnet="0.0.0.0/0",
+        enable_tunnels_bgp=False,
+        vpn_attachment_name=name,
+        tunnel_options_specifications=[
+            {
+                "customer_gateway_id": default_customer_gateway.id,
+                "enable_dpd": True,
+                "enable_nat_traversal": True,
+                "tunnel_index": 1,
+                "tunnel_ike_config": {
+                    "remote_id": "2.2.2.2",
+                    "ike_enc_alg": "aes",
+                    "ike_mode": "main",
+                    "ike_version": "ikev1",
+                    "local_id": "1.1.1.1",
+                    "ike_auth_alg": "md5",
+                    "ike_lifetime": 86100,
+                    "ike_pfs": "group2",
+                    "psk": "12345678",
+                },
+                "tunnel_ipsec_config": {
+                    "ipsec_auth_alg": "md5",
+                    "ipsec_enc_alg": "aes",
+                    "ipsec_lifetime": 86200,
+                    "ipsec_pfs": "group5",
+                },
+            },
+            {
+                "enable_nat_traversal": True,
+                "tunnel_index": 2,
+                "tunnel_ike_config": {
+                    "local_id": "4.4.4.4",
+                    "remote_id": "5.5.5.5",
+                    "ike_lifetime": 86400,
+                    "ike_pfs": "group5",
+                    "ike_mode": "main",
+                    "ike_version": "ikev2",
+                    "psk": "32333442",
+                    "ike_auth_alg": "md5",
+                    "ike_enc_alg": "aes",
+                },
+                "tunnel_ipsec_config": {
+                    "ipsec_enc_alg": "aes",
+                    "ipsec_lifetime": 86400,
+                    "ipsec_pfs": "group5",
+                    "ipsec_auth_alg": "sha256",
+                },
+                "customer_gateway_id": default_customer_gateway.id,
+                "enable_dpd": True,
+            },
+        ],
+        remote_subnet="0.0.0.0/0")
     default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
-        vpn_owner_id=default_m8_zo6_h.id,
-        cen_id=default_m8_zo6_h.id,
-        transit_router_attachment_description="example-vpn-attachment",
-        transit_router_id=default_m8_zo6_h.transit_router_id,
-        vpn_id=defaultvr_pzdh.id,
         auto_publish_route_enabled=False,
+        transit_router_attachment_description=name,
+        transit_router_attachment_name=name,
+        cen_id=default_transit_router.cen_id,
+        transit_router_id=default_transit_router.transit_router_id,
+        vpn_id=default_gateway_vpn_attachment.id,
+        vpn_owner_id=default.id,
         charge_type="POSTPAY",
-        transit_router_attachment_name="example-vpn-attachment")
-    default = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
-        cen_id=default_m8_zo6_h.id,
-        transit_router_id=default_m8_zo6_h.transit_router_id)
-    pulumi.export("alicloudCenTransitRouterVpnAttachmentExampleId", default.attachments[0].id)
+        tags={
+            "Created": "TF",
+            "For": "VpnAttachment",
+        })
+    ids = pulumi.Output.all(
+        id=default_transit_router_vpn_attachment.id,
+        cen_id=default_transit_router_vpn_attachment.cen_id,
+        transit_router_id=default_transit_router_vpn_attachment.transit_router_id
+    ).apply(lambda resolved_outputs: alicloud.cen.get_transit_router_vpn_attachments_output(ids=[resolved_outputs['id']],
+        cen_id=resolved_outputs['cen_id'],
+        transit_router_id=resolved_outputs['transit_router_id']))
+
+    pulumi.export("cenTransitRouterVpnAttachmentId0", ids.attachments[0].id)
     ```
 
 
     :param builtins.str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
     :param Sequence[builtins.str] ids: A list of Transit Router Vpn Attachment IDs.
-    :param builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param builtins.str name_regex: A regex string to filter results by Transit Router Vpn Attachment name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
-    :param Mapping[str, builtins.str] tags: The tag of the resource
+    :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
+    :param Mapping[str, builtins.str] tags: The tag of the resource.
     :param builtins.str transit_router_attachment_id: The ID of the VPN attachment.
     :param builtins.str transit_router_id: The ID of the transit router.
     """

@@ -184,6 +184,10 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
+     * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+     */
+    public readonly sourceDestCheck!: pulumi.Output<boolean | undefined>;
+    /**
      * The status of the ENI.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -229,6 +233,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["sourceDestCheck"] = state ? state.sourceDestCheck : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -256,6 +261,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["sourceDestCheck"] = args ? args.sourceDestCheck : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["mac"] = undefined /*out*/;
@@ -361,6 +367,10 @@ export interface EcsNetworkInterfaceState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+     */
+    sourceDestCheck?: pulumi.Input<boolean>;
+    /**
      * The status of the ENI.
      */
     status?: pulumi.Input<string>;
@@ -464,6 +474,10 @@ export interface EcsNetworkInterfaceArgs {
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+     */
+    sourceDestCheck?: pulumi.Input<boolean>;
     /**
      * A mapping of tags to assign to the resource.
      */

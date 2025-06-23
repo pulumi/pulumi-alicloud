@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Message Service Subscription resource.
  *
- * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+ * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
  *
  * > **NOTE:** Available since v1.188.0.
  *
@@ -85,9 +85,11 @@ export class ServiceSubscription extends pulumi.CustomResource {
     public readonly dlqPolicy!: pulumi.Output<outputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      */
     public readonly endpoint!: pulumi.Output<string>;
     /**
@@ -182,9 +184,11 @@ export interface ServiceSubscriptionState {
     dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      */
     endpoint?: pulumi.Input<string>;
     /**
@@ -225,9 +229,11 @@ export interface ServiceSubscriptionArgs {
     dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      */
     endpoint: pulumi.Input<string>;
     /**

@@ -16,9 +16,150 @@ import (
 //
 // Dedicated RDS User host.
 //
-// For information about RDS Custom and how to use it, see [What is Custom](https://www.alibabacloud.com/help/en/).
+// For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 //
-// > **NOTE:** Available since v1.235.0.
+// > **NOTE:** Available since v1.247.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			clusterId := "c18c40b2b336840e2b2bbf8ab291758e2"
+//			if param := cfg.Get("clusterId"); param != "" {
+//				clusterId = param
+//			}
+//			deploymentsetid := "ds-2ze78ef5kyj9eveue92m"
+//			if param := cfg.Get("deploymentsetid"); param != "" {
+//				deploymentsetid = param
+//			}
+//			vswtich_id := "example_vswitch"
+//			if param := cfg.Get("vswtich-id"); param != "" {
+//				vswtich_id = param
+//			}
+//			vpcName := "beijing111"
+//			if param := cfg.Get("vpcName"); param != "" {
+//				vpcName = param
+//			}
+//			exampleRegionId := "cn-beijing"
+//			if param := cfg.Get("exampleRegionId"); param != "" {
+//				exampleRegionId = param
+//			}
+//			description := "ran_1-08_rccreatenodepool_api"
+//			if param := cfg.Get("description"); param != "" {
+//				description = param
+//			}
+//			exampleZoneId := "cn-beijing-h"
+//			if param := cfg.Get("exampleZoneId"); param != "" {
+//				exampleZoneId = param
+//			}
+//			securitygroupName := "rds_custom_init_sg_cn_beijing"
+//			if param := cfg.Get("securitygroupName"); param != "" {
+//				securitygroupName = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpcId, err := vpc.NewNetwork(ctx, "vpcId", &vpc.NetworkArgs{
+//				VpcName: pulumi.String(vpcName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vSwitchId, err := vpc.NewSwitch(ctx, "vSwitchId", &vpc.SwitchArgs{
+//				VpcId:       vpcId.ID(),
+//				ZoneId:      pulumi.String(exampleZoneId),
+//				VswitchName: pulumi.String(vswtich_id),
+//				CidrBlock:   pulumi.String("172.16.5.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroupId, err := ecs.NewSecurityGroup(ctx, "securityGroupId", &ecs.SecurityGroupArgs{
+//				VpcId:             vpcId.ID(),
+//				SecurityGroupName: pulumi.String(securitygroupName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsDeploymentSet(ctx, "deploymentSet", nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyPairName, err := ecs.NewEcsKeyPair(ctx, "KeyPairName", &ecs.EcsKeyPairArgs{
+//				KeyPairName: vSwitchId.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewCustom(ctx, "default", &rds.CustomArgs{
+//				Amount:       pulumi.Int(1),
+//				AutoRenew:    pulumi.Bool(false),
+//				Period:       pulumi.Int(1),
+//				AutoPay:      pulumi.Bool(true),
+//				InstanceType: pulumi.String("mysql.x2.xlarge.6cm"),
+//				DataDisks: rds.CustomDataDiskArray{
+//					&rds.CustomDataDiskArgs{
+//						Category:         pulumi.String("cloud_essd"),
+//						Size:             pulumi.Int(50),
+//						PerformanceLevel: pulumi.String("PL1"),
+//					},
+//				},
+//				Status: pulumi.String("Running"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroupId.ID(),
+//				},
+//				IoOptimized:                 pulumi.String("optimized"),
+//				Description:                 pulumi.String(description),
+//				KeyPairName:                 keyPairName.ID(),
+//				ZoneId:                      pulumi.String(exampleZoneId),
+//				InstanceChargeType:          pulumi.String("Prepaid"),
+//				InternetMaxBandwidthOut:     pulumi.Int(0),
+//				ImageId:                     pulumi.String("aliyun_2_1903_x64_20G_alibase_20240628.vhd"),
+//				SecurityEnhancementStrategy: pulumi.String("Active"),
+//				PeriodUnit:                  pulumi.String("Month"),
+//				Password:                    pulumi.String("jingyiTEST@123"),
+//				SystemDisk: &rds.CustomSystemDiskArgs{
+//					Size:     pulumi.String("40"),
+//					Category: pulumi.String("cloud_essd"),
+//				},
+//				HostName:        pulumi.String("1743386110"),
+//				CreateMode:      pulumi.String("0"),
+//				SpotStrategy:    pulumi.String("NoSpot"),
+//				VswitchId:       vSwitchId.ID(),
+//				SupportCase:     pulumi.String("eni"),
+//				DeploymentSetId: pulumi.String(deploymentsetid),
+//				DryRun:          pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -31,11 +172,13 @@ type Custom struct {
 	pulumi.CustomResourceState
 
 	// Represents the number of instances created
-	Amount pulumi.IntOutput `pulumi:"amount"`
+	Amount pulumi.IntPtrOutput `pulumi:"amount"`
 	// Whether to pay automatically. Value range:
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// Reserved parameters are not supported.
+	CreateExtraParam pulumi.StringPtrOutput `pulumi:"createExtraParam"`
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrOutput `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
@@ -88,14 +231,21 @@ type Custom struct {
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// Security group list
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+	// - `NoSpot`: normal pay-as-you-go instances.
+	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+	//
+	// Default value: **NoSpot * *.
+	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	SupportCase pulumi.StringPtrOutput `pulumi:"supportCase"`
 	// System disk specifications. See `systemDisk` below.
 	SystemDisk CustomSystemDiskPtrOutput `pulumi:"systemDisk"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	//
 	// The network type InstanceNetworkType must be VPC.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone ID  of the resource
@@ -109,9 +259,6 @@ func NewCustom(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Amount == nil {
-		return nil, errors.New("invalid value for required argument 'Amount'")
-	}
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
@@ -147,6 +294,8 @@ type customState struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// Reserved parameters are not supported.
+	CreateExtraParam *string `pulumi:"createExtraParam"`
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode *string `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
@@ -199,14 +348,21 @@ type customState struct {
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// Security group list
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+	// - `NoSpot`: normal pay-as-you-go instances.
+	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+	//
+	// Default value: **NoSpot * *.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
+	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	SupportCase *string `pulumi:"supportCase"`
 	// System disk specifications. See `systemDisk` below.
 	SystemDisk *CustomSystemDisk `pulumi:"systemDisk"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	//
 	// The network type InstanceNetworkType must be VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID  of the resource
@@ -220,6 +376,8 @@ type CustomState struct {
 	AutoPay pulumi.BoolPtrInput
 	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 	AutoRenew pulumi.BoolPtrInput
+	// Reserved parameters are not supported.
+	CreateExtraParam pulumi.StringPtrInput
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrInput
 	// Data disk See `dataDisk` below.
@@ -272,14 +430,21 @@ type CustomState struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// Security group list
 	SecurityGroupIds pulumi.StringArrayInput
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+	// - `NoSpot`: normal pay-as-you-go instances.
+	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+	//
+	// Default value: **NoSpot * *.
+	SpotStrategy pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
+	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	SupportCase pulumi.StringPtrInput
 	// System disk specifications. See `systemDisk` below.
 	SystemDisk CustomSystemDiskPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	//
 	// The network type InstanceNetworkType must be VPC.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID  of the resource
@@ -292,11 +457,13 @@ func (CustomState) ElementType() reflect.Type {
 
 type customArgs struct {
 	// Represents the number of instances created
-	Amount int `pulumi:"amount"`
+	Amount *int `pulumi:"amount"`
 	// Whether to pay automatically. Value range:
 	AutoPay *bool `pulumi:"autoPay"`
 	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// Reserved parameters are not supported.
+	CreateExtraParam *string `pulumi:"createExtraParam"`
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode *string `pulumi:"createMode"`
 	// Data disk See `dataDisk` below.
@@ -347,14 +514,21 @@ type customArgs struct {
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// Security group list
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+	// - `NoSpot`: normal pay-as-you-go instances.
+	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+	//
+	// Default value: **NoSpot * *.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
+	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	SupportCase *string `pulumi:"supportCase"`
 	// System disk specifications. See `systemDisk` below.
 	SystemDisk *CustomSystemDisk `pulumi:"systemDisk"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	//
 	// The network type InstanceNetworkType must be VPC.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID  of the resource
@@ -364,11 +538,13 @@ type customArgs struct {
 // The set of arguments for constructing a Custom resource.
 type CustomArgs struct {
 	// Represents the number of instances created
-	Amount pulumi.IntInput
+	Amount pulumi.IntPtrInput
 	// Whether to pay automatically. Value range:
 	AutoPay pulumi.BoolPtrInput
 	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 	AutoRenew pulumi.BoolPtrInput
+	// Reserved parameters are not supported.
+	CreateExtraParam pulumi.StringPtrInput
 	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
 	CreateMode pulumi.StringPtrInput
 	// Data disk See `dataDisk` below.
@@ -419,14 +595,21 @@ type CustomArgs struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// Security group list
 	SecurityGroupIds pulumi.StringArrayInput
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+	// - `NoSpot`: normal pay-as-you-go instances.
+	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+	//
+	// Default value: **NoSpot * *.
+	SpotStrategy pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
+	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	SupportCase pulumi.StringPtrInput
 	// System disk specifications. See `systemDisk` below.
 	SystemDisk CustomSystemDiskPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	//
 	// The network type InstanceNetworkType must be VPC.
 	VswitchId pulumi.StringInput
 	// The zone ID  of the resource
@@ -521,8 +704,8 @@ func (o CustomOutput) ToCustomOutputWithContext(ctx context.Context) CustomOutpu
 }
 
 // Represents the number of instances created
-func (o CustomOutput) Amount() pulumi.IntOutput {
-	return o.ApplyT(func(v *Custom) pulumi.IntOutput { return v.Amount }).(pulumi.IntOutput)
+func (o CustomOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Custom) pulumi.IntPtrOutput { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
 // Whether to pay automatically. Value range:
@@ -533,6 +716,11 @@ func (o CustomOutput) AutoPay() pulumi.BoolPtrOutput {
 // Whether the instance is automatically renewed. Valid values: true/false. The default is false.
 func (o CustomOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Reserved parameters are not supported.
+func (o CustomOutput) CreateExtraParam() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.CreateExtraParam }).(pulumi.StringPtrOutput)
 }
 
 // Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
@@ -656,9 +844,23 @@ func (o CustomOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+// - `NoSpot`: normal pay-as-you-go instances.
+// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+//
+// Default value: **NoSpot * *.
+func (o CustomOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
 // The status of the resource
 func (o CustomOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+func (o CustomOutput) SupportCase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.SupportCase }).(pulumi.StringPtrOutput)
 }
 
 // System disk specifications. See `systemDisk` below.
@@ -672,7 +874,6 @@ func (o CustomOutput) Tags() pulumi.StringMapOutput {
 }
 
 // The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-//
 // The network type InstanceNetworkType must be VPC.
 func (o CustomOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)

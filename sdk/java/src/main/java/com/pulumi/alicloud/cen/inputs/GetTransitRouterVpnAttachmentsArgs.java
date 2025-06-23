@@ -48,14 +48,14 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * A regex string to filter results by Group Metric Rule name.
+     * A regex string to filter results by Transit Router Vpn Attachment name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter results by Group Metric Rule name.
+     * @return A regex string to filter results by Transit Router Vpn Attachment name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -78,14 +78,14 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * @return The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -93,14 +93,14 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The tag of the resource
+     * The tag of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource
+     * @return The tag of the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -221,7 +221,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Group Metric Rule name.
+         * @param nameRegex A regex string to filter results by Transit Router Vpn Attachment name.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Group Metric Rule name.
+         * @param nameRegex A regex string to filter results by Transit Router Vpn Attachment name.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+         * @param status The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+         * @param status The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags The tag of the resource
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags The tag of the resource
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 

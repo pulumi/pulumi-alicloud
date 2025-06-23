@@ -53,7 +53,7 @@ import (
 //			}
 //			defaultVault, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
 //				VaultName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
-//				VaultType: pulumi.String("OTS_BACKUP"),
+//				VaultType: pulumi.String("STANDARD"),
 //			})
 //			if err != nil {
 //				return err

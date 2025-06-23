@@ -29,6 +29,8 @@ class NodeGroupArgs:
                  node_group_name: pulumi.Input[builtins.str],
                  ignore_failed_node_tasks: Optional[pulumi.Input[builtins.bool]] = None,
                  ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
+                 key_pair_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_description: Optional[pulumi.Input[builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None,
@@ -39,11 +41,13 @@ class NodeGroupArgs:
         The set of arguments for constructing a NodeGroup resource.
         :param pulumi.Input[builtins.str] az: Az
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID
-        :param pulumi.Input[builtins.str] image_id: Image ID
+        :param pulumi.Input[builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
         :param pulumi.Input[builtins.str] machine_type: Machine type
         :param pulumi.Input[builtins.str] node_group_name: The name of the resource
         :param pulumi.Input[builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[builtins.str] key_pair_name: key pair name
+        :param pulumi.Input[builtins.str] login_password: Login Password
         :param pulumi.Input[builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]] nodes: Node List See `nodes` below.
         :param pulumi.Input[builtins.str] user_data: Custom Data
@@ -60,6 +64,10 @@ class NodeGroupArgs:
             pulumi.set(__self__, "ignore_failed_node_tasks", ignore_failed_node_tasks)
         if ip_allocation_policies is not None:
             pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if node_group_description is not None:
             pulumi.set(__self__, "node_group_description", node_group_description)
         if nodes is not None:
@@ -101,7 +109,7 @@ class NodeGroupArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[builtins.str]:
         """
-        Image ID
+        Image ID. You can modify the image ID since v1.252.0.
         """
         return pulumi.get(self, "image_id")
 
@@ -156,6 +164,30 @@ class NodeGroupArgs:
     @ip_allocation_policies.setter
     def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        key pair name
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "login_password", value)
 
     @property
     @pulumi.getter(name="nodeGroupDescription")
@@ -239,6 +271,8 @@ class _NodeGroupState:
                  ignore_failed_node_tasks: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
+                 key_pair_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_description: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -254,8 +288,10 @@ class _NodeGroupState:
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[builtins.str] create_time: Create time
         :param pulumi.Input[builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
-        :param pulumi.Input[builtins.str] image_id: Image ID
+        :param pulumi.Input[builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[builtins.str] key_pair_name: key pair name
+        :param pulumi.Input[builtins.str] login_password: Login Password
         :param pulumi.Input[builtins.str] machine_type: Machine type
         :param pulumi.Input[builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[builtins.str] node_group_id: The first ID of the resource
@@ -278,6 +314,10 @@ class _NodeGroupState:
             pulumi.set(__self__, "image_id", image_id)
         if ip_allocation_policies is not None:
             pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if node_group_description is not None:
@@ -349,7 +389,7 @@ class _NodeGroupState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Image ID
+        Image ID. You can modify the image ID since v1.252.0.
         """
         return pulumi.get(self, "image_id")
 
@@ -368,6 +408,30 @@ class _NodeGroupState:
     @ip_allocation_policies.setter
     def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        key pair name
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "login_password", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -489,6 +553,8 @@ class NodeGroup(pulumi.CustomResource):
                  ignore_failed_node_tasks: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 key_pair_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_description: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -668,8 +734,10 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] az: Az
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
-        :param pulumi.Input[builtins.str] image_id: Image ID
+        :param pulumi.Input[builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[builtins.str] key_pair_name: key pair name
+        :param pulumi.Input[builtins.str] login_password: Login Password
         :param pulumi.Input[builtins.str] machine_type: Machine type
         :param pulumi.Input[builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[builtins.str] node_group_name: The name of the resource
@@ -870,6 +938,8 @@ class NodeGroup(pulumi.CustomResource):
                  ignore_failed_node_tasks: Optional[pulumi.Input[builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 key_pair_name: Optional[pulumi.Input[builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_description: Optional[pulumi.Input[builtins.str]] = None,
                  node_group_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -898,6 +968,8 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["ip_allocation_policies"] = ip_allocation_policies
+            __props__.__dict__["key_pair_name"] = key_pair_name
+            __props__.__dict__["login_password"] = None if login_password is None else pulumi.Output.secret(login_password)
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
             __props__.__dict__["machine_type"] = machine_type
@@ -912,6 +984,8 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["node_group_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["loginPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodeGroup, __self__).__init__(
             'alicloud:eflo/nodeGroup:NodeGroup',
             resource_name,
@@ -928,6 +1002,8 @@ class NodeGroup(pulumi.CustomResource):
             ignore_failed_node_tasks: Optional[pulumi.Input[builtins.bool]] = None,
             image_id: Optional[pulumi.Input[builtins.str]] = None,
             ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+            key_pair_name: Optional[pulumi.Input[builtins.str]] = None,
+            login_password: Optional[pulumi.Input[builtins.str]] = None,
             machine_type: Optional[pulumi.Input[builtins.str]] = None,
             node_group_description: Optional[pulumi.Input[builtins.str]] = None,
             node_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -948,8 +1024,10 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[builtins.str] create_time: Create time
         :param pulumi.Input[builtins.bool] ignore_failed_node_tasks: Whether to allow skipping failed nodes. Default value: False
-        :param pulumi.Input[builtins.str] image_id: Image ID
+        :param pulumi.Input[builtins.str] image_id: Image ID. You can modify the image ID since v1.252.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[builtins.str] key_pair_name: key pair name
+        :param pulumi.Input[builtins.str] login_password: Login Password
         :param pulumi.Input[builtins.str] machine_type: Machine type
         :param pulumi.Input[builtins.str] node_group_description: NodeGroupDescription
         :param pulumi.Input[builtins.str] node_group_id: The first ID of the resource
@@ -970,6 +1048,8 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["ignore_failed_node_tasks"] = ignore_failed_node_tasks
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["ip_allocation_policies"] = ip_allocation_policies
+        __props__.__dict__["key_pair_name"] = key_pair_name
+        __props__.__dict__["login_password"] = login_password
         __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["node_group_description"] = node_group_description
         __props__.__dict__["node_group_id"] = node_group_id
@@ -1017,7 +1097,7 @@ class NodeGroup(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[builtins.str]:
         """
-        Image ID
+        Image ID. You can modify the image ID since v1.252.0.
         """
         return pulumi.get(self, "image_id")
 
@@ -1028,6 +1108,22 @@ class NodeGroup(pulumi.CustomResource):
         IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        key pair name
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
 
     @property
     @pulumi.getter(name="machineType")

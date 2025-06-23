@@ -297,14 +297,14 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ignoreFailedNodeTasks);
     }
     /**
-     * Image ID
+     * Image ID. You can modify the image ID since v1.252.0.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
-     * @return Image ID
+     * @return Image ID. You can modify the image ID since v1.252.0.
      * 
      */
     public Output<String> imageId() {
@@ -323,6 +323,34 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<NodeGroupIpAllocationPolicy>>> ipAllocationPolicies() {
         return Codegen.optional(this.ipAllocationPolicies);
+    }
+    /**
+     * key pair name
+     * 
+     */
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyPairName;
+
+    /**
+     * @return key pair name
+     * 
+     */
+    public Output<Optional<String>> keyPairName() {
+        return Codegen.optional(this.keyPairName);
+    }
+    /**
+     * Login Password
+     * 
+     */
+    @Export(name="loginPassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loginPassword;
+
+    /**
+     * @return Login Password
+     * 
+     */
+    public Output<Optional<String>> loginPassword() {
+        return Codegen.optional(this.loginPassword);
     }
     /**
      * Machine type
@@ -490,6 +518,9 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "loginPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

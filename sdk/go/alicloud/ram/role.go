@@ -13,28 +13,41 @@ import (
 
 // Provides a RAM Role resource.
 //
-// > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+// For information about RAM Role and how to use it, see [What is Role](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createrole).
 //
 // > **NOTE:** Available since v1.0.0.
 //
+// > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+//
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new RAM Role.
-//			_, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Name: pulumi.String("terraform-example"),
-//				Document: pulumi.String(`  {
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				RoleName: pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				AssumeRolePolicyDocument: pulumi.String(`  {
 //	    "Statement": [
 //	      {
 //	        "Action": "sts:AssumeRole",
@@ -65,39 +78,51 @@ import (
 //
 // ## Import
 //
-// RAM role can be imported using the id or name, e.g.
+// RAM Role can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/role:Role example my-role
+// $ pulumi import alicloud:ram/role:Role example <id>
 // ```
 type Role struct {
 	pulumi.CustomResourceState
 
-	// The role arn.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	AssumeRolePolicyDocument pulumi.StringOutput `pulumi:"assumeRolePolicyDocument"`
+	// (Available since v1.252.0) The time when the RAM role was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the RAM role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+	//
+	// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 	Document pulumi.StringOutput `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
-	MaxSessionDuration pulumi.IntPtrOutput `pulumi:"maxSessionDuration"`
-	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
+	MaxSessionDuration pulumi.IntOutput `pulumi:"maxSessionDuration"`
+	// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	RamUsers pulumi.StringArrayOutput `pulumi:"ramUsers"`
-	// The role ID.
+	// The ID of the RAM role.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The name of the RAM role.
+	RoleName pulumi.StringOutput `pulumi:"roleName"`
+	// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags for the role.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -131,60 +156,84 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// The role arn.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	Arn *string `pulumi:"arn"`
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
+	// (Available since v1.252.0) The time when the RAM role was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the RAM role.
 	Description *string `pulumi:"description"`
-	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+	//
+	// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 	Document *string `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
 	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
-	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 	Name *string `pulumi:"name"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	RamUsers []string `pulumi:"ramUsers"`
-	// The role ID.
+	// The ID of the RAM role.
 	RoleId *string `pulumi:"roleId"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The name of the RAM role.
+	RoleName *string `pulumi:"roleName"`
+	// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Services []string `pulumi:"services"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags for the role.
+	Tags map[string]string `pulumi:"tags"`
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Version *string `pulumi:"version"`
 }
 
 type RoleState struct {
-	// The role arn.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	Arn pulumi.StringPtrInput
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	AssumeRolePolicyDocument pulumi.StringPtrInput
+	// (Available since v1.252.0) The time when the RAM role was created.
+	CreateTime pulumi.StringPtrInput
+	// The description of the RAM role.
 	Description pulumi.StringPtrInput
-	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+	//
+	// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 	Document pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
 	MaxSessionDuration pulumi.IntPtrInput
-	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 	Name pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	RamUsers pulumi.StringArrayInput
-	// The role ID.
+	// The ID of the RAM role.
 	RoleId pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The name of the RAM role.
+	RoleName pulumi.StringPtrInput
+	// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Services pulumi.StringArrayInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags for the role.
+	Tags pulumi.StringMapInput
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Version pulumi.StringPtrInput
 }
 
@@ -193,53 +242,73 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
+	// The description of the RAM role.
 	Description *string `pulumi:"description"`
-	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+	//
+	// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 	Document *string `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
 	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
-	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 	Name *string `pulumi:"name"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	RamUsers []string `pulumi:"ramUsers"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The name of the RAM role.
+	RoleName *string `pulumi:"roleName"`
+	// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Services []string `pulumi:"services"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags for the role.
+	Tags map[string]string `pulumi:"tags"`
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	AssumeRolePolicyDocument pulumi.StringPtrInput
+	// The description of the RAM role.
 	Description pulumi.StringPtrInput
-	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+	//
+	// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 	Document pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+	// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
 	MaxSessionDuration pulumi.IntPtrInput
-	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 	Name pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	RamUsers pulumi.StringArrayInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The name of the RAM role.
+	RoleName pulumi.StringPtrInput
+	// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Services pulumi.StringArrayInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags for the role.
+	Tags pulumi.StringMapInput
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
-	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+	// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 	Version pulumi.StringPtrInput
 }
 
@@ -330,58 +399,82 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
-// The role arn.
+// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 func (o RoleOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
-// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+func (o RoleOutput) AssumeRolePolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
+}
+
+// (Available since v1.252.0) The time when the RAM role was created.
+func (o RoleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the RAM role.
 func (o RoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
+//
+// Deprecated: Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
 func (o RoleOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Document }).(pulumi.StringOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// Specifies whether to force delete the Role. Default value: `false`. Valid values:
 func (o RoleOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
-func (o RoleOutput) MaxSessionDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Role) pulumi.IntPtrOutput { return v.MaxSessionDuration }).(pulumi.IntPtrOutput)
+// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
+func (o RoleOutput) MaxSessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Role) pulumi.IntOutput { return v.MaxSessionDuration }).(pulumi.IntOutput)
 }
 
-// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+// Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
+//
+// Deprecated: Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+// Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
 //
-// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
+// Deprecated: Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
 func (o RoleOutput) RamUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.RamUsers }).(pulumi.StringArrayOutput)
 }
 
-// The role ID.
+// The ID of the RAM role.
 func (o RoleOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+// The name of the RAM role.
+func (o RoleOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
 //
-// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
+// Deprecated: Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
 func (o RoleOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+// The list of tags for the role.
+func (o RoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 //
-// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
+// Deprecated: Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
 func (o RoleOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

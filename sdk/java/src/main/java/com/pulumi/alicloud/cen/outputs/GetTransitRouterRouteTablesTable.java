@@ -11,74 +11,74 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterRouteTablesTable {
     /**
-     * @return ID of resource.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     private String id;
     /**
-     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     private String status;
     /**
-     * @return The description of the transit router route table.
+     * @return The description of the route table.
      * 
      */
     private String transitRouterRouteTableDescription;
     /**
-     * @return ID of the trabsit router route table.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     private String transitRouterRouteTableId;
     /**
-     * @return Name of the transit router route table.
+     * @return The name of the route table.
      * 
      */
     private String transitRouterRouteTableName;
     /**
-     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * @return The type of the route table. Valid values: `System`, `Custom`.
      * 
      */
     private String transitRouterRouteTableType;
 
     private GetTransitRouterRouteTablesTable() {}
     /**
-     * @return ID of resource.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The description of the transit router route table.
+     * @return The description of the route table.
      * 
      */
     public String transitRouterRouteTableDescription() {
         return this.transitRouterRouteTableDescription;
     }
     /**
-     * @return ID of the trabsit router route table.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     public String transitRouterRouteTableId() {
         return this.transitRouterRouteTableId;
     }
     /**
-     * @return Name of the transit router route table.
+     * @return The name of the route table.
      * 
      */
     public String transitRouterRouteTableName() {
         return this.transitRouterRouteTableName;
     }
     /**
-     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * @return The type of the route table. Valid values: `System`, `Custom`.
      * 
      */
     public String transitRouterRouteTableType() {

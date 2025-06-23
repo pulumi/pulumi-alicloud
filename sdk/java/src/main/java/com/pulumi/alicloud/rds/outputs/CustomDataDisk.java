@@ -14,16 +14,13 @@ import javax.annotation.Nullable;
 public final class CustomDataDisk {
     /**
      * @return Instance storage type
-     * 
      * local_ssd: local SSD disk
-     * 
      * cloud_essd:ESSD PL1 cloud disk
      * 
      */
     private @Nullable String category;
     /**
      * @return Cloud Disk Performance
-     * 
      * Currently only supports PL1
      * 
      */
@@ -37,9 +34,7 @@ public final class CustomDataDisk {
     private CustomDataDisk() {}
     /**
      * @return Instance storage type
-     * 
      * local_ssd: local SSD disk
-     * 
      * cloud_essd:ESSD PL1 cloud disk
      * 
      */
@@ -48,7 +43,6 @@ public final class CustomDataDisk {
     }
     /**
      * @return Cloud Disk Performance
-     * 
      * Currently only supports PL1
      * 
      */

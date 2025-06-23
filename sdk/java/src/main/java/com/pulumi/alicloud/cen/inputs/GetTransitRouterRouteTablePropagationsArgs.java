@@ -18,14 +18,14 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
     public static final GetTransitRouterRouteTablePropagationsArgs Empty = new GetTransitRouterRouteTablePropagationsArgs();
 
     /**
-     * A list of CEN Transit Router Route Table Association IDs.
+     * A list of Transit Router Route Table Propagation IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of CEN Transit Router Route Table Association IDs.
+     * @return A list of Transit Router Route Table Propagation IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -48,14 +48,14 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
     }
 
     /**
-     * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * @return The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -63,14 +63,29 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
     }
 
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
+     * 
+     */
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable Output<String> transitRouterAttachmentId;
+
+    /**
+     * @return The ID of the network instance connection.
+     * 
+     */
+    public Optional<Output<String>> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouterRouteTableId", required=true)
     private Output<String> transitRouterRouteTableId;
 
     /**
-     * @return ID of the route table of the VPC or VBR.
+     * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     public Output<String> transitRouterRouteTableId() {
@@ -83,6 +98,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterRouteTableId = $.transitRouterRouteTableId;
     }
 
@@ -105,7 +121,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table Association IDs.
+         * @param ids A list of Transit Router Route Table Propagation IDs.
          * 
          * @return builder
          * 
@@ -116,7 +132,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table Association IDs.
+         * @param ids A list of Transit Router Route Table Propagation IDs.
          * 
          * @return builder
          * 
@@ -126,7 +142,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table Association IDs.
+         * @param ids A list of Transit Router Route Table Propagation IDs.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param status The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+         * @param status The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
          * 
          * @return builder
          * 
@@ -168,7 +184,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param status The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+         * @param status The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
          * 
          * @return builder
          * 
@@ -178,7 +194,28 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterAttachmentId The ID of the network instance connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(@Nullable Output<String> transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentId The ID of the network instance connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
+            return transitRouterAttachmentId(Output.of(transitRouterAttachmentId));
+        }
+
+        /**
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -189,7 +226,7 @@ public final class GetTransitRouterRouteTablePropagationsArgs extends com.pulumi
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
          * 
          * @return builder
          * 

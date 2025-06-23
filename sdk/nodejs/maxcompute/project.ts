@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
  * const _default = new alicloud.maxcompute.Project("default", {
- *     defaultQuota: "默认后付费Quota",
+ *     defaultQuota: "os_PayAsYouGoQuota",
  *     projectName: name,
  *     comment: name,
  * });

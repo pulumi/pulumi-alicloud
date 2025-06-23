@@ -70,6 +70,8 @@ __all__ = [
     'ManagedKubernetesRrsaMetadataArgsDict',
     'NodePoolDataDiskArgs',
     'NodePoolDataDiskArgsDict',
+    'NodePoolEfloNodeGroupArgs',
+    'NodePoolEfloNodeGroupArgsDict',
     'NodePoolKubeletConfigurationArgs',
     'NodePoolKubeletConfigurationArgsDict',
     'NodePoolKubeletConfigurationReservedMemoryArgs',
@@ -2823,6 +2825,58 @@ class NodePoolDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
+    class NodePoolEfloNodeGroupArgsDict(TypedDict):
+        cluster_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+        """
+        group_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+        """
+elif False:
+    NodePoolEfloNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolEfloNodeGroupArgs:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] cluster_id: The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+        :param pulumi.Input[builtins.str] group_id: When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_id", value)
 
 
 if not MYPY:

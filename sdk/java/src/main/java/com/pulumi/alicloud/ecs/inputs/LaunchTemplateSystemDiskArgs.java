@@ -106,6 +106,13 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.iops);
     }
 
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
@@ -161,6 +168,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         this.description = $.description;
         this.encrypted = $.encrypted;
         this.iops = $.iops;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
         this.size = $.size;
@@ -297,6 +305,15 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
 
         public Builder iops(String iops) {
             return iops(Output.of(iops));
+        }
+
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

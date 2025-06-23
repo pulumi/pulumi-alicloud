@@ -220,13 +220,21 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly ignoreFailedNodeTasks!: pulumi.Output<boolean | undefined>;
     /**
-     * Image ID
+     * Image ID. You can modify the image ID since v1.252.0.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
     public readonly ipAllocationPolicies!: pulumi.Output<outputs.eflo.NodeGroupIpAllocationPolicy[] | undefined>;
+    /**
+     * key pair name
+     */
+    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    /**
+     * Login Password
+     */
+    public readonly loginPassword!: pulumi.Output<string | undefined>;
     /**
      * Machine type
      */
@@ -283,6 +291,8 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["ignoreFailedNodeTasks"] = state ? state.ignoreFailedNodeTasks : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["ipAllocationPolicies"] = state ? state.ipAllocationPolicies : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["loginPassword"] = state ? state.loginPassword : undefined;
             resourceInputs["machineType"] = state ? state.machineType : undefined;
             resourceInputs["nodeGroupDescription"] = state ? state.nodeGroupDescription : undefined;
             resourceInputs["nodeGroupId"] = state ? state.nodeGroupId : undefined;
@@ -314,6 +324,8 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["ignoreFailedNodeTasks"] = args ? args.ignoreFailedNodeTasks : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["ipAllocationPolicies"] = args ? args.ipAllocationPolicies : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["loginPassword"] = args?.loginPassword ? pulumi.secret(args.loginPassword) : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["nodeGroupDescription"] = args ? args.nodeGroupDescription : undefined;
             resourceInputs["nodeGroupName"] = args ? args.nodeGroupName : undefined;
@@ -326,6 +338,8 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["loginPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NodeGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -351,13 +365,21 @@ export interface NodeGroupState {
      */
     ignoreFailedNodeTasks?: pulumi.Input<boolean>;
     /**
-     * Image ID
+     * Image ID. You can modify the image ID since v1.252.0.
      */
     imageId?: pulumi.Input<string>;
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
     ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[]>;
+    /**
+     * key pair name
+     */
+    keyPairName?: pulumi.Input<string>;
+    /**
+     * Login Password
+     */
+    loginPassword?: pulumi.Input<string>;
     /**
      * Machine type
      */
@@ -413,13 +435,21 @@ export interface NodeGroupArgs {
      */
     ignoreFailedNodeTasks?: pulumi.Input<boolean>;
     /**
-     * Image ID
+     * Image ID. You can modify the image ID since v1.252.0.
      */
     imageId: pulumi.Input<string>;
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
     ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[]>;
+    /**
+     * key pair name
+     */
+    keyPairName?: pulumi.Input<string>;
+    /**
+     * Login Password
+     */
+    loginPassword?: pulumi.Input<string>;
     /**
      * Machine type
      */

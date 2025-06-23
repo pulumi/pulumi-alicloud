@@ -12,28 +12,94 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterRouteTablePropagations
     {
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+        /// This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
         ///     {
-        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///         NameRegex = "^preserved-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 1,
+        ///         Max = 2999,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
+        ///     {
+        ///         LocalGatewayIp = "10.0.0.1",
+        ///         PeerGatewayIp = "10.0.0.2",
+        ///         PeeringSubnetMask = "255.255.255.252",
+        ///         PhysicalConnectionId = @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///         VirtualBorderRouterName = name,
+        ///         VlanId = defaultInteger.Id,
+        ///         MinRxInterval = 1000,
+        ///         MinTxInterval = 1000,
+        ///         DetectMultiplier = 10,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         VbrId = defaultVirtualBorderRouter.Id,
+        ///         AutoPublishRouteEnabled = true,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
+        ///     {
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterRouteTableName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTablePropagation = new AliCloud.Cen.TransitRouterRouteTablePropagation("default", new()
+        ///     {
+        ///         TransitRouterAttachmentId = defaultTransitRouterVbrAttachment.TransitRouterAttachmentId,
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTablePropagation.TransitRouterRouteTableId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTablePropagation.TransitRouterAttachmentId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///         ["cenTransitRouterRouteTablePropagationId0"] = ids.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -42,28 +108,94 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+        /// This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
         ///     {
-        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///         NameRegex = "^preserved-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 1,
+        ///         Max = 2999,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
+        ///     {
+        ///         LocalGatewayIp = "10.0.0.1",
+        ///         PeerGatewayIp = "10.0.0.2",
+        ///         PeeringSubnetMask = "255.255.255.252",
+        ///         PhysicalConnectionId = @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///         VirtualBorderRouterName = name,
+        ///         VlanId = defaultInteger.Id,
+        ///         MinRxInterval = 1000,
+        ///         MinTxInterval = 1000,
+        ///         DetectMultiplier = 10,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         VbrId = defaultVirtualBorderRouter.Id,
+        ///         AutoPublishRouteEnabled = true,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
+        ///     {
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterRouteTableName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTablePropagation = new AliCloud.Cen.TransitRouterRouteTablePropagation("default", new()
+        ///     {
+        ///         TransitRouterAttachmentId = defaultTransitRouterVbrAttachment.TransitRouterAttachmentId,
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTablePropagation.TransitRouterRouteTableId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTablePropagation.TransitRouterAttachmentId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///         ["cenTransitRouterRouteTablePropagationId0"] = ids.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -72,28 +204,94 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+        /// This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
         ///     {
-        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///         NameRegex = "^preserved-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 1,
+        ///         Max = 2999,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
+        ///     {
+        ///         LocalGatewayIp = "10.0.0.1",
+        ///         PeerGatewayIp = "10.0.0.2",
+        ///         PeeringSubnetMask = "255.255.255.252",
+        ///         PhysicalConnectionId = @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///         VirtualBorderRouterName = name,
+        ///         VlanId = defaultInteger.Id,
+        ///         MinRxInterval = 1000,
+        ///         MinTxInterval = 1000,
+        ///         DetectMultiplier = 10,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         VbrId = defaultVirtualBorderRouter.Id,
+        ///         AutoPublishRouteEnabled = true,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
+        ///     {
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterRouteTableName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTablePropagation = new AliCloud.Cen.TransitRouterRouteTablePropagation("default", new()
+        ///     {
+        ///         TransitRouterAttachmentId = defaultTransitRouterVbrAttachment.TransitRouterAttachmentId,
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = defaultTransitRouterRouteTablePropagation.TransitRouterRouteTableId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTablePropagation.TransitRouterAttachmentId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///         ["cenTransitRouterRouteTablePropagationId0"] = ids.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -109,7 +307,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN Transit Router Route Table Association IDs.
+        /// A list of Transit Router Route Table Propagation IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -124,13 +322,19 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+        /// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// ID of the route table of the VPC or VBR.
+        /// The ID of the network instance connection.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public string? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterRouteTableId", required: true)]
         public string TransitRouterRouteTableId { get; set; } = null!;
@@ -147,7 +351,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN Transit Router Route Table Association IDs.
+        /// A list of Transit Router Route Table Propagation IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -162,13 +366,19 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+        /// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// ID of the route table of the VPC or VBR.
+        /// The ID of the network instance connection.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterRouteTableId", required: true)]
         public Input<string> TransitRouterRouteTableId { get; set; } = null!;
@@ -187,21 +397,22 @@ namespace Pulumi.AliCloud.Cen
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of CEN Transit Router Route Table Association IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of CEN Transit Router Route Table Propagations. Each element contains the following attributes:
+        /// A list of Transit Router Route Table Propagations. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterRouteTablePropagationsPropagationResult> Propagations;
         /// <summary>
-        /// The status of the route table.
+        /// The status of the route learning correlation.
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// ID of the transit router route table.
+        /// The ID of the network instance connection.
+        /// </summary>
+        public readonly string? TransitRouterAttachmentId;
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
         /// </summary>
         public readonly string TransitRouterRouteTableId;
 
@@ -217,6 +428,8 @@ namespace Pulumi.AliCloud.Cen
 
             string? status,
 
+            string? transitRouterAttachmentId,
+
             string transitRouterRouteTableId)
         {
             Id = id;
@@ -224,6 +437,7 @@ namespace Pulumi.AliCloud.Cen
             OutputFile = outputFile;
             Propagations = propagations;
             Status = status;
+            TransitRouterAttachmentId = transitRouterAttachmentId;
             TransitRouterRouteTableId = transitRouterRouteTableId;
         }
     }

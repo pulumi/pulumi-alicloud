@@ -21,7 +21,7 @@ public final class GetTransitRouterVpnAttachmentsResult {
      */
     private List<GetTransitRouterVpnAttachmentsAttachment> attachments;
     /**
-     * @return The ID of the Cloud Enterprise Network (CEN) instance.
+     * @return (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     private @Nullable String cenId;
@@ -30,10 +30,6 @@ public final class GetTransitRouterVpnAttachmentsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of Transit Router Vpn Attachment IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
@@ -43,17 +39,17 @@ public final class GetTransitRouterVpnAttachmentsResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return Status
+     * @return The status of the VPN connection.
      * 
      */
     private @Nullable String status;
     /**
-     * @return The tag of the resource
+     * @return (Available since v1.245.0) The tag of the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
     /**
-     * @return The ID of the VPN attachment.
+     * @return (Available since v1.245.0) The ID of the VPN attachment.
      * 
      */
     private @Nullable String transitRouterAttachmentId;
@@ -72,7 +68,7 @@ public final class GetTransitRouterVpnAttachmentsResult {
         return this.attachments;
     }
     /**
-     * @return The ID of the Cloud Enterprise Network (CEN) instance.
+     * @return (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Optional<String> cenId() {
@@ -85,10 +81,6 @@ public final class GetTransitRouterVpnAttachmentsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of Transit Router Vpn Attachment IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -106,21 +98,21 @@ public final class GetTransitRouterVpnAttachmentsResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return Status
+     * @return The status of the VPN connection.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The tag of the resource
+     * @return (Available since v1.245.0) The tag of the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The ID of the VPN attachment.
+     * @return (Available since v1.245.0) The ID of the VPN attachment.
      * 
      */
     public Optional<String> transitRouterAttachmentId() {

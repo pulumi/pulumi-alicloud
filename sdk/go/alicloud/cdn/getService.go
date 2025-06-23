@@ -55,7 +55,7 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
 	Enable *string `pulumi:"enable"`
 	// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
 	// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
@@ -67,9 +67,9 @@ type GetServiceArgs struct {
 
 // A collection of values returned by getService.
 type GetServiceResult struct {
-	// The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+	// The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
 	ChangingAffectTime string `pulumi:"changingAffectTime"`
-	// The billing method to be effective.
+	// The metering method for the next cycle.
 	ChangingChargeType string  `pulumi:"changingChargeType"`
 	Enable             *string `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
@@ -92,7 +92,7 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getService.
 type GetServiceOutputArgs struct {
-	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 	// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
 	// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
@@ -121,12 +121,12 @@ func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.
 	return o
 }
 
-// The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+// The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
 func (o GetServiceResultOutput) ChangingAffectTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.ChangingAffectTime }).(pulumi.StringOutput)
 }
 
-// The billing method to be effective.
+// The metering method for the next cycle.
 func (o GetServiceResultOutput) ChangingChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.ChangingChargeType }).(pulumi.StringOutput)
 }

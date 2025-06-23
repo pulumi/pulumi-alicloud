@@ -45,6 +45,7 @@ public final class LaunchTemplateSystemDisk {
      */
     private @Nullable Boolean encrypted;
     private @Nullable String iops;
+    private @Nullable String kmsKeyId;
     /**
      * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
@@ -105,6 +106,9 @@ public final class LaunchTemplateSystemDisk {
     public Optional<String> iops() {
         return Optional.ofNullable(this.iops);
     }
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
     /**
      * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
@@ -142,6 +146,7 @@ public final class LaunchTemplateSystemDisk {
         private @Nullable String description;
         private @Nullable Boolean encrypted;
         private @Nullable String iops;
+        private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String performanceLevel;
         private @Nullable Integer size;
@@ -153,6 +158,7 @@ public final class LaunchTemplateSystemDisk {
     	      this.description = defaults.description;
     	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
+    	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
     	      this.size = defaults.size;
@@ -189,6 +195,12 @@ public final class LaunchTemplateSystemDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
+            this.kmsKeyId = kmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -213,6 +225,7 @@ public final class LaunchTemplateSystemDisk {
             _resultValue.description = description;
             _resultValue.encrypted = encrypted;
             _resultValue.iops = iops;
+            _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
             _resultValue.size = size;

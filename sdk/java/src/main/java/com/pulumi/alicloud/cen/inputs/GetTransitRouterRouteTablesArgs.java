@@ -18,14 +18,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     public static final GetTransitRouterRouteTablesArgs Empty = new GetTransitRouterRouteTablesArgs();
 
     /**
-     * A list of CEN Transit Router Route Table IDs.
+     * A list of Transit Router Route Table IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of CEN Transit Router Route Table IDs.
+     * @return A list of Transit Router Route Table IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -33,14 +33,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     }
 
     /**
-     * A regex string to filter CEN Transit Router Route Table by name.
+     * A regex string to filter results by Transit Router Route Table name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter CEN Transit Router Route Table by name.
+     * @return A regex string to filter results by Transit Router Route Table name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -63,14 +63,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     }
 
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -78,14 +78,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     }
 
     /**
-     * ID of the CEN Transit Router Route Table.
+     * The ID of the Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouterId", required=true)
     private Output<String> transitRouterId;
 
     /**
-     * @return ID of the CEN Transit Router Route Table.
+     * @return The ID of the Enterprise Edition transit router.
      * 
      */
     public Output<String> transitRouterId() {
@@ -123,14 +123,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     }
 
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     @Import(name="transitRouterRouteTableStatus")
     private @Nullable Output<String> transitRouterRouteTableStatus;
 
     /**
-     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      * 
      */
     public Optional<Output<String>> transitRouterRouteTableStatus() {
@@ -138,14 +138,14 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * The type of the route table. Valid values: `System`, `Custom`.
      * 
      */
     @Import(name="transitRouterRouteTableType")
     private @Nullable Output<String> transitRouterRouteTableType;
 
     /**
-     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * @return The type of the route table. Valid values: `System`, `Custom`.
      * 
      */
     public Optional<Output<String>> transitRouterRouteTableType() {
@@ -185,7 +185,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table IDs.
+         * @param ids A list of Transit Router Route Table IDs.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table IDs.
+         * @param ids A list of Transit Router Route Table IDs.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table IDs.
+         * @param ids A list of Transit Router Route Table IDs.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nameRegex A regex string to filter CEN Transit Router Route Table by name.
+         * @param nameRegex A regex string to filter results by Transit Router Route Table name.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nameRegex A regex string to filter CEN Transit Router Route Table by name.
+         * @param nameRegex A regex string to filter results by Transit Router Route Table name.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * @param status The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * @param status The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId ID of the CEN Transit Router Route Table.
+         * @param transitRouterId The ID of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId ID of the CEN Transit Router Route Table.
+         * @param transitRouterId The ID of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterRouteTableStatus The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * @param transitRouterRouteTableStatus The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterRouteTableStatus The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * @param transitRouterRouteTableStatus The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterRouteTableType The type of the transit router route table to query. Valid values `System` and `Custom`.
+         * @param transitRouterRouteTableType The type of the route table. Valid values: `System`, `Custom`.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class GetTransitRouterRouteTablesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterRouteTableType The type of the transit router route table to query. Valid values `System` and `Custom`.
+         * @param transitRouterRouteTableType The type of the route table. Valid values: `System`, `Custom`.
          * 
          * @return builder
          * 

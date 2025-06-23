@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
  *         var default_ = new Project("default", ProjectArgs.builder()
- *             .defaultQuota("默认后付费Quota")
+ *             .defaultQuota("os_PayAsYouGoQuota")
  *             .projectName(name)
  *             .comment(name)
  *             .build());

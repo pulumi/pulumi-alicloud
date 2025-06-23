@@ -34,9 +34,11 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
 
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      * 
      */
     @Import(name="endpoint", required=true)
@@ -44,9 +46,11 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      * 
      */
     public Output<String> endpoint() {
@@ -201,9 +205,11 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
-         * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-         * - `Email Format`: mail:directmail:{MailAddress}
+         * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+         * - `Queue Format`: A queue name.
+         * - `MPush Format`: An AppKey.
+         * - `Sms Format`: A mobile number
+         * - `Email Format`: An email address.
          * 
          * @return builder
          * 
@@ -215,9 +221,11 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
-         * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-         * - `Email Format`: mail:directmail:{MailAddress}
+         * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+         * - `Queue Format`: A queue name.
+         * - `MPush Format`: An AppKey.
+         * - `Sms Format`: A mobile number
+         * - `Email Format`: An email address.
          * 
          * @return builder
          * 

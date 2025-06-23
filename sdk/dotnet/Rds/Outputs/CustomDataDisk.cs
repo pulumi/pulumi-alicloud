@@ -15,15 +15,12 @@ namespace Pulumi.AliCloud.Rds.Outputs
     {
         /// <summary>
         /// Instance storage type
-        /// 
         /// local_ssd: local SSD disk
-        /// 
         /// cloud_essd:ESSD PL1 cloud disk
         /// </summary>
         public readonly string? Category;
         /// <summary>
         /// Cloud Disk Performance
-        /// 
         /// Currently only supports PL1
         /// </summary>
         public readonly string? PerformanceLevel;

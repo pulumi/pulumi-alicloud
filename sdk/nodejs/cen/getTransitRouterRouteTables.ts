@@ -7,35 +7,38 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+ * This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultInstance = new alicloud.cen.Instance("default", {
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
- *     cenId: defaultInstance.id,
+ *     cenId: _default.id,
  *     transitRouterName: name,
  * });
  * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("default", {
  *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterRouteTableDescription: "desp",
+ *     transitRouterRouteTableDescription: name,
  *     transitRouterRouteTableName: name,
  * });
- * const _default = alicloud.cen.getTransitRouterRouteTablesOutput({
- *     transitRouterId: defaultTransitRouter.transitRouterId,
+ * const ids = alicloud.cen.getTransitRouterRouteTablesOutput({
+ *     transitRouterId: defaultTransitRouterRouteTable.transitRouterId,
+ *     ids: [defaultTransitRouterRouteTable.transitRouterRouteTableId],
  * });
- * export const firstTransitRouterRouteTableType = _default.apply(_default => _default.tables?.[0]?.transitRouterRouteTableType);
+ * export const cenTransitRouterRouteTableId0 = ids.apply(ids => ids.tables?.[0]?.id);
  * ```
  */
 export function getTransitRouterRouteTables(args: GetTransitRouterRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTablesResult> {
@@ -58,11 +61,11 @@ export function getTransitRouterRouteTables(args: GetTransitRouterRouteTablesArg
  */
 export interface GetTransitRouterRouteTablesArgs {
     /**
-     * A list of CEN Transit Router Route Table IDs.
+     * A list of Transit Router Route Table IDs.
      */
     ids?: string[];
     /**
-     * A regex string to filter CEN Transit Router Route Table by name.
+     * A regex string to filter results by Transit Router Route Table name.
      */
     nameRegex?: string;
     /**
@@ -70,11 +73,11 @@ export interface GetTransitRouterRouteTablesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
     status?: string;
     /**
-     * ID of the CEN Transit Router Route Table.
+     * The ID of the Enterprise Edition transit router.
      */
     transitRouterId: string;
     /**
@@ -86,11 +89,11 @@ export interface GetTransitRouterRouteTablesArgs {
      */
     transitRouterRouteTableNames?: string[];
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
     transitRouterRouteTableStatus?: string;
     /**
-     * The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * The type of the route table. Valid values: `System`, `Custom`.
      */
     transitRouterRouteTableType?: string;
 }
@@ -106,7 +109,7 @@ export interface GetTransitRouterRouteTablesResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of name of CEN Transit Router Route Tables.
+     * A list of Transit Router Route Table names.
      */
     readonly names: string[];
     readonly outputFile?: string;
@@ -115,7 +118,7 @@ export interface GetTransitRouterRouteTablesResult {
      */
     readonly status?: string;
     /**
-     * A list of CEN Route Entries. Each element contains the following attributes:
+     * A list of Transit Router Route Tables. Each element contains the following attributes:
      */
     readonly tables: outputs.cen.GetTransitRouterRouteTablesTable[];
     readonly transitRouterId: string;
@@ -123,40 +126,43 @@ export interface GetTransitRouterRouteTablesResult {
     readonly transitRouterRouteTableNames?: string[];
     readonly transitRouterRouteTableStatus?: string;
     /**
-     * Type of the transit router route table.
+     * The type of the route table.
      */
     readonly transitRouterRouteTableType?: string;
 }
 /**
- * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+ * This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultInstance = new alicloud.cen.Instance("default", {
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
- *     cenId: defaultInstance.id,
+ *     cenId: _default.id,
  *     transitRouterName: name,
  * });
  * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("default", {
  *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterRouteTableDescription: "desp",
+ *     transitRouterRouteTableDescription: name,
  *     transitRouterRouteTableName: name,
  * });
- * const _default = alicloud.cen.getTransitRouterRouteTablesOutput({
- *     transitRouterId: defaultTransitRouter.transitRouterId,
+ * const ids = alicloud.cen.getTransitRouterRouteTablesOutput({
+ *     transitRouterId: defaultTransitRouterRouteTable.transitRouterId,
+ *     ids: [defaultTransitRouterRouteTable.transitRouterRouteTableId],
  * });
- * export const firstTransitRouterRouteTableType = _default.apply(_default => _default.tables?.[0]?.transitRouterRouteTableType);
+ * export const cenTransitRouterRouteTableId0 = ids.apply(ids => ids.tables?.[0]?.id);
  * ```
  */
 export function getTransitRouterRouteTablesOutput(args: GetTransitRouterRouteTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteTablesResult> {
@@ -179,11 +185,11 @@ export function getTransitRouterRouteTablesOutput(args: GetTransitRouterRouteTab
  */
 export interface GetTransitRouterRouteTablesOutputArgs {
     /**
-     * A list of CEN Transit Router Route Table IDs.
+     * A list of Transit Router Route Table IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter CEN Transit Router Route Table by name.
+     * A regex string to filter results by Transit Router Route Table name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -191,11 +197,11 @@ export interface GetTransitRouterRouteTablesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
     status?: pulumi.Input<string>;
     /**
-     * ID of the CEN Transit Router Route Table.
+     * The ID of the Enterprise Edition transit router.
      */
     transitRouterId: pulumi.Input<string>;
     /**
@@ -207,11 +213,11 @@ export interface GetTransitRouterRouteTablesOutputArgs {
      */
     transitRouterRouteTableNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
     transitRouterRouteTableStatus?: pulumi.Input<string>;
     /**
-     * The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * The type of the route table. Valid values: `System`, `Custom`.
      */
     transitRouterRouteTableType?: pulumi.Input<string>;
 }

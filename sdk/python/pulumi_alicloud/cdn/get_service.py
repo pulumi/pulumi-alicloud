@@ -54,7 +54,7 @@ class GetServiceResult:
     @pulumi.getter(name="changingAffectTime")
     def changing_affect_time(self) -> builtins.str:
         """
-        The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+        The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
         """
         return pulumi.get(self, "changing_affect_time")
 
@@ -62,7 +62,7 @@ class GetServiceResult:
     @pulumi.getter(name="changingChargeType")
     def changing_charge_type(self) -> builtins.str:
         """
-        The billing method to be effective.
+        The metering method for the next cycle.
         """
         return pulumi.get(self, "changing_charge_type")
 
@@ -137,7 +137,7 @@ def get_service(enable: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+    :param builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
     :param builtins.str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
            It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
            As a note, the updated internet charge type will be effective in the next day zero time.
@@ -179,7 +179,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[builtins.str]]] = 
     ```
 
 
-    :param builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+    :param builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
     :param builtins.str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
            It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
            As a note, the updated internet charge type will be effective in the next day zero time.

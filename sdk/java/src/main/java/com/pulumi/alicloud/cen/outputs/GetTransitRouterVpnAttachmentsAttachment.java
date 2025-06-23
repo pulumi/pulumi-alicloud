@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterVpnAttachmentsAttachment {
     /**
-     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
      * 
      */
     private Boolean autoPublishRouteEnabled;
@@ -26,12 +26,12 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
      */
     private String cenId;
     /**
-     * @return The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+     * @return (Available since v1.245.0) The billing method of the VPN attachment.
      * 
      */
     private String chargeType;
     /**
-     * @return The creation time of the resource
+     * @return The time when the VPN connection was created.
      * 
      */
     private String createTime;
@@ -41,22 +41,22 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
      */
     private String id;
     /**
-     * @return The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+     * @return The type of resource attached to the transit router.
      * 
      */
     private String resourceType;
     /**
-     * @return The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * @return The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     private String status;
     /**
-     * @return The tag of the resource
+     * @return The tag of the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the IPsec-VPN connection.
      * 
      */
     private String transitRouterAttachmentDescription;
@@ -66,7 +66,7 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
      */
     private String transitRouterAttachmentId;
     /**
-     * @return The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * @return The name of the VPN attachment.
      * 
      */
     private String transitRouterAttachmentName;
@@ -81,7 +81,7 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
      */
     private String vpnId;
     /**
-     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
      * 
      */
     private Integer vpnOwnerId;
@@ -93,7 +93,7 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
 
     private GetTransitRouterVpnAttachmentsAttachment() {}
     /**
-     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
      * 
      */
     public Boolean autoPublishRouteEnabled() {
@@ -107,14 +107,14 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
         return this.cenId;
     }
     /**
-     * @return The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+     * @return (Available since v1.245.0) The billing method of the VPN attachment.
      * 
      */
     public String chargeType() {
         return this.chargeType;
     }
     /**
-     * @return The creation time of the resource
+     * @return The time when the VPN connection was created.
      * 
      */
     public String createTime() {
@@ -128,28 +128,28 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
         return this.id;
     }
     /**
-     * @return The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+     * @return The type of resource attached to the transit router.
      * 
      */
     public String resourceType() {
         return this.resourceType;
     }
     /**
-     * @return The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * @return The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tag of the resource
+     * @return The tag of the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the IPsec-VPN connection.
      * 
      */
     public String transitRouterAttachmentDescription() {
@@ -163,7 +163,7 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
         return this.transitRouterAttachmentId;
     }
     /**
-     * @return The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * @return The name of the VPN attachment.
      * 
      */
     public String transitRouterAttachmentName() {
@@ -184,7 +184,7 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
         return this.vpnId;
     }
     /**
-     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
      * 
      */
     public Integer vpnOwnerId() {

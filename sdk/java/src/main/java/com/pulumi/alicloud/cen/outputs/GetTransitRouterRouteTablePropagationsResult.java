@@ -19,24 +19,25 @@ public final class GetTransitRouterRouteTablePropagationsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of CEN Transit Router Route Table Association IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String outputFile;
     /**
-     * @return A list of CEN Transit Router Route Table Propagations. Each element contains the following attributes:
+     * @return A list of Transit Router Route Table Propagations. Each element contains the following attributes:
      * 
      */
     private List<GetTransitRouterRouteTablePropagationsPropagation> propagations;
     /**
-     * @return The status of the route table.
+     * @return The status of the route learning correlation.
      * 
      */
     private @Nullable String status;
     /**
-     * @return ID of the transit router route table.
+     * @return The ID of the network instance connection.
+     * 
+     */
+    private @Nullable String transitRouterAttachmentId;
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     private String transitRouterRouteTableId;
@@ -49,10 +50,6 @@ public final class GetTransitRouterRouteTablePropagationsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of CEN Transit Router Route Table Association IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -60,21 +57,28 @@ public final class GetTransitRouterRouteTablePropagationsResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of CEN Transit Router Route Table Propagations. Each element contains the following attributes:
+     * @return A list of Transit Router Route Table Propagations. Each element contains the following attributes:
      * 
      */
     public List<GetTransitRouterRouteTablePropagationsPropagation> propagations() {
         return this.propagations;
     }
     /**
-     * @return The status of the route table.
+     * @return The status of the route learning correlation.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return ID of the transit router route table.
+     * @return The ID of the network instance connection.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     public String transitRouterRouteTableId() {
@@ -95,6 +99,7 @@ public final class GetTransitRouterRouteTablePropagationsResult {
         private @Nullable String outputFile;
         private List<GetTransitRouterRouteTablePropagationsPropagation> propagations;
         private @Nullable String status;
+        private @Nullable String transitRouterAttachmentId;
         private String transitRouterRouteTableId;
         public Builder() {}
         public Builder(GetTransitRouterRouteTablePropagationsResult defaults) {
@@ -104,6 +109,7 @@ public final class GetTransitRouterRouteTablePropagationsResult {
     	      this.outputFile = defaults.outputFile;
     	      this.propagations = defaults.propagations;
     	      this.status = defaults.status;
+    	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
     	      this.transitRouterRouteTableId = defaults.transitRouterRouteTableId;
         }
 
@@ -150,6 +156,12 @@ public final class GetTransitRouterRouteTablePropagationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
             if (transitRouterRouteTableId == null) {
               throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsResult", "transitRouterRouteTableId");
@@ -164,6 +176,7 @@ public final class GetTransitRouterRouteTablePropagationsResult {
             _resultValue.outputFile = outputFile;
             _resultValue.propagations = propagations;
             _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
             _resultValue.transitRouterRouteTableId = transitRouterRouteTableId;
             return _resultValue;
         }

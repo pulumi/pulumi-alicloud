@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVpnAttachmentsAttachmentResult
     {
         /// <summary>
-        /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+        /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
         /// </summary>
         public readonly bool AutoPublishRouteEnabled;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string CenId;
         /// <summary>
-        /// The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+        /// (Available since v1.245.0) The billing method of the VPN attachment.
         /// </summary>
         public readonly string ChargeType;
         /// <summary>
-        /// The creation time of the resource
+        /// The time when the VPN connection was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -34,19 +34,19 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+        /// The type of resource attached to the transit router.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+        /// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag of the resource
+        /// The tag of the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        /// The description of the IPsec-VPN connection.
         /// </summary>
         public readonly string TransitRouterAttachmentDescription;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string TransitRouterAttachmentId;
         /// <summary>
-        /// The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// The name of the VPN attachment.
         /// </summary>
         public readonly string TransitRouterAttachmentName;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string VpnId;
         /// <summary>
-        /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+        /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         /// </summary>
         public readonly int VpnOwnerId;
         /// <summary>

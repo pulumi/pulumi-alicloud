@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterRouteTablesTableResult
     {
         /// <summary>
-        /// ID of resource.
+        /// The ID of the Transit Router Route Table.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The description of the transit router route table.
+        /// The description of the route table.
         /// </summary>
         public readonly string TransitRouterRouteTableDescription;
         /// <summary>
-        /// ID of the trabsit router route table.
+        /// The ID of the Transit Router Route Table.
         /// </summary>
         public readonly string TransitRouterRouteTableId;
         /// <summary>
-        /// Name of the transit router route table.
+        /// The name of the route table.
         /// </summary>
         public readonly string TransitRouterRouteTableName;
         /// <summary>
-        /// The type of the transit router route table to query. Valid values `System` and `Custom`.
+        /// The type of the route table. Valid values: `System`, `Custom`.
         /// </summary>
         public readonly string TransitRouterRouteTableType;
 

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -248,6 +249,13 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.securityGroups);
     }
 
+    @Import(name="sourceDestCheck")
+    private @Nullable Output<Boolean> sourceDestCheck;
+
+    public Optional<Output<Boolean>> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
+    }
+
     /**
      * A mapping of tags to assign to the resource.
      * 
@@ -300,6 +308,7 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         this.secondaryPrivateIpAddressCount = $.secondaryPrivateIpAddressCount;
         this.securityGroupIds = $.securityGroupIds;
         this.securityGroups = $.securityGroups;
+        this.sourceDestCheck = $.sourceDestCheck;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
     }
@@ -659,6 +668,15 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
+        }
+
+        public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
+            $.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+
+        public Builder sourceDestCheck(Boolean sourceDestCheck) {
+            return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
         /**

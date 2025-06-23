@@ -22,7 +22,7 @@ public final class GetTransitRouterRouteTablesResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of name of CEN Transit Router Route Tables.
+     * @return A list of Transit Router Route Table names.
      * 
      */
     private List<String> names;
@@ -33,7 +33,7 @@ public final class GetTransitRouterRouteTablesResult {
      */
     private @Nullable String status;
     /**
-     * @return A list of CEN Route Entries. Each element contains the following attributes:
+     * @return A list of Transit Router Route Tables. Each element contains the following attributes:
      * 
      */
     private List<GetTransitRouterRouteTablesTable> tables;
@@ -42,7 +42,7 @@ public final class GetTransitRouterRouteTablesResult {
     private @Nullable List<String> transitRouterRouteTableNames;
     private @Nullable String transitRouterRouteTableStatus;
     /**
-     * @return Type of the transit router route table.
+     * @return The type of the route table.
      * 
      */
     private @Nullable String transitRouterRouteTableType;
@@ -62,7 +62,7 @@ public final class GetTransitRouterRouteTablesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of name of CEN Transit Router Route Tables.
+     * @return A list of Transit Router Route Table names.
      * 
      */
     public List<String> names() {
@@ -79,7 +79,7 @@ public final class GetTransitRouterRouteTablesResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return A list of CEN Route Entries. Each element contains the following attributes:
+     * @return A list of Transit Router Route Tables. Each element contains the following attributes:
      * 
      */
     public List<GetTransitRouterRouteTablesTable> tables() {
@@ -98,7 +98,7 @@ public final class GetTransitRouterRouteTablesResult {
         return Optional.ofNullable(this.transitRouterRouteTableStatus);
     }
     /**
-     * @return Type of the transit router route table.
+     * @return The type of the route table.
      * 
      */
     public Optional<String> transitRouterRouteTableType() {

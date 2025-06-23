@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
+        /// The ID of the KMS key used for the data disk.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// The name of the data disk.
         /// </summary>
         [Input("name")]

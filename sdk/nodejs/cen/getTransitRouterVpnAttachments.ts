@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
  *
- * > **NOTE:** Available since v1.245.0.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -19,38 +19,95 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultbpR5Uk = new alicloud.cen.Instance("defaultbpR5Uk", {cenInstanceName: "example-vpn-attachment"});
- * const defaultM8Zo6H = new alicloud.cen.TransitRouter("defaultM8Zo6H", {cenId: defaultbpR5Uk.id});
- * const defaultuUtyCv = new alicloud.cen.TransitRouterCidr("defaultuUtyCv", {
+ * const _default = alicloud.getAccount({});
+ * const defaultInstance = new alicloud.cen.Instance("default", {cenInstanceName: name});
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("default", {
  *     cidr: "192.168.10.0/24",
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     publishCidrRoute: true,
  * });
- * const defaultMeoCIz = new alicloud.vpn.CustomerGateway("defaultMeoCIz", {
- *     ipAddress: "0.0.0.0",
- *     customerGatewayName: "example-vpn-attachment",
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
+ *     ipAddress: "1.1.1.8",
+ *     customerGatewayName: name,
+ * }, {
+ *     dependsOn: [defaultTransitRouterCidr],
  * });
- * const defaultvrPzdh = new alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh", {
- *     customerGatewayId: defaultMeoCIz.id,
- *     vpnAttachmentName: "example-vpn-attachment",
- *     localSubnet: "10.0.1.0/24",
- *     remoteSubnet: "10.0.2.0/24",
+ * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("default", {
+ *     networkType: "public",
+ *     localSubnet: "0.0.0.0/0",
+ *     enableTunnelsBgp: false,
+ *     vpnAttachmentName: name,
+ *     tunnelOptionsSpecifications: [
+ *         {
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             enableDpd: true,
+ *             enableNatTraversal: true,
+ *             tunnelIndex: 1,
+ *             tunnelIkeConfig: {
+ *                 remoteId: "2.2.2.2",
+ *                 ikeEncAlg: "aes",
+ *                 ikeMode: "main",
+ *                 ikeVersion: "ikev1",
+ *                 localId: "1.1.1.1",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeLifetime: 86100,
+ *                 ikePfs: "group2",
+ *                 psk: "12345678",
+ *             },
+ *             tunnelIpsecConfig: {
+ *                 ipsecAuthAlg: "md5",
+ *                 ipsecEncAlg: "aes",
+ *                 ipsecLifetime: 86200,
+ *                 ipsecPfs: "group5",
+ *             },
+ *         },
+ *         {
+ *             enableNatTraversal: true,
+ *             tunnelIndex: 2,
+ *             tunnelIkeConfig: {
+ *                 localId: "4.4.4.4",
+ *                 remoteId: "5.5.5.5",
+ *                 ikeLifetime: 86400,
+ *                 ikePfs: "group5",
+ *                 ikeMode: "main",
+ *                 ikeVersion: "ikev2",
+ *                 psk: "32333442",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeEncAlg: "aes",
+ *             },
+ *             tunnelIpsecConfig: {
+ *                 ipsecEncAlg: "aes",
+ *                 ipsecLifetime: 86400,
+ *                 ipsecPfs: "group5",
+ *                 ipsecAuthAlg: "sha256",
+ *             },
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             enableDpd: true,
+ *         },
+ *     ],
+ *     remoteSubnet: "0.0.0.0/0",
  * });
  * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("default", {
- *     vpnOwnerId: defaultM8Zo6H.id,
- *     cenId: defaultM8Zo6H.id,
- *     transitRouterAttachmentDescription: "example-vpn-attachment",
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
- *     vpnId: defaultvrPzdh.id,
  *     autoPublishRouteEnabled: false,
+ *     transitRouterAttachmentDescription: name,
+ *     transitRouterAttachmentName: name,
+ *     cenId: defaultTransitRouter.cenId,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vpnId: defaultGatewayVpnAttachment.id,
+ *     vpnOwnerId: _default.then(_default => _default.id),
  *     chargeType: "POSTPAY",
- *     transitRouterAttachmentName: "example-vpn-attachment",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "VpnAttachment",
+ *     },
  * });
- * const _default = alicloud.cen.getTransitRouterVpnAttachmentsOutput({
- *     ids: [defaultTransitRouterVpnAttachment.id],
- *     cenId: defaultM8Zo6H.id,
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
- * });
- * export const alicloudCenTransitRouterVpnAttachmentExampleId = _default.apply(_default => _default.attachments?.[0]?.id);
+ * const ids = pulumi.all([defaultTransitRouterVpnAttachment.id, defaultTransitRouterVpnAttachment.cenId, defaultTransitRouterVpnAttachment.transitRouterId]).apply(([id, cenId, transitRouterId]) => alicloud.cen.getTransitRouterVpnAttachmentsOutput({
+ *     ids: [id],
+ *     cenId: cenId,
+ *     transitRouterId: transitRouterId,
+ * }));
+ * export const cenTransitRouterVpnAttachmentId0 = ids.apply(ids => ids.attachments?.[0]?.id);
  * ```
  */
 export function getTransitRouterVpnAttachments(args?: GetTransitRouterVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVpnAttachmentsResult> {
@@ -81,7 +138,7 @@ export interface GetTransitRouterVpnAttachmentsArgs {
      */
     ids?: string[];
     /**
-     * A regex string to filter results by Group Metric Rule name.
+     * A regex string to filter results by Transit Router Vpn Attachment name.
      */
     nameRegex?: string;
     /**
@@ -89,11 +146,11 @@ export interface GetTransitRouterVpnAttachmentsArgs {
      */
     outputFile?: string;
     /**
-     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      */
     status?: string;
     /**
-     * The tag of the resource
+     * The tag of the resource.
      */
     tags?: {[key: string]: string};
     /**
@@ -115,16 +172,13 @@ export interface GetTransitRouterVpnAttachmentsResult {
      */
     readonly attachments: outputs.cen.GetTransitRouterVpnAttachmentsAttachment[];
     /**
-     * The ID of the Cloud Enterprise Network (CEN) instance.
+     * (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
      */
     readonly cenId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of Transit Router Vpn Attachment IDs.
-     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
@@ -133,15 +187,15 @@ export interface GetTransitRouterVpnAttachmentsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * Status
+     * The status of the VPN connection.
      */
     readonly status?: string;
     /**
-     * The tag of the resource
+     * (Available since v1.245.0) The tag of the resource.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * The ID of the VPN attachment.
+     * (Available since v1.245.0) The ID of the VPN attachment.
      */
     readonly transitRouterAttachmentId?: string;
     /**
@@ -152,7 +206,7 @@ export interface GetTransitRouterVpnAttachmentsResult {
 /**
  * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
  *
- * > **NOTE:** Available since v1.245.0.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -162,38 +216,95 @@ export interface GetTransitRouterVpnAttachmentsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultbpR5Uk = new alicloud.cen.Instance("defaultbpR5Uk", {cenInstanceName: "example-vpn-attachment"});
- * const defaultM8Zo6H = new alicloud.cen.TransitRouter("defaultM8Zo6H", {cenId: defaultbpR5Uk.id});
- * const defaultuUtyCv = new alicloud.cen.TransitRouterCidr("defaultuUtyCv", {
+ * const _default = alicloud.getAccount({});
+ * const defaultInstance = new alicloud.cen.Instance("default", {cenInstanceName: name});
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("default", {
  *     cidr: "192.168.10.0/24",
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     publishCidrRoute: true,
  * });
- * const defaultMeoCIz = new alicloud.vpn.CustomerGateway("defaultMeoCIz", {
- *     ipAddress: "0.0.0.0",
- *     customerGatewayName: "example-vpn-attachment",
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
+ *     ipAddress: "1.1.1.8",
+ *     customerGatewayName: name,
+ * }, {
+ *     dependsOn: [defaultTransitRouterCidr],
  * });
- * const defaultvrPzdh = new alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh", {
- *     customerGatewayId: defaultMeoCIz.id,
- *     vpnAttachmentName: "example-vpn-attachment",
- *     localSubnet: "10.0.1.0/24",
- *     remoteSubnet: "10.0.2.0/24",
+ * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("default", {
+ *     networkType: "public",
+ *     localSubnet: "0.0.0.0/0",
+ *     enableTunnelsBgp: false,
+ *     vpnAttachmentName: name,
+ *     tunnelOptionsSpecifications: [
+ *         {
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             enableDpd: true,
+ *             enableNatTraversal: true,
+ *             tunnelIndex: 1,
+ *             tunnelIkeConfig: {
+ *                 remoteId: "2.2.2.2",
+ *                 ikeEncAlg: "aes",
+ *                 ikeMode: "main",
+ *                 ikeVersion: "ikev1",
+ *                 localId: "1.1.1.1",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeLifetime: 86100,
+ *                 ikePfs: "group2",
+ *                 psk: "12345678",
+ *             },
+ *             tunnelIpsecConfig: {
+ *                 ipsecAuthAlg: "md5",
+ *                 ipsecEncAlg: "aes",
+ *                 ipsecLifetime: 86200,
+ *                 ipsecPfs: "group5",
+ *             },
+ *         },
+ *         {
+ *             enableNatTraversal: true,
+ *             tunnelIndex: 2,
+ *             tunnelIkeConfig: {
+ *                 localId: "4.4.4.4",
+ *                 remoteId: "5.5.5.5",
+ *                 ikeLifetime: 86400,
+ *                 ikePfs: "group5",
+ *                 ikeMode: "main",
+ *                 ikeVersion: "ikev2",
+ *                 psk: "32333442",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeEncAlg: "aes",
+ *             },
+ *             tunnelIpsecConfig: {
+ *                 ipsecEncAlg: "aes",
+ *                 ipsecLifetime: 86400,
+ *                 ipsecPfs: "group5",
+ *                 ipsecAuthAlg: "sha256",
+ *             },
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             enableDpd: true,
+ *         },
+ *     ],
+ *     remoteSubnet: "0.0.0.0/0",
  * });
  * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("default", {
- *     vpnOwnerId: defaultM8Zo6H.id,
- *     cenId: defaultM8Zo6H.id,
- *     transitRouterAttachmentDescription: "example-vpn-attachment",
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
- *     vpnId: defaultvrPzdh.id,
  *     autoPublishRouteEnabled: false,
+ *     transitRouterAttachmentDescription: name,
+ *     transitRouterAttachmentName: name,
+ *     cenId: defaultTransitRouter.cenId,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vpnId: defaultGatewayVpnAttachment.id,
+ *     vpnOwnerId: _default.then(_default => _default.id),
  *     chargeType: "POSTPAY",
- *     transitRouterAttachmentName: "example-vpn-attachment",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "VpnAttachment",
+ *     },
  * });
- * const _default = alicloud.cen.getTransitRouterVpnAttachmentsOutput({
- *     ids: [defaultTransitRouterVpnAttachment.id],
- *     cenId: defaultM8Zo6H.id,
- *     transitRouterId: defaultM8Zo6H.transitRouterId,
- * });
- * export const alicloudCenTransitRouterVpnAttachmentExampleId = _default.apply(_default => _default.attachments?.[0]?.id);
+ * const ids = pulumi.all([defaultTransitRouterVpnAttachment.id, defaultTransitRouterVpnAttachment.cenId, defaultTransitRouterVpnAttachment.transitRouterId]).apply(([id, cenId, transitRouterId]) => alicloud.cen.getTransitRouterVpnAttachmentsOutput({
+ *     ids: [id],
+ *     cenId: cenId,
+ *     transitRouterId: transitRouterId,
+ * }));
+ * export const cenTransitRouterVpnAttachmentId0 = ids.apply(ids => ids.attachments?.[0]?.id);
  * ```
  */
 export function getTransitRouterVpnAttachmentsOutput(args?: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
@@ -224,7 +335,7 @@ export interface GetTransitRouterVpnAttachmentsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by Group Metric Rule name.
+     * A regex string to filter results by Transit Router Vpn Attachment name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -232,11 +343,11 @@ export interface GetTransitRouterVpnAttachmentsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+     * The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource
+     * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

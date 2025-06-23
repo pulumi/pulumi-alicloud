@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.NodePoolArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolState;
 import com.pulumi.alicloud.cs.outputs.NodePoolDataDisk;
+import com.pulumi.alicloud.cs.outputs.NodePoolEfloNodeGroup;
 import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfiguration;
 import com.pulumi.alicloud.cs.outputs.NodePoolLabel;
 import com.pulumi.alicloud.cs.outputs.NodePoolManagement;
@@ -175,6 +176,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredSize);
     }
     /**
+     * Lingjun node pool configuration. See `eflo_node_group` below.
+     * 
+     */
+    @Export(name="efloNodeGroup", refs={NodePoolEfloNodeGroup.class}, tree="[0]")
+    private Output</* @Nullable */ NodePoolEfloNodeGroup> efloNodeGroup;
+
+    /**
+     * @return Lingjun node pool configuration. See `eflo_node_group` below.
+     * 
+     */
+    public Output<Optional<NodePoolEfloNodeGroup>> efloNodeGroup() {
+        return Codegen.optional(this.efloNodeGroup);
+    }
+    /**
      * Whether to force deletion.
      * 
      */
@@ -226,7 +241,8 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * 
      */
     @Export(name="imageType", refs={String.class}, tree="[0]")
@@ -242,7 +258,8 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * 
      */
     public Output<String> imageType() {
@@ -267,28 +284,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceChargeType;
+    private Output<String> instanceChargeType;
 
     /**
      * @return Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
      * 
      */
-    public Output<Optional<String>> instanceChargeType() {
-        return Codegen.optional(this.instanceChargeType);
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
     }
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
     @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> instanceTypes;
+    private Output</* @Nullable */ List<String>> instanceTypes;
 
     /**
      * @return In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
-    public Output<List<String>> instanceTypes() {
-        return this.instanceTypes;
+    public Output<Optional<List<String>>> instanceTypes() {
+        return Codegen.optional(this.instanceTypes);
     }
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -1117,6 +1134,24 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.teeConfig;
     }
     /**
+     * Node pool type, value range:
+     * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+     * -&#39;lingjun&#39;: Lingjun node pool.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return Node pool type, value range:
+     * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+     * -&#39;lingjun&#39;: Lingjun node pool.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
+    }
+    /**
      * Whether the node after expansion can be scheduled.
      * 
      */
@@ -1163,14 +1198,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> vswitchIds;
+    private Output</* @Nullable */ List<String>> vswitchIds;
 
     /**
      * @return The vswitches used by node pool workers.
      * 
      */
-    public Output<List<String>> vswitchIds() {
-        return this.vswitchIds;
+    public Output<Optional<List<String>>> vswitchIds() {
+        return Codegen.optional(this.vswitchIds);
     }
 
     /**

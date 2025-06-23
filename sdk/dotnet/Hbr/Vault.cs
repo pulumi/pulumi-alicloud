@@ -119,7 +119,9 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> VaultStorageClass { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        /// The type of Vault. Valid values:
+        /// - `STANDARD`: Standard backup vault.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Output("vaultType")]
         public Output<string> VaultType { get; private set; } = null!;
@@ -227,7 +229,9 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        /// The type of Vault. Valid values:
+        /// - `STANDARD`: Standard backup vault.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
@@ -315,7 +319,9 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        /// The type of Vault. Valid values:
+        /// - `STANDARD`: Standard backup vault.
+        /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }

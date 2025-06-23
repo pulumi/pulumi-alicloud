@@ -14,9 +14,11 @@ import (
 
 // Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
 //
+// The replication vault used by the cross-region backup function of Cloud Backup.
+//
 // For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.252.0.
 //
 // ## Example Usage
 //
@@ -86,17 +88,23 @@ import (
 type ReplicationVault struct {
 	pulumi.CustomResourceState
 
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the region where the source vault resides.
+	// The encryption type of the backup vault.
+	EncryptType pulumi.StringOutput `pulumi:"encryptType"`
+	// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// RegionId
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The region ID of the source backup vault.
 	ReplicationSourceRegionId pulumi.StringOutput `pulumi:"replicationSourceRegionId"`
-	// The ID of the source vault.
+	// The vault ID of the source backup vault.
 	ReplicationSourceVaultId pulumi.StringOutput `pulumi:"replicationSourceVaultId"`
-	// The status of the resource.
+	// The status of the mirror backup vault.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	// The name of the backup vault.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
-	// The storage type of the backup vault. Valid values: `STANDARD`.
+	// Backup Vault Storage Class
 	VaultStorageClass pulumi.StringOutput `pulumi:"vaultStorageClass"`
 }
 
@@ -139,32 +147,44 @@ func GetReplicationVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReplicationVault resources.
 type replicationVaultState struct {
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault.
 	Description *string `pulumi:"description"`
-	// The ID of the region where the source vault resides.
+	// The encryption type of the backup vault.
+	EncryptType *string `pulumi:"encryptType"`
+	// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// RegionId
+	RegionId *string `pulumi:"regionId"`
+	// The region ID of the source backup vault.
 	ReplicationSourceRegionId *string `pulumi:"replicationSourceRegionId"`
-	// The ID of the source vault.
+	// The vault ID of the source backup vault.
 	ReplicationSourceVaultId *string `pulumi:"replicationSourceVaultId"`
-	// The status of the resource.
+	// The status of the mirror backup vault.
 	Status *string `pulumi:"status"`
-	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	// The name of the backup vault.
 	VaultName *string `pulumi:"vaultName"`
-	// The storage type of the backup vault. Valid values: `STANDARD`.
+	// Backup Vault Storage Class
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
 }
 
 type ReplicationVaultState struct {
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault.
 	Description pulumi.StringPtrInput
-	// The ID of the region where the source vault resides.
+	// The encryption type of the backup vault.
+	EncryptType pulumi.StringPtrInput
+	// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+	KmsKeyId pulumi.StringPtrInput
+	// RegionId
+	RegionId pulumi.StringPtrInput
+	// The region ID of the source backup vault.
 	ReplicationSourceRegionId pulumi.StringPtrInput
-	// The ID of the source vault.
+	// The vault ID of the source backup vault.
 	ReplicationSourceVaultId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the mirror backup vault.
 	Status pulumi.StringPtrInput
-	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	// The name of the backup vault.
 	VaultName pulumi.StringPtrInput
-	// The storage type of the backup vault. Valid values: `STANDARD`.
+	// Backup Vault Storage Class
 	VaultStorageClass pulumi.StringPtrInput
 }
 
@@ -173,29 +193,37 @@ func (ReplicationVaultState) ElementType() reflect.Type {
 }
 
 type replicationVaultArgs struct {
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault.
 	Description *string `pulumi:"description"`
-	// The ID of the region where the source vault resides.
+	// The encryption type of the backup vault.
+	EncryptType *string `pulumi:"encryptType"`
+	// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The region ID of the source backup vault.
 	ReplicationSourceRegionId string `pulumi:"replicationSourceRegionId"`
-	// The ID of the source vault.
+	// The vault ID of the source backup vault.
 	ReplicationSourceVaultId string `pulumi:"replicationSourceVaultId"`
-	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	// The name of the backup vault.
 	VaultName string `pulumi:"vaultName"`
-	// The storage type of the backup vault. Valid values: `STANDARD`.
+	// Backup Vault Storage Class
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
 }
 
 // The set of arguments for constructing a ReplicationVault resource.
 type ReplicationVaultArgs struct {
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault.
 	Description pulumi.StringPtrInput
-	// The ID of the region where the source vault resides.
+	// The encryption type of the backup vault.
+	EncryptType pulumi.StringPtrInput
+	// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+	KmsKeyId pulumi.StringPtrInput
+	// The region ID of the source backup vault.
 	ReplicationSourceRegionId pulumi.StringInput
-	// The ID of the source vault.
+	// The vault ID of the source backup vault.
 	ReplicationSourceVaultId pulumi.StringInput
-	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	// The name of the backup vault.
 	VaultName pulumi.StringInput
-	// The storage type of the backup vault. Valid values: `STANDARD`.
+	// Backup Vault Storage Class
 	VaultStorageClass pulumi.StringPtrInput
 }
 
@@ -286,32 +314,47 @@ func (o ReplicationVaultOutput) ToReplicationVaultOutputWithContext(ctx context.
 	return o
 }
 
-// The description of the backup vault. The description must be 0 to 255 characters in length.
+// The description of the backup vault.
 func (o ReplicationVaultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the region where the source vault resides.
+// The encryption type of the backup vault.
+func (o ReplicationVaultOutput) EncryptType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.EncryptType }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+func (o ReplicationVaultOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// RegionId
+func (o ReplicationVaultOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The region ID of the source backup vault.
 func (o ReplicationVaultOutput) ReplicationSourceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.ReplicationSourceRegionId }).(pulumi.StringOutput)
 }
 
-// The ID of the source vault.
+// The vault ID of the source backup vault.
 func (o ReplicationVaultOutput) ReplicationSourceVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.ReplicationSourceVaultId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the mirror backup vault.
 func (o ReplicationVaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the backup vault. The name must be 1 to 64 characters in length.
+// The name of the backup vault.
 func (o ReplicationVaultOutput) VaultName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.VaultName }).(pulumi.StringOutput)
 }
 
-// The storage type of the backup vault. Valid values: `STANDARD`.
+// Backup Vault Storage Class
 func (o ReplicationVaultOutput) VaultStorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReplicationVault) pulumi.StringOutput { return v.VaultStorageClass }).(pulumi.StringOutput)
 }

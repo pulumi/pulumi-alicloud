@@ -35,6 +35,11 @@ export type ServiceQueue = import("./serviceQueue").ServiceQueue;
 export const ServiceQueue: typeof import("./serviceQueue").ServiceQueue = null as any;
 utilities.lazyLoad(exports, ["ServiceQueue"], () => require("./serviceQueue"));
 
+export { ServiceServiceArgs, ServiceServiceState } from "./serviceService";
+export type ServiceService = import("./serviceService").ServiceService;
+export const ServiceService: typeof import("./serviceService").ServiceService = null as any;
+utilities.lazyLoad(exports, ["ServiceService"], () => require("./serviceService"));
+
 export { ServiceSubscriptionArgs, ServiceSubscriptionState } from "./serviceSubscription";
 export type ServiceSubscription = import("./serviceSubscription").ServiceSubscription;
 export const ServiceSubscription: typeof import("./serviceSubscription").ServiceSubscription = null as any;
@@ -56,6 +61,8 @@ const _module = {
                 return new ServiceEndpointAcl(name, <any>undefined, { urn })
             case "alicloud:message/serviceQueue:ServiceQueue":
                 return new ServiceQueue(name, <any>undefined, { urn })
+            case "alicloud:message/serviceService:ServiceService":
+                return new ServiceService(name, <any>undefined, { urn })
             case "alicloud:message/serviceSubscription:ServiceSubscription":
                 return new ServiceSubscription(name, <any>undefined, { urn })
             case "alicloud:message/serviceTopic:ServiceTopic":
@@ -68,5 +75,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpointAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceQueue", _module)
+pulumi.runtime.registerResourceModule("alicloud", "message/serviceService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceSubscription", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceTopic", _module)

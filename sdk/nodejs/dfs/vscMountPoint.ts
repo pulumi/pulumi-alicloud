@@ -93,7 +93,7 @@ export class VscMountPoint extends pulumi.CustomResource {
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
-     * The collection of ECS instances on which the HDFS file system is mounted.
+     * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      */
     public /*out*/ readonly instances!: pulumi.Output<outputs.dfs.VscMountPointInstance[]>;
     /**
@@ -152,7 +152,7 @@ export interface VscMountPointState {
      */
     fileSystemId?: pulumi.Input<string>;
     /**
-     * The collection of ECS instances on which the HDFS file system is mounted.
+     * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      */
     instances?: pulumi.Input<pulumi.Input<inputs.dfs.VscMountPointInstance>[]>;
     /**

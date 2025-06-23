@@ -14,9 +14,107 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// Dedicated RDS User host.
     /// 
-    /// For information about RDS Custom and how to use it, see [What is Custom](https://www.alibabacloud.com/help/en/).
+    /// For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
     /// 
-    /// &gt; **NOTE:** Available since v1.235.0.
+    /// &gt; **NOTE:** Available since v1.247.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var clusterId = config.Get("clusterId") ?? "c18c40b2b336840e2b2bbf8ab291758e2";
+    ///     var deploymentsetid = config.Get("deploymentsetid") ?? "ds-2ze78ef5kyj9eveue92m";
+    ///     var vswtich_id = config.Get("vswtich-id") ?? "example_vswitch";
+    ///     var vpcName = config.Get("vpcName") ?? "beijing111";
+    ///     var exampleRegionId = config.Get("exampleRegionId") ?? "cn-beijing";
+    ///     var description = config.Get("description") ?? "ran_1-08_rccreatenodepool_api";
+    ///     var exampleZoneId = config.Get("exampleZoneId") ?? "cn-beijing-h";
+    ///     var securitygroupName = config.Get("securitygroupName") ?? "rds_custom_init_sg_cn_beijing";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var vpcId = new AliCloud.Vpc.Network("vpcId", new()
+    ///     {
+    ///         VpcName = vpcName,
+    ///     });
+    /// 
+    ///     var vSwitchId = new AliCloud.Vpc.Switch("vSwitchId", new()
+    ///     {
+    ///         VpcId = vpcId.Id,
+    ///         ZoneId = exampleZoneId,
+    ///         VswitchName = vswtich_id,
+    ///         CidrBlock = "172.16.5.0/24",
+    ///     });
+    /// 
+    ///     var securityGroupId = new AliCloud.Ecs.SecurityGroup("securityGroupId", new()
+    ///     {
+    ///         VpcId = vpcId.Id,
+    ///         SecurityGroupName = securitygroupName,
+    ///     });
+    /// 
+    ///     var deploymentSet = new AliCloud.Ecs.EcsDeploymentSet("deploymentSet");
+    /// 
+    ///     var keyPairName = new AliCloud.Ecs.EcsKeyPair("KeyPairName", new()
+    ///     {
+    ///         KeyPairName = vSwitchId.Id,
+    ///     });
+    /// 
+    ///     var defaultCustom = new AliCloud.Rds.Custom("default", new()
+    ///     {
+    ///         Amount = 1,
+    ///         AutoRenew = false,
+    ///         Period = 1,
+    ///         AutoPay = true,
+    ///         InstanceType = "mysql.x2.xlarge.6cm",
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.CustomDataDiskArgs
+    ///             {
+    ///                 Category = "cloud_essd",
+    ///                 Size = 50,
+    ///                 PerformanceLevel = "PL1",
+    ///             },
+    ///         },
+    ///         Status = "Running",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroupId.Id,
+    ///         },
+    ///         IoOptimized = "optimized",
+    ///         Description = description,
+    ///         KeyPairName = keyPairName.Id,
+    ///         ZoneId = exampleZoneId,
+    ///         InstanceChargeType = "Prepaid",
+    ///         InternetMaxBandwidthOut = 0,
+    ///         ImageId = "aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+    ///         SecurityEnhancementStrategy = "Active",
+    ///         PeriodUnit = "Month",
+    ///         Password = "jingyiTEST@123",
+    ///         SystemDisk = new AliCloud.Rds.Inputs.CustomSystemDiskArgs
+    ///         {
+    ///             Size = "40",
+    ///             Category = "cloud_essd",
+    ///         },
+    ///         HostName = "1743386110",
+    ///         CreateMode = "0",
+    ///         SpotStrategy = "NoSpot",
+    ///         VswitchId = vSwitchId.Id,
+    ///         SupportCase = "eni",
+    ///         DeploymentSetId = deploymentsetid,
+    ///         DryRun = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -33,7 +131,7 @@ namespace Pulumi.AliCloud.Rds
         /// Represents the number of instances created
         /// </summary>
         [Output("amount")]
-        public Output<int> Amount { get; private set; } = null!;
+        public Output<int?> Amount { get; private set; } = null!;
 
         /// <summary>
         /// Whether to pay automatically. Value range:
@@ -46,6 +144,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved parameters are not supported.
+        /// </summary>
+        [Output("createExtraParam")]
+        public Output<string?> CreateExtraParam { get; private set; } = null!;
 
         /// <summary>
         /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
@@ -192,10 +296,26 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        /// - `NoSpot`: normal pay-as-you-go instances.
+        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// 
+        /// Default value: **NoSpot * *.
+        /// </summary>
+        [Output("spotStrategy")]
+        public Output<string?> SpotStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// </summary>
+        [Output("supportCase")]
+        public Output<string?> SupportCase { get; private set; } = null!;
 
         /// <summary>
         /// System disk specifications. See `system_disk` below.
@@ -211,7 +331,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// 
         /// The network type InstanceNetworkType must be VPC.
         /// </summary>
         [Output("vswitchId")]
@@ -272,8 +391,8 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// Represents the number of instances created
         /// </summary>
-        [Input("amount", required: true)]
-        public Input<int> Amount { get; set; } = null!;
+        [Input("amount")]
+        public Input<int>? Amount { get; set; }
 
         /// <summary>
         /// Whether to pay automatically. Value range:
@@ -286,6 +405,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Reserved parameters are not supported.
+        /// </summary>
+        [Input("createExtraParam")]
+        public Input<string>? CreateExtraParam { get; set; }
 
         /// <summary>
         /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
@@ -438,10 +563,26 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
+        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        /// - `NoSpot`: normal pay-as-you-go instances.
+        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// 
+        /// Default value: **NoSpot * *.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
         /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// </summary>
+        [Input("supportCase")]
+        public Input<string>? SupportCase { get; set; }
 
         /// <summary>
         /// System disk specifications. See `system_disk` below.
@@ -463,7 +604,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// 
         /// The network type InstanceNetworkType must be VPC.
         /// </summary>
         [Input("vswitchId", required: true)]
@@ -500,6 +640,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Reserved parameters are not supported.
+        /// </summary>
+        [Input("createExtraParam")]
+        public Input<string>? CreateExtraParam { get; set; }
 
         /// <summary>
         /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
@@ -658,10 +804,26 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
+        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        /// - `NoSpot`: normal pay-as-you-go instances.
+        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// 
+        /// Default value: **NoSpot * *.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
         /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// </summary>
+        [Input("supportCase")]
+        public Input<string>? SupportCase { get; set; }
 
         /// <summary>
         /// System disk specifications. See `system_disk` below.
@@ -683,7 +845,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// 
         /// The network type InstanceNetworkType must be VPC.
         /// </summary>
         [Input("vswitchId")]

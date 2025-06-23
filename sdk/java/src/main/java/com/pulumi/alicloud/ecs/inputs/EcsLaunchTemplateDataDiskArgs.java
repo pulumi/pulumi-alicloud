@@ -93,6 +93,21 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The ID of the KMS key used for the data disk.
+     * 
+     */
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    /**
+     * @return The ID of the KMS key used for the data disk.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
      * The name of the data disk.
      * 
      */
@@ -160,6 +175,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         this.description = $.description;
         this.device = $.device;
         this.encrypted = $.encrypted;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
         this.size = $.size;
@@ -287,6 +303,27 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
          */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
+        }
+
+        /**
+         * @param kmsKeyId The ID of the KMS key used for the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId The ID of the KMS key used for the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

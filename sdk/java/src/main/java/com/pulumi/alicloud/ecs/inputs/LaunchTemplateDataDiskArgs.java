@@ -106,6 +106,13 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.encrypted);
     }
 
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
     /**
      * The name of the data disk.
      * 
@@ -176,6 +183,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         this.description = $.description;
         this.device = $.device;
         this.encrypted = $.encrypted;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
         this.size = $.size;
@@ -313,6 +321,15 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
          */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
+        }
+
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

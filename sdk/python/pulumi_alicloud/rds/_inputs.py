@@ -63,15 +63,12 @@ if not MYPY:
         category: NotRequired[pulumi.Input[builtins.str]]
         """
         Instance storage type
-
         local_ssd: local SSD disk
-
         cloud_essd:ESSD PL1 cloud disk
         """
         performance_level: NotRequired[pulumi.Input[builtins.str]]
         """
         Cloud Disk Performance
-
         Currently only supports PL1
         """
         size: NotRequired[pulumi.Input[builtins.int]]
@@ -89,12 +86,9 @@ class CustomDataDiskArgs:
                  size: Optional[pulumi.Input[builtins.int]] = None):
         """
         :param pulumi.Input[builtins.str] category: Instance storage type
-               
                local_ssd: local SSD disk
-               
                cloud_essd:ESSD PL1 cloud disk
         :param pulumi.Input[builtins.str] performance_level: Cloud Disk Performance
-               
                Currently only supports PL1
         :param pulumi.Input[builtins.int] size: Instance storage space. Unit: GB.
         """
@@ -110,9 +104,7 @@ class CustomDataDiskArgs:
     def category(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Instance storage type
-
         local_ssd: local SSD disk
-
         cloud_essd:ESSD PL1 cloud disk
         """
         return pulumi.get(self, "category")
@@ -126,7 +118,6 @@ class CustomDataDiskArgs:
     def performance_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Cloud Disk Performance
-
         Currently only supports PL1
         """
         return pulumi.get(self, "performance_level")

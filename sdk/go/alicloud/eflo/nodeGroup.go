@@ -266,10 +266,14 @@ type NodeGroup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to allow skipping failed nodes. Default value: False
 	IgnoreFailedNodeTasks pulumi.BoolPtrOutput `pulumi:"ignoreFailedNodeTasks"`
-	// Image ID
+	// Image ID. You can modify the image ID since v1.252.0.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 	IpAllocationPolicies NodeGroupIpAllocationPolicyArrayOutput `pulumi:"ipAllocationPolicies"`
+	// key pair name
+	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	// Login Password
+	LoginPassword pulumi.StringPtrOutput `pulumi:"loginPassword"`
 	// Machine type
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// NodeGroupDescription
@@ -312,6 +316,13 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.NodeGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'NodeGroupName'")
 	}
+	if args.LoginPassword != nil {
+		args.LoginPassword = pulumi.ToSecret(args.LoginPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"loginPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodeGroup
 	err := ctx.RegisterResource("alicloud:eflo/nodeGroup:NodeGroup", name, args, &resource, opts...)
@@ -343,10 +354,14 @@ type nodeGroupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Whether to allow skipping failed nodes. Default value: False
 	IgnoreFailedNodeTasks *bool `pulumi:"ignoreFailedNodeTasks"`
-	// Image ID
+	// Image ID. You can modify the image ID since v1.252.0.
 	ImageId *string `pulumi:"imageId"`
 	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 	IpAllocationPolicies []NodeGroupIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// key pair name
+	KeyPairName *string `pulumi:"keyPairName"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
 	// Machine type
 	MachineType *string `pulumi:"machineType"`
 	// NodeGroupDescription
@@ -376,10 +391,14 @@ type NodeGroupState struct {
 	CreateTime pulumi.StringPtrInput
 	// Whether to allow skipping failed nodes. Default value: False
 	IgnoreFailedNodeTasks pulumi.BoolPtrInput
-	// Image ID
+	// Image ID. You can modify the image ID since v1.252.0.
 	ImageId pulumi.StringPtrInput
 	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 	IpAllocationPolicies NodeGroupIpAllocationPolicyArrayInput
+	// key pair name
+	KeyPairName pulumi.StringPtrInput
+	// Login Password
+	LoginPassword pulumi.StringPtrInput
 	// Machine type
 	MachineType pulumi.StringPtrInput
 	// NodeGroupDescription
@@ -411,10 +430,14 @@ type nodeGroupArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Whether to allow skipping failed nodes. Default value: False
 	IgnoreFailedNodeTasks *bool `pulumi:"ignoreFailedNodeTasks"`
-	// Image ID
+	// Image ID. You can modify the image ID since v1.252.0.
 	ImageId string `pulumi:"imageId"`
 	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 	IpAllocationPolicies []NodeGroupIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// key pair name
+	KeyPairName *string `pulumi:"keyPairName"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
 	// Machine type
 	MachineType string `pulumi:"machineType"`
 	// NodeGroupDescription
@@ -441,10 +464,14 @@ type NodeGroupArgs struct {
 	ClusterId pulumi.StringInput
 	// Whether to allow skipping failed nodes. Default value: False
 	IgnoreFailedNodeTasks pulumi.BoolPtrInput
-	// Image ID
+	// Image ID. You can modify the image ID since v1.252.0.
 	ImageId pulumi.StringInput
 	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 	IpAllocationPolicies NodeGroupIpAllocationPolicyArrayInput
+	// key pair name
+	KeyPairName pulumi.StringPtrInput
+	// Login Password
+	LoginPassword pulumi.StringPtrInput
 	// Machine type
 	MachineType pulumi.StringInput
 	// NodeGroupDescription
@@ -570,7 +597,7 @@ func (o NodeGroupOutput) IgnoreFailedNodeTasks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.BoolPtrOutput { return v.IgnoreFailedNodeTasks }).(pulumi.BoolPtrOutput)
 }
 
-// Image ID
+// Image ID. You can modify the image ID since v1.252.0.
 func (o NodeGroupOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -578,6 +605,16 @@ func (o NodeGroupOutput) ImageId() pulumi.StringOutput {
 // IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
 func (o NodeGroupOutput) IpAllocationPolicies() NodeGroupIpAllocationPolicyArrayOutput {
 	return o.ApplyT(func(v *NodeGroup) NodeGroupIpAllocationPolicyArrayOutput { return v.IpAllocationPolicies }).(NodeGroupIpAllocationPolicyArrayOutput)
+}
+
+// key pair name
+func (o NodeGroupOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// Login Password
+func (o NodeGroupOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.LoginPassword }).(pulumi.StringPtrOutput)
 }
 
 // Machine type

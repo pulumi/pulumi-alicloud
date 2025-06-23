@@ -16,14 +16,14 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetServiceArgs Empty = new GetServiceArgs();
 
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<String> enable;
 
     /**
-     * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+     * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
      * 
      */
     public Optional<Output<String>> enable() {
@@ -79,7 +79,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+         * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+         * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
          * 
          * @return builder
          * 

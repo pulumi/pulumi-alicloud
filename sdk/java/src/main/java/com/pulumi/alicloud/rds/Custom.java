@@ -25,9 +25,126 @@ import javax.annotation.Nullable;
  * 
  * Dedicated RDS User host.
  * 
- * For information about RDS Custom and how to use it, see [What is Custom](https://www.alibabacloud.com/help/en/).
+ * For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
  * 
- * &gt; **NOTE:** Available since v1.235.0.
+ * &gt; **NOTE:** Available since v1.247.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsDeploymentSet;
+ * import com.pulumi.alicloud.ecs.EcsKeyPair;
+ * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+ * import com.pulumi.alicloud.rds.Custom;
+ * import com.pulumi.alicloud.rds.CustomArgs;
+ * import com.pulumi.alicloud.rds.inputs.CustomDataDiskArgs;
+ * import com.pulumi.alicloud.rds.inputs.CustomSystemDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var clusterId = config.get("clusterId").orElse("c18c40b2b336840e2b2bbf8ab291758e2");
+ *         final var deploymentsetid = config.get("deploymentsetid").orElse("ds-2ze78ef5kyj9eveue92m");
+ *         final var vswtich_id = config.get("vswtich-id").orElse("example_vswitch");
+ *         final var vpcName = config.get("vpcName").orElse("beijing111");
+ *         final var exampleRegionId = config.get("exampleRegionId").orElse("cn-beijing");
+ *         final var description = config.get("description").orElse("ran_1-08_rccreatenodepool_api");
+ *         final var exampleZoneId = config.get("exampleZoneId").orElse("cn-beijing-h");
+ *         final var securitygroupName = config.get("securitygroupName").orElse("rds_custom_init_sg_cn_beijing");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var vpcId = new Network("vpcId", NetworkArgs.builder()
+ *             .vpcName(vpcName)
+ *             .build());
+ * 
+ *         var vSwitchId = new Switch("vSwitchId", SwitchArgs.builder()
+ *             .vpcId(vpcId.id())
+ *             .zoneId(exampleZoneId)
+ *             .vswitchName(vswtich_id)
+ *             .cidrBlock("172.16.5.0/24")
+ *             .build());
+ * 
+ *         var securityGroupId = new SecurityGroup("securityGroupId", SecurityGroupArgs.builder()
+ *             .vpcId(vpcId.id())
+ *             .securityGroupName(securitygroupName)
+ *             .build());
+ * 
+ *         var deploymentSet = new EcsDeploymentSet("deploymentSet");
+ * 
+ *         var keyPairName = new EcsKeyPair("keyPairName", EcsKeyPairArgs.builder()
+ *             .keyPairName(vSwitchId.id())
+ *             .build());
+ * 
+ *         var defaultCustom = new Custom("defaultCustom", CustomArgs.builder()
+ *             .amount(1)
+ *             .autoRenew(false)
+ *             .period(1)
+ *             .autoPay(true)
+ *             .instanceType("mysql.x2.xlarge.6cm")
+ *             .dataDisks(CustomDataDiskArgs.builder()
+ *                 .category("cloud_essd")
+ *                 .size(50)
+ *                 .performanceLevel("PL1")
+ *                 .build())
+ *             .status("Running")
+ *             .securityGroupIds(securityGroupId.id())
+ *             .ioOptimized("optimized")
+ *             .description(description)
+ *             .keyPairName(keyPairName.id())
+ *             .zoneId(exampleZoneId)
+ *             .instanceChargeType("Prepaid")
+ *             .internetMaxBandwidthOut(0)
+ *             .imageId("aliyun_2_1903_x64_20G_alibase_20240628.vhd")
+ *             .securityEnhancementStrategy("Active")
+ *             .periodUnit("Month")
+ *             .password("jingyiTEST}{@literal @}{@code 123")
+ *             .systemDisk(CustomSystemDiskArgs.builder()
+ *                 .size("40")
+ *                 .category("cloud_essd")
+ *                 .build())
+ *             .hostName("1743386110")
+ *             .createMode("0")
+ *             .spotStrategy("NoSpot")
+ *             .vswitchId(vSwitchId.id())
+ *             .supportCase("eni")
+ *             .deploymentSetId(deploymentsetid)
+ *             .dryRun(false)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -45,14 +162,14 @@ public class Custom extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="amount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> amount;
+    private Output</* @Nullable */ Integer> amount;
 
     /**
      * @return Represents the number of instances created
      * 
      */
-    public Output<Integer> amount() {
-        return this.amount;
+    public Output<Optional<Integer>> amount() {
+        return Codegen.optional(this.amount);
     }
     /**
      * Whether to pay automatically. Value range:
@@ -81,6 +198,20 @@ public class Custom extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * Reserved parameters are not supported.
+     * 
+     */
+    @Export(name="createExtraParam", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> createExtraParam;
+
+    /**
+     * @return Reserved parameters are not supported.
+     * 
+     */
+    public Output<Optional<String>> createExtraParam() {
+        return Codegen.optional(this.createExtraParam);
     }
     /**
      * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
@@ -417,6 +548,28 @@ public class Custom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityGroupIds);
     }
     /**
+     * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+     * - `NoSpot`: normal pay-as-you-go instances.
+     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * 
+     * Default value: **NoSpot * *.
+     * 
+     */
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> spotStrategy;
+
+    /**
+     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+     * - `NoSpot`: normal pay-as-you-go instances.
+     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * 
+     * Default value: **NoSpot * *.
+     * 
+     */
+    public Output<Optional<String>> spotStrategy() {
+        return Codegen.optional(this.spotStrategy);
+    }
+    /**
      * The status of the resource
      * 
      */
@@ -429,6 +582,20 @@ public class Custom extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * 
+     */
+    @Export(name="supportCase", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> supportCase;
+
+    /**
+     * @return Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * 
+     */
+    public Output<Optional<String>> supportCase() {
+        return Codegen.optional(this.supportCase);
     }
     /**
      * System disk specifications. See `system_disk` below.
@@ -460,7 +627,6 @@ public class Custom extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * 
      * The network type InstanceNetworkType must be VPC.
      * 
      */
@@ -469,7 +635,6 @@ public class Custom extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * 
      * The network type InstanceNetworkType must be VPC.
      * 
      */

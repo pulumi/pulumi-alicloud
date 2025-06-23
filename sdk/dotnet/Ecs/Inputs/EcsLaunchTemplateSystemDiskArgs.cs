@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Iops { get; set; }
 
         /// <summary>
+        /// The ID of the KMS key to use for the system disk.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("name")]

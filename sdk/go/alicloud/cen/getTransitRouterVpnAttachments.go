@@ -13,7 +13,7 @@ import (
 
 // This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 //
-// > **NOTE:** Available since v1.245.0.
+// > **NOTE:** Available since v1.183.0.
 //
 // ## Example Usage
 //
@@ -22,80 +22,148 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultbpR5Uk, err := cen.NewInstance(ctx, "defaultbpR5Uk", &cen.InstanceArgs{
-// CenInstanceName: pulumi.String("example-vpn-attachment"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultM8Zo6H, err := cen.NewTransitRouter(ctx, "defaultM8Zo6H", &cen.TransitRouterArgs{
-// CenId: defaultbpR5Uk.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = cen.NewTransitRouterCidr(ctx, "defaultuUtyCv", &cen.TransitRouterCidrArgs{
-// Cidr: pulumi.String("192.168.10.0/24"),
-// TransitRouterId: defaultM8Zo6H.TransitRouterId,
-// })
-// if err != nil {
-// return err
-// }
-// defaultMeoCIz, err := vpn.NewCustomerGateway(ctx, "defaultMeoCIz", &vpn.CustomerGatewayArgs{
-// IpAddress: pulumi.String("0.0.0.0"),
-// CustomerGatewayName: pulumi.String("example-vpn-attachment"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultvrPzdh, err := vpn.NewGatewayVpnAttachment(ctx, "defaultvrPzdh", &vpn.GatewayVpnAttachmentArgs{
-// CustomerGatewayId: defaultMeoCIz.ID(),
-// VpnAttachmentName: pulumi.String("example-vpn-attachment"),
-// LocalSubnet: pulumi.String("10.0.1.0/24"),
-// RemoteSubnet: pulumi.String("10.0.2.0/24"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
-// VpnOwnerId: defaultM8Zo6H.ID(),
-// CenId: defaultM8Zo6H.ID(),
-// TransitRouterAttachmentDescription: pulumi.String("example-vpn-attachment"),
-// TransitRouterId: defaultM8Zo6H.TransitRouterId,
-// VpnId: defaultvrPzdh.ID(),
-// AutoPublishRouteEnabled: pulumi.Bool(false),
-// ChargeType: pulumi.String("POSTPAY"),
-// TransitRouterAttachmentName: pulumi.String("example-vpn-attachment"),
-// })
-// if err != nil {
-// return err
-// }
-// _default := cen.GetTransitRouterVpnAttachmentsOutput(ctx, cen.GetTransitRouterVpnAttachmentsOutputArgs{
-// Ids: pulumi.StringArray{
-// defaultTransitRouterVpnAttachment.ID(),
-// },
-// CenId: defaultM8Zo6H.ID(),
-// TransitRouterId: defaultM8Zo6H.TransitRouterId,
-// }, nil);
-// ctx.Export("alicloudCenTransitRouterVpnAttachmentExampleId", _default.ApplyT(func(_default cen.GetTransitRouterVpnAttachmentsResult) (*string, error) {
-// return &default.Attachments[0].Id, nil
-// }).(pulumi.StringPtrOutput))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "default", &cen.TransitRouterCidrArgs{
+//				Cidr:             pulumi.String("192.168.10.0/24"),
+//				TransitRouterId:  defaultTransitRouter.TransitRouterId,
+//				PublishCidrRoute: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//				IpAddress:           pulumi.String("1.1.1.8"),
+//				CustomerGatewayName: pulumi.String(name),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultTransitRouterCidr,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayVpnAttachment, err := vpn.NewGatewayVpnAttachment(ctx, "default", &vpn.GatewayVpnAttachmentArgs{
+//				NetworkType:       pulumi.String("public"),
+//				LocalSubnet:       pulumi.String("0.0.0.0/0"),
+//				EnableTunnelsBgp:  pulumi.Bool(false),
+//				VpnAttachmentName: pulumi.String(name),
+//				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						CustomerGatewayId:  defaultCustomerGateway.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(1),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							RemoteId:    pulumi.String("2.2.2.2"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeVersion:  pulumi.String("ikev1"),
+//							LocalId:     pulumi.String("1.1.1.1"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeLifetime: pulumi.Int(86100),
+//							IkePfs:      pulumi.String("group2"),
+//							Psk:         pulumi.String("12345678"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecAuthAlg:  pulumi.String("md5"),
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecLifetime: pulumi.Int(86200),
+//							IpsecPfs:      pulumi.String("group5"),
+//						},
+//					},
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(2),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							LocalId:     pulumi.String("4.4.4.4"),
+//							RemoteId:    pulumi.String("5.5.5.5"),
+//							IkeLifetime: pulumi.Int(86400),
+//							IkePfs:      pulumi.String("group5"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeVersion:  pulumi.String("ikev2"),
+//							Psk:         pulumi.String("32333442"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecLifetime: pulumi.Int(86400),
+//							IpsecPfs:      pulumi.String("group5"),
+//							IpsecAuthAlg:  pulumi.String("sha256"),
+//						},
+//						CustomerGatewayId: defaultCustomerGateway.ID(),
+//						EnableDpd:         pulumi.Bool(true),
+//					},
+//				},
+//				RemoteSubnet: pulumi.String("0.0.0.0/0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
+//				AutoPublishRouteEnabled:            pulumi.Bool(false),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				CenId:                              defaultTransitRouter.CenId,
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				VpnId:                              defaultGatewayVpnAttachment.ID(),
+//				VpnOwnerId:                         pulumi.String(_default.Id),
+//				ChargeType:                         pulumi.String("POSTPAY"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("VpnAttachment"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := pulumi.All(defaultTransitRouterVpnAttachment.ID(), defaultTransitRouterVpnAttachment.CenId, defaultTransitRouterVpnAttachment.TransitRouterId).ApplyT(func(_args []interface{}) (cen.GetTransitRouterVpnAttachmentsResult, error) {
+//				id := _args[0].(string)
+//				cenId := _args[1].(string)
+//				transitRouterId := _args[2].(*string)
+//				return cen.GetTransitRouterVpnAttachmentsResult(interface{}(cen.GetTransitRouterVpnAttachmentsOutput(ctx, cen.GetTransitRouterVpnAttachmentsOutputArgs{
+//					Ids: []string{
+//						id,
+//					},
+//					CenId:           cenId,
+//					TransitRouterId: transitRouterId,
+//				}, nil))), nil
+//			}).(cen.GetTransitRouterVpnAttachmentsResultOutput)
+//			ctx.Export("cenTransitRouterVpnAttachmentId0", ids.ApplyT(func(ids cen.GetTransitRouterVpnAttachmentsResult) (*string, error) {
+//				return &ids.Attachments[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTransitRouterVpnAttachments(ctx *pulumi.Context, args *GetTransitRouterVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -113,13 +181,13 @@ type GetTransitRouterVpnAttachmentsArgs struct {
 	CenId *string `pulumi:"cenId"`
 	// A list of Transit Router Vpn Attachment IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by Group Metric Rule name.
+	// A regex string to filter results by Transit Router Vpn Attachment name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+	// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
 	Status *string `pulumi:"status"`
-	// The tag of the resource
+	// The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPN attachment.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
@@ -131,21 +199,20 @@ type GetTransitRouterVpnAttachmentsArgs struct {
 type GetTransitRouterVpnAttachmentsResult struct {
 	// A list of Transit Router Vpn Attachment Entries. Each element contains the following attributes:
 	Attachments []GetTransitRouterVpnAttachmentsAttachment `pulumi:"attachments"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of Transit Router Vpn Attachment IDs.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of name of Transit Router Vpn Attachments.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// Status
+	// The status of the VPN connection.
 	Status *string `pulumi:"status"`
-	// The tag of the resource
+	// (Available since v1.245.0) The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPN attachment.
+	// (Available since v1.245.0) The ID of the VPN attachment.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
@@ -166,13 +233,13 @@ type GetTransitRouterVpnAttachmentsOutputArgs struct {
 	CenId pulumi.StringPtrInput `pulumi:"cenId"`
 	// A list of Transit Router Vpn Attachment IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by Group Metric Rule name.
+	// A regex string to filter results by Transit Router Vpn Attachment name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+	// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource
+	// The tag of the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPN attachment.
 	TransitRouterAttachmentId pulumi.StringPtrInput `pulumi:"transitRouterAttachmentId"`
@@ -206,7 +273,7 @@ func (o GetTransitRouterVpnAttachmentsResultOutput) Attachments() GetTransitRout
 	}).(GetTransitRouterVpnAttachmentsAttachmentArrayOutput)
 }
 
-// The ID of the Cloud Enterprise Network (CEN) instance.
+// (Available since v1.245.0) The ID of the Cloud Enterprise Network (CEN) instance.
 func (o GetTransitRouterVpnAttachmentsResultOutput) CenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) *string { return v.CenId }).(pulumi.StringPtrOutput)
 }
@@ -216,7 +283,6 @@ func (o GetTransitRouterVpnAttachmentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Transit Router Vpn Attachment IDs.
 func (o GetTransitRouterVpnAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -234,17 +300,17 @@ func (o GetTransitRouterVpnAttachmentsResultOutput) OutputFile() pulumi.StringPt
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// Status
+// The status of the VPN connection.
 func (o GetTransitRouterVpnAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tag of the resource
+// (Available since v1.245.0) The tag of the resource.
 func (o GetTransitRouterVpnAttachmentsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPN attachment.
+// (Available since v1.245.0) The ID of the VPN attachment.
 func (o GetTransitRouterVpnAttachmentsResultOutput) TransitRouterAttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsResult) *string { return v.TransitRouterAttachmentId }).(pulumi.StringPtrOutput)
 }

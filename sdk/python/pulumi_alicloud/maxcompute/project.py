@@ -462,7 +462,7 @@ class Project(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.maxcompute.Project("default",
-            default_quota="默认后付费Quota",
+            default_quota="os_PayAsYouGoQuota",
             project_name=name,
             comment=name)
         ```
@@ -518,7 +518,7 @@ class Project(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.maxcompute.Project("default",
-            default_quota="默认后付费Quota",
+            default_quota="os_PayAsYouGoQuota",
             project_name=name,
             comment=name)
         ```

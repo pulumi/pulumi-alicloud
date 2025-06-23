@@ -46,6 +46,8 @@ type NodePool struct {
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrOutput `pulumi:"desiredSize"`
+	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	EfloNodeGroup NodePoolEfloNodeGroupPtrOutput `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -61,12 +63,13 @@ type NodePool struct {
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
-	// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+	// - `Ubuntu`: Ubuntu image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
-	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -207,6 +210,10 @@ type NodePool struct {
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
 	// The configuration about confidential computing for the cluster. See `teeConfig` below.
 	TeeConfig NodePoolTeeConfigOutput `pulumi:"teeConfig"`
+	// Node pool type, value range:
+	// -'ess': common node pool (including hosting function and auto scaling function).
+	// -'lingjun': Lingjun node pool.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
@@ -226,12 +233,6 @@ func NewNodePool(ctx *pulumi.Context,
 
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
-	}
-	if args.InstanceTypes == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceTypes'")
-	}
-	if args.VswitchIds == nil {
-		return nil, errors.New("invalid value for required argument 'VswitchIds'")
 	}
 	if args.KmsEncryptedPassword != nil {
 		args.KmsEncryptedPassword = pulumi.ToSecret(args.KmsEncryptedPassword).(pulumi.StringPtrInput)
@@ -287,6 +288,8 @@ type nodePoolState struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
 	DesiredSize *string `pulumi:"desiredSize"`
+	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	EfloNodeGroup *NodePoolEfloNodeGroup `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -302,7 +305,8 @@ type nodePoolState struct {
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
-	// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+	// - `Ubuntu`: Ubuntu image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -448,6 +452,10 @@ type nodePoolState struct {
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// The configuration about confidential computing for the cluster. See `teeConfig` below.
 	TeeConfig *NodePoolTeeConfig `pulumi:"teeConfig"`
+	// Node pool type, value range:
+	// -'ess': common node pool (including hosting function and auto scaling function).
+	// -'lingjun': Lingjun node pool.
+	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
@@ -479,6 +487,8 @@ type NodePoolState struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrInput
+	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	EfloNodeGroup NodePoolEfloNodeGroupPtrInput
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -494,7 +504,8 @@ type NodePoolState struct {
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
-	// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+	// - `Ubuntu`: Ubuntu image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -640,6 +651,10 @@ type NodePoolState struct {
 	Taints NodePoolTaintArrayInput
 	// The configuration about confidential computing for the cluster. See `teeConfig` below.
 	TeeConfig NodePoolTeeConfigPtrInput
+	// Node pool type, value range:
+	// -'ess': common node pool (including hosting function and auto scaling function).
+	// -'lingjun': Lingjun node pool.
+	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
 	// Synchronously update node labels and taints.
@@ -675,6 +690,8 @@ type nodePoolArgs struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
 	DesiredSize *string `pulumi:"desiredSize"`
+	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	EfloNodeGroup *NodePoolEfloNodeGroup `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -690,7 +707,8 @@ type nodePoolArgs struct {
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
-	// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+	// - `Ubuntu`: Ubuntu image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -832,6 +850,10 @@ type nodePoolArgs struct {
 	Taints []NodePoolTaint `pulumi:"taints"`
 	// The configuration about confidential computing for the cluster. See `teeConfig` below.
 	TeeConfig *NodePoolTeeConfig `pulumi:"teeConfig"`
+	// Node pool type, value range:
+	// -'ess': common node pool (including hosting function and auto scaling function).
+	// -'lingjun': Lingjun node pool.
+	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
@@ -864,6 +886,8 @@ type NodePoolArgs struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrInput
+	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	EfloNodeGroup NodePoolEfloNodeGroupPtrInput
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -879,7 +903,8 @@ type NodePoolArgs struct {
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
-	// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+	// - `Ubuntu`: Ubuntu image.
+	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -1021,6 +1046,10 @@ type NodePoolArgs struct {
 	Taints NodePoolTaintArrayInput
 	// The configuration about confidential computing for the cluster. See `teeConfig` below.
 	TeeConfig NodePoolTeeConfigPtrInput
+	// Node pool type, value range:
+	// -'ess': common node pool (including hosting function and auto scaling function).
+	// -'lingjun': Lingjun node pool.
+	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
 	// Synchronously update node labels and taints.
@@ -1165,6 +1194,11 @@ func (o NodePoolOutput) DesiredSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.DesiredSize }).(pulumi.StringPtrOutput)
 }
 
+// Lingjun node pool configuration. See `efloNodeGroup` below.
+func (o NodePoolOutput) EfloNodeGroup() NodePoolEfloNodeGroupPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolEfloNodeGroupPtrOutput { return v.EfloNodeGroup }).(NodePoolEfloNodeGroupPtrOutput)
+}
+
 // Whether to force deletion.
 func (o NodePoolOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
@@ -1189,7 +1223,8 @@ func (o NodePoolOutput) ImageId() pulumi.StringOutput {
 // - `Windows` : Windows image.
 // - `WindowsCore` : WindowsCore image.
 // - `ContainerOS` : container-optimized image.
-// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+// - `Ubuntu`: Ubuntu image.
+// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 func (o NodePoolOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -1200,8 +1235,8 @@ func (o NodePoolOutput) InstallCloudMonitor() pulumi.BoolPtrOutput {
 }
 
 // Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
-func (o NodePoolOutput) InstanceChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
 // In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1510,6 +1545,13 @@ func (o NodePoolOutput) Taints() NodePoolTaintArrayOutput {
 // The configuration about confidential computing for the cluster. See `teeConfig` below.
 func (o NodePoolOutput) TeeConfig() NodePoolTeeConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolTeeConfigOutput { return v.TeeConfig }).(NodePoolTeeConfigOutput)
+}
+
+// Node pool type, value range:
+// -'ess': common node pool (including hosting function and auto scaling function).
+// -'lingjun': Lingjun node pool.
+func (o NodePoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Whether the node after expansion can be scheduled.

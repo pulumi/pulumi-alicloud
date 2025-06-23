@@ -7606,48 +7606,55 @@ export namespace cen {
     }
 
     export interface GetTransitRouterRouteTablePropagationsPropagation {
+        /**
+         * The ID of the network instance connection.
+         */
         id: string;
         /**
-         * ID of the transit router route table association.
+         * The ID of the network instance.
          */
         resourceId: string;
         /**
-         * Type of the resource.
+         * The type of the network instance.
          */
         resourceType: string;
         /**
-         * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+         * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
          */
         status: string;
         /**
-         * ID of the cen transit router attachment.
+         * The ID of the network instance connection.
          */
         transitRouterAttachmentId: string;
+        /**
+         * The ID of the route table of the Enterprise Edition transit router.
+         */
+        transitRouterRouteTableId: string;
     }
 
     export interface GetTransitRouterRouteTablesTable {
         /**
-         * ID of resource.
+         * The ID of the Transit Router Route Table.
          */
         id: string;
         /**
-         * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
          */
         status: string;
         /**
-         * The description of the transit router route table.
+         * The description of the route table.
          */
         transitRouterRouteTableDescription: string;
         /**
-         * ID of the trabsit router route table.
+         * The ID of the Transit Router Route Table.
          */
         transitRouterRouteTableId: string;
         /**
-         * Name of the transit router route table.
+         * The name of the route table.
          */
         transitRouterRouteTableName: string;
         /**
-         * The type of the transit router route table to query. Valid values `System` and `Custom`.
+         * The type of the route table. Valid values: `System`, `Custom`.
          */
         transitRouterRouteTableType: string;
     }
@@ -7750,7 +7757,7 @@ export namespace cen {
 
     export interface GetTransitRouterVpnAttachmentsAttachment {
         /**
-         * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+         * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
          */
         autoPublishRouteEnabled: boolean;
         /**
@@ -7758,11 +7765,11 @@ export namespace cen {
          */
         cenId: string;
         /**
-         * The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+         * (Available since v1.245.0) The billing method of the VPN attachment.
          */
         chargeType: string;
         /**
-         * The creation time of the resource
+         * The time when the VPN connection was created.
          */
         createTime: string;
         /**
@@ -7770,19 +7777,19 @@ export namespace cen {
          */
         id: string;
         /**
-         * The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+         * The type of resource attached to the transit router.
          */
         resourceType: string;
         /**
-         * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+         * The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
          */
         status: string;
         /**
-         * The tag of the resource
+         * The tag of the resource.
          */
         tags: {[key: string]: string};
         /**
-         * The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+         * The description of the IPsec-VPN connection.
          */
         transitRouterAttachmentDescription: string;
         /**
@@ -7790,7 +7797,7 @@ export namespace cen {
          */
         transitRouterAttachmentId: string;
         /**
-         * The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name of the VPN attachment.
          */
         transitRouterAttachmentName: string;
         /**
@@ -7802,7 +7809,7 @@ export namespace cen {
          */
         vpnId: string;
         /**
-         * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+         * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
          */
         vpnOwnerId: number;
         /**
@@ -7813,7 +7820,7 @@ export namespace cen {
 
     export interface GetTransitRouterVpnAttachmentsAttachmentZone {
         /**
-         * The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+         * The zone ID of the read-only instance.
          */
         zoneId: string;
     }
@@ -16353,6 +16360,17 @@ export namespace cs {
         snapshotId?: string;
     }
 
+    export interface NodePoolEfloNodeGroup {
+        /**
+         * The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+         */
+        clusterId?: string;
+        /**
+         * When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+         */
+        groupId?: string;
+    }
+
     export interface NodePoolKubeletConfiguration {
         /**
          * Allowed sysctl mode whitelist.
@@ -23321,6 +23339,10 @@ export namespace ecs {
          */
         encrypted?: boolean;
         /**
+         * The ID of the KMS key used for the data disk.
+         */
+        kmsKeyId?: string;
+        /**
          * The name of the data disk.
          */
         name?: string;
@@ -23386,6 +23408,10 @@ export namespace ecs {
          * The Iops.
          */
         iops?: string;
+        /**
+         * The ID of the KMS key to use for the system disk.
+         */
+        kmsKeyId?: string;
         /**
          * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
          */
@@ -26648,6 +26674,7 @@ export namespace ecs {
          * Default to false
          */
         encrypted?: boolean;
+        kmsKeyId?: string;
         /**
          * The name of the data disk.
          */
@@ -26721,6 +26748,7 @@ export namespace ecs {
          */
         encrypted?: boolean;
         iops?: string;
+        kmsKeyId?: string;
         /**
          * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
          */
@@ -46819,15 +46847,12 @@ export namespace rds {
     export interface CustomDataDisk {
         /**
          * Instance storage type
-         *
          * local_ssd: local SSD disk
-         *
          * cloud_essd:ESSD PL1 cloud disk
          */
         category?: string;
         /**
          * Cloud Disk Performance
-         *
          * Currently only supports PL1
          */
         performanceLevel?: string;

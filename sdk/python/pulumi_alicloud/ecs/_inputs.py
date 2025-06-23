@@ -669,6 +669,10 @@ if not MYPY:
         """
         Encrypted the data in this disk.
         """
+        kms_key_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the KMS key used for the data disk.
+        """
         name: NotRequired[pulumi.Input[builtins.str]]
         """
         The name of the data disk.
@@ -696,6 +700,7 @@ class EcsLaunchTemplateDataDiskArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  device: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
@@ -706,6 +711,7 @@ class EcsLaunchTemplateDataDiskArgs:
         :param pulumi.Input[builtins.str] description: The description of the data disk.
         :param pulumi.Input[builtins.str] device: The mount point of the data disk.
         :param pulumi.Input[builtins.bool] encrypted: Encrypted the data in this disk.
+        :param pulumi.Input[builtins.str] kms_key_id: The ID of the KMS key used for the data disk.
         :param pulumi.Input[builtins.str] name: The name of the data disk.
         :param pulumi.Input[builtins.str] performance_level: The performance level of the ESSD used as the data disk.
         :param pulumi.Input[builtins.int] size: The size of the data disk.
@@ -721,6 +727,8 @@ class EcsLaunchTemplateDataDiskArgs:
             pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -789,6 +797,18 @@ class EcsLaunchTemplateDataDiskArgs:
     @encrypted.setter
     def encrypted(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the KMS key used for the data disk.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter
@@ -993,6 +1013,10 @@ if not MYPY:
         """
         The Iops.
         """
+        kms_key_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the KMS key to use for the system disk.
+        """
         name: NotRequired[pulumi.Input[builtins.str]]
         """
         System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
@@ -1016,6 +1040,7 @@ class EcsLaunchTemplateSystemDiskArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
                  iops: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None):
@@ -1025,6 +1050,7 @@ class EcsLaunchTemplateSystemDiskArgs:
         :param pulumi.Input[builtins.str] description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[builtins.bool] encrypted: Specifies whether the system disk is encrypted.
         :param pulumi.Input[builtins.str] iops: The Iops.
+        :param pulumi.Input[builtins.str] kms_key_id: The ID of the KMS key to use for the system disk.
         :param pulumi.Input[builtins.str] name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[builtins.str] performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         :param pulumi.Input[builtins.int] size: Size of the system disk, measured in GB. Value range: [20, 500].
@@ -1039,6 +1065,8 @@ class EcsLaunchTemplateSystemDiskArgs:
             pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -1105,6 +1133,18 @@ class EcsLaunchTemplateSystemDiskArgs:
     @iops.setter
     def iops(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the KMS key to use for the system disk.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter
@@ -2132,6 +2172,7 @@ if not MYPY:
 
         Default to false
         """
+        kms_key_id: NotRequired[pulumi.Input[builtins.str]]
         name: NotRequired[pulumi.Input[builtins.str]]
         """
         The name of the data disk.
@@ -2161,6 +2202,7 @@ class LaunchTemplateDataDiskArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  device: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
@@ -2200,6 +2242,8 @@ class LaunchTemplateDataDiskArgs:
             pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -2276,6 +2320,15 @@ class LaunchTemplateDataDiskArgs:
     @encrypted.setter
     def encrypted(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter
@@ -2483,6 +2536,7 @@ if not MYPY:
         Default to false
         """
         iops: NotRequired[pulumi.Input[builtins.str]]
+        kms_key_id: NotRequired[pulumi.Input[builtins.str]]
         name: NotRequired[pulumi.Input[builtins.str]]
         """
         Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
@@ -2508,6 +2562,7 @@ class LaunchTemplateSystemDiskArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
                  iops: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  performance_level: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None):
@@ -2545,6 +2600,8 @@ class LaunchTemplateSystemDiskArgs:
             pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -2619,6 +2676,15 @@ class LaunchTemplateSystemDiskArgs:
     @iops.setter
     def iops(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @property
     @pulumi.getter

@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.MaxCompute
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = new AliCloud.MaxCompute.Project("default", new()
     ///     {
-    ///         DefaultQuota = "默认后付费Quota",
+    ///         DefaultQuota = "os_PayAsYouGoQuota",
     ///         ProjectName = name,
     ///         Comment = name,
     ///     });

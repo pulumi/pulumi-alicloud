@@ -41,6 +41,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Default to false
         /// </summary>
         public readonly bool? Encrypted;
+        public readonly string? KmsKeyId;
         /// <summary>
         /// The name of the data disk.
         /// </summary>
@@ -72,6 +73,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             bool? encrypted,
 
+            string? kmsKeyId,
+
             string? name,
 
             string? performanceLevel,
@@ -85,6 +88,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Device = device;
             Encrypted = encrypted;
+            KmsKeyId = kmsKeyId;
             Name = name;
             PerformanceLevel = performanceLevel;
             Size = size;

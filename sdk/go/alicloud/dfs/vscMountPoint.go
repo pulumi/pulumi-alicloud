@@ -90,7 +90,7 @@ type VscMountPoint struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the HDFS file system resource associated with the VSC mount point.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
-	// The collection of ECS instances on which the HDFS file system is mounted.
+	// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
 	Instances VscMountPointInstanceArrayOutput `pulumi:"instances"`
 	// VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
 	MountPointId pulumi.StringOutput `pulumi:"mountPointId"`
@@ -135,7 +135,7 @@ type vscMountPointState struct {
 	Description *string `pulumi:"description"`
 	// The ID of the HDFS file system resource associated with the VSC mount point.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	// The collection of ECS instances on which the HDFS file system is mounted.
+	// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
 	Instances []VscMountPointInstance `pulumi:"instances"`
 	// VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
 	MountPointId *string `pulumi:"mountPointId"`
@@ -148,7 +148,7 @@ type VscMountPointState struct {
 	Description pulumi.StringPtrInput
 	// The ID of the HDFS file system resource associated with the VSC mount point.
 	FileSystemId pulumi.StringPtrInput
-	// The collection of ECS instances on which the HDFS file system is mounted.
+	// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
 	Instances VscMountPointInstanceArrayInput
 	// VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
 	MountPointId pulumi.StringPtrInput
@@ -279,7 +279,7 @@ func (o VscMountPointOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VscMountPoint) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
-// The collection of ECS instances on which the HDFS file system is mounted.
+// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
 func (o VscMountPointOutput) Instances() VscMountPointInstanceArrayOutput {
 	return o.ApplyT(func(v *VscMountPoint) VscMountPointInstanceArrayOutput { return v.Instances }).(VscMountPointInstanceArrayOutput)
 }
