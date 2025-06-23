@@ -215,6 +215,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("sourceDestCheck")]
+        public Output<bool?> SourceDestCheck { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the ENI.
         /// </summary>
         [Output("status")]
@@ -430,6 +436,12 @@ namespace Pulumi.AliCloud.Ecs
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -613,6 +625,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
+
+        /// <summary>
+        /// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
 
         /// <summary>
         /// The status of the ENI.

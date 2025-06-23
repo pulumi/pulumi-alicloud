@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceResult {
     /**
-     * @return The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+     * @return The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
      * 
      */
     private String changingAffectTime;
     /**
-     * @return The billing method to be effective.
+     * @return The metering method for the next cycle.
      * 
      */
     private String changingChargeType;
@@ -42,14 +42,14 @@ public final class GetServiceResult {
 
     private GetServiceResult() {}
     /**
-     * @return The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+     * @return The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
      * 
      */
     public String changingAffectTime() {
         return this.changingAffectTime;
     }
     /**
-     * @return The billing method to be effective.
+     * @return The metering method for the next cycle.
      * 
      */
     public String changingChargeType() {

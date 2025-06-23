@@ -67,6 +67,21 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Reserved parameters are not supported.
+     * 
+     */
+    @Import(name="createExtraParam")
+    private @Nullable Output<String> createExtraParam;
+
+    /**
+     * @return Reserved parameters are not supported.
+     * 
+     */
+    public Optional<Output<String>> createExtraParam() {
+        return Optional.ofNullable(this.createExtraParam);
+    }
+
+    /**
      * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
      * 
      */
@@ -424,6 +439,29 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+     * - `NoSpot`: normal pay-as-you-go instances.
+     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * 
+     * Default value: **NoSpot * *.
+     * 
+     */
+    @Import(name="spotStrategy")
+    private @Nullable Output<String> spotStrategy;
+
+    /**
+     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+     * - `NoSpot`: normal pay-as-you-go instances.
+     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * 
+     * Default value: **NoSpot * *.
+     * 
+     */
+    public Optional<Output<String>> spotStrategy() {
+        return Optional.ofNullable(this.spotStrategy);
+    }
+
+    /**
      * The status of the resource
      * 
      */
@@ -436,6 +474,21 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * 
+     */
+    @Import(name="supportCase")
+    private @Nullable Output<String> supportCase;
+
+    /**
+     * @return Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * 
+     */
+    public Optional<Output<String>> supportCase() {
+        return Optional.ofNullable(this.supportCase);
     }
 
     /**
@@ -470,7 +523,6 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * 
      * The network type InstanceNetworkType must be VPC.
      * 
      */
@@ -479,7 +531,6 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * 
      * The network type InstanceNetworkType must be VPC.
      * 
      */
@@ -508,6 +559,7 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
         this.amount = $.amount;
         this.autoPay = $.autoPay;
         this.autoRenew = $.autoRenew;
+        this.createExtraParam = $.createExtraParam;
         this.createMode = $.createMode;
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
@@ -531,7 +583,9 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
         this.resourceGroupId = $.resourceGroupId;
         this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroupIds = $.securityGroupIds;
+        this.spotStrategy = $.spotStrategy;
         this.status = $.status;
+        this.supportCase = $.supportCase;
         this.systemDisk = $.systemDisk;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
@@ -617,6 +671,27 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param createExtraParam Reserved parameters are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createExtraParam(@Nullable Output<String> createExtraParam) {
+            $.createExtraParam = createExtraParam;
+            return this;
+        }
+
+        /**
+         * @param createExtraParam Reserved parameters are not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createExtraParam(String createExtraParam) {
+            return createExtraParam(Output.of(createExtraParam));
         }
 
         /**
@@ -1135,6 +1210,35 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param spotStrategy The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+         * - `NoSpot`: normal pay-as-you-go instances.
+         * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+         * 
+         * Default value: **NoSpot * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(@Nullable Output<String> spotStrategy) {
+            $.spotStrategy = spotStrategy;
+            return this;
+        }
+
+        /**
+         * @param spotStrategy The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+         * - `NoSpot`: normal pay-as-you-go instances.
+         * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+         * 
+         * Default value: **NoSpot * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(String spotStrategy) {
+            return spotStrategy(Output.of(spotStrategy));
+        }
+
+        /**
          * @param status The status of the resource
          * 
          * @return builder
@@ -1153,6 +1257,27 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param supportCase Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportCase(@Nullable Output<String> supportCase) {
+            $.supportCase = supportCase;
+            return this;
+        }
+
+        /**
+         * @param supportCase Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportCase(String supportCase) {
+            return supportCase(Output.of(supportCase));
         }
 
         /**
@@ -1199,7 +1324,6 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-         * 
          * The network type InstanceNetworkType must be VPC.
          * 
          * @return builder
@@ -1212,7 +1336,6 @@ public final class CustomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-         * 
          * The network type InstanceNetworkType must be VPC.
          * 
          * @return builder

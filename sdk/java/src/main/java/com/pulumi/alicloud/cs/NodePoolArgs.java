@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs;
 
 import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolEfloNodeGroupArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
@@ -174,6 +175,21 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Lingjun node pool configuration. See `eflo_node_group` below.
+     * 
+     */
+    @Import(name="efloNodeGroup")
+    private @Nullable Output<NodePoolEfloNodeGroupArgs> efloNodeGroup;
+
+    /**
+     * @return Lingjun node pool configuration. See `eflo_node_group` below.
+     * 
+     */
+    public Optional<Output<NodePoolEfloNodeGroupArgs>> efloNodeGroup() {
+        return Optional.ofNullable(this.efloNodeGroup);
+    }
+
+    /**
      * Whether to force deletion.
      * 
      */
@@ -228,7 +244,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * 
      */
     @Import(name="imageType")
@@ -244,7 +261,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -285,15 +303,15 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
-    @Import(name="instanceTypes", required=true)
-    private Output<List<String>> instanceTypes;
+    @Import(name="instanceTypes")
+    private @Nullable Output<List<String>> instanceTypes;
 
     /**
      * @return In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
-    public Output<List<String>> instanceTypes() {
-        return this.instanceTypes;
+    public Optional<Output<List<String>>> instanceTypes() {
+        return Optional.ofNullable(this.instanceTypes);
     }
 
     /**
@@ -1164,6 +1182,25 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Node pool type, value range:
+     * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+     * -&#39;lingjun&#39;: Lingjun node pool.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Node pool type, value range:
+     * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+     * -&#39;lingjun&#39;: Lingjun node pool.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * Whether the node after expansion can be scheduled.
      * 
      */
@@ -1212,15 +1249,15 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * The vswitches used by node pool workers.
      * 
      */
-    @Import(name="vswitchIds", required=true)
-    private Output<List<String>> vswitchIds;
+    @Import(name="vswitchIds")
+    private @Nullable Output<List<String>> vswitchIds;
 
     /**
      * @return The vswitches used by node pool workers.
      * 
      */
-    public Output<List<String>> vswitchIds() {
-        return this.vswitchIds;
+    public Optional<Output<List<String>>> vswitchIds() {
+        return Optional.ofNullable(this.vswitchIds);
     }
 
     private NodePoolArgs() {}
@@ -1235,6 +1272,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
         this.desiredSize = $.desiredSize;
+        this.efloNodeGroup = $.efloNodeGroup;
         this.forceDelete = $.forceDelete;
         this.formatDisk = $.formatDisk;
         this.imageId = $.imageId;
@@ -1295,6 +1333,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.taints = $.taints;
         this.teeConfig = $.teeConfig;
+        this.type = $.type;
         this.unschedulable = $.unschedulable;
         this.updateNodes = $.updateNodes;
         this.userData = $.userData;
@@ -1527,6 +1566,27 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param efloNodeGroup Lingjun node pool configuration. See `eflo_node_group` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efloNodeGroup(@Nullable Output<NodePoolEfloNodeGroupArgs> efloNodeGroup) {
+            $.efloNodeGroup = efloNodeGroup;
+            return this;
+        }
+
+        /**
+         * @param efloNodeGroup Lingjun node pool configuration. See `eflo_node_group` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efloNodeGroup(NodePoolEfloNodeGroupArgs efloNodeGroup) {
+            return efloNodeGroup(Output.of(efloNodeGroup));
+        }
+
+        /**
          * @param forceDelete Whether to force deletion.
          * 
          * @return builder
@@ -1599,7 +1659,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
-         * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+         * - `Ubuntu`: Ubuntu image.
+         * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
          * 
          * @return builder
          * 
@@ -1619,7 +1680,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
-         * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+         * - `Ubuntu`: Ubuntu image.
+         * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
          * 
          * @return builder
          * 
@@ -1676,7 +1738,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder instanceTypes(Output<List<String>> instanceTypes) {
+        public Builder instanceTypes(@Nullable Output<List<String>> instanceTypes) {
             $.instanceTypes = instanceTypes;
             return this;
         }
@@ -2957,6 +3019,31 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param type Node pool type, value range:
+         * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+         * -&#39;lingjun&#39;: Lingjun node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Node pool type, value range:
+         * -&#39;ess&#39;: common node pool (including hosting function and auto scaling function).
+         * -&#39;lingjun&#39;: Lingjun node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
          * @param unschedulable Whether the node after expansion can be scheduled.
          * 
          * @return builder
@@ -3025,7 +3112,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder vswitchIds(Output<List<String>> vswitchIds) {
+        public Builder vswitchIds(@Nullable Output<List<String>> vswitchIds) {
             $.vswitchIds = vswitchIds;
             return this;
         }
@@ -3053,12 +3140,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         public NodePoolArgs build() {
             if ($.clusterId == null) {
                 throw new MissingRequiredPropertyException("NodePoolArgs", "clusterId");
-            }
-            if ($.instanceTypes == null) {
-                throw new MissingRequiredPropertyException("NodePoolArgs", "instanceTypes");
-            }
-            if ($.vswitchIds == null) {
-                throw new MissingRequiredPropertyException("NodePoolArgs", "vswitchIds");
             }
             return $;
         }

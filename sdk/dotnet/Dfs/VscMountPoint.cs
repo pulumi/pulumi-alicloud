@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Dfs
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of ECS instances on which the HDFS file system is mounted.
+        /// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<Outputs.VscMountPointInstance>> Instances { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Dfs
         private InputList<Inputs.VscMountPointInstanceGetArgs>? _instances;
 
         /// <summary>
-        /// The collection of ECS instances on which the HDFS file system is mounted.
+        /// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
         /// </summary>
         public InputList<Inputs.VscMountPointInstanceGetArgs> Instances
         {

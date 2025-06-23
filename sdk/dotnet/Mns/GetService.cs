@@ -16,7 +16,9 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.118.0+
+        /// &gt; **NOTE:** Deprecated since v1.252.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
         /// 
         /// &gt; **NOTE:** The MNS service is not support in the international site.
         /// 
@@ -46,7 +48,9 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.118.0+
+        /// &gt; **NOTE:** Deprecated since v1.252.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
         /// 
         /// &gt; **NOTE:** The MNS service is not support in the international site.
         /// 
@@ -76,7 +80,9 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.118.0+
+        /// &gt; **NOTE:** Deprecated since v1.252.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
         /// 
         /// &gt; **NOTE:** The MNS service is not support in the international site.
         /// 
@@ -106,7 +112,7 @@ namespace Pulumi.AliCloud.Mns
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the MNS service that means you have read and agreed the [MNS Terms of Service](https://help.aliyun.com/document_detail/27418.html). The service can not closed once it is opened.
         /// </summary>
@@ -122,7 +128,7 @@ namespace Pulumi.AliCloud.Mns
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the MNS service that means you have read and agreed the [MNS Terms of Service](https://help.aliyun.com/document_detail/27418.html). The service can not closed once it is opened.
         /// </summary>

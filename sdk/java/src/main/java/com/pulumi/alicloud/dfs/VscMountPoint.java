@@ -137,14 +137,14 @@ public class VscMountPoint extends com.pulumi.resources.CustomResource {
         return this.fileSystemId;
     }
     /**
-     * The collection of ECS instances on which the HDFS file system is mounted.
+     * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      * 
      */
     @Export(name="instances", refs={List.class,VscMountPointInstance.class}, tree="[0,1]")
     private Output<List<VscMountPointInstance>> instances;
 
     /**
-     * @return The collection of ECS instances on which the HDFS file system is mounted.
+     * @return The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      * 
      */
     public Output<List<VscMountPointInstance>> instances() {

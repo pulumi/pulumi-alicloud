@@ -63,14 +63,14 @@ public final class VscMountPointState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The collection of ECS instances on which the HDFS file system is mounted.
+     * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<VscMountPointInstanceArgs>> instances;
 
     /**
-     * @return The collection of ECS instances on which the HDFS file system is mounted.
+     * @return The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      * 
      */
     public Optional<Output<List<VscMountPointInstanceArgs>>> instances() {
@@ -184,7 +184,7 @@ public final class VscMountPointState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The collection of ECS instances on which the HDFS file system is mounted.
+         * @param instances The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class VscMountPointState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The collection of ECS instances on which the HDFS file system is mounted.
+         * @param instances The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class VscMountPointState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The collection of ECS instances on which the HDFS file system is mounted.
+         * @param instances The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
          * 
          * @return builder
          * 

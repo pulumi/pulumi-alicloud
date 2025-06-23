@@ -12,11 +12,13 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterRouteTables
     {
         /// <summary>
-        /// This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+        /// This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -27,8 +29,8 @@ namespace Pulumi.AliCloud.Cen
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Cen.Instance("default", new()
         ///     {
         ///         CenInstanceName = name,
         ///         ProtectionLevel = "REDUCED",
@@ -36,25 +38,29 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
         ///     {
-        ///         CenId = defaultInstance.Id,
+        ///         CenId = @default.Id,
         ///         TransitRouterName = name,
         ///     });
         /// 
         ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
         ///     {
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-        ///         TransitRouterRouteTableDescription = "desp",
+        ///         TransitRouterRouteTableDescription = name,
         ///         TransitRouterRouteTableName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
         ///     {
-        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterId = defaultTransitRouterRouteTable.TransitRouterId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterRouteTableType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.TransitRouterRouteTableType)),
+        ///         ["cenTransitRouterRouteTableId0"] = ids.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -63,11 +69,13 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTablesResult>("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args ?? new GetTransitRouterRouteTablesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+        /// This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -78,8 +86,8 @@ namespace Pulumi.AliCloud.Cen
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Cen.Instance("default", new()
         ///     {
         ///         CenInstanceName = name,
         ///         ProtectionLevel = "REDUCED",
@@ -87,25 +95,29 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
         ///     {
-        ///         CenId = defaultInstance.Id,
+        ///         CenId = @default.Id,
         ///         TransitRouterName = name,
         ///     });
         /// 
         ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
         ///     {
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-        ///         TransitRouterRouteTableDescription = "desp",
+        ///         TransitRouterRouteTableDescription = name,
         ///         TransitRouterRouteTableName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
         ///     {
-        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterId = defaultTransitRouterRouteTable.TransitRouterId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterRouteTableType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.TransitRouterRouteTableType)),
+        ///         ["cenTransitRouterRouteTableId0"] = ids.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -114,11 +126,13 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablesResult>("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args ?? new GetTransitRouterRouteTablesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+        /// This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -129,8 +143,8 @@ namespace Pulumi.AliCloud.Cen
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Cen.Instance("default", new()
         ///     {
         ///         CenInstanceName = name,
         ///         ProtectionLevel = "REDUCED",
@@ -138,25 +152,29 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
         ///     {
-        ///         CenId = defaultInstance.Id,
+        ///         CenId = @default.Id,
         ///         TransitRouterName = name,
         ///     });
         /// 
         ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
         ///     {
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-        ///         TransitRouterRouteTableDescription = "desp",
+        ///         TransitRouterRouteTableDescription = name,
         ///         TransitRouterRouteTableName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
+        ///     var ids = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
         ///     {
-        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterId = defaultTransitRouterRouteTable.TransitRouterId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterRouteTableType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.TransitRouterRouteTableType)),
+        ///         ["cenTransitRouterRouteTableId0"] = ids.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -172,7 +190,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN Transit Router Route Table IDs.
+        /// A list of Transit Router Route Table IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -181,7 +199,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// A regex string to filter CEN Transit Router Route Table by name.
+        /// A regex string to filter results by Transit Router Route Table name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -193,13 +211,13 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// ID of the CEN Transit Router Route Table.
+        /// The ID of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId", required: true)]
         public string TransitRouterId { get; set; } = null!;
@@ -229,13 +247,13 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         /// </summary>
         [Input("transitRouterRouteTableStatus")]
         public string? TransitRouterRouteTableStatus { get; set; }
 
         /// <summary>
-        /// The type of the transit router route table to query. Valid values `System` and `Custom`.
+        /// The type of the route table. Valid values: `System`, `Custom`.
         /// </summary>
         [Input("transitRouterRouteTableType")]
         public string? TransitRouterRouteTableType { get; set; }
@@ -252,7 +270,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN Transit Router Route Table IDs.
+        /// A list of Transit Router Route Table IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -261,7 +279,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// A regex string to filter CEN Transit Router Route Table by name.
+        /// A regex string to filter results by Transit Router Route Table name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -273,13 +291,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// ID of the CEN Transit Router Route Table.
+        /// The ID of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId", required: true)]
         public Input<string> TransitRouterId { get; set; } = null!;
@@ -309,13 +327,13 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         /// </summary>
         [Input("transitRouterRouteTableStatus")]
         public Input<string>? TransitRouterRouteTableStatus { get; set; }
 
         /// <summary>
-        /// The type of the transit router route table to query. Valid values `System` and `Custom`.
+        /// The type of the route table. Valid values: `System`, `Custom`.
         /// </summary>
         [Input("transitRouterRouteTableType")]
         public Input<string>? TransitRouterRouteTableType { get; set; }
@@ -337,7 +355,7 @@ namespace Pulumi.AliCloud.Cen
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of name of CEN Transit Router Route Tables.
+        /// A list of Transit Router Route Table names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
@@ -346,7 +364,7 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// A list of CEN Route Entries. Each element contains the following attributes:
+        /// A list of Transit Router Route Tables. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterRouteTablesTableResult> Tables;
         public readonly string TransitRouterId;
@@ -354,7 +372,7 @@ namespace Pulumi.AliCloud.Cen
         public readonly ImmutableArray<string> TransitRouterRouteTableNames;
         public readonly string? TransitRouterRouteTableStatus;
         /// <summary>
-        /// Type of the transit router route table.
+        /// The type of the route table.
         /// </summary>
         public readonly string? TransitRouterRouteTableType;
 

@@ -289,7 +289,7 @@ class ForwardingRule(pulumi.CustomResource):
             region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_regions(current=True)
         example = alicloud.ga.Accelerator("example",
             duration=3,
@@ -422,7 +422,7 @@ class ForwardingRule(pulumi.CustomResource):
             region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_regions(current=True)
         example = alicloud.ga.Accelerator("example",
             duration=3,

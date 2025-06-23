@@ -225,14 +225,18 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return this.vaultStorageClass;
     }
     /**
-     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     @Export(name="vaultType", refs={String.class}, tree="[0]")
     private Output<String> vaultType;
 
     /**
-     * @return The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * @return The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     public Output<String> vaultType() {

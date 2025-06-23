@@ -50,6 +50,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
         /// <summary>
         /// The name of the data disk.
         /// </summary>

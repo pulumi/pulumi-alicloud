@@ -12,32 +12,42 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM Role resource.
     /// 
-    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// For information about RAM Role and how to use it, see [What is Role](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createrole).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
+    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new RAM Role.
-    ///     var role = new AliCloud.Ram.Role("role", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Name = "terraform-example",
-    ///         Document = @"  {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+    ///     {
+    ///         RoleName = $"terraform-example-{@default.Result}",
+    ///         AssumeRolePolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": ""sts:AssumeRole"",
     ///         ""Effect"": ""Allow"",
     ///         ""Principal"": {
     ///           ""Service"": [
-    ///             ""apigateway.aliyuncs.com"", 
+    ///             ""apigateway.aliyuncs.com"",
     ///             ""ecs.aliyuncs.com""
     ///           ]
     ///         }
@@ -54,71 +64,95 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM role can be imported using the id or name, e.g.
+    /// RAM Role can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/role:Role example my-role
+    /// $ pulumi import alicloud:ram/role:Role example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The role arn.
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+        /// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        /// </summary>
+        [Output("assumeRolePolicyDocument")]
+        public Output<string> AssumeRolePolicyDocument { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.252.0) The time when the RAM role was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the RAM role.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+        /// Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         /// </summary>
         [Output("document")]
         public Output<string> Document { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Role. Default value: `false`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
         /// </summary>
         [Output("maxSessionDuration")]
-        public Output<int?> MaxSessionDuration { get; private set; } = null!;
+        public Output<int> MaxSessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+        /// Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Output("ramUsers")]
         public Output<ImmutableArray<string>> RamUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The role ID.
+        /// The ID of the RAM role.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+        /// The name of the RAM role.
+        /// </summary>
+        [Output("roleName")]
+        public Output<string> RoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+        /// The list of tags for the role.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -170,31 +204,37 @@ namespace Pulumi.AliCloud.Ram
     public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+        /// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        /// </summary>
+        [Input("assumeRolePolicyDocument")]
+        public Input<string>? AssumeRolePolicyDocument { get; set; }
+
+        /// <summary>
+        /// The description of the RAM role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+        /// Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Role. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
         /// </summary>
         [Input("maxSessionDuration")]
         public Input<int>? MaxSessionDuration { get; set; }
 
         /// <summary>
-        /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -203,30 +243,48 @@ namespace Pulumi.AliCloud.Ram
         private InputList<string>? _ramUsers;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+        /// Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
-        [Obsolete(@"Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
+        [Obsolete(@"Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.")]
         public InputList<string> RamUsers
         {
             get => _ramUsers ?? (_ramUsers = new InputList<string>());
             set => _ramUsers = value;
         }
 
+        /// <summary>
+        /// The name of the RAM role.
+        /// </summary>
+        [Input("roleName")]
+        public Input<string>? RoleName { get; set; }
+
         [Input("services")]
         private InputList<string>? _services;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+        /// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
-        [Obsolete(@"Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
+        [Obsolete(@"Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.")]
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+        /// The list of tags for the role.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -240,37 +298,49 @@ namespace Pulumi.AliCloud.Ram
     public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The role arn.
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+        /// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        /// </summary>
+        [Input("assumeRolePolicyDocument")]
+        public Input<string>? AssumeRolePolicyDocument { get; set; }
+
+        /// <summary>
+        /// (Available since v1.252.0) The time when the RAM role was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the RAM role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+        /// Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Role. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        /// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
         /// </summary>
         [Input("maxSessionDuration")]
         public Input<int>? MaxSessionDuration { get; set; }
 
         /// <summary>
-        /// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -279,9 +349,9 @@ namespace Pulumi.AliCloud.Ram
         private InputList<string>? _ramUsers;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+        /// Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
-        [Obsolete(@"Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
+        [Obsolete(@"Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.")]
         public InputList<string> RamUsers
         {
             get => _ramUsers ?? (_ramUsers = new InputList<string>());
@@ -289,26 +359,44 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// The role ID.
+        /// The ID of the RAM role.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
+
+        /// <summary>
+        /// The name of the RAM role.
+        /// </summary>
+        [Input("roleName")]
+        public Input<string>? RoleName { get; set; }
 
         [Input("services")]
         private InputList<string>? _services;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+        /// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
-        [Obsolete(@"Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
+        [Obsolete(@"Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.")]
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+        /// The list of tags for the role.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

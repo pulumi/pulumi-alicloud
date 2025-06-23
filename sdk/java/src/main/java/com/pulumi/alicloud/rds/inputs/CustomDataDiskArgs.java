@@ -18,9 +18,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Instance storage type
-     * 
      * local_ssd: local SSD disk
-     * 
      * cloud_essd:ESSD PL1 cloud disk
      * 
      */
@@ -29,9 +27,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Instance storage type
-     * 
      * local_ssd: local SSD disk
-     * 
      * cloud_essd:ESSD PL1 cloud disk
      * 
      */
@@ -41,7 +37,6 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Cloud Disk Performance
-     * 
      * Currently only supports PL1
      * 
      */
@@ -50,7 +45,6 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Cloud Disk Performance
-     * 
      * Currently only supports PL1
      * 
      */
@@ -101,9 +95,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param category Instance storage type
-         * 
          * local_ssd: local SSD disk
-         * 
          * cloud_essd:ESSD PL1 cloud disk
          * 
          * @return builder
@@ -116,9 +108,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param category Instance storage type
-         * 
          * local_ssd: local SSD disk
-         * 
          * cloud_essd:ESSD PL1 cloud disk
          * 
          * @return builder
@@ -130,7 +120,6 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param performanceLevel Cloud Disk Performance
-         * 
          * Currently only supports PL1
          * 
          * @return builder
@@ -143,7 +132,6 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param performanceLevel Cloud Disk Performance
-         * 
          * Currently only supports PL1
          * 
          * @return builder

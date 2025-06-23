@@ -17,9 +17,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
  * 
+ * The replication vault used by the cross-region backup function of Cloud Backup.
+ * 
  * For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
  * 
- * &gt; **NOTE:** Available in v1.152.0+.
+ * &gt; **NOTE:** Available since v1.252.0.
  * 
  * ## Example Usage
  * 
@@ -94,84 +96,126 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:hbr/replicationVault:ReplicationVault")
 public class ReplicationVault extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the backup vault. The description must be 0 to 255 characters in length.
+     * The description of the backup vault.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the backup vault. The description must be 0 to 255 characters in length.
+     * @return The description of the backup vault.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the region where the source vault resides.
+     * The encryption type of the backup vault.
+     * 
+     */
+    @Export(name="encryptType", refs={String.class}, tree="[0]")
+    private Output<String> encryptType;
+
+    /**
+     * @return The encryption type of the backup vault.
+     * 
+     */
+    public Output<String> encryptType() {
+        return this.encryptType;
+    }
+    /**
+     * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
+    }
+    /**
+     * RegionId
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return RegionId
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The region ID of the source backup vault.
      * 
      */
     @Export(name="replicationSourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> replicationSourceRegionId;
 
     /**
-     * @return The ID of the region where the source vault resides.
+     * @return The region ID of the source backup vault.
      * 
      */
     public Output<String> replicationSourceRegionId() {
         return this.replicationSourceRegionId;
     }
     /**
-     * The ID of the source vault.
+     * The vault ID of the source backup vault.
      * 
      */
     @Export(name="replicationSourceVaultId", refs={String.class}, tree="[0]")
     private Output<String> replicationSourceVaultId;
 
     /**
-     * @return The ID of the source vault.
+     * @return The vault ID of the source backup vault.
      * 
      */
     public Output<String> replicationSourceVaultId() {
         return this.replicationSourceVaultId;
     }
     /**
-     * The status of the resource.
+     * The status of the mirror backup vault.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the mirror backup vault.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The name of the backup vault. The name must be 1 to 64 characters in length.
+     * The name of the backup vault.
      * 
      */
     @Export(name="vaultName", refs={String.class}, tree="[0]")
     private Output<String> vaultName;
 
     /**
-     * @return The name of the backup vault. The name must be 1 to 64 characters in length.
+     * @return The name of the backup vault.
      * 
      */
     public Output<String> vaultName() {
         return this.vaultName;
     }
     /**
-     * The storage type of the backup vault. Valid values: `STANDARD`.
+     * Backup Vault Storage Class
      * 
      */
     @Export(name="vaultStorageClass", refs={String.class}, tree="[0]")
     private Output<String> vaultStorageClass;
 
     /**
-     * @return The storage type of the backup vault. Valid values: `STANDARD`.
+     * @return Backup Vault Storage Class
      * 
      */
     public Output<String> vaultStorageClass() {

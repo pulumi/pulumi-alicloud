@@ -165,6 +165,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        [Output("sourceDestCheck")]
+        public Output<bool?> SourceDestCheck { get; private set; } = null!;
+
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -338,6 +341,9 @@ namespace Pulumi.AliCloud.Vpc
             set => _securityGroups = value;
         }
 
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -481,6 +487,9 @@ namespace Pulumi.AliCloud.Vpc
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
+
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -5747,6 +5747,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "message/serviceService",
+  "fqn": "pulumi_alicloud.message",
+  "classes": {
+   "alicloud:message/serviceService:ServiceService": "ServiceService"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "message/serviceSubscription",
   "fqn": "pulumi_alicloud.message",
   "classes": {

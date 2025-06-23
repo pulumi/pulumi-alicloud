@@ -37,7 +37,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetServiceArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
      */
     enable?: string;
     /**
@@ -55,11 +55,11 @@ export interface GetServiceArgs {
  */
 export interface GetServiceResult {
     /**
-     * The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+     * The time when the metering method for the next cycle takes effect. The time is displayed in GMT.
      */
     readonly changingAffectTime: string;
     /**
-     * The billing method to be effective.
+     * The metering method for the next cycle.
      */
     readonly changingChargeType: string;
     readonly enable?: string;
@@ -110,7 +110,7 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  */
 export interface GetServiceOutputArgs {
     /**
-     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
      */
     enable?: pulumi.Input<string>;
     /**

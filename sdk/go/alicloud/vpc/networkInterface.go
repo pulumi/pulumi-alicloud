@@ -136,8 +136,9 @@ type NetworkInterface struct {
 	// A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
-	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	Status         pulumi.StringOutput      `pulumi:"status"`
+	SecurityGroups  pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	SourceDestCheck pulumi.BoolPtrOutput     `pulumi:"sourceDestCheck"`
+	Status          pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
@@ -214,8 +215,9 @@ type networkInterfaceState struct {
 	// A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
-	SecurityGroups []string `pulumi:"securityGroups"`
-	Status         *string  `pulumi:"status"`
+	SecurityGroups  []string `pulumi:"securityGroups"`
+	SourceDestCheck *bool    `pulumi:"sourceDestCheck"`
+	Status          *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
@@ -260,8 +262,9 @@ type NetworkInterfaceState struct {
 	// A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
-	SecurityGroups pulumi.StringArrayInput
-	Status         pulumi.StringPtrInput
+	SecurityGroups  pulumi.StringArrayInput
+	SourceDestCheck pulumi.BoolPtrInput
+	Status          pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The VSwitch to create the ENI in.
@@ -308,7 +311,8 @@ type networkInterfaceArgs struct {
 	// A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
-	SecurityGroups []string `pulumi:"securityGroups"`
+	SecurityGroups  []string `pulumi:"securityGroups"`
+	SourceDestCheck *bool    `pulumi:"sourceDestCheck"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
@@ -352,7 +356,8 @@ type NetworkInterfaceArgs struct {
 	// A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
-	SecurityGroups pulumi.StringArrayInput
+	SecurityGroups  pulumi.StringArrayInput
+	SourceDestCheck pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The VSwitch to create the ENI in.
@@ -542,6 +547,10 @@ func (o NetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 // Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 func (o NetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o NetworkInterfaceOutput) SourceDestCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolPtrOutput { return v.SourceDestCheck }).(pulumi.BoolPtrOutput)
 }
 
 func (o NetworkInterfaceOutput) Status() pulumi.StringOutput {

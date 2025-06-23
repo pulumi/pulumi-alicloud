@@ -42,7 +42,7 @@ import (
 //				name = param
 //			}
 //			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
-//				DefaultQuota: pulumi.String("默认后付费Quota"),
+//				DefaultQuota: pulumi.String("os_PayAsYouGoQuota"),
 //				ProjectName:  pulumi.String(name),
 //				Comment:      pulumi.String(name),
 //			})

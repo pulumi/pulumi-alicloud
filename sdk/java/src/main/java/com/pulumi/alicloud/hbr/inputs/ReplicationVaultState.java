@@ -16,14 +16,14 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     public static final ReplicationVaultState Empty = new ReplicationVaultState();
 
     /**
-     * The description of the backup vault. The description must be 0 to 255 characters in length.
+     * The description of the backup vault.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the backup vault. The description must be 0 to 255 characters in length.
+     * @return The description of the backup vault.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,59 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the region where the source vault resides.
+     * The encryption type of the backup vault.
+     * 
+     */
+    @Import(name="encryptType")
+    private @Nullable Output<String> encryptType;
+
+    /**
+     * @return The encryption type of the backup vault.
+     * 
+     */
+    public Optional<Output<String>> encryptType() {
+        return Optional.ofNullable(this.encryptType);
+    }
+
+    /**
+     * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     * 
+     */
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    /**
+     * @return Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
+     * RegionId
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return RegionId
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The region ID of the source backup vault.
      * 
      */
     @Import(name="replicationSourceRegionId")
     private @Nullable Output<String> replicationSourceRegionId;
 
     /**
-     * @return The ID of the region where the source vault resides.
+     * @return The region ID of the source backup vault.
      * 
      */
     public Optional<Output<String>> replicationSourceRegionId() {
@@ -46,14 +91,14 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the source vault.
+     * The vault ID of the source backup vault.
      * 
      */
     @Import(name="replicationSourceVaultId")
     private @Nullable Output<String> replicationSourceVaultId;
 
     /**
-     * @return The ID of the source vault.
+     * @return The vault ID of the source backup vault.
      * 
      */
     public Optional<Output<String>> replicationSourceVaultId() {
@@ -61,14 +106,14 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource.
+     * The status of the mirror backup vault.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the mirror backup vault.
      * 
      */
     public Optional<Output<String>> status() {
@@ -76,14 +121,14 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the backup vault. The name must be 1 to 64 characters in length.
+     * The name of the backup vault.
      * 
      */
     @Import(name="vaultName")
     private @Nullable Output<String> vaultName;
 
     /**
-     * @return The name of the backup vault. The name must be 1 to 64 characters in length.
+     * @return The name of the backup vault.
      * 
      */
     public Optional<Output<String>> vaultName() {
@@ -91,14 +136,14 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The storage type of the backup vault. Valid values: `STANDARD`.
+     * Backup Vault Storage Class
      * 
      */
     @Import(name="vaultStorageClass")
     private @Nullable Output<String> vaultStorageClass;
 
     /**
-     * @return The storage type of the backup vault. Valid values: `STANDARD`.
+     * @return Backup Vault Storage Class
      * 
      */
     public Optional<Output<String>> vaultStorageClass() {
@@ -109,6 +154,9 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
 
     private ReplicationVaultState(ReplicationVaultState $) {
         this.description = $.description;
+        this.encryptType = $.encryptType;
+        this.kmsKeyId = $.kmsKeyId;
+        this.regionId = $.regionId;
         this.replicationSourceRegionId = $.replicationSourceRegionId;
         this.replicationSourceVaultId = $.replicationSourceVaultId;
         this.status = $.status;
@@ -135,7 +183,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the backup vault. The description must be 0 to 255 characters in length.
+         * @param description The description of the backup vault.
          * 
          * @return builder
          * 
@@ -146,7 +194,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the backup vault. The description must be 0 to 255 characters in length.
+         * @param description The description of the backup vault.
          * 
          * @return builder
          * 
@@ -156,7 +204,70 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationSourceRegionId The ID of the region where the source vault resides.
+         * @param encryptType The encryption type of the backup vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptType(@Nullable Output<String> encryptType) {
+            $.encryptType = encryptType;
+            return this;
+        }
+
+        /**
+         * @param encryptType The encryption type of the backup vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptType(String encryptType) {
+            return encryptType(Output.of(encryptType));
+        }
+
+        /**
+         * @param kmsKeyId Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
+        }
+
+        /**
+         * @param regionId RegionId
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId RegionId
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param replicationSourceRegionId The region ID of the source backup vault.
          * 
          * @return builder
          * 
@@ -167,7 +278,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationSourceRegionId The ID of the region where the source vault resides.
+         * @param replicationSourceRegionId The region ID of the source backup vault.
          * 
          * @return builder
          * 
@@ -177,7 +288,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationSourceVaultId The ID of the source vault.
+         * @param replicationSourceVaultId The vault ID of the source backup vault.
          * 
          * @return builder
          * 
@@ -188,7 +299,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationSourceVaultId The ID of the source vault.
+         * @param replicationSourceVaultId The vault ID of the source backup vault.
          * 
          * @return builder
          * 
@@ -198,7 +309,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the mirror backup vault.
          * 
          * @return builder
          * 
@@ -209,7 +320,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the mirror backup vault.
          * 
          * @return builder
          * 
@@ -219,7 +330,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vaultName The name of the backup vault. The name must be 1 to 64 characters in length.
+         * @param vaultName The name of the backup vault.
          * 
          * @return builder
          * 
@@ -230,7 +341,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vaultName The name of the backup vault. The name must be 1 to 64 characters in length.
+         * @param vaultName The name of the backup vault.
          * 
          * @return builder
          * 
@@ -240,7 +351,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vaultStorageClass The storage type of the backup vault. Valid values: `STANDARD`.
+         * @param vaultStorageClass Backup Vault Storage Class
          * 
          * @return builder
          * 
@@ -251,7 +362,7 @@ public final class ReplicationVaultState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vaultStorageClass The storage type of the backup vault. Valid values: `STANDARD`.
+         * @param vaultStorageClass Backup Vault Storage Class
          * 
          * @return builder
          * 

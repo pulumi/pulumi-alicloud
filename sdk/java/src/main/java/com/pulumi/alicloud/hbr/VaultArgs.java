@@ -128,14 +128,18 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     @Import(name="vaultType")
     private @Nullable Output<String> vaultType;
 
     /**
-     * @return The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * @return The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
      * 
      */
     public Optional<Output<String>> vaultType() {
@@ -341,7 +345,9 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultType The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+         * @param vaultType The type of Vault. Valid values:
+         * - `STANDARD`: Standard backup vault.
+         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
          * 
          * @return builder
          * 
@@ -352,7 +358,9 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultType The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+         * @param vaultType The type of Vault. Valid values:
+         * - `STANDARD`: Standard backup vault.
+         * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
          * 
          * @return builder
          * 

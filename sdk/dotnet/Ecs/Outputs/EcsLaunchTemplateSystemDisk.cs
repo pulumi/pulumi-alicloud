@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Iops;
         /// <summary>
+        /// The ID of the KMS key to use for the system disk.
+        /// </summary>
+        public readonly string? KmsKeyId;
+        /// <summary>
         /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         public readonly string? Name;
@@ -58,6 +62,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? iops,
 
+            string? kmsKeyId,
+
             string? name,
 
             string? performanceLevel,
@@ -69,6 +75,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Encrypted = encrypted;
             Iops = iops;
+            KmsKeyId = kmsKeyId;
             Name = name;
             PerformanceLevel = performanceLevel;
             Size = size;

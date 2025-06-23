@@ -40,7 +40,9 @@ class VaultArgs:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[builtins.str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values:
+               - `STANDARD`: Standard backup vault.
+               - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         :param pulumi.Input[builtins.bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "vault_name", vault_name)
@@ -151,7 +153,9 @@ class VaultArgs:
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        The type of Vault. Valid values:
+        - `STANDARD`: Standard backup vault.
+        - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         """
         return pulumi.get(self, "vault_type")
 
@@ -201,7 +205,9 @@ class _VaultState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[builtins.str] vault_name: The name of Vault.
         :param pulumi.Input[builtins.str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values:
+               - `STANDARD`: Standard backup vault.
+               - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         :param pulumi.Input[builtins.bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         if create_time is not None:
@@ -355,7 +361,9 @@ class _VaultState:
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        The type of Vault. Valid values:
+        - `STANDARD`: Standard backup vault.
+        - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         """
         return pulumi.get(self, "vault_type")
 
@@ -435,7 +443,9 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[builtins.str] vault_name: The name of Vault.
         :param pulumi.Input[builtins.str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values:
+               - `STANDARD`: Standard backup vault.
+               - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         :param pulumi.Input[builtins.bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         ...
@@ -564,7 +574,9 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[builtins.str] vault_name: The name of Vault.
         :param pulumi.Input[builtins.str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
-        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[builtins.str] vault_type: The type of Vault. Valid values:
+               - `STANDARD`: Standard backup vault.
+               - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         :param pulumi.Input[builtins.bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -671,7 +683,9 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        The type of Vault. Valid values:
+        - `STANDARD`: Standard backup vault.
+        - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
         """
         return pulumi.get(self, "vault_type")
 

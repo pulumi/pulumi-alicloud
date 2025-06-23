@@ -41,6 +41,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool? Encrypted;
         public readonly string? Iops;
+        public readonly string? KmsKeyId;
         /// <summary>
         /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
@@ -68,6 +69,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? iops,
 
+            string? kmsKeyId,
+
             string? name,
 
             string? performanceLevel,
@@ -79,6 +82,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Encrypted = encrypted;
             Iops = iops;
+            KmsKeyId = kmsKeyId;
             Name = name;
             PerformanceLevel = performanceLevel;
             Size = size;

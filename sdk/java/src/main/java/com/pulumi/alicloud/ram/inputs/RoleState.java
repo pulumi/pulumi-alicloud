@@ -9,6 +9,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +20,14 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     public static final RoleState Empty = new RoleState();
 
     /**
-     * The role arn.
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
     /**
-     * @return The role arn.
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -34,14 +35,44 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+     * The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+     * 
+     */
+    @Import(name="assumeRolePolicyDocument")
+    private @Nullable Output<String> assumeRolePolicyDocument;
+
+    /**
+     * @return The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+     * 
+     */
+    public Optional<Output<String>> assumeRolePolicyDocument() {
+        return Optional.ofNullable(this.assumeRolePolicyDocument);
+    }
+
+    /**
+     * (Available since v1.252.0) The time when the RAM role was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.252.0) The time when the RAM role was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the RAM role.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+     * @return The description of the RAM role.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,29 +80,37 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+     * Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * 
+     * @deprecated
+     * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
      * 
      */
+    @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
     @Import(name="document")
     private @Nullable Output<String> document;
 
     /**
-     * @return Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+     * @return Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
+     * 
+     * @deprecated
+     * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
      * 
      */
+    @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
     public Optional<Output<String>> document() {
         return Optional.ofNullable(this.document);
     }
 
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Specifies whether to force delete the Role. Default value: `false`. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Specifies whether to force delete the Role. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -79,14 +118,14 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+     * The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
      * 
      */
     @Import(name="maxSessionDuration")
     private @Nullable Output<Integer> maxSessionDuration;
 
     /**
-     * @return The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+     * @return The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
      * 
      */
     public Optional<Output<Integer>> maxSessionDuration() {
@@ -94,52 +133,60 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * @return Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
-     * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     @Import(name="ramUsers")
     private @Nullable Output<List<String>> ramUsers;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * @return Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
-     * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     public Optional<Output<List<String>>> ramUsers() {
         return Optional.ofNullable(this.ramUsers);
     }
 
     /**
-     * The role ID.
+     * The ID of the RAM role.
      * 
      */
     @Import(name="roleId")
     private @Nullable Output<String> roleId;
 
     /**
-     * @return The role ID.
+     * @return The ID of the RAM role.
      * 
      */
     public Optional<Output<String>> roleId() {
@@ -147,47 +194,77 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
-     * 
-     * @deprecated
-     * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * The name of the RAM role.
      * 
      */
-    @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Import(name="roleName")
+    private @Nullable Output<String> roleName;
+
+    /**
+     * @return The name of the RAM role.
+     * 
+     */
+    public Optional<Output<String>> roleName() {
+        return Optional.ofNullable(this.roleName);
+    }
+
+    /**
+     * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * 
+     * @deprecated
+     * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+     * @return Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
-     * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
 
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
-     * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * The list of tags for the role.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The list of tags for the role.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
+     * 
+     * @deprecated
+     * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * @return Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
-     * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -196,6 +273,8 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
     private RoleState(RoleState $) {
         this.arn = $.arn;
+        this.assumeRolePolicyDocument = $.assumeRolePolicyDocument;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.document = $.document;
         this.force = $.force;
@@ -203,7 +282,9 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.ramUsers = $.ramUsers;
         this.roleId = $.roleId;
+        this.roleName = $.roleName;
         this.services = $.services;
+        this.tags = $.tags;
         this.version = $.version;
     }
 
@@ -226,7 +307,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The role arn.
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the RAM role.
          * 
          * @return builder
          * 
@@ -237,7 +318,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The role arn.
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the RAM role.
          * 
          * @return builder
          * 
@@ -247,7 +328,49 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+         * @param assumeRolePolicyDocument The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assumeRolePolicyDocument(@Nullable Output<String> assumeRolePolicyDocument) {
+            $.assumeRolePolicyDocument = assumeRolePolicyDocument;
+            return this;
+        }
+
+        /**
+         * @param assumeRolePolicyDocument The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assumeRolePolicyDocument(String assumeRolePolicyDocument) {
+            return assumeRolePolicyDocument(Output.of(assumeRolePolicyDocument));
+        }
+
+        /**
+         * @param createTime (Available since v1.252.0) The time when the RAM role was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.252.0) The time when the RAM role was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the RAM role.
          * 
          * @return builder
          * 
@@ -258,7 +381,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
+         * @param description The description of the RAM role.
          * 
          * @return builder
          * 
@@ -268,28 +391,36 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
         public Builder document(@Nullable Output<String> document) {
             $.document = document;
             return this;
         }
 
         /**
-         * @param document Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+         * @param document Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
         public Builder document(String document) {
             return document(Output.of(document));
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Specifies whether to force delete the Role. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -300,7 +431,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Specifies whether to force delete the Role. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -310,7 +441,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSessionDuration The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+         * @param maxSessionDuration The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
          * 
          * @return builder
          * 
@@ -321,7 +452,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSessionDuration The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+         * @param maxSessionDuration The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
          * 
          * @return builder
          * 
@@ -331,71 +462,79 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+         * @param name Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder ramUsers(@Nullable Output<List<String>> ramUsers) {
             $.ramUsers = ramUsers;
             return this;
         }
 
         /**
-         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder ramUsers(List<String> ramUsers) {
             return ramUsers(Output.of(ramUsers));
         }
 
         /**
-         * @param ramUsers (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+         * @param ramUsers Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder ramUsers(String... ramUsers) {
             return ramUsers(List.of(ramUsers));
         }
 
         /**
-         * @param roleId The role ID.
+         * @param roleId The ID of the RAM role.
          * 
          * @return builder
          * 
@@ -406,7 +545,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId The role ID.
+         * @param roleId The ID of the RAM role.
          * 
          * @return builder
          * 
@@ -416,73 +555,115 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param roleName The name of the RAM role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleName(@Nullable Output<String> roleName) {
+            $.roleName = roleName;
+            return this;
+        }
+
+        /**
+         * @param roleName The name of the RAM role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleName(String roleName) {
+            return roleName(Output.of(roleName));
+        }
+
+        /**
+         * @param services Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
         /**
-         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param services Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
         /**
-         * @param services (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+         * @param services Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder services(String... services) {
             return services(List.of(services));
         }
 
         /**
-         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+         * @param tags The list of tags for the role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The list of tags for the role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param version Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
         /**
-         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+         * @param version Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
         public Builder version(String version) {
             return version(Output.of(version));
         }

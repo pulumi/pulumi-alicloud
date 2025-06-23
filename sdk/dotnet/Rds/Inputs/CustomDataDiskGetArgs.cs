@@ -14,9 +14,7 @@ namespace Pulumi.AliCloud.Rds.Inputs
     {
         /// <summary>
         /// Instance storage type
-        /// 
         /// local_ssd: local SSD disk
-        /// 
         /// cloud_essd:ESSD PL1 cloud disk
         /// </summary>
         [Input("category")]
@@ -24,7 +22,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
 
         /// <summary>
         /// Cloud Disk Performance
-        /// 
         /// Currently only supports PL1
         /// </summary>
         [Input("performanceLevel")]

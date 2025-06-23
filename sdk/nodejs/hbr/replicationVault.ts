@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
  *
+ * The replication vault used by the cross-region backup function of Cloud Backup.
+ *
  * For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.252.0.
  *
  * ## Example Usage
  *
@@ -74,27 +76,39 @@ export class ReplicationVault extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the backup vault. The description must be 0 to 255 characters in length.
+     * The description of the backup vault.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the region where the source vault resides.
+     * The encryption type of the backup vault.
+     */
+    public readonly encryptType!: pulumi.Output<string>;
+    /**
+     * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     */
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
+     * RegionId
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The region ID of the source backup vault.
      */
     public readonly replicationSourceRegionId!: pulumi.Output<string>;
     /**
-     * The ID of the source vault.
+     * The vault ID of the source backup vault.
      */
     public readonly replicationSourceVaultId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the mirror backup vault.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The name of the backup vault. The name must be 1 to 64 characters in length.
+     * The name of the backup vault.
      */
     public readonly vaultName!: pulumi.Output<string>;
     /**
-     * The storage type of the backup vault. Valid values: `STANDARD`.
+     * Backup Vault Storage Class
      */
     public readonly vaultStorageClass!: pulumi.Output<string>;
 
@@ -112,6 +126,9 @@ export class ReplicationVault extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReplicationVaultState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["replicationSourceRegionId"] = state ? state.replicationSourceRegionId : undefined;
             resourceInputs["replicationSourceVaultId"] = state ? state.replicationSourceVaultId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -129,10 +146,13 @@ export class ReplicationVault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["replicationSourceRegionId"] = args ? args.replicationSourceRegionId : undefined;
             resourceInputs["replicationSourceVaultId"] = args ? args.replicationSourceVaultId : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,27 +165,39 @@ export class ReplicationVault extends pulumi.CustomResource {
  */
 export interface ReplicationVaultState {
     /**
-     * The description of the backup vault. The description must be 0 to 255 characters in length.
+     * The description of the backup vault.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the region where the source vault resides.
+     * The encryption type of the backup vault.
+     */
+    encryptType?: pulumi.Input<string>;
+    /**
+     * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * RegionId
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The region ID of the source backup vault.
      */
     replicationSourceRegionId?: pulumi.Input<string>;
     /**
-     * The ID of the source vault.
+     * The vault ID of the source backup vault.
      */
     replicationSourceVaultId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the mirror backup vault.
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of the backup vault. The name must be 1 to 64 characters in length.
+     * The name of the backup vault.
      */
     vaultName?: pulumi.Input<string>;
     /**
-     * The storage type of the backup vault. Valid values: `STANDARD`.
+     * Backup Vault Storage Class
      */
     vaultStorageClass?: pulumi.Input<string>;
 }
@@ -175,23 +207,31 @@ export interface ReplicationVaultState {
  */
 export interface ReplicationVaultArgs {
     /**
-     * The description of the backup vault. The description must be 0 to 255 characters in length.
+     * The description of the backup vault.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the region where the source vault resides.
+     * The encryption type of the backup vault.
+     */
+    encryptType?: pulumi.Input<string>;
+    /**
+     * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * The region ID of the source backup vault.
      */
     replicationSourceRegionId: pulumi.Input<string>;
     /**
-     * The ID of the source vault.
+     * The vault ID of the source backup vault.
      */
     replicationSourceVaultId: pulumi.Input<string>;
     /**
-     * The name of the backup vault. The name must be 1 to 64 characters in length.
+     * The name of the backup vault.
      */
     vaultName: pulumi.Input<string>;
     /**
-     * The storage type of the backup vault. Valid values: `STANDARD`.
+     * Backup Vault Storage Class
      */
     vaultStorageClass?: pulumi.Input<string>;
 }

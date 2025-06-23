@@ -80,14 +80,14 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Image ID
+     * Image ID. You can modify the image ID since v1.252.0.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Image ID
+     * @return Image ID. You can modify the image ID since v1.252.0.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -107,6 +107,36 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<NodeGroupIpAllocationPolicyArgs>>> ipAllocationPolicies() {
         return Optional.ofNullable(this.ipAllocationPolicies);
+    }
+
+    /**
+     * key pair name
+     * 
+     */
+    @Import(name="keyPairName")
+    private @Nullable Output<String> keyPairName;
+
+    /**
+     * @return key pair name
+     * 
+     */
+    public Optional<Output<String>> keyPairName() {
+        return Optional.ofNullable(this.keyPairName);
+    }
+
+    /**
+     * Login Password
+     * 
+     */
+    @Import(name="loginPassword")
+    private @Nullable Output<String> loginPassword;
+
+    /**
+     * @return Login Password
+     * 
+     */
+    public Optional<Output<String>> loginPassword() {
+        return Optional.ofNullable(this.loginPassword);
     }
 
     /**
@@ -253,6 +283,8 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         this.ignoreFailedNodeTasks = $.ignoreFailedNodeTasks;
         this.imageId = $.imageId;
         this.ipAllocationPolicies = $.ipAllocationPolicies;
+        this.keyPairName = $.keyPairName;
+        this.loginPassword = $.loginPassword;
         this.machineType = $.machineType;
         this.nodeGroupDescription = $.nodeGroupDescription;
         this.nodeGroupId = $.nodeGroupId;
@@ -367,7 +399,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Image ID
+         * @param imageId Image ID. You can modify the image ID since v1.252.0.
          * 
          * @return builder
          * 
@@ -378,7 +410,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Image ID
+         * @param imageId Image ID. You can modify the image ID since v1.252.0.
          * 
          * @return builder
          * 
@@ -416,6 +448,48 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipAllocationPolicies(NodeGroupIpAllocationPolicyArgs... ipAllocationPolicies) {
             return ipAllocationPolicies(List.of(ipAllocationPolicies));
+        }
+
+        /**
+         * @param keyPairName key pair name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(@Nullable Output<String> keyPairName) {
+            $.keyPairName = keyPairName;
+            return this;
+        }
+
+        /**
+         * @param keyPairName key pair name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(String keyPairName) {
+            return keyPairName(Output.of(keyPairName));
+        }
+
+        /**
+         * @param loginPassword Login Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(@Nullable Output<String> loginPassword) {
+            $.loginPassword = loginPassword;
+            return this;
+        }
+
+        /**
+         * @param loginPassword Login Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(String loginPassword) {
+            return loginPassword(Output.of(loginPassword));
         }
 
         /**

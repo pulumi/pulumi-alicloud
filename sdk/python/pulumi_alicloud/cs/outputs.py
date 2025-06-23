@@ -44,6 +44,7 @@ __all__ = [
     'ManagedKubernetesOperationPolicyClusterAutoUpgrade',
     'ManagedKubernetesRrsaMetadata',
     'NodePoolDataDisk',
+    'NodePoolEfloNodeGroup',
     'NodePoolKubeletConfiguration',
     'NodePoolKubeletConfigurationReservedMemory',
     'NodePoolKubeletConfigurationTracing',
@@ -2124,6 +2125,56 @@ class NodePoolDataDisk(dict):
         The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class NodePoolEfloNodeGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolEfloNodeGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolEfloNodeGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolEfloNodeGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: Optional[builtins.str] = None,
+                 group_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str cluster_id: The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+        :param builtins.str group_id: When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[builtins.str]:
+        """
+        When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+        """
+        return pulumi.get(self, "group_id")
 
 
 @pulumi.output_type

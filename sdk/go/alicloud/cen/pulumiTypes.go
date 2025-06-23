@@ -5187,15 +5187,18 @@ func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) Index(i pu
 }
 
 type GetTransitRouterRouteTablePropagationsPropagation struct {
+	// The ID of the network instance connection.
 	Id string `pulumi:"id"`
-	// ID of the transit router route table association.
+	// The ID of the network instance.
 	ResourceId string `pulumi:"resourceId"`
-	// Type of the resource.
+	// The type of the network instance.
 	ResourceType string `pulumi:"resourceType"`
-	// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+	// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
 	Status string `pulumi:"status"`
-	// ID of the cen transit router attachment.
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
 }
 
 // GetTransitRouterRouteTablePropagationsPropagationInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArgs and GetTransitRouterRouteTablePropagationsPropagationOutput values.
@@ -5210,15 +5213,18 @@ type GetTransitRouterRouteTablePropagationsPropagationInput interface {
 }
 
 type GetTransitRouterRouteTablePropagationsPropagationArgs struct {
+	// The ID of the network instance connection.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the transit router route table association.
+	// The ID of the network instance.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// Type of the resource.
+	// The type of the network instance.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+	// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// ID of the cen transit router attachment.
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
 }
 
 func (GetTransitRouterRouteTablePropagationsPropagationArgs) ElementType() reflect.Type {
@@ -5272,28 +5278,34 @@ func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToGetTransitRou
 	return o
 }
 
+// The ID of the network instance connection.
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the transit router route table association.
+// The ID of the network instance.
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Type of the resource.
+// The type of the network instance.
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// ID of the cen transit router attachment.
+// The ID of the network instance connection.
 func (o GetTransitRouterRouteTablePropagationsPropagationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the route table of the Enterprise Edition transit router.
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
 }
 
 type GetTransitRouterRouteTablePropagationsPropagationArrayOutput struct{ *pulumi.OutputState }
@@ -5317,17 +5329,17 @@ func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) Index(i pu
 }
 
 type GetTransitRouterRouteTablesTable struct {
-	// ID of resource.
+	// The ID of the Transit Router Route Table.
 	Id string `pulumi:"id"`
-	// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
 	Status string `pulumi:"status"`
-	// The description of the transit router route table.
+	// The description of the route table.
 	TransitRouterRouteTableDescription string `pulumi:"transitRouterRouteTableDescription"`
-	// ID of the trabsit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
-	// Name of the transit router route table.
+	// The name of the route table.
 	TransitRouterRouteTableName string `pulumi:"transitRouterRouteTableName"`
-	// The type of the transit router route table to query. Valid values `System` and `Custom`.
+	// The type of the route table. Valid values: `System`, `Custom`.
 	TransitRouterRouteTableType string `pulumi:"transitRouterRouteTableType"`
 }
 
@@ -5343,17 +5355,17 @@ type GetTransitRouterRouteTablesTableInput interface {
 }
 
 type GetTransitRouterRouteTablesTableArgs struct {
-	// ID of resource.
+	// The ID of the Transit Router Route Table.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The description of the transit router route table.
+	// The description of the route table.
 	TransitRouterRouteTableDescription pulumi.StringInput `pulumi:"transitRouterRouteTableDescription"`
-	// ID of the trabsit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
-	// Name of the transit router route table.
+	// The name of the route table.
 	TransitRouterRouteTableName pulumi.StringInput `pulumi:"transitRouterRouteTableName"`
-	// The type of the transit router route table to query. Valid values `System` and `Custom`.
+	// The type of the route table. Valid values: `System`, `Custom`.
 	TransitRouterRouteTableType pulumi.StringInput `pulumi:"transitRouterRouteTableType"`
 }
 
@@ -5408,32 +5420,32 @@ func (o GetTransitRouterRouteTablesTableOutput) ToGetTransitRouterRouteTablesTab
 	return o
 }
 
-// ID of resource.
+// The ID of the Transit Router Route Table.
 func (o GetTransitRouterRouteTablesTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
 func (o GetTransitRouterRouteTablesTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The description of the transit router route table.
+// The description of the route table.
 func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableDescription }).(pulumi.StringOutput)
 }
 
-// ID of the trabsit router route table.
+// The ID of the Transit Router Route Table.
 func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
 }
 
-// Name of the transit router route table.
+// The name of the route table.
 func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableName }).(pulumi.StringOutput)
 }
 
-// The type of the transit router route table to query. Valid values `System` and `Custom`.
+// The type of the route table. Valid values: `System`, `Custom`.
 func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableType }).(pulumi.StringOutput)
 }
@@ -5932,33 +5944,33 @@ func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) Index(i 
 }
 
 type GetTransitRouterVpnAttachmentsAttachment struct {
-	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
 	AutoPublishRouteEnabled bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId string `pulumi:"cenId"`
-	// The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+	// (Available since v1.245.0) The billing method of the VPN attachment.
 	ChargeType string `pulumi:"chargeType"`
-	// The creation time of the resource
+	// The time when the VPN connection was created.
 	CreateTime string `pulumi:"createTime"`
 	// The ID of the resource supplied above.
 	Id string `pulumi:"id"`
-	// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+	// The type of resource attached to the transit router.
 	ResourceType string `pulumi:"resourceType"`
-	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+	// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
 	Status string `pulumi:"status"`
-	// The tag of the resource
+	// The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description of the IPsec-VPN connection.
 	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
 	// The ID of the VPN attachment.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
-	// The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
 	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
 	// The ID of the IPsec-VPN attachment.
 	VpnId string `pulumi:"vpnId"`
-	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 	VpnOwnerId int `pulumi:"vpnOwnerId"`
 	// The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
 	Zones []GetTransitRouterVpnAttachmentsAttachmentZone `pulumi:"zones"`
@@ -5976,33 +5988,33 @@ type GetTransitRouterVpnAttachmentsAttachmentInput interface {
 }
 
 type GetTransitRouterVpnAttachmentsAttachmentArgs struct {
-	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
 	AutoPublishRouteEnabled pulumi.BoolInput `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+	// (Available since v1.245.0) The billing method of the VPN attachment.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
-	// The creation time of the resource
+	// The time when the VPN connection was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the resource supplied above.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+	// The type of resource attached to the transit router.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+	// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tag of the resource
+	// The tag of the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description of the IPsec-VPN connection.
 	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
 	// The ID of the VPN attachment.
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
-	// The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
 	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
 	// The ID of the IPsec-VPN attachment.
 	VpnId pulumi.StringInput `pulumi:"vpnId"`
-	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 	VpnOwnerId pulumi.IntInput `pulumi:"vpnOwnerId"`
 	// The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
 	Zones GetTransitRouterVpnAttachmentsAttachmentZoneArrayInput `pulumi:"zones"`
@@ -6059,7 +6071,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ToGetTransitRouterVpnAtt
 	return o
 }
 
-// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) bool { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
 }
@@ -6069,12 +6081,12 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) CenId() pulumi.StringOut
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+// (Available since v1.245.0) The billing method of the VPN attachment.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource
+// The time when the VPN connection was created.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -6084,22 +6096,22 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+// The type of resource attached to the transit router.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource
+// The tag of the resource.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+// The description of the IPsec-VPN connection.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
 }
@@ -6109,7 +6121,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) TransitRouterAttachmentI
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+// The name of the VPN attachment.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
 }
@@ -6124,7 +6136,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentOutput) VpnId() pulumi.StringOut
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) string { return v.VpnId }).(pulumi.StringOutput)
 }
 
-// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 func (o GetTransitRouterVpnAttachmentsAttachmentOutput) VpnOwnerId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachment) int { return v.VpnOwnerId }).(pulumi.IntOutput)
 }
@@ -6157,7 +6169,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 }
 
 type GetTransitRouterVpnAttachmentsAttachmentZone struct {
-	// The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+	// The zone ID of the read-only instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -6173,7 +6185,7 @@ type GetTransitRouterVpnAttachmentsAttachmentZoneInput interface {
 }
 
 type GetTransitRouterVpnAttachmentsAttachmentZoneArgs struct {
-	// The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+	// The zone ID of the read-only instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -6228,7 +6240,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ToGetTransitRouterVp
 	return o
 }
 
-// The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+// The zone ID of the read-only instance.
 func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachmentZone) string { return v.ZoneId }).(pulumi.StringOutput)
 }

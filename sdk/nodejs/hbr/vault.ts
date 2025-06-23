@@ -108,7 +108,9 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly vaultStorageClass!: pulumi.Output<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
     public readonly vaultType!: pulumi.Output<string>;
     /**
@@ -211,7 +213,9 @@ export interface VaultState {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
     vaultType?: pulumi.Input<string>;
     /**
@@ -255,7 +259,9 @@ export interface VaultArgs {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+     * The type of Vault. Valid values:
+     * - `STANDARD`: Standard backup vault.
+     * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
     vaultType?: pulumi.Input<string>;
     /**

@@ -17,14 +17,14 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
     public static final GetTransitRouterRouteTablePropagationsPlainArgs Empty = new GetTransitRouterRouteTablePropagationsPlainArgs();
 
     /**
-     * A list of CEN Transit Router Route Table Association IDs.
+     * A list of Transit Router Route Table Propagation IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of CEN Transit Router Route Table Association IDs.
+     * @return A list of Transit Router Route Table Propagation IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -47,14 +47,14 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
     }
 
     /**
-     * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * @return The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     public Optional<String> status() {
@@ -62,14 +62,29 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
     }
 
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
+     * 
+     */
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable String transitRouterAttachmentId;
+
+    /**
+     * @return The ID of the network instance connection.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouterRouteTableId", required=true)
     private String transitRouterRouteTableId;
 
     /**
-     * @return ID of the route table of the VPC or VBR.
+     * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
     public String transitRouterRouteTableId() {
@@ -82,6 +97,7 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterRouteTableId = $.transitRouterRouteTableId;
     }
 
@@ -104,7 +120,7 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table Association IDs.
+         * @param ids A list of Transit Router Route Table Propagation IDs.
          * 
          * @return builder
          * 
@@ -115,7 +131,7 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
         }
 
         /**
-         * @param ids A list of CEN Transit Router Route Table Association IDs.
+         * @param ids A list of Transit Router Route Table Propagation IDs.
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
         }
 
         /**
-         * @param status The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+         * @param status The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
          * 
          * @return builder
          * 
@@ -147,7 +163,18 @@ public final class GetTransitRouterRouteTablePropagationsPlainArgs extends com.p
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterAttachmentId The ID of the network instance connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
          * 
          * @return builder
          * 

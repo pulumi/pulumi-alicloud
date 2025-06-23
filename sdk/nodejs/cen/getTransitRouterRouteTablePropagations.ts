@@ -7,20 +7,65 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+ * This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = alicloud.cen.getTransitRouterRouteTablePropagations({
- *     transitRouterRouteTableId: "rtb-id1",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
  * });
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 1,
+ *     max: 2999,
+ * });
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: defaultInteger.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const defaultTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vbrId: defaultVirtualBorderRouter.id,
+ *     autoPublishRouteEnabled: true,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("default", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterRouteTableName: name,
+ * });
+ * const defaultTransitRouterRouteTablePropagation = new alicloud.cen.TransitRouterRouteTablePropagation("default", {
+ *     transitRouterAttachmentId: defaultTransitRouterVbrAttachment.transitRouterAttachmentId,
+ *     transitRouterRouteTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
+ * });
+ * const ids = alicloud.cen.getTransitRouterRouteTablePropagationsOutput({
+ *     transitRouterRouteTableId: defaultTransitRouterRouteTablePropagation.transitRouterRouteTableId,
+ *     ids: [defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId],
+ * });
+ * export const cenTransitRouterRouteTablePropagationId0 = ids.apply(ids => ids.propagations?.[0]?.id);
  * ```
  */
 export function getTransitRouterRouteTablePropagations(args: GetTransitRouterRouteTablePropagationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTablePropagationsResult> {
@@ -29,6 +74,7 @@ export function getTransitRouterRouteTablePropagations(args: GetTransitRouterRou
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
         "transitRouterRouteTableId": args.transitRouterRouteTableId,
     }, opts);
 }
@@ -38,7 +84,7 @@ export function getTransitRouterRouteTablePropagations(args: GetTransitRouterRou
  */
 export interface GetTransitRouterRouteTablePropagationsArgs {
     /**
-     * A list of CEN Transit Router Route Table Association IDs.
+     * A list of Transit Router Route Table Propagation IDs.
      */
     ids?: string[];
     /**
@@ -46,11 +92,15 @@ export interface GetTransitRouterRouteTablePropagationsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      */
     status?: string;
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
+     */
+    transitRouterAttachmentId?: string;
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
      */
     transitRouterRouteTableId: string;
 }
@@ -63,39 +113,85 @@ export interface GetTransitRouterRouteTablePropagationsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of CEN Transit Router Route Table Association IDs.
-     */
     readonly ids: string[];
     readonly outputFile?: string;
     /**
-     * A list of CEN Transit Router Route Table Propagations. Each element contains the following attributes:
+     * A list of Transit Router Route Table Propagations. Each element contains the following attributes:
      */
     readonly propagations: outputs.cen.GetTransitRouterRouteTablePropagationsPropagation[];
     /**
-     * The status of the route table.
+     * The status of the route learning correlation.
      */
     readonly status?: string;
     /**
-     * ID of the transit router route table.
+     * The ID of the network instance connection.
+     */
+    readonly transitRouterAttachmentId?: string;
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
      */
     readonly transitRouterRouteTableId: string;
 }
 /**
- * This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+ * This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = alicloud.cen.getTransitRouterRouteTablePropagations({
- *     transitRouterRouteTableId: "rtb-id1",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
  * });
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 1,
+ *     max: 2999,
+ * });
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: defaultInteger.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const defaultTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vbrId: defaultVirtualBorderRouter.id,
+ *     autoPublishRouteEnabled: true,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("default", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterRouteTableName: name,
+ * });
+ * const defaultTransitRouterRouteTablePropagation = new alicloud.cen.TransitRouterRouteTablePropagation("default", {
+ *     transitRouterAttachmentId: defaultTransitRouterVbrAttachment.transitRouterAttachmentId,
+ *     transitRouterRouteTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
+ * });
+ * const ids = alicloud.cen.getTransitRouterRouteTablePropagationsOutput({
+ *     transitRouterRouteTableId: defaultTransitRouterRouteTablePropagation.transitRouterRouteTableId,
+ *     ids: [defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId],
+ * });
+ * export const cenTransitRouterRouteTablePropagationId0 = ids.apply(ids => ids.propagations?.[0]?.id);
  * ```
  */
 export function getTransitRouterRouteTablePropagationsOutput(args: GetTransitRouterRouteTablePropagationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteTablePropagationsResult> {
@@ -104,6 +200,7 @@ export function getTransitRouterRouteTablePropagationsOutput(args: GetTransitRou
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
         "transitRouterRouteTableId": args.transitRouterRouteTableId,
     }, opts);
 }
@@ -113,7 +210,7 @@ export function getTransitRouterRouteTablePropagationsOutput(args: GetTransitRou
  */
 export interface GetTransitRouterRouteTablePropagationsOutputArgs {
     /**
-     * A list of CEN Transit Router Route Table Association IDs.
+     * A list of Transit Router Route Table Propagation IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -121,11 +218,15 @@ export interface GetTransitRouterRouteTablePropagationsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      */
     status?: pulumi.Input<string>;
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
+     */
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
      */
     transitRouterRouteTableId: pulumi.Input<string>;
 }

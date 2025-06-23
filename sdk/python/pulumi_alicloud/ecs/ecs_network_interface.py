@@ -40,6 +40,7 @@ class EcsNetworkInterfaceArgs:
                  secondary_private_ip_address_count: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 source_dest_check: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterface resource.
@@ -63,6 +64,7 @@ class EcsNetworkInterfaceArgs:
         :param pulumi.Input[builtins.int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[builtins.bool] source_dest_check: Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -119,6 +121,8 @@ class EcsNetworkInterfaceArgs:
             pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if source_dest_check is not None:
+            pulumi.set(__self__, "source_dest_check", source_dest_check)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -368,6 +372,18 @@ class EcsNetworkInterfaceArgs:
         pulumi.set(self, "security_groups", value)
 
     @property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
+
+    @source_dest_check.setter
+    def source_dest_check(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "source_dest_check", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -403,6 +419,7 @@ class _EcsNetworkInterfaceState:
                  secondary_private_ip_address_count: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 source_dest_check: Optional[pulumi.Input[builtins.bool]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None):
@@ -428,6 +445,7 @@ class _EcsNetworkInterfaceState:
         :param pulumi.Input[builtins.int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[builtins.bool] source_dest_check: Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -487,6 +505,8 @@ class _EcsNetworkInterfaceState:
             pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if source_dest_check is not None:
+            pulumi.set(__self__, "source_dest_check", source_dest_check)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -740,6 +760,18 @@ class _EcsNetworkInterfaceState:
         pulumi.set(self, "security_groups", value)
 
     @property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
+
+    @source_dest_check.setter
+    def source_dest_check(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "source_dest_check", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -801,6 +833,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  secondary_private_ip_address_count: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 source_dest_check: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -880,6 +913,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[builtins.bool] source_dest_check: Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         """
@@ -978,6 +1012,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  secondary_private_ip_address_count: Optional[pulumi.Input[builtins.int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 source_dest_check: Optional[pulumi.Input[builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1008,6 +1043,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_groups"] = security_groups
+            __props__.__dict__["source_dest_check"] = source_dest_check
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -1044,6 +1080,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             secondary_private_ip_address_count: Optional[pulumi.Input[builtins.int]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            source_dest_check: Optional[pulumi.Input[builtins.bool]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             vswitch_id: Optional[pulumi.Input[builtins.str]] = None) -> 'EcsNetworkInterface':
@@ -1074,6 +1111,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[builtins.bool] source_dest_check: Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -1102,6 +1140,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["source_dest_check"] = source_dest_check
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1271,6 +1310,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
         Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
 
     @property
     @pulumi.getter

@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<bool?> IgnoreFailedNodeTasks { get; private set; } = null!;
 
         /// <summary>
-        /// Image ID
+        /// Image ID. You can modify the image ID since v1.252.0.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -308,6 +308,18 @@ namespace Pulumi.AliCloud.Eflo
         /// </summary>
         [Output("ipAllocationPolicies")]
         public Output<ImmutableArray<Outputs.NodeGroupIpAllocationPolicy>> IpAllocationPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// key pair name
+        /// </summary>
+        [Output("keyPairName")]
+        public Output<string?> KeyPairName { get; private set; } = null!;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        [Output("loginPassword")]
+        public Output<string?> LoginPassword { get; private set; } = null!;
 
         /// <summary>
         /// Machine type
@@ -386,6 +398,10 @@ namespace Pulumi.AliCloud.Eflo
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "loginPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -428,7 +444,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? IgnoreFailedNodeTasks { get; set; }
 
         /// <summary>
-        /// Image ID
+        /// Image ID. You can modify the image ID since v1.252.0.
         /// </summary>
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
@@ -443,6 +459,28 @@ namespace Pulumi.AliCloud.Eflo
         {
             get => _ipAllocationPolicies ?? (_ipAllocationPolicies = new InputList<Inputs.NodeGroupIpAllocationPolicyArgs>());
             set => _ipAllocationPolicies = value;
+        }
+
+        /// <summary>
+        /// key pair name
+        /// </summary>
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
         }
 
         /// <summary>
@@ -538,7 +576,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<bool>? IgnoreFailedNodeTasks { get; set; }
 
         /// <summary>
-        /// Image ID
+        /// Image ID. You can modify the image ID since v1.252.0.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -553,6 +591,28 @@ namespace Pulumi.AliCloud.Eflo
         {
             get => _ipAllocationPolicies ?? (_ipAllocationPolicies = new InputList<Inputs.NodeGroupIpAllocationPolicyGetArgs>());
             set => _ipAllocationPolicies = value;
+        }
+
+        /// <summary>
+        /// key pair name
+        /// </summary>
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
         }
 
         /// <summary>

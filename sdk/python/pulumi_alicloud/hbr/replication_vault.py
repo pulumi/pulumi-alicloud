@@ -24,20 +24,28 @@ class ReplicationVaultArgs:
                  replication_source_vault_id: pulumi.Input[builtins.str],
                  vault_name: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 encrypt_type: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  vault_storage_class: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicationVault resource.
-        :param pulumi.Input[builtins.str] replication_source_region_id: The ID of the region where the source vault resides.
-        :param pulumi.Input[builtins.str] replication_source_vault_id: The ID of the source vault.
-        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault. The name must be 1 to 64 characters in length.
-        :param pulumi.Input[builtins.str] description: The description of the backup vault. The description must be 0 to 255 characters in length.
-        :param pulumi.Input[builtins.str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
+        :param pulumi.Input[builtins.str] replication_source_region_id: The region ID of the source backup vault.
+        :param pulumi.Input[builtins.str] replication_source_vault_id: The vault ID of the source backup vault.
+        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault.
+        :param pulumi.Input[builtins.str] description: The description of the backup vault.
+        :param pulumi.Input[builtins.str] encrypt_type: The encryption type of the backup vault.
+        :param pulumi.Input[builtins.str] kms_key_id: Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        :param pulumi.Input[builtins.str] vault_storage_class: Backup Vault Storage Class
         """
         pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
         pulumi.set(__self__, "replication_source_vault_id", replication_source_vault_id)
         pulumi.set(__self__, "vault_name", vault_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if vault_storage_class is not None:
             pulumi.set(__self__, "vault_storage_class", vault_storage_class)
 
@@ -45,7 +53,7 @@ class ReplicationVaultArgs:
     @pulumi.getter(name="replicationSourceRegionId")
     def replication_source_region_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the region where the source vault resides.
+        The region ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_region_id")
 
@@ -57,7 +65,7 @@ class ReplicationVaultArgs:
     @pulumi.getter(name="replicationSourceVaultId")
     def replication_source_vault_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the source vault.
+        The vault ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_vault_id")
 
@@ -69,7 +77,7 @@ class ReplicationVaultArgs:
     @pulumi.getter(name="vaultName")
     def vault_name(self) -> pulumi.Input[builtins.str]:
         """
-        The name of the backup vault. The name must be 1 to 64 characters in length.
+        The name of the backup vault.
         """
         return pulumi.get(self, "vault_name")
 
@@ -81,7 +89,7 @@ class ReplicationVaultArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the backup vault. The description must be 0 to 255 characters in length.
+        The description of the backup vault.
         """
         return pulumi.get(self, "description")
 
@@ -90,10 +98,34 @@ class ReplicationVaultArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The encryption type of the backup vault.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @encrypt_type.setter
+    def encrypt_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "encrypt_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage type of the backup vault. Valid values: `STANDARD`.
+        Backup Vault Storage Class
         """
         return pulumi.get(self, "vault_storage_class")
 
@@ -106,6 +138,9 @@ class ReplicationVaultArgs:
 class _ReplicationVaultState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 encrypt_type: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_region_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_vault_id: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -113,15 +148,24 @@ class _ReplicationVaultState:
                  vault_storage_class: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicationVault resources.
-        :param pulumi.Input[builtins.str] description: The description of the backup vault. The description must be 0 to 255 characters in length.
-        :param pulumi.Input[builtins.str] replication_source_region_id: The ID of the region where the source vault resides.
-        :param pulumi.Input[builtins.str] replication_source_vault_id: The ID of the source vault.
-        :param pulumi.Input[builtins.str] status: The status of the resource.
-        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault. The name must be 1 to 64 characters in length.
-        :param pulumi.Input[builtins.str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
+        :param pulumi.Input[builtins.str] description: The description of the backup vault.
+        :param pulumi.Input[builtins.str] encrypt_type: The encryption type of the backup vault.
+        :param pulumi.Input[builtins.str] kms_key_id: Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        :param pulumi.Input[builtins.str] region_id: RegionId
+        :param pulumi.Input[builtins.str] replication_source_region_id: The region ID of the source backup vault.
+        :param pulumi.Input[builtins.str] replication_source_vault_id: The vault ID of the source backup vault.
+        :param pulumi.Input[builtins.str] status: The status of the mirror backup vault.
+        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault.
+        :param pulumi.Input[builtins.str] vault_storage_class: Backup Vault Storage Class
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if replication_source_region_id is not None:
             pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
         if replication_source_vault_id is not None:
@@ -137,7 +181,7 @@ class _ReplicationVaultState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the backup vault. The description must be 0 to 255 characters in length.
+        The description of the backup vault.
         """
         return pulumi.get(self, "description")
 
@@ -146,10 +190,46 @@ class _ReplicationVaultState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The encryption type of the backup vault.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @encrypt_type.setter
+    def encrypt_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "encrypt_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        RegionId
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="replicationSourceRegionId")
     def replication_source_region_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the region where the source vault resides.
+        The region ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_region_id")
 
@@ -161,7 +241,7 @@ class _ReplicationVaultState:
     @pulumi.getter(name="replicationSourceVaultId")
     def replication_source_vault_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the source vault.
+        The vault ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_vault_id")
 
@@ -173,7 +253,7 @@ class _ReplicationVaultState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The status of the resource.
+        The status of the mirror backup vault.
         """
         return pulumi.get(self, "status")
 
@@ -185,7 +265,7 @@ class _ReplicationVaultState:
     @pulumi.getter(name="vaultName")
     def vault_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the backup vault. The name must be 1 to 64 characters in length.
+        The name of the backup vault.
         """
         return pulumi.get(self, "vault_name")
 
@@ -197,7 +277,7 @@ class _ReplicationVaultState:
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage type of the backup vault. Valid values: `STANDARD`.
+        Backup Vault Storage Class
         """
         return pulumi.get(self, "vault_storage_class")
 
@@ -213,6 +293,8 @@ class ReplicationVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 encrypt_type: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_region_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_vault_id: Optional[pulumi.Input[builtins.str]] = None,
                  vault_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -221,9 +303,11 @@ class ReplicationVault(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
 
+        The replication vault used by the cross-region backup function of Cloud Backup.
+
         For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.252.0.
 
         ## Example Usage
 
@@ -261,11 +345,13 @@ class ReplicationVault(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The description of the backup vault. The description must be 0 to 255 characters in length.
-        :param pulumi.Input[builtins.str] replication_source_region_id: The ID of the region where the source vault resides.
-        :param pulumi.Input[builtins.str] replication_source_vault_id: The ID of the source vault.
-        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault. The name must be 1 to 64 characters in length.
-        :param pulumi.Input[builtins.str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
+        :param pulumi.Input[builtins.str] description: The description of the backup vault.
+        :param pulumi.Input[builtins.str] encrypt_type: The encryption type of the backup vault.
+        :param pulumi.Input[builtins.str] kms_key_id: Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        :param pulumi.Input[builtins.str] replication_source_region_id: The region ID of the source backup vault.
+        :param pulumi.Input[builtins.str] replication_source_vault_id: The vault ID of the source backup vault.
+        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault.
+        :param pulumi.Input[builtins.str] vault_storage_class: Backup Vault Storage Class
         """
         ...
     @overload
@@ -276,9 +362,11 @@ class ReplicationVault(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
 
+        The replication vault used by the cross-region backup function of Cloud Backup.
+
         For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.252.0.
 
         ## Example Usage
 
@@ -330,6 +418,8 @@ class ReplicationVault(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 encrypt_type: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_region_id: Optional[pulumi.Input[builtins.str]] = None,
                  replication_source_vault_id: Optional[pulumi.Input[builtins.str]] = None,
                  vault_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -344,6 +434,8 @@ class ReplicationVault(pulumi.CustomResource):
             __props__ = ReplicationVaultArgs.__new__(ReplicationVaultArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["encrypt_type"] = encrypt_type
+            __props__.__dict__["kms_key_id"] = kms_key_id
             if replication_source_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'replication_source_region_id'")
             __props__.__dict__["replication_source_region_id"] = replication_source_region_id
@@ -354,6 +446,7 @@ class ReplicationVault(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vault_name'")
             __props__.__dict__["vault_name"] = vault_name
             __props__.__dict__["vault_storage_class"] = vault_storage_class
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(ReplicationVault, __self__).__init__(
             'alicloud:hbr/replicationVault:ReplicationVault',
@@ -366,6 +459,9 @@ class ReplicationVault(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            encrypt_type: Optional[pulumi.Input[builtins.str]] = None,
+            kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
+            region_id: Optional[pulumi.Input[builtins.str]] = None,
             replication_source_region_id: Optional[pulumi.Input[builtins.str]] = None,
             replication_source_vault_id: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -378,18 +474,24 @@ class ReplicationVault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The description of the backup vault. The description must be 0 to 255 characters in length.
-        :param pulumi.Input[builtins.str] replication_source_region_id: The ID of the region where the source vault resides.
-        :param pulumi.Input[builtins.str] replication_source_vault_id: The ID of the source vault.
-        :param pulumi.Input[builtins.str] status: The status of the resource.
-        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault. The name must be 1 to 64 characters in length.
-        :param pulumi.Input[builtins.str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
+        :param pulumi.Input[builtins.str] description: The description of the backup vault.
+        :param pulumi.Input[builtins.str] encrypt_type: The encryption type of the backup vault.
+        :param pulumi.Input[builtins.str] kms_key_id: Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        :param pulumi.Input[builtins.str] region_id: RegionId
+        :param pulumi.Input[builtins.str] replication_source_region_id: The region ID of the source backup vault.
+        :param pulumi.Input[builtins.str] replication_source_vault_id: The vault ID of the source backup vault.
+        :param pulumi.Input[builtins.str] status: The status of the mirror backup vault.
+        :param pulumi.Input[builtins.str] vault_name: The name of the backup vault.
+        :param pulumi.Input[builtins.str] vault_storage_class: Backup Vault Storage Class
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ReplicationVaultState.__new__(_ReplicationVaultState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["encrypt_type"] = encrypt_type
+        __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["replication_source_region_id"] = replication_source_region_id
         __props__.__dict__["replication_source_vault_id"] = replication_source_vault_id
         __props__.__dict__["status"] = status
@@ -401,15 +503,39 @@ class ReplicationVault(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The description of the backup vault. The description must be 0 to 255 characters in length.
+        The description of the backup vault.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> pulumi.Output[builtins.str]:
+        """
+        The encryption type of the backup vault.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[builtins.str]:
+        """
+        RegionId
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="replicationSourceRegionId")
     def replication_source_region_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the region where the source vault resides.
+        The region ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_region_id")
 
@@ -417,7 +543,7 @@ class ReplicationVault(pulumi.CustomResource):
     @pulumi.getter(name="replicationSourceVaultId")
     def replication_source_vault_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the source vault.
+        The vault ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_vault_id")
 
@@ -425,7 +551,7 @@ class ReplicationVault(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        The status of the resource.
+        The status of the mirror backup vault.
         """
         return pulumi.get(self, "status")
 
@@ -433,7 +559,7 @@ class ReplicationVault(pulumi.CustomResource):
     @pulumi.getter(name="vaultName")
     def vault_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of the backup vault. The name must be 1 to 64 characters in length.
+        The name of the backup vault.
         """
         return pulumi.get(self, "vault_name")
 
@@ -441,7 +567,7 @@ class ReplicationVault(pulumi.CustomResource):
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> pulumi.Output[builtins.str]:
         """
-        The storage type of the backup vault. Valid values: `STANDARD`.
+        Backup Vault Storage Class
         """
         return pulumi.get(self, "vault_storage_class")
 

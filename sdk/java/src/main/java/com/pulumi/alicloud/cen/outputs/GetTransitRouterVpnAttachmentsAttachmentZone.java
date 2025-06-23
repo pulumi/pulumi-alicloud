@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterVpnAttachmentsAttachmentZone {
     /**
-     * @return The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+     * @return The zone ID of the read-only instance.
      * 
      */
     private String zoneId;
 
     private GetTransitRouterVpnAttachmentsAttachmentZone() {}
     /**
-     * @return The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+     * @return The zone ID of the read-only instance.
      * 
      */
     public String zoneId() {

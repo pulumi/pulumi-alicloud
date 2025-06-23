@@ -22,11 +22,12 @@ __all__ = ['CustomArgs', 'Custom']
 @pulumi.input_type
 class CustomArgs:
     def __init__(__self__, *,
-                 amount: pulumi.Input[builtins.int],
                  instance_type: pulumi.Input[builtins.str],
                  vswitch_id: pulumi.Input[builtins.str],
+                 amount: Optional[pulumi.Input[builtins.int]] = None,
                  auto_pay: Optional[pulumi.Input[builtins.bool]] = None,
                  auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
+                 create_extra_param: Optional[pulumi.Input[builtins.str]] = None,
                  create_mode: Optional[pulumi.Input[builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -48,19 +49,21 @@ class CustomArgs:
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 support_case: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk: Optional[pulumi.Input['CustomSystemDiskArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Custom resource.
-        :param pulumi.Input[builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               
                The network type InstanceNetworkType must be VPC.
+        :param pulumi.Input[builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set.
@@ -88,18 +91,27 @@ class CustomArgs:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: Security group list
+        :param pulumi.Input[builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+               - `NoSpot`: normal pay-as-you-go instances.
+               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+               
+               Default value: **NoSpot * *.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
         :param pulumi.Input['CustomSystemDiskArgs'] system_disk: System disk specifications. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] zone_id: The zone ID  of the resource
         """
-        pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if create_extra_param is not None:
+            pulumi.set(__self__, "create_extra_param", create_extra_param)
         if create_mode is not None:
             pulumi.set(__self__, "create_mode", create_mode)
         if data_disks is not None:
@@ -142,26 +154,18 @@ class CustomArgs:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if support_case is not None:
+            pulumi.set(__self__, "support_case", support_case)
         if system_disk is not None:
             pulumi.set(__self__, "system_disk", system_disk)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def amount(self) -> pulumi.Input[builtins.int]:
-        """
-        Represents the number of instances created
-        """
-        return pulumi.get(self, "amount")
-
-    @amount.setter
-    def amount(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "amount", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -180,7 +184,6 @@ class CustomArgs:
     def vswitch_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-
         The network type InstanceNetworkType must be VPC.
         """
         return pulumi.get(self, "vswitch_id")
@@ -188,6 +191,18 @@ class CustomArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Represents the number of instances created
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "amount", value)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -212,6 +227,18 @@ class CustomArgs:
     @auto_renew.setter
     def auto_renew(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="createExtraParam")
+    def create_extra_param(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Reserved parameters are not supported.
+        """
+        return pulumi.get(self, "create_extra_param")
+
+    @create_extra_param.setter
+    def create_extra_param(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_extra_param", value)
 
     @property
     @pulumi.getter(name="createMode")
@@ -472,6 +499,22 @@ class CustomArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        - `NoSpot`: normal pay-as-you-go instances.
+        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+
+        Default value: **NoSpot * *.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -482,6 +525,18 @@ class CustomArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="supportCase")
+    def support_case(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        """
+        return pulumi.get(self, "support_case")
+
+    @support_case.setter
+    def support_case(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "support_case", value)
 
     @property
     @pulumi.getter(name="systemDisk")
@@ -526,6 +581,7 @@ class _CustomState:
                  amount: Optional[pulumi.Input[builtins.int]] = None,
                  auto_pay: Optional[pulumi.Input[builtins.bool]] = None,
                  auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
+                 create_extra_param: Optional[pulumi.Input[builtins.str]] = None,
                  create_mode: Optional[pulumi.Input[builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -549,7 +605,9 @@ class _CustomState:
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 support_case: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk: Optional[pulumi.Input['CustomSystemDiskArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -559,6 +617,7 @@ class _CustomState:
         :param pulumi.Input[builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set.
@@ -588,11 +647,16 @@ class _CustomState:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: Security group list
+        :param pulumi.Input[builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+               - `NoSpot`: normal pay-as-you-go instances.
+               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+               
+               Default value: **NoSpot * *.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
         :param pulumi.Input['CustomSystemDiskArgs'] system_disk: System disk specifications. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               
                The network type InstanceNetworkType must be VPC.
         :param pulumi.Input[builtins.str] zone_id: The zone ID  of the resource
         """
@@ -602,6 +666,8 @@ class _CustomState:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if create_extra_param is not None:
+            pulumi.set(__self__, "create_extra_param", create_extra_param)
         if create_mode is not None:
             pulumi.set(__self__, "create_mode", create_mode)
         if data_disks is not None:
@@ -648,8 +714,12 @@ class _CustomState:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if support_case is not None:
+            pulumi.set(__self__, "support_case", support_case)
         if system_disk is not None:
             pulumi.set(__self__, "system_disk", system_disk)
         if tags is not None:
@@ -694,6 +764,18 @@ class _CustomState:
     @auto_renew.setter
     def auto_renew(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="createExtraParam")
+    def create_extra_param(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Reserved parameters are not supported.
+        """
+        return pulumi.get(self, "create_extra_param")
+
+    @create_extra_param.setter
+    def create_extra_param(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_extra_param", value)
 
     @property
     @pulumi.getter(name="createMode")
@@ -978,6 +1060,22 @@ class _CustomState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        - `NoSpot`: normal pay-as-you-go instances.
+        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+
+        Default value: **NoSpot * *.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -988,6 +1086,18 @@ class _CustomState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="supportCase")
+    def support_case(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        """
+        return pulumi.get(self, "support_case")
+
+    @support_case.setter
+    def support_case(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "support_case", value)
 
     @property
     @pulumi.getter(name="systemDisk")
@@ -1018,7 +1128,6 @@ class _CustomState:
     def vswitch_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-
         The network type InstanceNetworkType must be VPC.
         """
         return pulumi.get(self, "vswitch_id")
@@ -1049,6 +1158,7 @@ class Custom(pulumi.CustomResource):
                  amount: Optional[pulumi.Input[builtins.int]] = None,
                  auto_pay: Optional[pulumi.Input[builtins.bool]] = None,
                  auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
+                 create_extra_param: Optional[pulumi.Input[builtins.str]] = None,
                  create_mode: Optional[pulumi.Input[builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1071,7 +1181,9 @@ class Custom(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 support_case: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk: Optional[pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1082,9 +1194,93 @@ class Custom(pulumi.CustomResource):
 
         Dedicated RDS User host.
 
-        For information about RDS Custom and how to use it, see [What is Custom](https://www.alibabacloud.com/help/en/).
+        For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 
-        > **NOTE:** Available since v1.235.0.
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        cluster_id = config.get("clusterId")
+        if cluster_id is None:
+            cluster_id = "c18c40b2b336840e2b2bbf8ab291758e2"
+        deploymentsetid = config.get("deploymentsetid")
+        if deploymentsetid is None:
+            deploymentsetid = "ds-2ze78ef5kyj9eveue92m"
+        vswtich_id = config.get("vswtich-id")
+        if vswtich_id is None:
+            vswtich_id = "example_vswitch"
+        vpc_name = config.get("vpcName")
+        if vpc_name is None:
+            vpc_name = "beijing111"
+        example_region_id = config.get("exampleRegionId")
+        if example_region_id is None:
+            example_region_id = "cn-beijing"
+        description = config.get("description")
+        if description is None:
+            description = "ran_1-08_rccreatenodepool_api"
+        example_zone_id = config.get("exampleZoneId")
+        if example_zone_id is None:
+            example_zone_id = "cn-beijing-h"
+        securitygroup_name = config.get("securitygroupName")
+        if securitygroup_name is None:
+            securitygroup_name = "rds_custom_init_sg_cn_beijing"
+        default = alicloud.resourcemanager.get_resource_groups()
+        vpc_id = alicloud.vpc.Network("vpcId", vpc_name=vpc_name)
+        v_switch_id = alicloud.vpc.Switch("vSwitchId",
+            vpc_id=vpc_id.id,
+            zone_id=example_zone_id,
+            vswitch_name=vswtich_id,
+            cidr_block="172.16.5.0/24")
+        security_group_id = alicloud.ecs.SecurityGroup("securityGroupId",
+            vpc_id=vpc_id.id,
+            security_group_name=securitygroup_name)
+        deployment_set = alicloud.ecs.EcsDeploymentSet("deploymentSet")
+        key_pair_name = alicloud.ecs.EcsKeyPair("KeyPairName", key_pair_name=v_switch_id.id)
+        default_custom = alicloud.rds.Custom("default",
+            amount=1,
+            auto_renew=False,
+            period=1,
+            auto_pay=True,
+            instance_type="mysql.x2.xlarge.6cm",
+            data_disks=[{
+                "category": "cloud_essd",
+                "size": 50,
+                "performance_level": "PL1",
+            }],
+            status="Running",
+            security_group_ids=[security_group_id.id],
+            io_optimized="optimized",
+            description=description,
+            key_pair_name=key_pair_name.id,
+            zone_id=example_zone_id,
+            instance_charge_type="Prepaid",
+            internet_max_bandwidth_out=0,
+            image_id="aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+            security_enhancement_strategy="Active",
+            period_unit="Month",
+            password="jingyiTEST@123",
+            system_disk={
+                "size": "40",
+                "category": "cloud_essd",
+            },
+            host_name="1743386110",
+            create_mode="0",
+            spot_strategy="NoSpot",
+            vswitch_id=v_switch_id.id,
+            support_case="eni",
+            deployment_set_id=deploymentsetid,
+            dry_run=False)
+        ```
 
         ## Import
 
@@ -1099,6 +1295,7 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set.
@@ -1127,11 +1324,16 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: Security group list
+        :param pulumi.Input[builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+               - `NoSpot`: normal pay-as-you-go instances.
+               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+               
+               Default value: **NoSpot * *.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
         :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: System disk specifications. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               
                The network type InstanceNetworkType must be VPC.
         :param pulumi.Input[builtins.str] zone_id: The zone ID  of the resource
         """
@@ -1146,9 +1348,93 @@ class Custom(pulumi.CustomResource):
 
         Dedicated RDS User host.
 
-        For information about RDS Custom and how to use it, see [What is Custom](https://www.alibabacloud.com/help/en/).
+        For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 
-        > **NOTE:** Available since v1.235.0.
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        cluster_id = config.get("clusterId")
+        if cluster_id is None:
+            cluster_id = "c18c40b2b336840e2b2bbf8ab291758e2"
+        deploymentsetid = config.get("deploymentsetid")
+        if deploymentsetid is None:
+            deploymentsetid = "ds-2ze78ef5kyj9eveue92m"
+        vswtich_id = config.get("vswtich-id")
+        if vswtich_id is None:
+            vswtich_id = "example_vswitch"
+        vpc_name = config.get("vpcName")
+        if vpc_name is None:
+            vpc_name = "beijing111"
+        example_region_id = config.get("exampleRegionId")
+        if example_region_id is None:
+            example_region_id = "cn-beijing"
+        description = config.get("description")
+        if description is None:
+            description = "ran_1-08_rccreatenodepool_api"
+        example_zone_id = config.get("exampleZoneId")
+        if example_zone_id is None:
+            example_zone_id = "cn-beijing-h"
+        securitygroup_name = config.get("securitygroupName")
+        if securitygroup_name is None:
+            securitygroup_name = "rds_custom_init_sg_cn_beijing"
+        default = alicloud.resourcemanager.get_resource_groups()
+        vpc_id = alicloud.vpc.Network("vpcId", vpc_name=vpc_name)
+        v_switch_id = alicloud.vpc.Switch("vSwitchId",
+            vpc_id=vpc_id.id,
+            zone_id=example_zone_id,
+            vswitch_name=vswtich_id,
+            cidr_block="172.16.5.0/24")
+        security_group_id = alicloud.ecs.SecurityGroup("securityGroupId",
+            vpc_id=vpc_id.id,
+            security_group_name=securitygroup_name)
+        deployment_set = alicloud.ecs.EcsDeploymentSet("deploymentSet")
+        key_pair_name = alicloud.ecs.EcsKeyPair("KeyPairName", key_pair_name=v_switch_id.id)
+        default_custom = alicloud.rds.Custom("default",
+            amount=1,
+            auto_renew=False,
+            period=1,
+            auto_pay=True,
+            instance_type="mysql.x2.xlarge.6cm",
+            data_disks=[{
+                "category": "cloud_essd",
+                "size": 50,
+                "performance_level": "PL1",
+            }],
+            status="Running",
+            security_group_ids=[security_group_id.id],
+            io_optimized="optimized",
+            description=description,
+            key_pair_name=key_pair_name.id,
+            zone_id=example_zone_id,
+            instance_charge_type="Prepaid",
+            internet_max_bandwidth_out=0,
+            image_id="aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+            security_enhancement_strategy="Active",
+            period_unit="Month",
+            password="jingyiTEST@123",
+            system_disk={
+                "size": "40",
+                "category": "cloud_essd",
+            },
+            host_name="1743386110",
+            create_mode="0",
+            spot_strategy="NoSpot",
+            vswitch_id=v_switch_id.id,
+            support_case="eni",
+            deployment_set_id=deploymentsetid,
+            dry_run=False)
+        ```
 
         ## Import
 
@@ -1176,6 +1462,7 @@ class Custom(pulumi.CustomResource):
                  amount: Optional[pulumi.Input[builtins.int]] = None,
                  auto_pay: Optional[pulumi.Input[builtins.bool]] = None,
                  auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
+                 create_extra_param: Optional[pulumi.Input[builtins.str]] = None,
                  create_mode: Optional[pulumi.Input[builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1198,7 +1485,9 @@ class Custom(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 support_case: Optional[pulumi.Input[builtins.str]] = None,
                  system_disk: Optional[pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1212,11 +1501,10 @@ class Custom(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomArgs.__new__(CustomArgs)
 
-            if amount is None and not opts.urn:
-                raise TypeError("Missing required property 'amount'")
             __props__.__dict__["amount"] = amount
             __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["create_extra_param"] = create_extra_param
             __props__.__dict__["create_mode"] = create_mode
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -1241,7 +1529,9 @@ class Custom(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
+            __props__.__dict__["support_case"] = support_case
             __props__.__dict__["system_disk"] = system_disk
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
@@ -1262,6 +1552,7 @@ class Custom(pulumi.CustomResource):
             amount: Optional[pulumi.Input[builtins.int]] = None,
             auto_pay: Optional[pulumi.Input[builtins.bool]] = None,
             auto_renew: Optional[pulumi.Input[builtins.bool]] = None,
+            create_extra_param: Optional[pulumi.Input[builtins.str]] = None,
             create_mode: Optional[pulumi.Input[builtins.str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1285,7 +1576,9 @@ class Custom(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
             security_enhancement_strategy: Optional[pulumi.Input[builtins.str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
+            support_case: Optional[pulumi.Input[builtins.str]] = None,
             system_disk: Optional[pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1300,6 +1593,7 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[builtins.str] create_extra_param: Reserved parameters are not supported.
         :param pulumi.Input[builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set.
@@ -1329,11 +1623,16 @@ class Custom(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_group_ids: Security group list
+        :param pulumi.Input[builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+               - `NoSpot`: normal pay-as-you-go instances.
+               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+               
+               Default value: **NoSpot * *.
         :param pulumi.Input[builtins.str] status: The status of the resource
+        :param pulumi.Input[builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
         :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: System disk specifications. See `system_disk` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               
                The network type InstanceNetworkType must be VPC.
         :param pulumi.Input[builtins.str] zone_id: The zone ID  of the resource
         """
@@ -1344,6 +1643,7 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["amount"] = amount
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["create_extra_param"] = create_extra_param
         __props__.__dict__["create_mode"] = create_mode
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -1367,7 +1667,9 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["status"] = status
+        __props__.__dict__["support_case"] = support_case
         __props__.__dict__["system_disk"] = system_disk
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1376,7 +1678,7 @@ class Custom(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def amount(self) -> pulumi.Output[builtins.int]:
+    def amount(self) -> pulumi.Output[Optional[builtins.int]]:
         """
         Represents the number of instances created
         """
@@ -1397,6 +1699,14 @@ class Custom(pulumi.CustomResource):
         Whether the instance is automatically renewed. Valid values: true/false. The default is false.
         """
         return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="createExtraParam")
+    def create_extra_param(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Reserved parameters are not supported.
+        """
+        return pulumi.get(self, "create_extra_param")
 
     @property
     @pulumi.getter(name="createMode")
@@ -1589,12 +1899,32 @@ class Custom(pulumi.CustomResource):
         return pulumi.get(self, "security_group_ids")
 
     @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
+        - `NoSpot`: normal pay-as-you-go instances.
+        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+
+        Default value: **NoSpot * *.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="supportCase")
+    def support_case(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        """
+        return pulumi.get(self, "support_case")
 
     @property
     @pulumi.getter(name="systemDisk")
@@ -1617,7 +1947,6 @@ class Custom(pulumi.CustomResource):
     def vswitch_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-
         The network type InstanceNetworkType must be VPC.
         """
         return pulumi.get(self, "vswitch_id")

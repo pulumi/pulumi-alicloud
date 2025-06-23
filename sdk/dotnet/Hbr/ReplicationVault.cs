@@ -12,9 +12,11 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
     /// 
+    /// The replication vault used by the cross-region backup function of Cloud Backup.
+    /// 
     /// For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.152.0+.
+    /// &gt; **NOTE:** Available since v1.252.0.
     /// 
     /// ## Example Usage
     /// 
@@ -68,37 +70,55 @@ namespace Pulumi.AliCloud.Hbr
     public partial class ReplicationVault : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the backup vault. The description must be 0 to 255 characters in length.
+        /// The description of the backup vault.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the region where the source vault resides.
+        /// The encryption type of the backup vault.
+        /// </summary>
+        [Output("encryptType")]
+        public Output<string> EncryptType { get; private set; } = null!;
+
+        /// <summary>
+        /// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// RegionId
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the source backup vault.
         /// </summary>
         [Output("replicationSourceRegionId")]
         public Output<string> ReplicationSourceRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the source vault.
+        /// The vault ID of the source backup vault.
         /// </summary>
         [Output("replicationSourceVaultId")]
         public Output<string> ReplicationSourceVaultId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the mirror backup vault.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the backup vault. The name must be 1 to 64 characters in length.
+        /// The name of the backup vault.
         /// </summary>
         [Output("vaultName")]
         public Output<string> VaultName { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the backup vault. Valid values: `STANDARD`.
+        /// Backup Vault Storage Class
         /// </summary>
         [Output("vaultStorageClass")]
         public Output<string> VaultStorageClass { get; private set; } = null!;
@@ -150,31 +170,43 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class ReplicationVaultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the backup vault. The description must be 0 to 255 characters in length.
+        /// The description of the backup vault.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the region where the source vault resides.
+        /// The encryption type of the backup vault.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<string>? EncryptType { get; set; }
+
+        /// <summary>
+        /// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The region ID of the source backup vault.
         /// </summary>
         [Input("replicationSourceRegionId", required: true)]
         public Input<string> ReplicationSourceRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the source vault.
+        /// The vault ID of the source backup vault.
         /// </summary>
         [Input("replicationSourceVaultId", required: true)]
         public Input<string> ReplicationSourceVaultId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the backup vault. The name must be 1 to 64 characters in length.
+        /// The name of the backup vault.
         /// </summary>
         [Input("vaultName", required: true)]
         public Input<string> VaultName { get; set; } = null!;
 
         /// <summary>
-        /// The storage type of the backup vault. Valid values: `STANDARD`.
+        /// Backup Vault Storage Class
         /// </summary>
         [Input("vaultStorageClass")]
         public Input<string>? VaultStorageClass { get; set; }
@@ -188,37 +220,55 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class ReplicationVaultState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the backup vault. The description must be 0 to 255 characters in length.
+        /// The description of the backup vault.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the region where the source vault resides.
+        /// The encryption type of the backup vault.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<string>? EncryptType { get; set; }
+
+        /// <summary>
+        /// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// RegionId
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The region ID of the source backup vault.
         /// </summary>
         [Input("replicationSourceRegionId")]
         public Input<string>? ReplicationSourceRegionId { get; set; }
 
         /// <summary>
-        /// The ID of the source vault.
+        /// The vault ID of the source backup vault.
         /// </summary>
         [Input("replicationSourceVaultId")]
         public Input<string>? ReplicationSourceVaultId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the mirror backup vault.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The name of the backup vault. The name must be 1 to 64 characters in length.
+        /// The name of the backup vault.
         /// </summary>
         [Input("vaultName")]
         public Input<string>? VaultName { get; set; }
 
         /// <summary>
-        /// The storage type of the backup vault. Valid values: `STANDARD`.
+        /// Backup Vault Storage Class
         /// </summary>
         [Input("vaultStorageClass")]
         public Input<string>? VaultStorageClass { get; set; }

@@ -14,7 +14,7 @@ import (
 
 // Provides a Message Service Subscription resource.
 //
-// For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+// For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
 //
 // > **NOTE:** Available since v1.188.0.
 //
@@ -81,9 +81,11 @@ type ServiceSubscription struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceSubscriptionDlqPolicyOutput `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
+	// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+	// - `Queue Format`: A queue name.
+	// - `MPush Format`: An AppKey.
+	// - `Sms Format`: A mobile number
+	// - `Email Format`: An email address.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrOutput `pulumi:"filterTag"`
@@ -148,9 +150,11 @@ type serviceSubscriptionState struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy *ServiceSubscriptionDlqPolicy `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
+	// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+	// - `Queue Format`: A queue name.
+	// - `MPush Format`: An AppKey.
+	// - `Sms Format`: A mobile number
+	// - `Email Format`: An email address.
 	Endpoint *string `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag *string `pulumi:"filterTag"`
@@ -174,9 +178,11 @@ type ServiceSubscriptionState struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceSubscriptionDlqPolicyPtrInput
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
+	// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+	// - `Queue Format`: A queue name.
+	// - `MPush Format`: An AppKey.
+	// - `Sms Format`: A mobile number
+	// - `Email Format`: An email address.
 	Endpoint pulumi.StringPtrInput
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrInput
@@ -202,9 +208,11 @@ type serviceSubscriptionArgs struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy *ServiceSubscriptionDlqPolicy `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
+	// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+	// - `Queue Format`: A queue name.
+	// - `MPush Format`: An AppKey.
+	// - `Sms Format`: A mobile number
+	// - `Email Format`: An email address.
 	Endpoint string `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag *string `pulumi:"filterTag"`
@@ -227,9 +235,11 @@ type ServiceSubscriptionArgs struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy ServiceSubscriptionDlqPolicyPtrInput
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
+	// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+	// - `Queue Format`: A queue name.
+	// - `MPush Format`: An AppKey.
+	// - `Sms Format`: A mobile number
+	// - `Email Format`: An email address.
 	Endpoint pulumi.StringInput
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrInput
@@ -345,9 +355,11 @@ func (o ServiceSubscriptionOutput) DlqPolicy() ServiceSubscriptionDlqPolicyOutpu
 }
 
 // The endpoint has three format. Available values format:
-// - `HTTP Format`: http://xxx.com/xxx
-// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-// - `Email Format`: mail:directmail:{MailAddress}
+// - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+// - `Queue Format`: A queue name.
+// - `MPush Format`: An AppKey.
+// - `Sms Format`: A mobile number
+// - `Email Format`: An email address.
 func (o ServiceSubscriptionOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSubscription) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }

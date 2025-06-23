@@ -4209,6 +4209,162 @@ func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOu
 	}).(NodePoolDataDiskOutput)
 }
 
+type NodePoolEfloNodeGroup struct {
+	// The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+	ClusterId *string `pulumi:"clusterId"`
+	// When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+	GroupId *string `pulumi:"groupId"`
+}
+
+// NodePoolEfloNodeGroupInput is an input type that accepts NodePoolEfloNodeGroupArgs and NodePoolEfloNodeGroupOutput values.
+// You can construct a concrete instance of `NodePoolEfloNodeGroupInput` via:
+//
+//	NodePoolEfloNodeGroupArgs{...}
+type NodePoolEfloNodeGroupInput interface {
+	pulumi.Input
+
+	ToNodePoolEfloNodeGroupOutput() NodePoolEfloNodeGroupOutput
+	ToNodePoolEfloNodeGroupOutputWithContext(context.Context) NodePoolEfloNodeGroupOutput
+}
+
+type NodePoolEfloNodeGroupArgs struct {
+	// The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+}
+
+func (NodePoolEfloNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolEfloNodeGroup)(nil)).Elem()
+}
+
+func (i NodePoolEfloNodeGroupArgs) ToNodePoolEfloNodeGroupOutput() NodePoolEfloNodeGroupOutput {
+	return i.ToNodePoolEfloNodeGroupOutputWithContext(context.Background())
+}
+
+func (i NodePoolEfloNodeGroupArgs) ToNodePoolEfloNodeGroupOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolEfloNodeGroupOutput)
+}
+
+func (i NodePoolEfloNodeGroupArgs) ToNodePoolEfloNodeGroupPtrOutput() NodePoolEfloNodeGroupPtrOutput {
+	return i.ToNodePoolEfloNodeGroupPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolEfloNodeGroupArgs) ToNodePoolEfloNodeGroupPtrOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolEfloNodeGroupOutput).ToNodePoolEfloNodeGroupPtrOutputWithContext(ctx)
+}
+
+// NodePoolEfloNodeGroupPtrInput is an input type that accepts NodePoolEfloNodeGroupArgs, NodePoolEfloNodeGroupPtr and NodePoolEfloNodeGroupPtrOutput values.
+// You can construct a concrete instance of `NodePoolEfloNodeGroupPtrInput` via:
+//
+//	        NodePoolEfloNodeGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolEfloNodeGroupPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolEfloNodeGroupPtrOutput() NodePoolEfloNodeGroupPtrOutput
+	ToNodePoolEfloNodeGroupPtrOutputWithContext(context.Context) NodePoolEfloNodeGroupPtrOutput
+}
+
+type nodePoolEfloNodeGroupPtrType NodePoolEfloNodeGroupArgs
+
+func NodePoolEfloNodeGroupPtr(v *NodePoolEfloNodeGroupArgs) NodePoolEfloNodeGroupPtrInput {
+	return (*nodePoolEfloNodeGroupPtrType)(v)
+}
+
+func (*nodePoolEfloNodeGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolEfloNodeGroup)(nil)).Elem()
+}
+
+func (i *nodePoolEfloNodeGroupPtrType) ToNodePoolEfloNodeGroupPtrOutput() NodePoolEfloNodeGroupPtrOutput {
+	return i.ToNodePoolEfloNodeGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolEfloNodeGroupPtrType) ToNodePoolEfloNodeGroupPtrOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolEfloNodeGroupPtrOutput)
+}
+
+type NodePoolEfloNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (NodePoolEfloNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolEfloNodeGroup)(nil)).Elem()
+}
+
+func (o NodePoolEfloNodeGroupOutput) ToNodePoolEfloNodeGroupOutput() NodePoolEfloNodeGroupOutput {
+	return o
+}
+
+func (o NodePoolEfloNodeGroupOutput) ToNodePoolEfloNodeGroupOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupOutput {
+	return o
+}
+
+func (o NodePoolEfloNodeGroupOutput) ToNodePoolEfloNodeGroupPtrOutput() NodePoolEfloNodeGroupPtrOutput {
+	return o.ToNodePoolEfloNodeGroupPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolEfloNodeGroupOutput) ToNodePoolEfloNodeGroupPtrOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolEfloNodeGroup) *NodePoolEfloNodeGroup {
+		return &v
+	}).(NodePoolEfloNodeGroupPtrOutput)
+}
+
+// The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+func (o NodePoolEfloNodeGroupOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolEfloNodeGroup) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+func (o NodePoolEfloNodeGroupOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolEfloNodeGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolEfloNodeGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolEfloNodeGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolEfloNodeGroup)(nil)).Elem()
+}
+
+func (o NodePoolEfloNodeGroupPtrOutput) ToNodePoolEfloNodeGroupPtrOutput() NodePoolEfloNodeGroupPtrOutput {
+	return o
+}
+
+func (o NodePoolEfloNodeGroupPtrOutput) ToNodePoolEfloNodeGroupPtrOutputWithContext(ctx context.Context) NodePoolEfloNodeGroupPtrOutput {
+	return o
+}
+
+func (o NodePoolEfloNodeGroupPtrOutput) Elem() NodePoolEfloNodeGroupOutput {
+	return o.ApplyT(func(v *NodePoolEfloNodeGroup) NodePoolEfloNodeGroup {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolEfloNodeGroup
+		return ret
+	}).(NodePoolEfloNodeGroupOutput)
+}
+
+// The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+func (o NodePoolEfloNodeGroupPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolEfloNodeGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+func (o NodePoolEfloNodeGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolEfloNodeGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
 type NodePoolKubeletConfiguration struct {
 	// Allowed sysctl mode whitelist.
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
@@ -13798,6 +13954,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolEfloNodeGroupInput)(nil)).Elem(), NodePoolEfloNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolEfloNodeGroupPtrInput)(nil)).Elem(), NodePoolEfloNodeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationPtrInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemoryInput)(nil)).Elem(), NodePoolKubeletConfigurationReservedMemoryArgs{})
@@ -13959,6 +14117,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolEfloNodeGroupOutput{})
+	pulumi.RegisterOutputType(NodePoolEfloNodeGroupPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationReservedMemoryOutput{})

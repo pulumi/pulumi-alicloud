@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVpnAttachmentsAttachmentZoneResult
     {
         /// <summary>
-        /// The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+        /// The zone ID of the read-only instance.
         /// </summary>
         public readonly string ZoneId;
 

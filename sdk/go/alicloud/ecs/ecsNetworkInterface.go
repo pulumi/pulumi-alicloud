@@ -163,6 +163,8 @@ type EcsNetworkInterface struct {
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrOutput `pulumi:"sourceDestCheck"`
 	// The status of the ENI.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -254,6 +256,8 @@ type ecsNetworkInterfaceState struct {
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
 	// The status of the ENI.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -313,6 +317,8 @@ type EcsNetworkInterfaceState struct {
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
+	// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrInput
 	// The status of the ENI.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -374,6 +380,8 @@ type ecsNetworkInterfaceArgs struct {
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -430,6 +438,8 @@ type EcsNetworkInterfaceArgs struct {
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
+	// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -631,6 +641,11 @@ func (o EcsNetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 // Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 func (o EcsNetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+func (o EcsNetworkInterfaceOutput) SourceDestCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.BoolPtrOutput { return v.SourceDestCheck }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the ENI.

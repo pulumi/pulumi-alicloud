@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
     ///     {
     ///         VaultName = $"terraform-example-{defaultInteger.Result}",
-    ///         VaultType = "OTS_BACKUP",
+    ///         VaultType = "STANDARD",
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Ots.Instance("default", new()

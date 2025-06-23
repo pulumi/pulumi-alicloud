@@ -889,6 +889,8 @@ type EcsLaunchTemplateDataDisk struct {
 	Device *string `pulumi:"device"`
 	// Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the KMS key used for the data disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The performance level of the ESSD used as the data disk.
@@ -921,6 +923,8 @@ type EcsLaunchTemplateDataDiskArgs struct {
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The ID of the KMS key used for the data disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The performance level of the ESSD used as the data disk.
@@ -1005,6 +1009,11 @@ func (o EcsLaunchTemplateDataDiskOutput) Device() pulumi.StringPtrOutput {
 // Encrypted the data in this disk.
 func (o EcsLaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the KMS key used for the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.
@@ -1290,6 +1299,8 @@ type EcsLaunchTemplateSystemDisk struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// The Iops.
 	Iops *string `pulumi:"iops"`
+	// The ID of the KMS key to use for the system disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	Name *string `pulumi:"name"`
 	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
@@ -1320,6 +1331,8 @@ type EcsLaunchTemplateSystemDiskArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The Iops.
 	Iops pulumi.StringPtrInput `pulumi:"iops"`
+	// The ID of the KMS key to use for the system disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
@@ -1430,6 +1443,11 @@ func (o EcsLaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the KMS key to use for the system disk.
+func (o EcsLaunchTemplateSystemDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
 // System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 func (o EcsLaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1516,6 +1534,16 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Iops
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the KMS key to use for the system disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2932,7 +2960,8 @@ type LaunchTemplateDataDisk struct {
 	// Encrypted the data in this disk.
 	//
 	// Default to false
-	Encrypted *bool `pulumi:"encrypted"`
+	Encrypted *bool   `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name             *string `pulumi:"name"`
 	PerformanceLevel *string `pulumi:"performanceLevel"`
@@ -2978,7 +3007,8 @@ type LaunchTemplateDataDiskArgs struct {
 	// Encrypted the data in this disk.
 	//
 	// Default to false
-	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name             pulumi.StringPtrInput `pulumi:"name"`
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
@@ -3077,6 +3107,10 @@ func (o LaunchTemplateDataDiskOutput) Device() pulumi.StringPtrOutput {
 // Default to false
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o LaunchTemplateDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.
@@ -3372,6 +3406,7 @@ type LaunchTemplateSystemDisk struct {
 	// Default to false
 	Encrypted *bool   `pulumi:"encrypted"`
 	Iops      *string `pulumi:"iops"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	Name             *string `pulumi:"name"`
 	PerformanceLevel *string `pulumi:"performanceLevel"`
@@ -3416,6 +3451,7 @@ type LaunchTemplateSystemDiskArgs struct {
 	// Default to false
 	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
 	Iops      pulumi.StringPtrInput `pulumi:"iops"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	Name             pulumi.StringPtrInput `pulumi:"name"`
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
@@ -3540,6 +3576,10 @@ func (o LaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
 
+func (o LaunchTemplateSystemDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
 // Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 func (o LaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3640,6 +3680,15 @@ func (o LaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Iops
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
 	}).(pulumi.StringPtrOutput)
 }
 

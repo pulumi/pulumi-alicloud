@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -262,6 +263,13 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.securityGroups);
     }
 
+    @Import(name="sourceDestCheck")
+    private @Nullable Output<Boolean> sourceDestCheck;
+
+    public Optional<Output<Boolean>> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
+    }
+
     @Import(name="status")
     private @Nullable Output<String> status;
 
@@ -322,6 +330,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         this.secondaryPrivateIpAddressCount = $.secondaryPrivateIpAddressCount;
         this.securityGroupIds = $.securityGroupIds;
         this.securityGroups = $.securityGroups;
+        this.sourceDestCheck = $.sourceDestCheck;
         this.status = $.status;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
@@ -703,6 +712,15 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
+        }
+
+        public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
+            $.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+
+        public Builder sourceDestCheck(Boolean sourceDestCheck) {
+            return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
         public Builder status(@Nullable Output<String> status) {

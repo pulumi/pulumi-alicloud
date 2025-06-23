@@ -3246,29 +3246,36 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
                  resource_id: builtins.str,
                  resource_type: builtins.str,
                  status: builtins.str,
-                 transit_router_attachment_id: builtins.str):
+                 transit_router_attachment_id: builtins.str,
+                 transit_router_route_table_id: builtins.str):
         """
-        :param builtins.str resource_id: ID of the transit router route table association.
-        :param builtins.str resource_type: Type of the resource.
-        :param builtins.str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
-        :param builtins.str transit_router_attachment_id: ID of the cen transit router attachment.
+        :param builtins.str id: The ID of the network instance connection.
+        :param builtins.str resource_id: The ID of the network instance.
+        :param builtins.str resource_type: The type of the network instance.
+        :param builtins.str status: The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
+        :param builtins.str transit_router_attachment_id: The ID of the network instance connection.
+        :param builtins.str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
+        """
+        The ID of the network instance connection.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> builtins.str:
         """
-        ID of the transit router route table association.
+        The ID of the network instance.
         """
         return pulumi.get(self, "resource_id")
 
@@ -3276,7 +3283,7 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> builtins.str:
         """
-        Type of the resource.
+        The type of the network instance.
         """
         return pulumi.get(self, "resource_type")
 
@@ -3284,7 +3291,7 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+        The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
         """
         return pulumi.get(self, "status")
 
@@ -3292,9 +3299,17 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> builtins.str:
         """
-        ID of the cen transit router attachment.
+        The ID of the network instance connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterRouteTableId")
+    def transit_router_route_table_id(self) -> builtins.str:
+        """
+        The ID of the route table of the Enterprise Edition transit router.
+        """
+        return pulumi.get(self, "transit_router_route_table_id")
 
 
 @pulumi.output_type
@@ -3307,12 +3322,12 @@ class GetTransitRouterRouteTablesTableResult(dict):
                  transit_router_route_table_name: builtins.str,
                  transit_router_route_table_type: builtins.str):
         """
-        :param builtins.str id: ID of resource.
-        :param builtins.str status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
-        :param builtins.str transit_router_route_table_description: The description of the transit router route table.
-        :param builtins.str transit_router_route_table_id: ID of the trabsit router route table.
-        :param builtins.str transit_router_route_table_name: Name of the transit router route table.
-        :param builtins.str transit_router_route_table_type: The type of the transit router route table to query. Valid values `System` and `Custom`.
+        :param builtins.str id: The ID of the Transit Router Route Table.
+        :param builtins.str status: The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
+        :param builtins.str transit_router_route_table_description: The description of the route table.
+        :param builtins.str transit_router_route_table_id: The ID of the Transit Router Route Table.
+        :param builtins.str transit_router_route_table_name: The name of the route table.
+        :param builtins.str transit_router_route_table_type: The type of the route table. Valid values: `System`, `Custom`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "status", status)
@@ -3325,7 +3340,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        ID of resource.
+        The ID of the Transit Router Route Table.
         """
         return pulumi.get(self, "id")
 
@@ -3333,7 +3348,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -3341,7 +3356,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter(name="transitRouterRouteTableDescription")
     def transit_router_route_table_description(self) -> builtins.str:
         """
-        The description of the transit router route table.
+        The description of the route table.
         """
         return pulumi.get(self, "transit_router_route_table_description")
 
@@ -3349,7 +3364,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> builtins.str:
         """
-        ID of the trabsit router route table.
+        The ID of the Transit Router Route Table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
@@ -3357,7 +3372,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter(name="transitRouterRouteTableName")
     def transit_router_route_table_name(self) -> builtins.str:
         """
-        Name of the transit router route table.
+        The name of the route table.
         """
         return pulumi.get(self, "transit_router_route_table_name")
 
@@ -3365,7 +3380,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter(name="transitRouterRouteTableType")
     def transit_router_route_table_type(self) -> builtins.str:
         """
-        The type of the transit router route table to query. Valid values `System` and `Custom`.
+        The type of the route table. Valid values: `System`, `Custom`.
         """
         return pulumi.get(self, "transit_router_route_table_type")
 
@@ -3662,20 +3677,20 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
                  vpn_owner_id: builtins.int,
                  zones: Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult']):
         """
-        :param builtins.bool auto_publish_route_enabled: Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+        :param builtins.bool auto_publish_route_enabled: Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
         :param builtins.str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
-        :param builtins.str charge_type: The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
-        :param builtins.str create_time: The creation time of the resource
+        :param builtins.str charge_type: (Available since v1.245.0) The billing method of the VPN attachment.
+        :param builtins.str create_time: The time when the VPN connection was created.
         :param builtins.str id: The ID of the resource supplied above.
-        :param builtins.str resource_type: The type of the resource. Set the value to **cen**, which specifies a CEN instance.
-        :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
-        :param Mapping[str, builtins.str] tags: The tag of the resource
-        :param builtins.str transit_router_attachment_description: The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        :param builtins.str resource_type: The type of resource attached to the transit router.
+        :param builtins.str status: The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
+        :param Mapping[str, builtins.str] tags: The tag of the resource.
+        :param builtins.str transit_router_attachment_description: The description of the IPsec-VPN connection.
         :param builtins.str transit_router_attachment_id: The ID of the VPN attachment.
-        :param builtins.str transit_router_attachment_name: The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param builtins.str transit_router_attachment_name: The name of the VPN attachment.
         :param builtins.str transit_router_id: The ID of the transit router.
         :param builtins.str vpn_id: The ID of the IPsec-VPN attachment.
-        :param builtins.int vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+        :param builtins.int vpn_owner_id: The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         :param Sequence['GetTransitRouterVpnAttachmentsAttachmentZoneArgs'] zones: The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
         """
         pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -3698,7 +3713,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> builtins.bool:
         """
-        Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
+        Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -3714,7 +3729,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> builtins.str:
         """
-        The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+        (Available since v1.245.0) The billing method of the VPN attachment.
         """
         return pulumi.get(self, "charge_type")
 
@@ -3722,7 +3737,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
         """
-        The creation time of the resource
+        The time when the VPN connection was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -3738,7 +3753,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> builtins.str:
         """
-        The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+        The type of resource attached to the transit router.
         """
         return pulumi.get(self, "resource_type")
 
@@ -3746,7 +3761,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
+        The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
         """
         return pulumi.get(self, "status")
 
@@ -3754,7 +3769,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tag of the resource
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -3762,7 +3777,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> builtins.str:
         """
-        The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        The description of the IPsec-VPN connection.
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
@@ -3778,7 +3793,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="transitRouterAttachmentName")
     def transit_router_attachment_name(self) -> builtins.str:
         """
-        The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        The name of the VPN attachment.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -3802,7 +3817,7 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="vpnOwnerId")
     def vpn_owner_id(self) -> builtins.int:
         """
-        The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+        The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         """
         return pulumi.get(self, "vpn_owner_id")
 
@@ -3820,7 +3835,7 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
     def __init__(__self__, *,
                  zone_id: builtins.str):
         """
-        :param builtins.str zone_id: The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+        :param builtins.str zone_id: The zone ID of the read-only instance.
         """
         pulumi.set(__self__, "zone_id", zone_id)
 
@@ -3828,7 +3843,7 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+        The zone ID of the read-only instance.
         """
         return pulumi.get(self, "zone_id")
 

@@ -10,59 +10,79 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterRouteTablePropagationsPropagation {
+    /**
+     * @return The ID of the network instance connection.
+     * 
+     */
     private String id;
     /**
-     * @return ID of the transit router route table association.
+     * @return The ID of the network instance.
      * 
      */
     private String resourceId;
     /**
-     * @return Type of the resource.
+     * @return The type of the network instance.
      * 
      */
     private String resourceType;
     /**
-     * @return The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * @return The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     private String status;
     /**
-     * @return ID of the cen transit router attachment.
+     * @return The ID of the network instance connection.
      * 
      */
     private String transitRouterAttachmentId;
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    private String transitRouterRouteTableId;
 
     private GetTransitRouterRouteTablePropagationsPropagation() {}
+    /**
+     * @return The ID of the network instance connection.
+     * 
+     */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of the transit router route table association.
+     * @return The ID of the network instance.
      * 
      */
     public String resourceId() {
         return this.resourceId;
     }
     /**
-     * @return Type of the resource.
+     * @return The type of the network instance.
      * 
      */
     public String resourceType() {
         return this.resourceType;
     }
     /**
-     * @return The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+     * @return The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return ID of the cen transit router attachment.
+     * @return The ID of the network instance connection.
      * 
      */
     public String transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
+    }
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    public String transitRouterRouteTableId() {
+        return this.transitRouterRouteTableId;
     }
 
     public static Builder builder() {
@@ -79,6 +99,7 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
         private String resourceType;
         private String status;
         private String transitRouterAttachmentId;
+        private String transitRouterRouteTableId;
         public Builder() {}
         public Builder(GetTransitRouterRouteTablePropagationsPropagation defaults) {
     	      Objects.requireNonNull(defaults);
@@ -87,6 +108,7 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
     	      this.resourceType = defaults.resourceType;
     	      this.status = defaults.status;
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
+    	      this.transitRouterRouteTableId = defaults.transitRouterRouteTableId;
         }
 
         @CustomType.Setter
@@ -129,6 +151,14 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
             this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
+        @CustomType.Setter
+        public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
+            if (transitRouterRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "transitRouterRouteTableId");
+            }
+            this.transitRouterRouteTableId = transitRouterRouteTableId;
+            return this;
+        }
         public GetTransitRouterRouteTablePropagationsPropagation build() {
             final var _resultValue = new GetTransitRouterRouteTablePropagationsPropagation();
             _resultValue.id = id;
@@ -136,6 +166,7 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
             _resultValue.resourceType = resourceType;
             _resultValue.status = status;
             _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterRouteTableId = transitRouterRouteTableId;
             return _resultValue;
         }
     }

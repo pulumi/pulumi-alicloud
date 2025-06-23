@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
- *             .vaultType("OTS_BACKUP")
+ *             .vaultType("STANDARD")
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()

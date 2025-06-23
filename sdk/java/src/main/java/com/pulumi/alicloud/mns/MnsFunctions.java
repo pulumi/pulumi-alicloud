@@ -344,7 +344,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -392,7 +394,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -440,7 +444,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -488,7 +494,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -536,7 +544,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -584,7 +594,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
@@ -632,7 +644,9 @@ public final class MnsFunctions {
      * 
      * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
      * 
-     * &gt; **NOTE:** Available in v1.118.0+
+     * &gt; **NOTE:** Deprecated since v1.252.0.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
      * 
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 

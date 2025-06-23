@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Message Service Subscription resource.
  * 
- * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+ * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-subscribe).
  * 
  * &gt; **NOTE:** Available since v1.188.0.
  * 
@@ -117,9 +117,11 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
     }
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
@@ -127,9 +129,11 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
+     * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
+     * - `Queue Format`: A queue name.
+     * - `MPush Format`: An AppKey.
+     * - `Sms Format`: A mobile number
+     * - `Email Format`: An email address.
      * 
      */
     public Output<String> endpoint() {

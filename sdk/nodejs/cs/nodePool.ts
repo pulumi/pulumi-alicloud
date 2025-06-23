@@ -86,6 +86,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly desiredSize!: pulumi.Output<string | undefined>;
     /**
+     * Lingjun node pool configuration. See `efloNodeGroup` below.
+     */
+    public readonly efloNodeGroup!: pulumi.Output<outputs.cs.NodePoolEfloNodeGroup | undefined>;
+    /**
      * Whether to force deletion.
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
@@ -107,7 +111,8 @@ export class NodePool extends pulumi.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      */
     public readonly imageType!: pulumi.Output<string>;
     /**
@@ -117,11 +122,11 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string>;
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
-    public readonly instanceTypes!: pulumi.Output<string[]>;
+    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
@@ -371,6 +376,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly teeConfig!: pulumi.Output<outputs.cs.NodePoolTeeConfig>;
     /**
+     * Node pool type, value range:
+     * -'ess': common node pool (including hosting function and auto scaling function).
+     * -'lingjun': Lingjun node pool.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
      * Whether the node after expansion can be scheduled.
      */
     public readonly unschedulable!: pulumi.Output<boolean | undefined>;
@@ -385,7 +396,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The vswitches used by node pool workers.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    public readonly vswitchIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -409,6 +420,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["desiredSize"] = state ? state.desiredSize : undefined;
+            resourceInputs["efloNodeGroup"] = state ? state.efloNodeGroup : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["formatDisk"] = state ? state.formatDisk : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
@@ -471,6 +483,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["teeConfig"] = state ? state.teeConfig : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["unschedulable"] = state ? state.unschedulable : undefined;
             resourceInputs["updateNodes"] = state ? state.updateNodes : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
@@ -479,12 +492,6 @@ export class NodePool extends pulumi.CustomResource {
             const args = argsOrState as NodePoolArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
-            }
-            if ((!args || args.instanceTypes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceTypes'");
-            }
-            if ((!args || args.vswitchIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vswitchIds'");
             }
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
@@ -495,6 +502,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["desiredSize"] = args ? args.desiredSize : undefined;
+            resourceInputs["efloNodeGroup"] = args ? args.efloNodeGroup : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["formatDisk"] = args ? args.formatDisk : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
@@ -555,6 +563,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["teeConfig"] = args ? args.teeConfig : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["unschedulable"] = args ? args.unschedulable : undefined;
             resourceInputs["updateNodes"] = args ? args.updateNodes : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
@@ -612,6 +621,10 @@ export interface NodePoolState {
      */
     desiredSize?: pulumi.Input<string>;
     /**
+     * Lingjun node pool configuration. See `efloNodeGroup` below.
+     */
+    efloNodeGroup?: pulumi.Input<inputs.cs.NodePoolEfloNodeGroup>;
+    /**
      * Whether to force deletion.
      */
     forceDelete?: pulumi.Input<boolean>;
@@ -633,7 +646,8 @@ export interface NodePoolState {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -897,6 +911,12 @@ export interface NodePoolState {
      */
     teeConfig?: pulumi.Input<inputs.cs.NodePoolTeeConfig>;
     /**
+     * Node pool type, value range:
+     * -'ess': common node pool (including hosting function and auto scaling function).
+     * -'lingjun': Lingjun node pool.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Whether the node after expansion can be scheduled.
      */
     unschedulable?: pulumi.Input<boolean>;
@@ -957,6 +977,10 @@ export interface NodePoolArgs {
      */
     desiredSize?: pulumi.Input<string>;
     /**
+     * Lingjun node pool configuration. See `efloNodeGroup` below.
+     */
+    efloNodeGroup?: pulumi.Input<inputs.cs.NodePoolEfloNodeGroup>;
+    /**
      * Whether to force deletion.
      */
     forceDelete?: pulumi.Input<boolean>;
@@ -978,7 +1002,8 @@ export interface NodePoolArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
-     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
+     * - `Ubuntu`: Ubuntu image.
+     * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -992,7 +1017,7 @@ export interface NodePoolArgs {
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
-    instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
@@ -1234,6 +1259,12 @@ export interface NodePoolArgs {
      */
     teeConfig?: pulumi.Input<inputs.cs.NodePoolTeeConfig>;
     /**
+     * Node pool type, value range:
+     * -'ess': common node pool (including hosting function and auto scaling function).
+     * -'lingjun': Lingjun node pool.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Whether the node after expansion can be scheduled.
      */
     unschedulable?: pulumi.Input<boolean>;
@@ -1248,5 +1279,5 @@ export interface NodePoolArgs {
     /**
      * The vswitches used by node pool workers.
      */
-    vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

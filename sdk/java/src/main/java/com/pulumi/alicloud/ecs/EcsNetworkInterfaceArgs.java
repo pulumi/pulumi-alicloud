@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -345,6 +346,21 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="sourceDestCheck")
+    private @Nullable Output<Boolean> sourceDestCheck;
+
+    /**
+     * @return Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -396,6 +412,7 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
         this.secondaryPrivateIpAddressCount = $.secondaryPrivateIpAddressCount;
         this.securityGroupIds = $.securityGroupIds;
         this.securityGroups = $.securityGroups;
+        this.sourceDestCheck = $.sourceDestCheck;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
     }
@@ -923,6 +940,27 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
         @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
+        }
+
+        /**
+         * @param sourceDestCheck Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
+            $.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+
+        /**
+         * @param sourceDestCheck Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(Boolean sourceDestCheck) {
+            return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
         /**

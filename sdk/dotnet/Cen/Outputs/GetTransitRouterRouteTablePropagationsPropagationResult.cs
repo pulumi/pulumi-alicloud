@@ -13,23 +13,30 @@ namespace Pulumi.AliCloud.Cen.Outputs
     [OutputType]
     public sealed class GetTransitRouterRouteTablePropagationsPropagationResult
     {
+        /// <summary>
+        /// The ID of the network instance connection.
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of the transit router route table association.
+        /// The ID of the network instance.
         /// </summary>
         public readonly string ResourceId;
         /// <summary>
-        /// Type of the resource.
+        /// The type of the network instance.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+        /// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// ID of the cen transit router attachment.
+        /// The ID of the network instance connection.
         /// </summary>
         public readonly string TransitRouterAttachmentId;
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
+        /// </summary>
+        public readonly string TransitRouterRouteTableId;
 
         [OutputConstructor]
         private GetTransitRouterRouteTablePropagationsPropagationResult(
@@ -41,13 +48,16 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string status,
 
-            string transitRouterAttachmentId)
+            string transitRouterAttachmentId,
+
+            string transitRouterRouteTableId)
         {
             Id = id;
             ResourceId = resourceId;
             ResourceType = resourceType;
             Status = status;
             TransitRouterAttachmentId = transitRouterAttachmentId;
+            TransitRouterRouteTableId = transitRouterRouteTableId;
         }
     }
 }

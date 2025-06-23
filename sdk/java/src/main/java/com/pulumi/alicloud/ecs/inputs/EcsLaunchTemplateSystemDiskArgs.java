@@ -93,6 +93,21 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
+     * The ID of the KMS key to use for the system disk.
+     * 
+     */
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
@@ -145,6 +160,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         this.description = $.description;
         this.encrypted = $.encrypted;
         this.iops = $.iops;
+        this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
         this.size = $.size;
@@ -271,6 +287,27 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
          */
         public Builder iops(String iops) {
             return iops(Output.of(iops));
+        }
+
+        /**
+         * @param kmsKeyId The ID of the KMS key to use for the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyId The ID of the KMS key to use for the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**

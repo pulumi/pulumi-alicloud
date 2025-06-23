@@ -472,7 +472,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             min=10000)
         default_vault = alicloud.hbr.Vault("default",
             vault_name=f"terraform-example-{default_integer['result']}",
-            vault_type="OTS_BACKUP")
+            vault_type="STANDARD")
         default_instance = alicloud.ots.Instance("default",
             name=f"Example-{default_integer['result']}",
             description="terraform-example",
@@ -586,7 +586,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             min=10000)
         default_vault = alicloud.hbr.Vault("default",
             vault_name=f"terraform-example-{default_integer['result']}",
-            vault_type="OTS_BACKUP")
+            vault_type="STANDARD")
         default_instance = alicloud.ots.Instance("default",
             name=f"Example-{default_integer['result']}",
             description="terraform-example",

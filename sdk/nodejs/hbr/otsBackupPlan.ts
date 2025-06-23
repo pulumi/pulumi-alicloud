@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultVault = new alicloud.hbr.Vault("default", {
  *     vaultName: `terraform-example-${defaultInteger.result}`,
- *     vaultType: "OTS_BACKUP",
+ *     vaultType: "STANDARD",
  * });
  * const defaultInstance = new alicloud.ots.Instance("default", {
  *     name: `Example-${defaultInteger.result}`,

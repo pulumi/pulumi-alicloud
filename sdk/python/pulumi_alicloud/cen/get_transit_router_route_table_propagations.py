@@ -28,7 +28,7 @@ class GetTransitRouterRouteTablePropagationsResult:
     """
     A collection of values returned by getTransitRouterRouteTablePropagations.
     """
-    def __init__(__self__, id=None, ids=None, output_file=None, propagations=None, status=None, transit_router_route_table_id=None):
+    def __init__(__self__, id=None, ids=None, output_file=None, propagations=None, status=None, transit_router_attachment_id=None, transit_router_route_table_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +44,9 @@ class GetTransitRouterRouteTablePropagationsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if transit_router_attachment_id and not isinstance(transit_router_attachment_id, str):
+            raise TypeError("Expected argument 'transit_router_attachment_id' to be a str")
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_route_table_id and not isinstance(transit_router_route_table_id, str):
             raise TypeError("Expected argument 'transit_router_route_table_id' to be a str")
         pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
@@ -59,9 +62,6 @@ class GetTransitRouterRouteTablePropagationsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[builtins.str]:
-        """
-        A list of CEN Transit Router Route Table Association IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -73,7 +73,7 @@ class GetTransitRouterRouteTablePropagationsResult:
     @pulumi.getter
     def propagations(self) -> Sequence['outputs.GetTransitRouterRouteTablePropagationsPropagationResult']:
         """
-        A list of CEN Transit Router Route Table Propagations. Each element contains the following attributes:
+        A list of Transit Router Route Table Propagations. Each element contains the following attributes:
         """
         return pulumi.get(self, "propagations")
 
@@ -81,15 +81,23 @@ class GetTransitRouterRouteTablePropagationsResult:
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
         """
-        The status of the route table.
+        The status of the route learning correlation.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the network instance connection.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
 
     @property
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> builtins.str:
         """
-        ID of the transit router route table.
+        The ID of the route table of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
@@ -105,39 +113,82 @@ class AwaitableGetTransitRouterRouteTablePropagationsResult(GetTransitRouterRout
             output_file=self.output_file,
             propagations=self.propagations,
             status=self.status,
+            transit_router_attachment_id=self.transit_router_attachment_id,
             transit_router_route_table_id=self.transit_router_route_table_id)
 
 
 def get_transit_router_route_table_propagations(ids: Optional[Sequence[builtins.str]] = None,
                                                 output_file: Optional[builtins.str] = None,
                                                 status: Optional[builtins.str] = None,
+                                                transit_router_attachment_id: Optional[builtins.str] = None,
                                                 transit_router_route_table_id: Optional[builtins.str] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterRouteTablePropagationsResult:
     """
-    This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+    This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
-    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+    default_integer = random.index.Integer("default",
+        min=1,
+        max=2999)
+    default_instance = alicloud.cen.Instance("default",
+        cen_instance_name=name,
+        protection_level="REDUCED")
+    default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default_instance.id)
+    default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
+        local_gateway_ip="10.0.0.1",
+        peer_gateway_ip="10.0.0.2",
+        peering_subnet_mask="255.255.255.252",
+        physical_connection_id=default.connections[0].id,
+        virtual_border_router_name=name,
+        vlan_id=default_integer["id"],
+        min_rx_interval=1000,
+        min_tx_interval=1000,
+        detect_multiplier=10)
+    default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
+        cen_id=default_instance.id,
+        transit_router_id=default_transit_router.transit_router_id,
+        vbr_id=default_virtual_border_router.id,
+        auto_publish_route_enabled=True,
+        transit_router_attachment_name=name,
+        transit_router_attachment_description=name)
+    default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default",
+        transit_router_id=default_transit_router.transit_router_id,
+        transit_router_route_table_name=name)
+    default_transit_router_route_table_propagation = alicloud.cen.TransitRouterRouteTablePropagation("default",
+        transit_router_attachment_id=default_transit_router_vbr_attachment.transit_router_attachment_id,
+        transit_router_route_table_id=default_transit_router_route_table.transit_router_route_table_id)
+    ids = alicloud.cen.get_transit_router_route_table_propagations_output(transit_router_route_table_id=default_transit_router_route_table_propagation.transit_router_route_table_id,
+        ids=[default_transit_router_route_table_propagation.transit_router_attachment_id])
+    pulumi.export("cenTransitRouterRouteTablePropagationId0", ids.propagations[0].id)
     ```
 
 
-    :param Sequence[builtins.str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param Sequence[builtins.str] ids: A list of Transit Router Route Table Propagation IDs.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
-    :param builtins.str transit_router_route_table_id: ID of the route table of the VPC or VBR.
+    :param builtins.str status: The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
+    :param builtins.str transit_router_attachment_id: The ID of the network instance connection.
+    :param builtins.str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterRouteTableId'] = transit_router_route_table_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations', __args__, opts=opts, typ=GetTransitRouterRouteTablePropagationsResult).value
@@ -148,37 +199,80 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[builtins.
         output_file=pulumi.get(__ret__, 'output_file'),
         propagations=pulumi.get(__ret__, 'propagations'),
         status=pulumi.get(__ret__, 'status'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
 def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                                                        output_file: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                                        status: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                                       transit_router_attachment_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                                        transit_router_route_table_id: Optional[pulumi.Input[builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTablePropagationsResult]:
     """
-    This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+    This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
-    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+    default_integer = random.index.Integer("default",
+        min=1,
+        max=2999)
+    default_instance = alicloud.cen.Instance("default",
+        cen_instance_name=name,
+        protection_level="REDUCED")
+    default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default_instance.id)
+    default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
+        local_gateway_ip="10.0.0.1",
+        peer_gateway_ip="10.0.0.2",
+        peering_subnet_mask="255.255.255.252",
+        physical_connection_id=default.connections[0].id,
+        virtual_border_router_name=name,
+        vlan_id=default_integer["id"],
+        min_rx_interval=1000,
+        min_tx_interval=1000,
+        detect_multiplier=10)
+    default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
+        cen_id=default_instance.id,
+        transit_router_id=default_transit_router.transit_router_id,
+        vbr_id=default_virtual_border_router.id,
+        auto_publish_route_enabled=True,
+        transit_router_attachment_name=name,
+        transit_router_attachment_description=name)
+    default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default",
+        transit_router_id=default_transit_router.transit_router_id,
+        transit_router_route_table_name=name)
+    default_transit_router_route_table_propagation = alicloud.cen.TransitRouterRouteTablePropagation("default",
+        transit_router_attachment_id=default_transit_router_vbr_attachment.transit_router_attachment_id,
+        transit_router_route_table_id=default_transit_router_route_table.transit_router_route_table_id)
+    ids = alicloud.cen.get_transit_router_route_table_propagations_output(transit_router_route_table_id=default_transit_router_route_table_propagation.transit_router_route_table_id,
+        ids=[default_transit_router_route_table_propagation.transit_router_attachment_id])
+    pulumi.export("cenTransitRouterRouteTablePropagationId0", ids.propagations[0].id)
     ```
 
 
-    :param Sequence[builtins.str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param Sequence[builtins.str] ids: A list of Transit Router Route Table Propagation IDs.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
-    :param builtins.str transit_router_route_table_id: ID of the route table of the VPC or VBR.
+    :param builtins.str status: The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
+    :param builtins.str transit_router_attachment_id: The ID of the network instance connection.
+    :param builtins.str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterRouteTableId'] = transit_router_route_table_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations', __args__, opts=opts, typ=GetTransitRouterRouteTablePropagationsResult)
@@ -188,4 +282,5 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
         output_file=pulumi.get(__response__, 'output_file'),
         propagations=pulumi.get(__response__, 'propagations'),
         status=pulumi.get(__response__, 'status'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id'),
         transit_router_route_table_id=pulumi.get(__response__, 'transit_router_route_table_id')))

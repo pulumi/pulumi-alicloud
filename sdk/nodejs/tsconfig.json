@@ -1225,6 +1225,7 @@
         "message/serviceEndpoint.ts",
         "message/serviceEndpointAcl.ts",
         "message/serviceQueue.ts",
+        "message/serviceService.ts",
         "message/serviceSubscription.ts",
         "message/serviceTopic.ts",
         "mhub/app.ts",

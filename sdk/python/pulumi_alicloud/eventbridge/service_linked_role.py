@@ -23,9 +23,7 @@ class ServiceLinkedRoleArgs:
                  product_name: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ServiceLinkedRole resource.
-        :param pulumi.Input[builtins.str] product_name: The product name for SLR. EventBridge can automatically create the following service-linked roles:
-               Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-               Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        :param pulumi.Input[builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         pulumi.set(__self__, "product_name", product_name)
 
@@ -33,9 +31,7 @@ class ServiceLinkedRoleArgs:
     @pulumi.getter(name="productName")
     def product_name(self) -> pulumi.Input[builtins.str]:
         """
-        The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-        Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         return pulumi.get(self, "product_name")
 
@@ -50,9 +46,7 @@ class _ServiceLinkedRoleState:
                  product_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
-        :param pulumi.Input[builtins.str] product_name: The product name for SLR. EventBridge can automatically create the following service-linked roles:
-               Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-               Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        :param pulumi.Input[builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         if product_name is not None:
             pulumi.set(__self__, "product_name", product_name)
@@ -61,9 +55,7 @@ class _ServiceLinkedRoleState:
     @pulumi.getter(name="productName")
     def product_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-        Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         return pulumi.get(self, "product_name")
 
@@ -81,24 +73,28 @@ class ServiceLinkedRole(pulumi.CustomResource):
                  product_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Using this data source can create Event Bridge service-linked roles(SLR). EventBridge may need to access another Alibaba Cloud service to implement a specific feature. In this case, EventBridge must assume a specific service-linked role, which is a Resource Access Management (RAM) role, to obtain permissions to access another Alibaba Cloud service.
+        Provides a Event Bridge Service Linked Role resource.
 
-        For information about Event Bridge service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/doc-detail/181425.htm).
+        For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 
-        > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
+        > **NOTE:** Available since v1.129.0.
+
+        > **NOTE:** From version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        default = alicloud.eventbridge.ServiceLinkedRole("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
 
         ## Import
 
-        Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
+        Event Bridge Service Linked Role can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
@@ -106,9 +102,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] product_name: The product name for SLR. EventBridge can automatically create the following service-linked roles:
-               Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-               Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        :param pulumi.Input[builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         ...
     @overload
@@ -117,24 +111,28 @@ class ServiceLinkedRole(pulumi.CustomResource):
                  args: ServiceLinkedRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Using this data source can create Event Bridge service-linked roles(SLR). EventBridge may need to access another Alibaba Cloud service to implement a specific feature. In this case, EventBridge must assume a specific service-linked role, which is a Resource Access Management (RAM) role, to obtain permissions to access another Alibaba Cloud service.
+        Provides a Event Bridge Service Linked Role resource.
 
-        For information about Event Bridge service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/doc-detail/181425.htm).
+        For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 
-        > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
+        > **NOTE:** Available since v1.129.0.
+
+        > **NOTE:** From version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        default = alicloud.eventbridge.ServiceLinkedRole("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
 
         ## Import
 
-        Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
+        Event Bridge Service Linked Role can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
@@ -186,9 +184,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] product_name: The product name for SLR. EventBridge can automatically create the following service-linked roles:
-               Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-               Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        :param pulumi.Input[builtins.str] product_name: The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -201,9 +197,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     @pulumi.getter(name="productName")
     def product_name(self) -> pulumi.Output[builtins.str]:
         """
-        The product name for SLR. EventBridge can automatically create the following service-linked roles:
-        Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-        Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
+        The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         return pulumi.get(self, "product_name")
 

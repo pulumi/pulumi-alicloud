@@ -571,6 +571,8 @@ class EcsLaunchTemplateDataDisk(dict):
         suggest = None
         if key == "deleteWithInstance":
             suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
         elif key == "performanceLevel":
             suggest = "performance_level"
         elif key == "snapshotId":
@@ -593,6 +595,7 @@ class EcsLaunchTemplateDataDisk(dict):
                  description: Optional[builtins.str] = None,
                  device: Optional[builtins.str] = None,
                  encrypted: Optional[builtins.bool] = None,
+                 kms_key_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
                  performance_level: Optional[builtins.str] = None,
                  size: Optional[builtins.int] = None,
@@ -603,6 +606,7 @@ class EcsLaunchTemplateDataDisk(dict):
         :param builtins.str description: The description of the data disk.
         :param builtins.str device: The mount point of the data disk.
         :param builtins.bool encrypted: Encrypted the data in this disk.
+        :param builtins.str kms_key_id: The ID of the KMS key used for the data disk.
         :param builtins.str name: The name of the data disk.
         :param builtins.str performance_level: The performance level of the ESSD used as the data disk.
         :param builtins.int size: The size of the data disk.
@@ -618,6 +622,8 @@ class EcsLaunchTemplateDataDisk(dict):
             pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -666,6 +672,14 @@ class EcsLaunchTemplateDataDisk(dict):
         Encrypted the data in this disk.
         """
         return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the KMS key used for the data disk.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
@@ -809,6 +823,8 @@ class EcsLaunchTemplateSystemDisk(dict):
         suggest = None
         if key == "deleteWithInstance":
             suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
         elif key == "performanceLevel":
             suggest = "performance_level"
 
@@ -829,6 +845,7 @@ class EcsLaunchTemplateSystemDisk(dict):
                  description: Optional[builtins.str] = None,
                  encrypted: Optional[builtins.bool] = None,
                  iops: Optional[builtins.str] = None,
+                 kms_key_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
                  performance_level: Optional[builtins.str] = None,
                  size: Optional[builtins.int] = None):
@@ -838,6 +855,7 @@ class EcsLaunchTemplateSystemDisk(dict):
         :param builtins.str description: System disk description. It cannot begin with http:// or https://.
         :param builtins.bool encrypted: Specifies whether the system disk is encrypted.
         :param builtins.str iops: The Iops.
+        :param builtins.str kms_key_id: The ID of the KMS key to use for the system disk.
         :param builtins.str name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param builtins.str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         :param builtins.int size: Size of the system disk, measured in GB. Value range: [20, 500].
@@ -852,6 +870,8 @@ class EcsLaunchTemplateSystemDisk(dict):
             pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -898,6 +918,14 @@ class EcsLaunchTemplateSystemDisk(dict):
         The Iops.
         """
         return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the KMS key to use for the system disk.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
@@ -1665,6 +1693,8 @@ class LaunchTemplateDataDisk(dict):
         suggest = None
         if key == "deleteWithInstance":
             suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
         elif key == "performanceLevel":
             suggest = "performance_level"
         elif key == "snapshotId":
@@ -1687,6 +1717,7 @@ class LaunchTemplateDataDisk(dict):
                  description: Optional[builtins.str] = None,
                  device: Optional[builtins.str] = None,
                  encrypted: Optional[builtins.bool] = None,
+                 kms_key_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
                  performance_level: Optional[builtins.str] = None,
                  size: Optional[builtins.int] = None,
@@ -1726,6 +1757,8 @@ class LaunchTemplateDataDisk(dict):
             pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -1782,6 +1815,11 @@ class LaunchTemplateDataDisk(dict):
         Default to false
         """
         return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
@@ -1923,6 +1961,8 @@ class LaunchTemplateSystemDisk(dict):
         suggest = None
         if key == "deleteWithInstance":
             suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
         elif key == "performanceLevel":
             suggest = "performance_level"
 
@@ -1943,6 +1983,7 @@ class LaunchTemplateSystemDisk(dict):
                  description: Optional[builtins.str] = None,
                  encrypted: Optional[builtins.bool] = None,
                  iops: Optional[builtins.str] = None,
+                 kms_key_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
                  performance_level: Optional[builtins.str] = None,
                  size: Optional[builtins.int] = None):
@@ -1980,6 +2021,8 @@ class LaunchTemplateSystemDisk(dict):
             pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -2034,6 +2077,11 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def iops(self) -> Optional[builtins.str]:
         return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
