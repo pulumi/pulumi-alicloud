@@ -2233,6 +2233,9 @@
                     "data_disks": {
                         "maxItemsOne": false
                     },
+                    "eflo_node_group": {
+                        "maxItemsOne": true
+                    },
                     "instance_types": {
                         "maxItemsOne": false
                     },
@@ -6588,6 +6591,9 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "alicloud_message_service_service": {
+                "current": "alicloud:message/serviceService:ServiceService"
             },
             "alicloud_message_service_subscription": {
                 "current": "alicloud:message/serviceSubscription:ServiceSubscription",
