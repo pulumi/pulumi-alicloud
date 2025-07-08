@@ -143,13 +143,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example := ecs.GetEcsLaunchTemplatesOutput(ctx, ecs.GetEcsLaunchTemplatesOutputArgs{
+//			ids := ecs.GetEcsLaunchTemplatesOutput(ctx, ecs.GetEcsLaunchTemplatesOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultEcsLaunchTemplate.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("firstEcsLaunchTemplateId", example.ApplyT(func(example ecs.GetEcsLaunchTemplatesResult) (*string, error) {
-//				return &example.Templates[0].Id, nil
+//			ctx.Export("ecsLaunchTemplateId0", ids.ApplyT(func(ids ecs.GetEcsLaunchTemplatesResult) (*string, error) {
+//				return &ids.Templates[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
@@ -168,19 +168,19 @@ func GetEcsLaunchTemplates(ctx *pulumi.Context, args *GetEcsLaunchTemplatesArgs,
 
 // A collection of arguments for invoking getEcsLaunchTemplates.
 type GetEcsLaunchTemplatesArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Launch Template IDs.
 	Ids []string `pulumi:"ids"`
-	// The Launch Template Name.
+	// The name of the launch template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// A regex string to filter results by Launch Template name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The template resource group id.
+	// The ID of the Resource Group.
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
-	// The template tags.
+	// The tags of the launch template.
 	TemplateTags map[string]string `pulumi:"templateTags"`
 }
 
@@ -190,14 +190,15 @@ type GetEcsLaunchTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
-	// The Launch Template Name.
+	// The name of the Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	NameRegex          *string `pulumi:"nameRegex"`
 	// A list of Launch Template names.
 	Names                   []string `pulumi:"names"`
 	OutputFile              *string  `pulumi:"outputFile"`
 	TemplateResourceGroupId *string  `pulumi:"templateResourceGroupId"`
-	// The template tags.
+	// The tags of the launch template.
+	// > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
 	TemplateTags map[string]string `pulumi:"templateTags"`
 	// A list of Ecs Launch Templates. Each element contains the following attributes:
 	Templates []GetEcsLaunchTemplatesTemplate `pulumi:"templates"`
@@ -214,19 +215,19 @@ func GetEcsLaunchTemplatesOutput(ctx *pulumi.Context, args GetEcsLaunchTemplates
 
 // A collection of arguments for invoking getEcsLaunchTemplates.
 type GetEcsLaunchTemplatesOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Launch Template IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Launch Template Name.
+	// The name of the launch template.
 	LaunchTemplateName pulumi.StringPtrInput `pulumi:"launchTemplateName"`
 	// A regex string to filter results by Launch Template name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The template resource group id.
+	// The ID of the Resource Group.
 	TemplateResourceGroupId pulumi.StringPtrInput `pulumi:"templateResourceGroupId"`
-	// The template tags.
+	// The tags of the launch template.
 	TemplateTags pulumi.StringMapInput `pulumi:"templateTags"`
 }
 
@@ -262,7 +263,7 @@ func (o GetEcsLaunchTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// The Launch Template Name.
+// The name of the Launch Template.
 func (o GetEcsLaunchTemplatesResultOutput) LaunchTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
 }
@@ -284,7 +285,8 @@ func (o GetEcsLaunchTemplatesResultOutput) TemplateResourceGroupId() pulumi.Stri
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The template tags.
+// The tags of the launch template.
+// > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
 func (o GetEcsLaunchTemplatesResultOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }

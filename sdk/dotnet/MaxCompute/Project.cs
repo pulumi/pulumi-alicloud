@@ -132,6 +132,12 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether data storage by schema is supported. Valid values:
+        /// </summary>
+        [Output("threeTierModel")]
+        public Output<bool> ThreeTierModel { get; private set; } = null!;
+
+        /// <summary>
         /// Project type
         /// </summary>
         [Output("type")]
@@ -249,6 +255,12 @@ namespace Pulumi.AliCloud.MaxCompute
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Indicates whether data storage by schema is supported. Valid values:
+        /// </summary>
+        [Input("threeTierModel")]
+        public Input<bool>? ThreeTierModel { get; set; }
+
         public ProjectArgs()
         {
         }
@@ -340,6 +352,12 @@ namespace Pulumi.AliCloud.MaxCompute
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Indicates whether data storage by schema is supported. Valid values:
+        /// </summary>
+        [Input("threeTierModel")]
+        public Input<bool>? ThreeTierModel { get; set; }
 
         /// <summary>
         /// Project type

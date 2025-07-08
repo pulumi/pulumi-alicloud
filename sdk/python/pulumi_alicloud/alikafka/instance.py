@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -21,80 +23,100 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  deploy_type: pulumi.Input[builtins.int],
-                 disk_size: pulumi.Input[builtins.int],
-                 disk_type: pulumi.Input[builtins.int],
-                 vswitch_id: pulumi.Input[builtins.str],
                  config: Optional[pulumi.Input[builtins.str]] = None,
+                 confluent_config: Optional[pulumi.Input['InstanceConfluentConfigArgs']] = None,
                  default_topic_partition_num: Optional[pulumi.Input[builtins.int]] = None,
+                 disk_size: Optional[pulumi.Input[builtins.int]] = None,
+                 disk_type: Optional[pulumi.Input[builtins.int]] = None,
                  eip_max: Optional[pulumi.Input[builtins.int]] = None,
                  enable_auto_group: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_auto_topic: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  io_max: Optional[pulumi.Input[builtins.int]] = None,
                  io_max_spec: Optional[pulumi.Input[builtins.str]] = None,
                  kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  paid_type: Optional[pulumi.Input[builtins.str]] = None,
                  partition_num: Optional[pulumi.Input[builtins.int]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_group: Optional[pulumi.Input[builtins.str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_config: Optional[pulumi.Input['InstanceServerlessConfigArgs']] = None,
                  service_version: Optional[pulumi.Input[builtins.str]] = None,
                  spec_type: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  topic_quota: Optional[pulumi.Input[builtins.int]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-               - 4: eip/vpc instance
-               - 5: vpc instance.
-        :param pulumi.Input[builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
+        :param pulumi.Input[builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+               > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[builtins.bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        :param pulumi.Input[builtins.str] instance_type: The type of the Instance. Default value: `alikafka`. Valid values:
         :param pulumi.Input[builtins.int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
-        :param pulumi.Input[builtins.str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[builtins.int] partition_num: The number of partitions.
+        :param pulumi.Input[builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
-        :param pulumi.Input[builtins.str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-        :param pulumi.Input[builtins.str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        :param pulumi.Input[builtins.str] service_version: The version of the Instance. Valid values:
+               - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+               - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+               - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+        :param pulumi.Input[builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
+               - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[builtins.str] vpc_id: The VPC ID of the instance.
+        :param pulumi.Input[builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
         :param pulumi.Input[builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if confluent_config is not None:
+            pulumi.set(__self__, "confluent_config", confluent_config)
         if default_topic_partition_num is not None:
             pulumi.set(__self__, "default_topic_partition_num", default_topic_partition_num)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
         if enable_auto_group is not None:
             pulumi.set(__self__, "enable_auto_group", enable_auto_group)
         if enable_auto_topic is not None:
             pulumi.set(__self__, "enable_auto_topic", enable_auto_topic)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
         if io_max_spec is not None:
@@ -107,12 +129,16 @@ class InstanceArgs:
             pulumi.set(__self__, "paid_type", paid_type)
         if partition_num is not None:
             pulumi.set(__self__, "partition_num", partition_num)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group is not None:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
             pulumi.set(__self__, "selected_zones", selected_zones)
+        if serverless_config is not None:
+            pulumi.set(__self__, "serverless_config", serverless_config)
         if service_version is not None:
             pulumi.set(__self__, "service_version", service_version)
         if spec_type is not None:
@@ -126,6 +152,8 @@ class InstanceArgs:
             pulumi.set(__self__, "topic_quota", topic_quota)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if vswitch_ids is not None:
             pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if zone_id is not None:
@@ -136,50 +164,12 @@ class InstanceArgs:
     def deploy_type(self) -> pulumi.Input[builtins.int]:
         """
         The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        - 4: eip/vpc instance
-        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
     @deploy_type.setter
     def deploy_type(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "deploy_type", value)
-
-    @property
-    @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Input[builtins.int]:
-        """
-        The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-        """
-        return pulumi.get(self, "disk_size")
-
-    @disk_size.setter
-    def disk_size(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "disk_size", value)
-
-    @property
-    @pulumi.getter(name="diskType")
-    def disk_type(self) -> pulumi.Input[builtins.int]:
-        """
-        The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        """
-        return pulumi.get(self, "disk_type")
-
-    @disk_type.setter
-    def disk_type(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "disk_type", value)
-
-    @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The ID of attaching vswitch to instance.
-        """
-        return pulumi.get(self, "vswitch_id")
-
-    @vswitch_id.setter
-    def vswitch_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "vswitch_id", value)
 
     @property
     @pulumi.getter
@@ -195,6 +185,19 @@ class InstanceArgs:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="confluentConfig")
+    def confluent_config(self) -> Optional[pulumi.Input['InstanceConfluentConfigArgs']]:
+        """
+        The configurations of Confluent. See `confluent_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        """
+        return pulumi.get(self, "confluent_config")
+
+    @confluent_config.setter
+    def confluent_config(self, value: Optional[pulumi.Input['InstanceConfluentConfigArgs']]):
+        pulumi.set(self, "confluent_config", value)
+
+    @property
     @pulumi.getter(name="defaultTopicPartitionNum")
     def default_topic_partition_num(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -205,6 +208,31 @@ class InstanceArgs:
     @default_topic_partition_num.setter
     def default_topic_partition_num(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "default_topic_partition_num", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The disk type of the instance. Valid values:
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "disk_type", value)
 
     @property
     @pulumi.getter(name="eipMax")
@@ -241,6 +269,18 @@ class InstanceArgs:
     @enable_auto_topic.setter
     def enable_auto_topic(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "enable_auto_topic", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of the Instance. Default value: `alikafka`. Valid values:
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="ioMax")
@@ -296,7 +336,7 @@ class InstanceArgs:
     @pulumi.getter(name="paidType")
     def paid_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         """
         return pulumi.get(self, "paid_type")
 
@@ -315,6 +355,18 @@ class InstanceArgs:
     @partition_num.setter
     def partition_num(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "partition_num", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -353,10 +405,26 @@ class InstanceArgs:
         pulumi.set(self, "selected_zones", value)
 
     @property
+    @pulumi.getter(name="serverlessConfig")
+    def serverless_config(self) -> Optional[pulumi.Input['InstanceServerlessConfigArgs']]:
+        """
+        The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        """
+        return pulumi.get(self, "serverless_config")
+
+    @serverless_config.setter
+    def serverless_config(self, value: Optional[pulumi.Input['InstanceServerlessConfigArgs']]):
+        pulumi.set(self, "serverless_config", value)
+
+    @property
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        The version of the Instance. Valid values:
+        - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         """
         return pulumi.get(self, "service_version")
 
@@ -368,7 +436,10 @@ class InstanceArgs:
     @pulumi.getter(name="specType")
     def spec_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        The instance edition. Default value: `normal`. Valid values:
+        - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")
 
@@ -417,6 +488,18 @@ class InstanceArgs:
         pulumi.set(self, "vpc_id", value)
 
     @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of attaching vswitch to instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -445,6 +528,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[builtins.str]] = None,
+                 confluent_config: Optional[pulumi.Input['InstanceConfluentConfigArgs']] = None,
                  default_topic_partition_num: Optional[pulumi.Input[builtins.int]] = None,
                  deploy_type: Optional[pulumi.Input[builtins.int]] = None,
                  disk_size: Optional[pulumi.Input[builtins.int]] = None,
@@ -456,6 +540,7 @@ class _InstanceState:
                  end_point: Optional[pulumi.Input[builtins.str]] = None,
                  group_left: Optional[pulumi.Input[builtins.int]] = None,
                  group_used: Optional[pulumi.Input[builtins.int]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  io_max: Optional[pulumi.Input[builtins.int]] = None,
                  io_max_spec: Optional[pulumi.Input[builtins.str]] = None,
                  is_partition_buy: Optional[pulumi.Input[builtins.int]] = None,
@@ -465,10 +550,12 @@ class _InstanceState:
                  partition_left: Optional[pulumi.Input[builtins.int]] = None,
                  partition_num: Optional[pulumi.Input[builtins.int]] = None,
                  partition_used: Optional[pulumi.Input[builtins.int]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_domain_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  security_group: Optional[pulumi.Input[builtins.str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_config: Optional[pulumi.Input['InstanceServerlessConfigArgs']] = None,
                  service_version: Optional[pulumi.Input[builtins.str]] = None,
                  spec_type: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_domain_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -487,12 +574,13 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-               - 4: eip/vpc instance
-               - 5: vpc instance.
         :param pulumi.Input[builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+               > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[builtins.str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[builtins.bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
@@ -500,6 +588,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[builtins.int] group_left: (Available since v1.214.1) The number of available groups.
         :param pulumi.Input[builtins.int] group_used: (Available since v1.214.1) The number of used groups.
+        :param pulumi.Input[builtins.str] instance_type: The type of the Instance. Default value: `alikafka`. Valid values:
         :param pulumi.Input[builtins.int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -507,16 +596,25 @@ class _InstanceState:
         :param pulumi.Input[builtins.int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
-        :param pulumi.Input[builtins.str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[builtins.int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[builtins.int] partition_num: The number of partitions.
         :param pulumi.Input[builtins.int] partition_used: (Available since v1.214.1) The number of used partitions.
+        :param pulumi.Input[builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[builtins.str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
-        :param pulumi.Input[builtins.str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-        :param pulumi.Input[builtins.str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        :param pulumi.Input[builtins.str] service_version: The version of the Instance. Valid values:
+               - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+               - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+               - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+        :param pulumi.Input[builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
+               - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[builtins.str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
         :param pulumi.Input[builtins.int] status: The status of the instance.
@@ -535,6 +633,8 @@ class _InstanceState:
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if confluent_config is not None:
+            pulumi.set(__self__, "confluent_config", confluent_config)
         if default_topic_partition_num is not None:
             pulumi.set(__self__, "default_topic_partition_num", default_topic_partition_num)
         if deploy_type is not None:
@@ -557,6 +657,8 @@ class _InstanceState:
             pulumi.set(__self__, "group_left", group_left)
         if group_used is not None:
             pulumi.set(__self__, "group_used", group_used)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
         if io_max_spec is not None:
@@ -575,6 +677,8 @@ class _InstanceState:
             pulumi.set(__self__, "partition_num", partition_num)
         if partition_used is not None:
             pulumi.set(__self__, "partition_used", partition_used)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if sasl_domain_endpoint is not None:
@@ -583,6 +687,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
             pulumi.set(__self__, "selected_zones", selected_zones)
+        if serverless_config is not None:
+            pulumi.set(__self__, "serverless_config", serverless_config)
         if service_version is not None:
             pulumi.set(__self__, "service_version", service_version)
         if spec_type is not None:
@@ -629,6 +735,19 @@ class _InstanceState:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="confluentConfig")
+    def confluent_config(self) -> Optional[pulumi.Input['InstanceConfluentConfigArgs']]:
+        """
+        The configurations of Confluent. See `confluent_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        """
+        return pulumi.get(self, "confluent_config")
+
+    @confluent_config.setter
+    def confluent_config(self, value: Optional[pulumi.Input['InstanceConfluentConfigArgs']]):
+        pulumi.set(self, "confluent_config", value)
+
+    @property
     @pulumi.getter(name="defaultTopicPartitionNum")
     def default_topic_partition_num(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -645,8 +764,6 @@ class _InstanceState:
     def deploy_type(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        - 4: eip/vpc instance
-        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
@@ -659,6 +776,7 @@ class _InstanceState:
     def disk_size(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         """
         return pulumi.get(self, "disk_size")
 
@@ -670,7 +788,7 @@ class _InstanceState:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        The disk type of the instance. Valid values:
         """
         return pulumi.get(self, "disk_type")
 
@@ -763,6 +881,18 @@ class _InstanceState:
         pulumi.set(self, "group_used", value)
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of the Instance. Default value: `alikafka`. Valid values:
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
     @pulumi.getter(name="ioMax")
     def io_max(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -828,7 +958,7 @@ class _InstanceState:
     @pulumi.getter(name="paidType")
     def paid_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         """
         return pulumi.get(self, "paid_type")
 
@@ -871,6 +1001,18 @@ class _InstanceState:
     @partition_used.setter
     def partition_used(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "partition_used", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -921,10 +1063,26 @@ class _InstanceState:
         pulumi.set(self, "selected_zones", value)
 
     @property
+    @pulumi.getter(name="serverlessConfig")
+    def serverless_config(self) -> Optional[pulumi.Input['InstanceServerlessConfigArgs']]:
+        """
+        The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        """
+        return pulumi.get(self, "serverless_config")
+
+    @serverless_config.setter
+    def serverless_config(self, value: Optional[pulumi.Input['InstanceServerlessConfigArgs']]):
+        pulumi.set(self, "serverless_config", value)
+
+    @property
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        The version of the Instance. Valid values:
+        - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         """
         return pulumi.get(self, "service_version")
 
@@ -936,7 +1094,10 @@ class _InstanceState:
     @pulumi.getter(name="specType")
     def spec_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        The instance edition. Default value: `normal`. Valid values:
+        - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")
 
@@ -1100,6 +1261,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[builtins.str]] = None,
+                 confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
                  default_topic_partition_num: Optional[pulumi.Input[builtins.int]] = None,
                  deploy_type: Optional[pulumi.Input[builtins.int]] = None,
                  disk_size: Optional[pulumi.Input[builtins.int]] = None,
@@ -1107,15 +1269,18 @@ class Instance(pulumi.CustomResource):
                  eip_max: Optional[pulumi.Input[builtins.int]] = None,
                  enable_auto_group: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_auto_topic: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  io_max: Optional[pulumi.Input[builtins.int]] = None,
                  io_max_spec: Optional[pulumi.Input[builtins.str]] = None,
                  kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  paid_type: Optional[pulumi.Input[builtins.str]] = None,
                  partition_num: Optional[pulumi.Input[builtins.int]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_group: Optional[pulumi.Input[builtins.str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
                  service_version: Optional[pulumi.Input[builtins.str]] = None,
                  spec_type: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1131,35 +1296,46 @@ class Instance(pulumi.CustomResource):
         AliKafka instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+        $ pulumi import alicloud:alikafka/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-               - 4: eip/vpc instance
-               - 5: vpc instance.
         :param pulumi.Input[builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+               > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[builtins.bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        :param pulumi.Input[builtins.str] instance_type: The type of the Instance. Default value: `alikafka`. Valid values:
         :param pulumi.Input[builtins.int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
-        :param pulumi.Input[builtins.str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[builtins.int] partition_num: The number of partitions.
+        :param pulumi.Input[builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
-        :param pulumi.Input[builtins.str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-        :param pulumi.Input[builtins.str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        :param pulumi.Input[builtins.str] service_version: The version of the Instance. Valid values:
+               - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+               - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+               - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+        :param pulumi.Input[builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
+               - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
@@ -1182,7 +1358,7 @@ class Instance(pulumi.CustomResource):
         AliKafka instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+        $ pulumi import alicloud:alikafka/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1201,6 +1377,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[builtins.str]] = None,
+                 confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
                  default_topic_partition_num: Optional[pulumi.Input[builtins.int]] = None,
                  deploy_type: Optional[pulumi.Input[builtins.int]] = None,
                  disk_size: Optional[pulumi.Input[builtins.int]] = None,
@@ -1208,15 +1385,18 @@ class Instance(pulumi.CustomResource):
                  eip_max: Optional[pulumi.Input[builtins.int]] = None,
                  enable_auto_group: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_auto_topic: Optional[pulumi.Input[builtins.str]] = None,
+                 instance_type: Optional[pulumi.Input[builtins.str]] = None,
                  io_max: Optional[pulumi.Input[builtins.int]] = None,
                  io_max_spec: Optional[pulumi.Input[builtins.str]] = None,
                  kms_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  paid_type: Optional[pulumi.Input[builtins.str]] = None,
                  partition_num: Optional[pulumi.Input[builtins.int]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_group: Optional[pulumi.Input[builtins.str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
                  service_version: Optional[pulumi.Input[builtins.str]] = None,
                  spec_type: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1235,35 +1415,33 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["config"] = config
+            __props__.__dict__["confluent_config"] = confluent_config
             __props__.__dict__["default_topic_partition_num"] = default_topic_partition_num
             if deploy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'deploy_type'")
             __props__.__dict__["deploy_type"] = deploy_type
-            if disk_size is None and not opts.urn:
-                raise TypeError("Missing required property 'disk_size'")
             __props__.__dict__["disk_size"] = disk_size
-            if disk_type is None and not opts.urn:
-                raise TypeError("Missing required property 'disk_type'")
             __props__.__dict__["disk_type"] = disk_type
             __props__.__dict__["eip_max"] = eip_max
             __props__.__dict__["enable_auto_group"] = enable_auto_group
             __props__.__dict__["enable_auto_topic"] = enable_auto_topic
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["io_max"] = io_max
             __props__.__dict__["io_max_spec"] = io_max_spec
             __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["name"] = name
             __props__.__dict__["paid_type"] = paid_type
             __props__.__dict__["partition_num"] = partition_num
+            __props__.__dict__["password"] = password
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_group"] = security_group
             __props__.__dict__["selected_zones"] = selected_zones
+            __props__.__dict__["serverless_config"] = serverless_config
             __props__.__dict__["service_version"] = service_version
             __props__.__dict__["spec_type"] = spec_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["topic_quota"] = topic_quota
             __props__.__dict__["vpc_id"] = vpc_id
-            if vswitch_id is None and not opts.urn:
-                raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["zone_id"] = zone_id
@@ -1292,6 +1470,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[builtins.str]] = None,
+            confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
             default_topic_partition_num: Optional[pulumi.Input[builtins.int]] = None,
             deploy_type: Optional[pulumi.Input[builtins.int]] = None,
             disk_size: Optional[pulumi.Input[builtins.int]] = None,
@@ -1303,6 +1482,7 @@ class Instance(pulumi.CustomResource):
             end_point: Optional[pulumi.Input[builtins.str]] = None,
             group_left: Optional[pulumi.Input[builtins.int]] = None,
             group_used: Optional[pulumi.Input[builtins.int]] = None,
+            instance_type: Optional[pulumi.Input[builtins.str]] = None,
             io_max: Optional[pulumi.Input[builtins.int]] = None,
             io_max_spec: Optional[pulumi.Input[builtins.str]] = None,
             is_partition_buy: Optional[pulumi.Input[builtins.int]] = None,
@@ -1312,10 +1492,12 @@ class Instance(pulumi.CustomResource):
             partition_left: Optional[pulumi.Input[builtins.int]] = None,
             partition_num: Optional[pulumi.Input[builtins.int]] = None,
             partition_used: Optional[pulumi.Input[builtins.int]] = None,
+            password: Optional[pulumi.Input[builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
             sasl_domain_endpoint: Optional[pulumi.Input[builtins.str]] = None,
             security_group: Optional[pulumi.Input[builtins.str]] = None,
             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
             service_version: Optional[pulumi.Input[builtins.str]] = None,
             spec_type: Optional[pulumi.Input[builtins.str]] = None,
             ssl_domain_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -1339,12 +1521,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-               - 4: eip/vpc instance
-               - 5: vpc instance.
         :param pulumi.Input[builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+               > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
+        :param pulumi.Input[builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[builtins.str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[builtins.bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
@@ -1352,6 +1535,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[builtins.int] group_left: (Available since v1.214.1) The number of available groups.
         :param pulumi.Input[builtins.int] group_used: (Available since v1.214.1) The number of used groups.
+        :param pulumi.Input[builtins.str] instance_type: The type of the Instance. Default value: `alikafka`. Valid values:
         :param pulumi.Input[builtins.int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -1359,16 +1543,25 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
-        :param pulumi.Input[builtins.str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[builtins.int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[builtins.int] partition_num: The number of partitions.
         :param pulumi.Input[builtins.int] partition_used: (Available since v1.214.1) The number of used partitions.
+        :param pulumi.Input[builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[builtins.str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
-        :param pulumi.Input[builtins.str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
-        :param pulumi.Input[builtins.str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        :param pulumi.Input[builtins.str] service_version: The version of the Instance. Valid values:
+               - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+               - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+               - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
+        :param pulumi.Input[builtins.str] spec_type: The instance edition. Default value: `normal`. Valid values:
+               - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+               - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+               - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         :param pulumi.Input[builtins.str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
         :param pulumi.Input[builtins.str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
         :param pulumi.Input[builtins.int] status: The status of the instance.
@@ -1390,6 +1583,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["config"] = config
+        __props__.__dict__["confluent_config"] = confluent_config
         __props__.__dict__["default_topic_partition_num"] = default_topic_partition_num
         __props__.__dict__["deploy_type"] = deploy_type
         __props__.__dict__["disk_size"] = disk_size
@@ -1401,6 +1595,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["end_point"] = end_point
         __props__.__dict__["group_left"] = group_left
         __props__.__dict__["group_used"] = group_used
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["io_max"] = io_max
         __props__.__dict__["io_max_spec"] = io_max_spec
         __props__.__dict__["is_partition_buy"] = is_partition_buy
@@ -1410,10 +1605,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["partition_left"] = partition_left
         __props__.__dict__["partition_num"] = partition_num
         __props__.__dict__["partition_used"] = partition_used
+        __props__.__dict__["password"] = password
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["sasl_domain_endpoint"] = sasl_domain_endpoint
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["selected_zones"] = selected_zones
+        __props__.__dict__["serverless_config"] = serverless_config
         __props__.__dict__["service_version"] = service_version
         __props__.__dict__["spec_type"] = spec_type
         __props__.__dict__["ssl_domain_endpoint"] = ssl_domain_endpoint
@@ -1440,6 +1637,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "config")
 
     @property
+    @pulumi.getter(name="confluentConfig")
+    def confluent_config(self) -> pulumi.Output['outputs.InstanceConfluentConfig']:
+        """
+        The configurations of Confluent. See `confluent_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        """
+        return pulumi.get(self, "confluent_config")
+
+    @property
     @pulumi.getter(name="defaultTopicPartitionNum")
     def default_topic_partition_num(self) -> pulumi.Output[builtins.int]:
         """
@@ -1452,24 +1658,23 @@ class Instance(pulumi.CustomResource):
     def deploy_type(self) -> pulumi.Output[builtins.int]:
         """
         The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        - 4: eip/vpc instance
-        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Output[builtins.int]:
+    def disk_size(self) -> pulumi.Output[Optional[builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> pulumi.Output[builtins.int]:
+    def disk_type(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        The disk type of the instance. Valid values:
         """
         return pulumi.get(self, "disk_type")
 
@@ -1530,6 +1735,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "group_used")
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[builtins.str]:
+        """
+        The type of the Instance. Default value: `alikafka`. Valid values:
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
     @pulumi.getter(name="ioMax")
     def io_max(self) -> pulumi.Output[builtins.int]:
         """
@@ -1575,7 +1788,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paidType")
     def paid_type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         """
         return pulumi.get(self, "paid_type")
 
@@ -1602,6 +1815,14 @@ class Instance(pulumi.CustomResource):
         (Available since v1.214.1) The number of used partitions.
         """
         return pulumi.get(self, "partition_used")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -1636,10 +1857,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "selected_zones")
 
     @property
+    @pulumi.getter(name="serverlessConfig")
+    def serverless_config(self) -> pulumi.Output['outputs.InstanceServerlessConfig']:
+        """
+        The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        """
+        return pulumi.get(self, "serverless_config")
+
+    @property
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> pulumi.Output[builtins.str]:
         """
-        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        The version of the Instance. Valid values:
+        - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         """
         return pulumi.get(self, "service_version")
 
@@ -1647,7 +1880,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="specType")
     def spec_type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        The instance edition. Default value: `normal`. Valid values:
+        - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         """
         return pulumi.get(self, "spec_type")
 

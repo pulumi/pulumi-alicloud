@@ -79,7 +79,7 @@ type GetKeyPairsResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of key pairs. Each element contains the following attributes:
 	//
-	// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+	// Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
 	KeyPairs  []GetKeyPairsKeyPair `pulumi:"keyPairs"`
 	NameRegex *string              `pulumi:"nameRegex"`
 	// A list of key pair names.
@@ -152,7 +152,7 @@ func (o GetKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
 
 // A list of key pairs. Each element contains the following attributes:
 //
-// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+// Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
 func (o GetKeyPairsResultOutput) KeyPairs() GetKeyPairsKeyPairArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsKeyPair { return v.KeyPairs }).(GetKeyPairsKeyPairArrayOutput)
 }

@@ -6,6 +6,8 @@ package com.pulumi.alicloud.alikafka;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.alikafka.InstanceArgs;
 import com.pulumi.alicloud.alikafka.inputs.InstanceState;
+import com.pulumi.alicloud.alikafka.outputs.InstanceConfluentConfig;
+import com.pulumi.alicloud.alikafka.outputs.InstanceServerlessConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -24,7 +26,7 @@ import javax.annotation.Nullable;
  * AliKafka instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
+ * $ pulumi import alicloud:alikafka/instance:Instance example &lt;id&gt;
  * ```
  * 
  */
@@ -47,6 +49,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
+     * The configurations of Confluent. See `confluent_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * 
+     */
+    @Export(name="confluentConfig", refs={InstanceConfluentConfig.class}, tree="[0]")
+    private Output<InstanceConfluentConfig> confluentConfig;
+
+    /**
+     * @return The configurations of Confluent. See `confluent_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * 
+     */
+    public Output<InstanceConfluentConfig> confluentConfig() {
+        return this.confluentConfig;
+    }
+    /**
      * The number of partitions in a topic that is automatically created.
      * 
      */
@@ -62,8 +80,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      * 
      */
     @Export(name="deployType", refs={Integer.class}, tree="[0]")
@@ -71,8 +87,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      * 
      */
     public Output<Integer> deployType() {
@@ -80,31 +94,33 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
      * 
      */
     @Export(name="diskSize", refs={Integer.class}, tree="[0]")
-    private Output<Integer> diskSize;
+    private Output</* @Nullable */ Integer> diskSize;
 
     /**
      * @return The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
      * 
      */
-    public Output<Integer> diskSize() {
-        return this.diskSize;
+    public Output<Optional<Integer>> diskSize() {
+        return Codegen.optional(this.diskSize);
     }
     /**
-     * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * The disk type of the instance. Valid values:
      * 
      */
     @Export(name="diskType", refs={Integer.class}, tree="[0]")
-    private Output<Integer> diskType;
+    private Output</* @Nullable */ Integer> diskType;
 
     /**
-     * @return The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * @return The disk type of the instance. Valid values:
      * 
      */
-    public Output<Integer> diskType() {
-        return this.diskType;
+    public Output<Optional<Integer>> diskType() {
+        return Codegen.optional(this.diskType);
     }
     /**
      * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
@@ -205,6 +221,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.groupUsed;
     }
     /**
+     * The type of the Instance. Default value: `alikafka`. Valid values:
+     * 
+     */
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    private Output<String> instanceType;
+
+    /**
+     * @return The type of the Instance. Default value: `alikafka`. Valid values:
+     * 
+     */
+    public Output<String> instanceType() {
+        return this.instanceType;
+    }
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
@@ -279,14 +309,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      * 
      */
     @Export(name="paidType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paidType;
 
     /**
-     * @return The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      * 
      */
     public Output<Optional<String>> paidType() {
@@ -333,6 +363,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> partitionUsed() {
         return this.partitionUsed;
+    }
+    /**
+     * The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * 
+     */
+    @Export(name="password", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> password;
+
+    /**
+     * @return The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * 
+     */
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -391,28 +435,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.selectedZones);
     }
     /**
-     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * 
+     */
+    @Export(name="serverlessConfig", refs={InstanceServerlessConfig.class}, tree="[0]")
+    private Output<InstanceServerlessConfig> serverlessConfig;
+
+    /**
+     * @return The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * 
+     */
+    public Output<InstanceServerlessConfig> serverlessConfig() {
+        return this.serverlessConfig;
+    }
+    /**
+     * The version of the Instance. Valid values:
+     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     @Export(name="serviceVersion", refs={String.class}, tree="[0]")
     private Output<String> serviceVersion;
 
     /**
-     * @return The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * @return The version of the Instance. Valid values:
+     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     public Output<String> serviceVersion() {
         return this.serviceVersion;
     }
     /**
-     * The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * The instance edition. Default value: `normal`. Valid values:
+     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     @Export(name="specType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specType;
 
     /**
-     * @return The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * @return The instance edition. Default value: `normal`. Valid values:
+     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     public Output<Optional<String>> specType() {

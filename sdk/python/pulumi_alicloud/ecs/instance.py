@@ -70,6 +70,8 @@ class InstanceArgs:
                  period: Optional[pulumi.Input[builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[builtins.str]] = None,
                  private_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_id: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_match_criteria: Optional[pulumi.Input[builtins.str]] = None,
                  queue_pair_number: Optional[pulumi.Input[builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -188,6 +190,11 @@ class InstanceArgs:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[builtins.str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[builtins.str] private_pool_options_id: The ID of the private pool.
+        :param pulumi.Input[builtins.str] private_pool_options_match_criteria: The type of the private pool. Default value: `None`. Valid values:
+               - `Open`: Open private pool.
+               - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+               - `None`: No private pool. The capacity in private pools is not used.
         :param pulumi.Input[builtins.int] queue_pair_number: The number of queues supported by the ERI.
         :param pulumi.Input[builtins.str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
@@ -340,6 +347,10 @@ class InstanceArgs:
             pulumi.set(__self__, "period_unit", period_unit)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
+        if private_pool_options_id is not None:
+            pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        if private_pool_options_match_criteria is not None:
+            pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
         if queue_pair_number is not None:
             pulumi.set(__self__, "queue_pair_number", queue_pair_number)
         if renewal_status is not None:
@@ -1018,6 +1029,33 @@ class InstanceArgs:
         pulumi.set(self, "private_ip", value)
 
     @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the private pool.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @private_pool_options_id.setter
+    def private_pool_options_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_pool_options_id", value)
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of the private pool. Default value: `None`. Valid values:
+        - `Open`: Open private pool.
+        - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        - `None`: No private pool. The capacity in private pools is not used.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
+
+    @private_pool_options_match_criteria.setter
+    def private_pool_options_match_criteria(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_pool_options_match_criteria", value)
+
+    @property
     @pulumi.getter(name="queuePairNumber")
     def queue_pair_number(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -1457,6 +1495,8 @@ class _InstanceState:
                  period_unit: Optional[pulumi.Input[builtins.str]] = None,
                  primary_ip_address: Optional[pulumi.Input[builtins.str]] = None,
                  private_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_id: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_match_criteria: Optional[pulumi.Input[builtins.str]] = None,
                  public_ip: Optional[pulumi.Input[builtins.str]] = None,
                  queue_pair_number: Optional[pulumi.Input[builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[builtins.str]] = None,
@@ -1587,6 +1627,11 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[builtins.str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[builtins.str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[builtins.str] private_pool_options_id: The ID of the private pool.
+        :param pulumi.Input[builtins.str] private_pool_options_match_criteria: The type of the private pool. Default value: `None`. Valid values:
+               - `Open`: Open private pool.
+               - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+               - `None`: No private pool. The capacity in private pools is not used.
         :param pulumi.Input[builtins.str] public_ip: The instance public ip.
         :param pulumi.Input[builtins.int] queue_pair_number: The number of queues supported by the ERI.
         :param pulumi.Input[builtins.str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -1760,6 +1805,10 @@ class _InstanceState:
             pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
+        if private_pool_options_id is not None:
+            pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        if private_pool_options_match_criteria is not None:
+            pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
         if public_ip is not None:
             pulumi.set(__self__, "public_ip", public_ip)
         if queue_pair_number is not None:
@@ -2552,6 +2601,33 @@ class _InstanceState:
         pulumi.set(self, "private_ip", value)
 
     @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the private pool.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @private_pool_options_id.setter
+    def private_pool_options_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_pool_options_id", value)
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of the private pool. Default value: `None`. Valid values:
+        - `Open`: Open private pool.
+        - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        - `None`: No private pool. The capacity in private pools is not used.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
+
+    @private_pool_options_match_criteria.setter
+    def private_pool_options_match_criteria(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_pool_options_match_criteria", value)
+
+    @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -3021,6 +3097,8 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[builtins.str]] = None,
                  private_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_id: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_match_criteria: Optional[pulumi.Input[builtins.str]] = None,
                  queue_pair_number: Optional[pulumi.Input[builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3218,6 +3296,11 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[builtins.str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[builtins.str] private_pool_options_id: The ID of the private pool.
+        :param pulumi.Input[builtins.str] private_pool_options_match_criteria: The type of the private pool. Default value: `None`. Valid values:
+               - `Open`: Open private pool.
+               - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+               - `None`: No private pool. The capacity in private pools is not used.
         :param pulumi.Input[builtins.int] queue_pair_number: The number of queues supported by the ERI.
         :param pulumi.Input[builtins.str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
@@ -3415,6 +3498,8 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[builtins.str]] = None,
                  private_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_id: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options_match_criteria: Optional[pulumi.Input[builtins.str]] = None,
                  queue_pair_number: Optional[pulumi.Input[builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3502,6 +3587,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["private_ip"] = private_ip
+            __props__.__dict__["private_pool_options_id"] = private_pool_options_id
+            __props__.__dict__["private_pool_options_match_criteria"] = private_pool_options_match_criteria
             __props__.__dict__["queue_pair_number"] = queue_pair_number
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -3613,6 +3700,8 @@ class Instance(pulumi.CustomResource):
             period_unit: Optional[pulumi.Input[builtins.str]] = None,
             primary_ip_address: Optional[pulumi.Input[builtins.str]] = None,
             private_ip: Optional[pulumi.Input[builtins.str]] = None,
+            private_pool_options_id: Optional[pulumi.Input[builtins.str]] = None,
+            private_pool_options_match_criteria: Optional[pulumi.Input[builtins.str]] = None,
             public_ip: Optional[pulumi.Input[builtins.str]] = None,
             queue_pair_number: Optional[pulumi.Input[builtins.int]] = None,
             renewal_status: Optional[pulumi.Input[builtins.str]] = None,
@@ -3748,6 +3837,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[builtins.str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[builtins.str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[builtins.str] private_pool_options_id: The ID of the private pool.
+        :param pulumi.Input[builtins.str] private_pool_options_match_criteria: The type of the private pool. Default value: `None`. Valid values:
+               - `Open`: Open private pool.
+               - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+               - `None`: No private pool. The capacity in private pools is not used.
         :param pulumi.Input[builtins.str] public_ip: The instance public ip.
         :param pulumi.Input[builtins.int] queue_pair_number: The number of queues supported by the ERI.
         :param pulumi.Input[builtins.str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -3862,6 +3956,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["primary_ip_address"] = primary_ip_address
         __props__.__dict__["private_ip"] = private_ip
+        __props__.__dict__["private_pool_options_id"] = private_pool_options_id
+        __props__.__dict__["private_pool_options_match_criteria"] = private_pool_options_match_criteria
         __props__.__dict__["public_ip"] = public_ip
         __props__.__dict__["queue_pair_number"] = queue_pair_number
         __props__.__dict__["renewal_status"] = renewal_status
@@ -4392,6 +4488,25 @@ class Instance(pulumi.CustomResource):
         Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the private pool.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> pulumi.Output[builtins.str]:
+        """
+        The type of the private pool. Default value: `None`. Valid values:
+        - `Open`: Open private pool.
+        - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        - `None`: No private pool. The capacity in private pools is not used.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
 
     @property
     @pulumi.getter(name="publicIp")

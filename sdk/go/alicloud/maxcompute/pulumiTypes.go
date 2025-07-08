@@ -186,10 +186,12 @@ func (o ProjectIpWhiteListPtrOutput) VpcIpList() pulumi.StringPtrOutput {
 }
 
 type ProjectProperties struct {
-	// Whether to allow full table scan. Default: false
+	// Whether to allow full table scan. Default: `false`.
 	AllowFullScan *bool `pulumi:"allowFullScan"`
-	// Whether to turn on Decimal2.0
+	// Whether to turn on Decimal2.0.
 	EnableDecimal2 *bool `pulumi:"enableDecimal2"`
+	// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+	EnableDr *bool `pulumi:"enableDr"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
 	// > **NOTE :**:
 	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
@@ -229,10 +231,12 @@ type ProjectPropertiesInput interface {
 }
 
 type ProjectPropertiesArgs struct {
-	// Whether to allow full table scan. Default: false
+	// Whether to allow full table scan. Default: `false`.
 	AllowFullScan pulumi.BoolPtrInput `pulumi:"allowFullScan"`
-	// Whether to turn on Decimal2.0
+	// Whether to turn on Decimal2.0.
 	EnableDecimal2 pulumi.BoolPtrInput `pulumi:"enableDecimal2"`
+	// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+	EnableDr pulumi.BoolPtrInput `pulumi:"enableDr"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
 	// > **NOTE :**:
 	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
@@ -337,14 +341,19 @@ func (o ProjectPropertiesOutput) ToProjectPropertiesPtrOutputWithContext(ctx con
 	}).(ProjectPropertiesPtrOutput)
 }
 
-// Whether to allow full table scan. Default: false
+// Whether to allow full table scan. Default: `false`.
 func (o ProjectPropertiesOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *bool { return v.AllowFullScan }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on Decimal2.0
+// Whether to turn on Decimal2.0.
 func (o ProjectPropertiesOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *bool { return v.EnableDecimal2 }).(pulumi.BoolPtrOutput)
+}
+
+// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+func (o ProjectPropertiesOutput) EnableDr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectProperties) *bool { return v.EnableDr }).(pulumi.BoolPtrOutput)
 }
 
 // Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
@@ -414,7 +423,7 @@ func (o ProjectPropertiesPtrOutput) Elem() ProjectPropertiesOutput {
 	}).(ProjectPropertiesOutput)
 }
 
-// Whether to allow full table scan. Default: false
+// Whether to allow full table scan. Default: `false`.
 func (o ProjectPropertiesPtrOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *bool {
 		if v == nil {
@@ -424,13 +433,23 @@ func (o ProjectPropertiesPtrOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on Decimal2.0
+// Whether to turn on Decimal2.0.
 func (o ProjectPropertiesPtrOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.EnableDecimal2
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+func (o ProjectPropertiesPtrOutput) EnableDr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDr
 	}).(pulumi.BoolPtrOutput)
 }
 

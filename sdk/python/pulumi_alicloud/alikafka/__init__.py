@@ -12,3 +12,5 @@ from .instance_allowed_ip_attachment import *
 from .sasl_acl import *
 from .sasl_user import *
 from .topic import *
+from ._inputs import *
+from . import outputs

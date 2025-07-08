@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// &gt; **NOTE:** Available since v1.121.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,18 +28,33 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = name,
+        ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "KeyPair" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "key_pair_name",
+        ///             defaultEcsKeyPair.Id,
         ///         },
-        ///         NameRegex = "key_pair_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsKeyPairId"] = example.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
+        ///         ["ecsKeyPairId0"] = ids.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -50,7 +65,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// &gt; **NOTE:** Available since v1.121.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,18 +79,33 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = name,
+        ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "KeyPair" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "key_pair_name",
+        ///             defaultEcsKeyPair.Id,
         ///         },
-        ///         NameRegex = "key_pair_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsKeyPairId"] = example.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
+        ///         ["ecsKeyPairId0"] = ids.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -86,7 +116,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// &gt; **NOTE:** Available since v1.121.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,18 +130,33 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = name,
+        ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "KeyPair" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "key_pair_name",
+        ///             defaultEcsKeyPair.Id,
         ///         },
-        ///         NameRegex = "key_pair_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsKeyPairId"] = example.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
+        ///         ["ecsKeyPairId0"] = ids.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -124,7 +169,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsKeyPairsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The finger print of the key pair.
+        /// The fingerprint of the key pair.
         /// </summary>
         [Input("fingerPrint")]
         public string? FingerPrint { get; set; }
@@ -154,13 +199,17 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource group Id.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -176,7 +225,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsKeyPairsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The finger print of the key pair.
+        /// The fingerprint of the key pair.
         /// </summary>
         [Input("fingerPrint")]
         public Input<string>? FingerPrint { get; set; }
@@ -206,13 +255,17 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource group Id.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -229,18 +282,36 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsKeyPairsResult
     {
+        /// <summary>
+        /// The fingerprint of the Key Pair.
+        /// </summary>
         public readonly string? FingerPrint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsKeyPairsKeyPairResult> KeyPairs;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Key Pair names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecs Key Pairs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsKeyPairsPairResult> Pairs;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The tags of the Key Pair.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

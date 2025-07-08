@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsKeyPairsPair {
     /**
-     * @return The finger print of the key pair.
+     * @return The fingerprint of the key pair.
      * 
      */
     private String fingerPrint;
@@ -24,30 +24,34 @@ public final class GetEcsKeyPairsPair {
      */
     private String id;
     /**
-     * @return A list of ECS instances that has been bound this key pair.
+     * @return A list of ECS instances that has been bound this Key Pair.
      * 
      */
     private List<GetEcsKeyPairsPairInstance> instances;
     /**
-     * @return The Key Pair Name.
+     * @return The name of the key pair.
      * 
      */
     private String keyName;
+    /**
+     * @return The name of the Key Pair.
+     * 
+     */
     private String keyPairName;
     /**
-     * @return The Resource Group Id.
+     * @return The ID of the resource group.
      * 
      */
     private String resourceGroupId;
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
 
     private GetEcsKeyPairsPair() {}
     /**
-     * @return The finger print of the key pair.
+     * @return The fingerprint of the key pair.
      * 
      */
     public String fingerPrint() {
@@ -61,31 +65,35 @@ public final class GetEcsKeyPairsPair {
         return this.id;
     }
     /**
-     * @return A list of ECS instances that has been bound this key pair.
+     * @return A list of ECS instances that has been bound this Key Pair.
      * 
      */
     public List<GetEcsKeyPairsPairInstance> instances() {
         return this.instances;
     }
     /**
-     * @return The Key Pair Name.
+     * @return The name of the key pair.
      * 
      */
     public String keyName() {
         return this.keyName;
     }
+    /**
+     * @return The name of the Key Pair.
+     * 
+     */
     public String keyPairName() {
         return this.keyPairName;
     }
     /**
-     * @return The Resource Group Id.
+     * @return The ID of the resource group.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

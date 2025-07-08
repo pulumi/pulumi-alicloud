@@ -12,6 +12,7 @@ from .certificate import *
 from .client_ca_certificate import *
 from .client_certificate import *
 from .compression_rule import *
+from .custom_scene_policy import *
 from .edge_container_app import *
 from .edge_container_app_record import *
 from .get_sites import *
@@ -37,6 +38,7 @@ from .scheduled_preload_execution import *
 from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
+from .version import *
 from .video_processing import *
 from .waiting_room import *
 from .waiting_room_event import *

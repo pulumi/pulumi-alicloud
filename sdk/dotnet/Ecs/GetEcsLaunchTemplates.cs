@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         },
         ///     });
         /// 
-        ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
+        ///     var ids = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsLaunchTemplateId"] = example.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
+        ///         ["ecsLaunchTemplateId0"] = ids.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         },
         ///     });
         /// 
-        ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
+        ///     var ids = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsLaunchTemplateId"] = example.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
+        ///         ["ecsLaunchTemplateId0"] = ids.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -428,7 +428,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         },
         ///     });
         /// 
-        ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
+        ///     var ids = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsLaunchTemplateId"] = example.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
+        ///         ["ecsLaunchTemplateId0"] = ids.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -451,7 +451,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsLaunchTemplatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -469,7 +469,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The Launch Template Name.
+        /// The name of the launch template.
         /// </summary>
         [Input("launchTemplateName")]
         public string? LaunchTemplateName { get; set; }
@@ -487,7 +487,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The template resource group id.
+        /// The ID of the Resource Group.
         /// </summary>
         [Input("templateResourceGroupId")]
         public string? TemplateResourceGroupId { get; set; }
@@ -496,7 +496,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, string>? _templateTags;
 
         /// <summary>
-        /// The template tags.
+        /// The tags of the launch template.
         /// </summary>
         public Dictionary<string, string> TemplateTags
         {
@@ -513,7 +513,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsLaunchTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -531,7 +531,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The Launch Template Name.
+        /// The name of the launch template.
         /// </summary>
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The template resource group id.
+        /// The ID of the Resource Group.
         /// </summary>
         [Input("templateResourceGroupId")]
         public Input<string>? TemplateResourceGroupId { get; set; }
@@ -558,7 +558,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _templateTags;
 
         /// <summary>
-        /// The template tags.
+        /// The tags of the launch template.
         /// </summary>
         public InputMap<string> TemplateTags
         {
@@ -583,7 +583,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// The Launch Template Name.
+        /// The name of the Launch Template.
         /// </summary>
         public readonly string? LaunchTemplateName;
         public readonly string? NameRegex;
@@ -594,7 +594,8 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? OutputFile;
         public readonly string? TemplateResourceGroupId;
         /// <summary>
-        /// The template tags.
+        /// The tags of the launch template.
+        /// &gt; **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? TemplateTags;
         /// <summary>

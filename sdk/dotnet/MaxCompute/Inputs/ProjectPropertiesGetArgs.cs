@@ -13,16 +13,22 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class ProjectPropertiesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to allow full table scan. Default: false
+        /// Whether to allow full table scan. Default: `false`.
         /// </summary>
         [Input("allowFullScan")]
         public Input<bool>? AllowFullScan { get; set; }
 
         /// <summary>
-        /// Whether to turn on Decimal2.0
+        /// Whether to turn on Decimal2.0.
         /// </summary>
         [Input("enableDecimal2")]
         public Input<bool>? EnableDecimal2 { get; set; }
+
+        /// <summary>
+        /// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("enableDr")]
+        public Input<bool>? EnableDr { get; set; }
 
         /// <summary>
         /// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)

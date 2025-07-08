@@ -7,6 +7,7 @@ import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupAckConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupAutoScalingPolicy;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupCostOptimizedConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupDataDisk;
+import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupPrivatePoolOptions;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSpotBidPrice;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSubscriptionConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSystemDisk;
@@ -87,6 +88,11 @@ public final class ClusterNodeGroup {
      * 
      */
     private @Nullable String paymentType;
+    /**
+     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * 
+     */
+    private @Nullable ClusterNodeGroupPrivatePoolOptions privatePoolOptions;
     /**
      * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
@@ -216,6 +222,13 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.paymentType);
     }
     /**
+     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * 
+     */
+    public Optional<ClusterNodeGroupPrivatePoolOptions> privatePoolOptions() {
+        return Optional.ofNullable(this.privatePoolOptions);
+    }
+    /**
      * @return The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
@@ -287,6 +300,7 @@ public final class ClusterNodeGroup {
         private String nodeGroupType;
         private @Nullable String nodeResizeStrategy;
         private @Nullable String paymentType;
+        private @Nullable ClusterNodeGroupPrivatePoolOptions privatePoolOptions;
         private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
         private @Nullable Boolean spotInstanceRemedy;
         private @Nullable String spotStrategy;
@@ -310,6 +324,7 @@ public final class ClusterNodeGroup {
     	      this.nodeGroupType = defaults.nodeGroupType;
     	      this.nodeResizeStrategy = defaults.nodeResizeStrategy;
     	      this.paymentType = defaults.paymentType;
+    	      this.privatePoolOptions = defaults.privatePoolOptions;
     	      this.spotBidPrices = defaults.spotBidPrices;
     	      this.spotInstanceRemedy = defaults.spotInstanceRemedy;
     	      this.spotStrategy = defaults.spotStrategy;
@@ -417,6 +432,12 @@ public final class ClusterNodeGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder privatePoolOptions(@Nullable ClusterNodeGroupPrivatePoolOptions privatePoolOptions) {
+
+            this.privatePoolOptions = privatePoolOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spotBidPrices(@Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices) {
 
             this.spotBidPrices = spotBidPrices;
@@ -481,6 +502,7 @@ public final class ClusterNodeGroup {
             _resultValue.nodeGroupType = nodeGroupType;
             _resultValue.nodeResizeStrategy = nodeResizeStrategy;
             _resultValue.paymentType = paymentType;
+            _resultValue.privatePoolOptions = privatePoolOptions;
             _resultValue.spotBidPrices = spotBidPrices;
             _resultValue.spotInstanceRemedy = spotInstanceRemedy;
             _resultValue.spotStrategy = spotStrategy;

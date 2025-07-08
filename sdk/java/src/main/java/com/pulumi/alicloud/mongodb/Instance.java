@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * MongoDB instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+ * $ pulumi import alicloud:mongodb/instance:Instance example &lt;id&gt;
  * ```
  * 
  */
@@ -252,6 +252,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceClass;
     }
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="dbInstanceReleaseProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dbInstanceReleaseProtection;
+
+    /**
+     * @return Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> dbInstanceReleaseProtection() {
+        return Codegen.optional(this.dbInstanceReleaseProtection);
+    }
+    /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
@@ -354,14 +368,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
      * 
      */
     @Export(name="hiddenZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hiddenZoneId;
 
     /**
-     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
      * 
      */
     public Output<Optional<String>> hiddenZoneId() {
@@ -640,14 +654,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.roleArn;
     }
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
      * 
      */
     @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
-     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
      * 
      */
     public Output<Optional<String>> secondaryZoneId() {

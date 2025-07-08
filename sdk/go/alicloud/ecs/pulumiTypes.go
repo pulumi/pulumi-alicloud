@@ -8744,18 +8744,19 @@ func (o GetEcsInvocationsInvocationInvokeInstanceArrayOutput) Index(i pulumi.Int
 }
 
 type GetEcsKeyPairsKeyPair struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint string `pulumi:"fingerPrint"`
 	// The ID of the Key Pair.
 	Id string `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances that has been bound this Key Pair.
 	Instances []GetEcsKeyPairsKeyPairInstance `pulumi:"instances"`
-	// The Key Pair Name.
-	KeyName     string `pulumi:"keyName"`
+	// The name of the key pair.
+	KeyName string `pulumi:"keyName"`
+	// The name of the Key Pair.
 	KeyPairName string `pulumi:"keyPairName"`
-	// The resource group Id.
+	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The tags.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -8771,18 +8772,19 @@ type GetEcsKeyPairsKeyPairInput interface {
 }
 
 type GetEcsKeyPairsKeyPairArgs struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
 	// The ID of the Key Pair.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances that has been bound this Key Pair.
 	Instances GetEcsKeyPairsKeyPairInstanceArrayInput `pulumi:"instances"`
-	// The Key Pair Name.
-	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	// The name of the key pair.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the Key Pair.
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
-	// The resource group Id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The tags.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -8837,7 +8839,7 @@ func (o GetEcsKeyPairsKeyPairOutput) ToGetEcsKeyPairsKeyPairOutputWithContext(ct
 	return o
 }
 
-// The finger print of the key pair.
+// The fingerprint of the key pair.
 func (o GetEcsKeyPairsKeyPairOutput) FingerPrint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.FingerPrint }).(pulumi.StringOutput)
 }
@@ -8847,26 +8849,27 @@ func (o GetEcsKeyPairsKeyPairOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances that has been bound this key pair.
+// A list of ECS instances that has been bound this Key Pair.
 func (o GetEcsKeyPairsKeyPairOutput) Instances() GetEcsKeyPairsKeyPairInstanceArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) []GetEcsKeyPairsKeyPairInstance { return v.Instances }).(GetEcsKeyPairsKeyPairInstanceArrayOutput)
 }
 
-// The Key Pair Name.
+// The name of the key pair.
 func (o GetEcsKeyPairsKeyPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// The name of the Key Pair.
 func (o GetEcsKeyPairsKeyPairOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
 
-// The resource group Id.
+// The ID of the resource group.
 func (o GetEcsKeyPairsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The tags.
+// A mapping of tags to assign to the resource.
 func (o GetEcsKeyPairsKeyPairOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -8892,24 +8895,29 @@ func (o GetEcsKeyPairsKeyPairArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPair
 }
 
 type GetEcsKeyPairsKeyPairInstance struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The zone ID of the instance.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Description      string `pulumi:"description"`
-	ImageId          string `pulumi:"imageId"`
+	// The description of the ECS instance.
+	Description string `pulumi:"description"`
+	// The image ID of the instance.
+	ImageId string `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName string `pulumi:"instanceName"`
+	// The instance type of the instance.
 	InstanceType string `pulumi:"instanceType"`
-	// The Key Pair Name.
+	// The name of the key pair.
 	KeyName string `pulumi:"keyName"`
 	// The private IP address of the ECS instance.
 	PrivateIp string `pulumi:"privateIp"`
 	// The public IP address or EIP of the ECS instance.
 	PublicIp string `pulumi:"publicIp"`
+	// The region ID of the instance.
 	RegionId string `pulumi:"regionId"`
-	Status   string `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the instance.
+	Status string `pulumi:"status"`
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -8925,24 +8933,29 @@ type GetEcsKeyPairsKeyPairInstanceInput interface {
 }
 
 type GetEcsKeyPairsKeyPairInstanceArgs struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The zone ID of the instance.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	Description      pulumi.StringInput `pulumi:"description"`
-	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// The description of the ECS instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The image ID of the instance.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type of the instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The Key Pair Name.
+	// The name of the key pair.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// The private IP address of the ECS instance.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
 	// The public IP address or EIP of the ECS instance.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	// The region ID of the instance.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -8997,15 +9010,17 @@ func (o GetEcsKeyPairsKeyPairInstanceOutput) ToGetEcsKeyPairsKeyPairInstanceOutp
 	return o
 }
 
-// The ID of the availability zone where the ECS instance is located.
+// The zone ID of the instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The description of the ECS instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The image ID of the instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -9020,11 +9035,12 @@ func (o GetEcsKeyPairsKeyPairInstanceOutput) InstanceName() pulumi.StringOutput 
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The instance type of the instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The Key Pair Name.
+// The name of the key pair.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
@@ -9039,15 +9055,17 @@ func (o GetEcsKeyPairsKeyPairInstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
+// The region ID of the instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The status of the instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch attached to the ECS instance.
+// The ID of the vSwitch.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -9073,18 +9091,19 @@ func (o GetEcsKeyPairsKeyPairInstanceArrayOutput) Index(i pulumi.IntInput) GetEc
 }
 
 type GetEcsKeyPairsPair struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint string `pulumi:"fingerPrint"`
 	// The ID of the Key Pair.
 	Id string `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances that has been bound this Key Pair.
 	Instances []GetEcsKeyPairsPairInstance `pulumi:"instances"`
-	// The Key Pair Name.
-	KeyName     string `pulumi:"keyName"`
+	// The name of the key pair.
+	KeyName string `pulumi:"keyName"`
+	// The name of the Key Pair.
 	KeyPairName string `pulumi:"keyPairName"`
-	// The Resource Group Id.
+	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The tags.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -9100,18 +9119,19 @@ type GetEcsKeyPairsPairInput interface {
 }
 
 type GetEcsKeyPairsPairArgs struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
 	// The ID of the Key Pair.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances that has been bound this Key Pair.
 	Instances GetEcsKeyPairsPairInstanceArrayInput `pulumi:"instances"`
-	// The Key Pair Name.
-	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	// The name of the key pair.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The name of the Key Pair.
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
-	// The Resource Group Id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The tags.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -9166,7 +9186,7 @@ func (o GetEcsKeyPairsPairOutput) ToGetEcsKeyPairsPairOutputWithContext(ctx cont
 	return o
 }
 
-// The finger print of the key pair.
+// The fingerprint of the key pair.
 func (o GetEcsKeyPairsPairOutput) FingerPrint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.FingerPrint }).(pulumi.StringOutput)
 }
@@ -9176,26 +9196,27 @@ func (o GetEcsKeyPairsPairOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances that has been bound this key pair.
+// A list of ECS instances that has been bound this Key Pair.
 func (o GetEcsKeyPairsPairOutput) Instances() GetEcsKeyPairsPairInstanceArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) []GetEcsKeyPairsPairInstance { return v.Instances }).(GetEcsKeyPairsPairInstanceArrayOutput)
 }
 
-// The Key Pair Name.
+// The name of the key pair.
 func (o GetEcsKeyPairsPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// The name of the Key Pair.
 func (o GetEcsKeyPairsPairOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
 
-// The Resource Group Id.
+// The ID of the resource group.
 func (o GetEcsKeyPairsPairOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The tags.
+// A mapping of tags to assign to the resource.
 func (o GetEcsKeyPairsPairOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -9221,24 +9242,29 @@ func (o GetEcsKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPairsPa
 }
 
 type GetEcsKeyPairsPairInstance struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The zone ID of the instance.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Description      string `pulumi:"description"`
-	ImageId          string `pulumi:"imageId"`
+	// The description of the ECS instance.
+	Description string `pulumi:"description"`
+	// The image ID of the instance.
+	ImageId string `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName string `pulumi:"instanceName"`
+	// The instance type of the instance.
 	InstanceType string `pulumi:"instanceType"`
-	// The Key Pair Name.
+	// The name of the key pair.
 	KeyName string `pulumi:"keyName"`
 	// The private IP address of the ECS instance.
 	PrivateIp string `pulumi:"privateIp"`
 	// The public IP address or EIP of the ECS instance.
 	PublicIp string `pulumi:"publicIp"`
+	// The region ID of the instance.
 	RegionId string `pulumi:"regionId"`
-	Status   string `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the instance.
+	Status string `pulumi:"status"`
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -9254,24 +9280,29 @@ type GetEcsKeyPairsPairInstanceInput interface {
 }
 
 type GetEcsKeyPairsPairInstanceArgs struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The zone ID of the instance.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	Description      pulumi.StringInput `pulumi:"description"`
-	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// The description of the ECS instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The image ID of the instance.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type of the instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The Key Pair Name.
+	// The name of the key pair.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// The private IP address of the ECS instance.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
 	// The public IP address or EIP of the ECS instance.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	// The region ID of the instance.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -9326,15 +9357,17 @@ func (o GetEcsKeyPairsPairInstanceOutput) ToGetEcsKeyPairsPairInstanceOutputWith
 	return o
 }
 
-// The ID of the availability zone where the ECS instance is located.
+// The zone ID of the instance.
 func (o GetEcsKeyPairsPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The description of the ECS instance.
 func (o GetEcsKeyPairsPairInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The image ID of the instance.
 func (o GetEcsKeyPairsPairInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -9349,11 +9382,12 @@ func (o GetEcsKeyPairsPairInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The instance type of the instance.
 func (o GetEcsKeyPairsPairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The Key Pair Name.
+// The name of the key pair.
 func (o GetEcsKeyPairsPairInstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
@@ -9368,15 +9402,17 @@ func (o GetEcsKeyPairsPairInstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
+// The region ID of the instance.
 func (o GetEcsKeyPairsPairInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The status of the instance.
 func (o GetEcsKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch attached to the ECS instance.
+// The ID of the vSwitch.
 func (o GetEcsKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -9402,21 +9438,21 @@ func (o GetEcsKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsKe
 }
 
 type GetEcsLaunchTemplatesTemplate struct {
-	// (Optional) Instance auto release time.
+	// The automatic release time of the instance.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
-	// CreatedBy.
+	// The ID of the Alibaba Cloud account that created the launch template.
 	CreatedBy string `pulumi:"createdBy"`
 	// The list of data disks created with instance.
 	DataDisks []GetEcsLaunchTemplatesTemplateDataDisk `pulumi:"dataDisks"`
-	// The Default Version Number.
+	// The default version number of the launch template.
 	DefaultVersionNumber int `pulumi:"defaultVersionNumber"`
-	// The Deployment Set Id.
+	// The ID of the deployment set.
 	DeploymentSetId string `pulumi:"deploymentSetId"`
 	// System disk description.
 	Description string `pulumi:"description"`
-	// Whether to enable the instance operating system configuration.
+	// Indicates whether the operating system configuration of the instance is enabled.
 	EnableVmOsConfig bool `pulumi:"enableVmOsConfig"`
-	// Instance host name.
+	// The hostname of the instance.
 	HostName string `pulumi:"hostName"`
 	// Whether to enable access to instance metadata.
 	HttpEndpoint string `pulumi:"httpEndpoint"`
@@ -9426,33 +9462,33 @@ type GetEcsLaunchTemplatesTemplate struct {
 	HttpTokens string `pulumi:"httpTokens"`
 	// The ID of the Launch Template.
 	Id string `pulumi:"id"`
-	// The Image Id.
+	// The ID of the image.
 	ImageId string `pulumi:"imageId"`
-	// Mirror source.
+	// The source of the image.
 	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
-	// Internet bandwidth billing method.
+	// The billing method of the instance.
 	InstanceChargeType string `pulumi:"instanceChargeType"`
-	// The Instance Name.
+	// The name of the instance.
 	InstanceName string `pulumi:"instanceName"`
-	// Instance type.
+	// The instance type of the instance.
 	InstanceType string `pulumi:"instanceType"`
-	// Internet bandwidth billing method.
+	// The billing method for network usage.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+	// The maximum inbound public bandwidth.
 	InternetMaxBandwidthIn int `pulumi:"internetMaxBandwidthIn"`
-	// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+	// The maximum outbound public bandwidth.
 	InternetMaxBandwidthOut int `pulumi:"internetMaxBandwidthOut"`
-	// Whether it is an I/O-optimized instance or not.
+	// Indicates whether the instance is I/O optimized.
 	IoOptimized string `pulumi:"ioOptimized"`
 	// The name of the key pair.
 	KeyPairName string `pulumi:"keyPairName"`
-	// The Latest Version Number.
+	// The latest version number of the launch template.
 	LatestVersionNumber int `pulumi:"latestVersionNumber"`
 	// The ID of the Launch Template.
 	LaunchTemplateId string `pulumi:"launchTemplateId"`
-	// The Launch Template Name.
+	// The name of the launch template.
 	LaunchTemplateName string `pulumi:"launchTemplateName"`
-	// The Modified Time.
+	// The time when a version was added to or deleted from the launch template.
 	ModifiedTime string `pulumi:"modifiedTime"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces []GetEcsLaunchTemplatesTemplateNetworkInterface `pulumi:"networkInterfaces"`
@@ -9470,7 +9506,7 @@ type GetEcsLaunchTemplatesTemplate struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge.
 	SecurityEnhancementStrategy string `pulumi:"securityEnhancementStrategy"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -9482,15 +9518,15 @@ type GetEcsLaunchTemplatesTemplate struct {
 	SpotStrategy string `pulumi:"spotStrategy"`
 	// The System Disk.
 	SystemDisks []GetEcsLaunchTemplatesTemplateSystemDisk `pulumi:"systemDisks"`
-	// The template tags.
+	// The tags of the launch template.
 	TemplateTags map[string]string `pulumi:"templateTags"`
-	// The User Data.
+	// The user data of the instance.
 	UserData string `pulumi:"userData"`
 	// The Version Description.
 	VersionDescription string `pulumi:"versionDescription"`
 	// VpcId.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch id.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone Id.
 	ZoneId string `pulumi:"zoneId"`
@@ -9508,21 +9544,21 @@ type GetEcsLaunchTemplatesTemplateInput interface {
 }
 
 type GetEcsLaunchTemplatesTemplateArgs struct {
-	// (Optional) Instance auto release time.
+	// The automatic release time of the instance.
 	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
-	// CreatedBy.
+	// The ID of the Alibaba Cloud account that created the launch template.
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
 	// The list of data disks created with instance.
 	DataDisks GetEcsLaunchTemplatesTemplateDataDiskArrayInput `pulumi:"dataDisks"`
-	// The Default Version Number.
+	// The default version number of the launch template.
 	DefaultVersionNumber pulumi.IntInput `pulumi:"defaultVersionNumber"`
-	// The Deployment Set Id.
+	// The ID of the deployment set.
 	DeploymentSetId pulumi.StringInput `pulumi:"deploymentSetId"`
 	// System disk description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Whether to enable the instance operating system configuration.
+	// Indicates whether the operating system configuration of the instance is enabled.
 	EnableVmOsConfig pulumi.BoolInput `pulumi:"enableVmOsConfig"`
-	// Instance host name.
+	// The hostname of the instance.
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Whether to enable access to instance metadata.
 	HttpEndpoint pulumi.StringInput `pulumi:"httpEndpoint"`
@@ -9532,33 +9568,33 @@ type GetEcsLaunchTemplatesTemplateArgs struct {
 	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
 	// The ID of the Launch Template.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Image Id.
+	// The ID of the image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// Mirror source.
+	// The source of the image.
 	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
-	// Internet bandwidth billing method.
+	// The billing method of the instance.
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
-	// The Instance Name.
+	// The name of the instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// Instance type.
+	// The instance type of the instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// Internet bandwidth billing method.
+	// The billing method for network usage.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
-	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+	// The maximum inbound public bandwidth.
 	InternetMaxBandwidthIn pulumi.IntInput `pulumi:"internetMaxBandwidthIn"`
-	// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+	// The maximum outbound public bandwidth.
 	InternetMaxBandwidthOut pulumi.IntInput `pulumi:"internetMaxBandwidthOut"`
-	// Whether it is an I/O-optimized instance or not.
+	// Indicates whether the instance is I/O optimized.
 	IoOptimized pulumi.StringInput `pulumi:"ioOptimized"`
 	// The name of the key pair.
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
-	// The Latest Version Number.
+	// The latest version number of the launch template.
 	LatestVersionNumber pulumi.IntInput `pulumi:"latestVersionNumber"`
 	// The ID of the Launch Template.
 	LaunchTemplateId pulumi.StringInput `pulumi:"launchTemplateId"`
-	// The Launch Template Name.
+	// The name of the launch template.
 	LaunchTemplateName pulumi.StringInput `pulumi:"launchTemplateName"`
-	// The Modified Time.
+	// The time when a version was added to or deleted from the launch template.
 	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
@@ -9576,7 +9612,7 @@ type GetEcsLaunchTemplatesTemplateArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge.
 	SecurityEnhancementStrategy pulumi.StringInput `pulumi:"securityEnhancementStrategy"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
@@ -9588,15 +9624,15 @@ type GetEcsLaunchTemplatesTemplateArgs struct {
 	SpotStrategy pulumi.StringInput `pulumi:"spotStrategy"`
 	// The System Disk.
 	SystemDisks GetEcsLaunchTemplatesTemplateSystemDiskArrayInput `pulumi:"systemDisks"`
-	// The template tags.
+	// The tags of the launch template.
 	TemplateTags pulumi.StringMapInput `pulumi:"templateTags"`
-	// The User Data.
+	// The user data of the instance.
 	UserData pulumi.StringInput `pulumi:"userData"`
 	// The Version Description.
 	VersionDescription pulumi.StringInput `pulumi:"versionDescription"`
 	// VpcId.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The vswitch id.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The Zone Id.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -9653,12 +9689,12 @@ func (o GetEcsLaunchTemplatesTemplateOutput) ToGetEcsLaunchTemplatesTemplateOutp
 	return o
 }
 
-// (Optional) Instance auto release time.
+// The automatic release time of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) AutoReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
 }
 
-// CreatedBy.
+// The ID of the Alibaba Cloud account that created the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -9668,12 +9704,12 @@ func (o GetEcsLaunchTemplatesTemplateOutput) DataDisks() GetEcsLaunchTemplatesTe
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []GetEcsLaunchTemplatesTemplateDataDisk { return v.DataDisks }).(GetEcsLaunchTemplatesTemplateDataDiskArrayOutput)
 }
 
-// The Default Version Number.
+// The default version number of the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) DefaultVersionNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.DefaultVersionNumber }).(pulumi.IntOutput)
 }
 
-// The Deployment Set Id.
+// The ID of the deployment set.
 func (o GetEcsLaunchTemplatesTemplateOutput) DeploymentSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.DeploymentSetId }).(pulumi.StringOutput)
 }
@@ -9683,12 +9719,12 @@ func (o GetEcsLaunchTemplatesTemplateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether to enable the instance operating system configuration.
+// Indicates whether the operating system configuration of the instance is enabled.
 func (o GetEcsLaunchTemplatesTemplateOutput) EnableVmOsConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) bool { return v.EnableVmOsConfig }).(pulumi.BoolOutput)
 }
 
-// Instance host name.
+// The hostname of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.HostName }).(pulumi.StringOutput)
 }
@@ -9713,47 +9749,47 @@ func (o GetEcsLaunchTemplatesTemplateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Image Id.
+// The ID of the image.
 func (o GetEcsLaunchTemplatesTemplateOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// Mirror source.
+// The source of the image.
 func (o GetEcsLaunchTemplatesTemplateOutput) ImageOwnerAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
 }
 
-// Internet bandwidth billing method.
+// The billing method of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-// The Instance Name.
+// The name of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Instance type.
+// The instance type of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Internet bandwidth billing method.
+// The billing method for network usage.
 func (o GetEcsLaunchTemplatesTemplateOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+// The maximum inbound public bandwidth.
 func (o GetEcsLaunchTemplatesTemplateOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
 }
 
-// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+// The maximum outbound public bandwidth.
 func (o GetEcsLaunchTemplatesTemplateOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
 }
 
-// Whether it is an I/O-optimized instance or not.
+// Indicates whether the instance is I/O optimized.
 func (o GetEcsLaunchTemplatesTemplateOutput) IoOptimized() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.IoOptimized }).(pulumi.StringOutput)
 }
@@ -9763,7 +9799,7 @@ func (o GetEcsLaunchTemplatesTemplateOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
 
-// The Latest Version Number.
+// The latest version number of the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) LatestVersionNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.LatestVersionNumber }).(pulumi.IntOutput)
 }
@@ -9773,12 +9809,12 @@ func (o GetEcsLaunchTemplatesTemplateOutput) LaunchTemplateId() pulumi.StringOut
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.LaunchTemplateId }).(pulumi.StringOutput)
 }
 
-// The Launch Template Name.
+// The name of the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.LaunchTemplateName }).(pulumi.StringOutput)
 }
 
-// The Modified Time.
+// The time when a version was added to or deleted from the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) ModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
@@ -9825,7 +9861,7 @@ func (o GetEcsLaunchTemplatesTemplateOutput) SecurityEnhancementStrategy() pulum
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SecurityEnhancementStrategy }).(pulumi.StringOutput)
 }
 
-// The security group ID.
+// The security group ID must be one in the same VPC.
 func (o GetEcsLaunchTemplatesTemplateOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -9855,12 +9891,12 @@ func (o GetEcsLaunchTemplatesTemplateOutput) SystemDisks() GetEcsLaunchTemplates
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []GetEcsLaunchTemplatesTemplateSystemDisk { return v.SystemDisks }).(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput)
 }
 
-// The template tags.
+// The tags of the launch template.
 func (o GetEcsLaunchTemplatesTemplateOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
-// The User Data.
+// The user data of the instance.
 func (o GetEcsLaunchTemplatesTemplateOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.UserData }).(pulumi.StringOutput)
 }
@@ -9875,7 +9911,7 @@ func (o GetEcsLaunchTemplatesTemplateOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o GetEcsLaunchTemplatesTemplateOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -10072,9 +10108,9 @@ type GetEcsLaunchTemplatesTemplateNetworkInterface struct {
 	Name string `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp string `pulumi:"primaryIp"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The vswitch id.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -10096,9 +10132,9 @@ type GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp pulumi.StringInput `pulumi:"primaryIp"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The vswitch id.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -10168,12 +10204,12 @@ func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) PrimaryIp() pulumi.
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.PrimaryIp }).(pulumi.StringOutput)
 }
 
-// The security group ID.
+// The security group ID must be one in the same VPC.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }

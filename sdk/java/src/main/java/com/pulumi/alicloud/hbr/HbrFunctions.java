@@ -34,6 +34,8 @@ import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
 import com.pulumi.alicloud.hbr.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetSnapshotsPlainArgs;
+import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetVaultsPlainArgs;
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsResult;
@@ -51,6 +53,7 @@ import com.pulumi.alicloud.hbr.outputs.GetRestoreJobsResult;
 import com.pulumi.alicloud.hbr.outputs.GetServerBackupPlansResult;
 import com.pulumi.alicloud.hbr.outputs.GetServiceResult;
 import com.pulumi.alicloud.hbr.outputs.GetSnapshotsResult;
+import com.pulumi.alicloud.hbr.outputs.GetUdmSnapshotsResult;
 import com.pulumi.alicloud.hbr.outputs.GetVaultsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -5081,6 +5084,256 @@ public final class HbrFunctions {
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
+     * 
+     * &gt; **NOTE:** Available since v1.253.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = HbrFunctions.getUdmSnapshots(GetUdmSnapshotsArgs.builder()
+     *             .sourceType("UDM_ECS")
+     *             .startTime(1642057551)
+     *             .endTime(1750927687)
+     *             .instanceId("i-08qv5q4c4j****")
+     *             .build());
+     * 
+     *         ctx.export("alicloudHbrUdmSnapshotExampleId", default_.snapshots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUdmSnapshotsResult> getUdmSnapshots(GetUdmSnapshotsArgs args) {
+        return getUdmSnapshots(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
+     * 
+     * &gt; **NOTE:** Available since v1.253.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = HbrFunctions.getUdmSnapshots(GetUdmSnapshotsArgs.builder()
+     *             .sourceType("UDM_ECS")
+     *             .startTime(1642057551)
+     *             .endTime(1750927687)
+     *             .instanceId("i-08qv5q4c4j****")
+     *             .build());
+     * 
+     *         ctx.export("alicloudHbrUdmSnapshotExampleId", default_.snapshots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUdmSnapshotsResult> getUdmSnapshotsPlain(GetUdmSnapshotsPlainArgs args) {
+        return getUdmSnapshotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
+     * 
+     * &gt; **NOTE:** Available since v1.253.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = HbrFunctions.getUdmSnapshots(GetUdmSnapshotsArgs.builder()
+     *             .sourceType("UDM_ECS")
+     *             .startTime(1642057551)
+     *             .endTime(1750927687)
+     *             .instanceId("i-08qv5q4c4j****")
+     *             .build());
+     * 
+     *         ctx.export("alicloudHbrUdmSnapshotExampleId", default_.snapshots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUdmSnapshotsResult> getUdmSnapshots(GetUdmSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:hbr/getUdmSnapshots:getUdmSnapshots", TypeShape.of(GetUdmSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
+     * 
+     * &gt; **NOTE:** Available since v1.253.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = HbrFunctions.getUdmSnapshots(GetUdmSnapshotsArgs.builder()
+     *             .sourceType("UDM_ECS")
+     *             .startTime(1642057551)
+     *             .endTime(1750927687)
+     *             .instanceId("i-08qv5q4c4j****")
+     *             .build());
+     * 
+     *         ctx.export("alicloudHbrUdmSnapshotExampleId", default_.snapshots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUdmSnapshotsResult> getUdmSnapshots(GetUdmSnapshotsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:hbr/getUdmSnapshots:getUdmSnapshots", TypeShape.of(GetUdmSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
+     * 
+     * &gt; **NOTE:** Available since v1.253.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetUdmSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = HbrFunctions.getUdmSnapshots(GetUdmSnapshotsArgs.builder()
+     *             .sourceType("UDM_ECS")
+     *             .startTime(1642057551)
+     *             .endTime(1750927687)
+     *             .instanceId("i-08qv5q4c4j****")
+     *             .build());
+     * 
+     *         ctx.export("alicloudHbrUdmSnapshotExampleId", default_.snapshots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUdmSnapshotsResult> getUdmSnapshotsPlain(GetUdmSnapshotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:hbr/getUdmSnapshots:getUdmSnapshots", TypeShape.of(GetUdmSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Hbr Vaults of the current Alibaba Cloud user.

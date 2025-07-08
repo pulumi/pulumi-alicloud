@@ -113,19 +113,19 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Output("recoveryWindowInDays")]
         public Output<int?> RecoveryWindowInDays { get; private set; } = null!;
 
         /// <summary>
-        /// The interval for automatic rotation.
+        /// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         /// </summary>
         [Output("secretData")]
         public Output<string> SecretData { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> SecretDataType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the secret.
+        /// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Output("secretName")]
         public Output<string> SecretName { get; private set; } = null!;
@@ -146,8 +146,10 @@ namespace Pulumi.AliCloud.Kms
         /// The type of the secret. Valid values:
         /// - `Generic`: Generic secret.
         /// - `Rds`: ApsaraDB RDS secret.
+        /// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         /// - `RAMCredentials`: RAM secret.
         /// - `ECS`: ECS secret.
+        /// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         /// </summary>
         [Output("secretType")]
         public Output<string> SecretType { get; private set; } = null!;
@@ -263,13 +265,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
 
         /// <summary>
-        /// The interval for automatic rotation.
+        /// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -278,7 +280,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -297,7 +299,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? SecretDataType { get; set; }
 
         /// <summary>
-        /// The name of the secret.
+        /// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("secretName", required: true)]
         public Input<string> SecretName { get; set; } = null!;
@@ -306,8 +308,10 @@ namespace Pulumi.AliCloud.Kms
         /// The type of the secret. Valid values:
         /// - `Generic`: Generic secret.
         /// - `Rds`: ApsaraDB RDS secret.
+        /// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         /// - `RAMCredentials`: RAM secret.
         /// - `ECS`: ECS secret.
+        /// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }
@@ -411,13 +415,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
 
         /// <summary>
-        /// The interval for automatic rotation.
+        /// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -426,7 +430,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -445,7 +449,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? SecretDataType { get; set; }
 
         /// <summary>
-        /// The name of the secret.
+        /// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }
@@ -454,8 +458,10 @@ namespace Pulumi.AliCloud.Kms
         /// The type of the secret. Valid values:
         /// - `Generic`: Generic secret.
         /// - `Rds`: ApsaraDB RDS secret.
+        /// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         /// - `RAMCredentials`: RAM secret.
         /// - `ECS`: ECS secret.
+        /// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }

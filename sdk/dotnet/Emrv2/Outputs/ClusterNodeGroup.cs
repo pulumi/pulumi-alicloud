@@ -66,6 +66,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string? PaymentType;
         /// <summary>
+        /// The node group specific private pool resources. See `private_pool_options` below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeGroupPrivatePoolOptions? PrivatePoolOptions;
+        /// <summary>
         /// The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupSpotBidPrice> SpotBidPrices;
@@ -122,6 +126,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             string? paymentType,
 
+            Outputs.ClusterNodeGroupPrivatePoolOptions? privatePoolOptions,
+
             ImmutableArray<Outputs.ClusterNodeGroupSpotBidPrice> spotBidPrices,
 
             bool? spotInstanceRemedy,
@@ -149,6 +155,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             NodeGroupType = nodeGroupType;
             NodeResizeStrategy = nodeResizeStrategy;
             PaymentType = paymentType;
+            PrivatePoolOptions = privatePoolOptions;
             SpotBidPrices = spotBidPrices;
             SpotInstanceRemedy = spotInstanceRemedy;
             SpotStrategy = spotStrategy;

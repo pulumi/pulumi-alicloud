@@ -3137,6 +3137,95 @@ export namespace alb {
 
 }
 
+export namespace alikafka {
+    export interface InstanceConfluentConfig {
+        /**
+         * The number of CPU cores of Connect.
+         */
+        connectCu?: number;
+        /**
+         * The number of replicas of Connect.
+         */
+        connectReplica?: number;
+        /**
+         * The number of CPU cores of Control Center.
+         */
+        controlCenterCu?: number;
+        /**
+         * The number of replicas of Control Center.
+         */
+        controlCenterReplica?: number;
+        /**
+         * The disk capacity of Control Center.
+         */
+        controlCenterStorage?: number;
+        /**
+         * The number of CPU cores of the Kafka broker.
+         */
+        kafkaCu?: number;
+        /**
+         * The number of replicas of the Kafka broker.
+         */
+        kafkaReplica?: number;
+        /**
+         * The number of CPU cores of Kafka Rest Proxy.
+         */
+        kafkaRestProxyCu?: number;
+        /**
+         * The number of replicas of Kafka Rest Proxy.
+         */
+        kafkaRestProxyReplica?: number;
+        /**
+         * The disk capacity of the Kafka broker.
+         */
+        kafkaStorage?: number;
+        /**
+         * The number of CPU cores of ksqlDB.
+         */
+        ksqlCu?: number;
+        /**
+         * The number of replicas of ksqlDB.
+         */
+        ksqlReplica?: number;
+        /**
+         * The disk capacity of ksqlDB.
+         */
+        ksqlStorage?: number;
+        /**
+         * The number of CPU cores of Schema Registry.
+         */
+        schemaRegistryCu?: number;
+        /**
+         * The number of replicas of Schema Registry.
+         */
+        schemaRegistryReplica?: number;
+        /**
+         * The number of CPU cores of ZooKeeper.
+         */
+        zookeeperCu?: number;
+        /**
+         * The number of replicas of ZooKeeper.
+         */
+        zookeeperReplica?: number;
+        /**
+         * The disk capacity of ZooKeeper.
+         */
+        zookeeperStorage?: number;
+    }
+
+    export interface InstanceServerlessConfig {
+        /**
+         * The reserved capacity for publishing messages.
+         */
+        reservedPublishCapacity?: number;
+        /**
+         * The reserved capacity for subscribing to message.
+         */
+        reservedSubscribeCapacity?: number;
+    }
+
+}
+
 export namespace amqp {
     export interface GetBindingsBinding {
         /**
@@ -24555,7 +24644,7 @@ export namespace ecs {
 
     export interface GetEcsKeyPairsKeyPair {
         /**
-         * The finger print of the key pair.
+         * The fingerprint of the key pair.
          */
         fingerPrint: string;
         /**
@@ -24563,30 +24652,39 @@ export namespace ecs {
          */
         id: string;
         /**
-         * A list of ECS instances that has been bound this key pair.
+         * A list of ECS instances that has been bound this Key Pair.
          */
         instances: outputs.ecs.GetEcsKeyPairsKeyPairInstance[];
         /**
-         * The Key Pair Name.
+         * The name of the key pair.
          */
         keyName: string;
+        /**
+         * The name of the Key Pair.
+         */
         keyPairName: string;
         /**
-         * The resource group Id.
+         * The ID of the resource group.
          */
         resourceGroupId: string;
         /**
-         * The tags.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
     }
 
     export interface GetEcsKeyPairsKeyPairInstance {
         /**
-         * The ID of the availability zone where the ECS instance is located.
+         * The zone ID of the instance.
          */
         availabilityZone: string;
+        /**
+         * The description of the ECS instance.
+         */
         description: string;
+        /**
+         * The image ID of the instance.
+         */
         imageId: string;
         /**
          * The ID of the ECS instance.
@@ -24596,9 +24694,12 @@ export namespace ecs {
          * The name of the ECS instance.
          */
         instanceName: string;
+        /**
+         * The instance type of the instance.
+         */
         instanceType: string;
         /**
-         * The Key Pair Name.
+         * The name of the key pair.
          */
         keyName: string;
         /**
@@ -24609,17 +24710,23 @@ export namespace ecs {
          * The public IP address or EIP of the ECS instance.
          */
         publicIp: string;
+        /**
+         * The region ID of the instance.
+         */
         regionId: string;
+        /**
+         * The status of the instance.
+         */
         status: string;
         /**
-         * The ID of the vSwitch attached to the ECS instance.
+         * The ID of the vSwitch.
          */
         vswitchId: string;
     }
 
     export interface GetEcsKeyPairsPair {
         /**
-         * The finger print of the key pair.
+         * The fingerprint of the key pair.
          */
         fingerPrint: string;
         /**
@@ -24627,30 +24734,39 @@ export namespace ecs {
          */
         id: string;
         /**
-         * A list of ECS instances that has been bound this key pair.
+         * A list of ECS instances that has been bound this Key Pair.
          */
         instances: outputs.ecs.GetEcsKeyPairsPairInstance[];
         /**
-         * The Key Pair Name.
+         * The name of the key pair.
          */
         keyName: string;
+        /**
+         * The name of the Key Pair.
+         */
         keyPairName: string;
         /**
-         * The Resource Group Id.
+         * The ID of the resource group.
          */
         resourceGroupId: string;
         /**
-         * The tags.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
     }
 
     export interface GetEcsKeyPairsPairInstance {
         /**
-         * The ID of the availability zone where the ECS instance is located.
+         * The zone ID of the instance.
          */
         availabilityZone: string;
+        /**
+         * The description of the ECS instance.
+         */
         description: string;
+        /**
+         * The image ID of the instance.
+         */
         imageId: string;
         /**
          * The ID of the ECS instance.
@@ -24660,9 +24776,12 @@ export namespace ecs {
          * The name of the ECS instance.
          */
         instanceName: string;
+        /**
+         * The instance type of the instance.
+         */
         instanceType: string;
         /**
-         * The Key Pair Name.
+         * The name of the key pair.
          */
         keyName: string;
         /**
@@ -24673,21 +24792,27 @@ export namespace ecs {
          * The public IP address or EIP of the ECS instance.
          */
         publicIp: string;
+        /**
+         * The region ID of the instance.
+         */
         regionId: string;
+        /**
+         * The status of the instance.
+         */
         status: string;
         /**
-         * The ID of the vSwitch attached to the ECS instance.
+         * The ID of the vSwitch.
          */
         vswitchId: string;
     }
 
     export interface GetEcsLaunchTemplatesTemplate {
         /**
-         * (Optional) Instance auto release time.
+         * The automatic release time of the instance.
          */
         autoReleaseTime: string;
         /**
-         * CreatedBy.
+         * The ID of the Alibaba Cloud account that created the launch template.
          */
         createdBy: string;
         /**
@@ -24695,11 +24820,11 @@ export namespace ecs {
          */
         dataDisks: outputs.ecs.GetEcsLaunchTemplatesTemplateDataDisk[];
         /**
-         * The Default Version Number.
+         * The default version number of the launch template.
          */
         defaultVersionNumber: number;
         /**
-         * The Deployment Set Id.
+         * The ID of the deployment set.
          */
         deploymentSetId: string;
         /**
@@ -24707,11 +24832,11 @@ export namespace ecs {
          */
         description: string;
         /**
-         * Whether to enable the instance operating system configuration.
+         * Indicates whether the operating system configuration of the instance is enabled.
          */
         enableVmOsConfig: boolean;
         /**
-         * Instance host name.
+         * The hostname of the instance.
          */
         hostName: string;
         /**
@@ -24731,39 +24856,39 @@ export namespace ecs {
          */
         id: string;
         /**
-         * The Image Id.
+         * The ID of the image.
          */
         imageId: string;
         /**
-         * Mirror source.
+         * The source of the image.
          */
         imageOwnerAlias: string;
         /**
-         * Internet bandwidth billing method.
+         * The billing method of the instance.
          */
         instanceChargeType: string;
         /**
-         * The Instance Name.
+         * The name of the instance.
          */
         instanceName: string;
         /**
-         * Instance type.
+         * The instance type of the instance.
          */
         instanceType: string;
         /**
-         * Internet bandwidth billing method.
+         * The billing method for network usage.
          */
         internetChargeType: string;
         /**
-         * The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+         * The maximum inbound public bandwidth.
          */
         internetMaxBandwidthIn: number;
         /**
-         * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+         * The maximum outbound public bandwidth.
          */
         internetMaxBandwidthOut: number;
         /**
-         * Whether it is an I/O-optimized instance or not.
+         * Indicates whether the instance is I/O optimized.
          */
         ioOptimized: string;
         /**
@@ -24771,7 +24896,7 @@ export namespace ecs {
          */
         keyPairName: string;
         /**
-         * The Latest Version Number.
+         * The latest version number of the launch template.
          */
         latestVersionNumber: number;
         /**
@@ -24779,11 +24904,11 @@ export namespace ecs {
          */
         launchTemplateId: string;
         /**
-         * The Launch Template Name.
+         * The name of the launch template.
          */
         launchTemplateName: string;
         /**
-         * The Modified Time.
+         * The time when a version was added to or deleted from the launch template.
          */
         modifiedTime: string;
         /**
@@ -24819,7 +24944,7 @@ export namespace ecs {
          */
         securityEnhancementStrategy: string;
         /**
-         * The security group ID.
+         * The security group ID must be one in the same VPC.
          */
         securityGroupId: string;
         /**
@@ -24843,11 +24968,11 @@ export namespace ecs {
          */
         systemDisks: outputs.ecs.GetEcsLaunchTemplatesTemplateSystemDisk[];
         /**
-         * The template tags.
+         * The tags of the launch template.
          */
         templateTags: {[key: string]: string};
         /**
-         * The User Data.
+         * The user data of the instance.
          */
         userData: string;
         /**
@@ -24859,7 +24984,7 @@ export namespace ecs {
          */
         vpcId: string;
         /**
-         * The vswitch id.
+         * The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId: string;
         /**
@@ -24917,11 +25042,11 @@ export namespace ecs {
          */
         primaryIp: string;
         /**
-         * The security group ID.
+         * The security group ID must be one in the same VPC.
          */
         securityGroupId: string;
         /**
-         * The vswitch id.
+         * The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId: string;
     }
@@ -30046,6 +30171,10 @@ export namespace emrv2 {
          */
         paymentType: string;
         /**
+         * The node group specific private pool resources. See `privatePoolOptions` below.
+         */
+        privatePoolOptions?: outputs.emrv2.ClusterNodeGroupPrivatePoolOptions;
+        /**
          * The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          */
         spotBidPrices?: outputs.emrv2.ClusterNodeGroupSpotBidPrice[];
@@ -30431,6 +30560,17 @@ export namespace emrv2 {
          * The size of a data disk, at least 40. Unit: GiB.
          */
         size: number;
+    }
+
+    export interface ClusterNodeGroupPrivatePoolOptions {
+        /**
+         * The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+         */
+        matchCriteria?: string;
+        /**
+         * The node group specific private pool resource ids.
+         */
+        privatePoolIds?: string[];
     }
 
     export interface ClusterNodeGroupSpotBidPrice {
@@ -38160,6 +38300,41 @@ export namespace hbr {
         updatedTime: string;
     }
 
+    export interface GetUdmSnapshotsSnapshot {
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+         */
+        diskId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * ECS instance ID
+         */
+        instanceId: string;
+        /**
+         * The ID of the backup job that creates the snapshot.
+         */
+        jobId: string;
+        /**
+         * Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+         */
+        sourceType: string;
+        /**
+         * Start Time
+         */
+        startTime: number;
+        /**
+         * The first ID of the resource
+         */
+        udmSnapshotId: string;
+    }
+
     export interface GetVaultsVault {
         /**
          * The name of the OSS bucket of the Vault.
@@ -40106,13 +40281,17 @@ export namespace maxcompute {
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan. Default: false
+         * Whether to allow full table scan. Default: `false`.
          */
         allowFullScan?: boolean;
         /**
-         * Whether to turn on Decimal2.0
+         * Whether to turn on Decimal2.0.
          */
         enableDecimal2?: boolean;
+        /**
+         * Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+         */
+        enableDr?: boolean;
         /**
          * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
          * > **NOTE :**:

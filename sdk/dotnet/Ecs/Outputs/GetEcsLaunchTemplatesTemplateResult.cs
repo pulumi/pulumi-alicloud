@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsLaunchTemplatesTemplateResult
     {
         /// <summary>
-        /// (Optional) Instance auto release time.
+        /// The automatic release time of the instance.
         /// </summary>
         public readonly string AutoReleaseTime;
         /// <summary>
-        /// CreatedBy.
+        /// The ID of the Alibaba Cloud account that created the launch template.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateDataDiskResult> DataDisks;
         /// <summary>
-        /// The Default Version Number.
+        /// The default version number of the launch template.
         /// </summary>
         public readonly int DefaultVersionNumber;
         /// <summary>
-        /// The Deployment Set Id.
+        /// The ID of the deployment set.
         /// </summary>
         public readonly string DeploymentSetId;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether to enable the instance operating system configuration.
+        /// Indicates whether the operating system configuration of the instance is enabled.
         /// </summary>
         public readonly bool EnableVmOsConfig;
         /// <summary>
-        /// Instance host name.
+        /// The hostname of the instance.
         /// </summary>
         public readonly string HostName;
         /// <summary>
@@ -62,39 +62,39 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Image Id.
+        /// The ID of the image.
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// Mirror source.
+        /// The source of the image.
         /// </summary>
         public readonly string ImageOwnerAlias;
         /// <summary>
-        /// Internet bandwidth billing method.
+        /// The billing method of the instance.
         /// </summary>
         public readonly string InstanceChargeType;
         /// <summary>
-        /// The Instance Name.
+        /// The name of the instance.
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// Instance type.
+        /// The instance type of the instance.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// Internet bandwidth billing method.
+        /// The billing method for network usage.
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
-        /// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+        /// The maximum inbound public bandwidth.
         /// </summary>
         public readonly int InternetMaxBandwidthIn;
         /// <summary>
-        /// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+        /// The maximum outbound public bandwidth.
         /// </summary>
         public readonly int InternetMaxBandwidthOut;
         /// <summary>
-        /// Whether it is an I/O-optimized instance or not.
+        /// Indicates whether the instance is I/O optimized.
         /// </summary>
         public readonly string IoOptimized;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string KeyPairName;
         /// <summary>
-        /// The Latest Version Number.
+        /// The latest version number of the launch template.
         /// </summary>
         public readonly int LatestVersionNumber;
         /// <summary>
@@ -110,11 +110,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string LaunchTemplateId;
         /// <summary>
-        /// The Launch Template Name.
+        /// The name of the launch template.
         /// </summary>
         public readonly string LaunchTemplateName;
         /// <summary>
-        /// The Modified Time.
+        /// The time when a version was added to or deleted from the launch template.
         /// </summary>
         public readonly string ModifiedTime;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SecurityEnhancementStrategy;
         /// <summary>
-        /// The security group ID.
+        /// The security group ID must be one in the same VPC.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
@@ -174,11 +174,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult> SystemDisks;
         /// <summary>
-        /// The template tags.
+        /// The tags of the launch template.
         /// </summary>
         public readonly ImmutableDictionary<string, string> TemplateTags;
         /// <summary>
-        /// The User Data.
+        /// The user data of the instance.
         /// </summary>
         public readonly string UserData;
         /// <summary>
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The vswitch id.
+        /// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

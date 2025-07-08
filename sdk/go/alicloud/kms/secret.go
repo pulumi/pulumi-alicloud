@@ -85,21 +85,23 @@ type Secret struct {
 	PlannedDeleteTime pulumi.StringOutput `pulumi:"plannedDeleteTime"`
 	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
 	Policy pulumi.StringOutput `pulumi:"policy"`
-	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+	// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 	RecoveryWindowInDays pulumi.IntPtrOutput `pulumi:"recoveryWindowInDays"`
-	// The interval for automatic rotation.
+	// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
-	// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+	// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 	SecretData pulumi.StringOutput `pulumi:"secretData"`
 	// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
 	SecretDataType pulumi.StringPtrOutput `pulumi:"secretDataType"`
-	// The name of the secret.
+	// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	SecretName pulumi.StringOutput `pulumi:"secretName"`
 	// The type of the secret. Valid values:
 	// - `Generic`: Generic secret.
 	// - `Rds`: ApsaraDB RDS secret.
+	// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 	// - `RAMCredentials`: RAM secret.
 	// - `ECS`: ECS secret.
+	// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -175,21 +177,23 @@ type secretState struct {
 	PlannedDeleteTime *string `pulumi:"plannedDeleteTime"`
 	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
 	Policy *string `pulumi:"policy"`
-	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+	// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
-	// The interval for automatic rotation.
+	// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	RotationInterval *string `pulumi:"rotationInterval"`
-	// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+	// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 	SecretData *string `pulumi:"secretData"`
 	// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
 	SecretDataType *string `pulumi:"secretDataType"`
-	// The name of the secret.
+	// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	SecretName *string `pulumi:"secretName"`
 	// The type of the secret. Valid values:
 	// - `Generic`: Generic secret.
 	// - `Rds`: ApsaraDB RDS secret.
+	// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 	// - `RAMCredentials`: RAM secret.
 	// - `ECS`: ECS secret.
+	// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -220,21 +224,23 @@ type SecretState struct {
 	PlannedDeleteTime pulumi.StringPtrInput
 	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
 	Policy pulumi.StringPtrInput
-	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+	// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 	RecoveryWindowInDays pulumi.IntPtrInput
-	// The interval for automatic rotation.
+	// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	RotationInterval pulumi.StringPtrInput
-	// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+	// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 	SecretData pulumi.StringPtrInput
 	// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
 	SecretDataType pulumi.StringPtrInput
-	// The name of the secret.
+	// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	SecretName pulumi.StringPtrInput
 	// The type of the secret. Valid values:
 	// - `Generic`: Generic secret.
 	// - `Rds`: ApsaraDB RDS secret.
+	// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 	// - `RAMCredentials`: RAM secret.
 	// - `ECS`: ECS secret.
+	// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -263,21 +269,23 @@ type secretArgs struct {
 	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
 	Policy *string `pulumi:"policy"`
-	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+	// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
-	// The interval for automatic rotation.
+	// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	RotationInterval *string `pulumi:"rotationInterval"`
-	// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+	// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 	SecretData string `pulumi:"secretData"`
 	// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
 	SecretDataType *string `pulumi:"secretDataType"`
-	// The name of the secret.
+	// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	SecretName string `pulumi:"secretName"`
 	// The type of the secret. Valid values:
 	// - `Generic`: Generic secret.
 	// - `Rds`: ApsaraDB RDS secret.
+	// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 	// - `RAMCredentials`: RAM secret.
 	// - `ECS`: ECS secret.
+	// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -303,21 +311,23 @@ type SecretArgs struct {
 	ForceDeleteWithoutRecovery pulumi.BoolPtrInput
 	// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
 	Policy pulumi.StringPtrInput
-	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+	// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 	RecoveryWindowInDays pulumi.IntPtrInput
-	// The interval for automatic rotation.
+	// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	RotationInterval pulumi.StringPtrInput
-	// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+	// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 	SecretData pulumi.StringInput
 	// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
 	SecretDataType pulumi.StringPtrInput
-	// The name of the secret.
+	// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 	SecretName pulumi.StringInput
 	// The type of the secret. Valid values:
 	// - `Generic`: Generic secret.
 	// - `Rds`: ApsaraDB RDS secret.
+	// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 	// - `RAMCredentials`: RAM secret.
 	// - `ECS`: ECS secret.
+	// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -464,17 +474,17 @@ func (o SecretOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
-// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
 func (o SecretOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.IntPtrOutput { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
 }
 
-// The interval for automatic rotation.
+// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 func (o SecretOutput) RotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.RotationInterval }).(pulumi.StringPtrOutput)
 }
 
-// The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+// The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
 func (o SecretOutput) SecretData() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretData }).(pulumi.StringOutput)
 }
@@ -484,7 +494,7 @@ func (o SecretOutput) SecretDataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.SecretDataType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the secret.
+// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
 func (o SecretOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretName }).(pulumi.StringOutput)
 }
@@ -492,8 +502,10 @@ func (o SecretOutput) SecretName() pulumi.StringOutput {
 // The type of the secret. Valid values:
 // - `Generic`: Generic secret.
 // - `Rds`: ApsaraDB RDS secret.
+// - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
 // - `RAMCredentials`: RAM secret.
 // - `ECS`: ECS secret.
+// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
 func (o SecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretType }).(pulumi.StringOutput)
 }

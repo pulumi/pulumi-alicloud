@@ -120,11 +120,15 @@ if not MYPY:
     class ProjectPropertiesArgsDict(TypedDict):
         allow_full_scan: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether to allow full table scan. Default: false
+        Whether to allow full table scan. Default: `false`.
         """
         enable_decimal2: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether to turn on Decimal2.0
+        Whether to turn on Decimal2.0.
+        """
+        enable_dr: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         """
         encryption: NotRequired[pulumi.Input['ProjectPropertiesEncryptionArgsDict']]
         """
@@ -171,6 +175,7 @@ class ProjectPropertiesArgs:
     def __init__(__self__, *,
                  allow_full_scan: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_decimal2: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_dr: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption: Optional[pulumi.Input['ProjectPropertiesEncryptionArgs']] = None,
                  retention_days: Optional[pulumi.Input[builtins.int]] = None,
                  sql_metering_max: Optional[pulumi.Input[builtins.str]] = None,
@@ -178,8 +183,9 @@ class ProjectPropertiesArgs:
                  timezone: Optional[pulumi.Input[builtins.str]] = None,
                  type_system: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] allow_full_scan: Whether to allow full table scan. Default: false
-        :param pulumi.Input[builtins.bool] enable_decimal2: Whether to turn on Decimal2.0
+        :param pulumi.Input[builtins.bool] allow_full_scan: Whether to allow full table scan. Default: `false`.
+        :param pulumi.Input[builtins.bool] enable_decimal2: Whether to turn on Decimal2.0.
+        :param pulumi.Input[builtins.bool] enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param pulumi.Input['ProjectPropertiesEncryptionArgs'] encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
@@ -204,6 +210,8 @@ class ProjectPropertiesArgs:
             pulumi.set(__self__, "allow_full_scan", allow_full_scan)
         if enable_decimal2 is not None:
             pulumi.set(__self__, "enable_decimal2", enable_decimal2)
+        if enable_dr is not None:
+            pulumi.set(__self__, "enable_dr", enable_dr)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if retention_days is not None:
@@ -221,7 +229,7 @@ class ProjectPropertiesArgs:
     @pulumi.getter(name="allowFullScan")
     def allow_full_scan(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to allow full table scan. Default: false
+        Whether to allow full table scan. Default: `false`.
         """
         return pulumi.get(self, "allow_full_scan")
 
@@ -233,13 +241,25 @@ class ProjectPropertiesArgs:
     @pulumi.getter(name="enableDecimal2")
     def enable_decimal2(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to turn on Decimal2.0
+        Whether to turn on Decimal2.0.
         """
         return pulumi.get(self, "enable_decimal2")
 
     @enable_decimal2.setter
     def enable_decimal2(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_decimal2", value)
+
+    @property
+    @pulumi.getter(name="enableDr")
+    def enable_dr(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_dr")
+
+    @enable_dr.setter
+    def enable_dr(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_dr", value)
 
     @property
     @pulumi.getter

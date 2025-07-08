@@ -40,10 +40,7 @@ class CertificateArgs:
         :param pulumi.Input[builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[builtins.str] cert_name: The certificate name.
-        :param pulumi.Input[builtins.str] certificate: The certificate type. Valid values:
-               
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[builtins.str] certificate: Certificate content.
         :param pulumi.Input[builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
         :param pulumi.Input[builtins.str] private_key: The certificate private key.
         :param pulumi.Input[builtins.str] region: Geographical information.
@@ -135,10 +132,7 @@ class CertificateArgs:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The certificate type. Valid values:
-
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate content.
         """
         return pulumi.get(self, "certificate")
 
@@ -215,10 +209,7 @@ class _CertificateState:
         :param pulumi.Input[builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[builtins.str] cert_name: The certificate name.
-        :param pulumi.Input[builtins.str] certificate: The certificate type. Valid values:
-               
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[builtins.str] certificate: Certificate content.
         :param pulumi.Input[builtins.str] create_time: Creation time.
         :param pulumi.Input[builtins.str] created_type: The certificate type.
                - cas (Certificate Center Certificate)
@@ -296,10 +287,7 @@ class _CertificateState:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The certificate type. Valid values:
-
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate content.
         """
         return pulumi.get(self, "certificate")
 
@@ -461,10 +449,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[builtins.str] cert_name: The certificate name.
-        :param pulumi.Input[builtins.str] certificate: The certificate type. Valid values:
-               
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[builtins.str] certificate: Certificate content.
         :param pulumi.Input[builtins.str] created_type: The certificate type.
                - cas (Certificate Center Certificate)
                - upload (custom upload certificate)
@@ -595,10 +580,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[builtins.str] cert_name: The certificate name.
-        :param pulumi.Input[builtins.str] certificate: The certificate type. Valid values:
-               
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[builtins.str] certificate: Certificate content.
         :param pulumi.Input[builtins.str] create_time: Creation time.
         :param pulumi.Input[builtins.str] created_type: The certificate type.
                - cas (Certificate Center Certificate)
@@ -657,10 +639,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[builtins.str]:
         """
-        The certificate type. Valid values:
-
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate content.
         """
         return pulumi.get(self, "certificate")
 

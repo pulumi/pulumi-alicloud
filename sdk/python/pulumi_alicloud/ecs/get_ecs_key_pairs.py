@@ -63,6 +63,9 @@ class GetEcsKeyPairsResult:
     @property
     @pulumi.getter(name="fingerPrint")
     def finger_print(self) -> Optional[builtins.str]:
+        """
+        The fingerprint of the Key Pair.
+        """
         return pulumi.get(self, "finger_print")
 
     @property
@@ -80,8 +83,11 @@ class GetEcsKeyPairsResult:
 
     @property
     @pulumi.getter(name="keyPairs")
-    @_utilities.deprecated("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
+    @_utilities.deprecated("""Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.""")
     def key_pairs(self) -> Sequence['outputs.GetEcsKeyPairsKeyPairResult']:
+        """
+        (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "key_pairs")
 
     @property
@@ -92,6 +98,9 @@ class GetEcsKeyPairsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[builtins.str]:
+        """
+        A list of Key Pair names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -102,16 +111,25 @@ class GetEcsKeyPairsResult:
     @property
     @pulumi.getter
     def pairs(self) -> Sequence['outputs.GetEcsKeyPairsPairResult']:
+        """
+        A list of Ecs Key Pairs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pairs")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The tags of the Key Pair.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -143,7 +161,7 @@ def get_ecs_key_pairs(finger_print: Optional[builtins.str] = None,
     """
     This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.121.0+.
+    > **NOTE:** Available since v1.121.0.
 
     ## Example Usage
 
@@ -153,17 +171,30 @@ def get_ecs_key_pairs(finger_print: Optional[builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_key_pairs(ids=["key_pair_name"],
-        name_regex="key_pair_name")
-    pulumi.export("firstEcsKeyPairId", example.pairs[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups()
+    default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default",
+        key_pair_name=name,
+        public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+        resource_group_id=default.ids[1],
+        tags={
+            "Created": "TF",
+            "For": "KeyPair",
+        })
+    ids = alicloud.ecs.get_ecs_key_pairs_output(ids=[default_ecs_key_pair.id])
+    pulumi.export("ecsKeyPairId0", ids.pairs[0].id)
     ```
 
 
-    :param builtins.str finger_print: The finger print of the key pair.
+    :param builtins.str finger_print: The fingerprint of the key pair.
     :param Sequence[builtins.str] ids: A list of Key Pair IDs.
     :param builtins.str name_regex: A regex string to filter results by Key Pair name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str resource_group_id: The resource group Id.
+    :param builtins.str resource_group_id: The ID of the resource group.
+    :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['fingerPrint'] = finger_print
@@ -196,7 +227,7 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[builti
     """
     This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.121.0+.
+    > **NOTE:** Available since v1.121.0.
 
     ## Example Usage
 
@@ -206,17 +237,30 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[builti
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_key_pairs(ids=["key_pair_name"],
-        name_regex="key_pair_name")
-    pulumi.export("firstEcsKeyPairId", example.pairs[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups()
+    default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default",
+        key_pair_name=name,
+        public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+        resource_group_id=default.ids[1],
+        tags={
+            "Created": "TF",
+            "For": "KeyPair",
+        })
+    ids = alicloud.ecs.get_ecs_key_pairs_output(ids=[default_ecs_key_pair.id])
+    pulumi.export("ecsKeyPairId0", ids.pairs[0].id)
     ```
 
 
-    :param builtins.str finger_print: The finger print of the key pair.
+    :param builtins.str finger_print: The fingerprint of the key pair.
     :param Sequence[builtins.str] ids: A list of Key Pair IDs.
     :param builtins.str name_regex: A regex string to filter results by Key Pair name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str resource_group_id: The resource group Id.
+    :param builtins.str resource_group_id: The ID of the resource group.
+    :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['fingerPrint'] = finger_print

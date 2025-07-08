@@ -121,6 +121,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Indicates whether data storage by schema is supported. Valid values:
+     */
+    public readonly threeTierModel!: pulumi.Output<boolean>;
+    /**
      * Project type
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["securityProperties"] = state ? state.securityProperties : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["threeTierModel"] = state ? state.threeTierModel : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
@@ -164,6 +169,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["securityProperties"] = args ? args.securityProperties : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["threeTierModel"] = args ? args.threeTierModel : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
@@ -231,6 +237,10 @@ export interface ProjectState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Indicates whether data storage by schema is supported. Valid values:
+     */
+    threeTierModel?: pulumi.Input<boolean>;
+    /**
      * Project type
      */
     type?: pulumi.Input<string>;
@@ -280,4 +290,8 @@ export interface ProjectArgs {
      * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates whether data storage by schema is supported. Valid values:
+     */
+    threeTierModel?: pulumi.Input<boolean>;
 }

@@ -72,10 +72,7 @@ type Certificate struct {
 	CertId pulumi.StringOutput `pulumi:"certId"`
 	// The certificate name.
 	CertName pulumi.StringOutput `pulumi:"certName"`
-	// The certificate type. Valid values:
-	//
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate content.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -140,10 +137,7 @@ type certificateState struct {
 	CertId *string `pulumi:"certId"`
 	// The certificate name.
 	CertName *string `pulumi:"certName"`
-	// The certificate type. Valid values:
-	//
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
@@ -173,10 +167,7 @@ type CertificateState struct {
 	CertId pulumi.StringPtrInput
 	// The certificate name.
 	CertName pulumi.StringPtrInput
-	// The certificate type. Valid values:
-	//
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate content.
 	Certificate pulumi.StringPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
@@ -210,10 +201,7 @@ type certificateArgs struct {
 	CertId *string `pulumi:"certId"`
 	// The certificate name.
 	CertName *string `pulumi:"certName"`
-	// The certificate type. Valid values:
-	//
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
 	// The certificate type.
 	// - cas (Certificate Center Certificate)
@@ -240,10 +228,7 @@ type CertificateArgs struct {
 	CertId pulumi.StringPtrInput
 	// The certificate name.
 	CertName pulumi.StringPtrInput
-	// The certificate type. Valid values:
-	//
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate content.
 	Certificate pulumi.StringPtrInput
 	// The certificate type.
 	// - cas (Certificate Center Certificate)
@@ -364,10 +349,7 @@ func (o CertificateOutput) CertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
 }
 
-// The certificate type. Valid values:
-//
-// - cas: a certificate purchased by using Certificate Management Service.
-// - upload: a custom certificate that you upload.
+// Certificate content.
 func (o CertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }

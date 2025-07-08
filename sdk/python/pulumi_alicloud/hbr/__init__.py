@@ -24,6 +24,7 @@ from .get_restore_jobs import *
 from .get_server_backup_plans import *
 from .get_service import *
 from .get_snapshots import *
+from .get_udm_snapshots import *
 from .get_vaults import *
 from .hana_backup_client import *
 from .hana_backup_plan import *

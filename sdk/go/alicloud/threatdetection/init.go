@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientFileProtect{}
 	case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
 		r = &ClientUserDefineRule{}
+	case "alicloud:threatdetection/cycleTask:CycleTask":
+		r = &CycleTask{}
 	case "alicloud:threatdetection/fileUploadLimit:FileUploadLimit":
 		r = &FileUploadLimit{}
 	case "alicloud:threatdetection/honeyPot:HoneyPot":
@@ -107,6 +109,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/clientUserDefineRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/cycleTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

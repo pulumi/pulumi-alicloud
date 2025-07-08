@@ -19,12 +19,12 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsLaunchTemplatesTemplate {
     /**
-     * @return (Optional) Instance auto release time.
+     * @return The automatic release time of the instance.
      * 
      */
     private String autoReleaseTime;
     /**
-     * @return CreatedBy.
+     * @return The ID of the Alibaba Cloud account that created the launch template.
      * 
      */
     private String createdBy;
@@ -34,12 +34,12 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks;
     /**
-     * @return The Default Version Number.
+     * @return The default version number of the launch template.
      * 
      */
     private Integer defaultVersionNumber;
     /**
-     * @return The Deployment Set Id.
+     * @return The ID of the deployment set.
      * 
      */
     private String deploymentSetId;
@@ -49,12 +49,12 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String description;
     /**
-     * @return Whether to enable the instance operating system configuration.
+     * @return Indicates whether the operating system configuration of the instance is enabled.
      * 
      */
     private Boolean enableVmOsConfig;
     /**
-     * @return Instance host name.
+     * @return The hostname of the instance.
      * 
      */
     private String hostName;
@@ -79,47 +79,47 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String id;
     /**
-     * @return The Image Id.
+     * @return The ID of the image.
      * 
      */
     private String imageId;
     /**
-     * @return Mirror source.
+     * @return The source of the image.
      * 
      */
     private String imageOwnerAlias;
     /**
-     * @return Internet bandwidth billing method.
+     * @return The billing method of the instance.
      * 
      */
     private String instanceChargeType;
     /**
-     * @return The Instance Name.
+     * @return The name of the instance.
      * 
      */
     private String instanceName;
     /**
-     * @return Instance type.
+     * @return The instance type of the instance.
      * 
      */
     private String instanceType;
     /**
-     * @return Internet bandwidth billing method.
+     * @return The billing method for network usage.
      * 
      */
     private String internetChargeType;
     /**
-     * @return The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+     * @return The maximum inbound public bandwidth.
      * 
      */
     private Integer internetMaxBandwidthIn;
     /**
-     * @return Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+     * @return The maximum outbound public bandwidth.
      * 
      */
     private Integer internetMaxBandwidthOut;
     /**
-     * @return Whether it is an I/O-optimized instance or not.
+     * @return Indicates whether the instance is I/O optimized.
      * 
      */
     private String ioOptimized;
@@ -129,7 +129,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String keyPairName;
     /**
-     * @return The Latest Version Number.
+     * @return The latest version number of the launch template.
      * 
      */
     private Integer latestVersionNumber;
@@ -139,12 +139,12 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String launchTemplateId;
     /**
-     * @return The Launch Template Name.
+     * @return The name of the launch template.
      * 
      */
     private String launchTemplateName;
     /**
-     * @return The Modified Time.
+     * @return The time when a version was added to or deleted from the launch template.
      * 
      */
     private String modifiedTime;
@@ -189,7 +189,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String securityEnhancementStrategy;
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     private String securityGroupId;
@@ -219,12 +219,12 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks;
     /**
-     * @return The template tags.
+     * @return The tags of the launch template.
      * 
      */
     private Map<String,String> templateTags;
     /**
-     * @return The User Data.
+     * @return The user data of the instance.
      * 
      */
     private String userData;
@@ -239,7 +239,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String vpcId;
     /**
-     * @return The vswitch id.
+     * @return The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     private String vswitchId;
@@ -251,14 +251,14 @@ public final class GetEcsLaunchTemplatesTemplate {
 
     private GetEcsLaunchTemplatesTemplate() {}
     /**
-     * @return (Optional) Instance auto release time.
+     * @return The automatic release time of the instance.
      * 
      */
     public String autoReleaseTime() {
         return this.autoReleaseTime;
     }
     /**
-     * @return CreatedBy.
+     * @return The ID of the Alibaba Cloud account that created the launch template.
      * 
      */
     public String createdBy() {
@@ -272,14 +272,14 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.dataDisks;
     }
     /**
-     * @return The Default Version Number.
+     * @return The default version number of the launch template.
      * 
      */
     public Integer defaultVersionNumber() {
         return this.defaultVersionNumber;
     }
     /**
-     * @return The Deployment Set Id.
+     * @return The ID of the deployment set.
      * 
      */
     public String deploymentSetId() {
@@ -293,14 +293,14 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.description;
     }
     /**
-     * @return Whether to enable the instance operating system configuration.
+     * @return Indicates whether the operating system configuration of the instance is enabled.
      * 
      */
     public Boolean enableVmOsConfig() {
         return this.enableVmOsConfig;
     }
     /**
-     * @return Instance host name.
+     * @return The hostname of the instance.
      * 
      */
     public String hostName() {
@@ -335,63 +335,63 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.id;
     }
     /**
-     * @return The Image Id.
+     * @return The ID of the image.
      * 
      */
     public String imageId() {
         return this.imageId;
     }
     /**
-     * @return Mirror source.
+     * @return The source of the image.
      * 
      */
     public String imageOwnerAlias() {
         return this.imageOwnerAlias;
     }
     /**
-     * @return Internet bandwidth billing method.
+     * @return The billing method of the instance.
      * 
      */
     public String instanceChargeType() {
         return this.instanceChargeType;
     }
     /**
-     * @return The Instance Name.
+     * @return The name of the instance.
      * 
      */
     public String instanceName() {
         return this.instanceName;
     }
     /**
-     * @return Instance type.
+     * @return The instance type of the instance.
      * 
      */
     public String instanceType() {
         return this.instanceType;
     }
     /**
-     * @return Internet bandwidth billing method.
+     * @return The billing method for network usage.
      * 
      */
     public String internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * @return The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+     * @return The maximum inbound public bandwidth.
      * 
      */
     public Integer internetMaxBandwidthIn() {
         return this.internetMaxBandwidthIn;
     }
     /**
-     * @return Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+     * @return The maximum outbound public bandwidth.
      * 
      */
     public Integer internetMaxBandwidthOut() {
         return this.internetMaxBandwidthOut;
     }
     /**
-     * @return Whether it is an I/O-optimized instance or not.
+     * @return Indicates whether the instance is I/O optimized.
      * 
      */
     public String ioOptimized() {
@@ -405,7 +405,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.keyPairName;
     }
     /**
-     * @return The Latest Version Number.
+     * @return The latest version number of the launch template.
      * 
      */
     public Integer latestVersionNumber() {
@@ -419,14 +419,14 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.launchTemplateId;
     }
     /**
-     * @return The Launch Template Name.
+     * @return The name of the launch template.
      * 
      */
     public String launchTemplateName() {
         return this.launchTemplateName;
     }
     /**
-     * @return The Modified Time.
+     * @return The time when a version was added to or deleted from the launch template.
      * 
      */
     public String modifiedTime() {
@@ -489,7 +489,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.securityEnhancementStrategy;
     }
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     public String securityGroupId() {
@@ -531,14 +531,14 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.systemDisks;
     }
     /**
-     * @return The template tags.
+     * @return The tags of the launch template.
      * 
      */
     public Map<String,String> templateTags() {
         return this.templateTags;
     }
     /**
-     * @return The User Data.
+     * @return The user data of the instance.
      * 
      */
     public String userData() {
@@ -559,7 +559,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.vpcId;
     }
     /**
-     * @return The vswitch id.
+     * @return The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     public String vswitchId() {

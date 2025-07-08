@@ -62,20 +62,14 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate type. Valid values:
-     * 
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate content.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The certificate type. Valid values:
-     * 
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return Certificate content.
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -307,10 +301,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The certificate type. Valid values:
-         * 
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param certificate Certificate content.
          * 
          * @return builder
          * 
@@ -321,10 +312,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The certificate type. Valid values:
-         * 
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param certificate Certificate content.
          * 
          * @return builder
          * 

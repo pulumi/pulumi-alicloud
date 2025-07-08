@@ -123,20 +123,14 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.certName;
     }
     /**
-     * The certificate type. Valid values:
-     * 
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate content.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The certificate type. Valid values:
-     * 
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return Certificate content.
      * 
      */
     public Output<String> certificate() {

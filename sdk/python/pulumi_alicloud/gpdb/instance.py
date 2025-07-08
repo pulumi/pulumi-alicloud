@@ -83,10 +83,10 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes.
-               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes. Valid values:
+               - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+               - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -398,10 +398,10 @@ class InstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The specification of segment nodes.
-        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        The specification of segment nodes. Valid values:
+        - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")
@@ -772,10 +772,10 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes.
-               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes. Valid values:
+               - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+               - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -1100,10 +1100,10 @@ class _InstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The specification of segment nodes.
-        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        The specification of segment nodes. Valid values:
+        - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")
@@ -1562,10 +1562,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes.
-               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes. Valid values:
+               - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+               - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -1848,10 +1848,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes.
-               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        :param pulumi.Input[builtins.str] instance_spec: The specification of segment nodes. Valid values:
+               - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+               - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -2063,10 +2063,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The specification of segment nodes.
-        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        The specification of segment nodes. Valid values:
+        - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")

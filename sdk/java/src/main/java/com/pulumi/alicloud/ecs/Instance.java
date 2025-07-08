@@ -1028,6 +1028,40 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.privateIp;
     }
     /**
+     * The ID of the private pool.
+     * 
+     */
+    @Export(name="privatePoolOptionsId", refs={String.class}, tree="[0]")
+    private Output<String> privatePoolOptionsId;
+
+    /**
+     * @return The ID of the private pool.
+     * 
+     */
+    public Output<String> privatePoolOptionsId() {
+        return this.privatePoolOptionsId;
+    }
+    /**
+     * The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     * 
+     */
+    @Export(name="privatePoolOptionsMatchCriteria", refs={String.class}, tree="[0]")
+    private Output<String> privatePoolOptionsMatchCriteria;
+
+    /**
+     * @return The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     * 
+     */
+    public Output<String> privatePoolOptionsMatchCriteria() {
+        return this.privatePoolOptionsMatchCriteria;
+    }
+    /**
      * The instance public ip.
      * 
      */

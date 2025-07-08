@@ -8,6 +8,7 @@ import com.pulumi.alicloud.maxcompute.inputs.ProjectPropertiesArgs;
 import com.pulumi.alicloud.maxcompute.inputs.ProjectSecurityPropertiesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -213,6 +214,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether data storage by schema is supported. Valid values:
+     * 
+     */
+    @Import(name="threeTierModel")
+    private @Nullable Output<Boolean> threeTierModel;
+
+    /**
+     * @return Indicates whether data storage by schema is supported. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> threeTierModel() {
+        return Optional.ofNullable(this.threeTierModel);
+    }
+
+    /**
      * Project type
      * 
      */
@@ -243,6 +259,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.securityProperties = $.securityProperties;
         this.status = $.status;
         this.tags = $.tags;
+        this.threeTierModel = $.threeTierModel;
         this.type = $.type;
     }
 
@@ -529,6 +546,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param threeTierModel Indicates whether data storage by schema is supported. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threeTierModel(@Nullable Output<Boolean> threeTierModel) {
+            $.threeTierModel = threeTierModel;
+            return this;
+        }
+
+        /**
+         * @param threeTierModel Indicates whether data storage by schema is supported. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threeTierModel(Boolean threeTierModel) {
+            return threeTierModel(Output.of(threeTierModel));
         }
 
         /**

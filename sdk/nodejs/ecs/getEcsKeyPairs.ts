@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsKeyPairs({
- *     ids: ["key_pair_name"],
- *     nameRegex: "key_pair_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("default", {
+ *     keyPairName: name,
+ *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "KeyPair",
+ *     },
  * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
+ * const ids = alicloud.ecs.getEcsKeyPairsOutput({
+ *     ids: [defaultEcsKeyPair.id],
+ * });
+ * export const ecsKeyPairId0 = ids.apply(ids => ids.pairs?.[0]?.id);
  * ```
  */
 export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsKeyPairsResult> {
@@ -44,7 +55,7 @@ export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOp
  */
 export interface GetEcsKeyPairsArgs {
     /**
-     * The finger print of the key pair.
+     * The fingerprint of the key pair.
      */
     fingerPrint?: string;
     /**
@@ -60,9 +71,12 @@ export interface GetEcsKeyPairsArgs {
      */
     outputFile?: string;
     /**
-     * The resource group Id.
+     * The ID of the resource group.
      */
     resourceGroupId?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -70,6 +84,9 @@ export interface GetEcsKeyPairsArgs {
  * A collection of values returned by getEcsKeyPairs.
  */
 export interface GetEcsKeyPairsResult {
+    /**
+     * The fingerprint of the Key Pair.
+     */
     readonly fingerPrint?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,20 +94,34 @@ export interface GetEcsKeyPairsResult {
     readonly id: string;
     readonly ids: string[];
     /**
-     * @deprecated Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+     * (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+     *
+     * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      */
     readonly keyPairs: outputs.ecs.GetEcsKeyPairsKeyPair[];
     readonly nameRegex?: string;
+    /**
+     * A list of Key Pair names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecs Key Pairs. Each element contains the following attributes:
+     */
     readonly pairs: outputs.ecs.GetEcsKeyPairsPair[];
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The tags of the Key Pair.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -100,11 +131,22 @@ export interface GetEcsKeyPairsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsKeyPairs({
- *     ids: ["key_pair_name"],
- *     nameRegex: "key_pair_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("default", {
+ *     keyPairName: name,
+ *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "KeyPair",
+ *     },
  * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
+ * const ids = alicloud.ecs.getEcsKeyPairsOutput({
+ *     ids: [defaultEcsKeyPair.id],
+ * });
+ * export const ecsKeyPairId0 = ids.apply(ids => ids.pairs?.[0]?.id);
  * ```
  */
 export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsKeyPairsResult> {
@@ -125,7 +167,7 @@ export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pul
  */
 export interface GetEcsKeyPairsOutputArgs {
     /**
-     * The finger print of the key pair.
+     * The fingerprint of the key pair.
      */
     fingerPrint?: pulumi.Input<string>;
     /**
@@ -141,8 +183,11 @@ export interface GetEcsKeyPairsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The resource group Id.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

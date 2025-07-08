@@ -104,7 +104,7 @@ import (
 // MongoDB instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+// $ pulumi import alicloud:mongodb/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -128,6 +128,8 @@ type Instance struct {
 	CloudDiskEncryptionKey pulumi.StringPtrOutput `pulumi:"cloudDiskEncryptionKey"`
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringOutput `pulumi:"dbInstanceClass"`
+	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+	DbInstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"dbInstanceReleaseProtection"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
 	// - Custom storage space.
 	// - 10-GB increments.
@@ -144,7 +146,7 @@ type Instance struct {
 	EncryptorName pulumi.StringOutput `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 	HiddenZoneId pulumi.StringPtrOutput `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -187,7 +189,7 @@ type Instance struct {
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
-	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
@@ -287,6 +289,8 @@ type instanceState struct {
 	CloudDiskEncryptionKey *string `pulumi:"cloudDiskEncryptionKey"`
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
+	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
 	// - Custom storage space.
 	// - 10-GB increments.
@@ -303,7 +307,7 @@ type instanceState struct {
 	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -346,7 +350,7 @@ type instanceState struct {
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn *string `pulumi:"roleArn"`
-	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -401,6 +405,8 @@ type InstanceState struct {
 	CloudDiskEncryptionKey pulumi.StringPtrInput
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringPtrInput
+	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// User-defined DB instance storage space.Unit: GB. Value range:
 	// - Custom storage space.
 	// - 10-GB increments.
@@ -417,7 +423,7 @@ type InstanceState struct {
 	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
-	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 	HiddenZoneId pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType pulumi.StringPtrInput
@@ -460,7 +466,7 @@ type InstanceState struct {
 	RetentionPeriod pulumi.IntPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn pulumi.StringPtrInput
-	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
@@ -519,6 +525,8 @@ type instanceArgs struct {
 	CloudDiskEncryptionKey *string `pulumi:"cloudDiskEncryptionKey"`
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
 	// - Custom storage space.
 	// - 10-GB increments.
@@ -535,7 +543,7 @@ type instanceArgs struct {
 	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
-	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -572,7 +580,7 @@ type instanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn *string `pulumi:"roleArn"`
-	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -626,6 +634,8 @@ type InstanceArgs struct {
 	CloudDiskEncryptionKey pulumi.StringPtrInput
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringInput
+	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// User-defined DB instance storage space.Unit: GB. Value range:
 	// - Custom storage space.
 	// - 10-GB increments.
@@ -642,7 +652,7 @@ type InstanceArgs struct {
 	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
-	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 	HiddenZoneId pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType pulumi.StringPtrInput
@@ -679,7 +689,7 @@ type InstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn pulumi.StringPtrInput
-	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
@@ -845,6 +855,11 @@ func (o InstanceOutput) DbInstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceClass }).(pulumi.StringOutput)
 }
 
+// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+func (o InstanceOutput) DbInstanceReleaseProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DbInstanceReleaseProtection }).(pulumi.BoolPtrOutput)
+}
+
 // User-defined DB instance storage space.Unit: GB. Value range:
 // - Custom storage space.
 // - 10-GB increments.
@@ -882,7 +897,7 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
 func (o InstanceOutput) HiddenZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.HiddenZoneId }).(pulumi.StringPtrOutput)
 }
@@ -985,7 +1000,7 @@ func (o InstanceOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
-// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
 func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
 }

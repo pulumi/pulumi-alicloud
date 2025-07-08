@@ -159,6 +159,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="dbInstanceReleaseProtection")
+    private @Nullable Output<Boolean> dbInstanceReleaseProtection;
+
+    /**
+     * @return Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> dbInstanceReleaseProtection() {
+        return Optional.ofNullable(this.dbInstanceReleaseProtection);
+    }
+
+    /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
@@ -268,14 +283,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
      * 
      */
     @Import(name="hiddenZoneId")
     private @Nullable Output<String> hiddenZoneId;
 
     /**
-     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
      * 
      */
     public Optional<Output<String>> hiddenZoneId() {
@@ -574,14 +589,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
      * 
      */
     @Import(name="secondaryZoneId")
     private @Nullable Output<String> secondaryZoneId;
 
     /**
-     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
      * 
      */
     public Optional<Output<String>> secondaryZoneId() {
@@ -794,6 +809,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.backupTime = $.backupTime;
         this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.dbInstanceClass = $.dbInstanceClass;
+        this.dbInstanceReleaseProtection = $.dbInstanceReleaseProtection;
         this.dbInstanceStorage = $.dbInstanceStorage;
         this.effectiveTime = $.effectiveTime;
         this.enableBackupLog = $.enableBackupLog;
@@ -1056,6 +1072,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dbInstanceReleaseProtection Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceReleaseProtection(@Nullable Output<Boolean> dbInstanceReleaseProtection) {
+            $.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceReleaseProtection Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceReleaseProtection(Boolean dbInstanceReleaseProtection) {
+            return dbInstanceReleaseProtection(Output.of(dbInstanceReleaseProtection));
+        }
+
+        /**
          * @param dbInstanceStorage User-defined DB instance storage space.Unit: GB. Value range:
          * - Custom storage space.
          * - 10-GB increments.
@@ -1207,7 +1244,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
          * 
          * @return builder
          * 
@@ -1218,7 +1255,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
          * 
          * @return builder
          * 
@@ -1653,7 +1690,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
          * 
          * @return builder
          * 
@@ -1664,7 +1701,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
          * 
          * @return builder
          * 

@@ -83,7 +83,7 @@ export interface GetKeyPairsResult {
     /**
      * A list of key pairs. Each element contains the following attributes:
      *
-     * @deprecated Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+     * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      */
     readonly keyPairs: outputs.ecs.GetKeyPairsKeyPair[];
     readonly nameRegex?: string;

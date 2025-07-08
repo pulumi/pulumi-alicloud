@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.121.0+.
+// > **NOTE:** Available since v1.121.0.
 //
 // ## Example Usage
 //
@@ -25,22 +25,43 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetEcsKeyPairs(ctx, &ecs.GetEcsKeyPairsArgs{
-//				Ids: []string{
-//					"key_pair_name",
-//				},
-//				NameRegex: pulumi.StringRef("key_pair_name"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstEcsKeyPairId", example.Pairs[0].Id)
+//			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
+//				KeyPairName:     pulumi.String(name),
+//				PublicKey:       pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("KeyPair"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := ecs.GetEcsKeyPairsOutput(ctx, ecs.GetEcsKeyPairsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultEcsKeyPair.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecsKeyPairId0", ids.ApplyT(func(ids ecs.GetEcsKeyPairsResult) (*string, error) {
+//				return &ids.Pairs[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -58,7 +79,7 @@ func GetEcsKeyPairs(ctx *pulumi.Context, args *GetEcsKeyPairsArgs, opts ...pulum
 
 // A collection of arguments for invoking getEcsKeyPairs.
 type GetEcsKeyPairsArgs struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// A list of Key Pair IDs.
 	Ids []string `pulumi:"ids"`
@@ -66,25 +87,33 @@ type GetEcsKeyPairsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The resource group Id.
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	Tags            map[string]string `pulumi:"tags"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsKeyPairs.
 type GetEcsKeyPairsResult struct {
+	// The fingerprint of the Key Pair.
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
-	// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
-	KeyPairs        []GetEcsKeyPairsKeyPair `pulumi:"keyPairs"`
-	NameRegex       *string                 `pulumi:"nameRegex"`
-	Names           []string                `pulumi:"names"`
-	OutputFile      *string                 `pulumi:"outputFile"`
-	Pairs           []GetEcsKeyPairsPair    `pulumi:"pairs"`
-	ResourceGroupId *string                 `pulumi:"resourceGroupId"`
-	Tags            map[string]string       `pulumi:"tags"`
+	// (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+	//
+	// Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
+	KeyPairs  []GetEcsKeyPairsKeyPair `pulumi:"keyPairs"`
+	NameRegex *string                 `pulumi:"nameRegex"`
+	// A list of Key Pair names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecs Key Pairs. Each element contains the following attributes:
+	Pairs []GetEcsKeyPairsPair `pulumi:"pairs"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tags of the Key Pair.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetEcsKeyPairsResultOutput {
@@ -98,7 +127,7 @@ func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, op
 
 // A collection of arguments for invoking getEcsKeyPairs.
 type GetEcsKeyPairsOutputArgs struct {
-	// The finger print of the key pair.
+	// The fingerprint of the key pair.
 	FingerPrint pulumi.StringPtrInput `pulumi:"fingerPrint"`
 	// A list of Key Pair IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -106,9 +135,10 @@ type GetEcsKeyPairsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The resource group Id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	Tags            pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsKeyPairsOutputArgs) ElementType() reflect.Type {
@@ -130,6 +160,7 @@ func (o GetEcsKeyPairsResultOutput) ToGetEcsKeyPairsResultOutputWithContext(ctx 
 	return o
 }
 
+// The fingerprint of the Key Pair.
 func (o GetEcsKeyPairsResultOutput) FingerPrint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.FingerPrint }).(pulumi.StringPtrOutput)
 }
@@ -143,7 +174,9 @@ func (o GetEcsKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
+// (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+//
+// Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
 func (o GetEcsKeyPairsResultOutput) KeyPairs() GetEcsKeyPairsKeyPairArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) []GetEcsKeyPairsKeyPair { return v.KeyPairs }).(GetEcsKeyPairsKeyPairArrayOutput)
 }
@@ -152,6 +185,7 @@ func (o GetEcsKeyPairsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Key Pair names.
 func (o GetEcsKeyPairsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -160,14 +194,17 @@ func (o GetEcsKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Key Pairs. Each element contains the following attributes:
 func (o GetEcsKeyPairsResultOutput) Pairs() GetEcsKeyPairsPairArrayOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) []GetEcsKeyPairsPair { return v.Pairs }).(GetEcsKeyPairsPairArrayOutput)
 }
 
+// The ID of the resource group.
 func (o GetEcsKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the Key Pair.
 func (o GetEcsKeyPairsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
