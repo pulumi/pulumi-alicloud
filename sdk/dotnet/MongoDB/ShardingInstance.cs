@@ -120,6 +120,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Output("backupInterval")]
+        public Output<string> BackupInterval { get; private set; } = null!;
+
+        /// <summary>
         /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         /// </summary>
         [Output("backupPeriods")]
@@ -144,10 +150,22 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("dbInstanceReleaseProtection")]
+        public Output<bool?> DbInstanceReleaseProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Output("hiddenZoneId")]
+        public Output<string?> HiddenZoneId { get; private set; } = null!;
 
         /// <summary>
         /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -225,6 +243,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> RetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Output("secondaryZoneId")]
+        public Output<string?> SecondaryZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Output("securityGroupId")]
@@ -241,6 +265,14 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("shardLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: Standard backup.
+        /// - `Flash `: Single-digit second backup.
+        /// </summary>
+        [Output("snapshotBackupType")]
+        public Output<string> SnapshotBackupType { get; private set; } = null!;
 
         /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -357,6 +389,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
+        /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -394,10 +432,22 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbInstanceReleaseProtection")]
+        public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Input("hiddenZoneId")]
+        public Input<string>? HiddenZoneId { get; set; }
 
         /// <summary>
         /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -481,6 +531,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Input("securityGroupId")]
@@ -509,6 +565,14 @@ namespace Pulumi.AliCloud.MongoDB
             get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListArgs>());
             set => _shardLists = value;
         }
+
+        /// <summary>
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: Standard backup.
+        /// - `Flash `: Single-digit second backup.
+        /// </summary>
+        [Input("snapshotBackupType")]
+        public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -589,6 +653,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
+        /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
@@ -626,10 +696,22 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbInstanceReleaseProtection")]
+        public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Input("hiddenZoneId")]
+        public Input<string>? HiddenZoneId { get; set; }
 
         /// <summary>
         /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -719,6 +801,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? RetentionPeriod { get; set; }
 
         /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Input("securityGroupId")]
@@ -747,6 +835,14 @@ namespace Pulumi.AliCloud.MongoDB
             get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListGetArgs>());
             set => _shardLists = value;
         }
+
+        /// <summary>
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: Standard backup.
+        /// - `Flash `: Single-digit second backup.
+        /// </summary>
+        [Input("snapshotBackupType")]
+        public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

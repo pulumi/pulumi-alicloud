@@ -141,10 +141,10 @@ type Instance struct {
 	InstanceGroupCount pulumi.IntPtrOutput `pulumi:"instanceGroupCount"`
 	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringOutput `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes.
-	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+	// The specification of segment nodes. Valid values:
+	// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+	// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrOutput `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
@@ -292,10 +292,10 @@ type instanceState struct {
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
 	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes.
-	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+	// The specification of segment nodes. Valid values:
+	// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+	// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
@@ -402,10 +402,10 @@ type InstanceState struct {
 	InstanceGroupCount pulumi.IntPtrInput
 	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringPtrInput
-	// The specification of segment nodes.
-	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+	// The specification of segment nodes. Valid values:
+	// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+	// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
 	// The ip whitelist. See `ipWhitelist` below.
@@ -514,10 +514,10 @@ type instanceArgs struct {
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
 	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes.
-	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+	// The specification of segment nodes. Valid values:
+	// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+	// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
@@ -619,10 +619,10 @@ type InstanceArgs struct {
 	InstanceGroupCount pulumi.IntPtrInput
 	// The network type of the instance. Valid values: `VPC`.
 	InstanceNetworkType pulumi.StringPtrInput
-	// The specification of segment nodes.
-	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+	// The specification of segment nodes. Valid values:
+	// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+	// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
 	// The ip whitelist. See `ipWhitelist` below.
@@ -856,10 +856,10 @@ func (o InstanceOutput) InstanceNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceNetworkType }).(pulumi.StringOutput)
 }
 
-// The specification of segment nodes.
-// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+// The specification of segment nodes. Valid values:
+// - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+// - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+// - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 // > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 func (o InstanceOutput) InstanceSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceSpec }).(pulumi.StringPtrOutput)

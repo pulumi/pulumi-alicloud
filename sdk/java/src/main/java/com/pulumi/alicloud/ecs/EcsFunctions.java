@@ -4534,7 +4534,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4548,6 +4548,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4563,12 +4567,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4582,7 +4600,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4596,6 +4614,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4611,12 +4633,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4630,7 +4666,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4644,6 +4680,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4659,12 +4699,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4678,7 +4732,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4692,6 +4746,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4707,12 +4765,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4726,7 +4798,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4740,6 +4812,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4755,12 +4831,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4774,7 +4864,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4788,6 +4878,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4803,12 +4897,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -4822,7 +4930,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -4836,6 +4944,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsKeyPairsArgs;
      * import java.util.List;
@@ -4851,12 +4963,26 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids("key_pair_name")
-     *             .nameRegex("key_pair_name")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "KeyPair")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
+     *             .ids(defaultEcsKeyPair.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
      *     }
      * }
      * }
@@ -5007,11 +5133,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5162,11 +5288,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5317,11 +5443,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5472,11 +5598,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5627,11 +5753,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5782,11 +5908,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }
@@ -5937,11 +6063,11 @@ public final class EcsFunctions {
      *                     .build())
      *             .build());
      * 
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *         final var ids = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
      *     }
      * }
      * }

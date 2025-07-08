@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsKeyPairsResult {
+    /**
+     * @return The fingerprint of the Key Pair.
+     * 
+     */
     private @Nullable String fingerPrint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,20 +28,42 @@ public final class GetEcsKeyPairsResult {
     private String id;
     private List<String> ids;
     /**
+     * @return (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+     * 
      * @deprecated
-     * Field &#39;key_pairs&#39; has been deprecated from provider version 1.121.0. New field &#39;pairs&#39; instead.
+     * Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead. */
+    @Deprecated /* Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
     private List<GetEcsKeyPairsKeyPair> keyPairs;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecs Key Pairs. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsKeyPairsPair> pairs;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The tags of the Key Pair.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetEcsKeyPairsResult() {}
+    /**
+     * @return The fingerprint of the Key Pair.
+     * 
+     */
     public Optional<String> fingerPrint() {
         return Optional.ofNullable(this.fingerPrint);
     }
@@ -52,29 +78,47 @@ public final class GetEcsKeyPairsResult {
         return this.ids;
     }
     /**
+     * @return (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
+     * 
      * @deprecated
-     * Field &#39;key_pairs&#39; has been deprecated from provider version 1.121.0. New field &#39;pairs&#39; instead.
+     * Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead. */
+    @Deprecated /* Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
     public List<GetEcsKeyPairsKeyPair> keyPairs() {
         return this.keyPairs;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecs Key Pairs. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsKeyPairsPair> pairs() {
         return this.pairs;
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The tags of the Key Pair.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

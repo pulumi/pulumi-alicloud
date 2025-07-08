@@ -40,6 +40,7 @@ __all__ = [
     'ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger',
     'ClusterNodeGroupCostOptimizedConfig',
     'ClusterNodeGroupDataDisk',
+    'ClusterNodeGroupPrivatePoolOptions',
     'ClusterNodeGroupSpotBidPrice',
     'ClusterNodeGroupSubscriptionConfig',
     'ClusterNodeGroupSystemDisk',
@@ -581,6 +582,8 @@ class ClusterNodeGroup(dict):
             suggest = "node_resize_strategy"
         elif key == "paymentType":
             suggest = "payment_type"
+        elif key == "privatePoolOptions":
+            suggest = "private_pool_options"
         elif key == "spotBidPrices":
             suggest = "spot_bid_prices"
         elif key == "spotInstanceRemedy":
@@ -620,6 +623,7 @@ class ClusterNodeGroup(dict):
                  graceful_shutdown: Optional[builtins.bool] = None,
                  node_resize_strategy: Optional[builtins.str] = None,
                  payment_type: Optional[builtins.str] = None,
+                 private_pool_options: Optional['outputs.ClusterNodeGroupPrivatePoolOptions'] = None,
                  spot_bid_prices: Optional[Sequence['outputs.ClusterNodeGroupSpotBidPrice']] = None,
                  spot_instance_remedy: Optional[builtins.bool] = None,
                  spot_strategy: Optional[builtins.str] = None,
@@ -641,6 +645,7 @@ class ClusterNodeGroup(dict):
         :param builtins.bool graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param builtins.str node_resize_strategy: Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         :param builtins.str payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param 'ClusterNodeGroupPrivatePoolOptionsArgs' private_pool_options: The node group specific private pool resources. See `private_pool_options` below.
         :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param builtins.bool spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         :param builtins.str spot_strategy: The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
@@ -670,6 +675,8 @@ class ClusterNodeGroup(dict):
             pulumi.set(__self__, "node_resize_strategy", node_resize_strategy)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if private_pool_options is not None:
+            pulumi.set(__self__, "private_pool_options", private_pool_options)
         if spot_bid_prices is not None:
             pulumi.set(__self__, "spot_bid_prices", spot_bid_prices)
         if spot_instance_remedy is not None:
@@ -794,6 +801,14 @@ class ClusterNodeGroup(dict):
         Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="privatePoolOptions")
+    def private_pool_options(self) -> Optional['outputs.ClusterNodeGroupPrivatePoolOptions']:
+        """
+        The node group specific private pool resources. See `private_pool_options` below.
+        """
+        return pulumi.get(self, "private_pool_options")
 
     @property
     @pulumi.getter(name="spotBidPrices")
@@ -2100,6 +2115,56 @@ class ClusterNodeGroupDataDisk(dict):
         Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         """
         return pulumi.get(self, "performance_level")
+
+
+@pulumi.output_type
+class ClusterNodeGroupPrivatePoolOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchCriteria":
+            suggest = "match_criteria"
+        elif key == "privatePoolIds":
+            suggest = "private_pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeGroupPrivatePoolOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeGroupPrivatePoolOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeGroupPrivatePoolOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_criteria: Optional[builtins.str] = None,
+                 private_pool_ids: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str match_criteria: The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+        :param Sequence[builtins.str] private_pool_ids: The node group specific private pool resource ids.
+        """
+        if match_criteria is not None:
+            pulumi.set(__self__, "match_criteria", match_criteria)
+        if private_pool_ids is not None:
+            pulumi.set(__self__, "private_pool_ids", private_pool_ids)
+
+    @property
+    @pulumi.getter(name="matchCriteria")
+    def match_criteria(self) -> Optional[builtins.str]:
+        """
+        The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+        """
+        return pulumi.get(self, "match_criteria")
+
+    @property
+    @pulumi.getter(name="privatePoolIds")
+    def private_pool_ids(self) -> Optional[Sequence[builtins.str]]:
+        """
+        The node group specific private pool resource ids.
+        """
+        return pulumi.get(self, "private_pool_ids")
 
 
 @pulumi.output_type

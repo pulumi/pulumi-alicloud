@@ -106,15 +106,15 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly policy!: pulumi.Output<string>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
     /**
-     * The interval for automatic rotation.
+     * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
     public readonly secretData!: pulumi.Output<string>;
     /**
@@ -122,15 +122,17 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly secretDataType!: pulumi.Output<string | undefined>;
     /**
-     * The name of the secret.
+     * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     public readonly secretName!: pulumi.Output<string>;
     /**
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
      * - `Rds`: ApsaraDB RDS secret.
+     * - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
      * - `RAMCredentials`: RAM secret.
      * - `ECS`: ECS secret.
+     * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
     public readonly secretType!: pulumi.Output<string>;
     /**
@@ -261,15 +263,15 @@ export interface SecretState {
      */
     policy?: pulumi.Input<string>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**
-     * The interval for automatic rotation.
+     * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
     secretData?: pulumi.Input<string>;
     /**
@@ -277,15 +279,17 @@ export interface SecretState {
      */
     secretDataType?: pulumi.Input<string>;
     /**
-     * The name of the secret.
+     * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     secretName?: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
      * - `Rds`: ApsaraDB RDS secret.
+     * - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
      * - `RAMCredentials`: RAM secret.
      * - `ECS`: ECS secret.
+     * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -335,15 +339,15 @@ export interface SecretArgs {
      */
     policy?: pulumi.Input<string>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**
-     * The interval for automatic rotation.
+     * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
     secretData: pulumi.Input<string>;
     /**
@@ -351,15 +355,17 @@ export interface SecretArgs {
      */
     secretDataType?: pulumi.Input<string>;
     /**
-     * The name of the secret.
+     * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     secretName: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
      * - `Rds`: ApsaraDB RDS secret.
+     * - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
      * - `RAMCredentials`: RAM secret.
      * - `ECS`: ECS secret.
+     * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
     secretType?: pulumi.Input<string>;
     /**

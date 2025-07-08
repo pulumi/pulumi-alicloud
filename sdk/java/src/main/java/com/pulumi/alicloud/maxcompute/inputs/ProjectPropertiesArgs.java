@@ -20,14 +20,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     public static final ProjectPropertiesArgs Empty = new ProjectPropertiesArgs();
 
     /**
-     * Whether to allow full table scan. Default: false
+     * Whether to allow full table scan. Default: `false`.
      * 
      */
     @Import(name="allowFullScan")
     private @Nullable Output<Boolean> allowFullScan;
 
     /**
-     * @return Whether to allow full table scan. Default: false
+     * @return Whether to allow full table scan. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> allowFullScan() {
@@ -35,18 +35,33 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to turn on Decimal2.0
+     * Whether to turn on Decimal2.0.
      * 
      */
     @Import(name="enableDecimal2")
     private @Nullable Output<Boolean> enableDecimal2;
 
     /**
-     * @return Whether to turn on Decimal2.0
+     * @return Whether to turn on Decimal2.0.
      * 
      */
     public Optional<Output<Boolean>> enableDecimal2() {
         return Optional.ofNullable(this.enableDecimal2);
+    }
+
+    /**
+     * Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="enableDr")
+    private @Nullable Output<Boolean> enableDr;
+
+    /**
+     * @return Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDr() {
+        return Optional.ofNullable(this.enableDr);
     }
 
     /**
@@ -170,6 +185,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     private ProjectPropertiesArgs(ProjectPropertiesArgs $) {
         this.allowFullScan = $.allowFullScan;
         this.enableDecimal2 = $.enableDecimal2;
+        this.enableDr = $.enableDr;
         this.encryption = $.encryption;
         this.retentionDays = $.retentionDays;
         this.sqlMeteringMax = $.sqlMeteringMax;
@@ -197,7 +213,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowFullScan Whether to allow full table scan. Default: false
+         * @param allowFullScan Whether to allow full table scan. Default: `false`.
          * 
          * @return builder
          * 
@@ -208,7 +224,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowFullScan Whether to allow full table scan. Default: false
+         * @param allowFullScan Whether to allow full table scan. Default: `false`.
          * 
          * @return builder
          * 
@@ -218,7 +234,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableDecimal2 Whether to turn on Decimal2.0
+         * @param enableDecimal2 Whether to turn on Decimal2.0.
          * 
          * @return builder
          * 
@@ -229,13 +245,34 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableDecimal2 Whether to turn on Decimal2.0
+         * @param enableDecimal2 Whether to turn on Decimal2.0.
          * 
          * @return builder
          * 
          */
         public Builder enableDecimal2(Boolean enableDecimal2) {
             return enableDecimal2(Output.of(enableDecimal2));
+        }
+
+        /**
+         * @param enableDr Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDr(@Nullable Output<Boolean> enableDr) {
+            $.enableDr = enableDr;
+            return this;
+        }
+
+        /**
+         * @param enableDr Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDr(Boolean enableDr) {
+            return enableDr(Output.of(enableDr));
         }
 
         /**

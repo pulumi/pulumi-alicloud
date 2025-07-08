@@ -7,6 +7,7 @@ import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupAckConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupAutoScalingPolicyArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupCostOptimizedConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
+import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupPrivatePoolOptionsArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSpotBidPriceArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSubscriptionConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
@@ -222,6 +223,21 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The node group specific private pool resources. See `private_pool_options` below.
+     * 
+     */
+    @Import(name="privatePoolOptions")
+    private @Nullable Output<ClusterNodeGroupPrivatePoolOptionsArgs> privatePoolOptions;
+
+    /**
+     * @return The node group specific private pool resources. See `private_pool_options` below.
+     * 
+     */
+    public Optional<Output<ClusterNodeGroupPrivatePoolOptionsArgs>> privatePoolOptions() {
+        return Optional.ofNullable(this.privatePoolOptions);
+    }
+
+    /**
      * The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
      * 
      */
@@ -342,6 +358,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         this.nodeGroupType = $.nodeGroupType;
         this.nodeResizeStrategy = $.nodeResizeStrategy;
         this.paymentType = $.paymentType;
+        this.privatePoolOptions = $.privatePoolOptions;
         this.spotBidPrices = $.spotBidPrices;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
         this.spotStrategy = $.spotStrategy;
@@ -670,6 +687,27 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param privatePoolOptions The node group specific private pool resources. See `private_pool_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptions(@Nullable Output<ClusterNodeGroupPrivatePoolOptionsArgs> privatePoolOptions) {
+            $.privatePoolOptions = privatePoolOptions;
+            return this;
+        }
+
+        /**
+         * @param privatePoolOptions The node group specific private pool resources. See `private_pool_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptions(ClusterNodeGroupPrivatePoolOptionsArgs privatePoolOptions) {
+            return privatePoolOptions(Output.of(privatePoolOptions));
         }
 
         /**

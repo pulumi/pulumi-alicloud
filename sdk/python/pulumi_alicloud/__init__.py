@@ -1915,6 +1915,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/policyAdvancedConfig",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig": "PolicyAdvancedConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/vpcCenTrFirewall",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -4139,6 +4147,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/customScenePolicy",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/customScenePolicy:CustomScenePolicy": "CustomScenePolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/edgeContainerApp",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4327,6 +4343,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/siteDeliveryTask:SiteDeliveryTask": "SiteDeliveryTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/version",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/version:Version": "Version"
   }
  },
  {
@@ -8047,6 +8071,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
    "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule": "ClientUserDefineRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "threatdetection/cycleTask",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/cycleTask:CycleTask": "CycleTask"
   }
  },
  {

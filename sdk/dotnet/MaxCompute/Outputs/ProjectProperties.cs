@@ -14,13 +14,17 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class ProjectProperties
     {
         /// <summary>
-        /// Whether to allow full table scan. Default: false
+        /// Whether to allow full table scan. Default: `false`.
         /// </summary>
         public readonly bool? AllowFullScan;
         /// <summary>
-        /// Whether to turn on Decimal2.0
+        /// Whether to turn on Decimal2.0.
         /// </summary>
         public readonly bool? EnableDecimal2;
+        /// <summary>
+        /// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+        /// </summary>
+        public readonly bool? EnableDr;
         /// <summary>
         /// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
         /// &gt; **NOTE :**:
@@ -65,6 +69,8 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
 
             bool? enableDecimal2,
 
+            bool? enableDr,
+
             Outputs.ProjectPropertiesEncryption? encryption,
 
             int? retentionDays,
@@ -79,6 +85,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         {
             AllowFullScan = allowFullScan;
             EnableDecimal2 = enableDecimal2;
+            EnableDr = enableDr;
             Encryption = encryption;
             RetentionDays = retentionDays;
             SqlMeteringMax = sqlMeteringMax;

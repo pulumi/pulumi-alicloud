@@ -93,6 +93,8 @@ type Project struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Indicates whether data storage by schema is supported. Valid values:
+	ThreeTierModel pulumi.BoolOutput `pulumi:"threeTierModel"`
 	// Project type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -155,6 +157,8 @@ type projectState struct {
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
+	// Indicates whether data storage by schema is supported. Valid values:
+	ThreeTierModel *bool `pulumi:"threeTierModel"`
 	// Project type
 	Type *string `pulumi:"type"`
 }
@@ -188,6 +192,8 @@ type ProjectState struct {
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
+	// Indicates whether data storage by schema is supported. Valid values:
+	ThreeTierModel pulumi.BoolPtrInput
 	// Project type
 	Type pulumi.StringPtrInput
 }
@@ -219,6 +225,8 @@ type projectArgs struct {
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
+	// Indicates whether data storage by schema is supported. Valid values:
+	ThreeTierModel *bool `pulumi:"threeTierModel"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -245,6 +253,8 @@ type ProjectArgs struct {
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
+	// Indicates whether data storage by schema is supported. Valid values:
+	ThreeTierModel pulumi.BoolPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -399,6 +409,11 @@ func (o ProjectOutput) Status() pulumi.StringOutput {
 // The tag of the resource
 func (o ProjectOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether data storage by schema is supported. Valid values:
+func (o ProjectOutput) ThreeTierModel() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.ThreeTierModel }).(pulumi.BoolOutput)
 }
 
 // Project type

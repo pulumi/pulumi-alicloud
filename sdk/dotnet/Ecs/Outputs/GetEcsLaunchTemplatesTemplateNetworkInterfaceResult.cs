@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PrimaryIp;
         /// <summary>
-        /// The security group ID.
+        /// The security group ID must be one in the same VPC.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The vswitch id.
+        /// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         /// </summary>
         public readonly string VswitchId;
 

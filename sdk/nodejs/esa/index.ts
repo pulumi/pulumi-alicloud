@@ -35,6 +35,11 @@ export type CompressionRule = import("./compressionRule").CompressionRule;
 export const CompressionRule: typeof import("./compressionRule").CompressionRule = null as any;
 utilities.lazyLoad(exports, ["CompressionRule"], () => require("./compressionRule"));
 
+export { CustomScenePolicyArgs, CustomScenePolicyState } from "./customScenePolicy";
+export type CustomScenePolicy = import("./customScenePolicy").CustomScenePolicy;
+export const CustomScenePolicy: typeof import("./customScenePolicy").CustomScenePolicy = null as any;
+utilities.lazyLoad(exports, ["CustomScenePolicy"], () => require("./customScenePolicy"));
+
 export { EdgeContainerAppArgs, EdgeContainerAppState } from "./edgeContainerApp";
 export type EdgeContainerApp = import("./edgeContainerApp").EdgeContainerApp;
 export const EdgeContainerApp: typeof import("./edgeContainerApp").EdgeContainerApp = null as any;
@@ -160,6 +165,11 @@ export type SiteDeliveryTask = import("./siteDeliveryTask").SiteDeliveryTask;
 export const SiteDeliveryTask: typeof import("./siteDeliveryTask").SiteDeliveryTask = null as any;
 utilities.lazyLoad(exports, ["SiteDeliveryTask"], () => require("./siteDeliveryTask"));
 
+export { VersionArgs, VersionState } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
+
 export { VideoProcessingArgs, VideoProcessingState } from "./videoProcessing";
 export type VideoProcessing = import("./videoProcessing").VideoProcessing;
 export const VideoProcessing: typeof import("./videoProcessing").VideoProcessing = null as any;
@@ -197,6 +207,8 @@ const _module = {
                 return new ClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/compressionRule:CompressionRule":
                 return new CompressionRule(name, <any>undefined, { urn })
+            case "alicloud:esa/customScenePolicy:CustomScenePolicy":
+                return new CustomScenePolicy(name, <any>undefined, { urn })
             case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
                 return new EdgeContainerApp(name, <any>undefined, { urn })
             case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
@@ -245,6 +257,8 @@ const _module = {
                 return new Site(name, <any>undefined, { urn })
             case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
+            case "alicloud:esa/version:Version":
+                return new Version(name, <any>undefined, { urn })
             case "alicloud:esa/videoProcessing:VideoProcessing":
                 return new VideoProcessing(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoom:WaitingRoom":
@@ -264,6 +278,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/certificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCaCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/compressionRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/customScenePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerApp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerAppRecord", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpRequestHeaderModificationRule", _module)
@@ -288,6 +303,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/version", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomEvent", _module)

@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.alikafka;
 
+import com.pulumi.alicloud.alikafka.inputs.InstanceConfluentConfigArgs;
+import com.pulumi.alicloud.alikafka.inputs.InstanceServerlessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -38,6 +40,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The configurations of Confluent. See `confluent_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * 
+     */
+    @Import(name="confluentConfig")
+    private @Nullable Output<InstanceConfluentConfigArgs> confluentConfig;
+
+    /**
+     * @return The configurations of Confluent. See `confluent_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+     * 
+     */
+    public Optional<Output<InstanceConfluentConfigArgs>> confluentConfig() {
+        return Optional.ofNullable(this.confluentConfig);
+    }
+
+    /**
      * The number of partitions in a topic that is automatically created.
      * 
      */
@@ -54,8 +73,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      * 
      */
     @Import(name="deployType", required=true)
@@ -63,8 +80,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      * 
      */
     public Output<Integer> deployType() {
@@ -73,32 +88,34 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
      * 
      */
-    @Import(name="diskSize", required=true)
-    private Output<Integer> diskSize;
+    @Import(name="diskSize")
+    private @Nullable Output<Integer> diskSize;
 
     /**
      * @return The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
      * 
      */
-    public Output<Integer> diskSize() {
-        return this.diskSize;
+    public Optional<Output<Integer>> diskSize() {
+        return Optional.ofNullable(this.diskSize);
     }
 
     /**
-     * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * The disk type of the instance. Valid values:
      * 
      */
-    @Import(name="diskType", required=true)
-    private Output<Integer> diskType;
+    @Import(name="diskType")
+    private @Nullable Output<Integer> diskType;
 
     /**
-     * @return The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * @return The disk type of the instance. Valid values:
      * 
      */
-    public Output<Integer> diskType() {
-        return this.diskType;
+    public Optional<Output<Integer>> diskType() {
+        return Optional.ofNullable(this.diskType);
     }
 
     /**
@@ -144,6 +161,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> enableAutoTopic() {
         return Optional.ofNullable(this.enableAutoTopic);
+    }
+
+    /**
+     * The type of the Instance. Default value: `alikafka`. Valid values:
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return The type of the Instance. Default value: `alikafka`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
     }
 
     /**
@@ -211,14 +243,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      * 
      */
     @Import(name="paidType")
     private @Nullable Output<String> paidType;
 
     /**
-     * @return The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      * 
      */
     public Optional<Output<String>> paidType() {
@@ -238,6 +270,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> partitionNum() {
         return Optional.ofNullable(this.partitionNum);
+    }
+
+    /**
+     * The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -286,14 +333,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * 
+     */
+    @Import(name="serverlessConfig")
+    private @Nullable Output<InstanceServerlessConfigArgs> serverlessConfig;
+
+    /**
+     * @return The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+     * 
+     */
+    public Optional<Output<InstanceServerlessConfigArgs>> serverlessConfig() {
+        return Optional.ofNullable(this.serverlessConfig);
+    }
+
+    /**
+     * The version of the Instance. Valid values:
+     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     @Import(name="serviceVersion")
     private @Nullable Output<String> serviceVersion;
 
     /**
-     * @return The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * @return The version of the Instance. Valid values:
+     * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      * 
      */
     public Optional<Output<String>> serviceVersion() {
@@ -301,14 +371,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * The instance edition. Default value: `normal`. Valid values:
+     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     @Import(name="specType")
     private @Nullable Output<String> specType;
 
     /**
-     * @return The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * @return The instance edition. Default value: `normal`. Valid values:
+     * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+     * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
      * 
      */
     public Optional<Output<String>> specType() {
@@ -378,15 +454,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of attaching vswitch to instance.
      * 
      */
-    @Import(name="vswitchId", required=true)
-    private Output<String> vswitchId;
+    @Import(name="vswitchId")
+    private @Nullable Output<String> vswitchId;
 
     /**
      * @return The ID of attaching vswitch to instance.
      * 
      */
-    public Output<String> vswitchId() {
-        return this.vswitchId;
+    public Optional<Output<String>> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
     }
 
     /**
@@ -423,6 +499,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.config = $.config;
+        this.confluentConfig = $.confluentConfig;
         this.defaultTopicPartitionNum = $.defaultTopicPartitionNum;
         this.deployType = $.deployType;
         this.diskSize = $.diskSize;
@@ -430,15 +507,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.eipMax = $.eipMax;
         this.enableAutoGroup = $.enableAutoGroup;
         this.enableAutoTopic = $.enableAutoTopic;
+        this.instanceType = $.instanceType;
         this.ioMax = $.ioMax;
         this.ioMaxSpec = $.ioMaxSpec;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.paidType = $.paidType;
         this.partitionNum = $.partitionNum;
+        this.password = $.password;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroup = $.securityGroup;
         this.selectedZones = $.selectedZones;
+        this.serverlessConfig = $.serverlessConfig;
         this.serviceVersion = $.serviceVersion;
         this.specType = $.specType;
         this.tags = $.tags;
@@ -491,6 +571,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param confluentConfig The configurations of Confluent. See `confluent_config` below.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confluentConfig(@Nullable Output<InstanceConfluentConfigArgs> confluentConfig) {
+            $.confluentConfig = confluentConfig;
+            return this;
+        }
+
+        /**
+         * @param confluentConfig The configurations of Confluent. See `confluent_config` below.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confluentConfig(InstanceConfluentConfigArgs confluentConfig) {
+            return confluentConfig(Output.of(confluentConfig));
+        }
+
+        /**
          * @param defaultTopicPartitionNum The number of partitions in a topic that is automatically created.
          * 
          * @return builder
@@ -513,8 +616,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deployType The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-         * - 4: eip/vpc instance
-         * - 5: vpc instance.
          * 
          * @return builder
          * 
@@ -526,8 +627,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deployType The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-         * - 4: eip/vpc instance
-         * - 5: vpc instance.
          * 
          * @return builder
          * 
@@ -538,17 +637,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskSize The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
          * 
          * @return builder
          * 
          */
-        public Builder diskSize(Output<Integer> diskSize) {
+        public Builder diskSize(@Nullable Output<Integer> diskSize) {
             $.diskSize = diskSize;
             return this;
         }
 
         /**
          * @param diskSize The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
          * 
          * @return builder
          * 
@@ -558,18 +659,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskType The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+         * @param diskType The disk type of the instance. Valid values:
          * 
          * @return builder
          * 
          */
-        public Builder diskType(Output<Integer> diskType) {
+        public Builder diskType(@Nullable Output<Integer> diskType) {
             $.diskType = diskType;
             return this;
         }
 
         /**
-         * @param diskType The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+         * @param diskType The disk type of the instance. Valid values:
          * 
          * @return builder
          * 
@@ -639,6 +740,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableAutoTopic(String enableAutoTopic) {
             return enableAutoTopic(Output.of(enableAutoTopic));
+        }
+
+        /**
+         * @param instanceType The type of the Instance. Default value: `alikafka`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType The type of the Instance. Default value: `alikafka`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         /**
@@ -730,7 +852,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paidType The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+         * @param paidType The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
          * 
          * @return builder
          * 
@@ -741,7 +863,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paidType The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+         * @param paidType The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
          * 
          * @return builder
          * 
@@ -769,6 +891,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder partitionNum(Integer partitionNum) {
             return partitionNum(Output.of(partitionNum));
+        }
+
+        /**
+         * @param password The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
         }
 
         /**
@@ -845,7 +988,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceVersion The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+         * @param serverlessConfig The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfig(@Nullable Output<InstanceServerlessConfigArgs> serverlessConfig) {
+            $.serverlessConfig = serverlessConfig;
+            return this;
+        }
+
+        /**
+         * @param serverlessConfig The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+         * &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfig(InstanceServerlessConfigArgs serverlessConfig) {
+            return serverlessConfig(Output.of(serverlessConfig));
+        }
+
+        /**
+         * @param serviceVersion The version of the Instance. Valid values:
+         * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+         * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+         * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
          * 
          * @return builder
          * 
@@ -856,7 +1025,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceVersion The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+         * @param serviceVersion The version of the Instance. Valid values:
+         * - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+         * - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+         * - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
          * 
          * @return builder
          * 
@@ -866,7 +1038,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specType The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+         * @param specType The instance edition. Default value: `normal`. Valid values:
+         * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+         * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+         * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
          * 
          * @return builder
          * 
@@ -877,7 +1052,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specType The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+         * @param specType The instance edition. Default value: `normal`. Valid values:
+         * - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+         * - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+         * - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
          * 
          * @return builder
          * 
@@ -969,7 +1147,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder vswitchId(Output<String> vswitchId) {
+        public Builder vswitchId(@Nullable Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
@@ -1039,15 +1217,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         public InstanceArgs build() {
             if ($.deployType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "deployType");
-            }
-            if ($.diskSize == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "diskSize");
-            }
-            if ($.diskType == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "diskType");
-            }
-            if ($.vswitchId == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
             }
             return $;
         }

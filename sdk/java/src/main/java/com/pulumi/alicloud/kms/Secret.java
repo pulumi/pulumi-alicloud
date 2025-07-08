@@ -219,42 +219,42 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.policy;
     }
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> recoveryWindowInDays;
 
     /**
-     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     public Output<Optional<Integer>> recoveryWindowInDays() {
         return Codegen.optional(this.recoveryWindowInDays);
     }
     /**
-     * The interval for automatic rotation.
+     * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
-     * @return The interval for automatic rotation.
+     * @return The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Output<Optional<String>> rotationInterval() {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
-     * @return The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
      * 
      */
     public Output<String> secretData() {
@@ -275,14 +275,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secretDataType);
     }
     /**
-     * The name of the secret.
+     * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Export(name="secretName", refs={String.class}, tree="[0]")
     private Output<String> secretName;
 
     /**
-     * @return The name of the secret.
+     * @return The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Output<String> secretName() {
@@ -292,8 +292,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
      * - `Rds`: ApsaraDB RDS secret.
+     * - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
      * - `RAMCredentials`: RAM secret.
      * - `ECS`: ECS secret.
+     * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
@@ -303,8 +305,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * @return The type of the secret. Valid values:
      * - `Generic`: Generic secret.
      * - `Rds`: ApsaraDB RDS secret.
+     * - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
      * - `RAMCredentials`: RAM secret.
      * - `ECS`: ECS secret.
+     * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      * 
      */
     public Output<String> secretType() {

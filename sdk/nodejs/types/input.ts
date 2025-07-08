@@ -1618,6 +1618,94 @@ export namespace alb {
     }
 }
 
+export namespace alikafka {
+    export interface InstanceConfluentConfig {
+        /**
+         * The number of CPU cores of Connect.
+         */
+        connectCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of Connect.
+         */
+        connectReplica?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of Control Center.
+         */
+        controlCenterCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of Control Center.
+         */
+        controlCenterReplica?: pulumi.Input<number>;
+        /**
+         * The disk capacity of Control Center.
+         */
+        controlCenterStorage?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of the Kafka broker.
+         */
+        kafkaCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of the Kafka broker.
+         */
+        kafkaReplica?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of Kafka Rest Proxy.
+         */
+        kafkaRestProxyCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of Kafka Rest Proxy.
+         */
+        kafkaRestProxyReplica?: pulumi.Input<number>;
+        /**
+         * The disk capacity of the Kafka broker.
+         */
+        kafkaStorage?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of ksqlDB.
+         */
+        ksqlCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of ksqlDB.
+         */
+        ksqlReplica?: pulumi.Input<number>;
+        /**
+         * The disk capacity of ksqlDB.
+         */
+        ksqlStorage?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of Schema Registry.
+         */
+        schemaRegistryCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of Schema Registry.
+         */
+        schemaRegistryReplica?: pulumi.Input<number>;
+        /**
+         * The number of CPU cores of ZooKeeper.
+         */
+        zookeeperCu?: pulumi.Input<number>;
+        /**
+         * The number of replicas of ZooKeeper.
+         */
+        zookeeperReplica?: pulumi.Input<number>;
+        /**
+         * The disk capacity of ZooKeeper.
+         */
+        zookeeperStorage?: pulumi.Input<number>;
+    }
+
+    export interface InstanceServerlessConfig {
+        /**
+         * The reserved capacity for publishing messages.
+         */
+        reservedPublishCapacity?: pulumi.Input<number>;
+        /**
+         * The reserved capacity for subscribing to message.
+         */
+        reservedSubscribeCapacity?: pulumi.Input<number>;
+    }
+}
+
 export namespace amqp {
 }
 
@@ -9475,6 +9563,10 @@ export namespace emrv2 {
          */
         paymentType?: pulumi.Input<string>;
         /**
+         * The node group specific private pool resources. See `privatePoolOptions` below.
+         */
+        privatePoolOptions?: pulumi.Input<inputs.emrv2.ClusterNodeGroupPrivatePoolOptions>;
+        /**
          * The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
          */
         spotBidPrices?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupSpotBidPrice>[]>;
@@ -9860,6 +9952,17 @@ export namespace emrv2 {
          * The size of a data disk, at least 40. Unit: GiB.
          */
         size: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupPrivatePoolOptions {
+        /**
+         * The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+         */
+        matchCriteria?: pulumi.Input<string>;
+        /**
+         * The node group specific private pool resource ids.
+         */
+        privatePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterNodeGroupSpotBidPrice {
@@ -13432,13 +13535,17 @@ export namespace maxcompute {
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan. Default: false
+         * Whether to allow full table scan. Default: `false`.
          */
         allowFullScan?: pulumi.Input<boolean>;
         /**
-         * Whether to turn on Decimal2.0
+         * Whether to turn on Decimal2.0.
          */
         enableDecimal2?: pulumi.Input<boolean>;
+        /**
+         * Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+         */
+        enableDr?: pulumi.Input<boolean>;
         /**
          * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
          * > **NOTE :**:

@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// MongoDB instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+    /// $ pulumi import alicloud:mongodb/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/instance:Instance")]
@@ -149,6 +149,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> DbInstanceClass { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("dbInstanceReleaseProtection")]
+        public Output<bool?> DbInstanceReleaseProtection { get; private set; } = null!;
+
+        /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
         /// - Custom storage space.
         /// - 10-GB increments.
@@ -193,7 +199,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         /// </summary>
         [Output("hiddenZoneId")]
         public Output<string?> HiddenZoneId { get; private set; } = null!;
@@ -316,7 +322,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         /// </summary>
         [Output("secondaryZoneId")]
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
@@ -522,6 +528,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> DbInstanceClass { get; set; } = null!;
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbInstanceReleaseProtection")]
+        public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
         /// - Custom storage space.
         /// - 10-GB increments.
@@ -566,7 +578,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         /// </summary>
         [Input("hiddenZoneId")]
         public Input<string>? HiddenZoneId { get; set; }
@@ -683,7 +695,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         /// </summary>
         [Input("secondaryZoneId")]
         public Input<string>? SecondaryZoneId { get; set; }
@@ -853,6 +865,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? DbInstanceClass { get; set; }
 
         /// <summary>
+        /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbInstanceReleaseProtection")]
+        public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
         /// - Custom storage space.
         /// - 10-GB increments.
@@ -897,7 +915,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         /// </summary>
         [Input("hiddenZoneId")]
         public Input<string>? HiddenZoneId { get; set; }
@@ -1038,7 +1056,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         /// </summary>
         [Input("secondaryZoneId")]
         public Input<string>? SecondaryZoneId { get; set; }

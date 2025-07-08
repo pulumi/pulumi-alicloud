@@ -343,10 +343,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceNetworkType;
     }
     /**
-     * The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * The specification of segment nodes. Valid values:
+     * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
@@ -354,10 +354,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> instanceSpec;
 
     /**
-     * @return The specification of segment nodes.
-     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * @return The specification of segment nodes. Valid values:
+     * - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */

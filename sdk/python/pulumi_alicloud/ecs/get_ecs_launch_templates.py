@@ -82,7 +82,7 @@ class GetEcsLaunchTemplatesResult:
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> Optional[builtins.str]:
         """
-        The Launch Template Name.
+        The name of the Launch Template.
         """
         return pulumi.get(self, "launch_template_name")
 
@@ -113,7 +113,8 @@ class GetEcsLaunchTemplatesResult:
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> Optional[Mapping[str, builtins.str]]:
         """
-        The template tags.
+        The tags of the launch template.
+        > **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "template_tags")
 
@@ -242,18 +243,18 @@ def get_ecs_launch_templates(enable_details: Optional[builtins.bool] = None,
                 "size": 20,
             },
         ])
-    example = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
-    pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
+    ids = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
+    pulumi.export("ecsLaunchTemplateId0", ids.templates[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[builtins.str] ids: A list of Launch Template IDs.
-    :param builtins.str launch_template_name: The Launch Template Name.
+    :param builtins.str launch_template_name: The name of the launch template.
     :param builtins.str name_regex: A regex string to filter results by Launch Template name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str template_resource_group_id: The template resource group id.
-    :param Mapping[str, builtins.str] template_tags: The template tags.
+    :param builtins.str template_resource_group_id: The ID of the Resource Group.
+    :param Mapping[str, builtins.str] template_tags: The tags of the launch template.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -375,18 +376,18 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
                 "size": 20,
             },
         ])
-    example = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
-    pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
+    ids = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
+    pulumi.export("ecsLaunchTemplateId0", ids.templates[0].id)
     ```
 
 
-    :param builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[builtins.str] ids: A list of Launch Template IDs.
-    :param builtins.str launch_template_name: The Launch Template Name.
+    :param builtins.str launch_template_name: The name of the launch template.
     :param builtins.str name_regex: A regex string to filter results by Launch Template name.
     :param builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param builtins.str template_resource_group_id: The template resource group id.
-    :param Mapping[str, builtins.str] template_tags: The template tags.
+    :param builtins.str template_resource_group_id: The ID of the Resource Group.
+    :param Mapping[str, builtins.str] template_tags: The tags of the launch template.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

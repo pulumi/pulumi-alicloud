@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -10,7 +12,7 @@ import * as utilities from "../utilities";
  * AliKafka instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+ * $ pulumi import alicloud:alikafka/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -47,23 +49,27 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<string>;
     /**
+     * The configurations of Confluent. See `confluentConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+     */
+    public readonly confluentConfig!: pulumi.Output<outputs.alikafka.InstanceConfluentConfig>;
+    /**
      * The number of partitions in a topic that is automatically created.
      */
     public readonly defaultTopicPartitionNum!: pulumi.Output<number>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      */
     public readonly deployType!: pulumi.Output<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
-    public readonly diskSize!: pulumi.Output<number>;
+    public readonly diskSize!: pulumi.Output<number | undefined>;
     /**
-     * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * The disk type of the instance. Valid values:
      */
-    public readonly diskType!: pulumi.Output<number>;
+    public readonly diskType!: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
      */
@@ -93,6 +99,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly groupUsed!: pulumi.Output<number>;
     /**
+     * The type of the Instance. Default value: `alikafka`. Valid values:
+     */
+    public readonly instanceType!: pulumi.Output<string>;
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     public readonly ioMax!: pulumi.Output<number>;
@@ -115,7 +125,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
     /**
@@ -130,6 +140,10 @@ export class Instance extends pulumi.CustomResource {
      * (Available since v1.214.1) The number of used partitions.
      */
     public /*out*/ readonly partitionUsed!: pulumi.Output<number>;
+    /**
+     * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
@@ -147,11 +161,22 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
-     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+     */
+    public readonly serverlessConfig!: pulumi.Output<outputs.alikafka.InstanceServerlessConfig>;
+    /**
+     * The version of the Instance. Valid values:
+     * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
     public readonly serviceVersion!: pulumi.Output<string>;
     /**
-     * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * The instance edition. Default value: `normal`. Valid values:
+     * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     public readonly specType!: pulumi.Output<string | undefined>;
     /**
@@ -222,6 +247,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["confluentConfig"] = state ? state.confluentConfig : undefined;
             resourceInputs["defaultTopicPartitionNum"] = state ? state.defaultTopicPartitionNum : undefined;
             resourceInputs["deployType"] = state ? state.deployType : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
@@ -233,6 +259,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
             resourceInputs["groupLeft"] = state ? state.groupLeft : undefined;
             resourceInputs["groupUsed"] = state ? state.groupUsed : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["ioMax"] = state ? state.ioMax : undefined;
             resourceInputs["ioMaxSpec"] = state ? state.ioMaxSpec : undefined;
             resourceInputs["isPartitionBuy"] = state ? state.isPartitionBuy : undefined;
@@ -242,10 +269,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["partitionLeft"] = state ? state.partitionLeft : undefined;
             resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
             resourceInputs["partitionUsed"] = state ? state.partitionUsed : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["saslDomainEndpoint"] = state ? state.saslDomainEndpoint : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
             resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
+            resourceInputs["serverlessConfig"] = state ? state.serverlessConfig : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             resourceInputs["specType"] = state ? state.specType : undefined;
             resourceInputs["sslDomainEndpoint"] = state ? state.sslDomainEndpoint : undefined;
@@ -265,16 +294,8 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.deployType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deployType'");
             }
-            if ((!args || args.diskSize === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'diskSize'");
-            }
-            if ((!args || args.diskType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'diskType'");
-            }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vswitchId'");
-            }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["confluentConfig"] = args ? args.confluentConfig : undefined;
             resourceInputs["defaultTopicPartitionNum"] = args ? args.defaultTopicPartitionNum : undefined;
             resourceInputs["deployType"] = args ? args.deployType : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
@@ -282,15 +303,18 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["eipMax"] = args ? args.eipMax : undefined;
             resourceInputs["enableAutoGroup"] = args ? args.enableAutoGroup : undefined;
             resourceInputs["enableAutoTopic"] = args ? args.enableAutoTopic : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["ioMax"] = args ? args.ioMax : undefined;
             resourceInputs["ioMaxSpec"] = args ? args.ioMaxSpec : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paidType"] = args ? args.paidType : undefined;
             resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
             resourceInputs["selectedZones"] = args ? args.selectedZones : undefined;
+            resourceInputs["serverlessConfig"] = args ? args.serverlessConfig : undefined;
             resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
             resourceInputs["specType"] = args ? args.specType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -329,21 +353,25 @@ export interface InstanceState {
      */
     config?: pulumi.Input<string>;
     /**
+     * The configurations of Confluent. See `confluentConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+     */
+    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig>;
+    /**
      * The number of partitions in a topic that is automatically created.
      */
     defaultTopicPartitionNum?: pulumi.Input<number>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      */
     deployType?: pulumi.Input<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * The disk type of the instance. Valid values:
      */
     diskType?: pulumi.Input<number>;
     /**
@@ -375,6 +403,10 @@ export interface InstanceState {
      */
     groupUsed?: pulumi.Input<number>;
     /**
+     * The type of the Instance. Default value: `alikafka`. Valid values:
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     ioMax?: pulumi.Input<number>;
@@ -397,7 +429,7 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
     paidType?: pulumi.Input<string>;
     /**
@@ -412,6 +444,10 @@ export interface InstanceState {
      * (Available since v1.214.1) The number of used partitions.
      */
     partitionUsed?: pulumi.Input<number>;
+    /**
+     * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+     */
+    password?: pulumi.Input<string>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
@@ -429,11 +465,22 @@ export interface InstanceState {
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+     */
+    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig>;
+    /**
+     * The version of the Instance. Valid values:
+     * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
     serviceVersion?: pulumi.Input<string>;
     /**
-     * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * The instance edition. Default value: `normal`. Valid values:
+     * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     specType?: pulumi.Input<string>;
     /**
@@ -501,23 +548,27 @@ export interface InstanceArgs {
      */
     config?: pulumi.Input<string>;
     /**
+     * The configurations of Confluent. See `confluentConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+     */
+    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig>;
+    /**
      * The number of partitions in a topic that is automatically created.
      */
     defaultTopicPartitionNum?: pulumi.Input<number>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-     * - 4: eip/vpc instance
-     * - 5: vpc instance.
      */
     deployType: pulumi.Input<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
-    diskSize: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
     /**
-     * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+     * The disk type of the instance. Valid values:
      */
-    diskType: pulumi.Input<number>;
+    diskType?: pulumi.Input<number>;
     /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
@@ -530,6 +581,10 @@ export interface InstanceArgs {
      * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
      */
     enableAutoTopic?: pulumi.Input<string>;
+    /**
+     * The type of the Instance. Default value: `alikafka`. Valid values:
+     */
+    instanceType?: pulumi.Input<string>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
@@ -549,13 +604,17 @@ export interface InstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
     paidType?: pulumi.Input<string>;
     /**
      * The number of partitions.
      */
     partitionNum?: pulumi.Input<number>;
+    /**
+     * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+     */
+    password?: pulumi.Input<string>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
@@ -569,11 +628,22 @@ export interface InstanceArgs {
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+     */
+    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig>;
+    /**
+     * The version of the Instance. Valid values:
+     * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+     * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
     serviceVersion?: pulumi.Input<string>;
     /**
-     * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+     * The instance edition. Default value: `normal`. Valid values:
+     * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     specType?: pulumi.Input<string>;
     /**
@@ -596,7 +666,7 @@ export interface InstanceArgs {
     /**
      * The ID of attaching vswitch to instance.
      */
-    vswitchId: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
      */

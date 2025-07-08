@@ -109,6 +109,8 @@ class ProjectProperties(dict):
             suggest = "allow_full_scan"
         elif key == "enableDecimal2":
             suggest = "enable_decimal2"
+        elif key == "enableDr":
+            suggest = "enable_dr"
         elif key == "retentionDays":
             suggest = "retention_days"
         elif key == "sqlMeteringMax":
@@ -132,6 +134,7 @@ class ProjectProperties(dict):
     def __init__(__self__, *,
                  allow_full_scan: Optional[builtins.bool] = None,
                  enable_decimal2: Optional[builtins.bool] = None,
+                 enable_dr: Optional[builtins.bool] = None,
                  encryption: Optional['outputs.ProjectPropertiesEncryption'] = None,
                  retention_days: Optional[builtins.int] = None,
                  sql_metering_max: Optional[builtins.str] = None,
@@ -139,8 +142,9 @@ class ProjectProperties(dict):
                  timezone: Optional[builtins.str] = None,
                  type_system: Optional[builtins.str] = None):
         """
-        :param builtins.bool allow_full_scan: Whether to allow full table scan. Default: false
-        :param builtins.bool enable_decimal2: Whether to turn on Decimal2.0
+        :param builtins.bool allow_full_scan: Whether to allow full table scan. Default: `false`.
+        :param builtins.bool enable_decimal2: Whether to turn on Decimal2.0.
+        :param builtins.bool enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param 'ProjectPropertiesEncryptionArgs' encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
@@ -165,6 +169,8 @@ class ProjectProperties(dict):
             pulumi.set(__self__, "allow_full_scan", allow_full_scan)
         if enable_decimal2 is not None:
             pulumi.set(__self__, "enable_decimal2", enable_decimal2)
+        if enable_dr is not None:
+            pulumi.set(__self__, "enable_dr", enable_dr)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if retention_days is not None:
@@ -182,7 +188,7 @@ class ProjectProperties(dict):
     @pulumi.getter(name="allowFullScan")
     def allow_full_scan(self) -> Optional[builtins.bool]:
         """
-        Whether to allow full table scan. Default: false
+        Whether to allow full table scan. Default: `false`.
         """
         return pulumi.get(self, "allow_full_scan")
 
@@ -190,9 +196,17 @@ class ProjectProperties(dict):
     @pulumi.getter(name="enableDecimal2")
     def enable_decimal2(self) -> Optional[builtins.bool]:
         """
-        Whether to turn on Decimal2.0
+        Whether to turn on Decimal2.0.
         """
         return pulumi.get(self, "enable_decimal2")
+
+    @property
+    @pulumi.getter(name="enableDr")
+    def enable_dr(self) -> Optional[builtins.bool]:
+        """
+        Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_dr")
 
     @property
     @pulumi.getter

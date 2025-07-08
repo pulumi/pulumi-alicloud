@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientCertificate{}
 	case "alicloud:esa/compressionRule:CompressionRule":
 		r = &CompressionRule{}
+	case "alicloud:esa/customScenePolicy:CustomScenePolicy":
+		r = &CustomScenePolicy{}
 	case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
 		r = &EdgeContainerApp{}
 	case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
@@ -81,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Site{}
 	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
 		r = &SiteDeliveryTask{}
+	case "alicloud:esa/version:Version":
+		r = &Version{}
 	case "alicloud:esa/videoProcessing:VideoProcessing":
 		r = &VideoProcessing{}
 	case "alicloud:esa/waitingRoom:WaitingRoom":
@@ -130,6 +134,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/compressionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/customScenePolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -250,6 +259,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/siteDeliveryTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/version",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

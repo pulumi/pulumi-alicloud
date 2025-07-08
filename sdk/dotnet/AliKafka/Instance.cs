@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// AliKafka instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
+    /// $ pulumi import alicloud:alikafka/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instance:Instance")]
@@ -29,6 +29,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
+        /// The configurations of Confluent. See `confluent_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        /// </summary>
+        [Output("confluentConfig")]
+        public Output<Outputs.InstanceConfluentConfig> ConfluentConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The number of partitions in a topic that is automatically created.
         /// </summary>
         [Output("defaultTopicPartitionNum")]
@@ -36,23 +43,22 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        /// - 4: eip/vpc instance
-        /// - 5: vpc instance.
         /// </summary>
         [Output("deployType")]
         public Output<int> DeployType { get; private set; } = null!;
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         /// </summary>
         [Output("diskSize")]
-        public Output<int> DiskSize { get; private set; } = null!;
+        public Output<int?> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        /// The disk type of the instance. Valid values:
         /// </summary>
         [Output("diskType")]
-        public Output<int> DiskType { get; private set; } = null!;
+        public Output<int?> DiskType { get; private set; } = null!;
 
         /// <summary>
         /// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
@@ -97,6 +103,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> GroupUsed { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the Instance. Default value: `alikafka`. Valid values:
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Output("ioMax")]
@@ -129,7 +141,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         /// </summary>
         [Output("paidType")]
         public Output<string?> PaidType { get; private set; } = null!;
@@ -151,6 +163,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("partitionUsed")]
         public Output<int> PartitionUsed { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -177,13 +195,26 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        /// </summary>
+        [Output("serverlessConfig")]
+        public Output<Outputs.InstanceServerlessConfig> ServerlessConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the Instance. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         /// </summary>
         [Output("serviceVersion")]
         public Output<string> ServiceVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        /// The instance edition. Default value: `normal`. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         /// </summary>
         [Output("specType")]
         public Output<string?> SpecType { get; private set; } = null!;
@@ -317,6 +348,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Config { get; set; }
 
         /// <summary>
+        /// The configurations of Confluent. See `confluent_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        /// </summary>
+        [Input("confluentConfig")]
+        public Input<Inputs.InstanceConfluentConfigArgs>? ConfluentConfig { get; set; }
+
+        /// <summary>
         /// The number of partitions in a topic that is automatically created.
         /// </summary>
         [Input("defaultTopicPartitionNum")]
@@ -324,23 +362,22 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        /// - 4: eip/vpc instance
-        /// - 5: vpc instance.
         /// </summary>
         [Input("deployType", required: true)]
         public Input<int> DeployType { get; set; } = null!;
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         /// </summary>
-        [Input("diskSize", required: true)]
-        public Input<int> DiskSize { get; set; } = null!;
+        [Input("diskSize")]
+        public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        /// The disk type of the instance. Valid values:
         /// </summary>
-        [Input("diskType", required: true)]
-        public Input<int> DiskType { get; set; } = null!;
+        [Input("diskType")]
+        public Input<int>? DiskType { get; set; }
 
         /// <summary>
         /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
@@ -359,6 +396,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("enableAutoTopic")]
         public Input<string>? EnableAutoTopic { get; set; }
+
+        /// <summary>
+        /// The type of the Instance. Default value: `alikafka`. Valid values:
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
@@ -387,7 +430,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         /// </summary>
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }
@@ -397,6 +440,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("partitionNum")]
         public Input<int>? PartitionNum { get; set; }
+
+        /// <summary>
+        /// The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -423,13 +472,26 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        /// </summary>
+        [Input("serverlessConfig")]
+        public Input<Inputs.InstanceServerlessConfigArgs>? ServerlessConfig { get; set; }
+
+        /// <summary>
+        /// The version of the Instance. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }
 
         /// <summary>
-        /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        /// The instance edition. Default value: `normal`. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         /// </summary>
         [Input("specType")]
         public Input<string>? SpecType { get; set; }
@@ -464,8 +526,8 @@ namespace Pulumi.AliCloud.AliKafka
         /// <summary>
         /// The ID of attaching vswitch to instance.
         /// </summary>
-        [Input("vswitchId", required: true)]
-        public Input<string> VswitchId { get; set; } = null!;
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         [Input("vswitchIds")]
         private InputList<string>? _vswitchIds;
@@ -501,6 +563,13 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Config { get; set; }
 
         /// <summary>
+        /// The configurations of Confluent. See `confluent_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
+        /// </summary>
+        [Input("confluentConfig")]
+        public Input<Inputs.InstanceConfluentConfigGetArgs>? ConfluentConfig { get; set; }
+
+        /// <summary>
         /// The number of partitions in a topic that is automatically created.
         /// </summary>
         [Input("defaultTopicPartitionNum")]
@@ -508,20 +577,19 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        /// - 4: eip/vpc instance
-        /// - 5: vpc instance.
         /// </summary>
         [Input("deployType")]
         public Input<int>? DeployType { get; set; }
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        /// The disk type of the instance. Valid values:
         /// </summary>
         [Input("diskType")]
         public Input<int>? DiskType { get; set; }
@@ -569,6 +637,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? GroupUsed { get; set; }
 
         /// <summary>
+        /// The type of the Instance. Default value: `alikafka`. Valid values:
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Input("ioMax")]
@@ -601,7 +675,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         /// </summary>
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }
@@ -623,6 +697,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("partitionUsed")]
         public Input<int>? PartitionUsed { get; set; }
+
+        /// <summary>
+        /// The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -655,13 +735,26 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
+        /// </summary>
+        [Input("serverlessConfig")]
+        public Input<Inputs.InstanceServerlessConfigGetArgs>? ServerlessConfig { get; set; }
+
+        /// <summary>
+        /// The version of the Instance. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }
 
         /// <summary>
-        /// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        /// The instance edition. Default value: `normal`. Valid values:
+        /// - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+        /// - If `instance_type` is set to `alikafka_serverless`. Valid values: `normal`.
+        /// - If `instance_type` is set to `alikafka_confluent`. Valid values: `professional`, `enterprise`.
         /// </summary>
         [Input("specType")]
         public Input<string>? SpecType { get; set; }

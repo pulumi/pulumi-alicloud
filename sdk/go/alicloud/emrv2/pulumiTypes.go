@@ -632,6 +632,8 @@ type ClusterNodeGroup struct {
 	NodeResizeStrategy *string `pulumi:"nodeResizeStrategy"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType *string `pulumi:"paymentType"`
+	// The node group specific private pool resources. See `privatePoolOptions` below.
+	PrivatePoolOptions *ClusterNodeGroupPrivatePoolOptions `pulumi:"privatePoolOptions"`
 	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
 	SpotBidPrices []ClusterNodeGroupSpotBidPrice `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -686,6 +688,8 @@ type ClusterNodeGroupArgs struct {
 	NodeResizeStrategy pulumi.StringPtrInput `pulumi:"nodeResizeStrategy"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	// The node group specific private pool resources. See `privatePoolOptions` below.
+	PrivatePoolOptions ClusterNodeGroupPrivatePoolOptionsPtrInput `pulumi:"privatePoolOptions"`
 	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
 	SpotBidPrices ClusterNodeGroupSpotBidPriceArrayInput `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -816,6 +820,11 @@ func (o ClusterNodeGroupOutput) NodeResizeStrategy() pulumi.StringPtrOutput {
 // Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 func (o ClusterNodeGroupOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The node group specific private pool resources. See `privatePoolOptions` below.
+func (o ClusterNodeGroupOutput) PrivatePoolOptions() ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupPrivatePoolOptions { return v.PrivatePoolOptions }).(ClusterNodeGroupPrivatePoolOptionsPtrOutput)
 }
 
 // The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
@@ -3711,6 +3720,162 @@ func (o ClusterNodeGroupDataDiskArrayOutput) Index(i pulumi.IntInput) ClusterNod
 	}).(ClusterNodeGroupDataDiskOutput)
 }
 
+type ClusterNodeGroupPrivatePoolOptions struct {
+	// The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+	MatchCriteria *string `pulumi:"matchCriteria"`
+	// The node group specific private pool resource ids.
+	PrivatePoolIds []string `pulumi:"privatePoolIds"`
+}
+
+// ClusterNodeGroupPrivatePoolOptionsInput is an input type that accepts ClusterNodeGroupPrivatePoolOptionsArgs and ClusterNodeGroupPrivatePoolOptionsOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupPrivatePoolOptionsInput` via:
+//
+//	ClusterNodeGroupPrivatePoolOptionsArgs{...}
+type ClusterNodeGroupPrivatePoolOptionsInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupPrivatePoolOptionsOutput() ClusterNodeGroupPrivatePoolOptionsOutput
+	ToClusterNodeGroupPrivatePoolOptionsOutputWithContext(context.Context) ClusterNodeGroupPrivatePoolOptionsOutput
+}
+
+type ClusterNodeGroupPrivatePoolOptionsArgs struct {
+	// The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+	MatchCriteria pulumi.StringPtrInput `pulumi:"matchCriteria"`
+	// The node group specific private pool resource ids.
+	PrivatePoolIds pulumi.StringArrayInput `pulumi:"privatePoolIds"`
+}
+
+func (ClusterNodeGroupPrivatePoolOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupPrivatePoolOptions)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupPrivatePoolOptionsArgs) ToClusterNodeGroupPrivatePoolOptionsOutput() ClusterNodeGroupPrivatePoolOptionsOutput {
+	return i.ToClusterNodeGroupPrivatePoolOptionsOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupPrivatePoolOptionsArgs) ToClusterNodeGroupPrivatePoolOptionsOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupPrivatePoolOptionsOutput)
+}
+
+func (i ClusterNodeGroupPrivatePoolOptionsArgs) ToClusterNodeGroupPrivatePoolOptionsPtrOutput() ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return i.ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupPrivatePoolOptionsArgs) ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupPrivatePoolOptionsOutput).ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupPrivatePoolOptionsPtrInput is an input type that accepts ClusterNodeGroupPrivatePoolOptionsArgs, ClusterNodeGroupPrivatePoolOptionsPtr and ClusterNodeGroupPrivatePoolOptionsPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupPrivatePoolOptionsPtrInput` via:
+//
+//	        ClusterNodeGroupPrivatePoolOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupPrivatePoolOptionsPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupPrivatePoolOptionsPtrOutput() ClusterNodeGroupPrivatePoolOptionsPtrOutput
+	ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(context.Context) ClusterNodeGroupPrivatePoolOptionsPtrOutput
+}
+
+type clusterNodeGroupPrivatePoolOptionsPtrType ClusterNodeGroupPrivatePoolOptionsArgs
+
+func ClusterNodeGroupPrivatePoolOptionsPtr(v *ClusterNodeGroupPrivatePoolOptionsArgs) ClusterNodeGroupPrivatePoolOptionsPtrInput {
+	return (*clusterNodeGroupPrivatePoolOptionsPtrType)(v)
+}
+
+func (*clusterNodeGroupPrivatePoolOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupPrivatePoolOptions)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupPrivatePoolOptionsPtrType) ToClusterNodeGroupPrivatePoolOptionsPtrOutput() ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return i.ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupPrivatePoolOptionsPtrType) ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupPrivatePoolOptionsPtrOutput)
+}
+
+type ClusterNodeGroupPrivatePoolOptionsOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupPrivatePoolOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupPrivatePoolOptions)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) ToClusterNodeGroupPrivatePoolOptionsOutput() ClusterNodeGroupPrivatePoolOptionsOutput {
+	return o
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) ToClusterNodeGroupPrivatePoolOptionsOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsOutput {
+	return o
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) ToClusterNodeGroupPrivatePoolOptionsPtrOutput() ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return o.ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupPrivatePoolOptions) *ClusterNodeGroupPrivatePoolOptions {
+		return &v
+	}).(ClusterNodeGroupPrivatePoolOptionsPtrOutput)
+}
+
+// The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) MatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupPrivatePoolOptions) *string { return v.MatchCriteria }).(pulumi.StringPtrOutput)
+}
+
+// The node group specific private pool resource ids.
+func (o ClusterNodeGroupPrivatePoolOptionsOutput) PrivatePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupPrivatePoolOptions) []string { return v.PrivatePoolIds }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodeGroupPrivatePoolOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupPrivatePoolOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupPrivatePoolOptions)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsPtrOutput) ToClusterNodeGroupPrivatePoolOptionsPtrOutput() ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsPtrOutput) ToClusterNodeGroupPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupPrivatePoolOptionsPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupPrivatePoolOptionsPtrOutput) Elem() ClusterNodeGroupPrivatePoolOptionsOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupPrivatePoolOptions) ClusterNodeGroupPrivatePoolOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupPrivatePoolOptions
+		return ret
+	}).(ClusterNodeGroupPrivatePoolOptionsOutput)
+}
+
+// The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+func (o ClusterNodeGroupPrivatePoolOptionsPtrOutput) MatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupPrivatePoolOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchCriteria
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node group specific private pool resource ids.
+func (o ClusterNodeGroupPrivatePoolOptionsPtrOutput) PrivatePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupPrivatePoolOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePoolIds
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterNodeGroupSpotBidPrice struct {
 	// The spot bid price of a PayAsYouGo instance.
 	BidPrice int `pulumi:"bidPrice"`
@@ -4934,6 +5099,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupCostOptimizedConfigPtrInput)(nil)).Elem(), ClusterNodeGroupCostOptimizedConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupDataDiskInput)(nil)).Elem(), ClusterNodeGroupDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupDataDiskArrayInput)(nil)).Elem(), ClusterNodeGroupDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupPrivatePoolOptionsInput)(nil)).Elem(), ClusterNodeGroupPrivatePoolOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupPrivatePoolOptionsPtrInput)(nil)).Elem(), ClusterNodeGroupPrivatePoolOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupSpotBidPriceInput)(nil)).Elem(), ClusterNodeGroupSpotBidPriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupSpotBidPriceArrayInput)(nil)).Elem(), ClusterNodeGroupSpotBidPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupSubscriptionConfigInput)(nil)).Elem(), ClusterNodeGroupSubscriptionConfigArgs{})
@@ -4992,6 +5159,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeGroupCostOptimizedConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupDataDiskOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupPrivatePoolOptionsOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupPrivatePoolOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupSpotBidPriceOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupSpotBidPriceArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupSubscriptionConfigOutput{})

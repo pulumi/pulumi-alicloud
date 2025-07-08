@@ -38,8 +38,8 @@ class SecretArgs:
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Secret resource.
-        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
-        :param pulumi.Input[builtins.str] secret_name: The name of the secret.
+        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
+        :param pulumi.Input[builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.str] version_id: The version number of the initial version.
         :param pulumi.Input[builtins.str] description: The description of the secret.
         :param pulumi.Input[builtins.str] dkms_instance_id: The ID of the KMS instance.
@@ -48,14 +48,16 @@ class SecretArgs:
         :param pulumi.Input[builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
-        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
-        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation.
+        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         :param pulumi.Input[builtins.str] secret_type: The type of the secret. Valid values:
                - `Generic`: Generic secret.
                - `Rds`: ApsaraDB RDS secret.
+               - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
                - `RAMCredentials`: RAM secret.
                - `ECS`: ECS secret.
+               - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] version_stages: The stage label that is used to mark the new version.
         """
@@ -93,7 +95,7 @@ class SecretArgs:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Input[builtins.str]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         """
         return pulumi.get(self, "secret_data")
 
@@ -105,7 +107,7 @@ class SecretArgs:
     @pulumi.getter(name="secretName")
     def secret_name(self) -> pulumi.Input[builtins.str]:
         """
-        The name of the secret.
+        The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "secret_name")
 
@@ -213,7 +215,7 @@ class SecretArgs:
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -225,7 +227,7 @@ class SecretArgs:
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The interval for automatic rotation.
+        The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -252,8 +254,10 @@ class SecretArgs:
         The type of the secret. Valid values:
         - `Generic`: Generic secret.
         - `Rds`: ApsaraDB RDS secret.
+        - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         - `RAMCredentials`: RAM secret.
         - `ECS`: ECS secret.
+        - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         """
         return pulumi.get(self, "secret_type")
 
@@ -320,16 +324,18 @@ class _SecretState:
         :param pulumi.Input[builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
-        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
-        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation.
-        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         :param pulumi.Input[builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
-        :param pulumi.Input[builtins.str] secret_name: The name of the secret.
+        :param pulumi.Input[builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.str] secret_type: The type of the secret. Valid values:
                - `Generic`: Generic secret.
                - `Rds`: ApsaraDB RDS secret.
+               - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
                - `RAMCredentials`: RAM secret.
                - `ECS`: ECS secret.
+               - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] version_id: The version number of the initial version.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] version_stages: The stage label that is used to mark the new version.
@@ -497,7 +503,7 @@ class _SecretState:
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -509,7 +515,7 @@ class _SecretState:
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The interval for automatic rotation.
+        The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -521,7 +527,7 @@ class _SecretState:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         """
         return pulumi.get(self, "secret_data")
 
@@ -545,7 +551,7 @@ class _SecretState:
     @pulumi.getter(name="secretName")
     def secret_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the secret.
+        The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "secret_name")
 
@@ -560,8 +566,10 @@ class _SecretState:
         The type of the secret. Valid values:
         - `Generic`: Generic secret.
         - `Rds`: ApsaraDB RDS secret.
+        - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         - `RAMCredentials`: RAM secret.
         - `ECS`: ECS secret.
+        - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         """
         return pulumi.get(self, "secret_type")
 
@@ -672,16 +680,18 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] extended_config: The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
-        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
-        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation.
-        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         :param pulumi.Input[builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
-        :param pulumi.Input[builtins.str] secret_name: The name of the secret.
+        :param pulumi.Input[builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.str] secret_type: The type of the secret. Valid values:
                - `Generic`: Generic secret.
                - `Rds`: ApsaraDB RDS secret.
+               - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
                - `RAMCredentials`: RAM secret.
                - `ECS`: ECS secret.
+               - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] version_id: The version number of the initial version.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] version_stages: The stage label that is used to mark the new version.
@@ -839,16 +849,18 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_delete_without_recovery: Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[builtins.str] policy: The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
-        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
-        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation.
-        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        :param pulumi.Input[builtins.int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        :param pulumi.Input[builtins.str] rotation_interval: The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        :param pulumi.Input[builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         :param pulumi.Input[builtins.str] secret_data_type: The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
-        :param pulumi.Input[builtins.str] secret_name: The name of the secret.
+        :param pulumi.Input[builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[builtins.str] secret_type: The type of the secret. Valid values:
                - `Generic`: Generic secret.
                - `Rds`: ApsaraDB RDS secret.
+               - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
                - `RAMCredentials`: RAM secret.
                - `ECS`: ECS secret.
+               - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[builtins.str] version_id: The version number of the initial version.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] version_stages: The stage label that is used to mark the new version.
@@ -962,7 +974,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
+        Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -970,7 +982,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The interval for automatic rotation.
+        The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -978,7 +990,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Output[builtins.str]:
         """
-        The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         """
         return pulumi.get(self, "secret_data")
 
@@ -994,7 +1006,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretName")
     def secret_name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of the secret.
+        The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "secret_name")
 
@@ -1005,8 +1017,10 @@ class Secret(pulumi.CustomResource):
         The type of the secret. Valid values:
         - `Generic`: Generic secret.
         - `Rds`: ApsaraDB RDS secret.
+        - `Redis`: (Available since v1.253.0) ApsaraDB for Redis secret.
         - `RAMCredentials`: RAM secret.
         - `ECS`: ECS secret.
+        - `PolarDB`: (Available since v1.253.0) PolarDB secret.
         """
         return pulumi.get(self, "secret_type")
 

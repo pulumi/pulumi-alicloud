@@ -118,6 +118,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     */
+    public readonly backupInterval!: pulumi.Output<string>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
@@ -134,9 +138,17 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    public readonly dbInstanceReleaseProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     public readonly engineVersion!: pulumi.Output<string>;
+    /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     */
+    public readonly hiddenZoneId!: pulumi.Output<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
@@ -189,6 +201,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     */
+    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    /**
      * The Security Group ID of ECS.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
@@ -200,6 +216,12 @@ export class ShardingInstance extends pulumi.CustomResource {
      * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
+    /**
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - `Flash `: Single-digit second backup.
+     */
+    public readonly snapshotBackupType!: pulumi.Output<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
@@ -245,11 +267,14 @@ export class ShardingInstance extends pulumi.CustomResource {
             const state = argsOrState as ShardingInstanceState | undefined;
             resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
             resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["configServerLists"] = state ? state.configServerLists : undefined;
+            resourceInputs["dbInstanceReleaseProtection"] = state ? state.dbInstanceReleaseProtection : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["hiddenZoneId"] = state ? state.hiddenZoneId : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
@@ -262,9 +287,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             resourceInputs["shardLists"] = state ? state.shardLists : undefined;
+            resourceInputs["snapshotBackupType"] = state ? state.snapshotBackupType : undefined;
             resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -285,11 +312,14 @@ export class ShardingInstance extends pulumi.CustomResource {
             }
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["configServerLists"] = args ? args.configServerLists : undefined;
+            resourceInputs["dbInstanceReleaseProtection"] = args ? args.dbInstanceReleaseProtection : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["hiddenZoneId"] = args ? args.hiddenZoneId : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
@@ -301,9 +331,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             resourceInputs["shardLists"] = args ? args.shardLists : undefined;
+            resourceInputs["snapshotBackupType"] = args ? args.snapshotBackupType : undefined;
             resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -333,6 +365,10 @@ export interface ShardingInstanceState {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     */
+    backupInterval?: pulumi.Input<string>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -349,9 +385,17 @@ export interface ShardingInstanceState {
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion?: pulumi.Input<string>;
+    /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     */
+    hiddenZoneId?: pulumi.Input<string>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
@@ -404,6 +448,10 @@ export interface ShardingInstanceState {
      */
     retentionPeriod?: pulumi.Input<number>;
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     */
+    secondaryZoneId?: pulumi.Input<string>;
+    /**
      * The Security Group ID of ECS.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -415,6 +463,12 @@ export interface ShardingInstanceState {
      * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
+    /**
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - `Flash `: Single-digit second backup.
+     */
+    snapshotBackupType?: pulumi.Input<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
@@ -459,6 +513,10 @@ export interface ShardingInstanceArgs {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     */
+    backupInterval?: pulumi.Input<string>;
+    /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
@@ -475,9 +533,17 @@ export interface ShardingInstanceArgs {
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
+    /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     */
+    hiddenZoneId?: pulumi.Input<string>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
@@ -526,6 +592,10 @@ export interface ShardingInstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     */
+    secondaryZoneId?: pulumi.Input<string>;
+    /**
      * The Security Group ID of ECS.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -537,6 +607,12 @@ export interface ShardingInstanceArgs {
      * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
+    /**
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - `Flash `: Single-digit second backup.
+     */
+    snapshotBackupType?: pulumi.Input<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */

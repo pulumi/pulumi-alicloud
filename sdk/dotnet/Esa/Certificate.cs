@@ -75,10 +75,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CertName { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// 
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate content.
         /// </summary>
         [Output("certificate")]
         public Output<string> CertificateValue { get; private set; } = null!;
@@ -199,10 +196,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// 
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate content.
         /// </summary>
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }
@@ -273,10 +267,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// 
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate content.
         /// </summary>
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }

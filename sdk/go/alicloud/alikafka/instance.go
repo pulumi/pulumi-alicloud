@@ -17,7 +17,7 @@ import (
 // AliKafka instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+// $ pulumi import alicloud:alikafka/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -25,16 +25,18 @@ type Instance struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringOutput `pulumi:"config"`
+	// The configurations of Confluent. See `confluentConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+	ConfluentConfig InstanceConfluentConfigOutput `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
 	DefaultTopicPartitionNum pulumi.IntOutput `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-	// - 4: eip/vpc instance
-	// - 5: vpc instance.
 	DeployType pulumi.IntOutput `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
-	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-	DiskType pulumi.IntOutput `pulumi:"diskType"`
+	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
+	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
+	// The disk type of the instance. Valid values:
+	DiskType pulumi.IntPtrOutput `pulumi:"diskType"`
 	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
 	DomainEndpoint pulumi.StringOutput `pulumi:"domainEndpoint"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
@@ -49,6 +51,8 @@ type Instance struct {
 	GroupLeft pulumi.IntOutput `pulumi:"groupLeft"`
 	// (Available since v1.214.1) The number of used groups.
 	GroupUsed pulumi.IntOutput `pulumi:"groupUsed"`
+	// The type of the Instance. Default value: `alikafka`. Valid values:
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -61,7 +65,7 @@ type Instance struct {
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
 	// (Available since v1.214.1) The number of available partitions.
 	PartitionLeft pulumi.IntOutput `pulumi:"partitionLeft"`
@@ -69,6 +73,8 @@ type Instance struct {
 	PartitionNum pulumi.IntPtrOutput `pulumi:"partitionNum"`
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed pulumi.IntOutput `pulumi:"partitionUsed"`
+	// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
@@ -77,9 +83,18 @@ type Instance struct {
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
-	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+	ServerlessConfig InstanceServerlessConfigOutput `pulumi:"serverlessConfig"`
+	// The version of the Instance. Valid values:
+	// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
-	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+	// The instance edition. Default value: `normal`. Valid values:
+	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
 	SslDomainEndpoint pulumi.StringOutput `pulumi:"sslDomainEndpoint"`
@@ -122,15 +137,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.DeployType == nil {
 		return nil, errors.New("invalid value for required argument 'DeployType'")
 	}
-	if args.DiskSize == nil {
-		return nil, errors.New("invalid value for required argument 'DiskSize'")
-	}
-	if args.DiskType == nil {
-		return nil, errors.New("invalid value for required argument 'DiskType'")
-	}
-	if args.VswitchId == nil {
-		return nil, errors.New("invalid value for required argument 'VswitchId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:alikafka/instance:Instance", name, args, &resource, opts...)
@@ -157,15 +163,17 @@ type instanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
+	// The configurations of Confluent. See `confluentConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+	ConfluentConfig *InstanceConfluentConfig `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
 	DefaultTopicPartitionNum *int `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-	// - 4: eip/vpc instance
-	// - 5: vpc instance.
 	DeployType *int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize *int `pulumi:"diskSize"`
-	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+	// The disk type of the instance. Valid values:
 	DiskType *int `pulumi:"diskType"`
 	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
 	DomainEndpoint *string `pulumi:"domainEndpoint"`
@@ -181,6 +189,8 @@ type instanceState struct {
 	GroupLeft *int `pulumi:"groupLeft"`
 	// (Available since v1.214.1) The number of used groups.
 	GroupUsed *int `pulumi:"groupUsed"`
+	// The type of the Instance. Default value: `alikafka`. Valid values:
+	InstanceType *string `pulumi:"instanceType"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -193,7 +203,7 @@ type instanceState struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 	PaidType *string `pulumi:"paidType"`
 	// (Available since v1.214.1) The number of available partitions.
 	PartitionLeft *int `pulumi:"partitionLeft"`
@@ -201,6 +211,8 @@ type instanceState struct {
 	PartitionNum *int `pulumi:"partitionNum"`
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed *int `pulumi:"partitionUsed"`
+	// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+	Password *string `pulumi:"password"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
@@ -209,9 +221,18 @@ type instanceState struct {
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
 	SelectedZones []string `pulumi:"selectedZones"`
-	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+	ServerlessConfig *InstanceServerlessConfig `pulumi:"serverlessConfig"`
+	// The version of the Instance. Valid values:
+	// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
-	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+	// The instance edition. Default value: `normal`. Valid values:
+	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType *string `pulumi:"specType"`
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
 	SslDomainEndpoint *string `pulumi:"sslDomainEndpoint"`
@@ -248,15 +269,17 @@ type InstanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
+	// The configurations of Confluent. See `confluentConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+	ConfluentConfig InstanceConfluentConfigPtrInput
 	// The number of partitions in a topic that is automatically created.
 	DefaultTopicPartitionNum pulumi.IntPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-	// - 4: eip/vpc instance
-	// - 5: vpc instance.
 	DeployType pulumi.IntPtrInput
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize pulumi.IntPtrInput
-	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+	// The disk type of the instance. Valid values:
 	DiskType pulumi.IntPtrInput
 	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
 	DomainEndpoint pulumi.StringPtrInput
@@ -272,6 +295,8 @@ type InstanceState struct {
 	GroupLeft pulumi.IntPtrInput
 	// (Available since v1.214.1) The number of used groups.
 	GroupUsed pulumi.IntPtrInput
+	// The type of the Instance. Default value: `alikafka`. Valid values:
+	InstanceType pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -284,7 +309,7 @@ type InstanceState struct {
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 	PaidType pulumi.StringPtrInput
 	// (Available since v1.214.1) The number of available partitions.
 	PartitionLeft pulumi.IntPtrInput
@@ -292,6 +317,8 @@ type InstanceState struct {
 	PartitionNum pulumi.IntPtrInput
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed pulumi.IntPtrInput
+	// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+	Password pulumi.StringPtrInput
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
 	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
@@ -300,9 +327,18 @@ type InstanceState struct {
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
 	SelectedZones pulumi.StringArrayInput
-	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+	ServerlessConfig InstanceServerlessConfigPtrInput
+	// The version of the Instance. Valid values:
+	// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 	ServiceVersion pulumi.StringPtrInput
-	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+	// The instance edition. Default value: `normal`. Valid values:
+	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrInput
 	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
 	SslDomainEndpoint pulumi.StringPtrInput
@@ -343,22 +379,26 @@ type instanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
+	// The configurations of Confluent. See `confluentConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+	ConfluentConfig *InstanceConfluentConfig `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
 	DefaultTopicPartitionNum *int `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-	// - 4: eip/vpc instance
-	// - 5: vpc instance.
 	DeployType int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-	DiskSize int `pulumi:"diskSize"`
-	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-	DiskType int `pulumi:"diskType"`
+	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
+	DiskSize *int `pulumi:"diskSize"`
+	// The disk type of the instance. Valid values:
+	DiskType *int `pulumi:"diskType"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
 	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
 	EnableAutoGroup *bool `pulumi:"enableAutoGroup"`
 	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
 	EnableAutoTopic *string `pulumi:"enableAutoTopic"`
+	// The type of the Instance. Default value: `alikafka`. Valid values:
+	InstanceType *string `pulumi:"instanceType"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -369,19 +409,30 @@ type instanceArgs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 	PaidType *string `pulumi:"paidType"`
 	// The number of partitions.
 	PartitionNum *int `pulumi:"partitionNum"`
+	// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+	Password *string `pulumi:"password"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
 	SelectedZones []string `pulumi:"selectedZones"`
-	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+	ServerlessConfig *InstanceServerlessConfig `pulumi:"serverlessConfig"`
+	// The version of the Instance. Valid values:
+	// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
-	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+	// The instance edition. Default value: `normal`. Valid values:
+	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -395,7 +446,7 @@ type instanceArgs struct {
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
-	VswitchId string `pulumi:"vswitchId"`
+	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -407,22 +458,26 @@ type InstanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
+	// The configurations of Confluent. See `confluentConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+	ConfluentConfig InstanceConfluentConfigPtrInput
 	// The number of partitions in a topic that is automatically created.
 	DefaultTopicPartitionNum pulumi.IntPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-	// - 4: eip/vpc instance
-	// - 5: vpc instance.
 	DeployType pulumi.IntInput
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-	DiskSize pulumi.IntInput
-	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-	DiskType pulumi.IntInput
+	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
+	DiskSize pulumi.IntPtrInput
+	// The disk type of the instance. Valid values:
+	DiskType pulumi.IntPtrInput
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
 	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
 	EnableAutoGroup pulumi.BoolPtrInput
 	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
 	EnableAutoTopic pulumi.StringPtrInput
+	// The type of the Instance. Default value: `alikafka`. Valid values:
+	InstanceType pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -433,19 +488,30 @@ type InstanceArgs struct {
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 	PaidType pulumi.StringPtrInput
 	// The number of partitions.
 	PartitionNum pulumi.IntPtrInput
+	// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+	Password pulumi.StringPtrInput
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
 	SelectedZones pulumi.StringArrayInput
-	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+	ServerlessConfig InstanceServerlessConfigPtrInput
+	// The version of the Instance. Valid values:
+	// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+	// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 	ServiceVersion pulumi.StringPtrInput
-	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+	// The instance edition. Default value: `normal`. Valid values:
+	// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+	// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+	// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -459,7 +525,7 @@ type InstanceArgs struct {
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
-	VswitchId pulumi.StringInput
+	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
 	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -559,26 +625,31 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
 
+// The configurations of Confluent. See `confluentConfig` below.
+// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
+func (o InstanceOutput) ConfluentConfig() InstanceConfluentConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceConfluentConfigOutput { return v.ConfluentConfig }).(InstanceConfluentConfigOutput)
+}
+
 // The number of partitions in a topic that is automatically created.
 func (o InstanceOutput) DefaultTopicPartitionNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DefaultTopicPartitionNum }).(pulumi.IntOutput)
 }
 
 // The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-// - 4: eip/vpc instance
-// - 5: vpc instance.
 func (o InstanceOutput) DeployType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DeployType }).(pulumi.IntOutput)
 }
 
 // The disk size of the instance. When modify this value, it only supports adjust to a greater value.
-func (o InstanceOutput) DiskSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
+// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
+func (o InstanceOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-func (o InstanceOutput) DiskType() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskType }).(pulumi.IntOutput)
+// The disk type of the instance. Valid values:
+func (o InstanceOutput) DiskType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.DiskType }).(pulumi.IntPtrOutput)
 }
 
 // (Available since v1.234.0) The default endpoint of the instance in domain name mode.
@@ -616,6 +687,11 @@ func (o InstanceOutput) GroupUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.GroupUsed }).(pulumi.IntOutput)
 }
 
+// The type of the Instance. Default value: `alikafka`. Valid values:
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
 // The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 func (o InstanceOutput) IoMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IoMax }).(pulumi.IntOutput)
@@ -643,7 +719,7 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+// The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
 func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
 }
@@ -661,6 +737,11 @@ func (o InstanceOutput) PartitionNum() pulumi.IntPtrOutput {
 // (Available since v1.214.1) The number of used partitions.
 func (o InstanceOutput) PartitionUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionUsed }).(pulumi.IntOutput)
+}
+
+// The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
+func (o InstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -683,12 +764,24 @@ func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
 
-// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
+func (o InstanceOutput) ServerlessConfig() InstanceServerlessConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceServerlessConfigOutput { return v.ServerlessConfig }).(InstanceServerlessConfigOutput)
+}
+
+// The version of the Instance. Valid values:
+// - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
+// - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
+// - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
 func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
-// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+// The instance edition. Default value: `normal`. Valid values:
+// - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
+// - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+// - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
 func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
 }

@@ -294,6 +294,13 @@ type Instance struct {
 	PrimaryIpAddress pulumi.StringOutput `pulumi:"primaryIpAddress"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
+	// The ID of the private pool.
+	PrivatePoolOptionsId pulumi.StringOutput `pulumi:"privatePoolOptionsId"`
+	// The type of the private pool. Default value: `None`. Valid values:
+	// - `Open`: Open private pool.
+	// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+	// - `None`: No private pool. The capacity in private pools is not used.
+	PrivatePoolOptionsMatchCriteria pulumi.StringOutput `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The instance public ip.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The number of queues supported by the ERI.
@@ -574,6 +581,13 @@ type instanceState struct {
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp *string `pulumi:"privateIp"`
+	// The ID of the private pool.
+	PrivatePoolOptionsId *string `pulumi:"privatePoolOptionsId"`
+	// The type of the private pool. Default value: `None`. Valid values:
+	// - `Open`: Open private pool.
+	// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+	// - `None`: No private pool. The capacity in private pools is not used.
+	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The instance public ip.
 	PublicIp *string `pulumi:"publicIp"`
 	// The number of queues supported by the ERI.
@@ -818,6 +832,13 @@ type InstanceState struct {
 	PrimaryIpAddress pulumi.StringPtrInput
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp pulumi.StringPtrInput
+	// The ID of the private pool.
+	PrivatePoolOptionsId pulumi.StringPtrInput
+	// The type of the private pool. Default value: `None`. Valid values:
+	// - `Open`: Open private pool.
+	// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+	// - `None`: No private pool. The capacity in private pools is not used.
+	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput
 	// The instance public ip.
 	PublicIp pulumi.StringPtrInput
 	// The number of queues supported by the ERI.
@@ -1048,6 +1069,13 @@ type instanceArgs struct {
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp *string `pulumi:"privateIp"`
+	// The ID of the private pool.
+	PrivatePoolOptionsId *string `pulumi:"privatePoolOptionsId"`
+	// The type of the private pool. Default value: `None`. Valid values:
+	// - `Open`: Open private pool.
+	// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+	// - `None`: No private pool. The capacity in private pools is not used.
+	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The number of queues supported by the ERI.
 	QueuePairNumber *int `pulumi:"queuePairNumber"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
@@ -1269,6 +1297,13 @@ type InstanceArgs struct {
 	PeriodUnit pulumi.StringPtrInput
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp pulumi.StringPtrInput
+	// The ID of the private pool.
+	PrivatePoolOptionsId pulumi.StringPtrInput
+	// The type of the private pool. Default value: `None`. Valid values:
+	// - `Open`: Open private pool.
+	// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+	// - `None`: No private pool. The capacity in private pools is not used.
+	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput
 	// The number of queues supported by the ERI.
 	QueuePairNumber pulumi.IntPtrInput
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
@@ -1762,6 +1797,19 @@ func (o InstanceOutput) PrimaryIpAddress() pulumi.StringOutput {
 // Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The ID of the private pool.
+func (o InstanceOutput) PrivatePoolOptionsId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivatePoolOptionsId }).(pulumi.StringOutput)
+}
+
+// The type of the private pool. Default value: `None`. Valid values:
+// - `Open`: Open private pool.
+// - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+// - `None`: No private pool. The capacity in private pools is not used.
+func (o InstanceOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivatePoolOptionsMatchCriteria }).(pulumi.StringOutput)
 }
 
 // The instance public ip.

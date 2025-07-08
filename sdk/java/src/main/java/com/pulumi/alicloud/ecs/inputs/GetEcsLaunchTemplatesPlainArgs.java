@@ -18,14 +18,14 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
     public static final GetEcsLaunchTemplatesPlainArgs Empty = new GetEcsLaunchTemplatesPlainArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -48,14 +48,14 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The Launch Template Name.
+     * The name of the launch template.
      * 
      */
     @Import(name="launchTemplateName")
     private @Nullable String launchTemplateName;
 
     /**
-     * @return The Launch Template Name.
+     * @return The name of the launch template.
      * 
      */
     public Optional<String> launchTemplateName() {
@@ -93,14 +93,14 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The template resource group id.
+     * The ID of the Resource Group.
      * 
      */
     @Import(name="templateResourceGroupId")
     private @Nullable String templateResourceGroupId;
 
     /**
-     * @return The template resource group id.
+     * @return The ID of the Resource Group.
      * 
      */
     public Optional<String> templateResourceGroupId() {
@@ -108,14 +108,14 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The template tags.
+     * The tags of the launch template.
      * 
      */
     @Import(name="templateTags")
     private @Nullable Map<String,String> templateTags;
 
     /**
-     * @return The template tags.
+     * @return The tags of the launch template.
      * 
      */
     public Optional<Map<String,String>> templateTags() {
@@ -153,7 +153,7 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param launchTemplateName The Launch Template Name.
+         * @param launchTemplateName The name of the launch template.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param templateResourceGroupId The template resource group id.
+         * @param templateResourceGroupId The ID of the Resource Group.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param templateTags The template tags.
+         * @param templateTags The tags of the launch template.
          * 
          * @return builder
          * 

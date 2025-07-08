@@ -5169,6 +5169,166 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 	}).(GetSnapshotsSnapshotOutput)
 }
 
+type GetUdmSnapshotsSnapshot struct {
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+	DiskId string `pulumi:"diskId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// ECS instance ID
+	InstanceId string `pulumi:"instanceId"`
+	// The ID of the backup job that creates the snapshot.
+	JobId string `pulumi:"jobId"`
+	// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+	SourceType string `pulumi:"sourceType"`
+	// Start Time
+	StartTime int `pulumi:"startTime"`
+	// The first ID of the resource
+	UdmSnapshotId string `pulumi:"udmSnapshotId"`
+}
+
+// GetUdmSnapshotsSnapshotInput is an input type that accepts GetUdmSnapshotsSnapshotArgs and GetUdmSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetUdmSnapshotsSnapshotInput` via:
+//
+//	GetUdmSnapshotsSnapshotArgs{...}
+type GetUdmSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetUdmSnapshotsSnapshotOutput() GetUdmSnapshotsSnapshotOutput
+	ToGetUdmSnapshotsSnapshotOutputWithContext(context.Context) GetUdmSnapshotsSnapshotOutput
+}
+
+type GetUdmSnapshotsSnapshotArgs struct {
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ECS instance ID
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the backup job that creates the snapshot.
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// Start Time
+	StartTime pulumi.IntInput `pulumi:"startTime"`
+	// The first ID of the resource
+	UdmSnapshotId pulumi.StringInput `pulumi:"udmSnapshotId"`
+}
+
+func (GetUdmSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUdmSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetUdmSnapshotsSnapshotArgs) ToGetUdmSnapshotsSnapshotOutput() GetUdmSnapshotsSnapshotOutput {
+	return i.ToGetUdmSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetUdmSnapshotsSnapshotArgs) ToGetUdmSnapshotsSnapshotOutputWithContext(ctx context.Context) GetUdmSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUdmSnapshotsSnapshotOutput)
+}
+
+// GetUdmSnapshotsSnapshotArrayInput is an input type that accepts GetUdmSnapshotsSnapshotArray and GetUdmSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetUdmSnapshotsSnapshotArrayInput` via:
+//
+//	GetUdmSnapshotsSnapshotArray{ GetUdmSnapshotsSnapshotArgs{...} }
+type GetUdmSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetUdmSnapshotsSnapshotArrayOutput() GetUdmSnapshotsSnapshotArrayOutput
+	ToGetUdmSnapshotsSnapshotArrayOutputWithContext(context.Context) GetUdmSnapshotsSnapshotArrayOutput
+}
+
+type GetUdmSnapshotsSnapshotArray []GetUdmSnapshotsSnapshotInput
+
+func (GetUdmSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUdmSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetUdmSnapshotsSnapshotArray) ToGetUdmSnapshotsSnapshotArrayOutput() GetUdmSnapshotsSnapshotArrayOutput {
+	return i.ToGetUdmSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetUdmSnapshotsSnapshotArray) ToGetUdmSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetUdmSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUdmSnapshotsSnapshotArrayOutput)
+}
+
+type GetUdmSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetUdmSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUdmSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetUdmSnapshotsSnapshotOutput) ToGetUdmSnapshotsSnapshotOutput() GetUdmSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetUdmSnapshotsSnapshotOutput) ToGetUdmSnapshotsSnapshotOutputWithContext(ctx context.Context) GetUdmSnapshotsSnapshotOutput {
+	return o
+}
+
+// The creation time of the resource
+func (o GetUdmSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+func (o GetUdmSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetUdmSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ECS instance ID
+func (o GetUdmSnapshotsSnapshotOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the backup job that creates the snapshot.
+func (o GetUdmSnapshotsSnapshotOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+func (o GetUdmSnapshotsSnapshotOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Start Time
+func (o GetUdmSnapshotsSnapshotOutput) StartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) int { return v.StartTime }).(pulumi.IntOutput)
+}
+
+// The first ID of the resource
+func (o GetUdmSnapshotsSnapshotOutput) UdmSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUdmSnapshotsSnapshot) string { return v.UdmSnapshotId }).(pulumi.StringOutput)
+}
+
+type GetUdmSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUdmSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUdmSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetUdmSnapshotsSnapshotArrayOutput) ToGetUdmSnapshotsSnapshotArrayOutput() GetUdmSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetUdmSnapshotsSnapshotArrayOutput) ToGetUdmSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetUdmSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetUdmSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetUdmSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUdmSnapshotsSnapshot {
+		return vs[0].([]GetUdmSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetUdmSnapshotsSnapshotOutput)
+}
+
 type GetVaultsVault struct {
 	// The name of the OSS bucket of the Vault.
 	BucketName string `pulumi:"bucketName"`
@@ -5552,6 +5712,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansPlanDetailArrayInput)(nil)).Elem(), GetServerBackupPlansPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUdmSnapshotsSnapshotInput)(nil)).Elem(), GetUdmSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUdmSnapshotsSnapshotArrayInput)(nil)).Elem(), GetUdmSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultInput)(nil)).Elem(), GetVaultsVaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultArrayInput)(nil)).Elem(), GetVaultsVaultArray{})
 	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailOutput{})
@@ -5608,6 +5770,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServerBackupPlansPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetUdmSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetUdmSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultArrayOutput{})
 }

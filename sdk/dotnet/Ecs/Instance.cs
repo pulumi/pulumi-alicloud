@@ -496,6 +496,21 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the private pool.
+        /// </summary>
+        [Output("privatePoolOptionsId")]
+        public Output<string> PrivatePoolOptionsId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the private pool. Default value: `None`. Valid values:
+        /// - `Open`: Open private pool.
+        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `None`: No private pool. The capacity in private pools is not used.
+        /// </summary>
+        [Output("privatePoolOptionsMatchCriteria")]
+        public Output<string> PrivatePoolOptionsMatchCriteria { get; private set; } = null!;
+
+        /// <summary>
         /// The instance public ip.
         /// </summary>
         [Output("publicIp")]
@@ -1115,6 +1130,21 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// The ID of the private pool.
+        /// </summary>
+        [Input("privatePoolOptionsId")]
+        public Input<string>? PrivatePoolOptionsId { get; set; }
+
+        /// <summary>
+        /// The type of the private pool. Default value: `None`. Valid values:
+        /// - `Open`: Open private pool.
+        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `None`: No private pool. The capacity in private pools is not used.
+        /// </summary>
+        [Input("privatePoolOptionsMatchCriteria")]
+        public Input<string>? PrivatePoolOptionsMatchCriteria { get; set; }
 
         /// <summary>
         /// The number of queues supported by the ERI.
@@ -1754,6 +1784,21 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// The ID of the private pool.
+        /// </summary>
+        [Input("privatePoolOptionsId")]
+        public Input<string>? PrivatePoolOptionsId { get; set; }
+
+        /// <summary>
+        /// The type of the private pool. Default value: `None`. Valid values:
+        /// - `Open`: Open private pool.
+        /// - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+        /// - `None`: No private pool. The capacity in private pools is not used.
+        /// </summary>
+        [Input("privatePoolOptionsMatchCriteria")]
+        public Input<string>? PrivatePoolOptionsMatchCriteria { get; set; }
 
         /// <summary>
         /// The instance public ip.

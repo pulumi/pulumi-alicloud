@@ -62,6 +62,8 @@ __all__ = [
     'ClusterNodeGroupCostOptimizedConfigArgsDict',
     'ClusterNodeGroupDataDiskArgs',
     'ClusterNodeGroupDataDiskArgsDict',
+    'ClusterNodeGroupPrivatePoolOptionsArgs',
+    'ClusterNodeGroupPrivatePoolOptionsArgsDict',
     'ClusterNodeGroupSpotBidPriceArgs',
     'ClusterNodeGroupSpotBidPriceArgsDict',
     'ClusterNodeGroupSubscriptionConfigArgs',
@@ -782,6 +784,10 @@ if not MYPY:
         """
         Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         """
+        private_pool_options: NotRequired[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgsDict']]
+        """
+        The node group specific private pool resources. See `private_pool_options` below.
+        """
         spot_bid_prices: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgsDict']]]]
         """
         The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
@@ -826,6 +832,7 @@ class ClusterNodeGroupArgs:
                  graceful_shutdown: Optional[pulumi.Input[builtins.bool]] = None,
                  node_resize_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_options: Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']] = None,
                  spot_bid_prices: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[builtins.bool]] = None,
                  spot_strategy: Optional[pulumi.Input[builtins.str]] = None,
@@ -847,6 +854,7 @@ class ClusterNodeGroupArgs:
         :param pulumi.Input[builtins.bool] graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param pulumi.Input[builtins.str] node_resize_strategy: Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         :param pulumi.Input[builtins.str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs'] private_pool_options: The node group specific private pool resources. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param pulumi.Input[builtins.bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         :param pulumi.Input[builtins.str] spot_strategy: The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
@@ -876,6 +884,8 @@ class ClusterNodeGroupArgs:
             pulumi.set(__self__, "node_resize_strategy", node_resize_strategy)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if private_pool_options is not None:
+            pulumi.set(__self__, "private_pool_options", private_pool_options)
         if spot_bid_prices is not None:
             pulumi.set(__self__, "spot_bid_prices", spot_bid_prices)
         if spot_instance_remedy is not None:
@@ -1056,6 +1066,18 @@ class ClusterNodeGroupArgs:
     @payment_type.setter
     def payment_type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter(name="privatePoolOptions")
+    def private_pool_options(self) -> Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']]:
+        """
+        The node group specific private pool resources. See `private_pool_options` below.
+        """
+        return pulumi.get(self, "private_pool_options")
+
+    @private_pool_options.setter
+    def private_pool_options(self, value: Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']]):
+        pulumi.set(self, "private_pool_options", value)
 
     @property
     @pulumi.getter(name="spotBidPrices")
@@ -2829,6 +2851,58 @@ class ClusterNodeGroupDataDiskArgs:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "performance_level", value)
+
+
+if not MYPY:
+    class ClusterNodeGroupPrivatePoolOptionsArgsDict(TypedDict):
+        match_criteria: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+        """
+        private_pool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The node group specific private pool resource ids.
+        """
+elif False:
+    ClusterNodeGroupPrivatePoolOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeGroupPrivatePoolOptionsArgs:
+    def __init__(__self__, *,
+                 match_criteria: Optional[pulumi.Input[builtins.str]] = None,
+                 private_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] match_criteria: The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] private_pool_ids: The node group specific private pool resource ids.
+        """
+        if match_criteria is not None:
+            pulumi.set(__self__, "match_criteria", match_criteria)
+        if private_pool_ids is not None:
+            pulumi.set(__self__, "private_pool_ids", private_pool_ids)
+
+    @property
+    @pulumi.getter(name="matchCriteria")
+    def match_criteria(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+        """
+        return pulumi.get(self, "match_criteria")
+
+    @match_criteria.setter
+    def match_criteria(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "match_criteria", value)
+
+    @property
+    @pulumi.getter(name="privatePoolIds")
+    def private_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The node group specific private pool resource ids.
+        """
+        return pulumi.get(self, "private_pool_ids")
+
+    @private_pool_ids.setter
+    def private_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "private_pool_ids", value)
 
 
 if not MYPY:

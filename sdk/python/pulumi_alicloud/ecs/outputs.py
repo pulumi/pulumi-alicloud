@@ -5317,12 +5317,13 @@ class GetEcsKeyPairsKeyPairResult(dict):
                  resource_group_id: builtins.str,
                  tags: Mapping[str, builtins.str]):
         """
-        :param builtins.str finger_print: The finger print of the key pair.
+        :param builtins.str finger_print: The fingerprint of the key pair.
         :param builtins.str id: The ID of the Key Pair.
-        :param Sequence['GetEcsKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
-        :param builtins.str key_name: The Key Pair Name.
-        :param builtins.str resource_group_id: The resource group Id.
-        :param Mapping[str, builtins.str] tags: The tags.
+        :param Sequence['GetEcsKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this Key Pair.
+        :param builtins.str key_name: The name of the key pair.
+        :param builtins.str key_pair_name: The name of the Key Pair.
+        :param builtins.str resource_group_id: The ID of the resource group.
+        :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -5336,7 +5337,7 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @pulumi.getter(name="fingerPrint")
     def finger_print(self) -> builtins.str:
         """
-        The finger print of the key pair.
+        The fingerprint of the key pair.
         """
         return pulumi.get(self, "finger_print")
 
@@ -5352,7 +5353,7 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult']:
         """
-        A list of ECS instances that has been bound this key pair.
+        A list of ECS instances that has been bound this Key Pair.
         """
         return pulumi.get(self, "instances")
 
@@ -5360,20 +5361,23 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @pulumi.getter(name="keyName")
     def key_name(self) -> builtins.str:
         """
-        The Key Pair Name.
+        The name of the key pair.
         """
         return pulumi.get(self, "key_name")
 
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> builtins.str:
+        """
+        The name of the Key Pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> builtins.str:
         """
-        The resource group Id.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -5381,7 +5385,7 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tags.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -5402,13 +5406,18 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
                  status: builtins.str,
                  vswitch_id: builtins.str):
         """
-        :param builtins.str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param builtins.str availability_zone: The zone ID of the instance.
+        :param builtins.str description: The description of the ECS instance.
+        :param builtins.str image_id: The image ID of the instance.
         :param builtins.str instance_id: The ID of the ECS instance.
         :param builtins.str instance_name: The name of the ECS instance.
-        :param builtins.str key_name: The Key Pair Name.
+        :param builtins.str instance_type: The instance type of the instance.
+        :param builtins.str key_name: The name of the key pair.
         :param builtins.str private_ip: The private IP address of the ECS instance.
         :param builtins.str public_ip: The public IP address or EIP of the ECS instance.
-        :param builtins.str vswitch_id: The ID of the vSwitch attached to the ECS instance.
+        :param builtins.str region_id: The region ID of the instance.
+        :param builtins.str status: The status of the instance.
+        :param builtins.str vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -5427,18 +5436,24 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> builtins.str:
         """
-        The ID of the availability zone where the ECS instance is located.
+        The zone ID of the instance.
         """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def description(self) -> builtins.str:
+        """
+        The description of the ECS instance.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> builtins.str:
+        """
+        The image ID of the instance.
+        """
         return pulumi.get(self, "image_id")
 
     @property
@@ -5460,13 +5475,16 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> builtins.str:
+        """
+        The instance type of the instance.
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> builtins.str:
         """
-        The Key Pair Name.
+        The name of the key pair.
         """
         return pulumi.get(self, "key_name")
 
@@ -5489,18 +5507,24 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> builtins.str:
+        """
+        The region ID of the instance.
+        """
         return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
+        """
+        The status of the instance.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> builtins.str:
         """
-        The ID of the vSwitch attached to the ECS instance.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -5516,12 +5540,13 @@ class GetEcsKeyPairsPairResult(dict):
                  resource_group_id: builtins.str,
                  tags: Mapping[str, builtins.str]):
         """
-        :param builtins.str finger_print: The finger print of the key pair.
+        :param builtins.str finger_print: The fingerprint of the key pair.
         :param builtins.str id: The ID of the Key Pair.
-        :param Sequence['GetEcsKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
-        :param builtins.str key_name: The Key Pair Name.
-        :param builtins.str resource_group_id: The Resource Group Id.
-        :param Mapping[str, builtins.str] tags: The tags.
+        :param Sequence['GetEcsKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this Key Pair.
+        :param builtins.str key_name: The name of the key pair.
+        :param builtins.str key_pair_name: The name of the Key Pair.
+        :param builtins.str resource_group_id: The ID of the resource group.
+        :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -5535,7 +5560,7 @@ class GetEcsKeyPairsPairResult(dict):
     @pulumi.getter(name="fingerPrint")
     def finger_print(self) -> builtins.str:
         """
-        The finger print of the key pair.
+        The fingerprint of the key pair.
         """
         return pulumi.get(self, "finger_print")
 
@@ -5551,7 +5576,7 @@ class GetEcsKeyPairsPairResult(dict):
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetEcsKeyPairsPairInstanceResult']:
         """
-        A list of ECS instances that has been bound this key pair.
+        A list of ECS instances that has been bound this Key Pair.
         """
         return pulumi.get(self, "instances")
 
@@ -5559,20 +5584,23 @@ class GetEcsKeyPairsPairResult(dict):
     @pulumi.getter(name="keyName")
     def key_name(self) -> builtins.str:
         """
-        The Key Pair Name.
+        The name of the key pair.
         """
         return pulumi.get(self, "key_name")
 
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> builtins.str:
+        """
+        The name of the Key Pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> builtins.str:
         """
-        The Resource Group Id.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -5580,7 +5608,7 @@ class GetEcsKeyPairsPairResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tags.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -5601,13 +5629,18 @@ class GetEcsKeyPairsPairInstanceResult(dict):
                  status: builtins.str,
                  vswitch_id: builtins.str):
         """
-        :param builtins.str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param builtins.str availability_zone: The zone ID of the instance.
+        :param builtins.str description: The description of the ECS instance.
+        :param builtins.str image_id: The image ID of the instance.
         :param builtins.str instance_id: The ID of the ECS instance.
         :param builtins.str instance_name: The name of the ECS instance.
-        :param builtins.str key_name: The Key Pair Name.
+        :param builtins.str instance_type: The instance type of the instance.
+        :param builtins.str key_name: The name of the key pair.
         :param builtins.str private_ip: The private IP address of the ECS instance.
         :param builtins.str public_ip: The public IP address or EIP of the ECS instance.
-        :param builtins.str vswitch_id: The ID of the vSwitch attached to the ECS instance.
+        :param builtins.str region_id: The region ID of the instance.
+        :param builtins.str status: The status of the instance.
+        :param builtins.str vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -5626,18 +5659,24 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> builtins.str:
         """
-        The ID of the availability zone where the ECS instance is located.
+        The zone ID of the instance.
         """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def description(self) -> builtins.str:
+        """
+        The description of the ECS instance.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> builtins.str:
+        """
+        The image ID of the instance.
+        """
         return pulumi.get(self, "image_id")
 
     @property
@@ -5659,13 +5698,16 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> builtins.str:
+        """
+        The instance type of the instance.
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> builtins.str:
         """
-        The Key Pair Name.
+        The name of the key pair.
         """
         return pulumi.get(self, "key_name")
 
@@ -5688,18 +5730,24 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> builtins.str:
+        """
+        The region ID of the instance.
+        """
         return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
+        """
+        The status of the instance.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> builtins.str:
         """
-        The ID of the vSwitch attached to the ECS instance.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -5754,32 +5802,32 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
                  vswitch_id: builtins.str,
                  zone_id: builtins.str):
         """
-        :param builtins.str auto_release_time: (Optional) Instance auto release time.
-        :param builtins.str created_by: CreatedBy.
+        :param builtins.str auto_release_time: The automatic release time of the instance.
+        :param builtins.str created_by: The ID of the Alibaba Cloud account that created the launch template.
         :param Sequence['GetEcsLaunchTemplatesTemplateDataDiskArgs'] data_disks: The list of data disks created with instance.
-        :param builtins.int default_version_number: The Default Version Number.
-        :param builtins.str deployment_set_id: The Deployment Set Id.
+        :param builtins.int default_version_number: The default version number of the launch template.
+        :param builtins.str deployment_set_id: The ID of the deployment set.
         :param builtins.str description: System disk description.
-        :param builtins.bool enable_vm_os_config: Whether to enable the instance operating system configuration.
-        :param builtins.str host_name: Instance host name.
+        :param builtins.bool enable_vm_os_config: Indicates whether the operating system configuration of the instance is enabled.
+        :param builtins.str host_name: The hostname of the instance.
         :param builtins.str http_endpoint: Whether to enable access to instance metadata.
         :param builtins.int http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
         :param builtins.str http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param builtins.str id: The ID of the Launch Template.
-        :param builtins.str image_id: The Image Id.
-        :param builtins.str image_owner_alias: Mirror source.
-        :param builtins.str instance_charge_type: Internet bandwidth billing method.
-        :param builtins.str instance_name: The Instance Name.
-        :param builtins.str instance_type: Instance type.
-        :param builtins.str internet_charge_type: Internet bandwidth billing method.
-        :param builtins.int internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
-        :param builtins.int internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
-        :param builtins.str io_optimized: Whether it is an I/O-optimized instance or not.
+        :param builtins.str image_id: The ID of the image.
+        :param builtins.str image_owner_alias: The source of the image.
+        :param builtins.str instance_charge_type: The billing method of the instance.
+        :param builtins.str instance_name: The name of the instance.
+        :param builtins.str instance_type: The instance type of the instance.
+        :param builtins.str internet_charge_type: The billing method for network usage.
+        :param builtins.int internet_max_bandwidth_in: The maximum inbound public bandwidth.
+        :param builtins.int internet_max_bandwidth_out: The maximum outbound public bandwidth.
+        :param builtins.str io_optimized: Indicates whether the instance is I/O optimized.
         :param builtins.str key_pair_name: The name of the key pair.
-        :param builtins.int latest_version_number: The Latest Version Number.
+        :param builtins.int latest_version_number: The latest version number of the launch template.
         :param builtins.str launch_template_id: The ID of the Launch Template.
-        :param builtins.str launch_template_name: The Launch Template Name.
-        :param builtins.str modified_time: The Modified Time.
+        :param builtins.str launch_template_name: The name of the launch template.
+        :param builtins.str modified_time: The time when a version was added to or deleted from the launch template.
         :param Sequence['GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs'] network_interfaces: The list of network interfaces created with instance.
         :param builtins.str network_type: Network type of the instance.
         :param builtins.bool password_inherit: Whether to use the password preset by the mirror.
@@ -5788,17 +5836,17 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         :param builtins.str ram_role_name: The RAM role name of the instance.
         :param builtins.str resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
         :param builtins.str security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge.
-        :param builtins.str security_group_id: The security group ID.
+        :param builtins.str security_group_id: The security group ID must be one in the same VPC.
         :param Sequence[builtins.str] security_group_ids: The security group IDs.
         :param builtins.str spot_duration: The protection period of the preemptible instance.
         :param builtins.float spot_price_limit: Sets the maximum hourly instance price.
         :param builtins.str spot_strategy: The spot strategy for a Pay-As-You-Go instance.
         :param Sequence['GetEcsLaunchTemplatesTemplateSystemDiskArgs'] system_disks: The System Disk.
-        :param Mapping[str, builtins.str] template_tags: The template tags.
-        :param builtins.str user_data: The User Data.
+        :param Mapping[str, builtins.str] template_tags: The tags of the launch template.
+        :param builtins.str user_data: The user data of the instance.
         :param builtins.str version_description: The Version Description.
         :param builtins.str vpc_id: VpcId.
-        :param builtins.str vswitch_id: The vswitch id.
+        :param builtins.str vswitch_id: The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         :param builtins.str zone_id: The Zone Id.
         """
         pulumi.set(__self__, "auto_release_time", auto_release_time)
@@ -5852,7 +5900,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> builtins.str:
         """
-        (Optional) Instance auto release time.
+        The automatic release time of the instance.
         """
         return pulumi.get(self, "auto_release_time")
 
@@ -5860,7 +5908,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> builtins.str:
         """
-        CreatedBy.
+        The ID of the Alibaba Cloud account that created the launch template.
         """
         return pulumi.get(self, "created_by")
 
@@ -5876,7 +5924,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="defaultVersionNumber")
     def default_version_number(self) -> builtins.int:
         """
-        The Default Version Number.
+        The default version number of the launch template.
         """
         return pulumi.get(self, "default_version_number")
 
@@ -5884,7 +5932,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> builtins.str:
         """
-        The Deployment Set Id.
+        The ID of the deployment set.
         """
         return pulumi.get(self, "deployment_set_id")
 
@@ -5900,7 +5948,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="enableVmOsConfig")
     def enable_vm_os_config(self) -> builtins.bool:
         """
-        Whether to enable the instance operating system configuration.
+        Indicates whether the operating system configuration of the instance is enabled.
         """
         return pulumi.get(self, "enable_vm_os_config")
 
@@ -5908,7 +5956,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="hostName")
     def host_name(self) -> builtins.str:
         """
-        Instance host name.
+        The hostname of the instance.
         """
         return pulumi.get(self, "host_name")
 
@@ -5948,7 +5996,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="imageId")
     def image_id(self) -> builtins.str:
         """
-        The Image Id.
+        The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
@@ -5956,7 +6004,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> builtins.str:
         """
-        Mirror source.
+        The source of the image.
         """
         return pulumi.get(self, "image_owner_alias")
 
@@ -5964,7 +6012,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> builtins.str:
         """
-        Internet bandwidth billing method.
+        The billing method of the instance.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -5972,7 +6020,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> builtins.str:
         """
-        The Instance Name.
+        The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
@@ -5980,7 +6028,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> builtins.str:
         """
-        Instance type.
+        The instance type of the instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -5988,7 +6036,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> builtins.str:
         """
-        Internet bandwidth billing method.
+        The billing method for network usage.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -5996,7 +6044,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="internetMaxBandwidthIn")
     def internet_max_bandwidth_in(self) -> builtins.int:
         """
-        The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+        The maximum inbound public bandwidth.
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 
@@ -6004,7 +6052,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> builtins.int:
         """
-        Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+        The maximum outbound public bandwidth.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -6012,7 +6060,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> builtins.str:
         """
-        Whether it is an I/O-optimized instance or not.
+        Indicates whether the instance is I/O optimized.
         """
         return pulumi.get(self, "io_optimized")
 
@@ -6028,7 +6076,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="latestVersionNumber")
     def latest_version_number(self) -> builtins.int:
         """
-        The Latest Version Number.
+        The latest version number of the launch template.
         """
         return pulumi.get(self, "latest_version_number")
 
@@ -6044,7 +6092,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> builtins.str:
         """
-        The Launch Template Name.
+        The name of the launch template.
         """
         return pulumi.get(self, "launch_template_name")
 
@@ -6052,7 +6100,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> builtins.str:
         """
-        The Modified Time.
+        The time when a version was added to or deleted from the launch template.
         """
         return pulumi.get(self, "modified_time")
 
@@ -6124,7 +6172,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> builtins.str:
         """
-        The security group ID.
+        The security group ID must be one in the same VPC.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -6172,7 +6220,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> Mapping[str, builtins.str]:
         """
-        The template tags.
+        The tags of the launch template.
         """
         return pulumi.get(self, "template_tags")
 
@@ -6180,7 +6228,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="userData")
     def user_data(self) -> builtins.str:
         """
-        The User Data.
+        The user data of the instance.
         """
         return pulumi.get(self, "user_data")
 
@@ -6204,7 +6252,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> builtins.str:
         """
-        The vswitch id.
+        The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -6324,8 +6372,8 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
         :param builtins.str description: System disk description.
         :param builtins.str name: System disk name.
         :param builtins.str primary_ip: The primary private IP address of the ENI.
-        :param builtins.str security_group_id: The security group ID.
-        :param builtins.str vswitch_id: The vswitch id.
+        :param builtins.str security_group_id: The security group ID must be one in the same VPC.
+        :param builtins.str vswitch_id: The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -6361,7 +6409,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> builtins.str:
         """
-        The security group ID.
+        The security group ID must be one in the same VPC.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -6369,7 +6417,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> builtins.str:
         """
-        The vswitch id.
+        The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         return pulumi.get(self, "vswitch_id")
 

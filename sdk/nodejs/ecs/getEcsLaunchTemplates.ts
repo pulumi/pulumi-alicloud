@@ -106,10 +106,10 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const example = alicloud.ecs.getEcsLaunchTemplatesOutput({
+ * const ids = alicloud.ecs.getEcsLaunchTemplatesOutput({
  *     ids: [defaultEcsLaunchTemplate.id],
  * });
- * export const firstEcsLaunchTemplateId = example.apply(example => example.templates?.[0]?.id);
+ * export const ecsLaunchTemplateId0 = ids.apply(ids => ids.templates?.[0]?.id);
  * ```
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
@@ -131,7 +131,7 @@ export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: p
  */
 export interface GetEcsLaunchTemplatesArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -139,7 +139,7 @@ export interface GetEcsLaunchTemplatesArgs {
      */
     ids?: string[];
     /**
-     * The Launch Template Name.
+     * The name of the launch template.
      */
     launchTemplateName?: string;
     /**
@@ -151,11 +151,11 @@ export interface GetEcsLaunchTemplatesArgs {
      */
     outputFile?: string;
     /**
-     * The template resource group id.
+     * The ID of the Resource Group.
      */
     templateResourceGroupId?: string;
     /**
-     * The template tags.
+     * The tags of the launch template.
      */
     templateTags?: {[key: string]: string};
 }
@@ -171,7 +171,7 @@ export interface GetEcsLaunchTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     /**
-     * The Launch Template Name.
+     * The name of the Launch Template.
      */
     readonly launchTemplateName?: string;
     readonly nameRegex?: string;
@@ -182,7 +182,8 @@ export interface GetEcsLaunchTemplatesResult {
     readonly outputFile?: string;
     readonly templateResourceGroupId?: string;
     /**
-     * The template tags.
+     * The tags of the launch template.
+     * > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
      */
     readonly templateTags?: {[key: string]: string};
     /**
@@ -290,10 +291,10 @@ export interface GetEcsLaunchTemplatesResult {
  *         },
  *     ],
  * });
- * const example = alicloud.ecs.getEcsLaunchTemplatesOutput({
+ * const ids = alicloud.ecs.getEcsLaunchTemplatesOutput({
  *     ids: [defaultEcsLaunchTemplate.id],
  * });
- * export const firstEcsLaunchTemplateId = example.apply(example => example.templates?.[0]?.id);
+ * export const ecsLaunchTemplateId0 = ids.apply(ids => ids.templates?.[0]?.id);
  * ```
  */
 export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
@@ -315,7 +316,7 @@ export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputAr
  */
 export interface GetEcsLaunchTemplatesOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -323,7 +324,7 @@ export interface GetEcsLaunchTemplatesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Launch Template Name.
+     * The name of the launch template.
      */
     launchTemplateName?: pulumi.Input<string>;
     /**
@@ -335,11 +336,11 @@ export interface GetEcsLaunchTemplatesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The template resource group id.
+     * The ID of the Resource Group.
      */
     templateResourceGroupId?: pulumi.Input<string>;
     /**
-     * The template tags.
+     * The tags of the launch template.
      */
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

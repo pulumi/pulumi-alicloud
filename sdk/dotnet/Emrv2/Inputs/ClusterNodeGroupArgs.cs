@@ -108,6 +108,12 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The node group specific private pool resources. See `private_pool_options` below.
+        /// </summary>
+        [Input("privatePoolOptions")]
+        public Input<Inputs.ClusterNodeGroupPrivatePoolOptionsArgs>? PrivatePoolOptions { get; set; }
+
         [Input("spotBidPrices")]
         private InputList<Inputs.ClusterNodeGroupSpotBidPriceArgs>? _spotBidPrices;
 

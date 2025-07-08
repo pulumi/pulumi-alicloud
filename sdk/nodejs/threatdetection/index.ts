@@ -40,6 +40,11 @@ export type ClientUserDefineRule = import("./clientUserDefineRule").ClientUserDe
 export const ClientUserDefineRule: typeof import("./clientUserDefineRule").ClientUserDefineRule = null as any;
 utilities.lazyLoad(exports, ["ClientUserDefineRule"], () => require("./clientUserDefineRule"));
 
+export { CycleTaskArgs, CycleTaskState } from "./cycleTask";
+export type CycleTask = import("./cycleTask").CycleTask;
+export const CycleTask: typeof import("./cycleTask").CycleTask = null as any;
+utilities.lazyLoad(exports, ["CycleTask"], () => require("./cycleTask"));
+
 export { FileUploadLimitArgs, FileUploadLimitState } from "./fileUploadLimit";
 export type FileUploadLimit = import("./fileUploadLimit").FileUploadLimit;
 export const FileUploadLimit: typeof import("./fileUploadLimit").FileUploadLimit = null as any;
@@ -189,6 +194,8 @@ const _module = {
                 return new ClientFileProtect(name, <any>undefined, { urn })
             case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
                 return new ClientUserDefineRule(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/cycleTask:CycleTask":
+                return new CycleTask(name, <any>undefined, { urn })
             case "alicloud:threatdetection/fileUploadLimit:FileUploadLimit":
                 return new FileUploadLimit(name, <any>undefined, { urn })
             case "alicloud:threatdetection/honeyPot:HoneyPot":
@@ -227,6 +234,7 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy"
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientFileProtect", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientUserDefineRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/cycleTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/fileUploadLimit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeyPot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotNode", _module)

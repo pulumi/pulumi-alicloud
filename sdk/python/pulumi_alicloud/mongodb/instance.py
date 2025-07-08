@@ -33,6 +33,7 @@ class InstanceArgs:
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[builtins.int]] = None,
                  backup_time: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
+                 db_instance_release_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  effective_time: Optional[pulumi.Input[builtins.str]] = None,
                  enable_backup_log: Optional[pulumi.Input[builtins.int]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
@@ -83,12 +84,13 @@ class InstanceArgs:
         :param pulumi.Input[builtins.int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[builtins.str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
+        :param pulumi.Input[builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
         :param pulumi.Input[builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
         :param pulumi.Input[builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
-        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -108,7 +110,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
-        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
@@ -147,6 +149,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_time", backup_time)
         if cloud_disk_encryption_key is not None:
             pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
+        if db_instance_release_protection is not None:
+            pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if enable_backup_log is not None:
@@ -352,6 +356,18 @@ class InstanceArgs:
         pulumi.set(self, "cloud_disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="dbInstanceReleaseProtection")
+    def db_instance_release_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_instance_release_protection")
+
+    @db_instance_release_protection.setter
+    def db_instance_release_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "db_instance_release_protection", value)
+
+    @property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -415,7 +431,7 @@ class InstanceArgs:
     @pulumi.getter(name="hiddenZoneId")
     def hidden_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         """
         return pulumi.get(self, "hidden_zone_id")
 
@@ -622,7 +638,7 @@ class InstanceArgs:
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         """
         return pulumi.get(self, "secondary_zone_id")
 
@@ -782,6 +798,7 @@ class _InstanceState:
                  backup_time: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_class: Optional[pulumi.Input[builtins.str]] = None,
+                 db_instance_release_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  db_instance_storage: Optional[pulumi.Input[builtins.int]] = None,
                  effective_time: Optional[pulumi.Input[builtins.str]] = None,
                  enable_backup_log: Optional[pulumi.Input[builtins.int]] = None,
@@ -834,6 +851,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[builtins.str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
@@ -843,7 +861,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
-        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -866,7 +884,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[builtins.int] retention_period: Instance data backup retention days. Available since v1.42.0.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
-        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
@@ -905,6 +923,8 @@ class _InstanceState:
             pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
         if db_instance_class is not None:
             pulumi.set(__self__, "db_instance_class", db_instance_class)
+        if db_instance_release_protection is not None:
+            pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
         if db_instance_storage is not None:
             pulumi.set(__self__, "db_instance_storage", db_instance_storage)
         if effective_time is not None:
@@ -1096,6 +1116,18 @@ class _InstanceState:
         pulumi.set(self, "db_instance_class", value)
 
     @property
+    @pulumi.getter(name="dbInstanceReleaseProtection")
+    def db_instance_release_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_instance_release_protection")
+
+    @db_instance_release_protection.setter
+    def db_instance_release_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "db_instance_release_protection", value)
+
+    @property
     @pulumi.getter(name="dbInstanceStorage")
     def db_instance_storage(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -1185,7 +1217,7 @@ class _InstanceState:
     @pulumi.getter(name="hiddenZoneId")
     def hidden_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         """
         return pulumi.get(self, "hidden_zone_id")
 
@@ -1428,7 +1460,7 @@ class _InstanceState:
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         """
         return pulumi.get(self, "secondary_zone_id")
 
@@ -1603,6 +1635,7 @@ class Instance(pulumi.CustomResource):
                  backup_time: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_class: Optional[pulumi.Input[builtins.str]] = None,
+                 db_instance_release_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  db_instance_storage: Optional[pulumi.Input[builtins.int]] = None,
                  effective_time: Optional[pulumi.Input[builtins.str]] = None,
                  enable_backup_log: Optional[pulumi.Input[builtins.int]] = None,
@@ -1701,7 +1734,7 @@ class Instance(pulumi.CustomResource):
         MongoDB instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+        $ pulumi import alicloud:mongodb/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1716,6 +1749,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[builtins.str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
@@ -1725,7 +1759,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
-        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -1745,7 +1779,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
-        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
@@ -1832,7 +1866,7 @@ class Instance(pulumi.CustomResource):
         MongoDB instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+        $ pulumi import alicloud:mongodb/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1859,6 +1893,7 @@ class Instance(pulumi.CustomResource):
                  backup_time: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_class: Optional[pulumi.Input[builtins.str]] = None,
+                 db_instance_release_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  db_instance_storage: Optional[pulumi.Input[builtins.int]] = None,
                  effective_time: Optional[pulumi.Input[builtins.str]] = None,
                  enable_backup_log: Optional[pulumi.Input[builtins.int]] = None,
@@ -1915,6 +1950,7 @@ class Instance(pulumi.CustomResource):
             if db_instance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_class'")
             __props__.__dict__["db_instance_class"] = db_instance_class
+            __props__.__dict__["db_instance_release_protection"] = db_instance_release_protection
             if db_instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_storage'")
             __props__.__dict__["db_instance_storage"] = db_instance_storage
@@ -1980,6 +2016,7 @@ class Instance(pulumi.CustomResource):
             backup_time: Optional[pulumi.Input[builtins.str]] = None,
             cloud_disk_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
             db_instance_class: Optional[pulumi.Input[builtins.str]] = None,
+            db_instance_release_protection: Optional[pulumi.Input[builtins.bool]] = None,
             db_instance_storage: Optional[pulumi.Input[builtins.int]] = None,
             effective_time: Optional[pulumi.Input[builtins.str]] = None,
             enable_backup_log: Optional[pulumi.Input[builtins.int]] = None,
@@ -2037,6 +2074,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[builtins.str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
@@ -2046,7 +2084,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
-        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -2069,7 +2107,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[builtins.int] retention_period: Instance data backup retention days. Available since v1.42.0.
         :param pulumi.Input[builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
-        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        :param pulumi.Input[builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
@@ -2103,6 +2141,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
         __props__.__dict__["db_instance_class"] = db_instance_class
+        __props__.__dict__["db_instance_release_protection"] = db_instance_release_protection
         __props__.__dict__["db_instance_storage"] = db_instance_storage
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["enable_backup_log"] = enable_backup_log
@@ -2219,6 +2258,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_class")
 
     @property
+    @pulumi.getter(name="dbInstanceReleaseProtection")
+    def db_instance_release_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_instance_release_protection")
+
+    @property
     @pulumi.getter(name="dbInstanceStorage")
     def db_instance_storage(self) -> pulumi.Output[builtins.int]:
         """
@@ -2280,7 +2327,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="hiddenZoneId")
     def hidden_zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         """
         return pulumi.get(self, "hidden_zone_id")
 
@@ -2443,7 +2490,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         """
         return pulumi.get(self, "secondary_zone_id")
 

@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * MongoDB instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+ * $ pulumi import alicloud:mongodb/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -137,6 +137,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceClass!: pulumi.Output<string>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    public readonly dbInstanceReleaseProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
@@ -167,7 +171,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
     public readonly hiddenZoneId!: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +254,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly roleArn!: pulumi.Output<string>;
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
     /**
@@ -331,6 +335,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = state ? state.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceReleaseProtection"] = state ? state.dbInstanceReleaseProtection : undefined;
             resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
@@ -391,6 +396,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = args ? args.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceReleaseProtection"] = args ? args.dbInstanceReleaseProtection : undefined;
             resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
@@ -481,6 +487,10 @@ export interface InstanceState {
      */
     dbInstanceClass?: pulumi.Input<string>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
@@ -511,7 +521,7 @@ export interface InstanceState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
     hiddenZoneId?: pulumi.Input<string>;
     /**
@@ -594,7 +604,7 @@ export interface InstanceState {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
@@ -696,6 +706,10 @@ export interface InstanceArgs {
      */
     dbInstanceClass: pulumi.Input<string>;
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     */
+    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
@@ -726,7 +740,7 @@ export interface InstanceArgs {
      */
     engineVersion: pulumi.Input<string>;
     /**
-     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
     hiddenZoneId?: pulumi.Input<string>;
     /**
@@ -797,7 +811,7 @@ export interface InstanceArgs {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**

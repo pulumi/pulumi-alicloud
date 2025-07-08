@@ -53,6 +53,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    @Import(name="backupInterval")
+    private @Nullable Output<String> backupInterval;
+
+    /**
+     * @return The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    public Optional<Output<String>> backupInterval() {
+        return Optional.ofNullable(this.backupInterval);
+    }
+
+    /**
      * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
@@ -113,6 +128,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="dbInstanceReleaseProtection")
+    private @Nullable Output<Boolean> dbInstanceReleaseProtection;
+
+    /**
+     * @return Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> dbInstanceReleaseProtection() {
+        return Optional.ofNullable(this.dbInstanceReleaseProtection);
+    }
+
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
      * 
      */
@@ -125,6 +155,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> engineVersion() {
         return Optional.ofNullable(this.engineVersion);
+    }
+
+    /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    @Import(name="hiddenZoneId")
+    private @Nullable Output<String> hiddenZoneId;
+
+    /**
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    public Optional<Output<String>> hiddenZoneId() {
+        return Optional.ofNullable(this.hiddenZoneId);
     }
 
     /**
@@ -314,6 +359,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    @Import(name="secondaryZoneId")
+    private @Nullable Output<String> secondaryZoneId;
+
+    /**
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    public Optional<Output<String>> secondaryZoneId() {
+        return Optional.ofNullable(this.secondaryZoneId);
+    }
+
+    /**
      * The Security Group ID of ECS.
      * 
      */
@@ -356,6 +416,25 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<List<ShardingInstanceShardListArgs>>> shardLists() {
         return Optional.ofNullable(this.shardLists);
+    }
+
+    /**
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - ` Flash  `: Single-digit second backup.
+     * 
+     */
+    @Import(name="snapshotBackupType")
+    private @Nullable Output<String> snapshotBackupType;
+
+    /**
+     * @return The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - ` Flash  `: Single-digit second backup.
+     * 
+     */
+    public Optional<Output<String>> snapshotBackupType() {
+        return Optional.ofNullable(this.snapshotBackupType);
     }
 
     /**
@@ -470,11 +549,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     private ShardingInstanceState(ShardingInstanceState $) {
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
+        this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.backupTime = $.backupTime;
         this.configServerLists = $.configServerLists;
+        this.dbInstanceReleaseProtection = $.dbInstanceReleaseProtection;
         this.engineVersion = $.engineVersion;
+        this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
@@ -487,9 +569,11 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
         this.retentionPeriod = $.retentionPeriod;
+        this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
+        this.snapshotBackupType = $.snapshotBackupType;
         this.storageEngine = $.storageEngine;
         this.storageType = $.storageType;
         this.tags = $.tags;
@@ -557,6 +641,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param backupInterval The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupInterval(@Nullable Output<String> backupInterval) {
+            $.backupInterval = backupInterval;
+            return this;
+        }
+
+        /**
+         * @param backupInterval The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupInterval(String backupInterval) {
+            return backupInterval(Output.of(backupInterval));
         }
 
         /**
@@ -664,6 +769,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param dbInstanceReleaseProtection Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceReleaseProtection(@Nullable Output<Boolean> dbInstanceReleaseProtection) {
+            $.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceReleaseProtection Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceReleaseProtection(Boolean dbInstanceReleaseProtection) {
+            return dbInstanceReleaseProtection(Output.of(dbInstanceReleaseProtection));
+        }
+
+        /**
          * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
          * 
          * @return builder
@@ -682,6 +808,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder engineVersion(String engineVersion) {
             return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hiddenZoneId(@Nullable Output<String> hiddenZoneId) {
+            $.hiddenZoneId = hiddenZoneId;
+            return this;
+        }
+
+        /**
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hiddenZoneId(String hiddenZoneId) {
+            return hiddenZoneId(Output.of(hiddenZoneId));
         }
 
         /**
@@ -953,6 +1100,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(@Nullable Output<String> secondaryZoneId) {
+            $.secondaryZoneId = secondaryZoneId;
+            return this;
+        }
+
+        /**
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(String secondaryZoneId) {
+            return secondaryZoneId(Output.of(secondaryZoneId));
+        }
+
+        /**
          * @param securityGroupId The Security Group ID of ECS.
          * 
          * @return builder
@@ -1033,6 +1201,31 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder shardLists(ShardingInstanceShardListArgs... shardLists) {
             return shardLists(List.of(shardLists));
+        }
+
+        /**
+         * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * - `Standard`: Standard backup.
+         * - ` Flash  `: Single-digit second backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotBackupType(@Nullable Output<String> snapshotBackupType) {
+            $.snapshotBackupType = snapshotBackupType;
+            return this;
+        }
+
+        /**
+         * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * - `Standard`: Standard backup.
+         * - ` Flash  `: Single-digit second backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotBackupType(String snapshotBackupType) {
+            return snapshotBackupType(Output.of(snapshotBackupType));
         }
 
         /**

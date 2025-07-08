@@ -972,6 +972,42 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the private pool.
+     * 
+     */
+    @Import(name="privatePoolOptionsId")
+    private @Nullable Output<String> privatePoolOptionsId;
+
+    /**
+     * @return The ID of the private pool.
+     * 
+     */
+    public Optional<Output<String>> privatePoolOptionsId() {
+        return Optional.ofNullable(this.privatePoolOptionsId);
+    }
+
+    /**
+     * The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     * 
+     */
+    @Import(name="privatePoolOptionsMatchCriteria")
+    private @Nullable Output<String> privatePoolOptionsMatchCriteria;
+
+    /**
+     * @return The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     * 
+     */
+    public Optional<Output<String>> privatePoolOptionsMatchCriteria() {
+        return Optional.ofNullable(this.privatePoolOptionsMatchCriteria);
+    }
+
+    /**
      * The instance public ip.
      * 
      */
@@ -1564,6 +1600,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.periodUnit = $.periodUnit;
         this.primaryIpAddress = $.primaryIpAddress;
         this.privateIp = $.privateIp;
+        this.privatePoolOptionsId = $.privatePoolOptionsId;
+        this.privatePoolOptionsMatchCriteria = $.privatePoolOptionsMatchCriteria;
         this.publicIp = $.publicIp;
         this.queuePairNumber = $.queuePairNumber;
         this.renewalStatus = $.renewalStatus;
@@ -2924,6 +2962,54 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder privateIp(String privateIp) {
             return privateIp(Output.of(privateIp));
+        }
+
+        /**
+         * @param privatePoolOptionsId The ID of the private pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptionsId(@Nullable Output<String> privatePoolOptionsId) {
+            $.privatePoolOptionsId = privatePoolOptionsId;
+            return this;
+        }
+
+        /**
+         * @param privatePoolOptionsId The ID of the private pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptionsId(String privatePoolOptionsId) {
+            return privatePoolOptionsId(Output.of(privatePoolOptionsId));
+        }
+
+        /**
+         * @param privatePoolOptionsMatchCriteria The type of the private pool. Default value: `None`. Valid values:
+         * - `Open`: Open private pool.
+         * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+         * - `None`: No private pool. The capacity in private pools is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptionsMatchCriteria(@Nullable Output<String> privatePoolOptionsMatchCriteria) {
+            $.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
+            return this;
+        }
+
+        /**
+         * @param privatePoolOptionsMatchCriteria The type of the private pool. Default value: `None`. Valid values:
+         * - `Open`: Open private pool.
+         * - `Target`: Specified private pool. **NOTE:** If `private_pool_options_match_criteria` is set to `Target`, `private_pool_options_id` is required.
+         * - `None`: No private pool. The capacity in private pools is not used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePoolOptionsMatchCriteria(String privatePoolOptionsMatchCriteria) {
+            return privatePoolOptionsMatchCriteria(Output.of(privatePoolOptionsMatchCriteria));
         }
 
         /**

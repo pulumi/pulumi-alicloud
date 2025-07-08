@@ -80,10 +80,7 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly certName!: pulumi.Output<string>;
     /**
-     * The certificate type. Valid values:
-     *
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate content.
      */
     public readonly certificate!: pulumi.Output<string>;
     /**
@@ -190,10 +187,7 @@ export interface CertificateState {
      */
     certName?: pulumi.Input<string>;
     /**
-     * The certificate type. Valid values:
-     *
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate content.
      */
     certificate?: pulumi.Input<string>;
     /**
@@ -250,10 +244,7 @@ export interface CertificateArgs {
      */
     certName?: pulumi.Input<string>;
     /**
-     * The certificate type. Valid values:
-     *
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate content.
      */
     certificate?: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsKeyPairsPairResult
     {
         /// <summary>
-        /// The finger print of the key pair.
+        /// The fingerprint of the key pair.
         /// </summary>
         public readonly string FingerPrint;
         /// <summary>
@@ -22,20 +22,23 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ECS instances that has been bound this key pair.
+        /// A list of ECS instances that has been bound this Key Pair.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsKeyPairsPairInstanceResult> Instances;
         /// <summary>
-        /// The Key Pair Name.
+        /// The name of the key pair.
         /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// The name of the Key Pair.
+        /// </summary>
         public readonly string KeyPairName;
         /// <summary>
-        /// The Resource Group Id.
+        /// The ID of the resource group.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The tags.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 

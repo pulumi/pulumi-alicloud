@@ -95,6 +95,11 @@ export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null a
 export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
 utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
 
+export { GetUdmSnapshotsArgs, GetUdmSnapshotsResult, GetUdmSnapshotsOutputArgs } from "./getUdmSnapshots";
+export const getUdmSnapshots: typeof import("./getUdmSnapshots").getUdmSnapshots = null as any;
+export const getUdmSnapshotsOutput: typeof import("./getUdmSnapshots").getUdmSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getUdmSnapshots","getUdmSnapshotsOutput"], () => require("./getUdmSnapshots"));
+
 export { GetVaultsArgs, GetVaultsResult, GetVaultsOutputArgs } from "./getVaults";
 export const getVaults: typeof import("./getVaults").getVaults = null as any;
 export const getVaultsOutput: typeof import("./getVaults").getVaultsOutput = null as any;

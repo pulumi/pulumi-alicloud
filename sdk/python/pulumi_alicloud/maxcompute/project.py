@@ -31,7 +31,8 @@ class ProjectArgs:
                  properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
                  security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 three_tier_model: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[builtins.str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
@@ -46,6 +47,7 @@ class ProjectArgs:
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -67,6 +69,8 @@ class ProjectArgs:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if three_tier_model is not None:
+            pulumi.set(__self__, "three_tier_model", three_tier_model)
 
     @property
     @pulumi.getter
@@ -188,6 +192,18 @@ class ProjectArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="threeTierModel")
+    def three_tier_model(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether data storage by schema is supported. Valid values:
+        """
+        return pulumi.get(self, "three_tier_model")
+
+    @three_tier_model.setter
+    def three_tier_model(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "three_tier_model", value)
+
 
 @pulumi.input_type
 class _ProjectState:
@@ -205,6 +221,7 @@ class _ProjectState:
                  security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 three_tier_model: Optional[pulumi.Input[builtins.bool]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
@@ -223,6 +240,7 @@ class _ProjectState:
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:
         :param pulumi.Input[builtins.str] type: Project type
         """
         if comment is not None:
@@ -251,6 +269,8 @@ class _ProjectState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if three_tier_model is not None:
+            pulumi.set(__self__, "three_tier_model", three_tier_model)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -411,6 +431,18 @@ class _ProjectState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="threeTierModel")
+    def three_tier_model(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether data storage by schema is supported. Valid values:
+        """
+        return pulumi.get(self, "three_tier_model")
+
+    @three_tier_model.setter
+    def three_tier_model(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "three_tier_model", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -439,6 +471,7 @@ class Project(pulumi.CustomResource):
                  security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 three_tier_model: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Max Compute Project resource.
@@ -489,6 +522,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:
         """
         ...
     @overload
@@ -556,6 +590,7 @@ class Project(pulumi.CustomResource):
                  security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 three_tier_model: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,6 +610,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["security_properties"] = security_properties
             __props__.__dict__["status"] = status
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["three_tier_model"] = three_tier_model
             __props__.__dict__["create_time"] = None
             __props__.__dict__["owner"] = None
             __props__.__dict__["region_id"] = None
@@ -602,6 +638,7 @@ class Project(pulumi.CustomResource):
             security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            three_tier_model: Optional[pulumi.Input[builtins.bool]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -625,6 +662,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[builtins.str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[builtins.bool] three_tier_model: Indicates whether data storage by schema is supported. Valid values:
         :param pulumi.Input[builtins.str] type: Project type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -644,6 +682,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["security_properties"] = security_properties
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["three_tier_model"] = three_tier_model
         __props__.__dict__["type"] = type
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -750,6 +789,14 @@ class Project(pulumi.CustomResource):
         The tag of the resource
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="threeTierModel")
+    def three_tier_model(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether data storage by schema is supported. Valid values:
+        """
+        return pulumi.get(self, "three_tier_model")
 
     @property
     @pulumi.getter

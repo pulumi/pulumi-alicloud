@@ -17,14 +17,14 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetEcsKeyPairsPlainArgs Empty = new GetEcsKeyPairsPlainArgs();
 
     /**
-     * The finger print of the key pair.
+     * The fingerprint of the key pair.
      * 
      */
     @Import(name="fingerPrint")
     private @Nullable String fingerPrint;
 
     /**
-     * @return The finger print of the key pair.
+     * @return The fingerprint of the key pair.
      * 
      */
     public Optional<String> fingerPrint() {
@@ -77,23 +77,31 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The resource group Id.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The resource group Id.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -128,7 +136,7 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param fingerPrint The finger print of the key pair.
+         * @param fingerPrint The fingerprint of the key pair.
          * 
          * @return builder
          * 
@@ -182,7 +190,7 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param resourceGroupId The resource group Id.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -192,6 +200,12 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;

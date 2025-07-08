@@ -44,6 +44,7 @@ __all__ = [
     'GetServerBackupPlansPlanResult',
     'GetServerBackupPlansPlanDetailResult',
     'GetSnapshotsSnapshotResult',
+    'GetUdmSnapshotsSnapshotResult',
     'GetVaultsVaultResult',
 ]
 
@@ -3645,6 +3646,101 @@ class GetSnapshotsSnapshotResult(dict):
         The update time of snapshot. UNIX time in seconds.
         """
         return pulumi.get(self, "updated_time")
+
+
+@pulumi.output_type
+class GetUdmSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 create_time: builtins.str,
+                 disk_id: builtins.str,
+                 id: builtins.str,
+                 instance_id: builtins.str,
+                 job_id: builtins.str,
+                 source_type: builtins.str,
+                 start_time: builtins.int,
+                 udm_snapshot_id: builtins.str):
+        """
+        :param builtins.str create_time: The creation time of the resource
+        :param builtins.str disk_id: Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+        :param builtins.str id: The ID of the resource supplied above.
+        :param builtins.str instance_id: ECS instance ID
+        :param builtins.str job_id: The ID of the backup job that creates the snapshot.
+        :param builtins.str source_type: Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+        :param builtins.int start_time: Start Time
+        :param builtins.str udm_snapshot_id: The first ID of the resource
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "udm_snapshot_id", udm_snapshot_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> builtins.str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> builtins.str:
+        """
+        Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> builtins.str:
+        """
+        ECS instance ID
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> builtins.str:
+        """
+        The ID of the backup job that creates the snapshot.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> builtins.str:
+        """
+        Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> builtins.int:
+        """
+        Start Time
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="udmSnapshotId")
+    def udm_snapshot_id(self) -> builtins.str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "udm_snapshot_id")
 
 
 @pulumi.output_type

@@ -384,6 +384,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateIp!: pulumi.Output<string>;
     /**
+     * The ID of the private pool.
+     */
+    public readonly privatePoolOptionsId!: pulumi.Output<string>;
+    /**
+     * The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     */
+    public readonly privatePoolOptionsMatchCriteria!: pulumi.Output<string>;
+    /**
      * The instance public ip.
      */
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
@@ -605,6 +616,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["privatePoolOptionsId"] = state ? state.privatePoolOptionsId : undefined;
+            resourceInputs["privatePoolOptionsMatchCriteria"] = state ? state.privatePoolOptionsMatchCriteria : undefined;
             resourceInputs["publicIp"] = state ? state.publicIp : undefined;
             resourceInputs["queuePairNumber"] = state ? state.queuePairNumber : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
@@ -688,6 +701,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["privatePoolOptionsId"] = args ? args.privatePoolOptionsId : undefined;
+            resourceInputs["privatePoolOptionsMatchCriteria"] = args ? args.privatePoolOptionsMatchCriteria : undefined;
             resourceInputs["queuePairNumber"] = args ? args.queuePairNumber : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -1012,6 +1027,17 @@ export interface InstanceState {
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The ID of the private pool.
+     */
+    privatePoolOptionsId?: pulumi.Input<string>;
+    /**
+     * The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     */
+    privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
     /**
      * The instance public ip.
      */
@@ -1403,6 +1429,17 @@ export interface InstanceArgs {
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The ID of the private pool.
+     */
+    privatePoolOptionsId?: pulumi.Input<string>;
+    /**
+     * The type of the private pool. Default value: `None`. Valid values:
+     * - `Open`: Open private pool.
+     * - `Target`: Specified private pool. **NOTE:** If `privatePoolOptionsMatchCriteria` is set to `Target`, `privatePoolOptionsId` is required.
+     * - `None`: No private pool. The capacity in private pools is not used.
+     */
+    privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
     /**
      * The number of queues supported by the ERI.
      */

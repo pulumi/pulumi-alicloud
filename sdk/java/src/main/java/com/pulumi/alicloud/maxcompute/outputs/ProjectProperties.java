@@ -16,15 +16,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectProperties {
     /**
-     * @return Whether to allow full table scan. Default: false
+     * @return Whether to allow full table scan. Default: `false`.
      * 
      */
     private @Nullable Boolean allowFullScan;
     /**
-     * @return Whether to turn on Decimal2.0
+     * @return Whether to turn on Decimal2.0.
      * 
      */
     private @Nullable Boolean enableDecimal2;
+    /**
+     * @return Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean enableDr;
     /**
      * @return Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
      * &gt; **NOTE :**:
@@ -71,18 +76,25 @@ public final class ProjectProperties {
 
     private ProjectProperties() {}
     /**
-     * @return Whether to allow full table scan. Default: false
+     * @return Whether to allow full table scan. Default: `false`.
      * 
      */
     public Optional<Boolean> allowFullScan() {
         return Optional.ofNullable(this.allowFullScan);
     }
     /**
-     * @return Whether to turn on Decimal2.0
+     * @return Whether to turn on Decimal2.0.
      * 
      */
     public Optional<Boolean> enableDecimal2() {
         return Optional.ofNullable(this.enableDecimal2);
+    }
+    /**
+     * @return Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> enableDr() {
+        return Optional.ofNullable(this.enableDr);
     }
     /**
      * @return Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
@@ -151,6 +163,7 @@ public final class ProjectProperties {
     public static final class Builder {
         private @Nullable Boolean allowFullScan;
         private @Nullable Boolean enableDecimal2;
+        private @Nullable Boolean enableDr;
         private @Nullable ProjectPropertiesEncryption encryption;
         private @Nullable Integer retentionDays;
         private @Nullable String sqlMeteringMax;
@@ -162,6 +175,7 @@ public final class ProjectProperties {
     	      Objects.requireNonNull(defaults);
     	      this.allowFullScan = defaults.allowFullScan;
     	      this.enableDecimal2 = defaults.enableDecimal2;
+    	      this.enableDr = defaults.enableDr;
     	      this.encryption = defaults.encryption;
     	      this.retentionDays = defaults.retentionDays;
     	      this.sqlMeteringMax = defaults.sqlMeteringMax;
@@ -180,6 +194,12 @@ public final class ProjectProperties {
         public Builder enableDecimal2(@Nullable Boolean enableDecimal2) {
 
             this.enableDecimal2 = enableDecimal2;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDr(@Nullable Boolean enableDr) {
+
+            this.enableDr = enableDr;
             return this;
         }
         @CustomType.Setter
@@ -222,6 +242,7 @@ public final class ProjectProperties {
             final var _resultValue = new ProjectProperties();
             _resultValue.allowFullScan = allowFullScan;
             _resultValue.enableDecimal2 = enableDecimal2;
+            _resultValue.enableDr = enableDr;
             _resultValue.encryption = encryption;
             _resultValue.retentionDays = retentionDays;
             _resultValue.sqlMeteringMax = sqlMeteringMax;

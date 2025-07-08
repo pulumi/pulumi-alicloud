@@ -164,6 +164,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    @Export(name="backupInterval", refs={String.class}, tree="[0]")
+    private Output<String> backupInterval;
+
+    /**
+     * @return The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    public Output<String> backupInterval() {
+        return this.backupInterval;
+    }
+    /**
      * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
@@ -220,6 +234,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.configServerLists;
     }
     /**
+     * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="dbInstanceReleaseProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dbInstanceReleaseProtection;
+
+    /**
+     * @return Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> dbInstanceReleaseProtection() {
+        return Codegen.optional(this.dbInstanceReleaseProtection);
+    }
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
      * 
      */
@@ -232,6 +260,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> engineVersion() {
         return this.engineVersion;
+    }
+    /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    @Export(name="hiddenZoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hiddenZoneId;
+
+    /**
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    public Output<Optional<String>> hiddenZoneId() {
+        return Codegen.optional(this.hiddenZoneId);
     }
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -408,6 +450,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.retentionPeriod;
     }
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secondaryZoneId;
+
+    /**
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    public Output<Optional<String>> secondaryZoneId() {
+        return Codegen.optional(this.secondaryZoneId);
+    }
+    /**
      * The Security Group ID of ECS.
      * 
      */
@@ -448,6 +504,24 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ShardingInstanceShardList>> shardLists() {
         return this.shardLists;
+    }
+    /**
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - ` Flash  `: Single-digit second backup.
+     * 
+     */
+    @Export(name="snapshotBackupType", refs={String.class}, tree="[0]")
+    private Output<String> snapshotBackupType;
+
+    /**
+     * @return The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: Standard backup.
+     * - ` Flash  `: Single-digit second backup.
+     * 
+     */
+    public Output<String> snapshotBackupType() {
+        return this.snapshotBackupType;
     }
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
