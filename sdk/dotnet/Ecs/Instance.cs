@@ -175,8 +175,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -220,7 +218,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
-        /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        /// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         /// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         /// </summary>
         [Output("forceDelete")]
@@ -270,7 +268,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 
@@ -831,8 +829,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -864,7 +860,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableJumboFrame { get; set; }
 
         /// <summary>
-        /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        /// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         /// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         /// </summary>
         [Input("forceDelete")]
@@ -914,7 +910,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 
@@ -1443,8 +1439,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1488,7 +1482,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ExpiredTime { get; set; }
 
         /// <summary>
-        /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        /// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         /// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         /// </summary>
         [Input("forceDelete")]
@@ -1538,7 +1532,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
         /// 
         /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
         /// 

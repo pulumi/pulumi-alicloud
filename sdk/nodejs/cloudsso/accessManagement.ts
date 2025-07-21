@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud SSO Access Assignment resource.
  *
- * For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/doc-detail/265996.htm).
+ * For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/cloudsso/developer-reference/api-cloudsso-2021-05-15-createaccessassignment).
  *
  * > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
  *
@@ -52,11 +52,15 @@ export class AccessManagement extends pulumi.CustomResource {
     }
 
     /**
-     * The Access configuration ID.
+     * The ID of the access configuration.
      */
     public readonly accessConfigurationId!: pulumi.Output<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * (Available since v1.254.0) The time when the access permissions were assigned.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
     public readonly deprovisionStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -64,19 +68,19 @@ export class AccessManagement extends pulumi.CustomResource {
      */
     public readonly directoryId!: pulumi.Output<string>;
     /**
-     * The ID of the access assignment.
+     * The ID of the CloudSSO identity.
      */
     public readonly principalId!: pulumi.Output<string>;
     /**
-     * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      */
     public readonly principalType!: pulumi.Output<string>;
     /**
-     * The ID of the target to create the resource range.
+     * The ID of the task object.
      */
     public readonly targetId!: pulumi.Output<string>;
     /**
-     * The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * The type of the task object. Valid values: `RD-Account`.
      */
     public readonly targetType!: pulumi.Output<string>;
 
@@ -94,6 +98,7 @@ export class AccessManagement extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessManagementState | undefined;
             resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deprovisionStrategy"] = state ? state.deprovisionStrategy : undefined;
             resourceInputs["directoryId"] = state ? state.directoryId : undefined;
             resourceInputs["principalId"] = state ? state.principalId : undefined;
@@ -127,6 +132,7 @@ export class AccessManagement extends pulumi.CustomResource {
             resourceInputs["principalType"] = args ? args.principalType : undefined;
             resourceInputs["targetId"] = args ? args.targetId : undefined;
             resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessManagement.__pulumiType, name, resourceInputs, opts);
@@ -138,11 +144,15 @@ export class AccessManagement extends pulumi.CustomResource {
  */
 export interface AccessManagementState {
     /**
-     * The Access configuration ID.
+     * The ID of the access configuration.
      */
     accessConfigurationId?: pulumi.Input<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * (Available since v1.254.0) The time when the access permissions were assigned.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
     deprovisionStrategy?: pulumi.Input<string>;
     /**
@@ -150,19 +160,19 @@ export interface AccessManagementState {
      */
     directoryId?: pulumi.Input<string>;
     /**
-     * The ID of the access assignment.
+     * The ID of the CloudSSO identity.
      */
     principalId?: pulumi.Input<string>;
     /**
-     * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      */
     principalType?: pulumi.Input<string>;
     /**
-     * The ID of the target to create the resource range.
+     * The ID of the task object.
      */
     targetId?: pulumi.Input<string>;
     /**
-     * The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * The type of the task object. Valid values: `RD-Account`.
      */
     targetType?: pulumi.Input<string>;
 }
@@ -172,11 +182,11 @@ export interface AccessManagementState {
  */
 export interface AccessManagementArgs {
     /**
-     * The Access configuration ID.
+     * The ID of the access configuration.
      */
     accessConfigurationId: pulumi.Input<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
     deprovisionStrategy?: pulumi.Input<string>;
     /**
@@ -184,19 +194,19 @@ export interface AccessManagementArgs {
      */
     directoryId: pulumi.Input<string>;
     /**
-     * The ID of the access assignment.
+     * The ID of the CloudSSO identity.
      */
     principalId: pulumi.Input<string>;
     /**
-     * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      */
     principalType: pulumi.Input<string>;
     /**
-     * The ID of the target to create the resource range.
+     * The ID of the task object.
      */
     targetId: pulumi.Input<string>;
     /**
-     * The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * The type of the task object. Valid values: `RD-Account`.
      */
     targetType: pulumi.Input<string>;
 }

@@ -79,6 +79,10 @@ type Instance struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrOutput `pulumi:"clientCrlEnabled"`
+	// High performance cloud disk data archiving function switch.Example value:
+	// - true: Enable high-performance cloud disk data archiving function.
+	// - false: Disable high-performance cloud disk data archiving function.
+	ColdDataEnabled pulumi.BoolPtrOutput `pulumi:"coldDataEnabled"`
 	// RDS database connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
@@ -327,6 +331,10 @@ type Instance struct {
 	//
 	// > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
+	// Whitelist Template ID List.
+	TemplateIdLists pulumi.IntArrayOutput `pulumi:"templateIdLists"`
+	// (Computed, Available since v1.254.0) Whitelist Template Details.
+	Templates pulumi.StringMapArrayOutput `pulumi:"templates"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -475,6 +483,10 @@ type instanceState struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
+	// High performance cloud disk data archiving function switch.Example value:
+	// - true: Enable high-performance cloud disk data archiving function.
+	// - false: Disable high-performance cloud disk data archiving function.
+	ColdDataEnabled *bool `pulumi:"coldDataEnabled"`
 	// RDS database connection string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
@@ -723,6 +735,10 @@ type instanceState struct {
 	//
 	// > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// Whitelist Template ID List.
+	TemplateIdLists []int `pulumi:"templateIdLists"`
+	// (Computed, Available since v1.254.0) Whitelist Template Details.
+	Templates []map[string]string `pulumi:"templates"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -819,6 +835,10 @@ type InstanceState struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrInput
+	// High performance cloud disk data archiving function switch.Example value:
+	// - true: Enable high-performance cloud disk data archiving function.
+	// - false: Disable high-performance cloud disk data archiving function.
+	ColdDataEnabled pulumi.BoolPtrInput
 	// RDS database connection string.
 	ConnectionString pulumi.StringPtrInput
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
@@ -1067,6 +1087,10 @@ type InstanceState struct {
 	//
 	// > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 	TdeStatus pulumi.StringPtrInput
+	// Whitelist Template ID List.
+	TemplateIdLists pulumi.IntArrayInput
+	// (Computed, Available since v1.254.0) Whitelist Template Details.
+	Templates pulumi.StringMapArrayInput
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -1167,6 +1191,10 @@ type instanceArgs struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
+	// High performance cloud disk data archiving function switch.Example value:
+	// - true: Enable high-performance cloud disk data archiving function.
+	// - false: Disable high-performance cloud disk data archiving function.
+	ColdDataEnabled *bool `pulumi:"coldDataEnabled"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
 	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
@@ -1405,6 +1433,8 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// Whitelist Template ID List.
+	TemplateIdLists []int `pulumi:"templateIdLists"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -1502,6 +1532,10 @@ type InstanceArgs struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrInput
+	// High performance cloud disk data archiving function switch.Example value:
+	// - true: Enable high-performance cloud disk data archiving function.
+	// - false: Disable high-performance cloud disk data archiving function.
+	ColdDataEnabled pulumi.BoolPtrInput
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
 	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringPtrInput
@@ -1740,6 +1774,8 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 	TdeStatus pulumi.StringPtrInput
+	// Whitelist Template ID List.
+	TemplateIdLists pulumi.IntArrayInput
 	// Whether to upgrade a minor version of the kernel. Valid values:
 	// - true: upgrade
 	// - false: not to upgrade
@@ -1959,6 +1995,13 @@ func (o InstanceOutput) ClientCertRevocationList() pulumi.StringPtrOutput {
 // - 0: disables the CRL
 func (o InstanceOutput) ClientCrlEnabled() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ClientCrlEnabled }).(pulumi.IntPtrOutput)
+}
+
+// High performance cloud disk data archiving function switch.Example value:
+// - true: Enable high-performance cloud disk data archiving function.
+// - false: Disable high-performance cloud disk data archiving function.
+func (o InstanceOutput) ColdDataEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ColdDataEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // RDS database connection string.
@@ -2399,6 +2442,16 @@ func (o InstanceOutput) TdeEncryptionKey() pulumi.StringPtrOutput {
 // > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
 func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)
+}
+
+// Whitelist Template ID List.
+func (o InstanceOutput) TemplateIdLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntArrayOutput { return v.TemplateIdLists }).(pulumi.IntArrayOutput)
+}
+
+// (Computed, Available since v1.254.0) Whitelist Template Details.
+func (o InstanceOutput) Templates() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapArrayOutput { return v.Templates }).(pulumi.StringMapArrayOutput)
 }
 
 // Whether to upgrade a minor version of the kernel. Valid values:

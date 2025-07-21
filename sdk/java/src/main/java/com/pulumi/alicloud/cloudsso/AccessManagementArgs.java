@@ -17,14 +17,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     public static final AccessManagementArgs Empty = new AccessManagementArgs();
 
     /**
-     * The Access configuration ID.
+     * The ID of the access configuration.
      * 
      */
     @Import(name="accessConfigurationId", required=true)
     private Output<String> accessConfigurationId;
 
     /**
-     * @return The Access configuration ID.
+     * @return The ID of the access configuration.
      * 
      */
     public Output<String> accessConfigurationId() {
@@ -32,14 +32,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      * 
      */
     @Import(name="deprovisionStrategy")
     private @Nullable Output<String> deprovisionStrategy;
 
     /**
-     * @return The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * @return Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      * 
      */
     public Optional<Output<String>> deprovisionStrategy() {
@@ -62,14 +62,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the access assignment.
+     * The ID of the CloudSSO identity.
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return The ID of the access assignment.
+     * @return The ID of the CloudSSO identity.
      * 
      */
     public Output<String> principalId() {
@@ -77,14 +77,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      * 
      */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
     /**
-     * @return The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * @return The type of the CloudSSO identity. Valid values: `User`, `Group`.
      * 
      */
     public Output<String> principalType() {
@@ -92,14 +92,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the target to create the resource range.
+     * The ID of the task object.
      * 
      */
     @Import(name="targetId", required=true)
     private Output<String> targetId;
 
     /**
-     * @return The ID of the target to create the resource range.
+     * @return The ID of the task object.
      * 
      */
     public Output<String> targetId() {
@@ -107,14 +107,14 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * The type of the task object. Valid values: `RD-Account`.
      * 
      */
     @Import(name="targetType", required=true)
     private Output<String> targetType;
 
     /**
-     * @return The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * @return The type of the task object. Valid values: `RD-Account`.
      * 
      */
     public Output<String> targetType() {
@@ -152,7 +152,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessConfigurationId The Access configuration ID.
+         * @param accessConfigurationId The ID of the access configuration.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessConfigurationId The Access configuration ID.
+         * @param accessConfigurationId The ID of the access configuration.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deprovisionStrategy The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+         * @param deprovisionStrategy Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deprovisionStrategy The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+         * @param deprovisionStrategy Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param principalId The ID of the access assignment.
+         * @param principalId The ID of the CloudSSO identity.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param principalId The ID of the access assignment.
+         * @param principalId The ID of the CloudSSO identity.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param principalType The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+         * @param principalType The type of the CloudSSO identity. Valid values: `User`, `Group`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param principalType The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+         * @param principalType The type of the CloudSSO identity. Valid values: `User`, `Group`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetId The ID of the target to create the resource range.
+         * @param targetId The ID of the task object.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetId The ID of the target to create the resource range.
+         * @param targetId The ID of the task object.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetType The type of the resource range target to be accessed. Valid values: `RD-Account`.
+         * @param targetType The type of the task object. Valid values: `RD-Account`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetType The type of the resource range target to be accessed. Valid values: `RD-Account`.
+         * @param targetType The type of the task object. Valid values: `RD-Account`.
          * 
          * @return builder
          * 

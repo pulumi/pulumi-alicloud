@@ -191,6 +191,8 @@ type EcsLaunchTemplate struct {
 	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions EcsLaunchTemplateImageOptionsOutput `pulumi:"imageOptions"`
 	// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
 	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -353,6 +355,8 @@ type ecsLaunchTemplateState struct {
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId *string `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions *EcsLaunchTemplateImageOptions `pulumi:"imageOptions"`
 	// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -486,6 +490,8 @@ type EcsLaunchTemplateState struct {
 	HttpTokens pulumi.StringPtrInput
 	// The Image ID.
 	ImageId pulumi.StringPtrInput
+	// The options of images. See `imageOptions` below.
+	ImageOptions EcsLaunchTemplateImageOptionsPtrInput
 	// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -623,6 +629,8 @@ type ecsLaunchTemplateArgs struct {
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId *string `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions *EcsLaunchTemplateImageOptions `pulumi:"imageOptions"`
 	// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -755,6 +763,8 @@ type EcsLaunchTemplateArgs struct {
 	HttpTokens pulumi.StringPtrInput
 	// The Image ID.
 	ImageId pulumi.StringPtrInput
+	// The options of images. See `imageOptions` below.
+	ImageOptions EcsLaunchTemplateImageOptionsPtrInput
 	// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -1009,6 +1019,11 @@ func (o EcsLaunchTemplateOutput) HttpTokens() pulumi.StringOutput {
 // The Image ID.
 func (o EcsLaunchTemplateOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// The options of images. See `imageOptions` below.
+func (o EcsLaunchTemplateOutput) ImageOptions() EcsLaunchTemplateImageOptionsOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateImageOptionsOutput { return v.ImageOptions }).(EcsLaunchTemplateImageOptionsOutput)
 }
 
 // Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.

@@ -25,9 +25,9 @@ class UserAttachmentArgs:
                  user_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a UserAttachment resource.
-        :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] group_id: The Group ID.
-        :param pulumi.Input[builtins.str] user_id: The User ID.
+        :param pulumi.Input[builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[builtins.str] group_id: The ID of the group.
+        :param pulumi.Input[builtins.str] user_id: The ID of the user.
         """
         pulumi.set(__self__, "directory_id", directory_id)
         pulumi.set(__self__, "group_id", group_id)
@@ -37,7 +37,7 @@ class UserAttachmentArgs:
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -49,7 +49,7 @@ class UserAttachmentArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[builtins.str]:
         """
-        The Group ID.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
@@ -61,7 +61,7 @@ class UserAttachmentArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[builtins.str]:
         """
-        The User ID.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -78,9 +78,9 @@ class _UserAttachmentState:
                  user_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAttachment resources.
-        :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] group_id: The Group ID.
-        :param pulumi.Input[builtins.str] user_id: The User ID.
+        :param pulumi.Input[builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[builtins.str] group_id: The ID of the group.
+        :param pulumi.Input[builtins.str] user_id: The ID of the user.
         """
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
@@ -93,7 +93,7 @@ class _UserAttachmentState:
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -105,7 +105,7 @@ class _UserAttachmentState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Group ID.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
@@ -117,7 +117,7 @@ class _UserAttachmentState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The User ID.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -155,9 +155,9 @@ class UserAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] group_id: The Group ID.
-        :param pulumi.Input[builtins.str] user_id: The User ID.
+        :param pulumi.Input[builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[builtins.str] group_id: The ID of the group.
+        :param pulumi.Input[builtins.str] user_id: The ID of the user.
         """
         ...
     @overload
@@ -238,9 +238,9 @@ class UserAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] group_id: The Group ID.
-        :param pulumi.Input[builtins.str] user_id: The User ID.
+        :param pulumi.Input[builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[builtins.str] group_id: The ID of the group.
+        :param pulumi.Input[builtins.str] user_id: The ID of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -255,7 +255,7 @@ class UserAttachment(pulumi.CustomResource):
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -263,7 +263,7 @@ class UserAttachment(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[builtins.str]:
         """
-        The Group ID.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
@@ -271,7 +271,7 @@ class UserAttachment(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[builtins.str]:
         """
-        The User ID.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 

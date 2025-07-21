@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud SSO Access Assignment resource.
  * 
- * For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/doc-detail/265996.htm).
+ * For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/cloudsso/developer-reference/api-cloudsso-2021-05-15-createaccessassignment).
  * 
  * &gt; **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
  * 
@@ -37,28 +37,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/accessManagement:AccessManagement")
 public class AccessManagement extends com.pulumi.resources.CustomResource {
     /**
-     * The Access configuration ID.
+     * The ID of the access configuration.
      * 
      */
     @Export(name="accessConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationId;
 
     /**
-     * @return The Access configuration ID.
+     * @return The ID of the access configuration.
      * 
      */
     public Output<String> accessConfigurationId() {
         return this.accessConfigurationId;
     }
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * (Available since v1.254.0) The time when the access permissions were assigned.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.254.0) The time when the access permissions were assigned.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      * 
      */
     @Export(name="deprovisionStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deprovisionStrategy;
 
     /**
-     * @return The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * @return Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      * 
      */
     public Output<Optional<String>> deprovisionStrategy() {
@@ -79,56 +93,56 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
         return this.directoryId;
     }
     /**
-     * The ID of the access assignment.
+     * The ID of the CloudSSO identity.
      * 
      */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
-     * @return The ID of the access assignment.
+     * @return The ID of the CloudSSO identity.
      * 
      */
     public Output<String> principalId() {
         return this.principalId;
     }
     /**
-     * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      * 
      */
     @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
-     * @return The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+     * @return The type of the CloudSSO identity. Valid values: `User`, `Group`.
      * 
      */
     public Output<String> principalType() {
         return this.principalType;
     }
     /**
-     * The ID of the target to create the resource range.
+     * The ID of the task object.
      * 
      */
     @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
-     * @return The ID of the target to create the resource range.
+     * @return The ID of the task object.
      * 
      */
     public Output<String> targetId() {
         return this.targetId;
     }
     /**
-     * The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * The type of the task object. Valid values: `RD-Account`.
      * 
      */
     @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**
-     * @return The type of the resource range target to be accessed. Valid values: `RD-Account`.
+     * @return The type of the task object. Valid values: `RD-Account`.
      * 
      */
     public Output<String> targetType() {

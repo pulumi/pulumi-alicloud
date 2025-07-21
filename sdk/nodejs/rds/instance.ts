@@ -127,6 +127,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly clientCrlEnabled!: pulumi.Output<number | undefined>;
     /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     */
+    public readonly coldDataEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * RDS database connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
@@ -503,6 +509,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tdeStatus!: pulumi.Output<string>;
     /**
+     * Whitelist Template ID List.
+     */
+    public readonly templateIdLists!: pulumi.Output<number[] | undefined>;
+    /**
+     * (Computed, Available since v1.254.0) Whitelist Template Details.
+     */
+    public /*out*/ readonly templates!: pulumi.Output<{[key: string]: string}[]>;
+    /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
@@ -582,6 +596,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
+            resourceInputs["coldDataEnabled"] = state ? state.coldDataEnabled : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -646,6 +661,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tcpConnectionType"] = state ? state.tcpConnectionType : undefined;
             resourceInputs["tdeEncryptionKey"] = state ? state.tdeEncryptionKey : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["templateIdLists"] = state ? state.templateIdLists : undefined;
+            resourceInputs["templates"] = state ? state.templates : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -681,6 +698,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            resourceInputs["coldDataEnabled"] = args ? args.coldDataEnabled : undefined;
             resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
             resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
@@ -740,6 +758,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tcpConnectionType"] = args ? args.tcpConnectionType : undefined;
             resourceInputs["tdeEncryptionKey"] = args ? args.tdeEncryptionKey : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["templateIdLists"] = args ? args.templateIdLists : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -753,6 +772,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceType"] = undefined /*out*/;
             resourceInputs["sslStatus"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["templates"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientCaCert", "serverCert"] };
@@ -848,6 +868,12 @@ export interface InstanceState {
      * - 0: disables the CRL
      */
     clientCrlEnabled?: pulumi.Input<number>;
+    /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     */
+    coldDataEnabled?: pulumi.Input<boolean>;
     /**
      * RDS database connection string.
      */
@@ -1225,6 +1251,14 @@ export interface InstanceState {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
+     * Whitelist Template ID List.
+     */
+    templateIdLists?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * (Computed, Available since v1.254.0) Whitelist Template Details.
+     */
+    templates?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
@@ -1366,6 +1400,12 @@ export interface InstanceArgs {
      * - 0: disables the CRL
      */
     clientCrlEnabled?: pulumi.Input<number>;
+    /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     */
+    coldDataEnabled?: pulumi.Input<boolean>;
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
@@ -1722,6 +1762,10 @@ export interface InstanceArgs {
      * > **NOTE:** When creating an instance and enabling disk encryption, the value of encryptionKey can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * Whitelist Template ID List.
+     */
+    templateIdLists?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade

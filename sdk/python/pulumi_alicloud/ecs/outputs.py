@@ -24,6 +24,7 @@ __all__ = [
     'EcsInstanceSetExcludeInstanceFilter',
     'EcsInstanceSetNetworkInterface',
     'EcsLaunchTemplateDataDisk',
+    'EcsLaunchTemplateImageOptions',
     'EcsLaunchTemplateNetworkInterfaces',
     'EcsLaunchTemplateSystemDisk',
     'EcsPrefixListEntry',
@@ -35,6 +36,7 @@ __all__ = [
     'InstanceMaintenanceTime',
     'InstanceNetworkInterfaces',
     'LaunchTemplateDataDisk',
+    'LaunchTemplateImageOptions',
     'LaunchTemplateNetworkInterfaces',
     'LaunchTemplateSystemDisk',
     'ReservedInstanceOperationLock',
@@ -712,6 +714,42 @@ class EcsLaunchTemplateDataDisk(dict):
         The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class EcsLaunchTemplateImageOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginAsNonRoot":
+            suggest = "login_as_non_root"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcsLaunchTemplateImageOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcsLaunchTemplateImageOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcsLaunchTemplateImageOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool login_as_non_root: Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+        """
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[builtins.bool]:
+        """
+        Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+        """
+        return pulumi.get(self, "login_as_non_root")
 
 
 @pulumi.output_type
@@ -1854,6 +1892,36 @@ class LaunchTemplateDataDisk(dict):
         The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class LaunchTemplateImageOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginAsNonRoot":
+            suggest = "login_as_non_root"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LaunchTemplateImageOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LaunchTemplateImageOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LaunchTemplateImageOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[builtins.bool] = None):
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "login_as_non_root")
 
 
 @pulumi.output_type
@@ -7176,28 +7244,32 @@ class GetEcsSnapshotsSnapshotResult(dict):
                  type: builtins.str,
                  usage: builtins.str):
         """
-        :param builtins.str category: The category of the snapshot.
+        :param builtins.str category: The category of the snapshot. Valid Values: `flash` and `standard`.
+        :param builtins.str creation_time: The time when the snapshot was created.
         :param builtins.str description: The description of the snapshot.
-        :param builtins.str disk_id: The source disk id.
-        :param builtins.bool encrypted: Whether the snapshot is encrypted.
+        :param builtins.str disk_id: The ID of the source disk.
+        :param builtins.bool encrypted: Specifies whether the snapshot is encrypted.
         :param builtins.str id: The ID of the Snapshot.
-        :param builtins.bool instant_access: Whether snapshot speed availability is enabled.
-        :param builtins.int instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
-        :param builtins.str product_code: The product number inherited from the mirror market.
-        :param builtins.str progress: Snapshot creation progress, in percentage.
-        :param builtins.int remain_time: Remaining completion time for the snapshot being created.
+        :param builtins.bool instant_access: Indicates whether the instant access feature is enabled.
+        :param builtins.int instant_access_retention_days: Indicates the validity period of the instant access feature.
+        :param builtins.str name: The name of the snapshot.
+        :param builtins.str product_code: The product code of the Alibaba Cloud Marketplace image.
+        :param builtins.str progress: The progress of the snapshot creation task.
+        :param builtins.int remain_time: The amount of remaining time required to create the snapshot.
         :param builtins.str resource_group_id: The resource group id.
-        :param builtins.int retention_days: Automatic snapshot retention days.
-        :param builtins.str snapshot_id: The snapshot id.
-        :param builtins.str snapshot_name: Snapshot Display Name.
+        :param builtins.int retention_days: The retention period of the automatic snapshot.
+        :param builtins.str snapshot_id: The ID of the snapshot.
+        :param builtins.str snapshot_name: The name of the snapshot.
         :param builtins.str snapshot_sn: The serial number of the snapshot.
-        :param builtins.str snapshot_type: Snapshot creation type.
-        :param builtins.str source_disk_size: Source disk capacity.
-        :param builtins.str source_disk_type: Source disk attributes.
-        :param builtins.str source_storage_type: Original disk type.
-        :param builtins.str status: The status of the snapshot.
-        :param Mapping[str, builtins.str] tags: The tags.
-        :param builtins.str usage: A resource type that has a reference relationship.
+        :param builtins.str snapshot_type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        :param builtins.str source_disk_id: The ID of the source disk.
+        :param builtins.str source_disk_size: The capacity of the source disk.
+        :param builtins.str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
+        :param builtins.str source_storage_type: The category of the source disk.
+        :param builtins.str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+        :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the snapshot.
+        :param builtins.str type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        :param builtins.str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -7230,13 +7302,16 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def category(self) -> builtins.str:
         """
-        The category of the snapshot.
+        The category of the snapshot. Valid Values: `flash` and `standard`.
         """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> builtins.str:
+        """
+        The time when the snapshot was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -7251,7 +7326,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> builtins.str:
         """
-        The source disk id.
+        The ID of the source disk.
         """
         return pulumi.get(self, "disk_id")
 
@@ -7259,7 +7334,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def encrypted(self) -> builtins.bool:
         """
-        Whether the snapshot is encrypted.
+        Specifies whether the snapshot is encrypted.
         """
         return pulumi.get(self, "encrypted")
 
@@ -7275,7 +7350,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="instantAccess")
     def instant_access(self) -> builtins.bool:
         """
-        Whether snapshot speed availability is enabled.
+        Indicates whether the instant access feature is enabled.
         """
         return pulumi.get(self, "instant_access")
 
@@ -7283,20 +7358,23 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="instantAccessRetentionDays")
     def instant_access_retention_days(self) -> builtins.int:
         """
-        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        Indicates the validity period of the instant access feature.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @property
     @pulumi.getter
     def name(self) -> builtins.str:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="productCode")
     def product_code(self) -> builtins.str:
         """
-        The product number inherited from the mirror market.
+        The product code of the Alibaba Cloud Marketplace image.
         """
         return pulumi.get(self, "product_code")
 
@@ -7304,7 +7382,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def progress(self) -> builtins.str:
         """
-        Snapshot creation progress, in percentage.
+        The progress of the snapshot creation task.
         """
         return pulumi.get(self, "progress")
 
@@ -7312,7 +7390,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="remainTime")
     def remain_time(self) -> builtins.int:
         """
-        Remaining completion time for the snapshot being created.
+        The amount of remaining time required to create the snapshot.
         """
         return pulumi.get(self, "remain_time")
 
@@ -7328,7 +7406,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> builtins.int:
         """
-        Automatic snapshot retention days.
+        The retention period of the automatic snapshot.
         """
         return pulumi.get(self, "retention_days")
 
@@ -7336,7 +7414,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> builtins.str:
         """
-        The snapshot id.
+        The ID of the snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -7344,7 +7422,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> builtins.str:
         """
-        Snapshot Display Name.
+        The name of the snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 
@@ -7360,20 +7438,23 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="snapshotType")
     def snapshot_type(self) -> builtins.str:
         """
-        Snapshot creation type.
+        The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
         """
         return pulumi.get(self, "snapshot_type")
 
     @property
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> builtins.str:
+        """
+        The ID of the source disk.
+        """
         return pulumi.get(self, "source_disk_id")
 
     @property
     @pulumi.getter(name="sourceDiskSize")
     def source_disk_size(self) -> builtins.str:
         """
-        Source disk capacity.
+        The capacity of the source disk.
         """
         return pulumi.get(self, "source_disk_size")
 
@@ -7381,7 +7462,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceDiskType")
     def source_disk_type(self) -> builtins.str:
         """
-        Source disk attributes.
+        The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
         """
         return pulumi.get(self, "source_disk_type")
 
@@ -7389,7 +7470,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceStorageType")
     def source_storage_type(self) -> builtins.str:
         """
-        Original disk type.
+        The category of the source disk.
         """
         return pulumi.get(self, "source_storage_type")
 
@@ -7397,7 +7478,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        The status of the snapshot.
+        The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
         """
         return pulumi.get(self, "status")
 
@@ -7405,20 +7486,23 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, builtins.str]:
         """
-        The tags.
+        A mapping of tags to assign to the snapshot.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> builtins.str:
+        """
+        The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def usage(self) -> builtins.str:
         """
-        A resource type that has a reference relationship.
+        A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
         """
         return pulumi.get(self, "usage")
 

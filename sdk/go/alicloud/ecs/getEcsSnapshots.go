@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -24,27 +24,138 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetEcsSnapshots(ctx, &ecs.GetEcsSnapshotsArgs{
-//				Ids: []string{
-//					"s-bp1fvuxxxxxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("tf-test"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstEcsSnapshotId", example.Snapshots[0].Id)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// Status: pulumi.StringRef("OK"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_essd"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(defaultGetZones.Zones[0].Id),
+// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
+// SystemDiskCategory: pulumi.StringRef("cloud_essd"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(defaultGetZones.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_essd"),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(name),
+// DataDisks: ecs.InstanceDataDiskArray{
+// &ecs.InstanceDataDiskArgs{
+// Category: pulumi.String("cloud_essd"),
+// Size: pulumi.Int(20),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+// DiskName: pulumi.String(name),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// Category: pulumi.String("cloud_essd"),
+// Size: pulumi.Int(500),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsDiskAttachment, err := ecs.NewEcsDiskAttachment(ctx, "default", &ecs.EcsDiskAttachmentArgs{
+// DiskId: defaultEcsDisk.ID(),
+// InstanceId: defaultInstance.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsSnapshot, err := ecs.NewEcsSnapshot(ctx, "default", &ecs.EcsSnapshotArgs{
+// DiskId: defaultEcsDiskAttachment.DiskId,
+// Category: pulumi.String("standard"),
+// RetentionDays: pulumi.Int(20),
+// SnapshotName: pulumi.String(name),
+// Description: pulumi.String(name),
+// Tags: pulumi.StringMap{
+// "Created": pulumi.String("TF"),
+// "For": pulumi.String("Snapshot"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// ids := ecs.GetEcsSnapshotsOutput(ctx, ecs.GetEcsSnapshotsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultEcsSnapshot.ID(),
+// },
+// }, nil);
+// ctx.Export("ecsSnapshotsId0", ids.ApplyT(func(ids ecs.GetEcsSnapshotsResult) (*string, error) {
+// return &ids.Snapshots[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 func GetEcsSnapshots(ctx *pulumi.Context, args *GetEcsSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetEcsSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -86,33 +197,46 @@ type GetEcsSnapshotsArgs struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
 	Tags map[string]string `pulumi:"tags"`
-	Type *string           `pulumi:"type"`
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+	Type *string `pulumi:"type"`
 	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }
 
 // A collection of values returned by getEcsSnapshots.
 type GetEcsSnapshotsResult struct {
-	Category  *string `pulumi:"category"`
-	DryRun    *bool   `pulumi:"dryRun"`
-	Encrypted *bool   `pulumi:"encrypted"`
+	// The category of the snapshot.
+	Category *string `pulumi:"category"`
+	DryRun   *bool   `pulumi:"dryRun"`
+	// Indicates whether the snapshot was encrypted.
+	Encrypted *bool `pulumi:"encrypted"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                    `pulumi:"id"`
-	Ids             []string                  `pulumi:"ids"`
-	KmsKeyId        *string                   `pulumi:"kmsKeyId"`
-	NameRegex       *string                   `pulumi:"nameRegex"`
-	Names           []string                  `pulumi:"names"`
-	OutputFile      *string                   `pulumi:"outputFile"`
-	ResourceGroupId *string                   `pulumi:"resourceGroupId"`
-	SnapshotLinkId  *string                   `pulumi:"snapshotLinkId"`
-	SnapshotName    *string                   `pulumi:"snapshotName"`
-	SnapshotType    *string                   `pulumi:"snapshotType"`
-	Snapshots       []GetEcsSnapshotsSnapshot `pulumi:"snapshots"`
-	SourceDiskType  *string                   `pulumi:"sourceDiskType"`
-	Status          *string                   `pulumi:"status"`
-	Tags            map[string]string         `pulumi:"tags"`
-	Type            *string                   `pulumi:"type"`
-	Usage           *string                   `pulumi:"usage"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	KmsKeyId  *string  `pulumi:"kmsKeyId"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Snapshot names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group to which the snapshot belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SnapshotLinkId  *string `pulumi:"snapshotLinkId"`
+	// The name of the snapshot.
+	SnapshotName *string `pulumi:"snapshotName"`
+	// The type of the snapshot.
+	SnapshotType *string `pulumi:"snapshotType"`
+	// A list of Ecs Snapshots. Each element contains the following attributes:
+	Snapshots []GetEcsSnapshotsSnapshot `pulumi:"snapshots"`
+	// The type of the source disk.
+	SourceDiskType *string `pulumi:"sourceDiskType"`
+	// The status of the snapshot.
+	Status *string `pulumi:"status"`
+	// The tags of the snapshot.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the snapshot.
+	Type *string `pulumi:"type"`
+	// Indicates whether the snapshot was used to create images or cloud disks.
+	Usage *string `pulumi:"usage"`
 }
 
 func GetEcsSnapshotsOutput(ctx *pulumi.Context, args GetEcsSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetEcsSnapshotsResultOutput {
@@ -154,6 +278,7 @@ type GetEcsSnapshotsOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
@@ -178,6 +303,7 @@ func (o GetEcsSnapshotsResultOutput) ToGetEcsSnapshotsResultOutputWithContext(ct
 	return o
 }
 
+// The category of the snapshot.
 func (o GetEcsSnapshotsResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -186,6 +312,7 @@ func (o GetEcsSnapshotsResultOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether the snapshot was encrypted.
 func (o GetEcsSnapshotsResultOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -207,6 +334,7 @@ func (o GetEcsSnapshotsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snapshot names.
 func (o GetEcsSnapshotsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -215,6 +343,7 @@ func (o GetEcsSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group to which the snapshot belongs.
 func (o GetEcsSnapshotsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -223,34 +352,42 @@ func (o GetEcsSnapshotsResultOutput) SnapshotLinkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.SnapshotLinkId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the snapshot.
 func (o GetEcsSnapshotsResultOutput) SnapshotName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.SnapshotName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the snapshot.
 func (o GetEcsSnapshotsResultOutput) SnapshotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.SnapshotType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Snapshots. Each element contains the following attributes:
 func (o GetEcsSnapshotsResultOutput) Snapshots() GetEcsSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) []GetEcsSnapshotsSnapshot { return v.Snapshots }).(GetEcsSnapshotsSnapshotArrayOutput)
 }
 
+// The type of the source disk.
 func (o GetEcsSnapshotsResultOutput) SourceDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.SourceDiskType }).(pulumi.StringPtrOutput)
 }
 
+// The status of the snapshot.
 func (o GetEcsSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the snapshot.
 func (o GetEcsSnapshotsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the snapshot.
 func (o GetEcsSnapshotsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the snapshot was used to create images or cloud disks.
 func (o GetEcsSnapshotsResultOutput) Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
 }

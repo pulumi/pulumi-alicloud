@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Global Accelerator (GA) Acl entry attachment resource.
+ * Provides a Global Accelerator (GA) Acl Entry Attachment resource.
  *
- * For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
+ * For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
  *
  * > **NOTE:** Available since v1.190.0.
  *
@@ -19,23 +19,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.ga.Acl("default", {
- *     aclName: "tf-example-value",
  *     addressIpVersion: "IPv4",
+ *     aclName: name,
  * });
  * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("default", {
  *     aclId: _default.id,
  *     entry: "192.168.1.1/32",
- *     entryDescription: "tf-example-value",
+ *     entryDescription: name,
  * });
  * ```
  *
  * ## Import
  *
- * Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.
+ * Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+ * $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
  * ```
  */
 export class AclEntryAttachment extends pulumi.CustomResource {
@@ -67,19 +69,19 @@ export class AclEntryAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the global acceleration instance.
+     * The ID of the Acl.
      */
     public readonly aclId!: pulumi.Output<string>;
     /**
-     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * The entry (IP address or CIDR block) that you want to add.
      */
     public readonly entry!: pulumi.Output<string>;
     /**
-     * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      */
     public readonly entryDescription!: pulumi.Output<string | undefined>;
     /**
-     * The status of the network ACL.
+     * The status of the Acl Entry Attachment.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -123,19 +125,19 @@ export class AclEntryAttachment extends pulumi.CustomResource {
  */
 export interface AclEntryAttachmentState {
     /**
-     * The ID of the global acceleration instance.
+     * The ID of the Acl.
      */
     aclId?: pulumi.Input<string>;
     /**
-     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * The entry (IP address or CIDR block) that you want to add.
      */
     entry?: pulumi.Input<string>;
     /**
-     * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      */
     entryDescription?: pulumi.Input<string>;
     /**
-     * The status of the network ACL.
+     * The status of the Acl Entry Attachment.
      */
     status?: pulumi.Input<string>;
 }
@@ -145,15 +147,15 @@ export interface AclEntryAttachmentState {
  */
 export interface AclEntryAttachmentArgs {
     /**
-     * The ID of the global acceleration instance.
+     * The ID of the Acl.
      */
     aclId: pulumi.Input<string>;
     /**
-     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * The entry (IP address or CIDR block) that you want to add.
      */
     entry: pulumi.Input<string>;
     /**
-     * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      */
     entryDescription?: pulumi.Input<string>;
 }

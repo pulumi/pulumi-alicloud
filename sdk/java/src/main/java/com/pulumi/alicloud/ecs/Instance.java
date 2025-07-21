@@ -285,8 +285,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
@@ -294,8 +292,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -390,7 +386,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.expiredTime;
     }
     /**
-     * If it is true, the &#34;PrePaid&#34; instance will be change to &#34;PostPaid&#34; and then deleted forcibly.
+     * If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that &#34;Don&#39;t modify instance charge type frequentlly in one month&#34;.
      * 
      */
@@ -398,7 +394,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
-     * @return If it is true, the &#34;PrePaid&#34; instance will be change to &#34;PostPaid&#34; and then deleted forcibly.
+     * @return If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that &#34;Don&#39;t modify instance charge type frequentlly in one month&#34;.
      * 
      */
@@ -500,7 +496,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 
@@ -521,7 +517,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
      * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
      * 
      * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
      * 

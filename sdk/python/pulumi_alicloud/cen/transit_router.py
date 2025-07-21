@@ -141,10 +141,10 @@ class _TransitRouterState:
         """
         Input properties used for looking up and filtering TransitRouter resources.
         :param pulumi.Input[builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
-        :param pulumi.Input[builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.247.0) The time when the transit router was created.
         :param pulumi.Input[builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[builtins.str] region_id: The ID of the region where the Enterprise Edition transit router is deployed.
-        :param pulumi.Input[builtins.str] status: Status
+        :param pulumi.Input[builtins.str] region_id: (Available since v1.247.0) The ID of the region where the transit router is deployed.
+        :param pulumi.Input[builtins.str] status: The status of the transit router.
         :param pulumi.Input[builtins.bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] transit_router_description: The description of the Enterprise Edition transit router instance.
@@ -152,7 +152,7 @@ class _TransitRouterState:
         :param pulumi.Input[builtins.str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[builtins.str] transit_router_name: The name of the Enterprise Edition transit router.
                The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
-        :param pulumi.Input[builtins.str] type: Type
+        :param pulumi.Input[builtins.str] type: The edition of the transit router.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
@@ -193,7 +193,7 @@ class _TransitRouterState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The creation time of the resource
+        (Available since v1.247.0) The time when the transit router was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -217,7 +217,7 @@ class _TransitRouterState:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the region where the Enterprise Edition transit router is deployed.
+        (Available since v1.247.0) The ID of the region where the transit router is deployed.
         """
         return pulumi.get(self, "region_id")
 
@@ -229,7 +229,7 @@ class _TransitRouterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Status
+        The status of the transit router.
         """
         return pulumi.get(self, "status")
 
@@ -303,7 +303,7 @@ class _TransitRouterState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type
+        The edition of the transit router.
         """
         return pulumi.get(self, "type")
 
@@ -340,12 +340,16 @@ class TransitRouter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+            cen_instance_name=name,
+            description=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
-            transit_router_name="tf_example",
-            cen_id=example.id)
+            cen_id=example.id,
+            transit_router_name=name)
         ```
 
         ## Import
@@ -353,7 +357,7 @@ class TransitRouter(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
+        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -388,12 +392,16 @@ class TransitRouter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+            cen_instance_name=name,
+            description=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
-            transit_router_name="tf_example",
-            cen_id=example.id)
+            cen_id=example.id,
+            transit_router_name=name)
         ```
 
         ## Import
@@ -401,7 +409,7 @@ class TransitRouter(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
+        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -476,10 +484,10 @@ class TransitRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
-        :param pulumi.Input[builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.247.0) The time when the transit router was created.
         :param pulumi.Input[builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[builtins.str] region_id: The ID of the region where the Enterprise Edition transit router is deployed.
-        :param pulumi.Input[builtins.str] status: Status
+        :param pulumi.Input[builtins.str] region_id: (Available since v1.247.0) The ID of the region where the transit router is deployed.
+        :param pulumi.Input[builtins.str] status: The status of the transit router.
         :param pulumi.Input[builtins.bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[builtins.str] transit_router_description: The description of the Enterprise Edition transit router instance.
@@ -487,7 +495,7 @@ class TransitRouter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[builtins.str] transit_router_name: The name of the Enterprise Edition transit router.
                The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
-        :param pulumi.Input[builtins.str] type: Type
+        :param pulumi.Input[builtins.str] type: The edition of the transit router.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -518,7 +526,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
         """
-        The creation time of the resource
+        (Available since v1.247.0) The time when the transit router was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -534,7 +542,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the region where the Enterprise Edition transit router is deployed.
+        (Available since v1.247.0) The ID of the region where the transit router is deployed.
         """
         return pulumi.get(self, "region_id")
 
@@ -542,7 +550,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        Status
+        The status of the transit router.
         """
         return pulumi.get(self, "status")
 
@@ -592,7 +600,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Type
+        The edition of the transit router.
         """
         return pulumi.get(self, "type")
 

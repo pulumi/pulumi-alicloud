@@ -14,10 +14,14 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsSnapshotsSnapshot {
     /**
-     * @return The category of the snapshot.
+     * @return The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     private String category;
+    /**
+     * @return The time when the snapshot was created.
+     * 
+     */
     private String creationTime;
     /**
      * @return The description of the snapshot.
@@ -25,12 +29,12 @@ public final class GetEcsSnapshotsSnapshot {
      */
     private String description;
     /**
-     * @return The source disk id.
+     * @return The ID of the source disk.
      * 
      */
     private String diskId;
     /**
-     * @return Whether the snapshot is encrypted.
+     * @return Specifies whether the snapshot is encrypted.
      * 
      */
     private Boolean encrypted;
@@ -40,28 +44,32 @@ public final class GetEcsSnapshotsSnapshot {
      */
     private String id;
     /**
-     * @return Whether snapshot speed availability is enabled.
+     * @return Indicates whether the instant access feature is enabled.
      * 
      */
     private Boolean instantAccess;
     /**
-     * @return Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * @return Indicates the validity period of the instant access feature.
      * 
      */
     private Integer instantAccessRetentionDays;
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     private String name;
     /**
-     * @return The product number inherited from the mirror market.
+     * @return The product code of the Alibaba Cloud Marketplace image.
      * 
      */
     private String productCode;
     /**
-     * @return Snapshot creation progress, in percentage.
+     * @return The progress of the snapshot creation task.
      * 
      */
     private String progress;
     /**
-     * @return Remaining completion time for the snapshot being created.
+     * @return The amount of remaining time required to create the snapshot.
      * 
      */
     private Integer remainTime;
@@ -71,17 +79,17 @@ public final class GetEcsSnapshotsSnapshot {
      */
     private String resourceGroupId;
     /**
-     * @return Automatic snapshot retention days.
+     * @return The retention period of the automatic snapshot.
      * 
      */
     private Integer retentionDays;
     /**
-     * @return The snapshot id.
+     * @return The ID of the snapshot.
      * 
      */
     private String snapshotId;
     /**
-     * @return Snapshot Display Name.
+     * @return The name of the snapshot.
      * 
      */
     private String snapshotName;
@@ -91,51 +99,63 @@ public final class GetEcsSnapshotsSnapshot {
      */
     private String snapshotSn;
     /**
-     * @return Snapshot creation type.
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     private String snapshotType;
+    /**
+     * @return The ID of the source disk.
+     * 
+     */
     private String sourceDiskId;
     /**
-     * @return Source disk capacity.
+     * @return The capacity of the source disk.
      * 
      */
     private String sourceDiskSize;
     /**
-     * @return Source disk attributes.
+     * @return The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     private String sourceDiskType;
     /**
-     * @return Original disk type.
+     * @return The category of the source disk.
      * 
      */
     private String sourceStorageType;
     /**
-     * @return The status of the snapshot.
+     * @return The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     private String status;
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the snapshot.
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     * 
+     */
     private String type;
     /**
-     * @return A resource type that has a reference relationship.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
      * 
      */
     private String usage;
 
     private GetEcsSnapshotsSnapshot() {}
     /**
-     * @return The category of the snapshot.
+     * @return The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     public String category() {
         return this.category;
     }
+    /**
+     * @return The time when the snapshot was created.
+     * 
+     */
     public String creationTime() {
         return this.creationTime;
     }
@@ -147,14 +167,14 @@ public final class GetEcsSnapshotsSnapshot {
         return this.description;
     }
     /**
-     * @return The source disk id.
+     * @return The ID of the source disk.
      * 
      */
     public String diskId() {
         return this.diskId;
     }
     /**
-     * @return Whether the snapshot is encrypted.
+     * @return Specifies whether the snapshot is encrypted.
      * 
      */
     public Boolean encrypted() {
@@ -168,38 +188,42 @@ public final class GetEcsSnapshotsSnapshot {
         return this.id;
     }
     /**
-     * @return Whether snapshot speed availability is enabled.
+     * @return Indicates whether the instant access feature is enabled.
      * 
      */
     public Boolean instantAccess() {
         return this.instantAccess;
     }
     /**
-     * @return Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * @return Indicates the validity period of the instant access feature.
      * 
      */
     public Integer instantAccessRetentionDays() {
         return this.instantAccessRetentionDays;
     }
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return The product number inherited from the mirror market.
+     * @return The product code of the Alibaba Cloud Marketplace image.
      * 
      */
     public String productCode() {
         return this.productCode;
     }
     /**
-     * @return Snapshot creation progress, in percentage.
+     * @return The progress of the snapshot creation task.
      * 
      */
     public String progress() {
         return this.progress;
     }
     /**
-     * @return Remaining completion time for the snapshot being created.
+     * @return The amount of remaining time required to create the snapshot.
      * 
      */
     public Integer remainTime() {
@@ -213,21 +237,21 @@ public final class GetEcsSnapshotsSnapshot {
         return this.resourceGroupId;
     }
     /**
-     * @return Automatic snapshot retention days.
+     * @return The retention period of the automatic snapshot.
      * 
      */
     public Integer retentionDays() {
         return this.retentionDays;
     }
     /**
-     * @return The snapshot id.
+     * @return The ID of the snapshot.
      * 
      */
     public String snapshotId() {
         return this.snapshotId;
     }
     /**
-     * @return Snapshot Display Name.
+     * @return The name of the snapshot.
      * 
      */
     public String snapshotName() {
@@ -241,55 +265,63 @@ public final class GetEcsSnapshotsSnapshot {
         return this.snapshotSn;
     }
     /**
-     * @return Snapshot creation type.
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     public String snapshotType() {
         return this.snapshotType;
     }
+    /**
+     * @return The ID of the source disk.
+     * 
+     */
     public String sourceDiskId() {
         return this.sourceDiskId;
     }
     /**
-     * @return Source disk capacity.
+     * @return The capacity of the source disk.
      * 
      */
     public String sourceDiskSize() {
         return this.sourceDiskSize;
     }
     /**
-     * @return Source disk attributes.
+     * @return The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     public String sourceDiskType() {
         return this.sourceDiskType;
     }
     /**
-     * @return Original disk type.
+     * @return The category of the source disk.
      * 
      */
     public String sourceStorageType() {
         return this.sourceStorageType;
     }
     /**
-     * @return The status of the snapshot.
+     * @return The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the snapshot.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     * 
+     */
     public String type() {
         return this.type;
     }
     /**
-     * @return A resource type that has a reference relationship.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
      * 
      */
     public String usage() {

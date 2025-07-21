@@ -127,8 +127,9 @@ type LaunchTemplate struct {
 	HttpPutResponseHopLimit pulumi.IntOutput       `pulumi:"httpPutResponseHopLimit"`
 	HttpTokens              pulumi.StringOutput    `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         pulumi.StringPtrOutput `pulumi:"imageId"`
-	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
+	ImageId         pulumi.StringPtrOutput           `pulumi:"imageId"`
+	ImageOptions    LaunchTemplateImageOptionsOutput `pulumi:"imageOptions"`
+	ImageOwnerAlias pulumi.StringPtrOutput           `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -272,8 +273,9 @@ type launchTemplateState struct {
 	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
 	HttpTokens              *string `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         *string `pulumi:"imageId"`
-	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
+	ImageId         *string                     `pulumi:"imageId"`
+	ImageOptions    *LaunchTemplateImageOptions `pulumi:"imageOptions"`
+	ImageOwnerAlias *string                     `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -389,6 +391,7 @@ type LaunchTemplateState struct {
 	HttpTokens              pulumi.StringPtrInput
 	// Image ID.
 	ImageId         pulumi.StringPtrInput
+	ImageOptions    LaunchTemplateImageOptionsPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -508,8 +511,9 @@ type launchTemplateArgs struct {
 	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
 	HttpTokens              *string `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         *string `pulumi:"imageId"`
-	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
+	ImageId         *string                     `pulumi:"imageId"`
+	ImageOptions    *LaunchTemplateImageOptions `pulumi:"imageOptions"`
+	ImageOwnerAlias *string                     `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -625,6 +629,7 @@ type LaunchTemplateArgs struct {
 	HttpTokens              pulumi.StringPtrInput
 	// Image ID.
 	ImageId         pulumi.StringPtrInput
+	ImageOptions    LaunchTemplateImageOptionsPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -863,6 +868,10 @@ func (o LaunchTemplateOutput) HttpTokens() pulumi.StringOutput {
 // Image ID.
 func (o LaunchTemplateOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) ImageOptions() LaunchTemplateImageOptionsOutput {
+	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateImageOptionsOutput { return v.ImageOptions }).(LaunchTemplateImageOptionsOutput)
 }
 
 func (o LaunchTemplateOutput) ImageOwnerAlias() pulumi.StringPtrOutput {

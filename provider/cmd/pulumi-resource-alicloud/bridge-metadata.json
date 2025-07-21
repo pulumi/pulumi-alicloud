@@ -2648,6 +2648,12 @@
                     },
                     "serverless_config": {
                         "maxItemsOne": false
+                    },
+                    "template_id_list": {
+                        "maxItemsOne": false
+                    },
+                    "templates": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3945,6 +3951,9 @@
                 "fields": {
                     "data_disks": {
                         "maxItemsOne": false
+                    },
+                    "image_options": {
+                        "maxItemsOne": true
                     },
                     "network_interfaces": {
                         "maxItemsOne": true
@@ -6310,6 +6319,9 @@
                     "data_disks": {
                         "maxItemsOne": false
                     },
+                    "image_options": {
+                        "maxItemsOne": true
+                    },
                     "network_interfaces": {
                         "maxItemsOne": true
                     },
@@ -7986,6 +7998,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_rds_whitelist_template": {
+                "current": "alicloud:rds/whitelistTemplate:WhitelistTemplate"
             },
             "alicloud_realtime_compute_vvp_instance": {
                 "current": "alicloud:realtimecompute/vvpInstance:VvpInstance",

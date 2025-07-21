@@ -52,14 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var example = new Instance("example", InstanceArgs.builder()
- *             .cenInstanceName("tf_example")
- *             .description("an example for cen")
+ *             .cenInstanceName(name)
+ *             .description(name)
  *             .build());
  * 
  *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
- *             .transitRouterName("tf_example")
  *             .cenId(example.id())
+ *             .transitRouterName(name)
  *             .build());
  * 
  *     }
@@ -73,7 +75,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;cen_id&gt;:&lt;transit_router_id&gt;
  * ```
  * 
  */
@@ -94,14 +96,14 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
         return this.cenId;
     }
     /**
-     * The creation time of the resource
+     * (Available since v1.247.0) The time when the transit router was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return (Available since v1.247.0) The time when the transit router was created.
      * 
      */
     public Output<String> createTime() {
@@ -122,28 +124,28 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return The ID of the region where the Enterprise Edition transit router is deployed.
+     * @return (Available since v1.247.0) The ID of the region where the transit router is deployed.
      * 
      */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * Status
+     * The status of the transit router.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status
+     * @return The status of the transit router.
      * 
      */
     public Output<String> status() {
@@ -224,14 +226,14 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.transitRouterName);
     }
     /**
-     * Type
+     * The edition of the transit router.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type
+     * @return The edition of the transit router.
      * 
      */
     public Output<String> type() {

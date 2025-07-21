@@ -14,20 +14,23 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsSnapshotsSnapshotResult
     {
         /// <summary>
-        /// The category of the snapshot.
+        /// The category of the snapshot. Valid Values: `flash` and `standard`.
         /// </summary>
         public readonly string Category;
+        /// <summary>
+        /// The time when the snapshot was created.
+        /// </summary>
         public readonly string CreationTime;
         /// <summary>
         /// The description of the snapshot.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The source disk id.
+        /// The ID of the source disk.
         /// </summary>
         public readonly string DiskId;
         /// <summary>
-        /// Whether the snapshot is encrypted.
+        /// Specifies whether the snapshot is encrypted.
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
@@ -35,24 +38,27 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether snapshot speed availability is enabled.
+        /// Indicates whether the instant access feature is enabled.
         /// </summary>
         public readonly bool InstantAccess;
         /// <summary>
-        /// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        /// Indicates the validity period of the instant access feature.
         /// </summary>
         public readonly int InstantAccessRetentionDays;
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The product number inherited from the mirror market.
+        /// The product code of the Alibaba Cloud Marketplace image.
         /// </summary>
         public readonly string ProductCode;
         /// <summary>
-        /// Snapshot creation progress, in percentage.
+        /// The progress of the snapshot creation task.
         /// </summary>
         public readonly string Progress;
         /// <summary>
-        /// Remaining completion time for the snapshot being created.
+        /// The amount of remaining time required to create the snapshot.
         /// </summary>
         public readonly int RemainTime;
         /// <summary>
@@ -60,15 +66,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// Automatic snapshot retention days.
+        /// The retention period of the automatic snapshot.
         /// </summary>
         public readonly int RetentionDays;
         /// <summary>
-        /// The snapshot id.
+        /// The ID of the snapshot.
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// Snapshot Display Name.
+        /// The name of the snapshot.
         /// </summary>
         public readonly string SnapshotName;
         /// <summary>
@@ -76,33 +82,39 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SnapshotSn;
         /// <summary>
-        /// Snapshot creation type.
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
         /// </summary>
         public readonly string SnapshotType;
+        /// <summary>
+        /// The ID of the source disk.
+        /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
-        /// Source disk capacity.
+        /// The capacity of the source disk.
         /// </summary>
         public readonly string SourceDiskSize;
         /// <summary>
-        /// Source disk attributes.
+        /// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
         /// </summary>
         public readonly string SourceDiskType;
         /// <summary>
-        /// Original disk type.
+        /// The category of the source disk.
         /// </summary>
         public readonly string SourceStorageType;
         /// <summary>
-        /// The status of the snapshot.
+        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tags.
+        /// A mapping of tags to assign to the snapshot.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// </summary>
         public readonly string Type;
         /// <summary>
-        /// A resource type that has a reference relationship.
+        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
         /// </summary>
         public readonly string Usage;
 

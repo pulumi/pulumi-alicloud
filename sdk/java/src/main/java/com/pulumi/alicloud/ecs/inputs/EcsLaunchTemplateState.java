@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
+import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateImageOptionsArgs;
 import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
 import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
 import com.pulumi.core.Output;
@@ -224,6 +225,21 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    /**
+     * The options of images. See `image_options` below.
+     * 
+     */
+    @Import(name="imageOptions")
+    private @Nullable Output<EcsLaunchTemplateImageOptionsArgs> imageOptions;
+
+    /**
+     * @return The options of images. See `image_options` below.
+     * 
+     */
+    public Optional<Output<EcsLaunchTemplateImageOptionsArgs>> imageOptions() {
+        return Optional.ofNullable(this.imageOptions);
     }
 
     /**
@@ -917,6 +933,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
         this.httpTokens = $.httpTokens;
         this.imageId = $.imageId;
+        this.imageOptions = $.imageOptions;
         this.imageOwnerAlias = $.imageOwnerAlias;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceName = $.instanceName;
@@ -1267,6 +1284,27 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        /**
+         * @param imageOptions The options of images. See `image_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptions(@Nullable Output<EcsLaunchTemplateImageOptionsArgs> imageOptions) {
+            $.imageOptions = imageOptions;
+            return this;
+        }
+
+        /**
+         * @param imageOptions The options of images. See `image_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptions(EcsLaunchTemplateImageOptionsArgs imageOptions) {
+            return imageOptions(Output.of(imageOptions));
         }
 
         /**

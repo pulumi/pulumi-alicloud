@@ -128,7 +128,7 @@ class AccessPointRootPathPermission(dict):
         """
         :param builtins.int owner_group_id: The ID of the primary user group.
         :param builtins.int owner_user_id: The owner user ID.
-        :param builtins.str permission: POSIX permission.
+        :param builtins.str permission: The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         if owner_group_id is not None:
             pulumi.set(__self__, "owner_group_id", owner_group_id)
@@ -157,7 +157,7 @@ class AccessPointRootPathPermission(dict):
     @pulumi.getter
     def permission(self) -> Optional[builtins.str]:
         """
-        POSIX permission.
+        The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         return pulumi.get(self, "permission")
 

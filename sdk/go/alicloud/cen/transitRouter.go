@@ -29,21 +29,27 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String("tf_example"),
 //				CenId:             example.ID(),
+//				TransitRouterName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -59,20 +65,20 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
+// $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
 // ```
 type TransitRouter struct {
 	pulumi.CustomResourceState
 
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
-	// The creation time of the resource
+	// (Available since v1.247.0) The time when the transit router was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
+	// (Available since v1.247.0) The ID of the region where the transit router is deployed.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
-	// Status
+	// The status of the transit router.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast pulumi.BoolPtrOutput `pulumi:"supportMulticast"`
@@ -86,7 +92,7 @@ type TransitRouter struct {
 	// The name of the Enterprise Edition transit router.
 	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName pulumi.StringPtrOutput `pulumi:"transitRouterName"`
-	// Type
+	// The edition of the transit router.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -125,13 +131,13 @@ func GetTransitRouter(ctx *pulumi.Context,
 type transitRouterState struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
-	// The creation time of the resource
+	// (Available since v1.247.0) The time when the transit router was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
+	// (Available since v1.247.0) The ID of the region where the transit router is deployed.
 	RegionId *string `pulumi:"regionId"`
-	// Status
+	// The status of the transit router.
 	Status *string `pulumi:"status"`
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast *bool `pulumi:"supportMulticast"`
@@ -145,20 +151,20 @@ type transitRouterState struct {
 	// The name of the Enterprise Edition transit router.
 	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `pulumi:"transitRouterName"`
-	// Type
+	// The edition of the transit router.
 	Type *string `pulumi:"type"`
 }
 
 type TransitRouterState struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringPtrInput
-	// The creation time of the resource
+	// (Available since v1.247.0) The time when the transit router was created.
 	CreateTime pulumi.StringPtrInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The ID of the region where the Enterprise Edition transit router is deployed.
+	// (Available since v1.247.0) The ID of the region where the transit router is deployed.
 	RegionId pulumi.StringPtrInput
-	// Status
+	// The status of the transit router.
 	Status pulumi.StringPtrInput
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast pulumi.BoolPtrInput
@@ -172,7 +178,7 @@ type TransitRouterState struct {
 	// The name of the Enterprise Edition transit router.
 	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName pulumi.StringPtrInput
-	// Type
+	// The edition of the transit router.
 	Type pulumi.StringPtrInput
 }
 
@@ -307,7 +313,7 @@ func (o TransitRouterOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource
+// (Available since v1.247.0) The time when the transit router was created.
 func (o TransitRouterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -317,12 +323,12 @@ func (o TransitRouterOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the region where the Enterprise Edition transit router is deployed.
+// (Available since v1.247.0) The ID of the region where the transit router is deployed.
 func (o TransitRouterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Status
+// The status of the transit router.
 func (o TransitRouterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -354,7 +360,7 @@ func (o TransitRouterOutput) TransitRouterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringPtrOutput { return v.TransitRouterName }).(pulumi.StringPtrOutput)
 }
 
-// Type
+// The edition of the transit router.
 func (o TransitRouterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

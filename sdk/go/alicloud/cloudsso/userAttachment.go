@@ -30,11 +30,11 @@ import (
 type UserAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// The Group ID.
+	// The ID of the group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The User ID.
+	// The ID of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -77,20 +77,20 @@ func GetUserAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserAttachment resources.
 type userAttachmentState struct {
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId *string `pulumi:"directoryId"`
-	// The Group ID.
+	// The ID of the group.
 	GroupId *string `pulumi:"groupId"`
-	// The User ID.
+	// The ID of the user.
 	UserId *string `pulumi:"userId"`
 }
 
 type UserAttachmentState struct {
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringPtrInput
-	// The Group ID.
+	// The ID of the group.
 	GroupId pulumi.StringPtrInput
-	// The User ID.
+	// The ID of the user.
 	UserId pulumi.StringPtrInput
 }
 
@@ -99,21 +99,21 @@ func (UserAttachmentState) ElementType() reflect.Type {
 }
 
 type userAttachmentArgs struct {
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId string `pulumi:"directoryId"`
-	// The Group ID.
+	// The ID of the group.
 	GroupId string `pulumi:"groupId"`
-	// The User ID.
+	// The ID of the user.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a UserAttachment resource.
 type UserAttachmentArgs struct {
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringInput
-	// The Group ID.
+	// The ID of the group.
 	GroupId pulumi.StringInput
-	// The User ID.
+	// The ID of the user.
 	UserId pulumi.StringInput
 }
 
@@ -204,17 +204,17 @@ func (o UserAttachmentOutput) ToUserAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of the Directory.
+// The ID of the directory.
 func (o UserAttachmentOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
-// The Group ID.
+// The ID of the group.
 func (o UserAttachmentOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The User ID.
+// The ID of the user.
 func (o UserAttachmentOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAttachment) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

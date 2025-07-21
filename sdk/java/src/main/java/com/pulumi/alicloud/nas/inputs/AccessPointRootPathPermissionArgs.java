@@ -47,14 +47,14 @@ public final class AccessPointRootPathPermissionArgs extends com.pulumi.resource
     }
 
     /**
-     * POSIX permission.
+     * The Portable Operating System Interface for UNIX (POSIX) permission.
      * 
      */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
     /**
-     * @return POSIX permission.
+     * @return The Portable Operating System Interface for UNIX (POSIX) permission.
      * 
      */
     public Optional<Output<String>> permission() {
@@ -130,7 +130,7 @@ public final class AccessPointRootPathPermissionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param permission POSIX permission.
+         * @param permission The Portable Operating System Interface for UNIX (POSIX) permission.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AccessPointRootPathPermissionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param permission POSIX permission.
+         * @param permission The Portable Operating System Interface for UNIX (POSIX) permission.
          * 
          * @return builder
          * 

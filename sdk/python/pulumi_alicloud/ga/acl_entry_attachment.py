@@ -25,9 +25,9 @@ class AclEntryAttachmentArgs:
                  entry_description: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AclEntryAttachment resource.
-        :param pulumi.Input[builtins.str] acl_id: The ID of the global acceleration instance.
-        :param pulumi.Input[builtins.str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
-        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[builtins.str] acl_id: The ID of the Acl.
+        :param pulumi.Input[builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
+        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         pulumi.set(__self__, "acl_id", acl_id)
         pulumi.set(__self__, "entry", entry)
@@ -38,7 +38,7 @@ class AclEntryAttachmentArgs:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the global acceleration instance.
+        The ID of the Acl.
         """
         return pulumi.get(self, "acl_id")
 
@@ -50,7 +50,7 @@ class AclEntryAttachmentArgs:
     @pulumi.getter
     def entry(self) -> pulumi.Input[builtins.str]:
         """
-        The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        The entry (IP address or CIDR block) that you want to add.
         """
         return pulumi.get(self, "entry")
 
@@ -62,7 +62,7 @@ class AclEntryAttachmentArgs:
     @pulumi.getter(name="entryDescription")
     def entry_description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
@@ -80,10 +80,10 @@ class _AclEntryAttachmentState:
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclEntryAttachment resources.
-        :param pulumi.Input[builtins.str] acl_id: The ID of the global acceleration instance.
-        :param pulumi.Input[builtins.str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
-        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        :param pulumi.Input[builtins.str] status: The status of the network ACL.
+        :param pulumi.Input[builtins.str] acl_id: The ID of the Acl.
+        :param pulumi.Input[builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
+        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[builtins.str] status: The status of the Acl Entry Attachment.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -98,7 +98,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the global acceleration instance.
+        The ID of the Acl.
         """
         return pulumi.get(self, "acl_id")
 
@@ -110,7 +110,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter
     def entry(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        The entry (IP address or CIDR block) that you want to add.
         """
         return pulumi.get(self, "entry")
 
@@ -122,7 +122,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter(name="entryDescription")
     def entry_description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
@@ -134,7 +134,7 @@ class _AclEntryAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The status of the network ACL.
+        The status of the Acl Entry Attachment.
         """
         return pulumi.get(self, "status")
 
@@ -154,9 +154,9 @@ class AclEntryAttachment(pulumi.CustomResource):
                  entry_description: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Global Accelerator (GA) Acl entry attachment resource.
+        Provides a Global Accelerator (GA) Acl Entry Attachment resource.
 
-        For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
+        For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
 
         > **NOTE:** Available since v1.190.0.
 
@@ -168,28 +168,32 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.ga.Acl("default",
-            acl_name="tf-example-value",
-            address_ip_version="IPv4")
+            address_ip_version="IPv4",
+            acl_name=name)
         default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
             acl_id=default.id,
             entry="192.168.1.1/32",
-            entry_description="tf-example-value")
+            entry_description=name)
         ```
 
         ## Import
 
-        Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.
+        Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+        $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] acl_id: The ID of the global acceleration instance.
-        :param pulumi.Input[builtins.str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
-        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[builtins.str] acl_id: The ID of the Acl.
+        :param pulumi.Input[builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
+        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         ...
     @overload
@@ -198,9 +202,9 @@ class AclEntryAttachment(pulumi.CustomResource):
                  args: AclEntryAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Global Accelerator (GA) Acl entry attachment resource.
+        Provides a Global Accelerator (GA) Acl Entry Attachment resource.
 
-        For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
+        For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
 
         > **NOTE:** Available since v1.190.0.
 
@@ -212,21 +216,25 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.ga.Acl("default",
-            acl_name="tf-example-value",
-            address_ip_version="IPv4")
+            address_ip_version="IPv4",
+            acl_name=name)
         default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
             acl_id=default.id,
             entry="192.168.1.1/32",
-            entry_description="tf-example-value")
+            entry_description=name)
         ```
 
         ## Import
 
-        Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.
+        Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+        $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,10 +293,10 @@ class AclEntryAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] acl_id: The ID of the global acceleration instance.
-        :param pulumi.Input[builtins.str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
-        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        :param pulumi.Input[builtins.str] status: The status of the network ACL.
+        :param pulumi.Input[builtins.str] acl_id: The ID of the Acl.
+        :param pulumi.Input[builtins.str] entry: The entry (IP address or CIDR block) that you want to add.
+        :param pulumi.Input[builtins.str] entry_description: The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[builtins.str] status: The status of the Acl Entry Attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,7 +312,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the global acceleration instance.
+        The ID of the Acl.
         """
         return pulumi.get(self, "acl_id")
 
@@ -312,7 +320,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter
     def entry(self) -> pulumi.Output[builtins.str]:
         """
-        The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        The entry (IP address or CIDR block) that you want to add.
         """
         return pulumi.get(self, "entry")
 
@@ -320,7 +328,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter(name="entryDescription")
     def entry_description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
@@ -328,7 +336,7 @@ class AclEntryAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        The status of the network ACL.
+        The status of the Acl Entry Attachment.
         """
         return pulumi.get(self, "status")
 

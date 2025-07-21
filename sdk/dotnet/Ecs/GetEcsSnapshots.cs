@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,18 +28,116 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_essd",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         SystemDiskCategory = "cloud_essd",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+        ///     {
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             defaultSecurityGroup,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
+        ///         InternetChargeType = "PayByTraffic",
+        ///         InternetMaxBandwidthOut = 10,
+        ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         InstanceChargeType = "PostPaid",
+        ///         SystemDiskCategory = "cloud_essd",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         InstanceName = name,
+        ///         DataDisks = new[]
+        ///         {
+        ///             new AliCloud.Ecs.Inputs.InstanceDataDiskArgs
+        ///             {
+        ///                 Category = "cloud_essd",
+        ///                 Size = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         DiskName = name,
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         Category = "cloud_essd",
+        ///         Size = 500,
+        ///     });
+        /// 
+        ///     var defaultEcsDiskAttachment = new AliCloud.Ecs.EcsDiskAttachment("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDisk.Id,
+        ///         InstanceId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsSnapshot = new AliCloud.Ecs.EcsSnapshot("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDiskAttachment.DiskId,
+        ///         Category = "standard",
+        ///         RetentionDays = 20,
+        ///         SnapshotName = name,
+        ///         Description = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Snapshot" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "s-bp1fvuxxxxxxxx",
+        ///             defaultEcsSnapshot.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["ecsSnapshotsId0"] = ids.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -50,7 +148,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,18 +162,116 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_essd",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         SystemDiskCategory = "cloud_essd",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+        ///     {
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             defaultSecurityGroup,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
+        ///         InternetChargeType = "PayByTraffic",
+        ///         InternetMaxBandwidthOut = 10,
+        ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         InstanceChargeType = "PostPaid",
+        ///         SystemDiskCategory = "cloud_essd",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         InstanceName = name,
+        ///         DataDisks = new[]
+        ///         {
+        ///             new AliCloud.Ecs.Inputs.InstanceDataDiskArgs
+        ///             {
+        ///                 Category = "cloud_essd",
+        ///                 Size = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         DiskName = name,
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         Category = "cloud_essd",
+        ///         Size = 500,
+        ///     });
+        /// 
+        ///     var defaultEcsDiskAttachment = new AliCloud.Ecs.EcsDiskAttachment("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDisk.Id,
+        ///         InstanceId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsSnapshot = new AliCloud.Ecs.EcsSnapshot("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDiskAttachment.DiskId,
+        ///         Category = "standard",
+        ///         RetentionDays = 20,
+        ///         SnapshotName = name,
+        ///         Description = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Snapshot" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "s-bp1fvuxxxxxxxx",
+        ///             defaultEcsSnapshot.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["ecsSnapshotsId0"] = ids.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -86,7 +282,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,18 +296,116 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_essd",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         SystemDiskCategory = "cloud_essd",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+        ///     {
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             defaultSecurityGroup,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
+        ///         InternetChargeType = "PayByTraffic",
+        ///         InternetMaxBandwidthOut = 10,
+        ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         InstanceChargeType = "PostPaid",
+        ///         SystemDiskCategory = "cloud_essd",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         InstanceName = name,
+        ///         DataDisks = new[]
+        ///         {
+        ///             new AliCloud.Ecs.Inputs.InstanceDataDiskArgs
+        ///             {
+        ///                 Category = "cloud_essd",
+        ///                 Size = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         DiskName = name,
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+        ///         Category = "cloud_essd",
+        ///         Size = 500,
+        ///     });
+        /// 
+        ///     var defaultEcsDiskAttachment = new AliCloud.Ecs.EcsDiskAttachment("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDisk.Id,
+        ///         InstanceId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsSnapshot = new AliCloud.Ecs.EcsSnapshot("default", new()
+        ///     {
+        ///         DiskId = defaultEcsDiskAttachment.DiskId,
+        ///         Category = "standard",
+        ///         RetentionDays = 20,
+        ///         SnapshotName = name,
+        ///         Description = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Snapshot" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "s-bp1fvuxxxxxxxx",
+        ///             defaultEcsSnapshot.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["ecsSnapshotsId0"] = ids.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -219,6 +513,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
@@ -332,6 +629,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -351,8 +651,14 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsSnapshotsResult
     {
+        /// <summary>
+        /// The category of the snapshot.
+        /// </summary>
         public readonly string? Category;
         public readonly bool? DryRun;
+        /// <summary>
+        /// Indicates whether the snapshot was encrypted.
+        /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -361,17 +667,47 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<string> Ids;
         public readonly string? KmsKeyId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snapshot names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group to which the snapshot belongs.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly string? SnapshotLinkId;
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         public readonly string? SnapshotName;
+        /// <summary>
+        /// The type of the snapshot.
+        /// </summary>
         public readonly string? SnapshotType;
+        /// <summary>
+        /// A list of Ecs Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// The type of the source disk.
+        /// </summary>
         public readonly string? SourceDiskType;
+        /// <summary>
+        /// The status of the snapshot.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the snapshot.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The type of the snapshot.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Indicates whether the snapshot was used to create images or cloud disks.
+        /// </summary>
         public readonly string? Usage;
 
         [OutputConstructor]

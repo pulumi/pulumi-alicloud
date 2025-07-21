@@ -163,8 +163,6 @@ type Instance struct {
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo pulumi.StringOutput `pulumi:"deploymentSetGroupNo"`
@@ -180,7 +178,7 @@ type Instance struct {
 	EnableJumboFrame pulumi.BoolOutput `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
-	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -202,7 +200,7 @@ type Instance struct {
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 	//
 	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 	//
@@ -450,8 +448,6 @@ type instanceState struct {
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo *string `pulumi:"deploymentSetGroupNo"`
@@ -467,7 +463,7 @@ type instanceState struct {
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime *string `pulumi:"expiredTime"`
-	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -489,7 +485,7 @@ type instanceState struct {
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 	//
 	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 	//
@@ -701,8 +697,6 @@ type InstanceState struct {
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo pulumi.StringPtrInput
@@ -718,7 +712,7 @@ type InstanceState struct {
 	EnableJumboFrame pulumi.BoolPtrInput
 	// (Available since v1.232.0) The expiration time of the instance.
 	ExpiredTime pulumi.StringPtrInput
-	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrInput
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -740,7 +734,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 	//
 	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 	//
@@ -952,8 +946,6 @@ type instanceArgs struct {
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -965,7 +957,7 @@ type instanceArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
-	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -987,7 +979,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 	//
 	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 	//
@@ -1180,8 +1172,6 @@ type InstanceArgs struct {
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrInput
@@ -1193,7 +1183,7 @@ type InstanceArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
-	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrInput
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -1215,7 +1205,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 	//
 	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 	//
@@ -1524,8 +1514,6 @@ func (o InstanceOutput) DedicatedHostId() pulumi.StringPtrOutput {
 }
 
 // Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-// - true: Enable deletion protection.
-// - false: Disable deletion protection.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1562,7 +1550,7 @@ func (o InstanceOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
-// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
 // However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
@@ -1605,7 +1593,7 @@ func (o InstanceOutput) ImageId() pulumi.StringOutput {
 //
 // > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 //
-// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+// > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
 //
 // > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 //

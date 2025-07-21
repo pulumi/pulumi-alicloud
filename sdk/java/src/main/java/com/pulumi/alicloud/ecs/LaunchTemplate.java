@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.LaunchTemplateArgs;
 import com.pulumi.alicloud.ecs.inputs.LaunchTemplateState;
 import com.pulumi.alicloud.ecs.outputs.LaunchTemplateDataDisk;
+import com.pulumi.alicloud.ecs.outputs.LaunchTemplateImageOptions;
 import com.pulumi.alicloud.ecs.outputs.LaunchTemplateNetworkInterfaces;
 import com.pulumi.alicloud.ecs.outputs.LaunchTemplateSystemDisk;
 import com.pulumi.core.Output;
@@ -250,6 +251,12 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    @Export(name="imageOptions", refs={LaunchTemplateImageOptions.class}, tree="[0]")
+    private Output<LaunchTemplateImageOptions> imageOptions;
+
+    public Output<LaunchTemplateImageOptions> imageOptions() {
+        return this.imageOptions;
     }
     @Export(name="imageOwnerAlias", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageOwnerAlias;

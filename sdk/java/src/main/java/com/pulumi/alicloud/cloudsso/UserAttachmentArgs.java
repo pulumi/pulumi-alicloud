@@ -15,14 +15,14 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
     public static final UserAttachmentArgs Empty = new UserAttachmentArgs();
 
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      * 
      */
     @Import(name="directoryId", required=true)
     private Output<String> directoryId;
 
     /**
-     * @return The ID of the Directory.
+     * @return The ID of the directory.
      * 
      */
     public Output<String> directoryId() {
@@ -30,14 +30,14 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Group ID.
+     * The ID of the group.
      * 
      */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
     /**
-     * @return The Group ID.
+     * @return The ID of the group.
      * 
      */
     public Output<String> groupId() {
@@ -45,14 +45,14 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The User ID.
+     * The ID of the user.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The User ID.
+     * @return The ID of the user.
      * 
      */
     public Output<String> userId() {
@@ -86,7 +86,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param directoryId The ID of the Directory.
+         * @param directoryId The ID of the directory.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param directoryId The ID of the Directory.
+         * @param directoryId The ID of the directory.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupId The Group ID.
+         * @param groupId The ID of the group.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupId The Group ID.
+         * @param groupId The ID of the group.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param userId The User ID.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param userId The User ID.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 

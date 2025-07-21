@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a NAS Access Point resource.
+    /// Provides a File Storage (NAS) Access Point resource.
     /// 
     /// For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
     /// 
@@ -31,11 +31,16 @@ namespace Pulumi.AliCloud.Nas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var regionId = config.Get("regionId") ?? "cn-hangzhou";
     ///     var azone = config.Get("azone") ?? "cn-hangzhou-g";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var defaultkyVC70 = new AliCloud.Vpc.Network("defaultkyVC70", new()
@@ -49,12 +54,6 @@ namespace Pulumi.AliCloud.Nas
     ///         VpcId = defaultkyVC70.Id,
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         CidrBlock = "172.16.0.0/24",
-    ///     });
-    /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
     ///     });
     /// 
     ///     var defaultBbc7ev = new AliCloud.Nas.AccessGroup("defaultBbc7ev", new()
@@ -99,7 +98,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// NAS Access Point can be imported using the id, e.g.
+    /// File Storage (NAS) Access Point can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/accessPoint:AccessPoint example &lt;file_system_id&gt;:&lt;access_point_id&gt;
@@ -109,31 +108,31 @@ namespace Pulumi.AliCloud.Nas
     public partial class AccessPoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The permission group name.
+        /// The name of the permission group.
         /// </summary>
         [Output("accessGroup")]
         public Output<string> AccessGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Access point ID.
+        /// The ID of the access point.
         /// </summary>
         [Output("accessPointId")]
         public Output<string> AccessPointId { get; private set; } = null!;
 
         /// <summary>
-        /// The Access Point Name.
+        /// The name of the access point.
         /// </summary>
         [Output("accessPointName")]
         public Output<string?> AccessPointName { get; private set; } = null!;
 
         /// <summary>
-        /// Creation time.
+        /// The time when the access point was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the RAM policy.
+        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         /// </summary>
         [Output("enabledRam")]
         public Output<bool?> EnabledRam { get; private set; } = null!;
@@ -151,7 +150,13 @@ namespace Pulumi.AliCloud.Nas
         public Output<Outputs.AccessPointPosixUser> PosixUser { get; private set; } = null!;
 
         /// <summary>
-        /// The root directory.
+        /// (Available since v1.254.0) The region ID.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The root directory of the access point.
         /// </summary>
         [Output("rootPath")]
         public Output<string> RootPath { get; private set; } = null!;
@@ -163,7 +168,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<Outputs.AccessPointRootPathPermission> RootPathPermission { get; private set; } = null!;
 
         /// <summary>
-        /// Current access point state.
+        /// The status of the access point.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -227,19 +232,19 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessPointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The permission group name.
+        /// The name of the permission group.
         /// </summary>
         [Input("accessGroup", required: true)]
         public Input<string> AccessGroup { get; set; } = null!;
 
         /// <summary>
-        /// The Access Point Name.
+        /// The name of the access point.
         /// </summary>
         [Input("accessPointName")]
         public Input<string>? AccessPointName { get; set; }
 
         /// <summary>
-        /// Whether to enable the RAM policy.
+        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         /// </summary>
         [Input("enabledRam")]
         public Input<bool>? EnabledRam { get; set; }
@@ -257,7 +262,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.AccessPointPosixUserArgs>? PosixUser { get; set; }
 
         /// <summary>
-        /// The root directory.
+        /// The root directory of the access point.
         /// </summary>
         [Input("rootPath")]
         public Input<string>? RootPath { get; set; }
@@ -289,31 +294,31 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessPointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The permission group name.
+        /// The name of the permission group.
         /// </summary>
         [Input("accessGroup")]
         public Input<string>? AccessGroup { get; set; }
 
         /// <summary>
-        /// Access point ID.
+        /// The ID of the access point.
         /// </summary>
         [Input("accessPointId")]
         public Input<string>? AccessPointId { get; set; }
 
         /// <summary>
-        /// The Access Point Name.
+        /// The name of the access point.
         /// </summary>
         [Input("accessPointName")]
         public Input<string>? AccessPointName { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// The time when the access point was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether to enable the RAM policy.
+        /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         /// </summary>
         [Input("enabledRam")]
         public Input<bool>? EnabledRam { get; set; }
@@ -331,7 +336,13 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.AccessPointPosixUserGetArgs>? PosixUser { get; set; }
 
         /// <summary>
-        /// The root directory.
+        /// (Available since v1.254.0) The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The root directory of the access point.
         /// </summary>
         [Input("rootPath")]
         public Input<string>? RootPath { get; set; }
@@ -343,7 +354,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.AccessPointRootPathPermissionGetArgs>? RootPathPermission { get; set; }
 
         /// <summary>
-        /// Current access point state.
+        /// The status of the access point.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

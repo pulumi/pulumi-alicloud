@@ -281,6 +281,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    @Import(name="coldDataEnabled")
+    private @Nullable Output<Boolean> coldDataEnabled;
+
+    /**
+     * @return High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    public Optional<Output<Boolean>> coldDataEnabled() {
+        return Optional.ofNullable(this.coldDataEnabled);
+    }
+
+    /**
      * RDS database connection string.
      * 
      */
@@ -1485,6 +1504,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whitelist Template ID List.
+     * 
+     */
+    @Import(name="templateIdLists")
+    private @Nullable Output<List<Integer>> templateIdLists;
+
+    /**
+     * @return Whitelist Template ID List.
+     * 
+     */
+    public Optional<Output<List<Integer>>> templateIdLists() {
+        return Optional.ofNullable(this.templateIdLists);
+    }
+
+    /**
+     * (Computed, Available since v1.254.0) Whitelist Template Details.
+     * 
+     */
+    @Import(name="templates")
+    private @Nullable Output<List<Map<String,String>>> templates;
+
+    /**
+     * @return (Computed, Available since v1.254.0) Whitelist Template Details.
+     * 
+     */
+    public Optional<Output<List<Map<String,String>>>> templates() {
+        return Optional.ofNullable(this.templates);
+    }
+
+    /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
@@ -1664,6 +1713,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.clientCaEnabled = $.clientCaEnabled;
         this.clientCertRevocationList = $.clientCertRevocationList;
         this.clientCrlEnabled = $.clientCrlEnabled;
+        this.coldDataEnabled = $.coldDataEnabled;
         this.connectionString = $.connectionString;
         this.connectionStringPrefix = $.connectionStringPrefix;
         this.createTime = $.createTime;
@@ -1728,6 +1778,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.tcpConnectionType = $.tcpConnectionType;
         this.tdeEncryptionKey = $.tdeEncryptionKey;
         this.tdeStatus = $.tdeStatus;
+        this.templateIdLists = $.templateIdLists;
+        this.templates = $.templates;
         this.upgradeDbInstanceKernelVersion = $.upgradeDbInstanceKernelVersion;
         this.upgradeTime = $.upgradeTime;
         this.vpcId = $.vpcId;
@@ -2101,6 +2153,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientCrlEnabled(Integer clientCrlEnabled) {
             return clientCrlEnabled(Output.of(clientCrlEnabled));
+        }
+
+        /**
+         * @param coldDataEnabled High performance cloud disk data archiving function switch.Example value:
+         * - true: Enable high-performance cloud disk data archiving function.
+         * - false: Disable high-performance cloud disk data archiving function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldDataEnabled(@Nullable Output<Boolean> coldDataEnabled) {
+            $.coldDataEnabled = coldDataEnabled;
+            return this;
+        }
+
+        /**
+         * @param coldDataEnabled High performance cloud disk data archiving function switch.Example value:
+         * - true: Enable high-performance cloud disk data archiving function.
+         * - false: Disable high-performance cloud disk data archiving function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldDataEnabled(Boolean coldDataEnabled) {
+            return coldDataEnabled(Output.of(coldDataEnabled));
         }
 
         /**
@@ -3739,6 +3816,68 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tdeStatus(String tdeStatus) {
             return tdeStatus(Output.of(tdeStatus));
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(@Nullable Output<List<Integer>> templateIdLists) {
+            $.templateIdLists = templateIdLists;
+            return this;
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(List<Integer> templateIdLists) {
+            return templateIdLists(Output.of(templateIdLists));
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(Integer... templateIdLists) {
+            return templateIdLists(List.of(templateIdLists));
+        }
+
+        /**
+         * @param templates (Computed, Available since v1.254.0) Whitelist Template Details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templates(@Nullable Output<List<Map<String,String>>> templates) {
+            $.templates = templates;
+            return this;
+        }
+
+        /**
+         * @param templates (Computed, Available since v1.254.0) Whitelist Template Details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templates(List<Map<String,String>> templates) {
+            return templates(Output.of(templates));
+        }
+
+        /**
+         * @param templates (Computed, Available since v1.254.0) Whitelist Template Details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templates(Map<String,String>... templates) {
+            return templates(List.of(templates));
         }
 
         /**

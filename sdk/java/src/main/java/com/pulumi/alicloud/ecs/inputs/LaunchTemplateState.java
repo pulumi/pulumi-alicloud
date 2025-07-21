@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.alicloud.ecs.inputs.LaunchTemplateDataDiskArgs;
+import com.pulumi.alicloud.ecs.inputs.LaunchTemplateImageOptionsArgs;
 import com.pulumi.alicloud.ecs.inputs.LaunchTemplateNetworkInterfacesArgs;
 import com.pulumi.alicloud.ecs.inputs.LaunchTemplateSystemDiskArgs;
 import com.pulumi.core.Output;
@@ -152,6 +153,13 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    @Import(name="imageOptions")
+    private @Nullable Output<LaunchTemplateImageOptionsArgs> imageOptions;
+
+    public Optional<Output<LaunchTemplateImageOptionsArgs>> imageOptions() {
+        return Optional.ofNullable(this.imageOptions);
     }
 
     @Import(name="imageOwnerAlias")
@@ -733,6 +741,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
         this.httpTokens = $.httpTokens;
         this.imageId = $.imageId;
+        this.imageOptions = $.imageOptions;
         this.imageOwnerAlias = $.imageOwnerAlias;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceName = $.instanceName;
@@ -979,6 +988,15 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        public Builder imageOptions(@Nullable Output<LaunchTemplateImageOptionsArgs> imageOptions) {
+            $.imageOptions = imageOptions;
+            return this;
+        }
+
+        public Builder imageOptions(LaunchTemplateImageOptionsArgs imageOptions) {
+            return imageOptions(Output.of(imageOptions));
         }
 
         public Builder imageOwnerAlias(@Nullable Output<String> imageOwnerAlias) {

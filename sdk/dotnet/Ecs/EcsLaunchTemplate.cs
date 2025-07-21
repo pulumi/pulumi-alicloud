@@ -235,6 +235,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// The options of images. See `image_options` below.
+        /// </summary>
+        [Output("imageOptions")]
+        public Output<Outputs.EcsLaunchTemplateImageOptions> ImageOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         /// </summary>
         [Output("imageOwnerAlias")]
@@ -621,6 +627,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The options of images. See `image_options` below.
+        /// </summary>
+        [Input("imageOptions")]
+        public Input<Inputs.EcsLaunchTemplateImageOptionsArgs>? ImageOptions { get; set; }
+
+        /// <summary>
         /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         /// </summary>
         [Input("imageOwnerAlias")]
@@ -979,6 +991,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// The options of images. See `image_options` below.
+        /// </summary>
+        [Input("imageOptions")]
+        public Input<Inputs.EcsLaunchTemplateImageOptionsGetArgs>? ImageOptions { get; set; }
 
         /// <summary>
         /// Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.

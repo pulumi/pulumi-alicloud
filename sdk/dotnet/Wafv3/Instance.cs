@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Wafv3.Instance("default");
+    ///     var example = new AliCloud.Wafv3.Instance("example");
     /// 
     /// });
     /// ```

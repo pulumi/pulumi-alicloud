@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NAS Access Point resource.
+ * Provides a File Storage (NAS) Access Point resource.
  *
  * For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
  *
@@ -24,10 +24,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const regionId = config.get("regionId") || "cn-hangzhou";
  * const azone = config.get("azone") || "cn-hangzhou-g";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
  * const defaultkyVC70 = new alicloud.vpc.Network("defaultkyVC70", {
  *     cidrBlock: "172.16.0.0/12",
@@ -37,10 +40,6 @@ import * as utilities from "../utilities";
  *     vpcId: defaultkyVC70.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidrBlock: "172.16.0.0/24",
- * });
- * const defaultInteger = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
  * });
  * const defaultBbc7ev = new alicloud.nas.AccessGroup("defaultBbc7ev", {
  *     accessGroupType: "Vpc",
@@ -75,7 +74,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NAS Access Point can be imported using the id, e.g.
+ * File Storage (NAS) Access Point can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
@@ -110,23 +109,23 @@ export class AccessPoint extends pulumi.CustomResource {
     }
 
     /**
-     * The permission group name.
+     * The name of the permission group.
      */
     public readonly accessGroup!: pulumi.Output<string>;
     /**
-     * Access point ID.
+     * The ID of the access point.
      */
     public /*out*/ readonly accessPointId!: pulumi.Output<string>;
     /**
-     * The Access Point Name.
+     * The name of the access point.
      */
     public readonly accessPointName!: pulumi.Output<string | undefined>;
     /**
-     * Creation time.
+     * The time when the access point was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
     public readonly enabledRam!: pulumi.Output<boolean | undefined>;
     /**
@@ -138,7 +137,11 @@ export class AccessPoint extends pulumi.CustomResource {
      */
     public readonly posixUser!: pulumi.Output<outputs.nas.AccessPointPosixUser>;
     /**
-     * The root directory.
+     * (Available since v1.254.0) The region ID.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The root directory of the access point.
      */
     public readonly rootPath!: pulumi.Output<string>;
     /**
@@ -146,7 +149,7 @@ export class AccessPoint extends pulumi.CustomResource {
      */
     public readonly rootPathPermission!: pulumi.Output<outputs.nas.AccessPointRootPathPermission>;
     /**
-     * Current access point state.
+     * The status of the access point.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -178,6 +181,7 @@ export class AccessPoint extends pulumi.CustomResource {
             resourceInputs["enabledRam"] = state ? state.enabledRam : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["posixUser"] = state ? state.posixUser : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["rootPath"] = state ? state.rootPath : undefined;
             resourceInputs["rootPathPermission"] = state ? state.rootPathPermission : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -208,6 +212,7 @@ export class AccessPoint extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["accessPointId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -220,23 +225,23 @@ export class AccessPoint extends pulumi.CustomResource {
  */
 export interface AccessPointState {
     /**
-     * The permission group name.
+     * The name of the permission group.
      */
     accessGroup?: pulumi.Input<string>;
     /**
-     * Access point ID.
+     * The ID of the access point.
      */
     accessPointId?: pulumi.Input<string>;
     /**
-     * The Access Point Name.
+     * The name of the access point.
      */
     accessPointName?: pulumi.Input<string>;
     /**
-     * Creation time.
+     * The time when the access point was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
     enabledRam?: pulumi.Input<boolean>;
     /**
@@ -248,7 +253,11 @@ export interface AccessPointState {
      */
     posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser>;
     /**
-     * The root directory.
+     * (Available since v1.254.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The root directory of the access point.
      */
     rootPath?: pulumi.Input<string>;
     /**
@@ -256,7 +265,7 @@ export interface AccessPointState {
      */
     rootPathPermission?: pulumi.Input<inputs.nas.AccessPointRootPathPermission>;
     /**
-     * Current access point state.
+     * The status of the access point.
      */
     status?: pulumi.Input<string>;
     /**
@@ -274,15 +283,15 @@ export interface AccessPointState {
  */
 export interface AccessPointArgs {
     /**
-     * The permission group name.
+     * The name of the permission group.
      */
     accessGroup: pulumi.Input<string>;
     /**
-     * The Access Point Name.
+     * The name of the access point.
      */
     accessPointName?: pulumi.Input<string>;
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
     enabledRam?: pulumi.Input<boolean>;
     /**
@@ -294,7 +303,7 @@ export interface AccessPointArgs {
      */
     posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser>;
     /**
-     * The root directory.
+     * The root directory of the access point.
      */
     rootPath?: pulumi.Input<string>;
     /**

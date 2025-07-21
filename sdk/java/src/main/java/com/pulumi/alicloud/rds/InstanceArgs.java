@@ -282,6 +282,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    @Import(name="coldDataEnabled")
+    private @Nullable Output<Boolean> coldDataEnabled;
+
+    /**
+     * @return High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    public Optional<Output<Boolean>> coldDataEnabled() {
+        return Optional.ofNullable(this.coldDataEnabled);
+    }
+
+    /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
@@ -1411,6 +1430,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whitelist Template ID List.
+     * 
+     */
+    @Import(name="templateIdLists")
+    private @Nullable Output<List<Integer>> templateIdLists;
+
+    /**
+     * @return Whitelist Template ID List.
+     * 
+     */
+    public Optional<Output<List<Integer>>> templateIdLists() {
+        return Optional.ofNullable(this.templateIdLists);
+    }
+
+    /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
@@ -1590,6 +1624,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.clientCaEnabled = $.clientCaEnabled;
         this.clientCertRevocationList = $.clientCertRevocationList;
         this.clientCrlEnabled = $.clientCrlEnabled;
+        this.coldDataEnabled = $.coldDataEnabled;
         this.connectionStringPrefix = $.connectionStringPrefix;
         this.dbInstanceIpArrayAttribute = $.dbInstanceIpArrayAttribute;
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
@@ -1649,6 +1684,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.tcpConnectionType = $.tcpConnectionType;
         this.tdeEncryptionKey = $.tdeEncryptionKey;
         this.tdeStatus = $.tdeStatus;
+        this.templateIdLists = $.templateIdLists;
         this.upgradeDbInstanceKernelVersion = $.upgradeDbInstanceKernelVersion;
         this.upgradeTime = $.upgradeTime;
         this.vpcId = $.vpcId;
@@ -2022,6 +2058,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientCrlEnabled(Integer clientCrlEnabled) {
             return clientCrlEnabled(Output.of(clientCrlEnabled));
+        }
+
+        /**
+         * @param coldDataEnabled High performance cloud disk data archiving function switch.Example value:
+         * - true: Enable high-performance cloud disk data archiving function.
+         * - false: Disable high-performance cloud disk data archiving function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldDataEnabled(@Nullable Output<Boolean> coldDataEnabled) {
+            $.coldDataEnabled = coldDataEnabled;
+            return this;
+        }
+
+        /**
+         * @param coldDataEnabled High performance cloud disk data archiving function switch.Example value:
+         * - true: Enable high-performance cloud disk data archiving function.
+         * - false: Disable high-performance cloud disk data archiving function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldDataEnabled(Boolean coldDataEnabled) {
+            return coldDataEnabled(Output.of(coldDataEnabled));
         }
 
         /**
@@ -3555,6 +3616,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tdeStatus(String tdeStatus) {
             return tdeStatus(Output.of(tdeStatus));
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(@Nullable Output<List<Integer>> templateIdLists) {
+            $.templateIdLists = templateIdLists;
+            return this;
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(List<Integer> templateIdLists) {
+            return templateIdLists(Output.of(templateIdLists));
+        }
+
+        /**
+         * @param templateIdLists Whitelist Template ID List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateIdLists(Integer... templateIdLists) {
+            return templateIdLists(List.of(templateIdLists));
         }
 
         /**

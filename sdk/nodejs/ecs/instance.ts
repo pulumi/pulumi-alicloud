@@ -157,8 +157,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly dedicatedHostId!: pulumi.Output<string | undefined>;
     /**
      * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -188,7 +186,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
-     * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+     * If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
@@ -224,7 +222,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      *
      * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
      *
@@ -801,8 +799,6 @@ export interface InstanceState {
     dedicatedHostId?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -832,7 +828,7 @@ export interface InstanceState {
      */
     expiredTime?: pulumi.Input<string>;
     /**
-     * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+     * If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
      */
     forceDelete?: pulumi.Input<boolean>;
@@ -868,7 +864,7 @@ export interface InstanceState {
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      *
      * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
      *
@@ -1231,8 +1227,6 @@ export interface InstanceArgs {
     dedicatedHostId?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1254,7 +1248,7 @@ export interface InstanceArgs {
      */
     enableJumboFrame?: pulumi.Input<boolean>;
     /**
-     * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+     * If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
      */
     forceDelete?: pulumi.Input<boolean>;
@@ -1290,7 +1284,7 @@ export interface InstanceArgs {
      *
      * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
      *
      * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
      *

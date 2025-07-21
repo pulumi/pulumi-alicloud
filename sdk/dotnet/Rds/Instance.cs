@@ -131,6 +131,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> ClientCrlEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// High performance cloud disk data archiving function switch.Example value:
+        /// - true: Enable high-performance cloud disk data archiving function.
+        /// - false: Disable high-performance cloud disk data archiving function.
+        /// </summary>
+        [Output("coldDataEnabled")]
+        public Output<bool?> ColdDataEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// RDS database connection string.
         /// </summary>
         [Output("connectionString")]
@@ -633,6 +641,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Whitelist Template ID List.
+        /// </summary>
+        [Output("templateIdLists")]
+        public Output<ImmutableArray<int>> TemplateIdLists { get; private set; } = null!;
+
+        /// <summary>
+        /// (Computed, Available since v1.254.0) Whitelist Template Details.
+        /// </summary>
+        [Output("templates")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Templates { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:
         /// - true: upgrade
         /// - false: not to upgrade
@@ -874,6 +894,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("clientCrlEnabled")]
         public Input<int>? ClientCrlEnabled { get; set; }
+
+        /// <summary>
+        /// High performance cloud disk data archiving function switch.Example value:
+        /// - true: Enable high-performance cloud disk data archiving function.
+        /// - false: Disable high-performance cloud disk data archiving function.
+        /// </summary>
+        [Input("coldDataEnabled")]
+        public Input<bool>? ColdDataEnabled { get; set; }
 
         /// <summary>
         /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
@@ -1393,6 +1421,18 @@ namespace Pulumi.AliCloud.Rds
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
+        [Input("templateIdLists")]
+        private InputList<int>? _templateIdLists;
+
+        /// <summary>
+        /// Whitelist Template ID List.
+        /// </summary>
+        public InputList<int> TemplateIdLists
+        {
+            get => _templateIdLists ?? (_templateIdLists = new InputList<int>());
+            set => _templateIdLists = value;
+        }
+
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:
         /// - true: upgrade
@@ -1592,6 +1632,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("clientCrlEnabled")]
         public Input<int>? ClientCrlEnabled { get; set; }
+
+        /// <summary>
+        /// High performance cloud disk data archiving function switch.Example value:
+        /// - true: Enable high-performance cloud disk data archiving function.
+        /// - false: Disable high-performance cloud disk data archiving function.
+        /// </summary>
+        [Input("coldDataEnabled")]
+        public Input<bool>? ColdDataEnabled { get; set; }
 
         /// <summary>
         /// RDS database connection string.
@@ -2140,6 +2188,30 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        [Input("templateIdLists")]
+        private InputList<int>? _templateIdLists;
+
+        /// <summary>
+        /// Whitelist Template ID List.
+        /// </summary>
+        public InputList<int> TemplateIdLists
+        {
+            get => _templateIdLists ?? (_templateIdLists = new InputList<int>());
+            set => _templateIdLists = value;
+        }
+
+        [Input("templates")]
+        private InputList<ImmutableDictionary<string, string>>? _templates;
+
+        /// <summary>
+        /// (Computed, Available since v1.254.0) Whitelist Template Details.
+        /// </summary>
+        public InputList<ImmutableDictionary<string, string>> Templates
+        {
+            get => _templates ?? (_templates = new InputList<ImmutableDictionary<string, string>>());
+            set => _templates = value;
+        }
 
         /// <summary>
         /// Whether to upgrade a minor version of the kernel. Valid values:

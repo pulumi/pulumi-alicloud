@@ -1056,6 +1056,143 @@ func (o EcsLaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) EcsLaunch
 	}).(EcsLaunchTemplateDataDiskOutput)
 }
 
+type EcsLaunchTemplateImageOptions struct {
+	// Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+	LoginAsNonRoot *bool `pulumi:"loginAsNonRoot"`
+}
+
+// EcsLaunchTemplateImageOptionsInput is an input type that accepts EcsLaunchTemplateImageOptionsArgs and EcsLaunchTemplateImageOptionsOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateImageOptionsInput` via:
+//
+//	EcsLaunchTemplateImageOptionsArgs{...}
+type EcsLaunchTemplateImageOptionsInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateImageOptionsOutput() EcsLaunchTemplateImageOptionsOutput
+	ToEcsLaunchTemplateImageOptionsOutputWithContext(context.Context) EcsLaunchTemplateImageOptionsOutput
+}
+
+type EcsLaunchTemplateImageOptionsArgs struct {
+	// Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+	LoginAsNonRoot pulumi.BoolPtrInput `pulumi:"loginAsNonRoot"`
+}
+
+func (EcsLaunchTemplateImageOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (i EcsLaunchTemplateImageOptionsArgs) ToEcsLaunchTemplateImageOptionsOutput() EcsLaunchTemplateImageOptionsOutput {
+	return i.ToEcsLaunchTemplateImageOptionsOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateImageOptionsArgs) ToEcsLaunchTemplateImageOptionsOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateImageOptionsOutput)
+}
+
+func (i EcsLaunchTemplateImageOptionsArgs) ToEcsLaunchTemplateImageOptionsPtrOutput() EcsLaunchTemplateImageOptionsPtrOutput {
+	return i.ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateImageOptionsArgs) ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateImageOptionsOutput).ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(ctx)
+}
+
+// EcsLaunchTemplateImageOptionsPtrInput is an input type that accepts EcsLaunchTemplateImageOptionsArgs, EcsLaunchTemplateImageOptionsPtr and EcsLaunchTemplateImageOptionsPtrOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateImageOptionsPtrInput` via:
+//
+//	        EcsLaunchTemplateImageOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EcsLaunchTemplateImageOptionsPtrInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateImageOptionsPtrOutput() EcsLaunchTemplateImageOptionsPtrOutput
+	ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(context.Context) EcsLaunchTemplateImageOptionsPtrOutput
+}
+
+type ecsLaunchTemplateImageOptionsPtrType EcsLaunchTemplateImageOptionsArgs
+
+func EcsLaunchTemplateImageOptionsPtr(v *EcsLaunchTemplateImageOptionsArgs) EcsLaunchTemplateImageOptionsPtrInput {
+	return (*ecsLaunchTemplateImageOptionsPtrType)(v)
+}
+
+func (*ecsLaunchTemplateImageOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (i *ecsLaunchTemplateImageOptionsPtrType) ToEcsLaunchTemplateImageOptionsPtrOutput() EcsLaunchTemplateImageOptionsPtrOutput {
+	return i.ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *ecsLaunchTemplateImageOptionsPtrType) ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateImageOptionsPtrOutput)
+}
+
+type EcsLaunchTemplateImageOptionsOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateImageOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateImageOptionsOutput) ToEcsLaunchTemplateImageOptionsOutput() EcsLaunchTemplateImageOptionsOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateImageOptionsOutput) ToEcsLaunchTemplateImageOptionsOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateImageOptionsOutput) ToEcsLaunchTemplateImageOptionsPtrOutput() EcsLaunchTemplateImageOptionsPtrOutput {
+	return o.ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o EcsLaunchTemplateImageOptionsOutput) ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsLaunchTemplateImageOptions) *EcsLaunchTemplateImageOptions {
+		return &v
+	}).(EcsLaunchTemplateImageOptionsPtrOutput)
+}
+
+// Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+func (o EcsLaunchTemplateImageOptionsOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateImageOptions) *bool { return v.LoginAsNonRoot }).(pulumi.BoolPtrOutput)
+}
+
+type EcsLaunchTemplateImageOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateImageOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateImageOptionsPtrOutput) ToEcsLaunchTemplateImageOptionsPtrOutput() EcsLaunchTemplateImageOptionsPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateImageOptionsPtrOutput) ToEcsLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateImageOptionsPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateImageOptionsPtrOutput) Elem() EcsLaunchTemplateImageOptionsOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateImageOptions) EcsLaunchTemplateImageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret EcsLaunchTemplateImageOptions
+		return ret
+	}).(EcsLaunchTemplateImageOptionsOutput)
+}
+
+// Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+func (o EcsLaunchTemplateImageOptionsPtrOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateImageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoginAsNonRoot
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EcsLaunchTemplateNetworkInterfaces struct {
 	// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
 	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
@@ -3155,6 +3292,139 @@ func (o LaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) LaunchTempla
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LaunchTemplateDataDisk {
 		return vs[0].([]LaunchTemplateDataDisk)[vs[1].(int)]
 	}).(LaunchTemplateDataDiskOutput)
+}
+
+type LaunchTemplateImageOptions struct {
+	LoginAsNonRoot *bool `pulumi:"loginAsNonRoot"`
+}
+
+// LaunchTemplateImageOptionsInput is an input type that accepts LaunchTemplateImageOptionsArgs and LaunchTemplateImageOptionsOutput values.
+// You can construct a concrete instance of `LaunchTemplateImageOptionsInput` via:
+//
+//	LaunchTemplateImageOptionsArgs{...}
+type LaunchTemplateImageOptionsInput interface {
+	pulumi.Input
+
+	ToLaunchTemplateImageOptionsOutput() LaunchTemplateImageOptionsOutput
+	ToLaunchTemplateImageOptionsOutputWithContext(context.Context) LaunchTemplateImageOptionsOutput
+}
+
+type LaunchTemplateImageOptionsArgs struct {
+	LoginAsNonRoot pulumi.BoolPtrInput `pulumi:"loginAsNonRoot"`
+}
+
+func (LaunchTemplateImageOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (i LaunchTemplateImageOptionsArgs) ToLaunchTemplateImageOptionsOutput() LaunchTemplateImageOptionsOutput {
+	return i.ToLaunchTemplateImageOptionsOutputWithContext(context.Background())
+}
+
+func (i LaunchTemplateImageOptionsArgs) ToLaunchTemplateImageOptionsOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateImageOptionsOutput)
+}
+
+func (i LaunchTemplateImageOptionsArgs) ToLaunchTemplateImageOptionsPtrOutput() LaunchTemplateImageOptionsPtrOutput {
+	return i.ToLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i LaunchTemplateImageOptionsArgs) ToLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateImageOptionsOutput).ToLaunchTemplateImageOptionsPtrOutputWithContext(ctx)
+}
+
+// LaunchTemplateImageOptionsPtrInput is an input type that accepts LaunchTemplateImageOptionsArgs, LaunchTemplateImageOptionsPtr and LaunchTemplateImageOptionsPtrOutput values.
+// You can construct a concrete instance of `LaunchTemplateImageOptionsPtrInput` via:
+//
+//	        LaunchTemplateImageOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LaunchTemplateImageOptionsPtrInput interface {
+	pulumi.Input
+
+	ToLaunchTemplateImageOptionsPtrOutput() LaunchTemplateImageOptionsPtrOutput
+	ToLaunchTemplateImageOptionsPtrOutputWithContext(context.Context) LaunchTemplateImageOptionsPtrOutput
+}
+
+type launchTemplateImageOptionsPtrType LaunchTemplateImageOptionsArgs
+
+func LaunchTemplateImageOptionsPtr(v *LaunchTemplateImageOptionsArgs) LaunchTemplateImageOptionsPtrInput {
+	return (*launchTemplateImageOptionsPtrType)(v)
+}
+
+func (*launchTemplateImageOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (i *launchTemplateImageOptionsPtrType) ToLaunchTemplateImageOptionsPtrOutput() LaunchTemplateImageOptionsPtrOutput {
+	return i.ToLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *launchTemplateImageOptionsPtrType) ToLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateImageOptionsPtrOutput)
+}
+
+type LaunchTemplateImageOptionsOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateImageOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (o LaunchTemplateImageOptionsOutput) ToLaunchTemplateImageOptionsOutput() LaunchTemplateImageOptionsOutput {
+	return o
+}
+
+func (o LaunchTemplateImageOptionsOutput) ToLaunchTemplateImageOptionsOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsOutput {
+	return o
+}
+
+func (o LaunchTemplateImageOptionsOutput) ToLaunchTemplateImageOptionsPtrOutput() LaunchTemplateImageOptionsPtrOutput {
+	return o.ToLaunchTemplateImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o LaunchTemplateImageOptionsOutput) ToLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LaunchTemplateImageOptions) *LaunchTemplateImageOptions {
+		return &v
+	}).(LaunchTemplateImageOptionsPtrOutput)
+}
+
+func (o LaunchTemplateImageOptionsOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateImageOptions) *bool { return v.LoginAsNonRoot }).(pulumi.BoolPtrOutput)
+}
+
+type LaunchTemplateImageOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateImageOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateImageOptions)(nil)).Elem()
+}
+
+func (o LaunchTemplateImageOptionsPtrOutput) ToLaunchTemplateImageOptionsPtrOutput() LaunchTemplateImageOptionsPtrOutput {
+	return o
+}
+
+func (o LaunchTemplateImageOptionsPtrOutput) ToLaunchTemplateImageOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateImageOptionsPtrOutput {
+	return o
+}
+
+func (o LaunchTemplateImageOptionsPtrOutput) Elem() LaunchTemplateImageOptionsOutput {
+	return o.ApplyT(func(v *LaunchTemplateImageOptions) LaunchTemplateImageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret LaunchTemplateImageOptions
+		return ret
+	}).(LaunchTemplateImageOptionsOutput)
+}
+
+func (o LaunchTemplateImageOptionsPtrOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateImageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoginAsNonRoot
+	}).(pulumi.BoolPtrOutput)
 }
 
 type LaunchTemplateNetworkInterfaces struct {
@@ -11405,53 +11675,57 @@ func (o GetEcsSnapshotGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetEcsSna
 }
 
 type GetEcsSnapshotsSnapshot struct {
-	// The category of the snapshot.
-	Category     string `pulumi:"category"`
+	// The category of the snapshot. Valid Values: `flash` and `standard`.
+	Category string `pulumi:"category"`
+	// The time when the snapshot was created.
 	CreationTime string `pulumi:"creationTime"`
 	// The description of the snapshot.
 	Description string `pulumi:"description"`
-	// The source disk id.
+	// The ID of the source disk.
 	DiskId string `pulumi:"diskId"`
-	// Whether the snapshot is encrypted.
+	// Specifies whether the snapshot is encrypted.
 	Encrypted bool `pulumi:"encrypted"`
 	// The ID of the Snapshot.
 	Id string `pulumi:"id"`
-	// Whether snapshot speed availability is enabled.
+	// Indicates whether the instant access feature is enabled.
 	InstantAccess bool `pulumi:"instantAccess"`
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
-	InstantAccessRetentionDays int    `pulumi:"instantAccessRetentionDays"`
-	Name                       string `pulumi:"name"`
-	// The product number inherited from the mirror market.
+	// Indicates the validity period of the instant access feature.
+	InstantAccessRetentionDays int `pulumi:"instantAccessRetentionDays"`
+	// The name of the snapshot.
+	Name string `pulumi:"name"`
+	// The product code of the Alibaba Cloud Marketplace image.
 	ProductCode string `pulumi:"productCode"`
-	// Snapshot creation progress, in percentage.
+	// The progress of the snapshot creation task.
 	Progress string `pulumi:"progress"`
-	// Remaining completion time for the snapshot being created.
+	// The amount of remaining time required to create the snapshot.
 	RemainTime int `pulumi:"remainTime"`
 	// The resource group id.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// Automatic snapshot retention days.
+	// The retention period of the automatic snapshot.
 	RetentionDays int `pulumi:"retentionDays"`
-	// The snapshot id.
+	// The ID of the snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// Snapshot Display Name.
+	// The name of the snapshot.
 	SnapshotName string `pulumi:"snapshotName"`
 	// The serial number of the snapshot.
 	SnapshotSn string `pulumi:"snapshotSn"`
-	// Snapshot creation type.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 	SnapshotType string `pulumi:"snapshotType"`
+	// The ID of the source disk.
 	SourceDiskId string `pulumi:"sourceDiskId"`
-	// Source disk capacity.
+	// The capacity of the source disk.
 	SourceDiskSize string `pulumi:"sourceDiskSize"`
-	// Source disk attributes.
+	// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
 	SourceDiskType string `pulumi:"sourceDiskType"`
-	// Original disk type.
+	// The category of the source disk.
 	SourceStorageType string `pulumi:"sourceStorageType"`
-	// The status of the snapshot.
+	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status string `pulumi:"status"`
-	// The tags.
+	// A mapping of tags to assign to the snapshot.
 	Tags map[string]string `pulumi:"tags"`
-	Type string            `pulumi:"type"`
-	// A resource type that has a reference relationship.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+	Type string `pulumi:"type"`
+	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage string `pulumi:"usage"`
 }
 
@@ -11467,53 +11741,57 @@ type GetEcsSnapshotsSnapshotInput interface {
 }
 
 type GetEcsSnapshotsSnapshotArgs struct {
-	// The category of the snapshot.
-	Category     pulumi.StringInput `pulumi:"category"`
+	// The category of the snapshot. Valid Values: `flash` and `standard`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The time when the snapshot was created.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The description of the snapshot.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The source disk id.
+	// The ID of the source disk.
 	DiskId pulumi.StringInput `pulumi:"diskId"`
-	// Whether the snapshot is encrypted.
+	// Specifies whether the snapshot is encrypted.
 	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
 	// The ID of the Snapshot.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Whether snapshot speed availability is enabled.
+	// Indicates whether the instant access feature is enabled.
 	InstantAccess pulumi.BoolInput `pulumi:"instantAccess"`
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
-	InstantAccessRetentionDays pulumi.IntInput    `pulumi:"instantAccessRetentionDays"`
-	Name                       pulumi.StringInput `pulumi:"name"`
-	// The product number inherited from the mirror market.
+	// Indicates the validity period of the instant access feature.
+	InstantAccessRetentionDays pulumi.IntInput `pulumi:"instantAccessRetentionDays"`
+	// The name of the snapshot.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The product code of the Alibaba Cloud Marketplace image.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// Snapshot creation progress, in percentage.
+	// The progress of the snapshot creation task.
 	Progress pulumi.StringInput `pulumi:"progress"`
-	// Remaining completion time for the snapshot being created.
+	// The amount of remaining time required to create the snapshot.
 	RemainTime pulumi.IntInput `pulumi:"remainTime"`
 	// The resource group id.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// Automatic snapshot retention days.
+	// The retention period of the automatic snapshot.
 	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
-	// The snapshot id.
+	// The ID of the snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// Snapshot Display Name.
+	// The name of the snapshot.
 	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
 	// The serial number of the snapshot.
 	SnapshotSn pulumi.StringInput `pulumi:"snapshotSn"`
-	// Snapshot creation type.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
+	// The ID of the source disk.
 	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
-	// Source disk capacity.
+	// The capacity of the source disk.
 	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
-	// Source disk attributes.
+	// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
 	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
-	// Original disk type.
+	// The category of the source disk.
 	SourceStorageType pulumi.StringInput `pulumi:"sourceStorageType"`
-	// The status of the snapshot.
+	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tags.
+	// A mapping of tags to assign to the snapshot.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	Type pulumi.StringInput    `pulumi:"type"`
-	// A resource type that has a reference relationship.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -11568,11 +11846,12 @@ func (o GetEcsSnapshotsSnapshotOutput) ToGetEcsSnapshotsSnapshotOutputWithContex
 	return o
 }
 
-// The category of the snapshot.
+// The category of the snapshot. Valid Values: `flash` and `standard`.
 func (o GetEcsSnapshotsSnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The time when the snapshot was created.
 func (o GetEcsSnapshotsSnapshotOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -11582,12 +11861,12 @@ func (o GetEcsSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The source disk id.
+// The ID of the source disk.
 func (o GetEcsSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
-// Whether the snapshot is encrypted.
+// Specifies whether the snapshot is encrypted.
 func (o GetEcsSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
@@ -11597,31 +11876,32 @@ func (o GetEcsSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Whether snapshot speed availability is enabled.
+// Indicates whether the instant access feature is enabled.
 func (o GetEcsSnapshotsSnapshotOutput) InstantAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) bool { return v.InstantAccess }).(pulumi.BoolOutput)
 }
 
-// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+// Indicates the validity period of the instant access feature.
 func (o GetEcsSnapshotsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.InstantAccessRetentionDays }).(pulumi.IntOutput)
 }
 
+// The name of the snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The product number inherited from the mirror market.
+// The product code of the Alibaba Cloud Marketplace image.
 func (o GetEcsSnapshotsSnapshotOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
-// Snapshot creation progress, in percentage.
+// The progress of the snapshot creation task.
 func (o GetEcsSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
 }
 
-// Remaining completion time for the snapshot being created.
+// The amount of remaining time required to create the snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
 }
@@ -11631,17 +11911,17 @@ func (o GetEcsSnapshotsSnapshotOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Automatic snapshot retention days.
+// The retention period of the automatic snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// The snapshot id.
+// The ID of the snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// Snapshot Display Name.
+// The name of the snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
 }
@@ -11651,45 +11931,47 @@ func (o GetEcsSnapshotsSnapshotOutput) SnapshotSn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotSn }).(pulumi.StringOutput)
 }
 
-// Snapshot creation type.
+// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 func (o GetEcsSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
 
+// The ID of the source disk.
 func (o GetEcsSnapshotsSnapshotOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
-// Source disk capacity.
+// The capacity of the source disk.
 func (o GetEcsSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
 }
 
-// Source disk attributes.
+// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
 func (o GetEcsSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
 
-// Original disk type.
+// The category of the source disk.
 func (o GetEcsSnapshotsSnapshotOutput) SourceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceStorageType }).(pulumi.StringOutput)
 }
 
-// The status of the snapshot.
+// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 func (o GetEcsSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags.
+// A mapping of tags to assign to the snapshot.
 func (o GetEcsSnapshotsSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 func (o GetEcsSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// A resource type that has a reference relationship.
+// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 func (o GetEcsSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
 }
@@ -16684,6 +16966,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetNetworkInterfaceArrayInput)(nil)).Elem(), EcsInstanceSetNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskArrayInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateImageOptionsInput)(nil)).Elem(), EcsLaunchTemplateImageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateImageOptionsPtrInput)(nil)).Elem(), EcsLaunchTemplateImageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateSystemDiskInput)(nil)).Elem(), EcsLaunchTemplateSystemDiskArgs{})
@@ -16706,6 +16990,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInterfacesPtrInput)(nil)).Elem(), InstanceNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskInput)(nil)).Elem(), LaunchTemplateDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskArrayInput)(nil)).Elem(), LaunchTemplateDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateImageOptionsInput)(nil)).Elem(), LaunchTemplateImageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateImageOptionsPtrInput)(nil)).Elem(), LaunchTemplateImageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
@@ -16859,6 +17145,8 @@ func init() {
 	pulumi.RegisterOutputType(EcsInstanceSetNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateImageOptionsOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateImageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateSystemDiskOutput{})
@@ -16881,6 +17169,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateImageOptionsOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateImageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskOutput{})

@@ -116,15 +116,13 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[builtins.str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
-        :param pulumi.Input[builtins.bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        :param pulumi.Input[builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
@@ -139,7 +137,7 @@ class InstanceArgs:
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
                
                > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
                
@@ -506,8 +504,6 @@ class InstanceArgs:
     def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -569,7 +565,7 @@ class InstanceArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         """
         return pulumi.get(self, "force_delete")
@@ -661,7 +657,7 @@ class InstanceArgs:
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
 
         > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 
@@ -1546,8 +1542,6 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[builtins.str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[builtins.str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -1556,7 +1550,7 @@ class _InstanceState:
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
-        :param pulumi.Input[builtins.bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        :param pulumi.Input[builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
@@ -1571,7 +1565,7 @@ class _InstanceState:
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
                
                > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
                
@@ -1994,8 +1988,6 @@ class _InstanceState:
     def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -2081,7 +2073,7 @@ class _InstanceState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         """
         return pulumi.get(self, "force_delete")
@@ -2173,7 +2165,7 @@ class _InstanceState:
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
 
         > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 
@@ -3222,15 +3214,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[builtins.str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
-        :param pulumi.Input[builtins.bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        :param pulumi.Input[builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
@@ -3245,7 +3235,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
                
                > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
                
@@ -3756,8 +3746,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[builtins.str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
         :param pulumi.Input[builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[builtins.str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -3766,7 +3754,7 @@ class Instance(pulumi.CustomResource):
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
-        :param pulumi.Input[builtins.bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        :param pulumi.Input[builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[builtins.str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
@@ -3781,7 +3769,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
                
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
                
                > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
                
@@ -4075,8 +4063,6 @@ class Instance(pulumi.CustomResource):
     def deletion_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -4134,7 +4120,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
+        If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
         However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         """
         return pulumi.get(self, "force_delete")
@@ -4198,7 +4184,7 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
 
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
 
         > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
 

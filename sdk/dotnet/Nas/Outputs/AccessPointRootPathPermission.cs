@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly int? OwnerUserId;
         /// <summary>
-        /// POSIX permission.
+        /// The Portable Operating System Interface for UNIX (POSIX) permission.
         /// </summary>
         public readonly string? Permission;
 
