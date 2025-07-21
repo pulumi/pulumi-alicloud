@@ -7155,6 +7155,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "rds/whitelistTemplate",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/whitelistTemplate:WhitelistTemplate": "WhitelistTemplate"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "realtimecompute/vvpInstance",
   "fqn": "pulumi_alicloud.realtimecompute",
   "classes": {

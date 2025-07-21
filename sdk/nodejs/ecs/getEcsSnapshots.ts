@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,79 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsSnapshots({
- *     ids: ["s-bp1fvuxxxxxxxx"],
- *     nameRegex: "tf-test",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
  * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
+ * const defaultGetZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_essd",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultGetInstanceTypes = Promise.all([defaultGetZones, defaultGetImages]).then(([defaultGetZones, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultGetZones.zones?.[0]?.id,
+ *     imageId: defaultGetImages.images?.[0]?.id,
+ *     systemDiskCategory: "cloud_essd",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_essd",
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ *     dataDisks: [{
+ *         category: "cloud_essd",
+ *         size: 20,
+ *     }],
+ * });
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     diskName: name,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     category: "cloud_essd",
+ *     size: 500,
+ * });
+ * const defaultEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("default", {
+ *     diskId: defaultEcsDisk.id,
+ *     instanceId: defaultInstance.id,
+ * });
+ * const defaultEcsSnapshot = new alicloud.ecs.EcsSnapshot("default", {
+ *     diskId: defaultEcsDiskAttachment.diskId,
+ *     category: "standard",
+ *     retentionDays: 20,
+ *     snapshotName: name,
+ *     description: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Snapshot",
+ *     },
+ * });
+ * const ids = alicloud.ecs.getEcsSnapshotsOutput({
+ *     ids: [defaultEcsSnapshot.id],
+ * });
+ * export const ecsSnapshotsId0 = ids.apply(ids => ids.snapshots?.[0]?.id);
  * ```
  */
 export function getEcsSnapshots(args?: GetEcsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotsResult> {
@@ -109,6 +177,9 @@ export interface GetEcsSnapshotsArgs {
      * A mapping of tags to assign to the snapshot.
      */
     tags?: {[key: string]: string};
+    /**
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     */
     type?: string;
     /**
      * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
@@ -120,8 +191,14 @@ export interface GetEcsSnapshotsArgs {
  * A collection of values returned by getEcsSnapshots.
  */
 export interface GetEcsSnapshotsResult {
+    /**
+     * The category of the snapshot.
+     */
     readonly category?: string;
     readonly dryRun?: boolean;
+    /**
+     * Indicates whether the snapshot was encrypted.
+     */
     readonly encrypted?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -130,23 +207,53 @@ export interface GetEcsSnapshotsResult {
     readonly ids: string[];
     readonly kmsKeyId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Snapshot names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group to which the snapshot belongs.
+     */
     readonly resourceGroupId?: string;
     readonly snapshotLinkId?: string;
+    /**
+     * The name of the snapshot.
+     */
     readonly snapshotName?: string;
+    /**
+     * The type of the snapshot.
+     */
     readonly snapshotType?: string;
+    /**
+     * A list of Ecs Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.ecs.GetEcsSnapshotsSnapshot[];
+    /**
+     * The type of the source disk.
+     */
     readonly sourceDiskType?: string;
+    /**
+     * The status of the snapshot.
+     */
     readonly status?: string;
+    /**
+     * The tags of the snapshot.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The type of the snapshot.
+     */
     readonly type?: string;
+    /**
+     * Indicates whether the snapshot was used to create images or cloud disks.
+     */
     readonly usage?: string;
 }
 /**
  * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -156,11 +263,79 @@ export interface GetEcsSnapshotsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsSnapshots({
- *     ids: ["s-bp1fvuxxxxxxxx"],
- *     nameRegex: "tf-test",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
  * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
+ * const defaultGetZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_essd",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultGetInstanceTypes = Promise.all([defaultGetZones, defaultGetImages]).then(([defaultGetZones, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultGetZones.zones?.[0]?.id,
+ *     imageId: defaultGetImages.images?.[0]?.id,
+ *     systemDiskCategory: "cloud_essd",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_essd",
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ *     dataDisks: [{
+ *         category: "cloud_essd",
+ *         size: 20,
+ *     }],
+ * });
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     diskName: name,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     category: "cloud_essd",
+ *     size: 500,
+ * });
+ * const defaultEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("default", {
+ *     diskId: defaultEcsDisk.id,
+ *     instanceId: defaultInstance.id,
+ * });
+ * const defaultEcsSnapshot = new alicloud.ecs.EcsSnapshot("default", {
+ *     diskId: defaultEcsDiskAttachment.diskId,
+ *     category: "standard",
+ *     retentionDays: 20,
+ *     snapshotName: name,
+ *     description: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Snapshot",
+ *     },
+ * });
+ * const ids = alicloud.ecs.getEcsSnapshotsOutput({
+ *     ids: [defaultEcsSnapshot.id],
+ * });
+ * export const ecsSnapshotsId0 = ids.apply(ids => ids.snapshots?.[0]?.id);
  * ```
  */
 export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsSnapshotsResult> {
@@ -246,6 +421,9 @@ export interface GetEcsSnapshotsOutputArgs {
      * A mapping of tags to assign to the snapshot.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     */
     type?: pulumi.Input<string>;
     /**
      * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.

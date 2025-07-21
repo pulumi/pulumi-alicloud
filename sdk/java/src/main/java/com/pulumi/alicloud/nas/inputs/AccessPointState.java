@@ -19,14 +19,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     public static final AccessPointState Empty = new AccessPointState();
 
     /**
-     * The permission group name.
+     * The name of the permission group.
      * 
      */
     @Import(name="accessGroup")
     private @Nullable Output<String> accessGroup;
 
     /**
-     * @return The permission group name.
+     * @return The name of the permission group.
      * 
      */
     public Optional<Output<String>> accessGroup() {
@@ -34,14 +34,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access point ID.
+     * The ID of the access point.
      * 
      */
     @Import(name="accessPointId")
     private @Nullable Output<String> accessPointId;
 
     /**
-     * @return Access point ID.
+     * @return The ID of the access point.
      * 
      */
     public Optional<Output<String>> accessPointId() {
@@ -49,14 +49,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Access Point Name.
+     * The name of the access point.
      * 
      */
     @Import(name="accessPointName")
     private @Nullable Output<String> accessPointName;
 
     /**
-     * @return The Access Point Name.
+     * @return The name of the access point.
      * 
      */
     public Optional<Output<String>> accessPointName() {
@@ -64,14 +64,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Creation time.
+     * The time when the access point was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return The time when the access point was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -79,14 +79,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     @Import(name="enabledRam")
     private @Nullable Output<Boolean> enabledRam;
 
     /**
-     * @return Whether to enable the RAM policy.
+     * @return Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enabledRam() {
@@ -124,14 +124,29 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root directory.
+     * (Available since v1.254.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.254.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The root directory of the access point.
      * 
      */
     @Import(name="rootPath")
     private @Nullable Output<String> rootPath;
 
     /**
-     * @return The root directory.
+     * @return The root directory of the access point.
      * 
      */
     public Optional<Output<String>> rootPath() {
@@ -154,14 +169,14 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Current access point state.
+     * The status of the access point.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Current access point state.
+     * @return The status of the access point.
      * 
      */
     public Optional<Output<String>> status() {
@@ -208,6 +223,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         this.enabledRam = $.enabledRam;
         this.fileSystemId = $.fileSystemId;
         this.posixUser = $.posixUser;
+        this.regionId = $.regionId;
         this.rootPath = $.rootPath;
         this.rootPathPermission = $.rootPathPermission;
         this.status = $.status;
@@ -234,7 +250,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroup The permission group name.
+         * @param accessGroup The name of the permission group.
          * 
          * @return builder
          * 
@@ -245,7 +261,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroup The permission group name.
+         * @param accessGroup The name of the permission group.
          * 
          * @return builder
          * 
@@ -255,7 +271,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointId Access point ID.
+         * @param accessPointId The ID of the access point.
          * 
          * @return builder
          * 
@@ -266,7 +282,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointId Access point ID.
+         * @param accessPointId The ID of the access point.
          * 
          * @return builder
          * 
@@ -276,7 +292,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointName The Access Point Name.
+         * @param accessPointName The name of the access point.
          * 
          * @return builder
          * 
@@ -287,7 +303,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointName The Access Point Name.
+         * @param accessPointName The name of the access point.
          * 
          * @return builder
          * 
@@ -297,7 +313,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime The time when the access point was created.
          * 
          * @return builder
          * 
@@ -308,7 +324,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime The time when the access point was created.
          * 
          * @return builder
          * 
@@ -318,7 +334,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledRam Whether to enable the RAM policy.
+         * @param enabledRam Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -329,7 +345,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledRam Whether to enable the RAM policy.
+         * @param enabledRam Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -381,7 +397,28 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPath The root directory.
+         * @param regionId (Available since v1.254.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.254.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param rootPath The root directory of the access point.
          * 
          * @return builder
          * 
@@ -392,7 +429,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPath The root directory.
+         * @param rootPath The root directory of the access point.
          * 
          * @return builder
          * 
@@ -423,7 +460,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Current access point state.
+         * @param status The status of the access point.
          * 
          * @return builder
          * 
@@ -434,7 +471,7 @@ public final class AccessPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Current access point state.
+         * @param status The status of the access point.
          * 
          * @return builder
          * 

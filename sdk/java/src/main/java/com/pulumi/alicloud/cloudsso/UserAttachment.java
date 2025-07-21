@@ -34,42 +34,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/userAttachment:UserAttachment")
 public class UserAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      * 
      */
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
-     * @return The ID of the Directory.
+     * @return The ID of the directory.
      * 
      */
     public Output<String> directoryId() {
         return this.directoryId;
     }
     /**
-     * The Group ID.
+     * The ID of the group.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return The Group ID.
+     * @return The ID of the group.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * The User ID.
+     * The ID of the user.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The User ID.
+     * @return The ID of the user.
      * 
      */
     public Output<String> userId() {

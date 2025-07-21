@@ -35,6 +35,7 @@ class LaunchTemplateArgs:
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -151,6 +152,8 @@ class LaunchTemplateArgs:
             pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_options is not None:
+            pulumi.set(__self__, "image_options", image_options)
         if image_owner_alias is not None:
             pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
@@ -381,6 +384,15 @@ class LaunchTemplateArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']]:
+        return pulumi.get(self, "image_options")
+
+    @image_options.setter
+    def image_options(self, value: Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']]):
+        pulumi.set(self, "image_options", value)
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
@@ -855,6 +867,7 @@ class _LaunchTemplateState:
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -972,6 +985,8 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_options is not None:
+            pulumi.set(__self__, "image_options", image_options)
         if image_owner_alias is not None:
             pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
@@ -1204,6 +1219,15 @@ class _LaunchTemplateState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']]:
+        return pulumi.get(self, "image_options")
+
+    @image_options.setter
+    def image_options(self, value: Optional[pulumi.Input['LaunchTemplateImageOptionsArgs']]):
+        pulumi.set(self, "image_options", value)
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
@@ -1690,6 +1714,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input[Union['LaunchTemplateImageOptionsArgs', 'LaunchTemplateImageOptionsArgsDict']]] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1963,6 +1988,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input[Union['LaunchTemplateImageOptionsArgs', 'LaunchTemplateImageOptionsArgsDict']]] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2025,6 +2051,7 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
             __props__.__dict__["http_tokens"] = http_tokens
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["image_options"] = image_options
             __props__.__dict__["image_owner_alias"] = image_owner_alias
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_name"] = instance_name
@@ -2089,6 +2116,7 @@ class LaunchTemplate(pulumi.CustomResource):
             http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
             http_tokens: Optional[pulumi.Input[builtins.str]] = None,
             image_id: Optional[pulumi.Input[builtins.str]] = None,
+            image_options: Optional[pulumi.Input[Union['LaunchTemplateImageOptionsArgs', 'LaunchTemplateImageOptionsArgsDict']]] = None,
             image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
             instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
             instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2202,6 +2230,7 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
         __props__.__dict__["http_tokens"] = http_tokens
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["image_options"] = image_options
         __props__.__dict__["image_owner_alias"] = image_owner_alias
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_name"] = instance_name
@@ -2324,6 +2353,11 @@ class LaunchTemplate(pulumi.CustomResource):
         Image ID.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> pulumi.Output['outputs.LaunchTemplateImageOptions']:
+        return pulumi.get(self, "image_options")
 
     @property
     @pulumi.getter(name="imageOwnerAlias")

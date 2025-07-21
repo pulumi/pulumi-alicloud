@@ -193,7 +193,7 @@ type AccessPointRootPathPermission struct {
 	OwnerGroupId *int `pulumi:"ownerGroupId"`
 	// The owner user ID.
 	OwnerUserId *int `pulumi:"ownerUserId"`
-	// POSIX permission.
+	// The Portable Operating System Interface for UNIX (POSIX) permission.
 	Permission *string `pulumi:"permission"`
 }
 
@@ -213,7 +213,7 @@ type AccessPointRootPathPermissionArgs struct {
 	OwnerGroupId pulumi.IntPtrInput `pulumi:"ownerGroupId"`
 	// The owner user ID.
 	OwnerUserId pulumi.IntPtrInput `pulumi:"ownerUserId"`
-	// POSIX permission.
+	// The Portable Operating System Interface for UNIX (POSIX) permission.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
 }
 
@@ -304,7 +304,7 @@ func (o AccessPointRootPathPermissionOutput) OwnerUserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPointRootPathPermission) *int { return v.OwnerUserId }).(pulumi.IntPtrOutput)
 }
 
-// POSIX permission.
+// The Portable Operating System Interface for UNIX (POSIX) permission.
 func (o AccessPointRootPathPermissionOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPointRootPathPermission) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
@@ -353,7 +353,7 @@ func (o AccessPointRootPathPermissionPtrOutput) OwnerUserId() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// POSIX permission.
+// The Portable Operating System Interface for UNIX (POSIX) permission.
 func (o AccessPointRootPathPermissionPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPointRootPathPermission) *string {
 		if v == nil {

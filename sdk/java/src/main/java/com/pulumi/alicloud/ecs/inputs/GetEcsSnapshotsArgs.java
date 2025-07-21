@@ -228,9 +228,17 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -593,11 +601,23 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param type The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

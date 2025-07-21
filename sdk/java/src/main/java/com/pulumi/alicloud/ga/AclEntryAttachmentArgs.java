@@ -17,14 +17,14 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     public static final AclEntryAttachmentArgs Empty = new AclEntryAttachmentArgs();
 
     /**
-     * The ID of the global acceleration instance.
+     * The ID of the Acl.
      * 
      */
     @Import(name="aclId", required=true)
     private Output<String> aclId;
 
     /**
-     * @return The ID of the global acceleration instance.
+     * @return The ID of the Acl.
      * 
      */
     public Output<String> aclId() {
@@ -32,14 +32,14 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * The entry (IP address or CIDR block) that you want to add.
      * 
      */
     @Import(name="entry", required=true)
     private Output<String> entry;
 
     /**
-     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * @return The entry (IP address or CIDR block) that you want to add.
      * 
      */
     public Output<String> entry() {
@@ -47,14 +47,14 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     @Import(name="entryDescription")
     private @Nullable Output<String> entryDescription;
 
     /**
-     * @return The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * @return The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     public Optional<Output<String>> entryDescription() {
@@ -88,7 +88,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param aclId The ID of the global acceleration instance.
+         * @param aclId The ID of the Acl.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param aclId The ID of the global acceleration instance.
+         * @param aclId The ID of the Acl.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+         * @param entry The entry (IP address or CIDR block) that you want to add.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+         * @param entry The entry (IP address or CIDR block) that you want to add.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entryDescription The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+         * @param entryDescription The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entryDescription The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+         * @param entryDescription The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
          * 
          * @return builder
          * 

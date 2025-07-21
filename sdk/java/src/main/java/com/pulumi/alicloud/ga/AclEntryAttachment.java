@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Global Accelerator (GA) Acl entry attachment resource.
+ * Provides a Global Accelerator (GA) Acl Entry Attachment resource.
  * 
- * For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
+ * For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
  * 
  * &gt; **NOTE:** Available since v1.190.0.
  * 
@@ -50,15 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Acl("default", AclArgs.builder()
- *             .aclName("tf-example-value")
  *             .addressIpVersion("IPv4")
+ *             .aclName(name)
  *             .build());
  * 
  *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()
  *             .aclId(default_.id())
  *             .entry("192.168.1.1/32")
- *             .entryDescription("tf-example-value")
+ *             .entryDescription(name)
  *             .build());
  * 
  *     }
@@ -69,66 +71,66 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `&lt;acl_id&gt;:&lt;entry&gt;`, e.g.
+ * Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+ * $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ga/aclEntryAttachment:AclEntryAttachment")
 public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the global acceleration instance.
+     * The ID of the Acl.
      * 
      */
     @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
-     * @return The ID of the global acceleration instance.
+     * @return The ID of the Acl.
      * 
      */
     public Output<String> aclId() {
         return this.aclId;
     }
     /**
-     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * The entry (IP address or CIDR block) that you want to add.
      * 
      */
     @Export(name="entry", refs={String.class}, tree="[0]")
     private Output<String> entry;
 
     /**
-     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+     * @return The entry (IP address or CIDR block) that you want to add.
      * 
      */
     public Output<String> entry() {
         return this.entry;
     }
     /**
-     * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     @Export(name="entryDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entryDescription;
 
     /**
-     * @return The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+     * @return The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     public Output<Optional<String>> entryDescription() {
         return Codegen.optional(this.entryDescription);
     }
     /**
-     * The status of the network ACL.
+     * The status of the Acl Entry Attachment.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the network ACL.
+     * @return The status of the Acl Entry Attachment.
      * 
      */
     public Output<String> status() {

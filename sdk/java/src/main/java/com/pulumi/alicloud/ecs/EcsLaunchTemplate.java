@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
 import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateState;
 import com.pulumi.alicloud.ecs.outputs.EcsLaunchTemplateDataDisk;
+import com.pulumi.alicloud.ecs.outputs.EcsLaunchTemplateImageOptions;
 import com.pulumi.alicloud.ecs.outputs.EcsLaunchTemplateNetworkInterfaces;
 import com.pulumi.alicloud.ecs.outputs.EcsLaunchTemplateSystemDisk;
 import com.pulumi.core.Output;
@@ -369,6 +370,20 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    /**
+     * The options of images. See `image_options` below.
+     * 
+     */
+    @Export(name="imageOptions", refs={EcsLaunchTemplateImageOptions.class}, tree="[0]")
+    private Output<EcsLaunchTemplateImageOptions> imageOptions;
+
+    /**
+     * @return The options of images. See `image_options` below.
+     * 
+     */
+    public Output<EcsLaunchTemplateImageOptions> imageOptions() {
+        return this.imageOptions;
     }
     /**
      * Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `&#34;&#34;`. Default to: `&#34;&#34;`.

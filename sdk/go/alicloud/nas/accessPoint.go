@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a NAS Access Point resource.
+// Provides a File Storage (NAS) Access Point resource.
 //
 // For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
 //
@@ -45,10 +45,6 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			regionId := "cn-hangzhou"
-//			if param := cfg.Get("regionId"); param != "" {
-//				regionId = param
-//			}
 //			azone := "cn-hangzhou-g"
 //			if param := cfg.Get("azone"); param != "" {
 //				azone = param
@@ -56,6 +52,13 @@ import (
 //			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -70,13 +73,6 @@ import (
 //				VpcId:     defaultkyVC70.ID(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
@@ -127,7 +123,7 @@ import (
 //
 // ## Import
 //
-// NAS Access Point can be imported using the id, e.g.
+// File Storage (NAS) Access Point can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
@@ -135,25 +131,27 @@ import (
 type AccessPoint struct {
 	pulumi.CustomResourceState
 
-	// The permission group name.
+	// The name of the permission group.
 	AccessGroup pulumi.StringOutput `pulumi:"accessGroup"`
-	// Access point ID.
+	// The ID of the access point.
 	AccessPointId pulumi.StringOutput `pulumi:"accessPointId"`
-	// The Access Point Name.
+	// The name of the access point.
 	AccessPointName pulumi.StringPtrOutput `pulumi:"accessPointName"`
-	// Creation time.
+	// The time when the access point was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether to enable the RAM policy.
+	// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 	EnabledRam pulumi.BoolPtrOutput `pulumi:"enabledRam"`
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The Posix user. See `posixUser` below.
 	PosixUser AccessPointPosixUserOutput `pulumi:"posixUser"`
-	// The root directory.
+	// (Available since v1.254.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The root directory of the access point.
 	RootPath pulumi.StringOutput `pulumi:"rootPath"`
 	// Root permissions. See `rootPathPermission` below.
 	RootPathPermission AccessPointRootPathPermissionOutput `pulumi:"rootPathPermission"`
-	// Current access point state.
+	// The status of the access point.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -203,25 +201,27 @@ func GetAccessPoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPoint resources.
 type accessPointState struct {
-	// The permission group name.
+	// The name of the permission group.
 	AccessGroup *string `pulumi:"accessGroup"`
-	// Access point ID.
+	// The ID of the access point.
 	AccessPointId *string `pulumi:"accessPointId"`
-	// The Access Point Name.
+	// The name of the access point.
 	AccessPointName *string `pulumi:"accessPointName"`
-	// Creation time.
+	// The time when the access point was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Whether to enable the RAM policy.
+	// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 	EnabledRam *bool `pulumi:"enabledRam"`
 	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The Posix user. See `posixUser` below.
 	PosixUser *AccessPointPosixUser `pulumi:"posixUser"`
-	// The root directory.
+	// (Available since v1.254.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
+	// The root directory of the access point.
 	RootPath *string `pulumi:"rootPath"`
 	// Root permissions. See `rootPathPermission` below.
 	RootPathPermission *AccessPointRootPathPermission `pulumi:"rootPathPermission"`
-	// Current access point state.
+	// The status of the access point.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -230,25 +230,27 @@ type accessPointState struct {
 }
 
 type AccessPointState struct {
-	// The permission group name.
+	// The name of the permission group.
 	AccessGroup pulumi.StringPtrInput
-	// Access point ID.
+	// The ID of the access point.
 	AccessPointId pulumi.StringPtrInput
-	// The Access Point Name.
+	// The name of the access point.
 	AccessPointName pulumi.StringPtrInput
-	// Creation time.
+	// The time when the access point was created.
 	CreateTime pulumi.StringPtrInput
-	// Whether to enable the RAM policy.
+	// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 	EnabledRam pulumi.BoolPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
 	// The Posix user. See `posixUser` below.
 	PosixUser AccessPointPosixUserPtrInput
-	// The root directory.
+	// (Available since v1.254.0) The region ID.
+	RegionId pulumi.StringPtrInput
+	// The root directory of the access point.
 	RootPath pulumi.StringPtrInput
 	// Root permissions. See `rootPathPermission` below.
 	RootPathPermission AccessPointRootPathPermissionPtrInput
-	// Current access point state.
+	// The status of the access point.
 	Status pulumi.StringPtrInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
@@ -261,17 +263,17 @@ func (AccessPointState) ElementType() reflect.Type {
 }
 
 type accessPointArgs struct {
-	// The permission group name.
+	// The name of the permission group.
 	AccessGroup string `pulumi:"accessGroup"`
-	// The Access Point Name.
+	// The name of the access point.
 	AccessPointName *string `pulumi:"accessPointName"`
-	// Whether to enable the RAM policy.
+	// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 	EnabledRam *bool `pulumi:"enabledRam"`
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The Posix user. See `posixUser` below.
 	PosixUser *AccessPointPosixUser `pulumi:"posixUser"`
-	// The root directory.
+	// The root directory of the access point.
 	RootPath *string `pulumi:"rootPath"`
 	// Root permissions. See `rootPathPermission` below.
 	RootPathPermission *AccessPointRootPathPermission `pulumi:"rootPathPermission"`
@@ -283,17 +285,17 @@ type accessPointArgs struct {
 
 // The set of arguments for constructing a AccessPoint resource.
 type AccessPointArgs struct {
-	// The permission group name.
+	// The name of the permission group.
 	AccessGroup pulumi.StringInput
-	// The Access Point Name.
+	// The name of the access point.
 	AccessPointName pulumi.StringPtrInput
-	// Whether to enable the RAM policy.
+	// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 	EnabledRam pulumi.BoolPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
 	// The Posix user. See `posixUser` below.
 	PosixUser AccessPointPosixUserPtrInput
-	// The root directory.
+	// The root directory of the access point.
 	RootPath pulumi.StringPtrInput
 	// Root permissions. See `rootPathPermission` below.
 	RootPathPermission AccessPointRootPathPermissionPtrInput
@@ -390,27 +392,27 @@ func (o AccessPointOutput) ToAccessPointOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The permission group name.
+// The name of the permission group.
 func (o AccessPointOutput) AccessGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.AccessGroup }).(pulumi.StringOutput)
 }
 
-// Access point ID.
+// The ID of the access point.
 func (o AccessPointOutput) AccessPointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.AccessPointId }).(pulumi.StringOutput)
 }
 
-// The Access Point Name.
+// The name of the access point.
 func (o AccessPointOutput) AccessPointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringPtrOutput { return v.AccessPointName }).(pulumi.StringPtrOutput)
 }
 
-// Creation time.
+// The time when the access point was created.
 func (o AccessPointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether to enable the RAM policy.
+// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
 func (o AccessPointOutput) EnabledRam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.BoolPtrOutput { return v.EnabledRam }).(pulumi.BoolPtrOutput)
 }
@@ -425,7 +427,12 @@ func (o AccessPointOutput) PosixUser() AccessPointPosixUserOutput {
 	return o.ApplyT(func(v *AccessPoint) AccessPointPosixUserOutput { return v.PosixUser }).(AccessPointPosixUserOutput)
 }
 
-// The root directory.
+// (Available since v1.254.0) The region ID.
+func (o AccessPointOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The root directory of the access point.
 func (o AccessPointOutput) RootPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.RootPath }).(pulumi.StringOutput)
 }
@@ -435,7 +442,7 @@ func (o AccessPointOutput) RootPathPermission() AccessPointRootPathPermissionOut
 	return o.ApplyT(func(v *AccessPoint) AccessPointRootPathPermissionOutput { return v.RootPathPermission }).(AccessPointRootPathPermissionOutput)
 }
 
-// Current access point state.
+// The status of the access point.
 func (o AccessPointOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

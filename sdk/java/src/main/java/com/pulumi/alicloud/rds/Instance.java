@@ -279,6 +279,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientCrlEnabled);
     }
     /**
+     * High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    @Export(name="coldDataEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> coldDataEnabled;
+
+    /**
+     * @return High performance cloud disk data archiving function switch.Example value:
+     * - true: Enable high-performance cloud disk data archiving function.
+     * - false: Disable high-performance cloud disk data archiving function.
+     * 
+     */
+    public Output<Optional<Boolean>> coldDataEnabled() {
+        return Codegen.optional(this.coldDataEnabled);
+    }
+    /**
      * RDS database connection string.
      * 
      */
@@ -1413,6 +1431,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tdeStatus() {
         return this.tdeStatus;
+    }
+    /**
+     * Whitelist Template ID List.
+     * 
+     */
+    @Export(name="templateIdLists", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> templateIdLists;
+
+    /**
+     * @return Whitelist Template ID List.
+     * 
+     */
+    public Output<Optional<List<Integer>>> templateIdLists() {
+        return Codegen.optional(this.templateIdLists);
+    }
+    /**
+     * (Computed, Available since v1.254.0) Whitelist Template Details.
+     * 
+     */
+    @Export(name="templates", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    private Output<List<Map<String,String>>> templates;
+
+    /**
+     * @return (Computed, Available since v1.254.0) Whitelist Template Details.
+     * 
+     */
+    public Output<List<Map<String,String>>> templates() {
+        return this.templates;
     }
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:

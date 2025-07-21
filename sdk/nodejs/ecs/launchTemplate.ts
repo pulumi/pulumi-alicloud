@@ -139,6 +139,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * Image ID.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    public readonly imageOptions!: pulumi.Output<outputs.ecs.LaunchTemplateImageOptions>;
     public readonly imageOwnerAlias!: pulumi.Output<string | undefined>;
     /**
      * Billing methods. Optional values:
@@ -309,6 +310,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["httpPutResponseHopLimit"] = state ? state.httpPutResponseHopLimit : undefined;
             resourceInputs["httpTokens"] = state ? state.httpTokens : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["imageOptions"] = state ? state.imageOptions : undefined;
             resourceInputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
@@ -365,6 +367,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["httpPutResponseHopLimit"] = args ? args.httpPutResponseHopLimit : undefined;
             resourceInputs["httpTokens"] = args ? args.httpTokens : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["imageOptions"] = args ? args.imageOptions : undefined;
             resourceInputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
@@ -444,6 +447,7 @@ export interface LaunchTemplateState {
      * Image ID.
      */
     imageId?: pulumi.Input<string>;
+    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions>;
     imageOwnerAlias?: pulumi.Input<string>;
     /**
      * Billing methods. Optional values:
@@ -621,6 +625,7 @@ export interface LaunchTemplateArgs {
      * Image ID.
      */
     imageId?: pulumi.Input<string>;
+    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions>;
     imageOwnerAlias?: pulumi.Input<string>;
     /**
      * Billing methods. Optional values:

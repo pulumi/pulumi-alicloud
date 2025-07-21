@@ -8103,6 +8103,13 @@ export namespace ecs {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface EcsLaunchTemplateImageOptions {
+        /**
+         * Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+         */
+        loginAsNonRoot?: pulumi.Input<boolean>;
+    }
+
     export interface EcsLaunchTemplateNetworkInterfaces {
         /**
          * Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
@@ -8461,6 +8468,10 @@ export namespace ecs {
          * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
          */
         snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface LaunchTemplateImageOptions {
+        loginAsNonRoot?: pulumi.Input<boolean>;
     }
 
     export interface LaunchTemplateNetworkInterfaces {
@@ -14168,7 +14179,7 @@ export namespace nas {
          */
         ownerUserId?: pulumi.Input<number>;
         /**
-         * POSIX permission.
+         * The Portable Operating System Interface for UNIX (POSIX) permission.
          */
         permission?: pulumi.Input<string>;
     }

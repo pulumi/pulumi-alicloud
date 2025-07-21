@@ -158,6 +158,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
+        [Output("imageOptions")]
+        public Output<Outputs.LaunchTemplateImageOptions> ImageOptions { get; private set; } = null!;
+
         [Output("imageOwnerAlias")]
         public Output<string?> ImageOwnerAlias { get; private set; } = null!;
 
@@ -477,6 +480,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        [Input("imageOptions")]
+        public Input<Inputs.LaunchTemplateImageOptionsArgs>? ImageOptions { get; set; }
+
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }
 
@@ -770,6 +776,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("imageOptions")]
+        public Input<Inputs.LaunchTemplateImageOptionsGetArgs>? ImageOptions { get; set; }
 
         [Input("imageOwnerAlias")]
         public Input<string>? ImageOwnerAlias { get; set; }

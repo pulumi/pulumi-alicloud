@@ -45,5 +45,6 @@ from .rds_service_linked_role import *
 from .rds_upgrade_db_instance import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *
+from .whitelist_template import *
 from ._inputs import *
 from . import outputs

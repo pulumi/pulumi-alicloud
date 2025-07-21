@@ -29,13 +29,13 @@ class AccessManagementArgs:
                  deprovision_strategy: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessManagement resource.
-        :param pulumi.Input[builtins.str] access_configuration_id: The Access configuration ID.
+        :param pulumi.Input[builtins.str] access_configuration_id: The ID of the access configuration.
         :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] principal_id: The ID of the access assignment.
-        :param pulumi.Input[builtins.str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
-        :param pulumi.Input[builtins.str] target_id: The ID of the target to create the resource range.
-        :param pulumi.Input[builtins.str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
-        :param pulumi.Input[builtins.str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[builtins.str] principal_id: The ID of the CloudSSO identity.
+        :param pulumi.Input[builtins.str] principal_type: The type of the CloudSSO identity. Valid values: `User`, `Group`.
+        :param pulumi.Input[builtins.str] target_id: The ID of the task object.
+        :param pulumi.Input[builtins.str] target_type: The type of the task object. Valid values: `RD-Account`.
+        :param pulumi.Input[builtins.str] deprovision_strategy: Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         pulumi.set(__self__, "access_configuration_id", access_configuration_id)
         pulumi.set(__self__, "directory_id", directory_id)
@@ -50,7 +50,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> pulumi.Input[builtins.str]:
         """
-        The Access configuration ID.
+        The ID of the access configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
@@ -74,7 +74,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the access assignment.
+        The ID of the CloudSSO identity.
         """
         return pulumi.get(self, "principal_id")
 
@@ -86,7 +86,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> pulumi.Input[builtins.str]:
         """
-        The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        The type of the CloudSSO identity. Valid values: `User`, `Group`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -98,7 +98,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the target to create the resource range.
+        The ID of the task object.
         """
         return pulumi.get(self, "target_id")
 
@@ -110,7 +110,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="targetType")
     def target_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        The type of the task object. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 
@@ -122,7 +122,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         return pulumi.get(self, "deprovision_strategy")
 
@@ -135,6 +135,7 @@ class AccessManagementArgs:
 class _AccessManagementState:
     def __init__(__self__, *,
                  access_configuration_id: Optional[pulumi.Input[builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[builtins.str]] = None,
                  deprovision_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[builtins.str]] = None,
                  principal_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -143,16 +144,19 @@ class _AccessManagementState:
                  target_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessManagement resources.
-        :param pulumi.Input[builtins.str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[builtins.str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[builtins.str] access_configuration_id: The ID of the access configuration.
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.254.0) The time when the access permissions were assigned.
+        :param pulumi.Input[builtins.str] deprovision_strategy: Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] principal_id: The ID of the access assignment.
-        :param pulumi.Input[builtins.str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
-        :param pulumi.Input[builtins.str] target_id: The ID of the target to create the resource range.
-        :param pulumi.Input[builtins.str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        :param pulumi.Input[builtins.str] principal_id: The ID of the CloudSSO identity.
+        :param pulumi.Input[builtins.str] principal_type: The type of the CloudSSO identity. Valid values: `User`, `Group`.
+        :param pulumi.Input[builtins.str] target_id: The ID of the task object.
+        :param pulumi.Input[builtins.str] target_type: The type of the task object. Valid values: `RD-Account`.
         """
         if access_configuration_id is not None:
             pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if deprovision_strategy is not None:
             pulumi.set(__self__, "deprovision_strategy", deprovision_strategy)
         if directory_id is not None:
@@ -170,7 +174,7 @@ class _AccessManagementState:
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Access configuration ID.
+        The ID of the access configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
@@ -179,10 +183,22 @@ class _AccessManagementState:
         pulumi.set(self, "access_configuration_id", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Available since v1.254.0) The time when the access permissions were assigned.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         return pulumi.get(self, "deprovision_strategy")
 
@@ -206,7 +222,7 @@ class _AccessManagementState:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the access assignment.
+        The ID of the CloudSSO identity.
         """
         return pulumi.get(self, "principal_id")
 
@@ -218,7 +234,7 @@ class _AccessManagementState:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        The type of the CloudSSO identity. Valid values: `User`, `Group`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -230,7 +246,7 @@ class _AccessManagementState:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the target to create the resource range.
+        The ID of the task object.
         """
         return pulumi.get(self, "target_id")
 
@@ -242,7 +258,7 @@ class _AccessManagementState:
     @pulumi.getter(name="targetType")
     def target_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        The type of the task object. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 
@@ -268,7 +284,7 @@ class AccessManagement(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Assignment resource.
 
-        For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/doc-detail/265996.htm).
+        For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/cloudsso/developer-reference/api-cloudsso-2021-05-15-createaccessassignment).
 
         > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 
@@ -286,13 +302,13 @@ class AccessManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[builtins.str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[builtins.str] access_configuration_id: The ID of the access configuration.
+        :param pulumi.Input[builtins.str] deprovision_strategy: Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] principal_id: The ID of the access assignment.
-        :param pulumi.Input[builtins.str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
-        :param pulumi.Input[builtins.str] target_id: The ID of the target to create the resource range.
-        :param pulumi.Input[builtins.str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        :param pulumi.Input[builtins.str] principal_id: The ID of the CloudSSO identity.
+        :param pulumi.Input[builtins.str] principal_type: The type of the CloudSSO identity. Valid values: `User`, `Group`.
+        :param pulumi.Input[builtins.str] target_id: The ID of the task object.
+        :param pulumi.Input[builtins.str] target_type: The type of the task object. Valid values: `RD-Account`.
         """
         ...
     @overload
@@ -303,7 +319,7 @@ class AccessManagement(pulumi.CustomResource):
         """
         Provides a Cloud SSO Access Assignment resource.
 
-        For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/doc-detail/265996.htm).
+        For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/cloudsso/developer-reference/api-cloudsso-2021-05-15-createaccessassignment).
 
         > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 
@@ -369,6 +385,7 @@ class AccessManagement(pulumi.CustomResource):
             if target_type is None and not opts.urn:
                 raise TypeError("Missing required property 'target_type'")
             __props__.__dict__["target_type"] = target_type
+            __props__.__dict__["create_time"] = None
         super(AccessManagement, __self__).__init__(
             'alicloud:cloudsso/accessManagement:AccessManagement',
             resource_name,
@@ -380,6 +397,7 @@ class AccessManagement(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_configuration_id: Optional[pulumi.Input[builtins.str]] = None,
+            create_time: Optional[pulumi.Input[builtins.str]] = None,
             deprovision_strategy: Optional[pulumi.Input[builtins.str]] = None,
             directory_id: Optional[pulumi.Input[builtins.str]] = None,
             principal_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -393,19 +411,21 @@ class AccessManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[builtins.str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[builtins.str] access_configuration_id: The ID of the access configuration.
+        :param pulumi.Input[builtins.str] create_time: (Available since v1.254.0) The time when the access permissions were assigned.
+        :param pulumi.Input[builtins.str] deprovision_strategy: Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         :param pulumi.Input[builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[builtins.str] principal_id: The ID of the access assignment.
-        :param pulumi.Input[builtins.str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
-        :param pulumi.Input[builtins.str] target_id: The ID of the target to create the resource range.
-        :param pulumi.Input[builtins.str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        :param pulumi.Input[builtins.str] principal_id: The ID of the CloudSSO identity.
+        :param pulumi.Input[builtins.str] principal_type: The type of the CloudSSO identity. Valid values: `User`, `Group`.
+        :param pulumi.Input[builtins.str] target_id: The ID of the task object.
+        :param pulumi.Input[builtins.str] target_type: The type of the task object. Valid values: `RD-Account`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessManagementState.__new__(_AccessManagementState)
 
         __props__.__dict__["access_configuration_id"] = access_configuration_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deprovision_strategy"] = deprovision_strategy
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["principal_id"] = principal_id
@@ -418,15 +438,23 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> pulumi.Output[builtins.str]:
         """
-        The Access configuration ID.
+        The ID of the access configuration.
         """
         return pulumi.get(self, "access_configuration_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[builtins.str]:
+        """
+        (Available since v1.254.0) The time when the access permissions were assigned.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         return pulumi.get(self, "deprovision_strategy")
 
@@ -442,7 +470,7 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the access assignment.
+        The ID of the CloudSSO identity.
         """
         return pulumi.get(self, "principal_id")
 
@@ -450,7 +478,7 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="principalType")
     def principal_type(self) -> pulumi.Output[builtins.str]:
         """
-        The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        The type of the CloudSSO identity. Valid values: `User`, `Group`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -458,7 +486,7 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the target to create the resource range.
+        The ID of the task object.
         """
         return pulumi.get(self, "target_id")
 
@@ -466,7 +494,7 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="targetType")
     def target_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        The type of the task object. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 

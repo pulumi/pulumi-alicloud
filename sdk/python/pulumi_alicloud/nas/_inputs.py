@@ -116,7 +116,7 @@ if not MYPY:
         """
         permission: NotRequired[pulumi.Input[builtins.str]]
         """
-        POSIX permission.
+        The Portable Operating System Interface for UNIX (POSIX) permission.
         """
 elif False:
     AccessPointRootPathPermissionArgsDict: TypeAlias = Mapping[str, Any]
@@ -130,7 +130,7 @@ class AccessPointRootPathPermissionArgs:
         """
         :param pulumi.Input[builtins.int] owner_group_id: The ID of the primary user group.
         :param pulumi.Input[builtins.int] owner_user_id: The owner user ID.
-        :param pulumi.Input[builtins.str] permission: POSIX permission.
+        :param pulumi.Input[builtins.str] permission: The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         if owner_group_id is not None:
             pulumi.set(__self__, "owner_group_id", owner_group_id)
@@ -167,7 +167,7 @@ class AccessPointRootPathPermissionArgs:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        POSIX permission.
+        The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         return pulumi.get(self, "permission")
 

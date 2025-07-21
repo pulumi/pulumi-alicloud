@@ -33,14 +33,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The creation time of the resource
+     * (Available since v1.247.0) The time when the transit router was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return (Available since v1.247.0) The time when the transit router was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -63,14 +63,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return The ID of the region where the Enterprise Edition transit router is deployed.
+     * @return (Available since v1.247.0) The ID of the region where the transit router is deployed.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -78,14 +78,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Status
+     * The status of the transit router.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status
+     * @return The status of the transit router.
      * 
      */
     public Optional<Output<String>> status() {
@@ -172,14 +172,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type
+     * The edition of the transit router.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type
+     * @return The edition of the transit router.
      * 
      */
     public Optional<Output<String>> type() {
@@ -242,7 +242,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime (Available since v1.247.0) The time when the transit router was created.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime (Available since v1.247.0) The time when the transit router was created.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regionId The ID of the region where the Enterprise Edition transit router is deployed.
+         * @param regionId (Available since v1.247.0) The ID of the region where the transit router is deployed.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regionId The ID of the region where the Enterprise Edition transit router is deployed.
+         * @param regionId (Available since v1.247.0) The ID of the region where the transit router is deployed.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status Status
+         * @param status The status of the transit router.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status Status
+         * @param status The status of the transit router.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type
+         * @param type The edition of the transit router.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type
+         * @param type The edition of the transit router.
          * 
          * @return builder
          * 

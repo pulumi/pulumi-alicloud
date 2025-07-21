@@ -23449,6 +23449,13 @@ export namespace ecs {
         snapshotId?: string;
     }
 
+    export interface EcsLaunchTemplateImageOptions {
+        /**
+         * Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+         */
+        loginAsNonRoot?: boolean;
+    }
+
     export interface EcsLaunchTemplateNetworkInterfaces {
         /**
          * Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
@@ -25316,20 +25323,23 @@ export namespace ecs {
 
     export interface GetEcsSnapshotsSnapshot {
         /**
-         * The category of the snapshot.
+         * The category of the snapshot. Valid Values: `flash` and `standard`.
          */
         category: string;
+        /**
+         * The time when the snapshot was created.
+         */
         creationTime: string;
         /**
          * The description of the snapshot.
          */
         description: string;
         /**
-         * The source disk id.
+         * The ID of the source disk.
          */
         diskId: string;
         /**
-         * Whether the snapshot is encrypted.
+         * Specifies whether the snapshot is encrypted.
          */
         encrypted: boolean;
         /**
@@ -25337,24 +25347,27 @@ export namespace ecs {
          */
         id: string;
         /**
-         * Whether snapshot speed availability is enabled.
+         * Indicates whether the instant access feature is enabled.
          */
         instantAccess: boolean;
         /**
-         * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+         * Indicates the validity period of the instant access feature.
          */
         instantAccessRetentionDays: number;
+        /**
+         * The name of the snapshot.
+         */
         name: string;
         /**
-         * The product number inherited from the mirror market.
+         * The product code of the Alibaba Cloud Marketplace image.
          */
         productCode: string;
         /**
-         * Snapshot creation progress, in percentage.
+         * The progress of the snapshot creation task.
          */
         progress: string;
         /**
-         * Remaining completion time for the snapshot being created.
+         * The amount of remaining time required to create the snapshot.
          */
         remainTime: number;
         /**
@@ -25362,15 +25375,15 @@ export namespace ecs {
          */
         resourceGroupId: string;
         /**
-         * Automatic snapshot retention days.
+         * The retention period of the automatic snapshot.
          */
         retentionDays: number;
         /**
-         * The snapshot id.
+         * The ID of the snapshot.
          */
         snapshotId: string;
         /**
-         * Snapshot Display Name.
+         * The name of the snapshot.
          */
         snapshotName: string;
         /**
@@ -25378,33 +25391,39 @@ export namespace ecs {
          */
         snapshotSn: string;
         /**
-         * Snapshot creation type.
+         * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
          */
         snapshotType: string;
+        /**
+         * The ID of the source disk.
+         */
         sourceDiskId: string;
         /**
-         * Source disk capacity.
+         * The capacity of the source disk.
          */
         sourceDiskSize: string;
         /**
-         * Source disk attributes.
+         * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
          */
         sourceDiskType: string;
         /**
-         * Original disk type.
+         * The category of the source disk.
          */
         sourceStorageType: string;
         /**
-         * The status of the snapshot.
+         * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
          */
         status: string;
         /**
-         * The tags.
+         * A mapping of tags to assign to the snapshot.
          */
         tags: {[key: string]: string};
+        /**
+         * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+         */
         type: string;
         /**
-         * A resource type that has a reference relationship.
+         * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
          */
         usage: string;
     }
@@ -26818,6 +26837,10 @@ export namespace ecs {
          * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
          */
         snapshotId?: string;
+    }
+
+    export interface LaunchTemplateImageOptions {
+        loginAsNonRoot?: boolean;
     }
 
     export interface LaunchTemplateNetworkInterfaces {
@@ -41919,7 +41942,7 @@ export namespace nas {
          */
         ownerUserId: number;
         /**
-         * POSIX permission.
+         * The Portable Operating System Interface for UNIX (POSIX) permission.
          */
         permission?: string;
     }

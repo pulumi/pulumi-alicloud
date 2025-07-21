@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// <summary>
     /// Provides a Cloud SSO Access Assignment resource.
     /// 
-    /// For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/doc-detail/265996.htm).
+    /// For information about Cloud SSO Access Assignment and how to use it, see [What is Access Assignment](https://www.alibabacloud.com/help/en/cloudsso/developer-reference/api-cloudsso-2021-05-15-createaccessassignment).
     /// 
     /// &gt; **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
     /// 
@@ -32,13 +32,19 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class AccessManagement : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Access configuration ID.
+        /// The ID of the access configuration.
         /// </summary>
         [Output("accessConfigurationId")]
         public Output<string> AccessConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// (Available since v1.254.0) The time when the access permissions were assigned.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         /// </summary>
         [Output("deprovisionStrategy")]
         public Output<string?> DeprovisionStrategy { get; private set; } = null!;
@@ -50,25 +56,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the access assignment.
+        /// The ID of the CloudSSO identity.
         /// </summary>
         [Output("principalId")]
         public Output<string> PrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        /// The type of the CloudSSO identity. Valid values: `User`, `Group`.
         /// </summary>
         [Output("principalType")]
         public Output<string> PrincipalType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the target to create the resource range.
+        /// The ID of the task object.
         /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        /// The type of the task object. Valid values: `RD-Account`.
         /// </summary>
         [Output("targetType")]
         public Output<string> TargetType { get; private set; } = null!;
@@ -120,13 +126,13 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access configuration ID.
+        /// The ID of the access configuration.
         /// </summary>
         [Input("accessConfigurationId", required: true)]
         public Input<string> AccessConfigurationId { get; set; } = null!;
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         /// </summary>
         [Input("deprovisionStrategy")]
         public Input<string>? DeprovisionStrategy { get; set; }
@@ -138,25 +144,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the access assignment.
+        /// The ID of the CloudSSO identity.
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        /// The type of the CloudSSO identity. Valid values: `User`, `Group`.
         /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the target to create the resource range.
+        /// The ID of the task object.
         /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        /// The type of the task object. Valid values: `RD-Account`.
         /// </summary>
         [Input("targetType", required: true)]
         public Input<string> TargetType { get; set; } = null!;
@@ -170,13 +176,19 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access configuration ID.
+        /// The ID of the access configuration.
         /// </summary>
         [Input("accessConfigurationId")]
         public Input<string>? AccessConfigurationId { get; set; }
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// (Available since v1.254.0) The time when the access permissions were assigned.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         /// </summary>
         [Input("deprovisionStrategy")]
         public Input<string>? DeprovisionStrategy { get; set; }
@@ -188,25 +200,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The ID of the access assignment.
+        /// The ID of the CloudSSO identity.
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 
         /// <summary>
-        /// The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
+        /// The type of the CloudSSO identity. Valid values: `User`, `Group`.
         /// </summary>
         [Input("principalType")]
         public Input<string>? PrincipalType { get; set; }
 
         /// <summary>
-        /// The ID of the target to create the resource range.
+        /// The ID of the task object.
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 
         /// <summary>
-        /// The type of the resource range target to be accessed. Valid values: `RD-Account`.
+        /// The type of the task object. Valid values: `RD-Account`.
         /// </summary>
         [Input("targetType")]
         public Input<string>? TargetType { get; set; }

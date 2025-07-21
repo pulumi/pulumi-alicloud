@@ -69,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReadOnlyInstance{}
 	case "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
 		r = &ReadWriteSplittingConnection{}
+	case "alicloud:rds/whitelistTemplate:WhitelistTemplate":
+		r = &WhitelistTemplate{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -200,6 +202,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/readWriteSplittingConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/whitelistTemplate",
 		&module{version},
 	)
 }

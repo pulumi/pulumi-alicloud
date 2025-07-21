@@ -16,8 +16,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsSnapshotsResult {
+    /**
+     * @return The category of the snapshot.
+     * 
+     */
     private @Nullable String category;
     private @Nullable Boolean dryRun;
+    /**
+     * @return Indicates whether the snapshot was encrypted.
+     * 
+     */
     private @Nullable Boolean encrypted;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,26 +35,74 @@ public final class GetEcsSnapshotsResult {
     private List<String> ids;
     private @Nullable String kmsKeyId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group to which the snapshot belongs.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable String snapshotLinkId;
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     private @Nullable String snapshotName;
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     private @Nullable String snapshotType;
+    /**
+     * @return A list of Ecs Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsSnapshotsSnapshot> snapshots;
+    /**
+     * @return The type of the source disk.
+     * 
+     */
     private @Nullable String sourceDiskType;
+    /**
+     * @return The status of the snapshot.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of the snapshot.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Indicates whether the snapshot was used to create images or cloud disks.
+     * 
+     */
     private @Nullable String usage;
 
     private GetEcsSnapshotsResult() {}
+    /**
+     * @return The category of the snapshot.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     public Optional<Boolean> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
+    /**
+     * @return Indicates whether the snapshot was encrypted.
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -66,39 +122,79 @@ public final class GetEcsSnapshotsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group to which the snapshot belongs.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     public Optional<String> snapshotLinkId() {
         return Optional.ofNullable(this.snapshotLinkId);
     }
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public Optional<String> snapshotName() {
         return Optional.ofNullable(this.snapshotName);
     }
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     public Optional<String> snapshotType() {
         return Optional.ofNullable(this.snapshotType);
     }
+    /**
+     * @return A list of Ecs Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }
+    /**
+     * @return The type of the source disk.
+     * 
+     */
     public Optional<String> sourceDiskType() {
         return Optional.ofNullable(this.sourceDiskType);
     }
+    /**
+     * @return The status of the snapshot.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the snapshot.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The type of the snapshot.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Indicates whether the snapshot was used to create images or cloud disks.
+     * 
+     */
     public Optional<String> usage() {
         return Optional.ofNullable(this.usage);
     }

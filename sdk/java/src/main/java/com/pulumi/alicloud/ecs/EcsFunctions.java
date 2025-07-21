@@ -7420,7 +7420,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7434,7 +7434,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7449,12 +7470,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7468,7 +7568,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7482,7 +7582,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7497,12 +7618,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7516,7 +7716,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7530,7 +7730,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7545,12 +7766,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7564,7 +7864,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7578,7 +7878,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7593,12 +7914,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7612,7 +8012,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7626,7 +8026,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7641,12 +8062,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7660,7 +8160,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7674,7 +8174,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7689,12 +8210,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }
@@ -7708,7 +8308,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -7722,7 +8322,28 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.Instance;
+     * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+     * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+     * import com.pulumi.alicloud.ecs.EcsSnapshot;
+     * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -7737,12 +8358,91 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids("s-bp1fvuxxxxxxxx")
-     *             .nameRegex("tf-test")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_essd")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(defaultGetZones.zones()[0].id())
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .systemDiskCategory("cloud_essd")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("192.168.192.0/24")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .imageId(defaultGetImages.images()[0].id())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+     *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *             .internetChargeType("PayByTraffic")
+     *             .internetMaxBandwidthOut(10)
+     *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .instanceChargeType("PostPaid")
+     *             .systemDiskCategory("cloud_essd")
+     *             .vswitchId(defaultSwitch.id())
+     *             .instanceName(name)
+     *             .dataDisks(InstanceDataDiskArgs.builder()
+     *                 .category("cloud_essd")
+     *                 .size(20)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .diskName(name)
+     *             .zoneId(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+     *             .category("cloud_essd")
+     *             .size(500)
+     *             .build());
+     * 
+     *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+     *             .diskId(defaultEcsDisk.id())
+     *             .instanceId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+     *             .diskId(defaultEcsDiskAttachment.diskId())
+     *             .category("standard")
+     *             .retentionDays(20)
+     *             .snapshotName(name)
+     *             .description(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Snapshot")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
+     *             .ids(defaultEcsSnapshot.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
      *     }
      * }
      * }

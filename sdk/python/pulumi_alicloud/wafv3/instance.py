@@ -104,7 +104,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.wafv3.Instance("default")
+        example = alicloud.wafv3.Instance("example")
         ```
 
         ## Import
@@ -139,7 +139,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.wafv3.Instance("default")
+        example = alicloud.wafv3.Instance("example")
         ```
 
         ## Import

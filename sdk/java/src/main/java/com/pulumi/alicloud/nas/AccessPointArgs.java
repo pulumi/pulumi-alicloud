@@ -20,14 +20,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessPointArgs Empty = new AccessPointArgs();
 
     /**
-     * The permission group name.
+     * The name of the permission group.
      * 
      */
     @Import(name="accessGroup", required=true)
     private Output<String> accessGroup;
 
     /**
-     * @return The permission group name.
+     * @return The name of the permission group.
      * 
      */
     public Output<String> accessGroup() {
@@ -35,14 +35,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Access Point Name.
+     * The name of the access point.
      * 
      */
     @Import(name="accessPointName")
     private @Nullable Output<String> accessPointName;
 
     /**
-     * @return The Access Point Name.
+     * @return The name of the access point.
      * 
      */
     public Optional<Output<String>> accessPointName() {
@@ -50,14 +50,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     @Import(name="enabledRam")
     private @Nullable Output<Boolean> enabledRam;
 
     /**
-     * @return Whether to enable the RAM policy.
+     * @return Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enabledRam() {
@@ -95,14 +95,14 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root directory.
+     * The root directory of the access point.
      * 
      */
     @Import(name="rootPath")
     private @Nullable Output<String> rootPath;
 
     /**
-     * @return The root directory.
+     * @return The root directory of the access point.
      * 
      */
     public Optional<Output<String>> rootPath() {
@@ -187,7 +187,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroup The permission group name.
+         * @param accessGroup The name of the permission group.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroup The permission group name.
+         * @param accessGroup The name of the permission group.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointName The Access Point Name.
+         * @param accessPointName The name of the access point.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessPointName The Access Point Name.
+         * @param accessPointName The name of the access point.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledRam Whether to enable the RAM policy.
+         * @param enabledRam Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledRam Whether to enable the RAM policy.
+         * @param enabledRam Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPath The root directory.
+         * @param rootPath The root directory of the access point.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class AccessPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPath The root directory.
+         * @param rootPath The root directory of the access point.
          * 
          * @return builder
          * 

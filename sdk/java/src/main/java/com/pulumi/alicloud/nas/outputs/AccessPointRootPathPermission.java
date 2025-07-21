@@ -23,7 +23,7 @@ public final class AccessPointRootPathPermission {
      */
     private @Nullable Integer ownerUserId;
     /**
-     * @return POSIX permission.
+     * @return The Portable Operating System Interface for UNIX (POSIX) permission.
      * 
      */
     private @Nullable String permission;
@@ -44,7 +44,7 @@ public final class AccessPointRootPathPermission {
         return Optional.ofNullable(this.ownerUserId);
     }
     /**
-     * @return POSIX permission.
+     * @return The Portable Operating System Interface for UNIX (POSIX) permission.
      * 
      */
     public Optional<String> permission() {

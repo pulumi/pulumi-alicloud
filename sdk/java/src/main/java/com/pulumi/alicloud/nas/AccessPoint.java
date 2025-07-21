@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NAS Access Point resource.
+ * Provides a File Storage (NAS) Access Point resource.
  * 
  * For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
  * 
@@ -38,12 +38,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
@@ -67,10 +67,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
  *         final var azone = config.get("azone").orElse("cn-hangzhou-g");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         var defaultkyVC70 = new Network("defaultkyVC70", NetworkArgs.builder()
@@ -82,11 +86,6 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultkyVC70.id())
  *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock("172.16.0.0/24")
- *             .build());
- * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
  *             .build());
  * 
  *         var defaultBbc7ev = new AccessGroup("defaultBbc7ev", AccessGroupArgs.builder()
@@ -129,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NAS Access Point can be imported using the id, e.g.
+ * File Storage (NAS) Access Point can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nas/accessPoint:AccessPoint example &lt;file_system_id&gt;:&lt;access_point_id&gt;
@@ -139,70 +138,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nas/accessPoint:AccessPoint")
 public class AccessPoint extends com.pulumi.resources.CustomResource {
     /**
-     * The permission group name.
+     * The name of the permission group.
      * 
      */
     @Export(name="accessGroup", refs={String.class}, tree="[0]")
     private Output<String> accessGroup;
 
     /**
-     * @return The permission group name.
+     * @return The name of the permission group.
      * 
      */
     public Output<String> accessGroup() {
         return this.accessGroup;
     }
     /**
-     * Access point ID.
+     * The ID of the access point.
      * 
      */
     @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
     /**
-     * @return Access point ID.
+     * @return The ID of the access point.
      * 
      */
     public Output<String> accessPointId() {
         return this.accessPointId;
     }
     /**
-     * The Access Point Name.
+     * The name of the access point.
      * 
      */
     @Export(name="accessPointName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessPointName;
 
     /**
-     * @return The Access Point Name.
+     * @return The name of the access point.
      * 
      */
     public Output<Optional<String>> accessPointName() {
         return Codegen.optional(this.accessPointName);
     }
     /**
-     * Creation time.
+     * The time when the access point was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return The time when the access point was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Whether to enable the RAM policy.
+     * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     @Export(name="enabledRam", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabledRam;
 
     /**
-     * @return Whether to enable the RAM policy.
+     * @return Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> enabledRam() {
@@ -237,14 +236,28 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.posixUser;
     }
     /**
-     * The root directory.
+     * (Available since v1.254.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.254.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The root directory of the access point.
      * 
      */
     @Export(name="rootPath", refs={String.class}, tree="[0]")
     private Output<String> rootPath;
 
     /**
-     * @return The root directory.
+     * @return The root directory of the access point.
      * 
      */
     public Output<String> rootPath() {
@@ -265,14 +278,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
         return this.rootPathPermission;
     }
     /**
-     * Current access point state.
+     * The status of the access point.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Current access point state.
+     * @return The status of the access point.
      * 
      */
     public Output<String> status() {

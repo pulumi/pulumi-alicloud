@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga
 {
     /// <summary>
-    /// Provides a Global Accelerator (GA) Acl entry attachment resource.
+    /// Provides a Global Accelerator (GA) Acl Entry Attachment resource.
     /// 
-    /// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
+    /// For information about Global Accelerator (GA) Acl Entry Attachment and how to use it, see [What is Acl Entry Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 
@@ -28,17 +28,19 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Ga.Acl("default", new()
     ///     {
-    ///         AclName = "tf-example-value",
     ///         AddressIpVersion = "IPv4",
+    ///         AclName = name,
     ///     });
     /// 
     ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("default", new()
     ///     {
     ///         AclId = @default.Id,
     ///         Entry = "192.168.1.1/32",
-    ///         EntryDescription = "tf-example-value",
+    ///         EntryDescription = name,
     ///     });
     /// 
     /// });
@@ -46,35 +48,35 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `&lt;acl_id&gt;:&lt;entry&gt;`, e.g.
+    /// Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+    /// $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/aclEntryAttachment:AclEntryAttachment")]
     public partial class AclEntryAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// The ID of the Acl.
         /// </summary>
         [Output("aclId")]
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        /// The entry (IP address or CIDR block) that you want to add.
         /// </summary>
         [Output("entry")]
         public Output<string> Entry { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Output("entryDescription")]
         public Output<string?> EntryDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the network ACL.
+        /// The status of the Acl Entry Attachment.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -126,19 +128,19 @@ namespace Pulumi.AliCloud.Ga
     public sealed class AclEntryAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// The ID of the Acl.
         /// </summary>
         [Input("aclId", required: true)]
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        /// The entry (IP address or CIDR block) that you want to add.
         /// </summary>
         [Input("entry", required: true)]
         public Input<string> Entry { get; set; } = null!;
 
         /// <summary>
-        /// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Input("entryDescription")]
         public Input<string>? EntryDescription { get; set; }
@@ -152,25 +154,25 @@ namespace Pulumi.AliCloud.Ga
     public sealed class AclEntryAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// The ID of the Acl.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+        /// The entry (IP address or CIDR block) that you want to add.
         /// </summary>
         [Input("entry")]
         public Input<string>? Entry { get; set; }
 
         /// <summary>
-        /// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        /// The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Input("entryDescription")]
         public Input<string>? EntryDescription { get; set; }
 
         /// <summary>
-        /// The status of the network ACL.
+        /// The status of the Acl Entry Attachment.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

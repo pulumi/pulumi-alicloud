@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Nas.Inputs
         public Input<int>? OwnerUserId { get; set; }
 
         /// <summary>
-        /// POSIX permission.
+        /// The Portable Operating System Interface for UNIX (POSIX) permission.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }

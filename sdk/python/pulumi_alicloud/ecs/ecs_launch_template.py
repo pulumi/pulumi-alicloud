@@ -35,6 +35,7 @@ class EcsLaunchTemplateArgs:
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -94,6 +95,7 @@ class EcsLaunchTemplateArgs:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[builtins.str] image_id: The Image ID.
+        :param pulumi.Input['EcsLaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -167,6 +169,8 @@ class EcsLaunchTemplateArgs:
             pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_options is not None:
+            pulumi.set(__self__, "image_options", image_options)
         if image_owner_alias is not None:
             pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
@@ -425,6 +429,18 @@ class EcsLaunchTemplateArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']]:
+        """
+        The options of images. See `image_options` below.
+        """
+        return pulumi.get(self, "image_options")
+
+    @image_options.setter
+    def image_options(self, value: Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']]):
+        pulumi.set(self, "image_options", value)
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
@@ -935,6 +951,7 @@ class _EcsLaunchTemplateState:
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -995,6 +1012,7 @@ class _EcsLaunchTemplateState:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[builtins.str] image_id: The Image ID.
+        :param pulumi.Input['EcsLaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -1069,6 +1087,8 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_options is not None:
+            pulumi.set(__self__, "image_options", image_options)
         if image_owner_alias is not None:
             pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
@@ -1329,6 +1349,18 @@ class _EcsLaunchTemplateState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']]:
+        """
+        The options of images. See `image_options` below.
+        """
+        return pulumi.get(self, "image_options")
+
+    @image_options.setter
+    def image_options(self, value: Optional[pulumi.Input['EcsLaunchTemplateImageOptionsArgs']]):
+        pulumi.set(self, "image_options", value)
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
@@ -1854,6 +1886,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2016,6 +2049,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[builtins.str] image_id: The Image ID.
+        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -2199,6 +2233,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
                  http_tokens: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
+                 image_options: Optional[pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
                  image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2261,6 +2296,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
             __props__.__dict__["http_tokens"] = http_tokens
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["image_options"] = image_options
             __props__.__dict__["image_owner_alias"] = image_owner_alias
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_name"] = instance_name
@@ -2325,6 +2361,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             http_put_response_hop_limit: Optional[pulumi.Input[builtins.int]] = None,
             http_tokens: Optional[pulumi.Input[builtins.str]] = None,
             image_id: Optional[pulumi.Input[builtins.str]] = None,
+            image_options: Optional[pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']]] = None,
             image_owner_alias: Optional[pulumi.Input[builtins.str]] = None,
             instance_charge_type: Optional[pulumi.Input[builtins.str]] = None,
             instance_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2390,6 +2427,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[builtins.str] image_id: The Image ID.
+        :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[builtins.str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
         :param pulumi.Input[builtins.str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
@@ -2455,6 +2493,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
         __props__.__dict__["http_tokens"] = http_tokens
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["image_options"] = image_options
         __props__.__dict__["image_owner_alias"] = image_owner_alias
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_name"] = instance_name
@@ -2605,6 +2644,14 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         The Image ID.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageOptions")
+    def image_options(self) -> pulumi.Output['outputs.EcsLaunchTemplateImageOptions']:
+        """
+        The options of images. See `image_options` below.
+        """
+        return pulumi.get(self, "image_options")
 
     @property
     @pulumi.getter(name="imageOwnerAlias")

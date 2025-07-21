@@ -30,6 +30,8 @@ __all__ = [
     'EcsInstanceSetNetworkInterfaceArgsDict',
     'EcsLaunchTemplateDataDiskArgs',
     'EcsLaunchTemplateDataDiskArgsDict',
+    'EcsLaunchTemplateImageOptionsArgs',
+    'EcsLaunchTemplateImageOptionsArgsDict',
     'EcsLaunchTemplateNetworkInterfacesArgs',
     'EcsLaunchTemplateNetworkInterfacesArgsDict',
     'EcsLaunchTemplateSystemDiskArgs',
@@ -52,6 +54,8 @@ __all__ = [
     'InstanceNetworkInterfacesArgsDict',
     'LaunchTemplateDataDiskArgs',
     'LaunchTemplateDataDiskArgsDict',
+    'LaunchTemplateImageOptionsArgs',
+    'LaunchTemplateImageOptionsArgsDict',
     'LaunchTemplateNetworkInterfacesArgs',
     'LaunchTemplateNetworkInterfacesArgsDict',
     'LaunchTemplateSystemDiskArgs',
@@ -857,6 +861,38 @@ class EcsLaunchTemplateDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
+    class EcsLaunchTemplateImageOptionsArgsDict(TypedDict):
+        login_as_non_root: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+        """
+elif False:
+    EcsLaunchTemplateImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EcsLaunchTemplateImageOptionsArgs:
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] login_as_non_root: Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+        """
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+        """
+        return pulumi.get(self, "login_as_non_root")
+
+    @login_as_non_root.setter
+    def login_as_non_root(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "login_as_non_root", value)
 
 
 if not MYPY:
@@ -2379,6 +2415,29 @@ class LaunchTemplateDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
+    class LaunchTemplateImageOptionsArgsDict(TypedDict):
+        login_as_non_root: NotRequired[pulumi.Input[builtins.bool]]
+elif False:
+    LaunchTemplateImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LaunchTemplateImageOptionsArgs:
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[pulumi.Input[builtins.bool]] = None):
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "login_as_non_root")
+
+    @login_as_non_root.setter
+    def login_as_non_root(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "login_as_non_root", value)
 
 
 if not MYPY:

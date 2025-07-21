@@ -19,13 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const example = new alicloud.cen.Instance("example", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
+ *     cenInstanceName: name,
+ *     description: name,
  * });
  * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
- *     transitRouterName: "tf_example",
  *     cenId: example.id,
+ *     transitRouterName: name,
  * });
  * ```
  *
@@ -34,7 +36,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
+ * $ pulumi import alicloud:cen/transitRouter:TransitRouter example <cen_id>:<transit_router_id>
  * ```
  */
 export class TransitRouter extends pulumi.CustomResource {
@@ -70,7 +72,7 @@ export class TransitRouter extends pulumi.CustomResource {
      */
     public readonly cenId!: pulumi.Output<string>;
     /**
-     * The creation time of the resource
+     * (Available since v1.247.0) The time when the transit router was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -78,11 +80,11 @@ export class TransitRouter extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
-     * Status
+     * The status of the transit router.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -108,7 +110,7 @@ export class TransitRouter extends pulumi.CustomResource {
      */
     public readonly transitRouterName!: pulumi.Output<string | undefined>;
     /**
-     * Type
+     * The edition of the transit router.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -167,7 +169,7 @@ export interface TransitRouterState {
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * (Available since v1.247.0) The time when the transit router was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -175,11 +177,11 @@ export interface TransitRouterState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      */
     regionId?: pulumi.Input<string>;
     /**
-     * Status
+     * The status of the transit router.
      */
     status?: pulumi.Input<string>;
     /**
@@ -205,7 +207,7 @@ export interface TransitRouterState {
      */
     transitRouterName?: pulumi.Input<string>;
     /**
-     * Type
+     * The edition of the transit router.
      */
     type?: pulumi.Input<string>;
 }

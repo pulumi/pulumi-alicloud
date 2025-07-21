@@ -50,15 +50,15 @@ export class UserAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      */
     public readonly directoryId!: pulumi.Output<string>;
     /**
-     * The Group ID.
+     * The ID of the group.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The User ID.
+     * The ID of the user.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -103,15 +103,15 @@ export class UserAttachment extends pulumi.CustomResource {
  */
 export interface UserAttachmentState {
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      */
     directoryId?: pulumi.Input<string>;
     /**
-     * The Group ID.
+     * The ID of the group.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The User ID.
+     * The ID of the user.
      */
     userId?: pulumi.Input<string>;
 }
@@ -121,15 +121,15 @@ export interface UserAttachmentState {
  */
 export interface UserAttachmentArgs {
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      */
     directoryId: pulumi.Input<string>;
     /**
-     * The Group ID.
+     * The ID of the group.
      */
     groupId: pulumi.Input<string>;
     /**
-     * The User ID.
+     * The ID of the user.
      */
     userId: pulumi.Input<string>;
 }

@@ -28,16 +28,18 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
+    ///         CenInstanceName = name,
+    ///         Description = name,
     ///     });
     /// 
     ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
-    ///         TransitRouterName = "tf_example",
     ///         CenId = example.Id,
+    ///         TransitRouterName = name,
     ///     });
     /// 
     /// });
@@ -48,7 +50,7 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;cen_id&gt;:&lt;transit_router_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouter:TransitRouter")]
@@ -61,7 +63,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// (Available since v1.247.0) The time when the transit router was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -73,13 +75,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the region where the Enterprise Edition transit router is deployed.
+        /// (Available since v1.247.0) The ID of the region where the transit router is deployed.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Status
+        /// The status of the transit router.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -117,7 +119,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> TransitRouterName { get; private set; } = null!;
 
         /// <summary>
-        /// Type
+        /// The edition of the transit router.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -227,7 +229,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// (Available since v1.247.0) The time when the transit router was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -239,13 +241,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the region where the Enterprise Edition transit router is deployed.
+        /// (Available since v1.247.0) The ID of the region where the transit router is deployed.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// Status
+        /// The status of the transit router.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -289,7 +291,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterName { get; set; }
 
         /// <summary>
-        /// Type
+        /// The edition of the transit router.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

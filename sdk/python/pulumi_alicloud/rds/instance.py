@@ -39,6 +39,7 @@ class InstanceArgs:
                  client_ca_enabled: Optional[pulumi.Input[builtins.int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[builtins.int]] = None,
+                 cold_data_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_string_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -94,6 +95,7 @@ class InstanceArgs:
                  tcp_connection_type: Optional[pulumi.Input[builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[builtins.str]] = None,
+                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -176,6 +178,9 @@ class InstanceArgs:
         :param pulumi.Input[builtins.int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
+               - true: Enable high-performance cloud disk data archiving function.
+               - false: Disable high-performance cloud disk data archiving function.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -325,6 +330,7 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] template_id_lists: Whitelist Template ID List.
         :param pulumi.Input[builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -383,6 +389,8 @@ class InstanceArgs:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if cold_data_enabled is not None:
+            pulumi.set(__self__, "cold_data_enabled", cold_data_enabled)
         if connection_string_prefix is not None:
             pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_ip_array_attribute is not None:
@@ -496,6 +504,8 @@ class InstanceArgs:
             pulumi.set(__self__, "tde_encryption_key", tde_encryption_key)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if template_id_lists is not None:
+            pulumi.set(__self__, "template_id_lists", template_id_lists)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
@@ -774,6 +784,20 @@ class InstanceArgs:
     @client_crl_enabled.setter
     def client_crl_enabled(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "client_crl_enabled", value)
+
+    @property
+    @pulumi.getter(name="coldDataEnabled")
+    def cold_data_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        High performance cloud disk data archiving function switch.Example value:
+        - true: Enable high-performance cloud disk data archiving function.
+        - false: Disable high-performance cloud disk data archiving function.
+        """
+        return pulumi.get(self, "cold_data_enabled")
+
+    @cold_data_enabled.setter
+    def cold_data_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "cold_data_enabled", value)
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
@@ -1531,6 +1555,18 @@ class InstanceArgs:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="templateIdLists")
+    def template_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        """
+        Whitelist Template ID List.
+        """
+        return pulumi.get(self, "template_id_lists")
+
+    @template_id_lists.setter
+    def template_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "template_id_lists", value)
+
+    @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
     @_utilities.deprecated("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
     def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[builtins.bool]]:
@@ -1663,6 +1699,7 @@ class _InstanceState:
                  client_ca_enabled: Optional[pulumi.Input[builtins.int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[builtins.int]] = None,
+                 cold_data_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_string: Optional[pulumi.Input[builtins.str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -1727,6 +1764,8 @@ class _InstanceState:
                  tcp_connection_type: Optional[pulumi.Input[builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[builtins.str]] = None,
+                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
+                 templates: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1781,6 +1820,9 @@ class _InstanceState:
         :param pulumi.Input[builtins.int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
+               - true: Enable high-performance cloud disk data archiving function.
+               - false: Disable high-performance cloud disk data archiving function.
         :param pulumi.Input[builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -1963,6 +2005,8 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] template_id_lists: Whitelist Template ID List.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]] templates: (Computed, Available since v1.254.0) Whitelist Template Details.
         :param pulumi.Input[builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -2017,6 +2061,8 @@ class _InstanceState:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if cold_data_enabled is not None:
+            pulumi.set(__self__, "cold_data_enabled", cold_data_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if connection_string_prefix is not None:
@@ -2148,6 +2194,10 @@ class _InstanceState:
             pulumi.set(__self__, "tde_encryption_key", tde_encryption_key)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if template_id_lists is not None:
+            pulumi.set(__self__, "template_id_lists", template_id_lists)
+        if templates is not None:
+            pulumi.set(__self__, "templates", templates)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
@@ -2354,6 +2404,20 @@ class _InstanceState:
     @client_crl_enabled.setter
     def client_crl_enabled(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "client_crl_enabled", value)
+
+    @property
+    @pulumi.getter(name="coldDataEnabled")
+    def cold_data_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        High performance cloud disk data archiving function switch.Example value:
+        - true: Enable high-performance cloud disk data archiving function.
+        - false: Disable high-performance cloud disk data archiving function.
+        """
+        return pulumi.get(self, "cold_data_enabled")
+
+    @cold_data_enabled.setter
+    def cold_data_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "cold_data_enabled", value)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -3243,6 +3307,30 @@ class _InstanceState:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="templateIdLists")
+    def template_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        """
+        Whitelist Template ID List.
+        """
+        return pulumi.get(self, "template_id_lists")
+
+    @template_id_lists.setter
+    def template_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "template_id_lists", value)
+
+    @property
+    @pulumi.getter
+    def templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]:
+        """
+        (Computed, Available since v1.254.0) Whitelist Template Details.
+        """
+        return pulumi.get(self, "templates")
+
+    @templates.setter
+    def templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]):
+        pulumi.set(self, "templates", value)
+
+    @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
     @_utilities.deprecated("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
     def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[builtins.bool]]:
@@ -3378,6 +3466,7 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[builtins.int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[builtins.int]] = None,
+                 cold_data_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_string_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -3437,6 +3526,7 @@ class Instance(pulumi.CustomResource):
                  tcp_connection_type: Optional[pulumi.Input[builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[builtins.str]] = None,
+                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3501,6 +3591,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
+               - true: Enable high-performance cloud disk data archiving function.
+               - false: Disable high-performance cloud disk data archiving function.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -3678,6 +3771,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] template_id_lists: Whitelist Template ID List.
         :param pulumi.Input[builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -3749,6 +3843,7 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[builtins.int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[builtins.str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[builtins.int]] = None,
+                 cold_data_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_string_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -3808,6 +3903,7 @@ class Instance(pulumi.CustomResource):
                  tcp_connection_type: Optional[pulumi.Input[builtins.str]] = None,
                  tde_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
                  tde_status: Optional[pulumi.Input[builtins.str]] = None,
+                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[builtins.bool]] = None,
                  upgrade_time: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3838,6 +3934,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+            __props__.__dict__["cold_data_enabled"] = cold_data_enabled
             __props__.__dict__["connection_string_prefix"] = connection_string_prefix
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
@@ -3905,6 +4002,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_encryption_key"] = tde_encryption_key
             __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["template_id_lists"] = template_id_lists
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vpc_id"] = vpc_id
@@ -3918,6 +4016,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_instance_type"] = None
             __props__.__dict__["ssl_status"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["templates"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCaCert", "serverCert"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
@@ -3943,6 +4042,7 @@ class Instance(pulumi.CustomResource):
             client_ca_enabled: Optional[pulumi.Input[builtins.int]] = None,
             client_cert_revocation_list: Optional[pulumi.Input[builtins.str]] = None,
             client_crl_enabled: Optional[pulumi.Input[builtins.int]] = None,
+            cold_data_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             connection_string: Optional[pulumi.Input[builtins.str]] = None,
             connection_string_prefix: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -4007,6 +4107,8 @@ class Instance(pulumi.CustomResource):
             tcp_connection_type: Optional[pulumi.Input[builtins.str]] = None,
             tde_encryption_key: Optional[pulumi.Input[builtins.str]] = None,
             tde_status: Optional[pulumi.Input[builtins.str]] = None,
+            template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
+            templates: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
             upgrade_db_instance_kernel_version: Optional[pulumi.Input[builtins.bool]] = None,
             upgrade_time: Optional[pulumi.Input[builtins.str]] = None,
             vpc_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -4066,6 +4168,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[builtins.bool] cold_data_enabled: High performance cloud disk data archiving function switch.Example value:
+               - true: Enable high-performance cloud disk data archiving function.
+               - false: Disable high-performance cloud disk data archiving function.
         :param pulumi.Input[builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -4248,6 +4353,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] tde_status: The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
                
                > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] template_id_lists: Whitelist Template ID List.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]] templates: (Computed, Available since v1.254.0) Whitelist Template Details.
         :param pulumi.Input[builtins.bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -4293,6 +4400,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["client_ca_enabled"] = client_ca_enabled
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+        __props__.__dict__["cold_data_enabled"] = cold_data_enabled
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["connection_string_prefix"] = connection_string_prefix
         __props__.__dict__["create_time"] = create_time
@@ -4357,6 +4465,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tcp_connection_type"] = tcp_connection_type
         __props__.__dict__["tde_encryption_key"] = tde_encryption_key
         __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["template_id_lists"] = template_id_lists
+        __props__.__dict__["templates"] = templates
         __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
         __props__.__dict__["upgrade_time"] = upgrade_time
         __props__.__dict__["vpc_id"] = vpc_id
@@ -4501,6 +4611,16 @@ class Instance(pulumi.CustomResource):
         - 0: disables the CRL
         """
         return pulumi.get(self, "client_crl_enabled")
+
+    @property
+    @pulumi.getter(name="coldDataEnabled")
+    def cold_data_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        High performance cloud disk data archiving function switch.Example value:
+        - true: Enable high-performance cloud disk data archiving function.
+        - false: Disable high-performance cloud disk data archiving function.
+        """
+        return pulumi.get(self, "cold_data_enabled")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -5132,6 +5252,22 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** When creating an instance and enabling disk encryption, the value of encryption_key can only be a Key ID; it cannot be a ServiceKey. After the instance is created, you can manage the disk encryption using: ServiceKey, Key ID, or disabled.
         """
         return pulumi.get(self, "tde_status")
+
+    @property
+    @pulumi.getter(name="templateIdLists")
+    def template_id_lists(self) -> pulumi.Output[Optional[Sequence[builtins.int]]]:
+        """
+        Whitelist Template ID List.
+        """
+        return pulumi.get(self, "template_id_lists")
+
+    @property
+    @pulumi.getter
+    def templates(self) -> pulumi.Output[Sequence[Mapping[str, builtins.str]]]:
+        """
+        (Computed, Available since v1.254.0) Whitelist Template Details.
+        """
+        return pulumi.get(self, "templates")
 
     @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")

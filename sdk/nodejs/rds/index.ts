@@ -200,6 +200,11 @@ export type ReadWriteSplittingConnection = import("./readWriteSplittingConnectio
 export const ReadWriteSplittingConnection: typeof import("./readWriteSplittingConnection").ReadWriteSplittingConnection = null as any;
 utilities.lazyLoad(exports, ["ReadWriteSplittingConnection"], () => require("./readWriteSplittingConnection"));
 
+export { WhitelistTemplateArgs, WhitelistTemplateState } from "./whitelistTemplate";
+export type WhitelistTemplate = import("./whitelistTemplate").WhitelistTemplate;
+export const WhitelistTemplate: typeof import("./whitelistTemplate").WhitelistTemplate = null as any;
+utilities.lazyLoad(exports, ["WhitelistTemplate"], () => require("./whitelistTemplate"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -253,6 +258,8 @@ const _module = {
                 return new ReadOnlyInstance(name, <any>undefined, { urn })
             case "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
                 return new ReadWriteSplittingConnection(name, <any>undefined, { urn })
+            case "alicloud:rds/whitelistTemplate:WhitelistTemplate":
+                return new WhitelistTemplate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -282,3 +289,4 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/rdsServiceLinkedRole", _m
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsUpgradeDbInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readOnlyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readWriteSplittingConnection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/whitelistTemplate", _module)

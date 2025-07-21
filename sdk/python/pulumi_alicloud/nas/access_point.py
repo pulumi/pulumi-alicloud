@@ -33,14 +33,14 @@ class AccessPointArgs:
                  root_path_permission: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']] = None):
         """
         The set of arguments for constructing a AccessPoint resource.
-        :param pulumi.Input[builtins.str] access_group: The permission group name.
+        :param pulumi.Input[builtins.str] access_group: The name of the permission group.
         :param pulumi.Input[builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The vSwitch ID.
-        :param pulumi.Input[builtins.str] access_point_name: The Access Point Name.
-        :param pulumi.Input[builtins.bool] enabled_ram: Whether to enable the RAM policy.
+        :param pulumi.Input[builtins.str] access_point_name: The name of the access point.
+        :param pulumi.Input[builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input['AccessPointPosixUserArgs'] posix_user: The Posix user. See `posix_user` below.
-        :param pulumi.Input[builtins.str] root_path: The root directory.
+        :param pulumi.Input[builtins.str] root_path: The root directory of the access point.
         :param pulumi.Input['AccessPointRootPathPermissionArgs'] root_path_permission: Root permissions. See `root_path_permission` below.
         """
         pulumi.set(__self__, "access_group", access_group)
@@ -62,7 +62,7 @@ class AccessPointArgs:
     @pulumi.getter(name="accessGroup")
     def access_group(self) -> pulumi.Input[builtins.str]:
         """
-        The permission group name.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group")
 
@@ -110,7 +110,7 @@ class AccessPointArgs:
     @pulumi.getter(name="accessPointName")
     def access_point_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Access Point Name.
+        The name of the access point.
         """
         return pulumi.get(self, "access_point_name")
 
@@ -122,7 +122,7 @@ class AccessPointArgs:
     @pulumi.getter(name="enabledRam")
     def enabled_ram(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable the RAM policy.
+        Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enabled_ram")
 
@@ -146,7 +146,7 @@ class AccessPointArgs:
     @pulumi.getter(name="rootPath")
     def root_path(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The root directory.
+        The root directory of the access point.
         """
         return pulumi.get(self, "root_path")
 
@@ -177,6 +177,7 @@ class _AccessPointState:
                  enabled_ram: Optional[pulumi.Input[builtins.bool]] = None,
                  file_system_id: Optional[pulumi.Input[builtins.str]] = None,
                  posix_user: Optional[pulumi.Input['AccessPointPosixUserArgs']] = None,
+                 region_id: Optional[pulumi.Input[builtins.str]] = None,
                  root_path: Optional[pulumi.Input[builtins.str]] = None,
                  root_path_permission: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -184,16 +185,17 @@ class _AccessPointState:
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPoint resources.
-        :param pulumi.Input[builtins.str] access_group: The permission group name.
-        :param pulumi.Input[builtins.str] access_point_id: Access point ID.
-        :param pulumi.Input[builtins.str] access_point_name: The Access Point Name.
-        :param pulumi.Input[builtins.str] create_time: Creation time.
-        :param pulumi.Input[builtins.bool] enabled_ram: Whether to enable the RAM policy.
+        :param pulumi.Input[builtins.str] access_group: The name of the permission group.
+        :param pulumi.Input[builtins.str] access_point_id: The ID of the access point.
+        :param pulumi.Input[builtins.str] access_point_name: The name of the access point.
+        :param pulumi.Input[builtins.str] create_time: The time when the access point was created.
+        :param pulumi.Input[builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input['AccessPointPosixUserArgs'] posix_user: The Posix user. See `posix_user` below.
-        :param pulumi.Input[builtins.str] root_path: The root directory.
+        :param pulumi.Input[builtins.str] region_id: (Available since v1.254.0) The region ID.
+        :param pulumi.Input[builtins.str] root_path: The root directory of the access point.
         :param pulumi.Input['AccessPointRootPathPermissionArgs'] root_path_permission: Root permissions. See `root_path_permission` below.
-        :param pulumi.Input[builtins.str] status: Current access point state.
+        :param pulumi.Input[builtins.str] status: The status of the access point.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The vSwitch ID.
         """
@@ -211,6 +213,8 @@ class _AccessPointState:
             pulumi.set(__self__, "file_system_id", file_system_id)
         if posix_user is not None:
             pulumi.set(__self__, "posix_user", posix_user)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if root_path is not None:
             pulumi.set(__self__, "root_path", root_path)
         if root_path_permission is not None:
@@ -226,7 +230,7 @@ class _AccessPointState:
     @pulumi.getter(name="accessGroup")
     def access_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The permission group name.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group")
 
@@ -238,7 +242,7 @@ class _AccessPointState:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access point ID.
+        The ID of the access point.
         """
         return pulumi.get(self, "access_point_id")
 
@@ -250,7 +254,7 @@ class _AccessPointState:
     @pulumi.getter(name="accessPointName")
     def access_point_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Access Point Name.
+        The name of the access point.
         """
         return pulumi.get(self, "access_point_name")
 
@@ -262,7 +266,7 @@ class _AccessPointState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Creation time.
+        The time when the access point was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -274,7 +278,7 @@ class _AccessPointState:
     @pulumi.getter(name="enabledRam")
     def enabled_ram(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable the RAM policy.
+        Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enabled_ram")
 
@@ -307,10 +311,22 @@ class _AccessPointState:
         pulumi.set(self, "posix_user", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Available since v1.254.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="rootPath")
     def root_path(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The root directory.
+        The root directory of the access point.
         """
         return pulumi.get(self, "root_path")
 
@@ -334,7 +350,7 @@ class _AccessPointState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Current access point state.
+        The status of the access point.
         """
         return pulumi.get(self, "status")
 
@@ -384,7 +400,7 @@ class AccessPoint(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a NAS Access Point resource.
+        Provides a File Storage (NAS) Access Point resource.
 
         For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
 
@@ -403,13 +419,13 @@ class AccessPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        region_id = config.get("regionId")
-        if region_id is None:
-            region_id = "cn-hangzhou"
         azone = config.get("azone")
         if azone is None:
             azone = "cn-hangzhou-g"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         defaultky_vc70 = alicloud.vpc.Network("defaultkyVC70",
             cidr_block="172.16.0.0/12",
             description="接入点测试noRootDirectory")
@@ -417,9 +433,6 @@ class AccessPoint(pulumi.CustomResource):
             vpc_id=defaultky_vc70.id,
             zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24")
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_bbc7ev = alicloud.nas.AccessGroup("defaultBbc7ev",
             access_group_type="Vpc",
             access_group_name=f"{name}-{default_integer['result']}",
@@ -450,7 +463,7 @@ class AccessPoint(pulumi.CustomResource):
 
         ## Import
 
-        NAS Access Point can be imported using the id, e.g.
+        File Storage (NAS) Access Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
@@ -458,12 +471,12 @@ class AccessPoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_group: The permission group name.
-        :param pulumi.Input[builtins.str] access_point_name: The Access Point Name.
-        :param pulumi.Input[builtins.bool] enabled_ram: Whether to enable the RAM policy.
+        :param pulumi.Input[builtins.str] access_group: The name of the permission group.
+        :param pulumi.Input[builtins.str] access_point_name: The name of the access point.
+        :param pulumi.Input[builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']] posix_user: The Posix user. See `posix_user` below.
-        :param pulumi.Input[builtins.str] root_path: The root directory.
+        :param pulumi.Input[builtins.str] root_path: The root directory of the access point.
         :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']] root_path_permission: Root permissions. See `root_path_permission` below.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The vSwitch ID.
@@ -475,7 +488,7 @@ class AccessPoint(pulumi.CustomResource):
                  args: AccessPointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NAS Access Point resource.
+        Provides a File Storage (NAS) Access Point resource.
 
         For information about NAS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/zh/nas/developer-reference/api-nas-2017-06-26-createaccesspoint).
 
@@ -494,13 +507,13 @@ class AccessPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        region_id = config.get("regionId")
-        if region_id is None:
-            region_id = "cn-hangzhou"
         azone = config.get("azone")
         if azone is None:
             azone = "cn-hangzhou-g"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         defaultky_vc70 = alicloud.vpc.Network("defaultkyVC70",
             cidr_block="172.16.0.0/12",
             description="接入点测试noRootDirectory")
@@ -508,9 +521,6 @@ class AccessPoint(pulumi.CustomResource):
             vpc_id=defaultky_vc70.id,
             zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24")
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_bbc7ev = alicloud.nas.AccessGroup("defaultBbc7ev",
             access_group_type="Vpc",
             access_group_name=f"{name}-{default_integer['result']}",
@@ -541,7 +551,7 @@ class AccessPoint(pulumi.CustomResource):
 
         ## Import
 
-        NAS Access Point can be imported using the id, e.g.
+        File Storage (NAS) Access Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
@@ -599,6 +609,7 @@ class AccessPoint(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["access_point_id"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(AccessPoint, __self__).__init__(
             'alicloud:nas/accessPoint:AccessPoint',
@@ -617,6 +628,7 @@ class AccessPoint(pulumi.CustomResource):
             enabled_ram: Optional[pulumi.Input[builtins.bool]] = None,
             file_system_id: Optional[pulumi.Input[builtins.str]] = None,
             posix_user: Optional[pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+            region_id: Optional[pulumi.Input[builtins.str]] = None,
             root_path: Optional[pulumi.Input[builtins.str]] = None,
             root_path_permission: Optional[pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -629,16 +641,17 @@ class AccessPoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_group: The permission group name.
-        :param pulumi.Input[builtins.str] access_point_id: Access point ID.
-        :param pulumi.Input[builtins.str] access_point_name: The Access Point Name.
-        :param pulumi.Input[builtins.str] create_time: Creation time.
-        :param pulumi.Input[builtins.bool] enabled_ram: Whether to enable the RAM policy.
+        :param pulumi.Input[builtins.str] access_group: The name of the permission group.
+        :param pulumi.Input[builtins.str] access_point_id: The ID of the access point.
+        :param pulumi.Input[builtins.str] access_point_name: The name of the access point.
+        :param pulumi.Input[builtins.str] create_time: The time when the access point was created.
+        :param pulumi.Input[builtins.bool] enabled_ram: Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         :param pulumi.Input[builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']] posix_user: The Posix user. See `posix_user` below.
-        :param pulumi.Input[builtins.str] root_path: The root directory.
+        :param pulumi.Input[builtins.str] region_id: (Available since v1.254.0) The region ID.
+        :param pulumi.Input[builtins.str] root_path: The root directory of the access point.
         :param pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']] root_path_permission: Root permissions. See `root_path_permission` below.
-        :param pulumi.Input[builtins.str] status: Current access point state.
+        :param pulumi.Input[builtins.str] status: The status of the access point.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[builtins.str] vswitch_id: The vSwitch ID.
         """
@@ -653,6 +666,7 @@ class AccessPoint(pulumi.CustomResource):
         __props__.__dict__["enabled_ram"] = enabled_ram
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["posix_user"] = posix_user
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["root_path"] = root_path
         __props__.__dict__["root_path_permission"] = root_path_permission
         __props__.__dict__["status"] = status
@@ -664,7 +678,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="accessGroup")
     def access_group(self) -> pulumi.Output[builtins.str]:
         """
-        The permission group name.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group")
 
@@ -672,7 +686,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[builtins.str]:
         """
-        Access point ID.
+        The ID of the access point.
         """
         return pulumi.get(self, "access_point_id")
 
@@ -680,7 +694,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="accessPointName")
     def access_point_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The Access Point Name.
+        The name of the access point.
         """
         return pulumi.get(self, "access_point_name")
 
@@ -688,7 +702,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
         """
-        Creation time.
+        The time when the access point was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -696,7 +710,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="enabledRam")
     def enabled_ram(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether to enable the RAM policy.
+        Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enabled_ram")
 
@@ -717,10 +731,18 @@ class AccessPoint(pulumi.CustomResource):
         return pulumi.get(self, "posix_user")
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[builtins.str]:
+        """
+        (Available since v1.254.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
     @pulumi.getter(name="rootPath")
     def root_path(self) -> pulumi.Output[builtins.str]:
         """
-        The root directory.
+        The root directory of the access point.
         """
         return pulumi.get(self, "root_path")
 
@@ -736,7 +758,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        Current access point state.
+        The status of the access point.
         """
         return pulumi.get(self, "status")
 

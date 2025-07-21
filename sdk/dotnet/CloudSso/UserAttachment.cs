@@ -30,19 +30,19 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class UserAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Output("directoryId")]
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The Group ID.
+        /// The ID of the group.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The User ID.
+        /// The ID of the user.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -94,19 +94,19 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The Group ID.
+        /// The ID of the group.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The User ID.
+        /// The ID of the user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -120,19 +120,19 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The Group ID.
+        /// The ID of the group.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The User ID.
+        /// The ID of the user.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

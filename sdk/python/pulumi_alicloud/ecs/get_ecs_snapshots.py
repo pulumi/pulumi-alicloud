@@ -90,6 +90,9 @@ class GetEcsSnapshotsResult:
     @property
     @pulumi.getter
     def category(self) -> Optional[builtins.str]:
+        """
+        The category of the snapshot.
+        """
         return pulumi.get(self, "category")
 
     @property
@@ -100,6 +103,9 @@ class GetEcsSnapshotsResult:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[builtins.bool]:
+        """
+        Indicates whether the snapshot was encrypted.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -128,6 +134,9 @@ class GetEcsSnapshotsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[builtins.str]:
+        """
+        A list of Snapshot names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -138,6 +147,9 @@ class GetEcsSnapshotsResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the resource group to which the snapshot belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
@@ -148,41 +160,65 @@ class GetEcsSnapshotsResult:
     @property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[builtins.str]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @property
     @pulumi.getter(name="snapshotType")
     def snapshot_type(self) -> Optional[builtins.str]:
+        """
+        The type of the snapshot.
+        """
         return pulumi.get(self, "snapshot_type")
 
     @property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetEcsSnapshotsSnapshotResult']:
+        """
+        A list of Ecs Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
     @property
     @pulumi.getter(name="sourceDiskType")
     def source_disk_type(self) -> Optional[builtins.str]:
+        """
+        The type of the source disk.
+        """
         return pulumi.get(self, "source_disk_type")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
+        """
+        The status of the snapshot.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The tags of the snapshot.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[builtins.str]:
+        """
+        The type of the snapshot.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def usage(self) -> Optional[builtins.str]:
+        """
+        Indicates whether the snapshot was used to create images or cloud disks.
+        """
         return pulumi.get(self, "usage")
 
 
@@ -233,7 +269,7 @@ def get_ecs_snapshots(category: Optional[builtins.str] = None,
     """
     This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -243,9 +279,64 @@ def get_ecs_snapshots(category: Optional[builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_snapshots(ids=["s-bp1fvuxxxxxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_zones = alicloud.get_zones(available_disk_category="cloud_essd",
+        available_resource_creation="VSwitch")
+    default_get_images = alicloud.ecs.get_images(most_recent=True,
+        owners="system")
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
+        image_id=default_get_images.images[0].id,
+        system_disk_category="cloud_essd")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.192.0/24",
+        zone_id=default_get_zones.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_network.id)
+    default_instance = alicloud.ecs.Instance("default",
+        image_id=default_get_images.images[0].id,
+        instance_type=default_get_instance_types.instance_types[0].id,
+        security_groups=[__item.id for __item in [default_security_group]],
+        internet_charge_type="PayByTraffic",
+        internet_max_bandwidth_out=10,
+        availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+        instance_charge_type="PostPaid",
+        system_disk_category="cloud_essd",
+        vswitch_id=default_switch.id,
+        instance_name=name,
+        data_disks=[{
+            "category": "cloud_essd",
+            "size": 20,
+        }])
+    default_ecs_disk = alicloud.ecs.EcsDisk("default",
+        disk_name=name,
+        zone_id=default_get_instance_types.instance_types[0].availability_zones[0],
+        category="cloud_essd",
+        size=500)
+    default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
+        disk_id=default_ecs_disk.id,
+        instance_id=default_instance.id)
+    default_ecs_snapshot = alicloud.ecs.EcsSnapshot("default",
+        disk_id=default_ecs_disk_attachment.disk_id,
+        category="standard",
+        retention_days=20,
+        snapshot_name=name,
+        description=name,
+        tags={
+            "Created": "TF",
+            "For": "Snapshot",
+        })
+    ids = alicloud.ecs.get_ecs_snapshots_output(ids=[default_ecs_snapshot.id])
+    pulumi.export("ecsSnapshotsId0", ids.snapshots[0].id)
     ```
 
 
@@ -263,6 +354,7 @@ def get_ecs_snapshots(category: Optional[builtins.str] = None,
     :param builtins.str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
     :param builtins.str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
     :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the snapshot.
+    :param builtins.str type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
     :param builtins.str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
@@ -325,7 +417,7 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[builtins.s
     """
     This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -335,9 +427,64 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[builtins.s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_snapshots(ids=["s-bp1fvuxxxxxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_zones = alicloud.get_zones(available_disk_category="cloud_essd",
+        available_resource_creation="VSwitch")
+    default_get_images = alicloud.ecs.get_images(most_recent=True,
+        owners="system")
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
+        image_id=default_get_images.images[0].id,
+        system_disk_category="cloud_essd")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.192.0/24",
+        zone_id=default_get_zones.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_network.id)
+    default_instance = alicloud.ecs.Instance("default",
+        image_id=default_get_images.images[0].id,
+        instance_type=default_get_instance_types.instance_types[0].id,
+        security_groups=[__item.id for __item in [default_security_group]],
+        internet_charge_type="PayByTraffic",
+        internet_max_bandwidth_out=10,
+        availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+        instance_charge_type="PostPaid",
+        system_disk_category="cloud_essd",
+        vswitch_id=default_switch.id,
+        instance_name=name,
+        data_disks=[{
+            "category": "cloud_essd",
+            "size": 20,
+        }])
+    default_ecs_disk = alicloud.ecs.EcsDisk("default",
+        disk_name=name,
+        zone_id=default_get_instance_types.instance_types[0].availability_zones[0],
+        category="cloud_essd",
+        size=500)
+    default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
+        disk_id=default_ecs_disk.id,
+        instance_id=default_instance.id)
+    default_ecs_snapshot = alicloud.ecs.EcsSnapshot("default",
+        disk_id=default_ecs_disk_attachment.disk_id,
+        category="standard",
+        retention_days=20,
+        snapshot_name=name,
+        description=name,
+        tags={
+            "Created": "TF",
+            "For": "Snapshot",
+        })
+    ids = alicloud.ecs.get_ecs_snapshots_output(ids=[default_ecs_snapshot.id])
+    pulumi.export("ecsSnapshotsId0", ids.snapshots[0].id)
     ```
 
 
@@ -355,6 +502,7 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[builtins.s
     :param builtins.str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
     :param builtins.str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
     :param Mapping[str, builtins.str] tags: A mapping of tags to assign to the snapshot.
+    :param builtins.str type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
     :param builtins.str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
