@@ -6,12 +6,6 @@ env:
   ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
   ALICLOUD_REGION: "us-west-1"
   ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY }}
-# The maintainers of the TF provider keep misspelled resources around in order
-# to avoid breaking changes. We do not want to map these. This means that
-# maintainers of the Pulumi repo must manually check the output for missing
-# mappings until we are able to explicitly able to tell tfgen that a mapping is
-# intentionally ignored.
-fail-on-missing-mapping: false
 makeTemplate: bridged
 plugins:
   - name: terraform
