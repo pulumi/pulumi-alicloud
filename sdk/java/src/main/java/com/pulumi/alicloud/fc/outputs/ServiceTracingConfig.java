@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class ServiceTracingConfig {
     /**
-     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
      * 
      */
     private Map<String,String> params;
@@ -24,7 +24,7 @@ public final class ServiceTracingConfig {
 
     private ServiceTracingConfig() {}
     /**
-     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
      * 
      */
     public Map<String,String> params() {

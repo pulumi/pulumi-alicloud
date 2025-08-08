@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class ServiceTracingConfig
     {
         /// <summary>
-        /// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        /// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Params;
         /// <summary>
