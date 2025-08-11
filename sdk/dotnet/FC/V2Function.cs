@@ -9,84 +9,183 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
+    /// <summary>
+    /// Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
+    /// 
+    /// For information about FCV2 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-fc-function).
+    /// 
+    /// &gt; **NOTE:** Available since v1.208.0.
+    /// 
+    /// ## Import
+    /// 
+    /// FCV2 Function can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:fc/v2Function:V2Function example &lt;service_name&gt;:&lt;function_name&gt;
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:fc/v2Function:V2Function")]
     public partial class V2Function : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
+        /// </summary>
         [Output("caPort")]
         public Output<int> CaPort { get; private set; } = null!;
 
+        /// <summary>
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// </summary>
         [Output("code")]
         public Output<Outputs.V2FunctionCode?> Code { get; private set; } = null!;
 
+        /// <summary>
+        /// crc64 of function code.
+        /// </summary>
         [Output("codeChecksum")]
         public Output<string> CodeChecksum { get; private set; } = null!;
 
+        /// <summary>
+        /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+        /// </summary>
         [Output("cpu")]
         public Output<double?> Cpu { get; private set; } = null!;
 
+        /// <summary>
+        /// create time of function.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// </summary>
         [Output("customContainerConfig")]
         public Output<Outputs.V2FunctionCustomContainerConfig?> CustomContainerConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Function custom DNS configuration. See `custom_dns` below.
+        /// </summary>
         [Output("customDns")]
         public Output<Outputs.V2FunctionCustomDns?> CustomDns { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// </summary>
         [Output("customHealthCheckConfig")]
         public Output<Outputs.V2FunctionCustomHealthCheckConfig?> CustomHealthCheckConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// </summary>
         [Output("customRuntimeConfig")]
         public Output<Outputs.V2FunctionCustomRuntimeConfig?> CustomRuntimeConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// description of function.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
+        /// </summary>
         [Output("diskSize")]
         public Output<int?> DiskSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
+        /// </summary>
         [Output("environmentVariables")]
         public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
+        /// <summary>
+        /// The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+        /// </summary>
         [Output("functionArn")]
         public Output<string> FunctionArn { get; private set; } = null!;
 
+        /// <summary>
+        /// function name.
+        /// </summary>
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
 
+        /// <summary>
+        /// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
+        /// </summary>
         [Output("gpuMemorySize")]
         public Output<int?> GpuMemorySize { get; private set; } = null!;
 
+        /// <summary>
+        /// entry point of function.
+        /// </summary>
         [Output("handler")]
         public Output<string> Handler { get; private set; } = null!;
 
+        /// <summary>
+        /// max running time of initializer.
+        /// </summary>
         [Output("initializationTimeout")]
         public Output<int> InitializationTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// initializer entry point of function.
+        /// </summary>
         [Output("initializer")]
         public Output<string?> Initializer { get; private set; } = null!;
 
+        /// <summary>
+        /// The maximum concurrency allowed for a single function instance.
+        /// </summary>
         [Output("instanceConcurrency")]
         public Output<int> InstanceConcurrency { get; private set; } = null!;
 
+        /// <summary>
+        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// </summary>
         [Output("instanceLifecycleConfig")]
         public Output<Outputs.V2FunctionInstanceLifecycleConfig?> InstanceLifecycleConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The instance type of the function. Valid values:
+        /// - **e1**: Elastic instance.
+        /// - **c1**: performance instance.
+        /// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
+        /// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
+        /// - **g1**: Same as **fc.gpu.tesla.1**.
+        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
+        /// <summary>
+        /// List of layers.
+        /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
+        /// </summary>
         [Output("layers")]
         public Output<ImmutableArray<string>> Layers { get; private set; } = null!;
 
+        /// <summary>
+        /// memory size needed by function.
+        /// </summary>
         [Output("memorySize")]
         public Output<int> MemorySize { get; private set; } = null!;
 
+        /// <summary>
+        /// runtime of function code.
+        /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the function Service.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// max running time of function.
+        /// </summary>
         [Output("timeout")]
         public Output<int> Timeout { get; private set; } = null!;
 
@@ -136,85 +235,165 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V2FunctionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
+        /// </summary>
         [Input("caPort")]
         public Input<int>? CaPort { get; set; }
 
+        /// <summary>
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// </summary>
         [Input("code")]
         public Input<Inputs.V2FunctionCodeArgs>? Code { get; set; }
 
+        /// <summary>
+        /// crc64 of function code.
+        /// </summary>
         [Input("codeChecksum")]
         public Input<string>? CodeChecksum { get; set; }
 
+        /// <summary>
+        /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+        /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
 
+        /// <summary>
+        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.V2FunctionCustomContainerConfigArgs>? CustomContainerConfig { get; set; }
 
+        /// <summary>
+        /// Function custom DNS configuration. See `custom_dns` below.
+        /// </summary>
         [Input("customDns")]
         public Input<Inputs.V2FunctionCustomDnsArgs>? CustomDns { get; set; }
 
+        /// <summary>
+        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// </summary>
         [Input("customHealthCheckConfig")]
         public Input<Inputs.V2FunctionCustomHealthCheckConfigArgs>? CustomHealthCheckConfig { get; set; }
 
+        /// <summary>
+        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// </summary>
         [Input("customRuntimeConfig")]
         public Input<Inputs.V2FunctionCustomRuntimeConfigArgs>? CustomRuntimeConfig { get; set; }
 
+        /// <summary>
+        /// description of function.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
+        /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
         private InputMap<string>? _environmentVariables;
+
+        /// <summary>
+        /// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
+        /// </summary>
         public InputMap<string> EnvironmentVariables
         {
             get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
+        /// <summary>
+        /// function name.
+        /// </summary>
         [Input("functionName", required: true)]
         public Input<string> FunctionName { get; set; } = null!;
 
+        /// <summary>
+        /// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
+        /// </summary>
         [Input("gpuMemorySize")]
         public Input<int>? GpuMemorySize { get; set; }
 
+        /// <summary>
+        /// entry point of function.
+        /// </summary>
         [Input("handler", required: true)]
         public Input<string> Handler { get; set; } = null!;
 
+        /// <summary>
+        /// max running time of initializer.
+        /// </summary>
         [Input("initializationTimeout")]
         public Input<int>? InitializationTimeout { get; set; }
 
+        /// <summary>
+        /// initializer entry point of function.
+        /// </summary>
         [Input("initializer")]
         public Input<string>? Initializer { get; set; }
 
+        /// <summary>
+        /// The maximum concurrency allowed for a single function instance.
+        /// </summary>
         [Input("instanceConcurrency")]
         public Input<int>? InstanceConcurrency { get; set; }
 
+        /// <summary>
+        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// </summary>
         [Input("instanceLifecycleConfig")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigArgs>? InstanceLifecycleConfig { get; set; }
 
+        /// <summary>
+        /// The instance type of the function. Valid values:
+        /// - **e1**: Elastic instance.
+        /// - **c1**: performance instance.
+        /// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
+        /// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
+        /// - **g1**: Same as **fc.gpu.tesla.1**.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         [Input("layers")]
         private InputList<string>? _layers;
+
+        /// <summary>
+        /// List of layers.
+        /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
+        /// </summary>
         public InputList<string> Layers
         {
             get => _layers ?? (_layers = new InputList<string>());
             set => _layers = value;
         }
 
+        /// <summary>
+        /// memory size needed by function.
+        /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }
 
+        /// <summary>
+        /// runtime of function code.
+        /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the function Service.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// max running time of function.
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
@@ -226,91 +405,177 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V2FunctionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
+        /// </summary>
         [Input("caPort")]
         public Input<int>? CaPort { get; set; }
 
+        /// <summary>
+        /// Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
+        /// </summary>
         [Input("code")]
         public Input<Inputs.V2FunctionCodeGetArgs>? Code { get; set; }
 
+        /// <summary>
+        /// crc64 of function code.
+        /// </summary>
         [Input("codeChecksum")]
         public Input<string>? CodeChecksum { get; set; }
 
+        /// <summary>
+        /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+        /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
 
+        /// <summary>
+        /// create time of function.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Custom-container runtime related function configuration. See `custom_container_config` below.
+        /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.V2FunctionCustomContainerConfigGetArgs>? CustomContainerConfig { get; set; }
 
+        /// <summary>
+        /// Function custom DNS configuration. See `custom_dns` below.
+        /// </summary>
         [Input("customDns")]
         public Input<Inputs.V2FunctionCustomDnsGetArgs>? CustomDns { get; set; }
 
+        /// <summary>
+        /// Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
+        /// </summary>
         [Input("customHealthCheckConfig")]
         public Input<Inputs.V2FunctionCustomHealthCheckConfigGetArgs>? CustomHealthCheckConfig { get; set; }
 
+        /// <summary>
+        /// Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
+        /// </summary>
         [Input("customRuntimeConfig")]
         public Input<Inputs.V2FunctionCustomRuntimeConfigGetArgs>? CustomRuntimeConfig { get; set; }
 
+        /// <summary>
+        /// description of function.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
+        /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
         private InputMap<string>? _environmentVariables;
+
+        /// <summary>
+        /// The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
+        /// </summary>
         public InputMap<string> EnvironmentVariables
         {
             get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
+        /// <summary>
+        /// The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+        /// </summary>
         [Input("functionArn")]
         public Input<string>? FunctionArn { get; set; }
 
+        /// <summary>
+        /// function name.
+        /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
 
+        /// <summary>
+        /// The GPU memory specification of the function, in MB, is a multiple of 1024MB.
+        /// </summary>
         [Input("gpuMemorySize")]
         public Input<int>? GpuMemorySize { get; set; }
 
+        /// <summary>
+        /// entry point of function.
+        /// </summary>
         [Input("handler")]
         public Input<string>? Handler { get; set; }
 
+        /// <summary>
+        /// max running time of initializer.
+        /// </summary>
         [Input("initializationTimeout")]
         public Input<int>? InitializationTimeout { get; set; }
 
+        /// <summary>
+        /// initializer entry point of function.
+        /// </summary>
         [Input("initializer")]
         public Input<string>? Initializer { get; set; }
 
+        /// <summary>
+        /// The maximum concurrency allowed for a single function instance.
+        /// </summary>
         [Input("instanceConcurrency")]
         public Input<int>? InstanceConcurrency { get; set; }
 
+        /// <summary>
+        /// Instance lifecycle configuration. See `instance_lifecycle_config` below.
+        /// </summary>
         [Input("instanceLifecycleConfig")]
         public Input<Inputs.V2FunctionInstanceLifecycleConfigGetArgs>? InstanceLifecycleConfig { get; set; }
 
+        /// <summary>
+        /// The instance type of the function. Valid values:
+        /// - **e1**: Elastic instance.
+        /// - **c1**: performance instance.
+        /// - **fc.gpu.tesla.1**: the T4 card type of the Tesla series of GPU instances.
+        /// - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
+        /// - **g1**: Same as **fc.gpu.tesla.1**.
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         [Input("layers")]
         private InputList<string>? _layers;
+
+        /// <summary>
+        /// List of layers.
+        /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
+        /// </summary>
         public InputList<string> Layers
         {
             get => _layers ?? (_layers = new InputList<string>());
             set => _layers = value;
         }
 
+        /// <summary>
+        /// memory size needed by function.
+        /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }
 
+        /// <summary>
+        /// runtime of function code.
+        /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
 
+        /// <summary>
+        /// The name of the function Service.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// max running time of function.
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

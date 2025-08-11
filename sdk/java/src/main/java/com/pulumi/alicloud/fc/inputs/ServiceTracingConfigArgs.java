@@ -16,14 +16,14 @@ public final class ServiceTracingConfigArgs extends com.pulumi.resources.Resourc
     public static final ServiceTracingConfigArgs Empty = new ServiceTracingConfigArgs();
 
     /**
-     * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+     * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
      * 
      */
     @Import(name="params", required=true)
     private Output<Map<String,String>> params;
 
     /**
-     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+     * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
      * 
      */
     public Output<Map<String,String>> params() {
@@ -71,7 +71,7 @@ public final class ServiceTracingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param params Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         * @param params Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServiceTracingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param params Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         * @param params Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
          * 
          * @return builder
          * 
