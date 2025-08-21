@@ -582,7 +582,7 @@ class ServiceTracingConfig(dict):
                  params: Mapping[str, _builtins.str],
                  type: _builtins.str):
         """
-        :param Mapping[str, _builtins.str] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        :param Mapping[str, _builtins.str] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
         :param _builtins.str type: Tracing protocol type. Currently, only Jaeger is supported.
         """
         pulumi.set(__self__, "params", params)
@@ -592,7 +592,7 @@ class ServiceTracingConfig(dict):
     @pulumi.getter
     def params(self) -> Mapping[str, _builtins.str]:
         """
-        Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
         """
         return pulumi.get(self, "params")
 

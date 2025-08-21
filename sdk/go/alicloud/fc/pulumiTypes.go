@@ -1543,7 +1543,7 @@ func (o ServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) ServiceN
 }
 
 type ServiceTracingConfig struct {
-	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
 	Params map[string]string `pulumi:"params"`
 	// Tracing protocol type. Currently, only Jaeger is supported.
 	Type string `pulumi:"type"`
@@ -1561,7 +1561,7 @@ type ServiceTracingConfigInput interface {
 }
 
 type ServiceTracingConfigArgs struct {
-	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
 	Params pulumi.StringMapInput `pulumi:"params"`
 	// Tracing protocol type. Currently, only Jaeger is supported.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -1644,7 +1644,7 @@ func (o ServiceTracingConfigOutput) ToServiceTracingConfigPtrOutputWithContext(c
 	}).(ServiceTracingConfigPtrOutput)
 }
 
-// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
 func (o ServiceTracingConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTracingConfig) map[string]string { return v.Params }).(pulumi.StringMapOutput)
 }
@@ -1678,7 +1678,7 @@ func (o ServiceTracingConfigPtrOutput) Elem() ServiceTracingConfigOutput {
 	}).(ServiceTracingConfigOutput)
 }
 
-// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
 func (o ServiceTracingConfigPtrOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTracingConfig) map[string]string {
 		if v == nil {

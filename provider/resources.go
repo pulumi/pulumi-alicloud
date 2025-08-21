@@ -2525,10 +2525,6 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_monitor_group_instances",
 			"alicloud_dataworks_service",
 		},
-		SkipExamples: func(args tfbridge.SkipExamplesArgs) bool {
-			// Blocked by https://github.com/pulumi/pulumi/issues/13886
-			return args.Token == "alicloud:fc/service:Service" || args.Token == "alicloud:fc/v2Function:V2Function"
-		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
@@ -2594,6 +2590,9 @@ func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		removeContent(versionNote, "index.html.markdown"),
 		removeContent(configurationSource, "index.html.markdown"),
 		skipUserAgentSection,
+		// TODO: remove when https://github.com/pulumi/pulumi/issues/13886 is resolved.
+		skipExamplesSectionForResourceOnly("fc_service.html.markdown"),
+		skipExamplesSection("fcv2_function.html.markdown"),
 	)
 }
 
@@ -2605,6 +2604,31 @@ var skipUserAgentSection = tfbridge.DocsEdit{
 			return headerText == "Custom User-Agent Information"
 		})
 	},
+}
+
+func skipExamplesSection(path string) tfbridge.DocsEdit {
+	return tfbridge.DocsEdit{
+		Path: path,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				return headerText == "Example Usage"
+			})
+		},
+	}
+}
+
+func skipExamplesSectionForResourceOnly(path string) tfbridge.DocsEdit {
+	return tfbridge.DocsEdit{
+		Path: path,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			if !bytes.Contains(content, []byte("Using this data source")) {
+				return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+					return headerText == "Example Usage"
+				})
+			}
+			return content, nil
+		},
+	}
 }
 
 // Removes a reference to TF version and compatibility
