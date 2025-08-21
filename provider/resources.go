@@ -2590,8 +2590,8 @@ func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		removeContent(versionNote, "index.html.markdown"),
 		removeContent(configurationSource, "index.html.markdown"),
 		skipUserAgentSection,
-		// TODO: remove when https://github.com/pulumi/pulumi/issues/13886.
-		skipExamplesSection("fc_service.html.markdown"),
+		// TODO: remove when https://github.com/pulumi/pulumi/issues/13886 is resolved.
+		skipExamplesSectionForResourceOnly("fc_service.html.markdown"),
 		skipExamplesSection("fcv2_function.html.markdown"),
 	)
 }
@@ -2613,6 +2613,20 @@ func skipExamplesSection(path string) tfbridge.DocsEdit {
 			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 				return headerText == "Example Usage"
 			})
+		},
+	}
+}
+
+func skipExamplesSectionForResourceOnly(path string) tfbridge.DocsEdit {
+	return tfbridge.DocsEdit{
+		Path: path,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			if !bytes.Contains(content, []byte("Using this data source")) {
+				return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+					return headerText == "Example Usage"
+				})
+			}
+			return content, nil
 		},
 	}
 }

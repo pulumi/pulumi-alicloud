@@ -79,6 +79,15 @@ def get_service(enable: Optional[_builtins.str] = None,
 
     > **NOTE:** Available since v1.112.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.fc.get_service(enable="On")
+    ```
+
 
     :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -101,6 +110,15 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] =
     For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
 
     > **NOTE:** Available since v1.112.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.fc.get_service(enable="On")
+    ```
 
 
     :param _builtins.str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
