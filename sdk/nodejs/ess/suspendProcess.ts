@@ -115,11 +115,11 @@ export class SuspendProcess extends pulumi.CustomResource {
     /**
      * Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
      */
-    public readonly process!: pulumi.Output<string>;
+    declare public readonly process: pulumi.Output<string>;
     /**
      * ID of the scaling group.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
 
     /**
      * Create a SuspendProcess resource with the given unique name, arguments, and options.
@@ -134,18 +134,18 @@ export class SuspendProcess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SuspendProcessState | undefined;
-            resourceInputs["process"] = state ? state.process : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["process"] = state?.process;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
         } else {
             const args = argsOrState as SuspendProcessArgs | undefined;
-            if ((!args || args.process === undefined) && !opts.urn) {
+            if (args?.process === undefined && !opts.urn) {
                 throw new Error("Missing required property 'process'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["process"] = args ? args.process : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["process"] = args?.process;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SuspendProcess.__pulumiType, name, resourceInputs, opts);

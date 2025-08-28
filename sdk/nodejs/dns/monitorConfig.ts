@@ -113,35 +113,35 @@ export class MonitorConfig extends pulumi.CustomResource {
     /**
      * The ID of the address pool.
      */
-    public readonly addrPoolId!: pulumi.Output<string>;
+    declare public readonly addrPoolId: pulumi.Output<string>;
     /**
      * The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
      */
-    public readonly evaluationCount!: pulumi.Output<number>;
+    declare public readonly evaluationCount: pulumi.Output<number>;
     /**
      * The health check interval. Unit: seconds. Valid values: `60`.
      */
-    public readonly interval!: pulumi.Output<number>;
+    declare public readonly interval: pulumi.Output<number>;
     /**
      * The Monitoring node. See `ispCityNode` below for details.
      */
-    public readonly ispCityNodes!: pulumi.Output<outputs.dns.MonitorConfigIspCityNode[]>;
+    declare public readonly ispCityNodes: pulumi.Output<outputs.dns.MonitorConfigIspCityNode[]>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      */
-    public readonly monitorExtendInfo!: pulumi.Output<string>;
+    declare public readonly monitorExtendInfo: pulumi.Output<string>;
     /**
      * The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
      */
-    public readonly protocolType!: pulumi.Output<string>;
+    declare public readonly protocolType: pulumi.Output<string>;
     /**
      * The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
 
     /**
      * Create a MonitorConfig resource with the given unique name, arguments, and options.
@@ -156,45 +156,45 @@ export class MonitorConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorConfigState | undefined;
-            resourceInputs["addrPoolId"] = state ? state.addrPoolId : undefined;
-            resourceInputs["evaluationCount"] = state ? state.evaluationCount : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["ispCityNodes"] = state ? state.ispCityNodes : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["monitorExtendInfo"] = state ? state.monitorExtendInfo : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["addrPoolId"] = state?.addrPoolId;
+            resourceInputs["evaluationCount"] = state?.evaluationCount;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["ispCityNodes"] = state?.ispCityNodes;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["monitorExtendInfo"] = state?.monitorExtendInfo;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as MonitorConfigArgs | undefined;
-            if ((!args || args.addrPoolId === undefined) && !opts.urn) {
+            if (args?.addrPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addrPoolId'");
             }
-            if ((!args || args.evaluationCount === undefined) && !opts.urn) {
+            if (args?.evaluationCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'evaluationCount'");
             }
-            if ((!args || args.interval === undefined) && !opts.urn) {
+            if (args?.interval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interval'");
             }
-            if ((!args || args.ispCityNodes === undefined) && !opts.urn) {
+            if (args?.ispCityNodes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ispCityNodes'");
             }
-            if ((!args || args.monitorExtendInfo === undefined) && !opts.urn) {
+            if (args?.monitorExtendInfo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitorExtendInfo'");
             }
-            if ((!args || args.protocolType === undefined) && !opts.urn) {
+            if (args?.protocolType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolType'");
             }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
+            if (args?.timeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            resourceInputs["addrPoolId"] = args ? args.addrPoolId : undefined;
-            resourceInputs["evaluationCount"] = args ? args.evaluationCount : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["ispCityNodes"] = args ? args.ispCityNodes : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["monitorExtendInfo"] = args ? args.monitorExtendInfo : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["addrPoolId"] = args?.addrPoolId;
+            resourceInputs["evaluationCount"] = args?.evaluationCount;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["ispCityNodes"] = args?.ispCityNodes;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["monitorExtendInfo"] = args?.monitorExtendInfo;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["timeout"] = args?.timeout;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MonitorConfig.__pulumiType, name, resourceInputs, opts);

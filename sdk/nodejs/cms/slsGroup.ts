@@ -52,15 +52,15 @@ export class SlsGroup extends pulumi.CustomResource {
     /**
      * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      */
-    public readonly slsGroupConfigs!: pulumi.Output<outputs.cms.SlsGroupSlsGroupConfig[]>;
+    declare public readonly slsGroupConfigs: pulumi.Output<outputs.cms.SlsGroupSlsGroupConfig[]>;
     /**
      * The Description of the Sls Group.
      */
-    public readonly slsGroupDescription!: pulumi.Output<string | undefined>;
+    declare public readonly slsGroupDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
      */
-    public readonly slsGroupName!: pulumi.Output<string>;
+    declare public readonly slsGroupName: pulumi.Output<string>;
 
     /**
      * Create a SlsGroup resource with the given unique name, arguments, and options.
@@ -75,20 +75,20 @@ export class SlsGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlsGroupState | undefined;
-            resourceInputs["slsGroupConfigs"] = state ? state.slsGroupConfigs : undefined;
-            resourceInputs["slsGroupDescription"] = state ? state.slsGroupDescription : undefined;
-            resourceInputs["slsGroupName"] = state ? state.slsGroupName : undefined;
+            resourceInputs["slsGroupConfigs"] = state?.slsGroupConfigs;
+            resourceInputs["slsGroupDescription"] = state?.slsGroupDescription;
+            resourceInputs["slsGroupName"] = state?.slsGroupName;
         } else {
             const args = argsOrState as SlsGroupArgs | undefined;
-            if ((!args || args.slsGroupConfigs === undefined) && !opts.urn) {
+            if (args?.slsGroupConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsGroupConfigs'");
             }
-            if ((!args || args.slsGroupName === undefined) && !opts.urn) {
+            if (args?.slsGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsGroupName'");
             }
-            resourceInputs["slsGroupConfigs"] = args ? args.slsGroupConfigs : undefined;
-            resourceInputs["slsGroupDescription"] = args ? args.slsGroupDescription : undefined;
-            resourceInputs["slsGroupName"] = args ? args.slsGroupName : undefined;
+            resourceInputs["slsGroupConfigs"] = args?.slsGroupConfigs;
+            resourceInputs["slsGroupDescription"] = args?.slsGroupDescription;
+            resourceInputs["slsGroupName"] = args?.slsGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SlsGroup.__pulumiType, name, resourceInputs, opts);

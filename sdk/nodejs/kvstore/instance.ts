@@ -46,171 +46,171 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to use a coupon. Default value: `false`.
      */
-    public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUseCoupon: pulumi.Output<boolean | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The ID of the backup file of the source instance.
      */
-    public readonly backupId!: pulumi.Output<string | undefined>;
+    declare public readonly backupId: pulumi.Output<string | undefined>;
     /**
      * Backup period.
      */
-    public readonly backupPeriods!: pulumi.Output<string[]>;
+    declare public readonly backupPeriods: pulumi.Output<string[]>;
     /**
      * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
      */
-    public readonly backupTime!: pulumi.Output<string>;
+    declare public readonly backupTime: pulumi.Output<string>;
     /**
      * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The ID of the event or the business information.
      */
-    public readonly businessInfo!: pulumi.Output<string | undefined>;
+    declare public readonly businessInfo: pulumi.Output<string | undefined>;
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
-    public readonly capacity!: pulumi.Output<number>;
+    declare public readonly capacity: pulumi.Output<number>;
     /**
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
      * Intranet connection address of the KVStore instance.
      */
-    public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionDomain: pulumi.Output<string>;
     /**
      * Indicates whether the address is a private endpoint.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string | undefined>;
     /**
      * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
-    public readonly couponNo!: pulumi.Output<string | undefined>;
+    declare public readonly couponNo: pulumi.Output<string | undefined>;
     /**
      * The name of KVStore DBInstance. It is a string of 2 to 256 characters.
      */
-    public readonly dbInstanceName!: pulumi.Output<string>;
+    declare public readonly dbInstanceName: pulumi.Output<string>;
     /**
      * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
-    public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedHostGroupId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to precheck the request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * - `Immediately` (Default): The configurations are immediately changed.
      * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
-    public readonly enableBackupLog!: pulumi.Output<number | undefined>;
+    declare public readonly enableBackupLog: pulumi.Output<number | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    public readonly enablePublic!: pulumi.Output<boolean>;
+    declare public readonly enablePublic: pulumi.Output<boolean>;
     /**
      * The Custom key ID, which you can get by calling DescribeEncryptionKeyList.If this parameter is not passed, the key is automatically generated by the key management service. To create a custom key, you can call the CreateKey interface of the key management service.
      */
-    public readonly encryptionKey!: pulumi.Output<string>;
+    declare public readonly encryptionKey: pulumi.Output<string>;
     /**
      * The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
      */
-    public readonly encryptionName!: pulumi.Output<string>;
+    declare public readonly encryptionName: pulumi.Output<string>;
     /**
      * The expiration time of the prepaid instance.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Specifies whether to forcibly change the type. Default value: `true`.
      */
-    public readonly forceUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * Whether to create a distributed cache. Default value: `false`.
      */
-    public readonly globalInstance!: pulumi.Output<boolean | undefined>;
+    declare public readonly globalInstance: pulumi.Output<boolean | undefined>;
     /**
      * The ID of distributed cache.
      */
-    public readonly globalInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly globalInstanceId: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
-    public readonly instanceClass!: pulumi.Output<string | undefined>;
+    declare public readonly instanceClass: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Whether to open the release protection.
      */
-    public readonly instanceReleaseProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly instanceReleaseProtection: pulumi.Output<boolean | undefined>;
     /**
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable automatic minor version update. Valid values:
      */
-    public readonly isAutoUpgradeOpen!: pulumi.Output<string>;
+    declare public readonly isAutoUpgradeOpen: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    public readonly maintainEndTime!: pulumi.Output<string>;
+    declare public readonly maintainEndTime: pulumi.Output<string>;
     /**
      * The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    public readonly maintainStartTime!: pulumi.Output<string>;
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * Node type, valid values:
      * - `MASTER_SLAVE`: High availability (dual copies)
@@ -218,130 +218,130 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
-    public readonly nodeType!: pulumi.Output<string>;
+    declare public readonly nodeType: pulumi.Output<string>;
     /**
      * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
-    public readonly orderType!: pulumi.Output<string | undefined>;
+    declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
-    public readonly parameters!: pulumi.Output<outputs.kvstore.InstanceParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.kvstore.InstanceParameter[]>;
     /**
      * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * Private network connection port, used to modify the private network connection port.
      */
-    public readonly privateConnectionPort!: pulumi.Output<string>;
+    declare public readonly privateConnectionPort: pulumi.Output<string>;
     /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
-    public readonly privateConnectionPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly privateConnectionPrefix: pulumi.Output<string | undefined>;
     /**
      * The internal IP address of the instance.
      */
-    public readonly privateIp!: pulumi.Output<string>;
+    declare public readonly privateIp: pulumi.Output<string>;
     /**
      * Theoretical maximum QPS value.
      */
-    public /*out*/ readonly qps!: pulumi.Output<number>;
+    declare public /*out*/ readonly qps: pulumi.Output<number>;
     /**
      * The number of read replicas in the primary zone. Valid values: `1` to `9`.
      */
-    public readonly readOnlyCount!: pulumi.Output<number | undefined>;
+    declare public readonly readOnlyCount: pulumi.Output<number | undefined>;
     /**
      * The ID of resource group which the resource belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The point in time of a backup file.
      */
-    public readonly restoreTime!: pulumi.Output<string | undefined>;
+    declare public readonly restoreTime: pulumi.Output<string | undefined>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      */
-    public readonly roleArn!: pulumi.Output<string>;
+    declare public readonly roleArn: pulumi.Output<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
-    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
     /**
      * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      */
-    public readonly securityIpGroupAttribute!: pulumi.Output<string | undefined>;
+    declare public readonly securityIpGroupAttribute: pulumi.Output<string | undefined>;
     /**
      * The name of the whitelist group.
      */
-    public readonly securityIpGroupName!: pulumi.Output<string>;
+    declare public readonly securityIpGroupName: pulumi.Output<string>;
     /**
      * The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      */
-    public readonly securityIps!: pulumi.Output<string[]>;
+    declare public readonly securityIps: pulumi.Output<string[]>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
-    public readonly shardCount!: pulumi.Output<number>;
+    declare public readonly shardCount: pulumi.Output<number>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
-    public readonly slaveReadOnlyCount!: pulumi.Output<number | undefined>;
+    declare public readonly slaveReadOnlyCount: pulumi.Output<number | undefined>;
     /**
      * The ID of the source instance.
      */
-    public readonly srcdbInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly srcdbInstanceId: pulumi.Output<string | undefined>;
     /**
      * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
-    public readonly sslEnable!: pulumi.Output<string>;
+    declare public readonly sslEnable: pulumi.Output<string>;
     /**
      * The status of KVStore DBInstance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
      * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
-    public readonly tdeStatus!: pulumi.Output<string>;
+    declare public readonly tdeStatus: pulumi.Output<string>;
     /**
      * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
-    public readonly vpcAuthMode!: pulumi.Output<string | undefined>;
+    declare public readonly vpcAuthMode: pulumi.Output<string | undefined>;
     /**
      * The ID of VSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -356,139 +356,139 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["businessInfo"] = state ? state.businessInfo : undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["connectionDomain"] = state ? state.connectionDomain : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["couponNo"] = state ? state.couponNo : undefined;
-            resourceInputs["dbInstanceName"] = state ? state.dbInstanceName : undefined;
-            resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
-            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["encryptionName"] = state ? state.encryptionName : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
-            resourceInputs["globalInstance"] = state ? state.globalInstance : undefined;
-            resourceInputs["globalInstanceId"] = state ? state.globalInstanceId : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceReleaseProtection"] = state ? state.instanceReleaseProtection : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["isAutoUpgradeOpen"] = state ? state.isAutoUpgradeOpen : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
-            resourceInputs["orderType"] = state ? state.orderType : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateConnectionPort"] = state ? state.privateConnectionPort : undefined;
-            resourceInputs["privateConnectionPrefix"] = state ? state.privateConnectionPrefix : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["qps"] = state ? state.qps : undefined;
-            resourceInputs["readOnlyCount"] = state ? state.readOnlyCount : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["restoreTime"] = state ? state.restoreTime : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityIpGroupAttribute"] = state ? state.securityIpGroupAttribute : undefined;
-            resourceInputs["securityIpGroupName"] = state ? state.securityIpGroupName : undefined;
-            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
-            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
-            resourceInputs["slaveReadOnlyCount"] = state ? state.slaveReadOnlyCount : undefined;
-            resourceInputs["srcdbInstanceId"] = state ? state.srcdbInstanceId : undefined;
-            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            resourceInputs["vpcAuthMode"] = state ? state.vpcAuthMode : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["backupPeriods"] = state?.backupPeriods;
+            resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["businessInfo"] = state?.businessInfo;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["connectionDomain"] = state?.connectionDomain;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["couponNo"] = state?.couponNo;
+            resourceInputs["dbInstanceName"] = state?.dbInstanceName;
+            resourceInputs["dedicatedHostGroupId"] = state?.dedicatedHostGroupId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["enableBackupLog"] = state?.enableBackupLog;
+            resourceInputs["enablePublic"] = state?.enablePublic;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptionName"] = state?.encryptionName;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["forceUpgrade"] = state?.forceUpgrade;
+            resourceInputs["globalInstance"] = state?.globalInstance;
+            resourceInputs["globalInstanceId"] = state?.globalInstanceId;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceReleaseProtection"] = state?.instanceReleaseProtection;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["isAutoUpgradeOpen"] = state?.isAutoUpgradeOpen;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
+            resourceInputs["nodeType"] = state?.nodeType;
+            resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateConnectionPort"] = state?.privateConnectionPort;
+            resourceInputs["privateConnectionPrefix"] = state?.privateConnectionPrefix;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["qps"] = state?.qps;
+            resourceInputs["readOnlyCount"] = state?.readOnlyCount;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restoreTime"] = state?.restoreTime;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityIpGroupAttribute"] = state?.securityIpGroupAttribute;
+            resourceInputs["securityIpGroupName"] = state?.securityIpGroupName;
+            resourceInputs["securityIps"] = state?.securityIps;
+            resourceInputs["shardCount"] = state?.shardCount;
+            resourceInputs["slaveReadOnlyCount"] = state?.slaveReadOnlyCount;
+            resourceInputs["srcdbInstanceId"] = state?.srcdbInstanceId;
+            resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tdeStatus"] = state?.tdeStatus;
+            resourceInputs["vpcAuthMode"] = state?.vpcAuthMode;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["businessInfo"] = args ? args.businessInfo : undefined;
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["couponNo"] = args ? args.couponNo : undefined;
-            resourceInputs["dbInstanceName"] = args ? args.dbInstanceName : undefined;
-            resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
-            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["encryptionName"] = args ? args.encryptionName : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
-            resourceInputs["globalInstance"] = args ? args.globalInstance : undefined;
-            resourceInputs["globalInstanceId"] = args ? args.globalInstanceId : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceReleaseProtection"] = args ? args.instanceReleaseProtection : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["isAutoUpgradeOpen"] = args ? args.isAutoUpgradeOpen : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
-            resourceInputs["orderType"] = args ? args.orderType : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["backupPeriods"] = args?.backupPeriods;
+            resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["businessInfo"] = args?.businessInfo;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["couponNo"] = args?.couponNo;
+            resourceInputs["dbInstanceName"] = args?.dbInstanceName;
+            resourceInputs["dedicatedHostGroupId"] = args?.dedicatedHostGroupId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["enableBackupLog"] = args?.enableBackupLog;
+            resourceInputs["enablePublic"] = args?.enablePublic;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptionName"] = args?.encryptionName;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["forceUpgrade"] = args?.forceUpgrade;
+            resourceInputs["globalInstance"] = args?.globalInstance;
+            resourceInputs["globalInstanceId"] = args?.globalInstanceId;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceReleaseProtection"] = args?.instanceReleaseProtection;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["isAutoUpgradeOpen"] = args?.isAutoUpgradeOpen;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
+            resourceInputs["nodeType"] = args?.nodeType;
+            resourceInputs["orderType"] = args?.orderType;
+            resourceInputs["parameters"] = args?.parameters;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["privateConnectionPort"] = args ? args.privateConnectionPort : undefined;
-            resourceInputs["privateConnectionPrefix"] = args ? args.privateConnectionPrefix : undefined;
-            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
-            resourceInputs["readOnlyCount"] = args ? args.readOnlyCount : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["restoreTime"] = args ? args.restoreTime : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityIpGroupAttribute"] = args ? args.securityIpGroupAttribute : undefined;
-            resourceInputs["securityIpGroupName"] = args ? args.securityIpGroupName : undefined;
-            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
-            resourceInputs["slaveReadOnlyCount"] = args ? args.slaveReadOnlyCount : undefined;
-            resourceInputs["srcdbInstanceId"] = args ? args.srcdbInstanceId : undefined;
-            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            resourceInputs["vpcAuthMode"] = args ? args.vpcAuthMode : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["privateConnectionPort"] = args?.privateConnectionPort;
+            resourceInputs["privateConnectionPrefix"] = args?.privateConnectionPrefix;
+            resourceInputs["privateIp"] = args?.privateIp;
+            resourceInputs["readOnlyCount"] = args?.readOnlyCount;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restoreTime"] = args?.restoreTime;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityIpGroupAttribute"] = args?.securityIpGroupAttribute;
+            resourceInputs["securityIpGroupName"] = args?.securityIpGroupName;
+            resourceInputs["securityIps"] = args?.securityIps;
+            resourceInputs["shardCount"] = args?.shardCount;
+            resourceInputs["slaveReadOnlyCount"] = args?.slaveReadOnlyCount;
+            resourceInputs["srcdbInstanceId"] = args?.srcdbInstanceId;
+            resourceInputs["sslEnable"] = args?.sslEnable;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tdeStatus"] = args?.tdeStatus;
+            resourceInputs["vpcAuthMode"] = args?.vpcAuthMode;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;

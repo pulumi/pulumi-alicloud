@@ -218,19 +218,19 @@ export class HadoopDataSource extends pulumi.CustomResource {
     /**
      * Creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Data Source Description
      */
-    public readonly dataSourceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceDescription: pulumi.Output<string | undefined>;
     /**
      * The data source ID.
      */
-    public /*out*/ readonly dataSourceId!: pulumi.Output<number>;
+    declare public /*out*/ readonly dataSourceId: pulumi.Output<number>;
     /**
      * Data Source Name
      */
-    public readonly dataSourceName!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceName: pulumi.Output<string | undefined>;
     /**
      * The type of the data source. Valid values:
      *
@@ -240,49 +240,49 @@ export class HadoopDataSource extends pulumi.CustomResource {
      * *   hdfs
      * - hive
      */
-    public readonly dataSourceType!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceType: pulumi.Output<string | undefined>;
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The ID of the Emr instance.
      */
-    public readonly emrInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly emrInstanceId: pulumi.Output<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop core-site.xml file.
      */
-    public readonly hadoopCoreConf!: pulumi.Output<string | undefined>;
+    declare public readonly hadoopCoreConf: pulumi.Output<string | undefined>;
     /**
      * The type of the external service. Valid values:
      * - emr: E-MapReduce (EMR) Hadoop cluster.
      * - selfCreate: self-managed Hadoop cluster.
      */
-    public readonly hadoopCreateType!: pulumi.Output<string | undefined>;
+    declare public readonly hadoopCreateType: pulumi.Output<string | undefined>;
     /**
      * The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
      */
-    public readonly hadoopHostsAddress!: pulumi.Output<string | undefined>;
+    declare public readonly hadoopHostsAddress: pulumi.Output<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    public readonly hdfsConf!: pulumi.Output<string | undefined>;
+    declare public readonly hdfsConf: pulumi.Output<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
      */
-    public readonly hiveConf!: pulumi.Output<string | undefined>;
+    declare public readonly hiveConf: pulumi.Output<string | undefined>;
     /**
      * The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    public readonly mapReduceConf!: pulumi.Output<string | undefined>;
+    declare public readonly mapReduceConf: pulumi.Output<string | undefined>;
     /**
      * Data Source Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    public readonly yarnConf!: pulumi.Output<string | undefined>;
+    declare public readonly yarnConf: pulumi.Output<string | undefined>;
 
     /**
      * Create a HadoopDataSource resource with the given unique name, arguments, and options.
@@ -297,38 +297,38 @@ export class HadoopDataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HadoopDataSourceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSourceDescription"] = state ? state.dataSourceDescription : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dataSourceName"] = state ? state.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = state ? state.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["emrInstanceId"] = state ? state.emrInstanceId : undefined;
-            resourceInputs["hadoopCoreConf"] = state ? state.hadoopCoreConf : undefined;
-            resourceInputs["hadoopCreateType"] = state ? state.hadoopCreateType : undefined;
-            resourceInputs["hadoopHostsAddress"] = state ? state.hadoopHostsAddress : undefined;
-            resourceInputs["hdfsConf"] = state ? state.hdfsConf : undefined;
-            resourceInputs["hiveConf"] = state ? state.hiveConf : undefined;
-            resourceInputs["mapReduceConf"] = state ? state.mapReduceConf : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["yarnConf"] = state ? state.yarnConf : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSourceDescription"] = state?.dataSourceDescription;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dataSourceName"] = state?.dataSourceName;
+            resourceInputs["dataSourceType"] = state?.dataSourceType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["emrInstanceId"] = state?.emrInstanceId;
+            resourceInputs["hadoopCoreConf"] = state?.hadoopCoreConf;
+            resourceInputs["hadoopCreateType"] = state?.hadoopCreateType;
+            resourceInputs["hadoopHostsAddress"] = state?.hadoopHostsAddress;
+            resourceInputs["hdfsConf"] = state?.hdfsConf;
+            resourceInputs["hiveConf"] = state?.hiveConf;
+            resourceInputs["mapReduceConf"] = state?.mapReduceConf;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["yarnConf"] = state?.yarnConf;
         } else {
             const args = argsOrState as HadoopDataSourceArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["dataSourceDescription"] = args ? args.dataSourceDescription : undefined;
-            resourceInputs["dataSourceName"] = args ? args.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = args ? args.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["emrInstanceId"] = args ? args.emrInstanceId : undefined;
-            resourceInputs["hadoopCoreConf"] = args ? args.hadoopCoreConf : undefined;
-            resourceInputs["hadoopCreateType"] = args ? args.hadoopCreateType : undefined;
-            resourceInputs["hadoopHostsAddress"] = args ? args.hadoopHostsAddress : undefined;
-            resourceInputs["hdfsConf"] = args ? args.hdfsConf : undefined;
-            resourceInputs["hiveConf"] = args ? args.hiveConf : undefined;
-            resourceInputs["mapReduceConf"] = args ? args.mapReduceConf : undefined;
-            resourceInputs["yarnConf"] = args ? args.yarnConf : undefined;
+            resourceInputs["dataSourceDescription"] = args?.dataSourceDescription;
+            resourceInputs["dataSourceName"] = args?.dataSourceName;
+            resourceInputs["dataSourceType"] = args?.dataSourceType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["emrInstanceId"] = args?.emrInstanceId;
+            resourceInputs["hadoopCoreConf"] = args?.hadoopCoreConf;
+            resourceInputs["hadoopCreateType"] = args?.hadoopCreateType;
+            resourceInputs["hadoopHostsAddress"] = args?.hadoopHostsAddress;
+            resourceInputs["hdfsConf"] = args?.hdfsConf;
+            resourceInputs["hiveConf"] = args?.hiveConf;
+            resourceInputs["mapReduceConf"] = args?.mapReduceConf;
+            resourceInputs["yarnConf"] = args?.yarnConf;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSourceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

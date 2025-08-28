@@ -123,19 +123,19 @@ export class LoadBalancerInternet extends pulumi.CustomResource {
     /**
      * The target application ID that needs to be bound to the SLB.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Use designated public network SLBs that have been purchased to support non-shared instances.
      */
-    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly internetIp: pulumi.Output<string>;
     /**
      * The internet SLB ID.
      */
-    public readonly internetSlbId!: pulumi.Output<string | undefined>;
+    declare public readonly internetSlbId: pulumi.Output<string | undefined>;
     /**
      * The bound private network SLB. See `internet` below.
      */
-    public readonly internets!: pulumi.Output<outputs.sae.LoadBalancerInternetInternet[]>;
+    declare public readonly internets: pulumi.Output<outputs.sae.LoadBalancerInternetInternet[]>;
 
     /**
      * Create a LoadBalancerInternet resource with the given unique name, arguments, and options.
@@ -150,21 +150,21 @@ export class LoadBalancerInternet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerInternetState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["internetSlbId"] = state ? state.internetSlbId : undefined;
-            resourceInputs["internets"] = state ? state.internets : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["internetSlbId"] = state?.internetSlbId;
+            resourceInputs["internets"] = state?.internets;
         } else {
             const args = argsOrState as LoadBalancerInternetArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.internets === undefined) && !opts.urn) {
+            if (args?.internets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internets'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["internetSlbId"] = args ? args.internetSlbId : undefined;
-            resourceInputs["internets"] = args ? args.internets : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["internetSlbId"] = args?.internetSlbId;
+            resourceInputs["internets"] = args?.internets;
             resourceInputs["internetIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

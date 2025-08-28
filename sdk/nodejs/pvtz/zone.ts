@@ -57,56 +57,56 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Whether the Private Zone is ptr.
      */
-    public /*out*/ readonly isPtr!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isPtr: pulumi.Output<boolean>;
     /**
      * The language. Valid values: "zh", "en", "jp".
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      * Default to "ZONE".
      */
-    public readonly proxyPattern!: pulumi.Output<string | undefined>;
+    declare public readonly proxyPattern: pulumi.Output<string | undefined>;
     /**
      * The count of the Private Zone Record.
      */
-    public /*out*/ readonly recordCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly recordCount: pulumi.Output<number>;
     /**
      * The remark of the Private Zone.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
-    public readonly syncStatus!: pulumi.Output<string | undefined>;
+    declare public readonly syncStatus: pulumi.Output<string | undefined>;
     /**
      * The tags of the Private Zone.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The IP address of the client.
      */
-    public readonly userClientIp!: pulumi.Output<string | undefined>;
+    declare public readonly userClientIp: pulumi.Output<string | undefined>;
     /**
      * The user information of the host synchronization task. See `userInfo` below.
      */
-    public readonly userInfos!: pulumi.Output<outputs.pvtz.ZoneUserInfo[]>;
+    declare public readonly userInfos: pulumi.Output<outputs.pvtz.ZoneUserInfo[]>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
-    public readonly zoneName!: pulumi.Output<string>;
+    declare public readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -121,30 +121,30 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["isPtr"] = state ? state.isPtr : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["proxyPattern"] = state ? state.proxyPattern : undefined;
-            resourceInputs["recordCount"] = state ? state.recordCount : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["syncStatus"] = state ? state.syncStatus : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
-            resourceInputs["userInfos"] = state ? state.userInfos : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["isPtr"] = state?.isPtr;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["proxyPattern"] = state?.proxyPattern;
+            resourceInputs["recordCount"] = state?.recordCount;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["syncStatus"] = state?.syncStatus;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userClientIp"] = state?.userClientIp;
+            resourceInputs["userInfos"] = state?.userInfos;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["proxyPattern"] = args ? args.proxyPattern : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["syncStatus"] = args ? args.syncStatus : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
-            resourceInputs["userInfos"] = args ? args.userInfos : undefined;
-            resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["proxyPattern"] = args?.proxyPattern;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["syncStatus"] = args?.syncStatus;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userClientIp"] = args?.userClientIp;
+            resourceInputs["userInfos"] = args?.userInfos;
+            resourceInputs["zoneName"] = args?.zoneName;
             resourceInputs["isPtr"] = undefined /*out*/;
             resourceInputs["recordCount"] = undefined /*out*/;
         }

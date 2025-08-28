@@ -146,100 +146,100 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * A access monitor status of a bucket. See `accessMonitor` below.
      */
-    public readonly accessMonitor!: pulumi.Output<outputs.oss.BucketAccessMonitor>;
+    declare public readonly accessMonitor: pulumi.Output<outputs.oss.BucketAccessMonitor>;
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
      *
      * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
-    public readonly acl!: pulumi.Output<string>;
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly acl: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      */
-    public readonly corsRules!: pulumi.Output<outputs.oss.BucketCorsRule[] | undefined>;
+    declare public readonly corsRules: pulumi.Output<outputs.oss.BucketCorsRule[] | undefined>;
     /**
      * The creation date of the bucket.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The extranet access endpoint of the bucket.
      */
-    public /*out*/ readonly extranetEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly extranetEndpoint: pulumi.Output<string>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The intranet access endpoint of the bucket.
      */
-    public /*out*/ readonly intranetEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly intranetEndpoint: pulumi.Output<string>;
     /**
      * A boolean that indicates lifecycle rules allow prefix overlap.
      */
-    public readonly lifecycleRuleAllowSameActionOverlap!: pulumi.Output<boolean | undefined>;
+    declare public readonly lifecycleRuleAllowSameActionOverlap: pulumi.Output<boolean | undefined>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
      */
-    public readonly lifecycleRules!: pulumi.Output<outputs.oss.BucketLifecycleRule[] | undefined>;
+    declare public readonly lifecycleRules: pulumi.Output<outputs.oss.BucketLifecycleRule[] | undefined>;
     /**
      * The location of the bucket.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      */
-    public readonly logging!: pulumi.Output<outputs.oss.BucketLogging | undefined>;
+    declare public readonly logging: pulumi.Output<outputs.oss.BucketLogging | undefined>;
     /**
      * The flag of using logging enable container. Defaults true.
      *
      * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
-    public readonly loggingIsenable!: pulumi.Output<boolean | undefined>;
+    declare public readonly loggingIsenable: pulumi.Output<boolean | undefined>;
     /**
      * The bucket owner.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
      */
-    public readonly redundancyType!: pulumi.Output<string | undefined>;
+    declare public readonly redundancyType: pulumi.Output<string | undefined>;
     /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      */
-    public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
+    declare public readonly refererConfig: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
     /**
      * The ID of the resource group to which the bucket belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
-    public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
+    declare public readonly serverSideEncryptionRule: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
     /**
      * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
      */
-    public readonly storageClass!: pulumi.Output<string | undefined>;
+    declare public readonly storageClass: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
-    public readonly transferAcceleration!: pulumi.Output<outputs.oss.BucketTransferAcceleration | undefined>;
+    declare public readonly transferAcceleration: pulumi.Output<outputs.oss.BucketTransferAcceleration | undefined>;
     /**
      * A state of versioning. See `versioning` below.
      */
-    public readonly versioning!: pulumi.Output<outputs.oss.BucketVersioning | undefined>;
+    declare public readonly versioning: pulumi.Output<outputs.oss.BucketVersioning | undefined>;
     /**
      * A website configuration. See `website` below.
      */
-    public readonly website!: pulumi.Output<outputs.oss.BucketWebsite | undefined>;
+    declare public readonly website: pulumi.Output<outputs.oss.BucketWebsite | undefined>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -254,51 +254,51 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            resourceInputs["accessMonitor"] = state ? state.accessMonitor : undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["extranetEndpoint"] = state ? state.extranetEndpoint : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["intranetEndpoint"] = state ? state.intranetEndpoint : undefined;
-            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = state ? state.lifecycleRuleAllowSameActionOverlap : undefined;
-            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["loggingIsenable"] = state ? state.loggingIsenable : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
-            resourceInputs["refererConfig"] = state ? state.refererConfig : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
-            resourceInputs["website"] = state ? state.website : undefined;
+            resourceInputs["accessMonitor"] = state?.accessMonitor;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["corsRules"] = state?.corsRules;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["extranetEndpoint"] = state?.extranetEndpoint;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["intranetEndpoint"] = state?.intranetEndpoint;
+            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = state?.lifecycleRuleAllowSameActionOverlap;
+            resourceInputs["lifecycleRules"] = state?.lifecycleRules;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["loggingIsenable"] = state?.loggingIsenable;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["redundancyType"] = state?.redundancyType;
+            resourceInputs["refererConfig"] = state?.refererConfig;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serverSideEncryptionRule"] = state?.serverSideEncryptionRule;
+            resourceInputs["storageClass"] = state?.storageClass;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transferAcceleration"] = state?.transferAcceleration;
+            resourceInputs["versioning"] = state?.versioning;
+            resourceInputs["website"] = state?.website;
         } else {
             const args = argsOrState as BucketArgs | undefined;
-            resourceInputs["accessMonitor"] = args ? args.accessMonitor : undefined;
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = args ? args.lifecycleRuleAllowSameActionOverlap : undefined;
-            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
-            resourceInputs["refererConfig"] = args ? args.refererConfig : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
-            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["accessMonitor"] = args?.accessMonitor;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["corsRules"] = args?.corsRules;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["lifecycleRuleAllowSameActionOverlap"] = args?.lifecycleRuleAllowSameActionOverlap;
+            resourceInputs["lifecycleRules"] = args?.lifecycleRules;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["loggingIsenable"] = args?.loggingIsenable;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["redundancyType"] = args?.redundancyType;
+            resourceInputs["refererConfig"] = args?.refererConfig;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serverSideEncryptionRule"] = args?.serverSideEncryptionRule;
+            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transferAcceleration"] = args?.transferAcceleration;
+            resourceInputs["versioning"] = args?.versioning;
+            resourceInputs["website"] = args?.website;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["extranetEndpoint"] = undefined /*out*/;
             resourceInputs["intranetEndpoint"] = undefined /*out*/;

@@ -41,68 +41,68 @@ export class EcsDisk extends pulumi.CustomResource {
         return obj['__pulumiType'] === EcsDisk.__pulumiType;
     }
 
-    public readonly advancedFeatures!: pulumi.Output<string | undefined>;
+    declare public readonly advancedFeatures: pulumi.Output<string | undefined>;
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`.
      */
-    public readonly burstingEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly burstingEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
      */
-    public readonly category!: pulumi.Output<string | undefined>;
+    declare public readonly category: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.237.0) The time when the disk was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      */
-    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteAutoSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to release the disk along with its associated instance. Default value: `false`.
      */
-    public readonly deleteWithInstance!: pulumi.Output<boolean>;
+    declare public readonly deleteWithInstance: pulumi.Output<boolean>;
     /**
      * The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
      */
-    public readonly diskName!: pulumi.Output<string>;
+    declare public readonly diskName: pulumi.Output<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
      */
-    public readonly enableAutoSnapshot!: pulumi.Output<boolean>;
-    public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly enableAutoSnapshot: pulumi.Output<boolean>;
+    declare public readonly encryptAlgorithm: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      */
-    public readonly encrypted!: pulumi.Output<boolean>;
+    declare public readonly encrypted: pulumi.Output<boolean>;
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
      * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      */
-    public readonly kmsKeyId!: pulumi.Output<string>;
+    declare public readonly kmsKeyId: pulumi.Output<string>;
     /**
      * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
      */
-    public readonly multiAttach!: pulumi.Output<string>;
+    declare public readonly multiAttach: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      *
@@ -110,11 +110,11 @@ export class EcsDisk extends pulumi.CustomResource {
      *
      * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
@@ -122,19 +122,19 @@ export class EcsDisk extends pulumi.CustomResource {
      * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
      * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
-    public readonly performanceLevel!: pulumi.Output<string>;
+    declare public readonly performanceLevel: pulumi.Output<string>;
     /**
      * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
      */
-    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    declare public readonly provisionedIops: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.237.0) The ID of the region to which the disk belongs.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group to which to add the disk.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The size of the disk. Unit: GiB. This parameter is required. Valid values:
      * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
@@ -150,35 +150,35 @@ export class EcsDisk extends pulumi.CustomResource {
      * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
      * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      */
-    public readonly snapshotId!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string>;
     /**
      * The status of the disk.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the storage set.
      */
-    public readonly storageSetId!: pulumi.Output<string | undefined>;
+    declare public readonly storageSetId: pulumi.Output<string | undefined>;
     /**
      * The number of partitions in the storage set.
      */
-    public readonly storageSetPartitionNumber!: pulumi.Output<number | undefined>;
+    declare public readonly storageSetPartitionNumber: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EcsDisk resource with the given unique name, arguments, and options.
@@ -193,65 +193,65 @@ export class EcsDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDiskState | undefined;
-            resourceInputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["burstingEnabled"] = state ? state.burstingEnabled : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
-            resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskName"] = state ? state.diskName : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
-            resourceInputs["encryptAlgorithm"] = state ? state.encryptAlgorithm : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["multiAttach"] = state ? state.multiAttach : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSetId"] = state ? state.storageSetId : undefined;
-            resourceInputs["storageSetPartitionNumber"] = state ? state.storageSetPartitionNumber : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["advancedFeatures"] = state?.advancedFeatures;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["burstingEnabled"] = state?.burstingEnabled;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteAutoSnapshot"] = state?.deleteAutoSnapshot;
+            resourceInputs["deleteWithInstance"] = state?.deleteWithInstance;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskName"] = state?.diskName;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enableAutoSnapshot"] = state?.enableAutoSnapshot;
+            resourceInputs["encryptAlgorithm"] = state?.encryptAlgorithm;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["multiAttach"] = state?.multiAttach;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["performanceLevel"] = state?.performanceLevel;
+            resourceInputs["provisionedIops"] = state?.provisionedIops;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSetId"] = state?.storageSetId;
+            resourceInputs["storageSetPartitionNumber"] = state?.storageSetPartitionNumber;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EcsDiskArgs | undefined;
-            resourceInputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["burstingEnabled"] = args ? args.burstingEnabled : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
-            resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskName"] = args ? args.diskName : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
-            resourceInputs["encryptAlgorithm"] = args ? args.encryptAlgorithm : undefined;
-            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["multiAttach"] = args ? args.multiAttach : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
-            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["storageSetId"] = args ? args.storageSetId : undefined;
-            resourceInputs["storageSetPartitionNumber"] = args ? args.storageSetPartitionNumber : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["advancedFeatures"] = args?.advancedFeatures;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["burstingEnabled"] = args?.burstingEnabled;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["deleteAutoSnapshot"] = args?.deleteAutoSnapshot;
+            resourceInputs["deleteWithInstance"] = args?.deleteWithInstance;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskName"] = args?.diskName;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enableAutoSnapshot"] = args?.enableAutoSnapshot;
+            resourceInputs["encryptAlgorithm"] = args?.encryptAlgorithm;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["multiAttach"] = args?.multiAttach;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["performanceLevel"] = args?.performanceLevel;
+            resourceInputs["provisionedIops"] = args?.provisionedIops;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["storageSetId"] = args?.storageSetId;
+            resourceInputs["storageSetPartitionNumber"] = args?.storageSetPartitionNumber;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

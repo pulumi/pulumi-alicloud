@@ -79,41 +79,41 @@ export class CompressionRule extends pulumi.CustomResource {
     /**
      * Brotli compression. Value range:
      */
-    public readonly brotli!: pulumi.Output<string | undefined>;
+    declare public readonly brotli: pulumi.Output<string | undefined>;
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Gzip compression. Value range:
      */
-    public readonly gzip!: pulumi.Output<string | undefined>;
+    declare public readonly gzip: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Zstd compression. Value range:
      */
-    public readonly zstd!: pulumi.Output<string | undefined>;
+    declare public readonly zstd: pulumi.Output<string | undefined>;
 
     /**
      * Create a CompressionRule resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class CompressionRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CompressionRuleState | undefined;
-            resourceInputs["brotli"] = state ? state.brotli : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["gzip"] = state ? state.gzip : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["zstd"] = state ? state.zstd : undefined;
+            resourceInputs["brotli"] = state?.brotli;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["gzip"] = state?.gzip;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["zstd"] = state?.zstd;
         } else {
             const args = argsOrState as CompressionRuleArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["brotli"] = args ? args.brotli : undefined;
-            resourceInputs["gzip"] = args ? args.gzip : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["zstd"] = args ? args.zstd : undefined;
+            resourceInputs["brotli"] = args?.brotli;
+            resourceInputs["gzip"] = args?.gzip;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["zstd"] = args?.zstd;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

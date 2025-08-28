@@ -48,31 +48,31 @@ export class SslVpnClientCert extends pulumi.CustomResource {
     /**
      * The client ca cert.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * The client cert.
      */
-    public /*out*/ readonly clientCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientCert: pulumi.Output<string>;
     /**
      * The vpn client config.
      */
-    public /*out*/ readonly clientConfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientConfig: pulumi.Output<string>;
     /**
      * The client key.
      */
-    public /*out*/ readonly clientKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientKey: pulumi.Output<string>;
     /**
      * The name of the client certificate.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the SSL-VPN server.
      */
-    public readonly sslVpnServerId!: pulumi.Output<string>;
+    declare public readonly sslVpnServerId: pulumi.Output<string>;
     /**
      * The status of the client certificate.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a SslVpnClientCert resource with the given unique name, arguments, and options.
@@ -87,20 +87,20 @@ export class SslVpnClientCert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslVpnClientCertState | undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
-            resourceInputs["clientConfig"] = state ? state.clientConfig : undefined;
-            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sslVpnServerId"] = state ? state.sslVpnServerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["clientCert"] = state?.clientCert;
+            resourceInputs["clientConfig"] = state?.clientConfig;
+            resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sslVpnServerId"] = state?.sslVpnServerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SslVpnClientCertArgs | undefined;
-            if ((!args || args.sslVpnServerId === undefined) && !opts.urn) {
+            if (args?.sslVpnServerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sslVpnServerId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sslVpnServerId"] = args ? args.sslVpnServerId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sslVpnServerId"] = args?.sslVpnServerId;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["clientCert"] = undefined /*out*/;
             resourceInputs["clientConfig"] = undefined /*out*/;

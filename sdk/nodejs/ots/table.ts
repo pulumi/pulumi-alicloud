@@ -113,51 +113,51 @@ export class Table extends pulumi.CustomResource {
     /**
      * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
      */
-    public readonly allowUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowUpdate: pulumi.Output<boolean | undefined>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
-    public readonly definedColumns!: pulumi.Output<outputs.ots.TableDefinedColumn[] | undefined>;
+    declare public readonly definedColumns: pulumi.Output<outputs.ots.TableDefinedColumn[] | undefined>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
-    public readonly deviationCellVersionInSec!: pulumi.Output<string | undefined>;
+    declare public readonly deviationCellVersionInSec: pulumi.Output<string | undefined>;
     /**
      * Whether enable OTS server side encryption. Default value is false.
      */
-    public readonly enableSse!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSse: pulumi.Output<boolean | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The maximum number of versions stored in this table. The valid value is 1-2147483647.
      */
-    public readonly maxVersion!: pulumi.Output<number>;
+    declare public readonly maxVersion: pulumi.Output<number>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      */
-    public readonly primaryKeys!: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
+    declare public readonly primaryKeys: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
     /**
      * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    public readonly sseKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly sseKeyId: pulumi.Output<string | undefined>;
     /**
      * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
-    public readonly sseKeyType!: pulumi.Output<string | undefined>;
+    declare public readonly sseKeyType: pulumi.Output<string | undefined>;
     /**
      * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    public readonly sseRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly sseRoleArn: pulumi.Output<string | undefined>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
     /**
      * The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
      */
-    public readonly timeToLive!: pulumi.Output<number>;
+    declare public readonly timeToLive: pulumi.Output<number>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -172,47 +172,47 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            resourceInputs["allowUpdate"] = state ? state.allowUpdate : undefined;
-            resourceInputs["definedColumns"] = state ? state.definedColumns : undefined;
-            resourceInputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
-            resourceInputs["enableSse"] = state ? state.enableSse : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["maxVersion"] = state ? state.maxVersion : undefined;
-            resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
-            resourceInputs["sseKeyId"] = state ? state.sseKeyId : undefined;
-            resourceInputs["sseKeyType"] = state ? state.sseKeyType : undefined;
-            resourceInputs["sseRoleArn"] = state ? state.sseRoleArn : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
-            resourceInputs["timeToLive"] = state ? state.timeToLive : undefined;
+            resourceInputs["allowUpdate"] = state?.allowUpdate;
+            resourceInputs["definedColumns"] = state?.definedColumns;
+            resourceInputs["deviationCellVersionInSec"] = state?.deviationCellVersionInSec;
+            resourceInputs["enableSse"] = state?.enableSse;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["maxVersion"] = state?.maxVersion;
+            resourceInputs["primaryKeys"] = state?.primaryKeys;
+            resourceInputs["sseKeyId"] = state?.sseKeyId;
+            resourceInputs["sseKeyType"] = state?.sseKeyType;
+            resourceInputs["sseRoleArn"] = state?.sseRoleArn;
+            resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["timeToLive"] = state?.timeToLive;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.maxVersion === undefined) && !opts.urn) {
+            if (args?.maxVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxVersion'");
             }
-            if ((!args || args.primaryKeys === undefined) && !opts.urn) {
+            if (args?.primaryKeys === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryKeys'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            if ((!args || args.timeToLive === undefined) && !opts.urn) {
+            if (args?.timeToLive === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeToLive'");
             }
-            resourceInputs["allowUpdate"] = args ? args.allowUpdate : undefined;
-            resourceInputs["definedColumns"] = args ? args.definedColumns : undefined;
-            resourceInputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
-            resourceInputs["enableSse"] = args ? args.enableSse : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["maxVersion"] = args ? args.maxVersion : undefined;
-            resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
-            resourceInputs["sseKeyId"] = args ? args.sseKeyId : undefined;
-            resourceInputs["sseKeyType"] = args ? args.sseKeyType : undefined;
-            resourceInputs["sseRoleArn"] = args ? args.sseRoleArn : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
-            resourceInputs["timeToLive"] = args ? args.timeToLive : undefined;
+            resourceInputs["allowUpdate"] = args?.allowUpdate;
+            resourceInputs["definedColumns"] = args?.definedColumns;
+            resourceInputs["deviationCellVersionInSec"] = args?.deviationCellVersionInSec;
+            resourceInputs["enableSse"] = args?.enableSse;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["maxVersion"] = args?.maxVersion;
+            resourceInputs["primaryKeys"] = args?.primaryKeys;
+            resourceInputs["sseKeyId"] = args?.sseKeyId;
+            resourceInputs["sseKeyType"] = args?.sseKeyType;
+            resourceInputs["sseRoleArn"] = args?.sseRoleArn;
+            resourceInputs["tableName"] = args?.tableName;
+            resourceInputs["timeToLive"] = args?.timeToLive;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Table.__pulumiType, name, resourceInputs, opts);

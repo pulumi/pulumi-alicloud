@@ -81,7 +81,7 @@ export class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
     /**
      * The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * The type of the next hop. Valid values:
      * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
@@ -89,27 +89,27 @@ export class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
      * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
      * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
-    public readonly nextHopType!: pulumi.Output<string>;
+    declare public readonly nextHopType: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account to which the prefix list belongs.
      */
-    public readonly ownerUid!: pulumi.Output<number>;
+    declare public readonly ownerUid: pulumi.Output<number>;
     /**
      * The ID of the prefix list.
      */
-    public readonly prefixListId!: pulumi.Output<string>;
+    declare public readonly prefixListId: pulumi.Output<string>;
     /**
      * The status of the prefix list.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The ID of the route table of the transit router.
      */
-    public readonly transitRouterTableId!: pulumi.Output<string>;
+    declare public readonly transitRouterTableId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterPrefixListAssociation resource with the given unique name, arguments, and options.
@@ -124,33 +124,33 @@ export class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterPrefixListAssociationState | undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["nextHopType"] = state ? state.nextHopType : undefined;
-            resourceInputs["ownerUid"] = state ? state.ownerUid : undefined;
-            resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterTableId"] = state ? state.transitRouterTableId : undefined;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["nextHopType"] = state?.nextHopType;
+            resourceInputs["ownerUid"] = state?.ownerUid;
+            resourceInputs["prefixListId"] = state?.prefixListId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterTableId"] = state?.transitRouterTableId;
         } else {
             const args = argsOrState as TransitRouterPrefixListAssociationArgs | undefined;
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.prefixListId === undefined) && !opts.urn) {
+            if (args?.prefixListId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefixListId'");
             }
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            if ((!args || args.transitRouterTableId === undefined) && !opts.urn) {
+            if (args?.transitRouterTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterTableId'");
             }
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["nextHopType"] = args ? args.nextHopType : undefined;
-            resourceInputs["ownerUid"] = args ? args.ownerUid : undefined;
-            resourceInputs["prefixListId"] = args ? args.prefixListId : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterTableId"] = args ? args.transitRouterTableId : undefined;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["nextHopType"] = args?.nextHopType;
+            resourceInputs["ownerUid"] = args?.ownerUid;
+            resourceInputs["prefixListId"] = args?.prefixListId;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterTableId"] = args?.transitRouterTableId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

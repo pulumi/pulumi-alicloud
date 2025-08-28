@@ -74,19 +74,19 @@ export class TrafficQosAssociation extends pulumi.CustomResource {
     /**
      * The ID of the associated instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the associated instance. Value: **physical connection** physical connection.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The QoS policy ID.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
     /**
      * The status of the associated instance. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a TrafficQosAssociation resource with the given unique name, arguments, and options.
@@ -101,18 +101,18 @@ export class TrafficQosAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficQosAssociationState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["qosId"] = state?.qosId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as TrafficQosAssociationArgs | undefined;
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["qosId"] = args?.qosId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

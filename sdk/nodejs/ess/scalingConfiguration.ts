@@ -129,159 +129,159 @@ export class ScalingConfiguration extends pulumi.CustomResource {
     /**
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
-    public readonly creditSpecification!: pulumi.Output<string | undefined>;
+    declare public readonly creditSpecification: pulumi.Output<string | undefined>;
     /**
      * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
      */
-    public readonly customPriorities!: pulumi.Output<outputs.ess.ScalingConfigurationCustomPriority[] | undefined>;
+    declare public readonly customPriorities: pulumi.Output<outputs.ess.ScalingConfigurationCustomPriority[] | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
     /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
-    public readonly enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly enable: pulumi.Output<boolean | undefined>;
     /**
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * Hostname of an ECS instance.
      */
-    public readonly hostName!: pulumi.Output<string | undefined>;
+    declare public readonly hostName: pulumi.Output<string | undefined>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
-    public readonly imageName!: pulumi.Output<string | undefined>;
+    declare public readonly imageName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
      */
-    public readonly imageOptionsLoginAsNonRoot!: pulumi.Output<boolean | undefined>;
+    declare public readonly imageOptionsLoginAsNonRoot: pulumi.Output<boolean | undefined>;
     /**
      * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
      */
-    public readonly instanceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly instanceDescription: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
-    public readonly instanceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceIds: pulumi.Output<string[] | undefined>;
     /**
      * Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
      */
-    public readonly instancePatternInfos!: pulumi.Output<outputs.ess.ScalingConfigurationInstancePatternInfo[] | undefined>;
+    declare public readonly instancePatternInfos: pulumi.Output<outputs.ess.ScalingConfigurationInstancePatternInfo[] | undefined>;
     /**
      * Resource type of an ECS instance.
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * specify the weight of instance type.  See `instanceTypeOverride` below for details.
      */
-    public readonly instanceTypeOverrides!: pulumi.Output<outputs.ess.ScalingConfigurationInstanceTypeOverride[] | undefined>;
+    declare public readonly instanceTypeOverrides: pulumi.Output<outputs.ess.ScalingConfigurationInstanceTypeOverride[] | undefined>;
     /**
      * Resource types of an ECS instance.
      */
-    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceTypes: pulumi.Output<string[] | undefined>;
     /**
      * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
-    public readonly internetMaxBandwidthIn!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthIn: pulumi.Output<number | undefined>;
     /**
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
-    public readonly ioOptimized!: pulumi.Output<string | undefined>;
+    declare public readonly ioOptimized: pulumi.Output<string | undefined>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
-    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
+    declare public readonly isOutdated: pulumi.Output<boolean | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      */
-    public readonly keyName!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.ess.ScalingConfigurationNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.ess.ScalingConfigurationNetworkInterface[] | undefined>;
     /**
      * Indicates whether to overwrite the existing data. Default to false.
      */
-    public readonly override!: pulumi.Output<boolean | undefined>;
+    declare public readonly override: pulumi.Output<boolean | undefined>;
     /**
      * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      */
-    public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
+    declare public readonly passwordInherit: pulumi.Output<boolean | undefined>;
     /**
      * ID of resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
-    public readonly roleName!: pulumi.Output<string | undefined>;
+    declare public readonly roleName: pulumi.Output<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
      */
-    public readonly scalingConfigurationName!: pulumi.Output<string>;
+    declare public readonly scalingConfigurationName: pulumi.Output<string>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
      */
-    public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly securityEnhancementStrategy: pulumi.Output<string | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
      */
-    public readonly spotDuration!: pulumi.Output<number | undefined>;
+    declare public readonly spotDuration: pulumi.Output<number | undefined>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -299,65 +299,65 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      *
      * > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
      */
-    public readonly spotPriceLimits!: pulumi.Output<outputs.ess.ScalingConfigurationSpotPriceLimit[] | undefined>;
+    declare public readonly spotPriceLimits: pulumi.Output<outputs.ess.ScalingConfigurationSpotPriceLimit[] | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly spotStrategy: pulumi.Output<string | undefined>;
     /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */
-    public readonly substitute!: pulumi.Output<string>;
+    declare public readonly substitute: pulumi.Output<string>;
     /**
      * The id of auto snapshot policy for system disk.
      */
-    public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskAutoSnapshotPolicyId: pulumi.Output<string | undefined>;
     /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
-    public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskCategory: pulumi.Output<string | undefined>;
     /**
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskDescription: pulumi.Output<string | undefined>;
     /**
      * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
      */
-    public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskEncryptAlgorithm: pulumi.Output<string | undefined>;
     /**
      * Whether to encrypt the system disk.
      */
-    public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly systemDiskEncrypted: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the KMS key that you want to use to encrypt the system disk.
      */
-    public readonly systemDiskKmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskKmsKeyId: pulumi.Output<string | undefined>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
-    public readonly systemDiskName!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskName: pulumi.Output<string | undefined>;
     /**
      * The performance level of the ESSD used as the system disk.
      */
-    public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskPerformanceLevel: pulumi.Output<string | undefined>;
     /**
      * IOPS measures the number of read and write operations that an EBS device can process per second.
      */
-    public readonly systemDiskProvisionedIops!: pulumi.Output<number | undefined>;
+    declare public readonly systemDiskProvisionedIops: pulumi.Output<number | undefined>;
     /**
      * Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
      */
-    public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly systemDiskSize: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
 
     /**
      * Create a ScalingConfiguration resource with the given unique name, arguments, and options.
@@ -372,117 +372,117 @@ export class ScalingConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingConfigurationState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
-            resourceInputs["customPriorities"] = state ? state.customPriorities : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["imageOptionsLoginAsNonRoot"] = state ? state.imageOptionsLoginAsNonRoot : undefined;
-            resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instancePatternInfos"] = state ? state.instancePatternInfos : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["instanceTypeOverrides"] = state ? state.instanceTypeOverrides : undefined;
-            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthIn"] = state ? state.internetMaxBandwidthIn : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
-            resourceInputs["isOutdated"] = state ? state.isOutdated : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["override"] = state ? state.override : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
-            resourceInputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["substitute"] = state ? state.substitute : undefined;
-            resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
-            resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
-            resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
-            resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
-            resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
-            resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
-            resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
-            resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
-            resourceInputs["systemDiskProvisionedIops"] = state ? state.systemDiskProvisionedIops : undefined;
-            resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["creditSpecification"] = state?.creditSpecification;
+            resourceInputs["customPriorities"] = state?.customPriorities;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["imageOptionsLoginAsNonRoot"] = state?.imageOptionsLoginAsNonRoot;
+            resourceInputs["instanceDescription"] = state?.instanceDescription;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instancePatternInfos"] = state?.instancePatternInfos;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["instanceTypeOverrides"] = state?.instanceTypeOverrides;
+            resourceInputs["instanceTypes"] = state?.instanceTypes;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthIn"] = state?.internetMaxBandwidthIn;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = state?.ioOptimized;
+            resourceInputs["isOutdated"] = state?.isOutdated;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["override"] = state?.override;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordInherit"] = state?.passwordInherit;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["scalingConfigurationName"] = state?.scalingConfigurationName;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["securityEnhancementStrategy"] = state?.securityEnhancementStrategy;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["spotDuration"] = state?.spotDuration;
+            resourceInputs["spotPriceLimits"] = state?.spotPriceLimits;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["substitute"] = state?.substitute;
+            resourceInputs["systemDiskAutoSnapshotPolicyId"] = state?.systemDiskAutoSnapshotPolicyId;
+            resourceInputs["systemDiskCategory"] = state?.systemDiskCategory;
+            resourceInputs["systemDiskDescription"] = state?.systemDiskDescription;
+            resourceInputs["systemDiskEncryptAlgorithm"] = state?.systemDiskEncryptAlgorithm;
+            resourceInputs["systemDiskEncrypted"] = state?.systemDiskEncrypted;
+            resourceInputs["systemDiskKmsKeyId"] = state?.systemDiskKmsKeyId;
+            resourceInputs["systemDiskName"] = state?.systemDiskName;
+            resourceInputs["systemDiskPerformanceLevel"] = state?.systemDiskPerformanceLevel;
+            resourceInputs["systemDiskProvisionedIops"] = state?.systemDiskProvisionedIops;
+            resourceInputs["systemDiskSize"] = state?.systemDiskSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userData"] = state?.userData;
         } else {
             const args = argsOrState as ScalingConfigurationArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["creditSpecification"] = args ? args.creditSpecification : undefined;
-            resourceInputs["customPriorities"] = args ? args.customPriorities : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["imageOptionsLoginAsNonRoot"] = args ? args.imageOptionsLoginAsNonRoot : undefined;
-            resourceInputs["instanceDescription"] = args ? args.instanceDescription : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instancePatternInfos"] = args ? args.instancePatternInfos : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["instanceTypeOverrides"] = args ? args.instanceTypeOverrides : undefined;
-            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthIn"] = args ? args.internetMaxBandwidthIn : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = args ? args.ioOptimized : undefined;
-            resourceInputs["isOutdated"] = args ? args.isOutdated : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["override"] = args ? args.override : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["spotDuration"] = args ? args.spotDuration : undefined;
-            resourceInputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["substitute"] = args ? args.substitute : undefined;
-            resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
-            resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
-            resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
-            resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
-            resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
-            resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
-            resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
-            resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
-            resourceInputs["systemDiskProvisionedIops"] = args ? args.systemDiskProvisionedIops : undefined;
-            resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["creditSpecification"] = args?.creditSpecification;
+            resourceInputs["customPriorities"] = args?.customPriorities;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["imageOptionsLoginAsNonRoot"] = args?.imageOptionsLoginAsNonRoot;
+            resourceInputs["instanceDescription"] = args?.instanceDescription;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instancePatternInfos"] = args?.instancePatternInfos;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["instanceTypeOverrides"] = args?.instanceTypeOverrides;
+            resourceInputs["instanceTypes"] = args?.instanceTypes;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthIn"] = args?.internetMaxBandwidthIn;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = args?.ioOptimized;
+            resourceInputs["isOutdated"] = args?.isOutdated;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["override"] = args?.override;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["passwordInherit"] = args?.passwordInherit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["scalingConfigurationName"] = args?.scalingConfigurationName;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["securityEnhancementStrategy"] = args?.securityEnhancementStrategy;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["spotDuration"] = args?.spotDuration;
+            resourceInputs["spotPriceLimits"] = args?.spotPriceLimits;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["substitute"] = args?.substitute;
+            resourceInputs["systemDiskAutoSnapshotPolicyId"] = args?.systemDiskAutoSnapshotPolicyId;
+            resourceInputs["systemDiskCategory"] = args?.systemDiskCategory;
+            resourceInputs["systemDiskDescription"] = args?.systemDiskDescription;
+            resourceInputs["systemDiskEncryptAlgorithm"] = args?.systemDiskEncryptAlgorithm;
+            resourceInputs["systemDiskEncrypted"] = args?.systemDiskEncrypted;
+            resourceInputs["systemDiskKmsKeyId"] = args?.systemDiskKmsKeyId;
+            resourceInputs["systemDiskName"] = args?.systemDiskName;
+            resourceInputs["systemDiskPerformanceLevel"] = args?.systemDiskPerformanceLevel;
+            resourceInputs["systemDiskProvisionedIops"] = args?.systemDiskProvisionedIops;
+            resourceInputs["systemDiskSize"] = args?.systemDiskSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userData"] = args?.userData;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScalingConfiguration.__pulumiType, name, resourceInputs, opts);

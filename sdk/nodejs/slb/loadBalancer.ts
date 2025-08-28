@@ -98,76 +98,76 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
      */
-    public readonly addressIpVersion!: pulumi.Output<string | undefined>;
+    declare public readonly addressIpVersion: pulumi.Output<string | undefined>;
     /**
      * The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
      * - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
      * - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
      */
-    public readonly addressType!: pulumi.Output<string>;
+    declare public readonly addressType: pulumi.Output<string>;
     /**
      * Valid
      * value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
-    public readonly deleteProtection!: pulumi.Output<string | undefined>;
+    declare public readonly deleteProtection: pulumi.Output<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
-    public readonly loadBalancerName!: pulumi.Output<string>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancerName: pulumi.Output<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    public readonly masterZoneId!: pulumi.Output<string>;
+    declare public readonly masterZoneId: pulumi.Output<string>;
     /**
      * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
-    public readonly modificationProtectionReason!: pulumi.Output<string | undefined>;
+    declare public readonly modificationProtectionReason: pulumi.Output<string | undefined>;
     /**
      * The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
      */
-    public readonly modificationProtectionStatus!: pulumi.Output<string>;
+    declare public readonly modificationProtectionStatus: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    public readonly slaveZoneId!: pulumi.Output<string>;
+    declare public readonly slaveZoneId: pulumi.Output<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
@@ -175,7 +175,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
-    public readonly specification!: pulumi.Output<string>;
+    declare public readonly specification: pulumi.Output<string>;
     /**
      * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      *
@@ -185,15 +185,15 @@ export class LoadBalancer extends pulumi.CustomResource {
      *
      * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -211,50 +211,50 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["deleteProtection"] = state ? state.deleteProtection : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            resourceInputs["masterZoneId"] = state ? state.masterZoneId : undefined;
-            resourceInputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
-            resourceInputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["slaveZoneId"] = state ? state.slaveZoneId : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["deleteProtection"] = state?.deleteProtection;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
+            resourceInputs["masterZoneId"] = state?.masterZoneId;
+            resourceInputs["modificationProtectionReason"] = state?.modificationProtectionReason;
+            resourceInputs["modificationProtectionStatus"] = state?.modificationProtectionStatus;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["slaveZoneId"] = state?.slaveZoneId;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["deleteProtection"] = args ? args.deleteProtection : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            resourceInputs["masterZoneId"] = args ? args.masterZoneId : undefined;
-            resourceInputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
-            resourceInputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["slaveZoneId"] = args ? args.slaveZoneId : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["deleteProtection"] = args?.deleteProtection;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
+            resourceInputs["masterZoneId"] = args?.masterZoneId;
+            resourceInputs["modificationProtectionReason"] = args?.modificationProtectionReason;
+            resourceInputs["modificationProtectionStatus"] = args?.modificationProtectionStatus;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["slaveZoneId"] = args?.slaveZoneId;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);

@@ -44,191 +44,191 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
      */
-    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewDuration: pulumi.Output<number | undefined>;
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
-    public readonly clientNodeAmount!: pulumi.Output<number | undefined>;
+    declare public readonly clientNodeAmount: pulumi.Output<number | undefined>;
     /**
      * The client node spec. If specified, client node will be created.
      */
-    public readonly clientNodeSpec!: pulumi.Output<string | undefined>;
+    declare public readonly clientNodeSpec: pulumi.Output<string | undefined>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
-    public readonly dataNodeAmount!: pulumi.Output<number>;
+    declare public readonly dataNodeAmount: pulumi.Output<number>;
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
-    public readonly dataNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly dataNodeDiskEncrypted: pulumi.Output<boolean | undefined>;
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      */
-    public readonly dataNodeDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly dataNodeDiskPerformanceLevel: pulumi.Output<string | undefined>;
     /**
      * The single data node storage space.
      */
-    public readonly dataNodeDiskSize!: pulumi.Output<number>;
+    declare public readonly dataNodeDiskSize: pulumi.Output<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      */
-    public readonly dataNodeDiskType!: pulumi.Output<string>;
+    declare public readonly dataNodeDiskType: pulumi.Output<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
      */
-    public readonly dataNodeSpec!: pulumi.Output<string>;
+    declare public readonly dataNodeSpec: pulumi.Output<string>;
     /**
      * The description of instance. It a string of 0 to 30 characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Instance connection domain (only VPC network access supported).
      */
-    public /*out*/ readonly domain!: pulumi.Output<string>;
+    declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
      * Bool, default to false. When it set to true, the instance can close kibana private network access。
      */
-    public readonly enableKibanaPrivateNetwork!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableKibanaPrivateNetwork: pulumi.Output<boolean | undefined>;
     /**
      * Bool, default to true. When it set to false, the instance can enable kibana public network access。
      */
-    public readonly enableKibanaPublicNetwork!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableKibanaPublicNetwork: pulumi.Output<boolean | undefined>;
     /**
      * Bool, default to false. When it set to true, the instance can enable public network access。
      */
-    public readonly enablePublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePublic: pulumi.Output<boolean | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * Kibana console domain (Internet access supported).
      */
-    public /*out*/ readonly kibanaDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly kibanaDomain: pulumi.Output<string>;
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      */
-    public readonly kibanaNodeSpec!: pulumi.Output<string>;
+    declare public readonly kibanaNodeSpec: pulumi.Output<string>;
     /**
      * Kibana console port.
      */
-    public /*out*/ readonly kibanaPort!: pulumi.Output<number>;
+    declare public /*out*/ readonly kibanaPort: pulumi.Output<number>;
     /**
      * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
      */
-    public readonly kibanaPrivateSecurityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly kibanaPrivateSecurityGroupId: pulumi.Output<string | undefined>;
     /**
      * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      */
-    public readonly kibanaPrivateWhitelists!: pulumi.Output<string[]>;
+    declare public readonly kibanaPrivateWhitelists: pulumi.Output<string[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
-    public readonly kibanaWhitelists!: pulumi.Output<string[]>;
+    declare public readonly kibanaWhitelists: pulumi.Output<string[]>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      */
-    public readonly masterNodeDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly masterNodeDiskType: pulumi.Output<string | undefined>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
-    public readonly masterNodeSpec!: pulumi.Output<string | undefined>;
+    declare public readonly masterNodeSpec: pulumi.Output<string | undefined>;
     /**
      * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Instance connection port.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * Set the instance's IP whitelist in VPC network.
      */
-    public readonly privateWhitelists!: pulumi.Output<string[]>;
+    declare public readonly privateWhitelists: pulumi.Output<string[]>;
     /**
      * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * Instance connection public domain.
      */
-    public /*out*/ readonly publicDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicDomain: pulumi.Output<string>;
     /**
      * Instance connection public port.
      */
-    public /*out*/ readonly publicPort!: pulumi.Output<number>;
+    declare public /*out*/ readonly publicPort: pulumi.Output<number>;
     /**
      * Set the instance's IP whitelist in internet network.
      */
-    public readonly publicWhitelists!: pulumi.Output<string[]>;
+    declare public readonly publicWhitelists: pulumi.Output<string[]>;
     /**
      * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
      */
-    public readonly renewStatus!: pulumi.Output<string | undefined>;
+    declare public readonly renewStatus: pulumi.Output<string | undefined>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
      */
-    public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly renewalDurationUnit: pulumi.Output<string | undefined>;
     /**
      * The ID of resource group which the Elasticsearch instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    public readonly settingConfig!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly settingConfig: pulumi.Output<{[key: string]: string}>;
     /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The ID of VSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Elasticsearch cluster's warm node quantity, between 3 and 50.
      */
-    public readonly warmNodeAmount!: pulumi.Output<number | undefined>;
+    declare public readonly warmNodeAmount: pulumi.Output<number | undefined>;
     /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      */
-    public readonly warmNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly warmNodeDiskEncrypted: pulumi.Output<boolean | undefined>;
     /**
      * The single warm node storage space, should between 500 and 20480
      */
-    public readonly warmNodeDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly warmNodeDiskSize: pulumi.Output<number | undefined>;
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
      */
-    public readonly warmNodeDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly warmNodeDiskType: pulumi.Output<string | undefined>;
     /**
      * The warm node specifications of the Elasticsearch instance.
      */
-    public readonly warmNodeSpec!: pulumi.Output<string | undefined>;
+    declare public readonly warmNodeSpec: pulumi.Output<string | undefined>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */
-    public readonly zoneCount!: pulumi.Output<number | undefined>;
+    declare public readonly zoneCount: pulumi.Output<number | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -243,113 +243,113 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
-            resourceInputs["clientNodeAmount"] = state ? state.clientNodeAmount : undefined;
-            resourceInputs["clientNodeSpec"] = state ? state.clientNodeSpec : undefined;
-            resourceInputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
-            resourceInputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
-            resourceInputs["dataNodeDiskPerformanceLevel"] = state ? state.dataNodeDiskPerformanceLevel : undefined;
-            resourceInputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
-            resourceInputs["dataNodeDiskType"] = state ? state.dataNodeDiskType : undefined;
-            resourceInputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["enableKibanaPrivateNetwork"] = state ? state.enableKibanaPrivateNetwork : undefined;
-            resourceInputs["enableKibanaPublicNetwork"] = state ? state.enableKibanaPublicNetwork : undefined;
-            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
-            resourceInputs["kibanaNodeSpec"] = state ? state.kibanaNodeSpec : undefined;
-            resourceInputs["kibanaPort"] = state ? state.kibanaPort : undefined;
-            resourceInputs["kibanaPrivateSecurityGroupId"] = state ? state.kibanaPrivateSecurityGroupId : undefined;
-            resourceInputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
-            resourceInputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["masterNodeDiskType"] = state ? state.masterNodeDiskType : undefined;
-            resourceInputs["masterNodeSpec"] = state ? state.masterNodeSpec : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["publicDomain"] = state ? state.publicDomain : undefined;
-            resourceInputs["publicPort"] = state ? state.publicPort : undefined;
-            resourceInputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
-            resourceInputs["renewStatus"] = state ? state.renewStatus : undefined;
-            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["settingConfig"] = state ? state.settingConfig : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["warmNodeAmount"] = state ? state.warmNodeAmount : undefined;
-            resourceInputs["warmNodeDiskEncrypted"] = state ? state.warmNodeDiskEncrypted : undefined;
-            resourceInputs["warmNodeDiskSize"] = state ? state.warmNodeDiskSize : undefined;
-            resourceInputs["warmNodeDiskType"] = state ? state.warmNodeDiskType : undefined;
-            resourceInputs["warmNodeSpec"] = state ? state.warmNodeSpec : undefined;
-            resourceInputs["zoneCount"] = state ? state.zoneCount : undefined;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
+            resourceInputs["clientNodeAmount"] = state?.clientNodeAmount;
+            resourceInputs["clientNodeSpec"] = state?.clientNodeSpec;
+            resourceInputs["dataNodeAmount"] = state?.dataNodeAmount;
+            resourceInputs["dataNodeDiskEncrypted"] = state?.dataNodeDiskEncrypted;
+            resourceInputs["dataNodeDiskPerformanceLevel"] = state?.dataNodeDiskPerformanceLevel;
+            resourceInputs["dataNodeDiskSize"] = state?.dataNodeDiskSize;
+            resourceInputs["dataNodeDiskType"] = state?.dataNodeDiskType;
+            resourceInputs["dataNodeSpec"] = state?.dataNodeSpec;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["enableKibanaPrivateNetwork"] = state?.enableKibanaPrivateNetwork;
+            resourceInputs["enableKibanaPublicNetwork"] = state?.enableKibanaPublicNetwork;
+            resourceInputs["enablePublic"] = state?.enablePublic;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["kibanaDomain"] = state?.kibanaDomain;
+            resourceInputs["kibanaNodeSpec"] = state?.kibanaNodeSpec;
+            resourceInputs["kibanaPort"] = state?.kibanaPort;
+            resourceInputs["kibanaPrivateSecurityGroupId"] = state?.kibanaPrivateSecurityGroupId;
+            resourceInputs["kibanaPrivateWhitelists"] = state?.kibanaPrivateWhitelists;
+            resourceInputs["kibanaWhitelists"] = state?.kibanaWhitelists;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["masterNodeDiskType"] = state?.masterNodeDiskType;
+            resourceInputs["masterNodeSpec"] = state?.masterNodeSpec;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateWhitelists"] = state?.privateWhitelists;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["publicDomain"] = state?.publicDomain;
+            resourceInputs["publicPort"] = state?.publicPort;
+            resourceInputs["publicWhitelists"] = state?.publicWhitelists;
+            resourceInputs["renewStatus"] = state?.renewStatus;
+            resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["settingConfig"] = state?.settingConfig;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["warmNodeAmount"] = state?.warmNodeAmount;
+            resourceInputs["warmNodeDiskEncrypted"] = state?.warmNodeDiskEncrypted;
+            resourceInputs["warmNodeDiskSize"] = state?.warmNodeDiskSize;
+            resourceInputs["warmNodeDiskType"] = state?.warmNodeDiskType;
+            resourceInputs["warmNodeSpec"] = state?.warmNodeSpec;
+            resourceInputs["zoneCount"] = state?.zoneCount;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.dataNodeAmount === undefined) && !opts.urn) {
+            if (args?.dataNodeAmount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataNodeAmount'");
             }
-            if ((!args || args.dataNodeDiskSize === undefined) && !opts.urn) {
+            if (args?.dataNodeDiskSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataNodeDiskSize'");
             }
-            if ((!args || args.dataNodeDiskType === undefined) && !opts.urn) {
+            if (args?.dataNodeDiskType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataNodeDiskType'");
             }
-            if ((!args || args.dataNodeSpec === undefined) && !opts.urn) {
+            if (args?.dataNodeSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataNodeSpec'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
-            resourceInputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;
-            resourceInputs["clientNodeSpec"] = args ? args.clientNodeSpec : undefined;
-            resourceInputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
-            resourceInputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
-            resourceInputs["dataNodeDiskPerformanceLevel"] = args ? args.dataNodeDiskPerformanceLevel : undefined;
-            resourceInputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
-            resourceInputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
-            resourceInputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableKibanaPrivateNetwork"] = args ? args.enableKibanaPrivateNetwork : undefined;
-            resourceInputs["enableKibanaPublicNetwork"] = args ? args.enableKibanaPublicNetwork : undefined;
-            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["kibanaNodeSpec"] = args ? args.kibanaNodeSpec : undefined;
-            resourceInputs["kibanaPrivateSecurityGroupId"] = args ? args.kibanaPrivateSecurityGroupId : undefined;
-            resourceInputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
-            resourceInputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["masterNodeDiskType"] = args ? args.masterNodeDiskType : undefined;
-            resourceInputs["masterNodeSpec"] = args ? args.masterNodeSpec : undefined;
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
+            resourceInputs["clientNodeAmount"] = args?.clientNodeAmount;
+            resourceInputs["clientNodeSpec"] = args?.clientNodeSpec;
+            resourceInputs["dataNodeAmount"] = args?.dataNodeAmount;
+            resourceInputs["dataNodeDiskEncrypted"] = args?.dataNodeDiskEncrypted;
+            resourceInputs["dataNodeDiskPerformanceLevel"] = args?.dataNodeDiskPerformanceLevel;
+            resourceInputs["dataNodeDiskSize"] = args?.dataNodeDiskSize;
+            resourceInputs["dataNodeDiskType"] = args?.dataNodeDiskType;
+            resourceInputs["dataNodeSpec"] = args?.dataNodeSpec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableKibanaPrivateNetwork"] = args?.enableKibanaPrivateNetwork;
+            resourceInputs["enableKibanaPublicNetwork"] = args?.enableKibanaPublicNetwork;
+            resourceInputs["enablePublic"] = args?.enablePublic;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["kibanaNodeSpec"] = args?.kibanaNodeSpec;
+            resourceInputs["kibanaPrivateSecurityGroupId"] = args?.kibanaPrivateSecurityGroupId;
+            resourceInputs["kibanaPrivateWhitelists"] = args?.kibanaPrivateWhitelists;
+            resourceInputs["kibanaWhitelists"] = args?.kibanaWhitelists;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["masterNodeDiskType"] = args?.masterNodeDiskType;
+            resourceInputs["masterNodeSpec"] = args?.masterNodeSpec;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
-            resourceInputs["renewStatus"] = args ? args.renewStatus : undefined;
-            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["settingConfig"] = args ? args.settingConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["warmNodeAmount"] = args ? args.warmNodeAmount : undefined;
-            resourceInputs["warmNodeDiskEncrypted"] = args ? args.warmNodeDiskEncrypted : undefined;
-            resourceInputs["warmNodeDiskSize"] = args ? args.warmNodeDiskSize : undefined;
-            resourceInputs["warmNodeDiskType"] = args ? args.warmNodeDiskType : undefined;
-            resourceInputs["warmNodeSpec"] = args ? args.warmNodeSpec : undefined;
-            resourceInputs["zoneCount"] = args ? args.zoneCount : undefined;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["privateWhitelists"] = args?.privateWhitelists;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["publicWhitelists"] = args?.publicWhitelists;
+            resourceInputs["renewStatus"] = args?.renewStatus;
+            resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["settingConfig"] = args?.settingConfig;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["warmNodeAmount"] = args?.warmNodeAmount;
+            resourceInputs["warmNodeDiskEncrypted"] = args?.warmNodeDiskEncrypted;
+            resourceInputs["warmNodeDiskSize"] = args?.warmNodeDiskSize;
+            resourceInputs["warmNodeDiskType"] = args?.warmNodeDiskType;
+            resourceInputs["warmNodeSpec"] = args?.warmNodeSpec;
+            resourceInputs["zoneCount"] = args?.zoneCount;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["kibanaDomain"] = undefined /*out*/;
             resourceInputs["kibanaPort"] = undefined /*out*/;

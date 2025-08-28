@@ -96,51 +96,51 @@ export class WorkspaceModel extends pulumi.CustomResource {
      * - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
      * - `PUBLIC`: In this workspace, it is visible to everyone.
      */
-    public readonly accessibility!: pulumi.Output<string>;
+    declare public readonly accessibility: pulumi.Output<string>;
     /**
      * The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * Other information about the model.
      */
-    public readonly extraInfo!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extraInfo: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of tags. See `labels` below.
      */
-    public readonly labels!: pulumi.Output<outputs.pai.WorkspaceModelLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.pai.WorkspaceModelLabel[] | undefined>;
     /**
      * The model description, used to distinguish different models.
      */
-    public readonly modelDescription!: pulumi.Output<string | undefined>;
+    declare public readonly modelDescription: pulumi.Output<string | undefined>;
     /**
      * The documentation of the model.
      */
-    public readonly modelDoc!: pulumi.Output<string | undefined>;
+    declare public readonly modelDoc: pulumi.Output<string | undefined>;
     /**
      * The name of the model. The name must be 1 to 127 characters in length.
      */
-    public readonly modelName!: pulumi.Output<string>;
+    declare public readonly modelName: pulumi.Output<string>;
     /**
      * The model type. Example: Checkpoint or LoRA.
      */
-    public readonly modelType!: pulumi.Output<string | undefined>;
+    declare public readonly modelType: pulumi.Output<string | undefined>;
     /**
      * The sequence number of the model. Can be used for custom sorting.
      */
-    public readonly orderNumber!: pulumi.Output<number | undefined>;
+    declare public readonly orderNumber: pulumi.Output<number | undefined>;
     /**
      * The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
      */
-    public readonly origin!: pulumi.Output<string | undefined>;
+    declare public readonly origin: pulumi.Output<string | undefined>;
     /**
      * The task of the model. Describes the specific problem that the model solves. Example: text-classification.
      */
-    public readonly task!: pulumi.Output<string | undefined>;
+    declare public readonly task: pulumi.Output<string | undefined>;
     /**
      * The ID of the workspace.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceModel resource with the given unique name, arguments, and options.
@@ -155,35 +155,35 @@ export class WorkspaceModel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceModelState | undefined;
-            resourceInputs["accessibility"] = state ? state.accessibility : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["extraInfo"] = state ? state.extraInfo : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["modelDescription"] = state ? state.modelDescription : undefined;
-            resourceInputs["modelDoc"] = state ? state.modelDoc : undefined;
-            resourceInputs["modelName"] = state ? state.modelName : undefined;
-            resourceInputs["modelType"] = state ? state.modelType : undefined;
-            resourceInputs["orderNumber"] = state ? state.orderNumber : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["task"] = state ? state.task : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["accessibility"] = state?.accessibility;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["extraInfo"] = state?.extraInfo;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["modelDescription"] = state?.modelDescription;
+            resourceInputs["modelDoc"] = state?.modelDoc;
+            resourceInputs["modelName"] = state?.modelName;
+            resourceInputs["modelType"] = state?.modelType;
+            resourceInputs["orderNumber"] = state?.orderNumber;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["task"] = state?.task;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceModelArgs | undefined;
-            if ((!args || args.modelName === undefined) && !opts.urn) {
+            if (args?.modelName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelName'");
             }
-            resourceInputs["accessibility"] = args ? args.accessibility : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["extraInfo"] = args ? args.extraInfo : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["modelDescription"] = args ? args.modelDescription : undefined;
-            resourceInputs["modelDoc"] = args ? args.modelDoc : undefined;
-            resourceInputs["modelName"] = args ? args.modelName : undefined;
-            resourceInputs["modelType"] = args ? args.modelType : undefined;
-            resourceInputs["orderNumber"] = args ? args.orderNumber : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["task"] = args ? args.task : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["accessibility"] = args?.accessibility;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["extraInfo"] = args?.extraInfo;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["modelDescription"] = args?.modelDescription;
+            resourceInputs["modelDoc"] = args?.modelDoc;
+            resourceInputs["modelName"] = args?.modelName;
+            resourceInputs["modelType"] = args?.modelType;
+            resourceInputs["orderNumber"] = args?.orderNumber;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["task"] = args?.task;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceModel.__pulumiType, name, resourceInputs, opts);

@@ -86,49 +86,49 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * (Available since v1.239.0) The time when the security group was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
      * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      */
-    public readonly innerAccess!: pulumi.Output<boolean>;
+    declare public readonly innerAccess: pulumi.Output<boolean>;
     /**
      * The internal access control policy of the security group. Valid values:
      * - `Accept`: The internal interconnectivity policy.
      * - `Drop`: The internal isolation policy.
      */
-    public readonly innerAccessPolicy!: pulumi.Output<string>;
+    declare public readonly innerAccessPolicy: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
-    public readonly securityGroupName!: pulumi.Output<string>;
+    declare public readonly securityGroupName: pulumi.Output<string>;
     /**
      * The type of the security group. Default value: `normal`. Valid values:
      */
-    public readonly securityGroupType!: pulumi.Output<string>;
+    declare public readonly securityGroupType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC in which you want to create the security group.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -143,27 +143,27 @@ export class SecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["innerAccess"] = state ? state.innerAccess : undefined;
-            resourceInputs["innerAccessPolicy"] = state ? state.innerAccessPolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["securityGroupType"] = state ? state.securityGroupType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["innerAccess"] = state?.innerAccess;
+            resourceInputs["innerAccessPolicy"] = state?.innerAccessPolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["securityGroupType"] = state?.securityGroupType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["innerAccess"] = args ? args.innerAccess : undefined;
-            resourceInputs["innerAccessPolicy"] = args ? args.innerAccessPolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupName"] = args ? args.securityGroupName : undefined;
-            resourceInputs["securityGroupType"] = args ? args.securityGroupType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["innerAccess"] = args?.innerAccess;
+            resourceInputs["innerAccessPolicy"] = args?.innerAccessPolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupName"] = args?.securityGroupName;
+            resourceInputs["securityGroupType"] = args?.securityGroupType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -10,8 +10,7 @@ declare var exports: any;
 const __config = new pulumi.Config("alicloud");
 
 /**
- * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
- * console.
+ * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
  */
 export declare const accessKey: string | undefined;
 Object.defineProperty(exports, "accessKey", {
@@ -22,8 +21,7 @@ Object.defineProperty(exports, "accessKey", {
 });
 
 /**
- * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
- * Alibaba Cloud console.
+ * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
  */
 export declare const accountId: string | undefined;
 Object.defineProperty(exports, "accountId", {
@@ -99,8 +97,7 @@ Object.defineProperty(exports, "credentialsUri", {
 });
 
 /**
- * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
- * of the Alibaba Cloud console.
+ * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
  */
 export declare const ecsRoleName: string | undefined;
 Object.defineProperty(exports, "ecsRoleName", {
@@ -192,8 +189,7 @@ Object.defineProperty(exports, "region", {
 });
 
 /**
- * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
- * console.
+ * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
  */
 export declare const secretKey: string | undefined;
 Object.defineProperty(exports, "secretKey", {
@@ -253,8 +249,7 @@ Object.defineProperty(exports, "signVersion", {
 });
 
 /**
- * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
- * that are not public (yet).
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
  */
 export declare const skipRegionValidation: boolean | undefined;
 Object.defineProperty(exports, "skipRegionValidation", {

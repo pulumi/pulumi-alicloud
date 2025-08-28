@@ -52,15 +52,15 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * List of clusters.
      */
-    public readonly clusterIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly clusterIds: pulumi.Output<string[] | undefined>;
     /**
      * Cluster specification
      */
-    public readonly clusterSpec!: pulumi.Output<string>;
+    declare public readonly clusterSpec: pulumi.Output<string>;
     /**
      * Service grid creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
@@ -68,15 +68,15 @@ export class ServiceMesh extends pulumi.CustomResource {
      *
      * Default value: 'false '.
      */
-    public readonly customizedPrometheus!: pulumi.Output<boolean | undefined>;
+    declare public readonly customizedPrometheus: pulumi.Output<boolean | undefined>;
     /**
      * Grid instance version type (for example: the standard, the Pro version, etc.)
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
+    declare public readonly edition: pulumi.Output<string | undefined>;
     /**
      * Data plane KubeAPI access capability See `extraConfiguration` below.
      */
-    public readonly extraConfiguration!: pulumi.Output<outputs.servicemesh.ServiceMeshExtraConfiguration>;
+    declare public readonly extraConfiguration: pulumi.Output<outputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
@@ -84,43 +84,43 @@ export class ServiceMesh extends pulumi.CustomResource {
      *
      * Default value: false
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * Kubeconfig configuration content
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
     /**
      * Load balancing information See `loadBalancer` below.
      */
-    public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer>;
+    declare public readonly loadBalancer: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
      * Service grid configuration information See `meshConfig` below.
      */
-    public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig>;
+    declare public readonly meshConfig: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig>;
     /**
      * Service grid network configuration information See `network` below.
      */
-    public readonly network!: pulumi.Output<outputs.servicemesh.ServiceMeshNetwork>;
+    declare public readonly network: pulumi.Output<outputs.servicemesh.ServiceMeshNetwork>;
     /**
      * The Prometheus service address (in non-custom cases, use the ARMS address format).
      */
-    public readonly prometheusUrl!: pulumi.Output<string | undefined>;
+    declare public readonly prometheusUrl: pulumi.Output<string | undefined>;
     /**
      * ServiceMeshName
      */
-    public readonly serviceMeshName!: pulumi.Output<string | undefined>;
+    declare public readonly serviceMeshName: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Service grid version number
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceMesh resource with the given unique name, arguments, and options.
@@ -135,40 +135,40 @@ export class ServiceMesh extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceMeshState | undefined;
-            resourceInputs["clusterIds"] = state ? state.clusterIds : undefined;
-            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customizedPrometheus"] = state ? state.customizedPrometheus : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["extraConfiguration"] = state ? state.extraConfiguration : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
-            resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
-            resourceInputs["meshConfig"] = state ? state.meshConfig : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["prometheusUrl"] = state ? state.prometheusUrl : undefined;
-            resourceInputs["serviceMeshName"] = state ? state.serviceMeshName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["clusterIds"] = state?.clusterIds;
+            resourceInputs["clusterSpec"] = state?.clusterSpec;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customizedPrometheus"] = state?.customizedPrometheus;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["extraConfiguration"] = state?.extraConfiguration;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["kubeconfig"] = state?.kubeconfig;
+            resourceInputs["loadBalancer"] = state?.loadBalancer;
+            resourceInputs["meshConfig"] = state?.meshConfig;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["prometheusUrl"] = state?.prometheusUrl;
+            resourceInputs["serviceMeshName"] = state?.serviceMeshName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ServiceMeshArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["clusterIds"] = args ? args.clusterIds : undefined;
-            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
-            resourceInputs["customizedPrometheus"] = args ? args.customizedPrometheus : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["extraConfiguration"] = args ? args.extraConfiguration : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
-            resourceInputs["meshConfig"] = args ? args.meshConfig : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["prometheusUrl"] = args ? args.prometheusUrl : undefined;
-            resourceInputs["serviceMeshName"] = args ? args.serviceMeshName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["clusterIds"] = args?.clusterIds;
+            resourceInputs["clusterSpec"] = args?.clusterSpec;
+            resourceInputs["customizedPrometheus"] = args?.customizedPrometheus;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["extraConfiguration"] = args?.extraConfiguration;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["loadBalancer"] = args?.loadBalancer;
+            resourceInputs["meshConfig"] = args?.meshConfig;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["prometheusUrl"] = args?.prometheusUrl;
+            resourceInputs["serviceMeshName"] = args?.serviceMeshName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

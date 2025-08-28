@@ -71,36 +71,36 @@ export class MaliciousFileWhitelistConfig extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the security alert associated with the representative rule.
      */
-    public readonly eventName!: pulumi.Output<string | undefined>;
+    declare public readonly eventName: pulumi.Output<string | undefined>;
     /**
      * Represents the alarm associated with the resource and the white field.
      */
-    public readonly field!: pulumi.Output<string | undefined>;
+    declare public readonly field: pulumi.Output<string | undefined>;
     /**
      * Represents the whiteout target value in effect for the resource.
      */
-    public readonly fieldValue!: pulumi.Output<string | undefined>;
+    declare public readonly fieldValue: pulumi.Output<string | undefined>;
     /**
      * The decision operator in effect on behalf of the resource.
      */
-    public readonly operator!: pulumi.Output<string | undefined>;
+    declare public readonly operator: pulumi.Output<string | undefined>;
     /**
      * Business Source:
      * - agentless: agentless detection.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * The type of target in effect on behalf of the resource.
      */
-    public readonly targetType!: pulumi.Output<string | undefined>;
+    declare public readonly targetType: pulumi.Output<string | undefined>;
     /**
      * Represents the specific value of the target type in effect for the resource.
      */
-    public readonly targetValue!: pulumi.Output<string | undefined>;
+    declare public readonly targetValue: pulumi.Output<string | undefined>;
 
     /**
      * Create a MaliciousFileWhitelistConfig resource with the given unique name, arguments, and options.
@@ -115,23 +115,23 @@ export class MaliciousFileWhitelistConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MaliciousFileWhitelistConfigState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["eventName"] = state ? state.eventName : undefined;
-            resourceInputs["field"] = state ? state.field : undefined;
-            resourceInputs["fieldValue"] = state ? state.fieldValue : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
-            resourceInputs["targetValue"] = state ? state.targetValue : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["eventName"] = state?.eventName;
+            resourceInputs["field"] = state?.field;
+            resourceInputs["fieldValue"] = state?.fieldValue;
+            resourceInputs["operator"] = state?.operator;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["targetType"] = state?.targetType;
+            resourceInputs["targetValue"] = state?.targetValue;
         } else {
             const args = argsOrState as MaliciousFileWhitelistConfigArgs | undefined;
-            resourceInputs["eventName"] = args ? args.eventName : undefined;
-            resourceInputs["field"] = args ? args.field : undefined;
-            resourceInputs["fieldValue"] = args ? args.fieldValue : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
-            resourceInputs["targetValue"] = args ? args.targetValue : undefined;
+            resourceInputs["eventName"] = args?.eventName;
+            resourceInputs["field"] = args?.field;
+            resourceInputs["fieldValue"] = args?.fieldValue;
+            resourceInputs["operator"] = args?.operator;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["targetType"] = args?.targetType;
+            resourceInputs["targetValue"] = args?.targetValue;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

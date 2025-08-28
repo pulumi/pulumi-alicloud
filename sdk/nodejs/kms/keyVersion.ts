@@ -62,11 +62,11 @@ export class KeyVersion extends pulumi.CustomResource {
      *
      * > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The id of the Alikms key version.
      */
-    public /*out*/ readonly keyVersionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyVersionId: pulumi.Output<string>;
 
     /**
      * Create a KeyVersion resource with the given unique name, arguments, and options.
@@ -81,14 +81,14 @@ export class KeyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyVersionState | undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["keyVersionId"] = state ? state.keyVersionId : undefined;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["keyVersionId"] = state?.keyVersionId;
         } else {
             const args = argsOrState as KeyVersionArgs | undefined;
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["keyId"] = args?.keyId;
             resourceInputs["keyVersionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

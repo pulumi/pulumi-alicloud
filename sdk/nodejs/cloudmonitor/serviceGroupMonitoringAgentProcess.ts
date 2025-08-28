@@ -102,27 +102,27 @@ export class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
     /**
      * The alert rule configurations. See `alertConfig` below.
      */
-    public readonly alertConfigs!: pulumi.Output<outputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfig[]>;
+    declare public readonly alertConfigs: pulumi.Output<outputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfig[]>;
     /**
      * The ID of the application group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The ID of the Group Monitoring Agent Process.
      */
-    public /*out*/ readonly groupMonitoringAgentProcessId!: pulumi.Output<string>;
+    declare public /*out*/ readonly groupMonitoringAgentProcessId: pulumi.Output<string>;
     /**
      * The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
      */
-    public readonly matchExpressFilterRelation!: pulumi.Output<string>;
+    declare public readonly matchExpressFilterRelation: pulumi.Output<string>;
     /**
      * The expressions used to match instances. See `matchExpress` below.
      */
-    public readonly matchExpresses!: pulumi.Output<outputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress[]>;
+    declare public readonly matchExpresses: pulumi.Output<outputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress[]>;
     /**
      * The name of the process.
      */
-    public readonly processName!: pulumi.Output<string>;
+    declare public readonly processName: pulumi.Output<string>;
 
     /**
      * Create a ServiceGroupMonitoringAgentProcess resource with the given unique name, arguments, and options.
@@ -137,28 +137,28 @@ export class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceGroupMonitoringAgentProcessState | undefined;
-            resourceInputs["alertConfigs"] = state ? state.alertConfigs : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupMonitoringAgentProcessId"] = state ? state.groupMonitoringAgentProcessId : undefined;
-            resourceInputs["matchExpressFilterRelation"] = state ? state.matchExpressFilterRelation : undefined;
-            resourceInputs["matchExpresses"] = state ? state.matchExpresses : undefined;
-            resourceInputs["processName"] = state ? state.processName : undefined;
+            resourceInputs["alertConfigs"] = state?.alertConfigs;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupMonitoringAgentProcessId"] = state?.groupMonitoringAgentProcessId;
+            resourceInputs["matchExpressFilterRelation"] = state?.matchExpressFilterRelation;
+            resourceInputs["matchExpresses"] = state?.matchExpresses;
+            resourceInputs["processName"] = state?.processName;
         } else {
             const args = argsOrState as ServiceGroupMonitoringAgentProcessArgs | undefined;
-            if ((!args || args.alertConfigs === undefined) && !opts.urn) {
+            if (args?.alertConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertConfigs'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.processName === undefined) && !opts.urn) {
+            if (args?.processName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'processName'");
             }
-            resourceInputs["alertConfigs"] = args ? args.alertConfigs : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["matchExpressFilterRelation"] = args ? args.matchExpressFilterRelation : undefined;
-            resourceInputs["matchExpresses"] = args ? args.matchExpresses : undefined;
-            resourceInputs["processName"] = args ? args.processName : undefined;
+            resourceInputs["alertConfigs"] = args?.alertConfigs;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["matchExpressFilterRelation"] = args?.matchExpressFilterRelation;
+            resourceInputs["matchExpresses"] = args?.matchExpresses;
+            resourceInputs["processName"] = args?.processName;
             resourceInputs["groupMonitoringAgentProcessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

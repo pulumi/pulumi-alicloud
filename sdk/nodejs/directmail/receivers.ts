@@ -50,19 +50,19 @@ export class Receivers extends pulumi.CustomResource {
     /**
      * The description of receivers and 1-50 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The alias of receivers. Must email address and less than 30 characters in length.
      */
-    public readonly receiversAlias!: pulumi.Output<string>;
+    declare public readonly receiversAlias: pulumi.Output<string>;
     /**
      * The name of the resource. The length that cannot be repeated is 1-30 characters.
      */
-    public readonly receiversName!: pulumi.Output<string>;
+    declare public readonly receiversName: pulumi.Output<string>;
     /**
      * The status of the resource. `0` means uploading, `1` means upload completed.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
 
     /**
      * Create a Receivers resource with the given unique name, arguments, and options.
@@ -77,21 +77,21 @@ export class Receivers extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReceiversState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["receiversAlias"] = state ? state.receiversAlias : undefined;
-            resourceInputs["receiversName"] = state ? state.receiversName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["receiversAlias"] = state?.receiversAlias;
+            resourceInputs["receiversName"] = state?.receiversName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ReceiversArgs | undefined;
-            if ((!args || args.receiversAlias === undefined) && !opts.urn) {
+            if (args?.receiversAlias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'receiversAlias'");
             }
-            if ((!args || args.receiversName === undefined) && !opts.urn) {
+            if (args?.receiversName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'receiversName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["receiversAlias"] = args ? args.receiversAlias : undefined;
-            resourceInputs["receiversName"] = args ? args.receiversName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["receiversAlias"] = args?.receiversAlias;
+            resourceInputs["receiversName"] = args?.receiversName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

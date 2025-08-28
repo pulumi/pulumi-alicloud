@@ -101,19 +101,19 @@ export class Plugin extends pulumi.CustomResource {
     /**
      * Create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the plug-in, which cannot exceed 200 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
      */
-    public readonly pluginData!: pulumi.Output<string>;
+    declare public readonly pluginData: pulumi.Output<string>;
     /**
      * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      */
-    public readonly pluginName!: pulumi.Output<string>;
+    declare public readonly pluginName: pulumi.Output<string>;
     /**
      * The type of the plug-in. Valid values:
      * - "trafficControl"
@@ -131,11 +131,11 @@ export class Plugin extends pulumi.CustomResource {
      * - "logMask"
      * - "transformer".
      */
-    public readonly pluginType!: pulumi.Output<string>;
+    declare public readonly pluginType: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Plugin resource with the given unique name, arguments, and options.
@@ -150,28 +150,28 @@ export class Plugin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PluginState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["pluginData"] = state ? state.pluginData : undefined;
-            resourceInputs["pluginName"] = state ? state.pluginName : undefined;
-            resourceInputs["pluginType"] = state ? state.pluginType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["pluginData"] = state?.pluginData;
+            resourceInputs["pluginName"] = state?.pluginName;
+            resourceInputs["pluginType"] = state?.pluginType;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as PluginArgs | undefined;
-            if ((!args || args.pluginData === undefined) && !opts.urn) {
+            if (args?.pluginData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginData'");
             }
-            if ((!args || args.pluginName === undefined) && !opts.urn) {
+            if (args?.pluginName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginName'");
             }
-            if ((!args || args.pluginType === undefined) && !opts.urn) {
+            if (args?.pluginType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["pluginData"] = args ? args.pluginData : undefined;
-            resourceInputs["pluginName"] = args ? args.pluginName : undefined;
-            resourceInputs["pluginType"] = args ? args.pluginType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["pluginData"] = args?.pluginData;
+            resourceInputs["pluginName"] = args?.pluginName;
+            resourceInputs["pluginType"] = args?.pluginType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -69,27 +69,27 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Protection of the Name of the Policy.
      */
-    public readonly backupPolicyName!: pulumi.Output<string>;
+    declare public readonly backupPolicyName: pulumi.Output<string>;
     /**
      * The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
      */
-    public readonly policyRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly policyRegionId: pulumi.Output<string | undefined>;
     /**
      * Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
      */
-    public readonly policyVersion!: pulumi.Output<string>;
+    declare public readonly policyVersion: pulumi.Output<string>;
     /**
      * The status of the Backup Policy instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specify the Protection of Server UUID List.
      */
-    public readonly uuidLists!: pulumi.Output<string[]>;
+    declare public readonly uuidLists: pulumi.Output<string[]>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -104,31 +104,31 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupPolicyName"] = state ? state.backupPolicyName : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["policyRegionId"] = state ? state.policyRegionId : undefined;
-            resourceInputs["policyVersion"] = state ? state.policyVersion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["uuidLists"] = state ? state.uuidLists : undefined;
+            resourceInputs["backupPolicyName"] = state?.backupPolicyName;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["policyRegionId"] = state?.policyRegionId;
+            resourceInputs["policyVersion"] = state?.policyVersion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["uuidLists"] = state?.uuidLists;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.backupPolicyName === undefined) && !opts.urn) {
+            if (args?.backupPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPolicyName'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.policyVersion === undefined) && !opts.urn) {
+            if (args?.policyVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyVersion'");
             }
-            if ((!args || args.uuidLists === undefined) && !opts.urn) {
+            if (args?.uuidLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uuidLists'");
             }
-            resourceInputs["backupPolicyName"] = args ? args.backupPolicyName : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["policyRegionId"] = args ? args.policyRegionId : undefined;
-            resourceInputs["policyVersion"] = args ? args.policyVersion : undefined;
-            resourceInputs["uuidLists"] = args ? args.uuidLists : undefined;
+            resourceInputs["backupPolicyName"] = args?.backupPolicyName;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["policyRegionId"] = args?.policyRegionId;
+            resourceInputs["policyVersion"] = args?.policyVersion;
+            resourceInputs["uuidLists"] = args?.uuidLists;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

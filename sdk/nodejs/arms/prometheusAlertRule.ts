@@ -82,51 +82,51 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
     /**
      * The annotations of the alert rule. See `annotations` below.
      */
-    public readonly annotations!: pulumi.Output<outputs.arms.PrometheusAlertRuleAnnotation[] | undefined>;
+    declare public readonly annotations: pulumi.Output<outputs.arms.PrometheusAlertRuleAnnotation[] | undefined>;
     /**
      * The ID of the cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      */
-    public readonly dispatchRuleId!: pulumi.Output<string | undefined>;
+    declare public readonly dispatchRuleId: pulumi.Output<string | undefined>;
     /**
      * The duration of the alert.
      */
-    public readonly duration!: pulumi.Output<string>;
+    declare public readonly duration: pulumi.Output<string>;
     /**
      * The alert rule expression that follows the PromQL syntax.
      */
-    public readonly expression!: pulumi.Output<string>;
+    declare public readonly expression: pulumi.Output<string>;
     /**
      * The labels of the resource. See `labels` below.
      */
-    public readonly labels!: pulumi.Output<outputs.arms.PrometheusAlertRuleLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.arms.PrometheusAlertRuleLabel[] | undefined>;
     /**
      * The message of the alert notification.
      */
-    public readonly message!: pulumi.Output<string>;
+    declare public readonly message: pulumi.Output<string>;
     /**
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
-    public readonly notifyType!: pulumi.Output<string | undefined>;
+    declare public readonly notifyType: pulumi.Output<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly prometheusAlertRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly prometheusAlertRuleId: pulumi.Output<number>;
     /**
      * The name of the resource.
      */
-    public readonly prometheusAlertRuleName!: pulumi.Output<string>;
+    declare public readonly prometheusAlertRuleName: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * The type of the alert rule.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrometheusAlertRule resource with the given unique name, arguments, and options.
@@ -141,45 +141,45 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrometheusAlertRuleState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["dispatchRuleId"] = state ? state.dispatchRuleId : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["notifyType"] = state ? state.notifyType : undefined;
-            resourceInputs["prometheusAlertRuleId"] = state ? state.prometheusAlertRuleId : undefined;
-            resourceInputs["prometheusAlertRuleName"] = state ? state.prometheusAlertRuleName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["dispatchRuleId"] = state?.dispatchRuleId;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["notifyType"] = state?.notifyType;
+            resourceInputs["prometheusAlertRuleId"] = state?.prometheusAlertRuleId;
+            resourceInputs["prometheusAlertRuleName"] = state?.prometheusAlertRuleName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PrometheusAlertRuleArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.duration === undefined) && !opts.urn) {
+            if (args?.duration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'duration'");
             }
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            if ((!args || args.message === undefined) && !opts.urn) {
+            if (args?.message === undefined && !opts.urn) {
                 throw new Error("Missing required property 'message'");
             }
-            if ((!args || args.prometheusAlertRuleName === undefined) && !opts.urn) {
+            if (args?.prometheusAlertRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prometheusAlertRuleName'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dispatchRuleId"] = args ? args.dispatchRuleId : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["notifyType"] = args ? args.notifyType : undefined;
-            resourceInputs["prometheusAlertRuleName"] = args ? args.prometheusAlertRuleName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dispatchRuleId"] = args?.dispatchRuleId;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["expression"] = args?.expression;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["notifyType"] = args?.notifyType;
+            resourceInputs["prometheusAlertRuleName"] = args?.prometheusAlertRuleName;
+            resourceInputs["type"] = args?.type;
             resourceInputs["prometheusAlertRuleId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

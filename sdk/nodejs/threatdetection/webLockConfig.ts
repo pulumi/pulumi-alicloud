@@ -71,39 +71,39 @@ export class WebLockConfig extends pulumi.CustomResource {
     /**
      * Protection mode. Value:-**block**: Intercept-**audit**: Alarm
      */
-    public readonly defenceMode!: pulumi.Output<string>;
+    declare public readonly defenceMode: pulumi.Output<string>;
     /**
      * Specify the protection directory.
      */
-    public readonly dir!: pulumi.Output<string>;
+    declare public readonly dir: pulumi.Output<string>;
     /**
      * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    public readonly exclusiveDir!: pulumi.Output<string | undefined>;
+    declare public readonly exclusiveDir: pulumi.Output<string | undefined>;
     /**
      * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    public readonly exclusiveFile!: pulumi.Output<string | undefined>;
+    declare public readonly exclusiveFile: pulumi.Output<string | undefined>;
     /**
      * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    public readonly exclusiveFileType!: pulumi.Output<string | undefined>;
+    declare public readonly exclusiveFileType: pulumi.Output<string | undefined>;
     /**
      * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      */
-    public readonly inclusiveFileType!: pulumi.Output<string | undefined>;
+    declare public readonly inclusiveFileType: pulumi.Output<string | undefined>;
     /**
      * The local backup path is used to protect the safe backup of the Directory.
      */
-    public readonly localBackupDir!: pulumi.Output<string>;
+    declare public readonly localBackupDir: pulumi.Output<string>;
     /**
      * Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
      */
-    public readonly uuid!: pulumi.Output<string>;
+    declare public readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a WebLockConfig resource with the given unique name, arguments, and options.
@@ -118,41 +118,41 @@ export class WebLockConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebLockConfigState | undefined;
-            resourceInputs["defenceMode"] = state ? state.defenceMode : undefined;
-            resourceInputs["dir"] = state ? state.dir : undefined;
-            resourceInputs["exclusiveDir"] = state ? state.exclusiveDir : undefined;
-            resourceInputs["exclusiveFile"] = state ? state.exclusiveFile : undefined;
-            resourceInputs["exclusiveFileType"] = state ? state.exclusiveFileType : undefined;
-            resourceInputs["inclusiveFileType"] = state ? state.inclusiveFileType : undefined;
-            resourceInputs["localBackupDir"] = state ? state.localBackupDir : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["defenceMode"] = state?.defenceMode;
+            resourceInputs["dir"] = state?.dir;
+            resourceInputs["exclusiveDir"] = state?.exclusiveDir;
+            resourceInputs["exclusiveFile"] = state?.exclusiveFile;
+            resourceInputs["exclusiveFileType"] = state?.exclusiveFileType;
+            resourceInputs["inclusiveFileType"] = state?.inclusiveFileType;
+            resourceInputs["localBackupDir"] = state?.localBackupDir;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as WebLockConfigArgs | undefined;
-            if ((!args || args.defenceMode === undefined) && !opts.urn) {
+            if (args?.defenceMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defenceMode'");
             }
-            if ((!args || args.dir === undefined) && !opts.urn) {
+            if (args?.dir === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dir'");
             }
-            if ((!args || args.localBackupDir === undefined) && !opts.urn) {
+            if (args?.localBackupDir === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localBackupDir'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if ((!args || args.uuid === undefined) && !opts.urn) {
+            if (args?.uuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uuid'");
             }
-            resourceInputs["defenceMode"] = args ? args.defenceMode : undefined;
-            resourceInputs["dir"] = args ? args.dir : undefined;
-            resourceInputs["exclusiveDir"] = args ? args.exclusiveDir : undefined;
-            resourceInputs["exclusiveFile"] = args ? args.exclusiveFile : undefined;
-            resourceInputs["exclusiveFileType"] = args ? args.exclusiveFileType : undefined;
-            resourceInputs["inclusiveFileType"] = args ? args.inclusiveFileType : undefined;
-            resourceInputs["localBackupDir"] = args ? args.localBackupDir : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["uuid"] = args ? args.uuid : undefined;
+            resourceInputs["defenceMode"] = args?.defenceMode;
+            resourceInputs["dir"] = args?.dir;
+            resourceInputs["exclusiveDir"] = args?.exclusiveDir;
+            resourceInputs["exclusiveFile"] = args?.exclusiveFile;
+            resourceInputs["exclusiveFileType"] = args?.exclusiveFileType;
+            resourceInputs["inclusiveFileType"] = args?.inclusiveFileType;
+            resourceInputs["localBackupDir"] = args?.localBackupDir;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["uuid"] = args?.uuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WebLockConfig.__pulumiType, name, resourceInputs, opts);

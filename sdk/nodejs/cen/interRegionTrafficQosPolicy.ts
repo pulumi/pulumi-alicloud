@@ -81,27 +81,27 @@ export class InterRegionTrafficQosPolicy extends pulumi.CustomResource {
     /**
      * Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
      */
-    public readonly bandwidthGuaranteeMode!: pulumi.Output<string>;
+    declare public readonly bandwidthGuaranteeMode: pulumi.Output<string>;
     /**
      * The description information of the traffic scheduling policy.
      */
-    public readonly interRegionTrafficQosPolicyDescription!: pulumi.Output<string | undefined>;
+    declare public readonly interRegionTrafficQosPolicyDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    public readonly interRegionTrafficQosPolicyName!: pulumi.Output<string | undefined>;
+    declare public readonly interRegionTrafficQosPolicyName: pulumi.Output<string | undefined>;
     /**
      * The status of the traffic scheduling policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Peer Attachment ID.
      */
-    public readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * The ID of the forwarding router instance.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
 
     /**
      * Create a InterRegionTrafficQosPolicy resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class InterRegionTrafficQosPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterRegionTrafficQosPolicyState | undefined;
-            resourceInputs["bandwidthGuaranteeMode"] = state ? state.bandwidthGuaranteeMode : undefined;
-            resourceInputs["interRegionTrafficQosPolicyDescription"] = state ? state.interRegionTrafficQosPolicyDescription : undefined;
-            resourceInputs["interRegionTrafficQosPolicyName"] = state ? state.interRegionTrafficQosPolicyName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["bandwidthGuaranteeMode"] = state?.bandwidthGuaranteeMode;
+            resourceInputs["interRegionTrafficQosPolicyDescription"] = state?.interRegionTrafficQosPolicyDescription;
+            resourceInputs["interRegionTrafficQosPolicyName"] = state?.interRegionTrafficQosPolicyName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as InterRegionTrafficQosPolicyArgs | undefined;
-            if ((!args || args.transitRouterAttachmentId === undefined) && !opts.urn) {
+            if (args?.transitRouterAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterAttachmentId'");
             }
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["bandwidthGuaranteeMode"] = args ? args.bandwidthGuaranteeMode : undefined;
-            resourceInputs["interRegionTrafficQosPolicyDescription"] = args ? args.interRegionTrafficQosPolicyDescription : undefined;
-            resourceInputs["interRegionTrafficQosPolicyName"] = args ? args.interRegionTrafficQosPolicyName : undefined;
-            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["bandwidthGuaranteeMode"] = args?.bandwidthGuaranteeMode;
+            resourceInputs["interRegionTrafficQosPolicyDescription"] = args?.interRegionTrafficQosPolicyDescription;
+            resourceInputs["interRegionTrafficQosPolicyName"] = args?.interRegionTrafficQosPolicyName;
+            resourceInputs["transitRouterAttachmentId"] = args?.transitRouterAttachmentId;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

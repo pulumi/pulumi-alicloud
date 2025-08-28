@@ -86,91 +86,91 @@ export class ElasticInstance extends pulumi.CustomResource {
     /**
      * ADB PG instance connection string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
      */
-    public readonly dbInstanceCategory!: pulumi.Output<string>;
+    declare public readonly dbInstanceCategory: pulumi.Output<string>;
     /**
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      */
-    public readonly dbInstanceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
      */
-    public readonly encryptionType!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionType: pulumi.Output<string | undefined>;
     /**
      * Database engine: `gpdb`.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * Database version. Valid value is `6.0`.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * The network type of ADB PG instance. Only `VPC` supported now.
      */
-    public readonly instanceNetworkType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceNetworkType: pulumi.Output<string | undefined>;
     /**
      * The specification of segment nodes. 
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
-    public readonly instanceSpec!: pulumi.Output<string>;
+    declare public readonly instanceSpec: pulumi.Output<string>;
     /**
      * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    public readonly paymentDuration!: pulumi.Output<number | undefined>;
+    declare public readonly paymentDuration: pulumi.Output<number | undefined>;
     /**
      * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    public readonly paymentDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly paymentDurationUnit: pulumi.Output<string | undefined>;
     /**
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the instance.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    declare public readonly securityIpLists: pulumi.Output<string[]>;
     /**
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      */
-    public readonly segNodeNum!: pulumi.Output<number>;
+    declare public readonly segNodeNum: pulumi.Output<number>;
     /**
      * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      */
-    public readonly segStorageType!: pulumi.Output<string>;
+    declare public readonly segStorageType: pulumi.Output<string>;
     /**
      * Instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
      */
-    public readonly storageSize!: pulumi.Output<number>;
+    declare public readonly storageSize: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ElasticInstance resource with the given unique name, arguments, and options.
@@ -185,68 +185,68 @@ export class ElasticInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElasticInstanceState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
-            resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
-            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
-            resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbInstanceCategory"] = state?.dbInstanceCategory;
+            resourceInputs["dbInstanceDescription"] = state?.dbInstanceDescription;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["instanceNetworkType"] = state?.instanceNetworkType;
+            resourceInputs["instanceSpec"] = state?.instanceSpec;
+            resourceInputs["paymentDuration"] = state?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = state?.paymentDurationUnit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
+            resourceInputs["segNodeNum"] = state?.segNodeNum;
+            resourceInputs["segStorageType"] = state?.segStorageType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSize"] = state?.storageSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ElasticInstanceArgs | undefined;
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.instanceSpec === undefined) && !opts.urn) {
+            if (args?.instanceSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceSpec'");
             }
-            if ((!args || args.segNodeNum === undefined) && !opts.urn) {
+            if (args?.segNodeNum === undefined && !opts.urn) {
                 throw new Error("Missing required property 'segNodeNum'");
             }
-            if ((!args || args.segStorageType === undefined) && !opts.urn) {
+            if (args?.segStorageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'segStorageType'");
             }
-            if ((!args || args.storageSize === undefined) && !opts.urn) {
+            if (args?.storageSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSize'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
-            resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
-            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
-            resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
-            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dbInstanceCategory"] = args?.dbInstanceCategory;
+            resourceInputs["dbInstanceDescription"] = args?.dbInstanceDescription;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["instanceNetworkType"] = args?.instanceNetworkType;
+            resourceInputs["instanceSpec"] = args?.instanceSpec;
+            resourceInputs["paymentDuration"] = args?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = args?.paymentDurationUnit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["securityIpLists"] = args?.securityIpLists;
+            resourceInputs["segNodeNum"] = args?.segNodeNum;
+            resourceInputs["segStorageType"] = args?.segStorageType;
+            resourceInputs["storageSize"] = args?.storageSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

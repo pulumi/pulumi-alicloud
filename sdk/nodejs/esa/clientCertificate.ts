@@ -69,31 +69,31 @@ export class ClientCertificate extends pulumi.CustomResource {
     /**
      * ClientCertificate Id
      */
-    public /*out*/ readonly clientCertId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientCertId: pulumi.Output<string>;
     /**
      * The time when the certificate was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Certificate signing request content.
      */
-    public readonly csr!: pulumi.Output<string | undefined>;
+    declare public readonly csr: pulumi.Output<string | undefined>;
     /**
      * The private key algorithm type.
      */
-    public readonly pkeyType!: pulumi.Output<string | undefined>;
+    declare public readonly pkeyType: pulumi.Output<string | undefined>;
     /**
      * Site Id
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Certificate validity period.
      */
-    public readonly validityDays!: pulumi.Output<string>;
+    declare public readonly validityDays: pulumi.Output<string>;
 
     /**
      * Create a ClientCertificate resource with the given unique name, arguments, and options.
@@ -108,26 +108,26 @@ export class ClientCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientCertificateState | undefined;
-            resourceInputs["clientCertId"] = state ? state.clientCertId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["csr"] = state ? state.csr : undefined;
-            resourceInputs["pkeyType"] = state ? state.pkeyType : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["validityDays"] = state ? state.validityDays : undefined;
+            resourceInputs["clientCertId"] = state?.clientCertId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["csr"] = state?.csr;
+            resourceInputs["pkeyType"] = state?.pkeyType;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["validityDays"] = state?.validityDays;
         } else {
             const args = argsOrState as ClientCertificateArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.validityDays === undefined) && !opts.urn) {
+            if (args?.validityDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validityDays'");
             }
-            resourceInputs["csr"] = args ? args.csr : undefined;
-            resourceInputs["pkeyType"] = args ? args.pkeyType : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["validityDays"] = args ? args.validityDays : undefined;
+            resourceInputs["csr"] = args?.csr;
+            resourceInputs["pkeyType"] = args?.pkeyType;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["validityDays"] = args?.validityDays;
             resourceInputs["clientCertId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }

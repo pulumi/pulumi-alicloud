@@ -96,43 +96,43 @@ export class IpsecServer extends pulumi.CustomResource {
     /**
      * The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
      */
-    public readonly clientIpPool!: pulumi.Output<string>;
+    declare public readonly clientIpPool: pulumi.Output<string>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether you want the configuration to immediately take effect.
      */
-    public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
+    declare public readonly effectImmediately: pulumi.Output<boolean | undefined>;
     /**
      * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
-    public readonly ikeConfigs!: pulumi.Output<outputs.vpn.IpsecServerIkeConfig[]>;
+    declare public readonly ikeConfigs: pulumi.Output<outputs.vpn.IpsecServerIkeConfig[]>;
     /**
      * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
-    public readonly ipsecConfigs!: pulumi.Output<outputs.vpn.IpsecServerIpsecConfig[]>;
+    declare public readonly ipsecConfigs: pulumi.Output<outputs.vpn.IpsecServerIpsecConfig[]>;
     /**
      * The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
      */
-    public readonly ipsecServerName!: pulumi.Output<string | undefined>;
+    declare public readonly ipsecServerName: pulumi.Output<string | undefined>;
     /**
      * The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
      */
-    public readonly localSubnet!: pulumi.Output<string>;
+    declare public readonly localSubnet: pulumi.Output<string>;
     /**
      * The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
      */
-    public readonly psk!: pulumi.Output<string>;
+    declare public readonly psk: pulumi.Output<string>;
     /**
      * Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
      */
-    public readonly pskEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly pskEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the VPN gateway.
      */
-    public readonly vpnGatewayId!: pulumi.Output<string>;
+    declare public readonly vpnGatewayId: pulumi.Output<string>;
 
     /**
      * Create a IpsecServer resource with the given unique name, arguments, and options.
@@ -147,37 +147,37 @@ export class IpsecServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpsecServerState | undefined;
-            resourceInputs["clientIpPool"] = state ? state.clientIpPool : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
-            resourceInputs["ikeConfigs"] = state ? state.ikeConfigs : undefined;
-            resourceInputs["ipsecConfigs"] = state ? state.ipsecConfigs : undefined;
-            resourceInputs["ipsecServerName"] = state ? state.ipsecServerName : undefined;
-            resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
-            resourceInputs["psk"] = state ? state.psk : undefined;
-            resourceInputs["pskEnabled"] = state ? state.pskEnabled : undefined;
-            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["clientIpPool"] = state?.clientIpPool;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["effectImmediately"] = state?.effectImmediately;
+            resourceInputs["ikeConfigs"] = state?.ikeConfigs;
+            resourceInputs["ipsecConfigs"] = state?.ipsecConfigs;
+            resourceInputs["ipsecServerName"] = state?.ipsecServerName;
+            resourceInputs["localSubnet"] = state?.localSubnet;
+            resourceInputs["psk"] = state?.psk;
+            resourceInputs["pskEnabled"] = state?.pskEnabled;
+            resourceInputs["vpnGatewayId"] = state?.vpnGatewayId;
         } else {
             const args = argsOrState as IpsecServerArgs | undefined;
-            if ((!args || args.clientIpPool === undefined) && !opts.urn) {
+            if (args?.clientIpPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientIpPool'");
             }
-            if ((!args || args.localSubnet === undefined) && !opts.urn) {
+            if (args?.localSubnet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localSubnet'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
+            if (args?.vpnGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            resourceInputs["clientIpPool"] = args ? args.clientIpPool : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
-            resourceInputs["ikeConfigs"] = args ? args.ikeConfigs : undefined;
-            resourceInputs["ipsecConfigs"] = args ? args.ipsecConfigs : undefined;
-            resourceInputs["ipsecServerName"] = args ? args.ipsecServerName : undefined;
-            resourceInputs["localSubnet"] = args ? args.localSubnet : undefined;
-            resourceInputs["psk"] = args ? args.psk : undefined;
-            resourceInputs["pskEnabled"] = args ? args.pskEnabled : undefined;
-            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["clientIpPool"] = args?.clientIpPool;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["effectImmediately"] = args?.effectImmediately;
+            resourceInputs["ikeConfigs"] = args?.ikeConfigs;
+            resourceInputs["ipsecConfigs"] = args?.ipsecConfigs;
+            resourceInputs["ipsecServerName"] = args?.ipsecServerName;
+            resourceInputs["localSubnet"] = args?.localSubnet;
+            resourceInputs["psk"] = args?.psk;
+            resourceInputs["pskEnabled"] = args?.pskEnabled;
+            resourceInputs["vpnGatewayId"] = args?.vpnGatewayId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpsecServer.__pulumiType, name, resourceInputs, opts);

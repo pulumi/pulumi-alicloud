@@ -56,47 +56,47 @@ export class QosPolicy extends pulumi.CustomResource {
     /**
      * The description of the QoS policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination CIDR block.
      */
-    public readonly destCidr!: pulumi.Output<string>;
+    declare public readonly destCidr: pulumi.Output<string>;
     /**
      * The destination port range.
      */
-    public readonly destPortRange!: pulumi.Output<string>;
+    declare public readonly destPortRange: pulumi.Output<string>;
     /**
      * The expiration time of the quintuple rule.
      */
-    public readonly endTime!: pulumi.Output<string | undefined>;
+    declare public readonly endTime: pulumi.Output<string | undefined>;
     /**
      * The transport layer protocol.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * The name of the QoS policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The instance ID of the QoS policy to which the quintuple rule is created.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
     /**
      * The source CIDR block.
      */
-    public readonly sourceCidr!: pulumi.Output<string>;
+    declare public readonly sourceCidr: pulumi.Output<string>;
     /**
      * The source port range of the transport layer.
      */
-    public readonly sourcePortRange!: pulumi.Output<string>;
+    declare public readonly sourcePortRange: pulumi.Output<string>;
     /**
      * The time when the quintuple rule takes effect.
      */
-    public readonly startTime!: pulumi.Output<string | undefined>;
+    declare public readonly startTime: pulumi.Output<string | undefined>;
 
     /**
      * Create a QosPolicy resource with the given unique name, arguments, and options.
@@ -114,51 +114,51 @@ export class QosPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosPolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destCidr"] = state ? state.destCidr : undefined;
-            resourceInputs["destPortRange"] = state ? state.destPortRange : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
-            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            resourceInputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destCidr"] = state?.destCidr;
+            resourceInputs["destPortRange"] = state?.destPortRange;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["qosId"] = state?.qosId;
+            resourceInputs["sourceCidr"] = state?.sourceCidr;
+            resourceInputs["sourcePortRange"] = state?.sourcePortRange;
+            resourceInputs["startTime"] = state?.startTime;
         } else {
             const args = argsOrState as QosPolicyArgs | undefined;
-            if ((!args || args.destCidr === undefined) && !opts.urn) {
+            if (args?.destCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destCidr'");
             }
-            if ((!args || args.destPortRange === undefined) && !opts.urn) {
+            if (args?.destPortRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destPortRange'");
             }
-            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
+            if (args?.ipProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            if ((!args || args.sourceCidr === undefined) && !opts.urn) {
+            if (args?.sourceCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidr'");
             }
-            if ((!args || args.sourcePortRange === undefined) && !opts.urn) {
+            if (args?.sourcePortRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destCidr"] = args ? args.destCidr : undefined;
-            resourceInputs["destPortRange"] = args ? args.destPortRange : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
-            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            resourceInputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destCidr"] = args?.destCidr;
+            resourceInputs["destPortRange"] = args?.destPortRange;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["qosId"] = args?.qosId;
+            resourceInputs["sourceCidr"] = args?.sourceCidr;
+            resourceInputs["sourcePortRange"] = args?.sourcePortRange;
+            resourceInputs["startTime"] = args?.startTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QosPolicy.__pulumiType, name, resourceInputs, opts);

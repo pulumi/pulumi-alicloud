@@ -79,78 +79,78 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of multi account. It will be ignored when `cfwAccount = false`.
      */
-    public readonly accountNumber!: pulumi.Output<number | undefined>;
+    declare public readonly accountNumber: pulumi.Output<number | undefined>;
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    public readonly bandWidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandWidth: pulumi.Output<number | undefined>;
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
      */
-    public readonly cfwAccount!: pulumi.Output<boolean | undefined>;
+    declare public readonly cfwAccount: pulumi.Output<boolean | undefined>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
-    public readonly cfwLog!: pulumi.Output<boolean | undefined>;
+    declare public readonly cfwLog: pulumi.Output<boolean | undefined>;
     /**
      * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
-    public readonly cfwLogStorage!: pulumi.Output<number | undefined>;
+    declare public readonly cfwLogStorage: pulumi.Output<number | undefined>;
     /**
      * The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The end time.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
-    public readonly fwVpcNumber!: pulumi.Output<number>;
+    declare public readonly fwVpcNumber: pulumi.Output<number>;
     /**
      * The number of assets.
      */
-    public readonly instanceCount!: pulumi.Output<number | undefined>;
+    declare public readonly instanceCount: pulumi.Output<number | undefined>;
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    public readonly ipNumber!: pulumi.Output<number>;
+    declare public readonly ipNumber: pulumi.Output<number>;
     /**
      * The logistics.
      */
-    public readonly logistics!: pulumi.Output<string | undefined>;
+    declare public readonly logistics: pulumi.Output<string | undefined>;
     /**
      * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The release time.
      */
-    public /*out*/ readonly releaseTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly releaseTime: pulumi.Output<string>;
     /**
      * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
-    public readonly renewPeriod!: pulumi.Output<number>;
+    declare public readonly renewPeriod: pulumi.Output<number>;
     /**
      * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
      * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
-    public readonly renewalDuration!: pulumi.Output<number>;
+    declare public readonly renewalDuration: pulumi.Output<number>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
-    public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly renewalDurationUnit: pulumi.Output<string | undefined>;
     /**
      * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
@@ -158,19 +158,19 @@ export class Instance extends pulumi.CustomResource {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    public readonly spec!: pulumi.Output<string>;
+    declare public readonly spec: pulumi.Output<string>;
     /**
      * The status of Cloud Firewall Instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * (Available since v1.232.0) The user status of Cloud Firewall Instance.
      */
-    public /*out*/ readonly userStatus!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly userStatus: pulumi.Output<boolean>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -185,50 +185,50 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accountNumber"] = state ? state.accountNumber : undefined;
-            resourceInputs["bandWidth"] = state ? state.bandWidth : undefined;
-            resourceInputs["cfwAccount"] = state ? state.cfwAccount : undefined;
-            resourceInputs["cfwLog"] = state ? state.cfwLog : undefined;
-            resourceInputs["cfwLogStorage"] = state ? state.cfwLogStorage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["fwVpcNumber"] = state ? state.fwVpcNumber : undefined;
-            resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
-            resourceInputs["ipNumber"] = state ? state.ipNumber : undefined;
-            resourceInputs["logistics"] = state ? state.logistics : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["releaseTime"] = state ? state.releaseTime : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalDuration"] = state ? state.renewalDuration : undefined;
-            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userStatus"] = state ? state.userStatus : undefined;
+            resourceInputs["accountNumber"] = state?.accountNumber;
+            resourceInputs["bandWidth"] = state?.bandWidth;
+            resourceInputs["cfwAccount"] = state?.cfwAccount;
+            resourceInputs["cfwLog"] = state?.cfwLog;
+            resourceInputs["cfwLogStorage"] = state?.cfwLogStorage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["fwVpcNumber"] = state?.fwVpcNumber;
+            resourceInputs["instanceCount"] = state?.instanceCount;
+            resourceInputs["ipNumber"] = state?.ipNumber;
+            resourceInputs["logistics"] = state?.logistics;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["releaseTime"] = state?.releaseTime;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalDuration"] = state?.renewalDuration;
+            resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userStatus"] = state?.userStatus;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["accountNumber"] = args ? args.accountNumber : undefined;
-            resourceInputs["bandWidth"] = args ? args.bandWidth : undefined;
-            resourceInputs["cfwAccount"] = args ? args.cfwAccount : undefined;
-            resourceInputs["cfwLog"] = args ? args.cfwLog : undefined;
-            resourceInputs["cfwLogStorage"] = args ? args.cfwLogStorage : undefined;
-            resourceInputs["fwVpcNumber"] = args ? args.fwVpcNumber : undefined;
-            resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
-            resourceInputs["ipNumber"] = args ? args.ipNumber : undefined;
-            resourceInputs["logistics"] = args ? args.logistics : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalDuration"] = args ? args.renewalDuration : undefined;
-            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["accountNumber"] = args?.accountNumber;
+            resourceInputs["bandWidth"] = args?.bandWidth;
+            resourceInputs["cfwAccount"] = args?.cfwAccount;
+            resourceInputs["cfwLog"] = args?.cfwLog;
+            resourceInputs["cfwLogStorage"] = args?.cfwLogStorage;
+            resourceInputs["fwVpcNumber"] = args?.fwVpcNumber;
+            resourceInputs["instanceCount"] = args?.instanceCount;
+            resourceInputs["ipNumber"] = args?.ipNumber;
+            resourceInputs["logistics"] = args?.logistics;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalDuration"] = args?.renewalDuration;
+            resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["releaseTime"] = undefined /*out*/;

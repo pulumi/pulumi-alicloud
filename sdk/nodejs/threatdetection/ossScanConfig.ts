@@ -112,39 +112,39 @@ export class OssScanConfig extends pulumi.CustomResource {
     /**
      * Match all prefixes.
      */
-    public readonly allKeyPrefix!: pulumi.Output<boolean>;
+    declare public readonly allKeyPrefix: pulumi.Output<boolean>;
     /**
      * Bucket List.
      */
-    public readonly bucketNameLists!: pulumi.Output<string[]>;
+    declare public readonly bucketNameLists: pulumi.Output<string[]>;
     /**
      * Enable configuration.
      */
-    public readonly enable!: pulumi.Output<number>;
+    declare public readonly enable: pulumi.Output<number>;
     /**
      * End time, hours, minutes and seconds.
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * File prefix list.
      */
-    public readonly keyPrefixLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly keyPrefixLists: pulumi.Output<string[] | undefined>;
     /**
      * File Suffix List.
      */
-    public readonly keySuffixLists!: pulumi.Output<string[]>;
+    declare public readonly keySuffixLists: pulumi.Output<string[]>;
     /**
      * Configuration Name.
      */
-    public readonly ossScanConfigName!: pulumi.Output<string | undefined>;
+    declare public readonly ossScanConfigName: pulumi.Output<string | undefined>;
     /**
      * Scan cycle.
      */
-    public readonly scanDayLists!: pulumi.Output<number[]>;
+    declare public readonly scanDayLists: pulumi.Output<number[]>;
     /**
      * Start time, hours, minutes and seconds.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
 
     /**
      * Create a OssScanConfig resource with the given unique name, arguments, and options.
@@ -159,44 +159,44 @@ export class OssScanConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssScanConfigState | undefined;
-            resourceInputs["allKeyPrefix"] = state ? state.allKeyPrefix : undefined;
-            resourceInputs["bucketNameLists"] = state ? state.bucketNameLists : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["keyPrefixLists"] = state ? state.keyPrefixLists : undefined;
-            resourceInputs["keySuffixLists"] = state ? state.keySuffixLists : undefined;
-            resourceInputs["ossScanConfigName"] = state ? state.ossScanConfigName : undefined;
-            resourceInputs["scanDayLists"] = state ? state.scanDayLists : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["allKeyPrefix"] = state?.allKeyPrefix;
+            resourceInputs["bucketNameLists"] = state?.bucketNameLists;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["keyPrefixLists"] = state?.keyPrefixLists;
+            resourceInputs["keySuffixLists"] = state?.keySuffixLists;
+            resourceInputs["ossScanConfigName"] = state?.ossScanConfigName;
+            resourceInputs["scanDayLists"] = state?.scanDayLists;
+            resourceInputs["startTime"] = state?.startTime;
         } else {
             const args = argsOrState as OssScanConfigArgs | undefined;
-            if ((!args || args.bucketNameLists === undefined) && !opts.urn) {
+            if (args?.bucketNameLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketNameLists'");
             }
-            if ((!args || args.enable === undefined) && !opts.urn) {
+            if (args?.enable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            if ((!args || args.endTime === undefined) && !opts.urn) {
+            if (args?.endTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endTime'");
             }
-            if ((!args || args.keySuffixLists === undefined) && !opts.urn) {
+            if (args?.keySuffixLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keySuffixLists'");
             }
-            if ((!args || args.scanDayLists === undefined) && !opts.urn) {
+            if (args?.scanDayLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scanDayLists'");
             }
-            if ((!args || args.startTime === undefined) && !opts.urn) {
+            if (args?.startTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            resourceInputs["allKeyPrefix"] = args ? args.allKeyPrefix : undefined;
-            resourceInputs["bucketNameLists"] = args ? args.bucketNameLists : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["keyPrefixLists"] = args ? args.keyPrefixLists : undefined;
-            resourceInputs["keySuffixLists"] = args ? args.keySuffixLists : undefined;
-            resourceInputs["ossScanConfigName"] = args ? args.ossScanConfigName : undefined;
-            resourceInputs["scanDayLists"] = args ? args.scanDayLists : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["allKeyPrefix"] = args?.allKeyPrefix;
+            resourceInputs["bucketNameLists"] = args?.bucketNameLists;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["keyPrefixLists"] = args?.keyPrefixLists;
+            resourceInputs["keySuffixLists"] = args?.keySuffixLists;
+            resourceInputs["ossScanConfigName"] = args?.ossScanConfigName;
+            resourceInputs["scanDayLists"] = args?.scanDayLists;
+            resourceInputs["startTime"] = args?.startTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OssScanConfig.__pulumiType, name, resourceInputs, opts);

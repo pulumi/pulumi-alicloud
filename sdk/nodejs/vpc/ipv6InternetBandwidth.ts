@@ -116,23 +116,23 @@ export class Ipv6InternetBandwidth extends pulumi.CustomResource {
     /**
      * The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internetChargeType` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
      */
-    public readonly internetChargeType!: pulumi.Output<string>;
+    declare public readonly internetChargeType: pulumi.Output<string>;
     /**
      * The ID of the IPv6 address instance.
      */
-    public readonly ipv6AddressId!: pulumi.Output<string>;
+    declare public readonly ipv6AddressId: pulumi.Output<string>;
     /**
      * The ID of the IPv6 gateway to which the IPv6 address belongs.
      */
-    public readonly ipv6GatewayId!: pulumi.Output<string>;
+    declare public readonly ipv6GatewayId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Ipv6InternetBandwidth resource with the given unique name, arguments, and options.
@@ -147,26 +147,26 @@ export class Ipv6InternetBandwidth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6InternetBandwidthState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["ipv6AddressId"] = state ? state.ipv6AddressId : undefined;
-            resourceInputs["ipv6GatewayId"] = state ? state.ipv6GatewayId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["ipv6AddressId"] = state?.ipv6AddressId;
+            resourceInputs["ipv6GatewayId"] = state?.ipv6GatewayId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as Ipv6InternetBandwidthArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.ipv6AddressId === undefined) && !opts.urn) {
+            if (args?.ipv6AddressId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipv6AddressId'");
             }
-            if ((!args || args.ipv6GatewayId === undefined) && !opts.urn) {
+            if (args?.ipv6GatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipv6GatewayId'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["ipv6AddressId"] = args ? args.ipv6AddressId : undefined;
-            resourceInputs["ipv6GatewayId"] = args ? args.ipv6GatewayId : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["ipv6AddressId"] = args?.ipv6AddressId;
+            resourceInputs["ipv6GatewayId"] = args?.ipv6GatewayId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

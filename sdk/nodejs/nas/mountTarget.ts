@@ -97,7 +97,7 @@ export class MountTarget extends pulumi.CustomResource {
     /**
      * The name of the permission group.
      */
-    public readonly accessGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly accessGroupName: pulumi.Output<string | undefined>;
     /**
      * Whether to create an IPv6 mount point.
      *
@@ -107,35 +107,35 @@ export class MountTarget extends pulumi.CustomResource {
      *
      * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
      */
-    public readonly dualStack!: pulumi.Output<boolean | undefined>;
+    declare public readonly dualStack: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The domain name of the Mount point.
      */
-    public /*out*/ readonly mountTargetDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly mountTargetDomain: pulumi.Output<string>;
     /**
      * Network type.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The ID of the security group.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the switch.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a MountTarget resource with the given unique name, arguments, and options.
@@ -150,28 +150,28 @@ export class MountTarget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MountTargetState | undefined;
-            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            resourceInputs["dualStack"] = state ? state.dualStack : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessGroupName"] = state?.accessGroupName;
+            resourceInputs["dualStack"] = state?.dualStack;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["mountTargetDomain"] = state?.mountTargetDomain;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as MountTargetArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            resourceInputs["dualStack"] = args ? args.dualStack : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["accessGroupName"] = args?.accessGroupName;
+            resourceInputs["dualStack"] = args?.dualStack;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["mountTargetDomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

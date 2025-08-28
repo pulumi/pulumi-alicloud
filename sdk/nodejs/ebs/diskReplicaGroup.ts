@@ -79,25 +79,25 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
     /**
      * The description of the consistent replication group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the region to which the disaster recovery site belongs.
      */
-    public readonly destinationRegionId!: pulumi.Output<string>;
+    declare public readonly destinationRegionId: pulumi.Output<string>;
     /**
      * The ID of the zone to which the disaster recovery site belongs.
      */
-    public readonly destinationZoneId!: pulumi.Output<string>;
+    declare public readonly destinationZoneId: pulumi.Output<string>;
     /**
      * Consistent replication group name.
      */
-    public readonly diskReplicaGroupName!: pulumi.Output<string>;
+    declare public readonly diskReplicaGroupName: pulumi.Output<string>;
     /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *
      * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * Whether to synchronize immediately. Value range:
      * - true: Start data synchronization immediately.
@@ -105,31 +105,31 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
      *
      * Default value: false.
      */
-    public readonly oneShot!: pulumi.Output<boolean | undefined>;
+    declare public readonly oneShot: pulumi.Output<boolean | undefined>;
     /**
      * List of replication pair IDs contained in a consistent replication group.
      */
-    public readonly pairIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly pairIds: pulumi.Output<string[] | undefined>;
     /**
      * resource group ID of enterprise
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
      */
-    public readonly reverseReplicate!: pulumi.Output<boolean | undefined>;
+    declare public readonly reverseReplicate: pulumi.Output<boolean | undefined>;
     /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
-    public readonly rpo!: pulumi.Output<number | undefined>;
+    declare public readonly rpo: pulumi.Output<number | undefined>;
     /**
      * The ID of the region to which the production site belongs.
      */
-    public readonly sourceRegionId!: pulumi.Output<string>;
+    declare public readonly sourceRegionId: pulumi.Output<string>;
     /**
      * The ID of the zone to which the production site belongs.
      */
-    public readonly sourceZoneId!: pulumi.Output<string>;
+    declare public readonly sourceZoneId: pulumi.Output<string>;
     /**
      * The status of the consistent replication group. Possible values:
      * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
@@ -151,13 +151,13 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
      * - delete_failed: delete failed.
      * - deleted: deleted.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DiskReplicaGroup resource with the given unique name, arguments, and options.
@@ -172,48 +172,48 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskReplicaGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationRegionId"] = state ? state.destinationRegionId : undefined;
-            resourceInputs["destinationZoneId"] = state ? state.destinationZoneId : undefined;
-            resourceInputs["diskReplicaGroupName"] = state ? state.diskReplicaGroupName : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["oneShot"] = state ? state.oneShot : undefined;
-            resourceInputs["pairIds"] = state ? state.pairIds : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["reverseReplicate"] = state ? state.reverseReplicate : undefined;
-            resourceInputs["rpo"] = state ? state.rpo : undefined;
-            resourceInputs["sourceRegionId"] = state ? state.sourceRegionId : undefined;
-            resourceInputs["sourceZoneId"] = state ? state.sourceZoneId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationRegionId"] = state?.destinationRegionId;
+            resourceInputs["destinationZoneId"] = state?.destinationZoneId;
+            resourceInputs["diskReplicaGroupName"] = state?.diskReplicaGroupName;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["oneShot"] = state?.oneShot;
+            resourceInputs["pairIds"] = state?.pairIds;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["reverseReplicate"] = state?.reverseReplicate;
+            resourceInputs["rpo"] = state?.rpo;
+            resourceInputs["sourceRegionId"] = state?.sourceRegionId;
+            resourceInputs["sourceZoneId"] = state?.sourceZoneId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DiskReplicaGroupArgs | undefined;
-            if ((!args || args.destinationRegionId === undefined) && !opts.urn) {
+            if (args?.destinationRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationRegionId'");
             }
-            if ((!args || args.destinationZoneId === undefined) && !opts.urn) {
+            if (args?.destinationZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationZoneId'");
             }
-            if ((!args || args.sourceRegionId === undefined) && !opts.urn) {
+            if (args?.sourceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
-            if ((!args || args.sourceZoneId === undefined) && !opts.urn) {
+            if (args?.sourceZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceZoneId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationRegionId"] = args ? args.destinationRegionId : undefined;
-            resourceInputs["destinationZoneId"] = args ? args.destinationZoneId : undefined;
-            resourceInputs["diskReplicaGroupName"] = args ? args.diskReplicaGroupName : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["oneShot"] = args ? args.oneShot : undefined;
-            resourceInputs["pairIds"] = args ? args.pairIds : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["reverseReplicate"] = args ? args.reverseReplicate : undefined;
-            resourceInputs["rpo"] = args ? args.rpo : undefined;
-            resourceInputs["sourceRegionId"] = args ? args.sourceRegionId : undefined;
-            resourceInputs["sourceZoneId"] = args ? args.sourceZoneId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationRegionId"] = args?.destinationRegionId;
+            resourceInputs["destinationZoneId"] = args?.destinationZoneId;
+            resourceInputs["diskReplicaGroupName"] = args?.diskReplicaGroupName;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["oneShot"] = args?.oneShot;
+            resourceInputs["pairIds"] = args?.pairIds;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["reverseReplicate"] = args?.reverseReplicate;
+            resourceInputs["rpo"] = args?.rpo;
+            resourceInputs["sourceRegionId"] = args?.sourceRegionId;
+            resourceInputs["sourceZoneId"] = args?.sourceZoneId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DiskReplicaGroup.__pulumiType, name, resourceInputs, opts);

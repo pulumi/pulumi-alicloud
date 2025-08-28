@@ -50,23 +50,23 @@ export class WorkspaceRun extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource attribute field of the experiment ID to which Run belongs
      */
-    public readonly experimentId!: pulumi.Output<string>;
+    declare public readonly experimentId: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly runName!: pulumi.Output<string | undefined>;
+    declare public readonly runName: pulumi.Output<string | undefined>;
     /**
      * Attribute Resource field representing the source task ID
      */
-    public readonly sourceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceId: pulumi.Output<string | undefined>;
     /**
      * Resource attribute fields representing the source type
      */
-    public readonly sourceType!: pulumi.Output<string | undefined>;
+    declare public readonly sourceType: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkspaceRun resource with the given unique name, arguments, and options.
@@ -81,20 +81,20 @@ export class WorkspaceRun extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceRunState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["experimentId"] = state ? state.experimentId : undefined;
-            resourceInputs["runName"] = state ? state.runName : undefined;
-            resourceInputs["sourceId"] = state ? state.sourceId : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["experimentId"] = state?.experimentId;
+            resourceInputs["runName"] = state?.runName;
+            resourceInputs["sourceId"] = state?.sourceId;
+            resourceInputs["sourceType"] = state?.sourceType;
         } else {
             const args = argsOrState as WorkspaceRunArgs | undefined;
-            if ((!args || args.experimentId === undefined) && !opts.urn) {
+            if (args?.experimentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'experimentId'");
             }
-            resourceInputs["experimentId"] = args ? args.experimentId : undefined;
-            resourceInputs["runName"] = args ? args.runName : undefined;
-            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
+            resourceInputs["experimentId"] = args?.experimentId;
+            resourceInputs["runName"] = args?.runName;
+            resourceInputs["sourceId"] = args?.sourceId;
+            resourceInputs["sourceType"] = args?.sourceType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

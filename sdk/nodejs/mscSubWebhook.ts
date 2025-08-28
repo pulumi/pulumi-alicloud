@@ -48,11 +48,11 @@ export class MscSubWebhook extends pulumi.CustomResource {
     /**
      * The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
      */
-    public readonly serverUrl!: pulumi.Output<string>;
+    declare public readonly serverUrl: pulumi.Output<string>;
     /**
      * The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
      */
-    public readonly webhookName!: pulumi.Output<string>;
+    declare public readonly webhookName: pulumi.Output<string>;
 
     /**
      * Create a MscSubWebhook resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class MscSubWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubWebhookState | undefined;
-            resourceInputs["serverUrl"] = state ? state.serverUrl : undefined;
-            resourceInputs["webhookName"] = state ? state.webhookName : undefined;
+            resourceInputs["serverUrl"] = state?.serverUrl;
+            resourceInputs["webhookName"] = state?.webhookName;
         } else {
             const args = argsOrState as MscSubWebhookArgs | undefined;
-            if ((!args || args.serverUrl === undefined) && !opts.urn) {
+            if (args?.serverUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverUrl'");
             }
-            if ((!args || args.webhookName === undefined) && !opts.urn) {
+            if (args?.webhookName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'webhookName'");
             }
-            resourceInputs["serverUrl"] = args ? args.serverUrl : undefined;
-            resourceInputs["webhookName"] = args ? args.webhookName : undefined;
+            resourceInputs["serverUrl"] = args?.serverUrl;
+            resourceInputs["webhookName"] = args?.webhookName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MscSubWebhook.__pulumiType, name, resourceInputs, opts);

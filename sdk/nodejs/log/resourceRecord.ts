@@ -104,19 +104,19 @@ export class ResourceRecord extends pulumi.CustomResource {
     /**
      * The record's id, should be unique.
      */
-    public readonly recordId!: pulumi.Output<string>;
+    declare public readonly recordId: pulumi.Output<string>;
     /**
      * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    declare public readonly resourceName: pulumi.Output<string>;
     /**
      * The record's tag, can be used for search.
      */
-    public readonly tag!: pulumi.Output<string>;
+    declare public readonly tag: pulumi.Output<string>;
     /**
      * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ResourceRecord resource with the given unique name, arguments, and options.
@@ -131,28 +131,28 @@ export class ResourceRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceRecordState | undefined;
-            resourceInputs["recordId"] = state ? state.recordId : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["recordId"] = state?.recordId;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ResourceRecordArgs | undefined;
-            if ((!args || args.recordId === undefined) && !opts.urn) {
+            if (args?.recordId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordId'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            if ((!args || args.tag === undefined) && !opts.urn) {
+            if (args?.tag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tag'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["recordId"] = args ? args.recordId : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["recordId"] = args?.recordId;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceRecord.__pulumiType, name, resourceInputs, opts);

@@ -153,134 +153,134 @@ export class ContainerGroup extends pulumi.CustomResource {
     /**
      * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
-    public readonly acrRegistryInfos!: pulumi.Output<outputs.eci.ContainerGroupAcrRegistryInfo[] | undefined>;
+    declare public readonly acrRegistryInfos: pulumi.Output<outputs.eci.ContainerGroupAcrRegistryInfo[] | undefined>;
     /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
-    public readonly autoCreateEip!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoCreateEip: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
-    public readonly autoMatchImageCache!: pulumi.Output<boolean>;
+    declare public readonly autoMatchImageCache: pulumi.Output<boolean>;
     /**
      * The name of the container group.
      */
-    public readonly containerGroupName!: pulumi.Output<string>;
+    declare public readonly containerGroupName: pulumi.Output<string>;
     /**
      * The list of containers. See `containers` below.
      */
-    public readonly containers!: pulumi.Output<outputs.eci.ContainerGroupContainer[]>;
+    declare public readonly containers: pulumi.Output<outputs.eci.ContainerGroupContainer[]>;
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    public readonly cpu!: pulumi.Output<number>;
+    declare public readonly cpu: pulumi.Output<number>;
     /**
      * The structure of dnsConfig. See `dnsConfig` below.
      */
-    public readonly dnsConfig!: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
+    declare public readonly dnsConfig: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
      * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
      */
-    public readonly dnsPolicy!: pulumi.Output<string>;
+    declare public readonly dnsPolicy: pulumi.Output<string>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */
-    public readonly eipBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly eipBandwidth: pulumi.Output<number | undefined>;
     /**
      * The ID of the elastic IP address (EIP).
      */
-    public readonly eipInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly eipInstanceId: pulumi.Output<string | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    public readonly hostAliases!: pulumi.Output<outputs.eci.ContainerGroupHostAlias[] | undefined>;
+    declare public readonly hostAliases: pulumi.Output<outputs.eci.ContainerGroupHostAlias[] | undefined>;
     /**
      * The image registry credential. See `imageRegistryCredential` below.
      */
-    public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.ContainerGroupImageRegistryCredential[] | undefined>;
+    declare public readonly imageRegistryCredentials: pulumi.Output<outputs.eci.ContainerGroupImageRegistryCredential[] | undefined>;
     /**
      * The list of initContainers. See `initContainers` below.
      */
-    public readonly initContainers!: pulumi.Output<outputs.eci.ContainerGroupInitContainer[] | undefined>;
+    declare public readonly initContainers: pulumi.Output<outputs.eci.ContainerGroupInitContainer[] | undefined>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
      */
-    public readonly insecureRegistry!: pulumi.Output<string | undefined>;
+    declare public readonly insecureRegistry: pulumi.Output<string | undefined>;
     /**
      * The type of the ECS instance.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * (Available since v1.170.0) The Public IP of the container group.
      */
-    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly internetIp: pulumi.Output<string>;
     /**
      * (Available since v1.170.0) The Private IP of the container group.
      */
-    public /*out*/ readonly intranetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly intranetIp: pulumi.Output<string>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    public readonly memory!: pulumi.Output<number>;
+    declare public readonly memory: pulumi.Output<number>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
      */
-    public readonly plainHttpRegistry!: pulumi.Output<string | undefined>;
+    declare public readonly plainHttpRegistry: pulumi.Output<string | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    public readonly ramRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly ramRoleName: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
-    public readonly restartPolicy!: pulumi.Output<string>;
+    declare public readonly restartPolicy: pulumi.Output<string>;
     /**
      * The security context of the container group. See `securityContext` below.
      */
-    public readonly securityContext!: pulumi.Output<outputs.eci.ContainerGroupSecurityContext | undefined>;
+    declare public readonly securityContext: pulumi.Output<outputs.eci.ContainerGroupSecurityContext | undefined>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The maximum hourly price of the ECI spot instance.
      */
-    public readonly spotPriceLimit!: pulumi.Output<number>;
+    declare public readonly spotPriceLimit: pulumi.Output<number>;
     /**
      * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    public readonly spotStrategy!: pulumi.Output<string>;
+    declare public readonly spotStrategy: pulumi.Output<string>;
     /**
      * The status of container group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The buffer time during which the program handles operations before the program stops. Unit: seconds.
      */
-    public readonly terminationGracePeriodSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly terminationGracePeriodSeconds: pulumi.Output<number | undefined>;
     /**
      * The list of volumes. See `volumes` below.
      */
-    public readonly volumes!: pulumi.Output<outputs.eci.ContainerGroupVolume[] | undefined>;
+    declare public readonly volumes: pulumi.Output<outputs.eci.ContainerGroupVolume[] | undefined>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
      * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ContainerGroup resource with the given unique name, arguments, and options.
@@ -295,81 +295,81 @@ export class ContainerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerGroupState | undefined;
-            resourceInputs["acrRegistryInfos"] = state ? state.acrRegistryInfos : undefined;
-            resourceInputs["autoCreateEip"] = state ? state.autoCreateEip : undefined;
-            resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
-            resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
-            resourceInputs["containers"] = state ? state.containers : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
-            resourceInputs["dnsPolicy"] = state ? state.dnsPolicy : undefined;
-            resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
-            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
-            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            resourceInputs["initContainers"] = state ? state.initContainers : undefined;
-            resourceInputs["insecureRegistry"] = state ? state.insecureRegistry : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["intranetIp"] = state ? state.intranetIp : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["plainHttpRegistry"] = state ? state.plainHttpRegistry : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
-            resourceInputs["securityContext"] = state ? state.securityContext : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
-            resourceInputs["volumes"] = state ? state.volumes : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["acrRegistryInfos"] = state?.acrRegistryInfos;
+            resourceInputs["autoCreateEip"] = state?.autoCreateEip;
+            resourceInputs["autoMatchImageCache"] = state?.autoMatchImageCache;
+            resourceInputs["containerGroupName"] = state?.containerGroupName;
+            resourceInputs["containers"] = state?.containers;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["dnsConfig"] = state?.dnsConfig;
+            resourceInputs["dnsPolicy"] = state?.dnsPolicy;
+            resourceInputs["eipBandwidth"] = state?.eipBandwidth;
+            resourceInputs["eipInstanceId"] = state?.eipInstanceId;
+            resourceInputs["hostAliases"] = state?.hostAliases;
+            resourceInputs["imageRegistryCredentials"] = state?.imageRegistryCredentials;
+            resourceInputs["initContainers"] = state?.initContainers;
+            resourceInputs["insecureRegistry"] = state?.insecureRegistry;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["intranetIp"] = state?.intranetIp;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["plainHttpRegistry"] = state?.plainHttpRegistry;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restartPolicy"] = state?.restartPolicy;
+            resourceInputs["securityContext"] = state?.securityContext;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["spotPriceLimit"] = state?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = state?.terminationGracePeriodSeconds;
+            resourceInputs["volumes"] = state?.volumes;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ContainerGroupArgs | undefined;
-            if ((!args || args.containerGroupName === undefined) && !opts.urn) {
+            if (args?.containerGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containerGroupName'");
             }
-            if ((!args || args.containers === undefined) && !opts.urn) {
+            if (args?.containers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containers'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["acrRegistryInfos"] = args ? args.acrRegistryInfos : undefined;
-            resourceInputs["autoCreateEip"] = args ? args.autoCreateEip : undefined;
-            resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
-            resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
-            resourceInputs["containers"] = args ? args.containers : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
-            resourceInputs["dnsPolicy"] = args ? args.dnsPolicy : undefined;
-            resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
-            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
-            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            resourceInputs["initContainers"] = args ? args.initContainers : undefined;
-            resourceInputs["insecureRegistry"] = args ? args.insecureRegistry : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["plainHttpRegistry"] = args ? args.plainHttpRegistry : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
-            resourceInputs["securityContext"] = args ? args.securityContext : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
-            resourceInputs["volumes"] = args ? args.volumes : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["acrRegistryInfos"] = args?.acrRegistryInfos;
+            resourceInputs["autoCreateEip"] = args?.autoCreateEip;
+            resourceInputs["autoMatchImageCache"] = args?.autoMatchImageCache;
+            resourceInputs["containerGroupName"] = args?.containerGroupName;
+            resourceInputs["containers"] = args?.containers;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["dnsConfig"] = args?.dnsConfig;
+            resourceInputs["dnsPolicy"] = args?.dnsPolicy;
+            resourceInputs["eipBandwidth"] = args?.eipBandwidth;
+            resourceInputs["eipInstanceId"] = args?.eipInstanceId;
+            resourceInputs["hostAliases"] = args?.hostAliases;
+            resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
+            resourceInputs["initContainers"] = args?.initContainers;
+            resourceInputs["insecureRegistry"] = args?.insecureRegistry;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["plainHttpRegistry"] = args?.plainHttpRegistry;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restartPolicy"] = args?.restartPolicy;
+            resourceInputs["securityContext"] = args?.securityContext;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["spotPriceLimit"] = args?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = args?.terminationGracePeriodSeconds;
+            resourceInputs["volumes"] = args?.volumes;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["internetIp"] = undefined /*out*/;
             resourceInputs["intranetIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -75,18 +75,18 @@ export class AccessControlList extends pulumi.CustomResource {
     /**
      * Access control list name.
      */
-    public readonly accessControlListName!: pulumi.Output<string>;
+    declare public readonly accessControlListName: pulumi.Output<string>;
     /**
      * Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
      * **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
      *
      * @deprecated Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
      */
-    public readonly aclEntrys!: pulumi.Output<outputs.apigateway.AccessControlListAclEntry[]>;
+    declare public readonly aclEntrys: pulumi.Output<outputs.apigateway.AccessControlListAclEntry[]>;
     /**
      * The IP version. Valid values: ipv4 and ipv6.
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
 
     /**
      * Create a AccessControlList resource with the given unique name, arguments, and options.
@@ -101,17 +101,17 @@ export class AccessControlList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessControlListState | undefined;
-            resourceInputs["accessControlListName"] = state ? state.accessControlListName : undefined;
-            resourceInputs["aclEntrys"] = state ? state.aclEntrys : undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
+            resourceInputs["accessControlListName"] = state?.accessControlListName;
+            resourceInputs["aclEntrys"] = state?.aclEntrys;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
         } else {
             const args = argsOrState as AccessControlListArgs | undefined;
-            if ((!args || args.accessControlListName === undefined) && !opts.urn) {
+            if (args?.accessControlListName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessControlListName'");
             }
-            resourceInputs["accessControlListName"] = args ? args.accessControlListName : undefined;
+            resourceInputs["accessControlListName"] = args?.accessControlListName;
             resourceInputs["aclEntrys"] = args?.aclEntrys ? pulumi.secret(args.aclEntrys) : undefined;
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["aclEntrys"] };

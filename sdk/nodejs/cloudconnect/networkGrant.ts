@@ -84,15 +84,15 @@ export class NetworkGrant extends pulumi.CustomResource {
     /**
      * The ID of the CCN instance.
      */
-    public readonly ccnId!: pulumi.Output<string>;
+    declare public readonly ccnId: pulumi.Output<string>;
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The ID of the account to which the CEN instance belongs.
      */
-    public readonly cenUid!: pulumi.Output<string>;
+    declare public readonly cenUid: pulumi.Output<string>;
 
     /**
      * Create a NetworkGrant resource with the given unique name, arguments, and options.
@@ -107,23 +107,23 @@ export class NetworkGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkGrantState | undefined;
-            resourceInputs["ccnId"] = state ? state.ccnId : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenUid"] = state ? state.cenUid : undefined;
+            resourceInputs["ccnId"] = state?.ccnId;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenUid"] = state?.cenUid;
         } else {
             const args = argsOrState as NetworkGrantArgs | undefined;
-            if ((!args || args.ccnId === undefined) && !opts.urn) {
+            if (args?.ccnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenUid === undefined) && !opts.urn) {
+            if (args?.cenUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenUid'");
             }
-            resourceInputs["ccnId"] = args ? args.ccnId : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenUid"] = args ? args.cenUid : undefined;
+            resourceInputs["ccnId"] = args?.ccnId;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenUid"] = args?.cenUid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkGrant.__pulumiType, name, resourceInputs, opts);

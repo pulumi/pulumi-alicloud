@@ -70,19 +70,19 @@ export class Model extends pulumi.CustomResource {
     /**
      * The description of the model.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The group of the model belongs to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The name of the model.
      */
-    public readonly modelName!: pulumi.Output<string>;
+    declare public readonly modelName: pulumi.Output<string>;
     /**
      * The schema of the model.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
 
     /**
      * Create a Model resource with the given unique name, arguments, and options.
@@ -97,25 +97,25 @@ export class Model extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ModelState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["modelName"] = state ? state.modelName : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["modelName"] = state?.modelName;
+            resourceInputs["schema"] = state?.schema;
         } else {
             const args = argsOrState as ModelArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.modelName === undefined) && !opts.urn) {
+            if (args?.modelName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelName'");
             }
-            if ((!args || args.schema === undefined) && !opts.urn) {
+            if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["modelName"] = args ? args.modelName : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["modelName"] = args?.modelName;
+            resourceInputs["schema"] = args?.schema;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Model.__pulumiType, name, resourceInputs, opts);

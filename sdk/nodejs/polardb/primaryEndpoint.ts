@@ -83,53 +83,53 @@ export class PrimaryEndpoint extends pulumi.CustomResource {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    public readonly connectionPrefix!: pulumi.Output<string>;
+    declare public readonly connectionPrefix: pulumi.Output<string>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The name of the endpoint.
      */
-    public readonly dbEndpointDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dbEndpointDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the cluster endpoint.
      */
-    public /*out*/ readonly dbEndpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbEndpointId: pulumi.Output<string>;
     /**
      * Type of endpoint.
      */
-    public /*out*/ readonly endpointType!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointType: pulumi.Output<string>;
     /**
      * The network type of the endpoint address.
      */
-    public readonly netType!: pulumi.Output<string | undefined>;
+    declare public readonly netType: pulumi.Output<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
-    public readonly sslAutoRotate!: pulumi.Output<string | undefined>;
+    declare public readonly sslAutoRotate: pulumi.Output<string | undefined>;
     /**
      * The specifies SSL certificate download link.
      */
-    public /*out*/ readonly sslCertificateUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslCertificateUrl: pulumi.Output<string>;
     /**
      * The SSL connection string.
      */
-    public /*out*/ readonly sslConnectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslConnectionString: pulumi.Output<string>;
     /**
      * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
      */
-    public readonly sslEnabled!: pulumi.Output<string | undefined>;
+    declare public readonly sslEnabled: pulumi.Output<string | undefined>;
     /**
      * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly sslExpireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslExpireTime: pulumi.Output<string>;
 
     /**
      * Create a PrimaryEndpoint resource with the given unique name, arguments, and options.
@@ -144,30 +144,30 @@ export class PrimaryEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrimaryEndpointState | undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["dbEndpointDescription"] = state ? state.dbEndpointDescription : undefined;
-            resourceInputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["netType"] = state ? state.netType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["sslAutoRotate"] = state ? state.sslAutoRotate : undefined;
-            resourceInputs["sslCertificateUrl"] = state ? state.sslCertificateUrl : undefined;
-            resourceInputs["sslConnectionString"] = state ? state.sslConnectionString : undefined;
-            resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
-            resourceInputs["sslExpireTime"] = state ? state.sslExpireTime : undefined;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dbEndpointDescription"] = state?.dbEndpointDescription;
+            resourceInputs["dbEndpointId"] = state?.dbEndpointId;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["netType"] = state?.netType;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["sslAutoRotate"] = state?.sslAutoRotate;
+            resourceInputs["sslCertificateUrl"] = state?.sslCertificateUrl;
+            resourceInputs["sslConnectionString"] = state?.sslConnectionString;
+            resourceInputs["sslEnabled"] = state?.sslEnabled;
+            resourceInputs["sslExpireTime"] = state?.sslExpireTime;
         } else {
             const args = argsOrState as PrimaryEndpointArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["dbEndpointDescription"] = args ? args.dbEndpointDescription : undefined;
-            resourceInputs["netType"] = args ? args.netType : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
-            resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["dbEndpointDescription"] = args?.dbEndpointDescription;
+            resourceInputs["netType"] = args?.netType;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["sslAutoRotate"] = args?.sslAutoRotate;
+            resourceInputs["sslEnabled"] = args?.sslEnabled;
             resourceInputs["dbEndpointId"] = undefined /*out*/;
             resourceInputs["endpointType"] = undefined /*out*/;
             resourceInputs["sslCertificateUrl"] = undefined /*out*/;

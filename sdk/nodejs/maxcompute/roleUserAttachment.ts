@@ -74,19 +74,19 @@ export class RoleUserAttachment extends pulumi.CustomResource {
     /**
      * Project Name
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Role Name, Valid Values: super_administrator, admin, Custom Role
      *
      * > **NOTE:** -- super_administrator: the built-in management role of MaxCompute. The Super Administrator of the project has the permission to operate all resources in the project and the management permission. Project owners or users with the Super_Administrator role can assign the Super_Administrator role to other users. -- admin: the built-in management role of MaxCompute, which has the permission to operate all resources in the project and some basic management permissions. Project owners can assign the Admin role to other users. -- Custom role: a role that is not built-in to MaxCompute and needs to be customized. You can refer to the role (starting with role_) definition in DataWorks.
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
     /**
      * Supported input: Alibaba Cloud account, RAM user, and RAM role
      *
      * > **NOTE:** -- Alibaba Cloud account: the account registered on the Alibaba Cloud official website. - RAM User: a user created by an Alibaba Cloud account to assist the Alibaba Cloud account to complete data processing. -- RAM role: a RAM role, like a RAM user, is a type of RAM identity. A RAM role is a virtual user that does not have a specific identity authentication key and needs to be played by a trusted entity user for normal use.
      */
-    public readonly user!: pulumi.Output<string>;
+    declare public readonly user: pulumi.Output<string>;
 
     /**
      * Create a RoleUserAttachment resource with the given unique name, arguments, and options.
@@ -101,20 +101,20 @@ export class RoleUserAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleUserAttachmentState | undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as RoleUserAttachmentArgs | undefined;
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.roleName === undefined) && !opts.urn) {
+            if (args?.roleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RoleUserAttachment.__pulumiType, name, resourceInputs, opts);

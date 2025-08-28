@@ -119,27 +119,27 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
     /**
      * The description of the backend server.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The port that is used by the backend server. Valid values: `1` to `65535`.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the server group.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a ServerGroupServerAttachment resource with the given unique name, arguments, and options.
@@ -154,29 +154,29 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupServerAttachmentState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ServerGroupServerAttachmentArgs | undefined;
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerGroupServerAttachment.__pulumiType, name, resourceInputs, opts);

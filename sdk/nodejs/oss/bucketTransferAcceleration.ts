@@ -44,11 +44,11 @@ export class BucketTransferAcceleration extends pulumi.CustomResource {
     /**
      * The name of the Bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a BucketTransferAcceleration resource with the given unique name, arguments, and options.
@@ -63,15 +63,15 @@ export class BucketTransferAcceleration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketTransferAccelerationState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["enabled"] = state?.enabled;
         } else {
             const args = argsOrState as BucketTransferAccelerationArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["enabled"] = args?.enabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketTransferAcceleration.__pulumiType, name, resourceInputs, opts);

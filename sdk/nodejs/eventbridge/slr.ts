@@ -32,7 +32,7 @@ export class Slr extends pulumi.CustomResource {
         return obj['__pulumiType'] === Slr.__pulumiType;
     }
 
-    public readonly productName!: pulumi.Output<string>;
+    declare public readonly productName: pulumi.Output<string>;
 
     /**
      * Create a Slr resource with the given unique name, arguments, and options.
@@ -47,13 +47,13 @@ export class Slr extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlrState | undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
+            resourceInputs["productName"] = state?.productName;
         } else {
             const args = argsOrState as SlrArgs | undefined;
-            if ((!args || args.productName === undefined) && !opts.urn) {
+            if (args?.productName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            resourceInputs["productName"] = args ? args.productName : undefined;
+            resourceInputs["productName"] = args?.productName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Slr.__pulumiType, name, resourceInputs, opts);

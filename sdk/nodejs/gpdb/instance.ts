@@ -94,69 +94,69 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * (Available since v1.196.0) The connection string of the instance.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
      */
-    public readonly createSampleData!: pulumi.Output<boolean>;
+    declare public readonly createSampleData: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
      */
-    public readonly dataShareStatus!: pulumi.Output<string>;
+    declare public readonly dataShareStatus: pulumi.Output<string>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
-    public readonly dbInstanceCategory!: pulumi.Output<string>;
+    declare public readonly dbInstanceCategory: pulumi.Output<string>;
     /**
      * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
-    public readonly dbInstanceClass!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceClass: pulumi.Output<string | undefined>;
     /**
      * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
      */
-    public readonly dbInstanceMode!: pulumi.Output<string>;
+    declare public readonly dbInstanceMode: pulumi.Output<string>;
     /**
      * The description of the instance.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The ID of the encryption key.
      * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * The encryption type. Valid values: `CloudDisk`.
      * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
      */
-    public readonly encryptionType!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionType: pulumi.Output<string | undefined>;
     /**
      * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * The version of the database engine used by the instance.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
      * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      */
-    public readonly instanceGroupCount!: pulumi.Output<number | undefined>;
+    declare public readonly instanceGroupCount: pulumi.Output<number | undefined>;
     /**
      * The network type of the instance. Valid values: `VPC`.
      */
-    public readonly instanceNetworkType!: pulumi.Output<string>;
+    declare public readonly instanceNetworkType: pulumi.Output<string>;
     /**
      * The specification of segment nodes. Valid values:
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -164,124 +164,124 @@ export class Instance extends pulumi.CustomResource {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
-    public readonly instanceSpec!: pulumi.Output<string | undefined>;
+    declare public readonly instanceSpec: pulumi.Output<string | undefined>;
     /**
      * The ip whitelist. See `ipWhitelist` below.
      * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
-    public readonly ipWhitelists!: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[]>;
+    declare public readonly ipWhitelists: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[]>;
     /**
      * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
      */
-    public readonly maintainEndTime!: pulumi.Output<string>;
+    declare public readonly maintainEndTime: pulumi.Output<string>;
     /**
      * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
-    public readonly maintainStartTime!: pulumi.Output<string>;
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
      */
-    public readonly masterCu!: pulumi.Output<number>;
+    declare public readonly masterCu: pulumi.Output<number>;
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      *
      * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      */
-    public readonly masterNodeNum!: pulumi.Output<number | undefined>;
+    declare public readonly masterNodeNum: pulumi.Output<number | undefined>;
     /**
      * The parameters. See `parameters` below.
      */
-    public readonly parameters!: pulumi.Output<outputs.gpdb.InstanceParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.gpdb.InstanceParameter[]>;
     /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the instance.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      *
      * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      */
-    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly privateIpAddress: pulumi.Output<string | undefined>;
     /**
      * The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
      */
-    public readonly prodType!: pulumi.Output<string>;
+    declare public readonly prodType: pulumi.Output<string>;
     /**
      * The ID of the enterprise resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
      */
-    public readonly resourceManagementMode!: pulumi.Output<string>;
+    declare public readonly resourceManagementMode: pulumi.Output<string>;
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      *
      * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
      */
-    public readonly securityIpLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityIpLists: pulumi.Output<string[] | undefined>;
     /**
      * The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
      */
-    public readonly segDiskPerformanceLevel!: pulumi.Output<string>;
+    declare public readonly segDiskPerformanceLevel: pulumi.Output<string>;
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
-    public readonly segNodeNum!: pulumi.Output<number>;
+    declare public readonly segNodeNum: pulumi.Output<number>;
     /**
      * The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      */
-    public readonly segStorageType!: pulumi.Output<string>;
+    declare public readonly segStorageType: pulumi.Output<string>;
     /**
      * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
      */
-    public readonly serverlessMode!: pulumi.Output<string>;
+    declare public readonly serverlessMode: pulumi.Output<string>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
-    public readonly sslEnabled!: pulumi.Output<number>;
+    declare public readonly sslEnabled: pulumi.Output<number>;
     /**
      * The status of the instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
-    public readonly storageSize!: pulumi.Output<number>;
+    declare public readonly storageSize: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
      */
-    public readonly usedTime!: pulumi.Output<string | undefined>;
+    declare public readonly usedTime: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
      */
-    public readonly vectorConfigurationStatus!: pulumi.Output<string>;
+    declare public readonly vectorConfigurationStatus: pulumi.Output<string>;
     /**
      * The vpc ID of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitch id.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -296,103 +296,103 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["createSampleData"] = state ? state.createSampleData : undefined;
-            resourceInputs["dataShareStatus"] = state ? state.dataShareStatus : undefined;
-            resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceMode"] = state ? state.dbInstanceMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceGroupCount"] = state ? state.instanceGroupCount : undefined;
-            resourceInputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
-            resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
-            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
-            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            resourceInputs["masterCu"] = state ? state.masterCu : undefined;
-            resourceInputs["masterNodeNum"] = state ? state.masterNodeNum : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["prodType"] = state ? state.prodType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceManagementMode"] = state ? state.resourceManagementMode : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            resourceInputs["segDiskPerformanceLevel"] = state ? state.segDiskPerformanceLevel : undefined;
-            resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
-            resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
-            resourceInputs["serverlessMode"] = state ? state.serverlessMode : undefined;
-            resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
-            resourceInputs["vectorConfigurationStatus"] = state ? state.vectorConfigurationStatus : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["createSampleData"] = state?.createSampleData;
+            resourceInputs["dataShareStatus"] = state?.dataShareStatus;
+            resourceInputs["dbInstanceCategory"] = state?.dbInstanceCategory;
+            resourceInputs["dbInstanceClass"] = state?.dbInstanceClass;
+            resourceInputs["dbInstanceMode"] = state?.dbInstanceMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceGroupCount"] = state?.instanceGroupCount;
+            resourceInputs["instanceNetworkType"] = state?.instanceNetworkType;
+            resourceInputs["instanceSpec"] = state?.instanceSpec;
+            resourceInputs["ipWhitelists"] = state?.ipWhitelists;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
+            resourceInputs["masterCu"] = state?.masterCu;
+            resourceInputs["masterNodeNum"] = state?.masterNodeNum;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["prodType"] = state?.prodType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceManagementMode"] = state?.resourceManagementMode;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
+            resourceInputs["segDiskPerformanceLevel"] = state?.segDiskPerformanceLevel;
+            resourceInputs["segNodeNum"] = state?.segNodeNum;
+            resourceInputs["segStorageType"] = state?.segStorageType;
+            resourceInputs["serverlessMode"] = state?.serverlessMode;
+            resourceInputs["sslEnabled"] = state?.sslEnabled;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSize"] = state?.storageSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usedTime"] = state?.usedTime;
+            resourceInputs["vectorConfigurationStatus"] = state?.vectorConfigurationStatus;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.dbInstanceMode === undefined) && !opts.urn) {
+            if (args?.dbInstanceMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceMode'");
             }
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["createSampleData"] = args ? args.createSampleData : undefined;
-            resourceInputs["dataShareStatus"] = args ? args.dataShareStatus : undefined;
-            resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceMode"] = args ? args.dbInstanceMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceGroupCount"] = args ? args.instanceGroupCount : undefined;
-            resourceInputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
-            resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
-            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
-            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            resourceInputs["masterCu"] = args ? args.masterCu : undefined;
-            resourceInputs["masterNodeNum"] = args ? args.masterNodeNum : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["prodType"] = args ? args.prodType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceManagementMode"] = args ? args.resourceManagementMode : undefined;
-            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            resourceInputs["segDiskPerformanceLevel"] = args ? args.segDiskPerformanceLevel : undefined;
-            resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
-            resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
-            resourceInputs["serverlessMode"] = args ? args.serverlessMode : undefined;
-            resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
-            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
-            resourceInputs["vectorConfigurationStatus"] = args ? args.vectorConfigurationStatus : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["createSampleData"] = args?.createSampleData;
+            resourceInputs["dataShareStatus"] = args?.dataShareStatus;
+            resourceInputs["dbInstanceCategory"] = args?.dbInstanceCategory;
+            resourceInputs["dbInstanceClass"] = args?.dbInstanceClass;
+            resourceInputs["dbInstanceMode"] = args?.dbInstanceMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceGroupCount"] = args?.instanceGroupCount;
+            resourceInputs["instanceNetworkType"] = args?.instanceNetworkType;
+            resourceInputs["instanceSpec"] = args?.instanceSpec;
+            resourceInputs["ipWhitelists"] = args?.ipWhitelists;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
+            resourceInputs["masterCu"] = args?.masterCu;
+            resourceInputs["masterNodeNum"] = args?.masterNodeNum;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["prodType"] = args?.prodType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceManagementMode"] = args?.resourceManagementMode;
+            resourceInputs["securityIpLists"] = args?.securityIpLists;
+            resourceInputs["segDiskPerformanceLevel"] = args?.segDiskPerformanceLevel;
+            resourceInputs["segNodeNum"] = args?.segNodeNum;
+            resourceInputs["segStorageType"] = args?.segStorageType;
+            resourceInputs["serverlessMode"] = args?.serverlessMode;
+            resourceInputs["sslEnabled"] = args?.sslEnabled;
+            resourceInputs["storageSize"] = args?.storageSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usedTime"] = args?.usedTime;
+            resourceInputs["vectorConfigurationStatus"] = args?.vectorConfigurationStatus;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

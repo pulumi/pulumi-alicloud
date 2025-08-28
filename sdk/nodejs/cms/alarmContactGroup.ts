@@ -61,19 +61,19 @@ export class AlarmContactGroup extends pulumi.CustomResource {
     /**
      * The name of the alarm group.
      */
-    public readonly alarmContactGroupName!: pulumi.Output<string>;
+    declare public readonly alarmContactGroupName: pulumi.Output<string>;
     /**
      * The name of the alert contact.
      */
-    public readonly contacts!: pulumi.Output<string[] | undefined>;
+    declare public readonly contacts: pulumi.Output<string[] | undefined>;
     /**
      * The description of the alert group.
      */
-    public readonly describe!: pulumi.Output<string | undefined>;
+    declare public readonly describe: pulumi.Output<string | undefined>;
     /**
      * Whether to open weekly subscription.
      */
-    public readonly enableSubscribed!: pulumi.Output<boolean>;
+    declare public readonly enableSubscribed: pulumi.Output<boolean>;
 
     /**
      * Create a AlarmContactGroup resource with the given unique name, arguments, and options.
@@ -88,19 +88,19 @@ export class AlarmContactGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmContactGroupState | undefined;
-            resourceInputs["alarmContactGroupName"] = state ? state.alarmContactGroupName : undefined;
-            resourceInputs["contacts"] = state ? state.contacts : undefined;
-            resourceInputs["describe"] = state ? state.describe : undefined;
-            resourceInputs["enableSubscribed"] = state ? state.enableSubscribed : undefined;
+            resourceInputs["alarmContactGroupName"] = state?.alarmContactGroupName;
+            resourceInputs["contacts"] = state?.contacts;
+            resourceInputs["describe"] = state?.describe;
+            resourceInputs["enableSubscribed"] = state?.enableSubscribed;
         } else {
             const args = argsOrState as AlarmContactGroupArgs | undefined;
-            if ((!args || args.alarmContactGroupName === undefined) && !opts.urn) {
+            if (args?.alarmContactGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alarmContactGroupName'");
             }
-            resourceInputs["alarmContactGroupName"] = args ? args.alarmContactGroupName : undefined;
-            resourceInputs["contacts"] = args ? args.contacts : undefined;
-            resourceInputs["describe"] = args ? args.describe : undefined;
-            resourceInputs["enableSubscribed"] = args ? args.enableSubscribed : undefined;
+            resourceInputs["alarmContactGroupName"] = args?.alarmContactGroupName;
+            resourceInputs["contacts"] = args?.contacts;
+            resourceInputs["describe"] = args?.describe;
+            resourceInputs["enableSubscribed"] = args?.enableSubscribed;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlarmContactGroup.__pulumiType, name, resourceInputs, opts);

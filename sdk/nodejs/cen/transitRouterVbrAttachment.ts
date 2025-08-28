@@ -88,25 +88,25 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
      */
-    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the CEN.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
-    public readonly resourceType!: pulumi.Output<string | undefined>;
+    declare public readonly resourceType: pulumi.Output<string | undefined>;
     /**
      * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      */
-    public readonly routeTableAssociationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTableAssociationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
@@ -114,39 +114,39 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
-    public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTablePropagationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The status of the Transit Router VBR Attachment.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the transit router vbr attachment.
      */
-    public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the VBR connection.
      */
-    public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * The name of the transit router vbr attachment.
      */
-    public readonly transitRouterAttachmentName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentName: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The ID of the VBR.
      */
-    public readonly vbrId!: pulumi.Output<string>;
+    declare public readonly vbrId: pulumi.Output<string>;
     /**
      * The owner id of the vbr.
      */
-    public readonly vbrOwnerId!: pulumi.Output<string>;
+    declare public readonly vbrOwnerId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterVbrAttachment resource with the given unique name, arguments, and options.
@@ -161,40 +161,40 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterVbrAttachmentState | undefined;
-            resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["vbrId"] = state ? state.vbrId : undefined;
-            resourceInputs["vbrOwnerId"] = state ? state.vbrOwnerId : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = state?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = state?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = state?.routeTablePropagationEnabled;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = state?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterAttachmentName"] = state?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["vbrId"] = state?.vbrId;
+            resourceInputs["vbrOwnerId"] = state?.vbrOwnerId;
         } else {
             const args = argsOrState as TransitRouterVbrAttachmentArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.vbrId === undefined) && !opts.urn) {
+            if (args?.vbrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vbrId'");
             }
-            resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["vbrId"] = args ? args.vbrId : undefined;
-            resourceInputs["vbrOwnerId"] = args ? args.vbrOwnerId : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = args?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = args?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = args?.routeTablePropagationEnabled;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = args?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentName"] = args?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["vbrId"] = args?.vbrId;
+            resourceInputs["vbrOwnerId"] = args?.vbrOwnerId;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }

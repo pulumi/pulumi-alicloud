@@ -72,27 +72,27 @@ export class InstanceMember extends pulumi.CustomResource {
     /**
      * When the cloud firewall member account was added.> use second-level timestamp format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Remarks of cloud firewall member accounts.
      */
-    public readonly memberDesc!: pulumi.Output<string | undefined>;
+    declare public readonly memberDesc: pulumi.Output<string | undefined>;
     /**
      * The name of the cloud firewall member account.
      */
-    public /*out*/ readonly memberDisplayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly memberDisplayName: pulumi.Output<string>;
     /**
      * The UID of the cloud firewall member account.
      */
-    public readonly memberUid!: pulumi.Output<string>;
+    declare public readonly memberUid: pulumi.Output<string>;
     /**
      * The last modification time of the cloud firewall member account.> use second-level timestamp format.
      */
-    public /*out*/ readonly modifyTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly modifyTime: pulumi.Output<number>;
     /**
      * The resource attribute field that represents the resource status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a InstanceMember resource with the given unique name, arguments, and options.
@@ -107,19 +107,19 @@ export class InstanceMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceMemberState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["memberDesc"] = state ? state.memberDesc : undefined;
-            resourceInputs["memberDisplayName"] = state ? state.memberDisplayName : undefined;
-            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
-            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["memberDesc"] = state?.memberDesc;
+            resourceInputs["memberDisplayName"] = state?.memberDisplayName;
+            resourceInputs["memberUid"] = state?.memberUid;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as InstanceMemberArgs | undefined;
-            if ((!args || args.memberUid === undefined) && !opts.urn) {
+            if (args?.memberUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberUid'");
             }
-            resourceInputs["memberDesc"] = args ? args.memberDesc : undefined;
-            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
+            resourceInputs["memberDesc"] = args?.memberDesc;
+            resourceInputs["memberUid"] = args?.memberUid;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["memberDisplayName"] = undefined /*out*/;
             resourceInputs["modifyTime"] = undefined /*out*/;

@@ -44,15 +44,15 @@ export class BucketCnameToken extends pulumi.CustomResource {
     /**
      * The name of the bucket
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The custom domain
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Token used to verify domain ownership
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a BucketCnameToken resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class BucketCnameToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketCnameTokenState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as BucketCnameTokenArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["domain"] = args?.domain;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

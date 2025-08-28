@@ -106,19 +106,19 @@ export class ServiceMonitoringAgentProcess extends pulumi.CustomResource {
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the process.
      */
-    public /*out*/ readonly processId!: pulumi.Output<string>;
+    declare public /*out*/ readonly processId: pulumi.Output<string>;
     /**
      * The name of the process.
      */
-    public readonly processName!: pulumi.Output<string>;
+    declare public readonly processName: pulumi.Output<string>;
     /**
      * The user who launches the process.
      */
-    public readonly processUser!: pulumi.Output<string | undefined>;
+    declare public readonly processUser: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceMonitoringAgentProcess resource with the given unique name, arguments, and options.
@@ -133,21 +133,21 @@ export class ServiceMonitoringAgentProcess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceMonitoringAgentProcessState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["processId"] = state ? state.processId : undefined;
-            resourceInputs["processName"] = state ? state.processName : undefined;
-            resourceInputs["processUser"] = state ? state.processUser : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["processId"] = state?.processId;
+            resourceInputs["processName"] = state?.processName;
+            resourceInputs["processUser"] = state?.processUser;
         } else {
             const args = argsOrState as ServiceMonitoringAgentProcessArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.processName === undefined) && !opts.urn) {
+            if (args?.processName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'processName'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["processName"] = args ? args.processName : undefined;
-            resourceInputs["processUser"] = args ? args.processUser : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["processName"] = args?.processName;
+            resourceInputs["processUser"] = args?.processUser;
             resourceInputs["processId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

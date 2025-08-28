@@ -97,7 +97,7 @@ export class AuditLogConfig extends pulumi.CustomResource {
     /**
      * Instance Creation Time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Indicates Whether to Enable the Audit Log.  Valid value: 
      * * true: Default Value, Open.
@@ -105,21 +105,21 @@ export class AuditLogConfig extends pulumi.CustomResource {
      *
      * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
      */
-    public readonly dbAudit!: pulumi.Output<boolean | undefined>;
+    declare public readonly dbAudit: pulumi.Output<boolean | undefined>;
     /**
      * Instance ID, Call the Describeinstances Get.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Audit Log Retention Period Value: 1~365. 
      *
      * > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      */
-    public readonly retention!: pulumi.Output<number | undefined>;
+    declare public readonly retention: pulumi.Output<number | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AuditLogConfig resource with the given unique name, arguments, and options.
@@ -134,19 +134,19 @@ export class AuditLogConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditLogConfigState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbAudit"] = state ? state.dbAudit : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbAudit"] = state?.dbAudit;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AuditLogConfigArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["dbAudit"] = args ? args.dbAudit : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["dbAudit"] = args?.dbAudit;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["retention"] = args?.retention;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

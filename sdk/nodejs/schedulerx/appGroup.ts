@@ -93,67 +93,67 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * Application Name
      */
-    public readonly appName!: pulumi.Output<string>;
+    declare public readonly appName: pulumi.Output<string>;
     /**
      * Application type.
      * - 1, general application.
      * - 2, k8s application.
      */
-    public readonly appType!: pulumi.Output<number | undefined>;
+    declare public readonly appType: pulumi.Output<number | undefined>;
     /**
      * Application Version, 1: Basic Edition, 2: Professional Edition
      */
-    public readonly appVersion!: pulumi.Output<string | undefined>;
+    declare public readonly appVersion: pulumi.Output<string | undefined>;
     /**
      * Whether to delete the task in the application Group. The values are as follows:
      */
-    public readonly deleteJobs!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteJobs: pulumi.Output<boolean | undefined>;
     /**
      * Application Description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether to enable the log.
      * - true: On
      * - false: Close
      */
-    public readonly enableLog!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLog: pulumi.Output<boolean | undefined>;
     /**
      * Application ID
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    public readonly maxConcurrency!: pulumi.Output<number | undefined>;
+    declare public readonly maxConcurrency: pulumi.Output<number | undefined>;
     /**
      * Application Grouping Configurable Maximum Number of Tasks
      */
-    public readonly maxJobs!: pulumi.Output<number | undefined>;
+    declare public readonly maxJobs: pulumi.Output<number | undefined>;
     /**
      * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
      */
-    public readonly monitorConfigJson!: pulumi.Output<string | undefined>;
+    declare public readonly monitorConfigJson: pulumi.Output<string | undefined>;
     /**
      * Alarm contact JSON format.
      */
-    public readonly monitorContactsJson!: pulumi.Output<string | undefined>;
+    declare public readonly monitorContactsJson: pulumi.Output<string | undefined>;
     /**
      * The namespace ID, which is obtained on the namespace page of the console.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The namespace name.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
     /**
      * Not supported for the time being, no need to fill in.
      */
-    public readonly namespaceSource!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceSource: pulumi.Output<string | undefined>;
     /**
      * Whether to schedule a busy machine.
      */
-    public readonly scheduleBusyWorkers!: pulumi.Output<boolean | undefined>;
+    declare public readonly scheduleBusyWorkers: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AppGroup resource with the given unique name, arguments, and options.
@@ -168,50 +168,50 @@ export class AppGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppGroupState | undefined;
-            resourceInputs["appName"] = state ? state.appName : undefined;
-            resourceInputs["appType"] = state ? state.appType : undefined;
-            resourceInputs["appVersion"] = state ? state.appVersion : undefined;
-            resourceInputs["deleteJobs"] = state ? state.deleteJobs : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableLog"] = state ? state.enableLog : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["maxConcurrency"] = state ? state.maxConcurrency : undefined;
-            resourceInputs["maxJobs"] = state ? state.maxJobs : undefined;
-            resourceInputs["monitorConfigJson"] = state ? state.monitorConfigJson : undefined;
-            resourceInputs["monitorContactsJson"] = state ? state.monitorContactsJson : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
-            resourceInputs["namespaceSource"] = state ? state.namespaceSource : undefined;
-            resourceInputs["scheduleBusyWorkers"] = state ? state.scheduleBusyWorkers : undefined;
+            resourceInputs["appName"] = state?.appName;
+            resourceInputs["appType"] = state?.appType;
+            resourceInputs["appVersion"] = state?.appVersion;
+            resourceInputs["deleteJobs"] = state?.deleteJobs;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableLog"] = state?.enableLog;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["maxConcurrency"] = state?.maxConcurrency;
+            resourceInputs["maxJobs"] = state?.maxJobs;
+            resourceInputs["monitorConfigJson"] = state?.monitorConfigJson;
+            resourceInputs["monitorContactsJson"] = state?.monitorContactsJson;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["namespaceName"] = state?.namespaceName;
+            resourceInputs["namespaceSource"] = state?.namespaceSource;
+            resourceInputs["scheduleBusyWorkers"] = state?.scheduleBusyWorkers;
         } else {
             const args = argsOrState as AppGroupArgs | undefined;
-            if ((!args || args.appName === undefined) && !opts.urn) {
+            if (args?.appName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appName'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            resourceInputs["appName"] = args ? args.appName : undefined;
-            resourceInputs["appType"] = args ? args.appType : undefined;
-            resourceInputs["appVersion"] = args ? args.appVersion : undefined;
-            resourceInputs["deleteJobs"] = args ? args.deleteJobs : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableLog"] = args ? args.enableLog : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
-            resourceInputs["maxJobs"] = args ? args.maxJobs : undefined;
-            resourceInputs["monitorConfigJson"] = args ? args.monitorConfigJson : undefined;
-            resourceInputs["monitorContactsJson"] = args ? args.monitorContactsJson : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
-            resourceInputs["namespaceSource"] = args ? args.namespaceSource : undefined;
-            resourceInputs["scheduleBusyWorkers"] = args ? args.scheduleBusyWorkers : undefined;
+            resourceInputs["appName"] = args?.appName;
+            resourceInputs["appType"] = args?.appType;
+            resourceInputs["appVersion"] = args?.appVersion;
+            resourceInputs["deleteJobs"] = args?.deleteJobs;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableLog"] = args?.enableLog;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["maxConcurrency"] = args?.maxConcurrency;
+            resourceInputs["maxJobs"] = args?.maxJobs;
+            resourceInputs["monitorConfigJson"] = args?.monitorConfigJson;
+            resourceInputs["monitorContactsJson"] = args?.monitorContactsJson;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["namespaceName"] = args?.namespaceName;
+            resourceInputs["namespaceSource"] = args?.namespaceSource;
+            resourceInputs["scheduleBusyWorkers"] = args?.scheduleBusyWorkers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppGroup.__pulumiType, name, resourceInputs, opts);

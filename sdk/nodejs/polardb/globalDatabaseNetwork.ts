@@ -88,15 +88,15 @@ export class GlobalDatabaseNetwork extends pulumi.CustomResource {
     /**
      * The ID of the primary cluster.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The description of the Global Database Network.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The status of the Global Database Network.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a GlobalDatabaseNetwork resource with the given unique name, arguments, and options.
@@ -111,16 +111,16 @@ export class GlobalDatabaseNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalDatabaseNetworkState | undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GlobalDatabaseNetworkArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["description"] = args?.description;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

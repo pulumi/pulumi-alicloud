@@ -77,79 +77,79 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
      *
      * @deprecated Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * Custom OSS Bucket name
      */
-    public readonly customOssBucket!: pulumi.Output<string | undefined>;
+    declare public readonly customOssBucket: pulumi.Output<string | undefined>;
     /**
      * Whether to use the default OSS Bucket. Value:
      */
-    public readonly defaultOssBucket!: pulumi.Output<string | undefined>;
+    declare public readonly defaultOssBucket: pulumi.Output<string | undefined>;
     /**
      * Expiration Time
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
      */
-    public readonly imageScanner!: pulumi.Output<string | undefined>;
+    declare public readonly imageScanner: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.240.0) Instance Network Access Endpoint List
      */
-    public /*out*/ readonly instanceEndpoints!: pulumi.Output<outputs.cr.RegistryEnterpriseInstanceInstanceEndpoint[]>;
+    declare public /*out*/ readonly instanceEndpoints: pulumi.Output<outputs.cr.RegistryEnterpriseInstanceInstanceEndpoint[]>;
     /**
      * InstanceName
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Payment type, value:
      * - Subscription: Prepaid.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * RegionId
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Automatic renewal cycle, in months.
      *
      * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
@@ -157,17 +157,17 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      *
      * Default ManualRenewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The ID of the resource group
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Instance Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a RegistryEnterpriseInstance resource with the given unique name, arguments, and options.
@@ -182,49 +182,49 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseInstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
-            resourceInputs["customOssBucket"] = state ? state.customOssBucket : undefined;
-            resourceInputs["defaultOssBucket"] = state ? state.defaultOssBucket : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["imageScanner"] = state ? state.imageScanner : undefined;
-            resourceInputs["instanceEndpoints"] = state ? state.instanceEndpoints : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createdTime"] = state?.createdTime;
+            resourceInputs["customOssBucket"] = state?.customOssBucket;
+            resourceInputs["defaultOssBucket"] = state?.defaultOssBucket;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["imageScanner"] = state?.imageScanner;
+            resourceInputs["instanceEndpoints"] = state?.instanceEndpoints;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RegistryEnterpriseInstanceArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["customOssBucket"] = args ? args.customOssBucket : undefined;
-            resourceInputs["defaultOssBucket"] = args ? args.defaultOssBucket : undefined;
-            resourceInputs["imageScanner"] = args ? args.imageScanner : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["customOssBucket"] = args?.customOssBucket;
+            resourceInputs["defaultOssBucket"] = args?.defaultOssBucket;
+            resourceInputs["imageScanner"] = args?.imageScanner;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;

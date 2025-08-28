@@ -84,83 +84,83 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
      */
-    public readonly certId!: pulumi.Output<string>;
+    declare public readonly certId: pulumi.Output<string>;
     /**
      * The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
      */
-    public readonly certName!: pulumi.Output<string>;
+    declare public readonly certName: pulumi.Output<string>;
     /**
      * The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
      */
-    public readonly certRegion!: pulumi.Output<string>;
+    declare public readonly certRegion: pulumi.Output<string>;
     /**
      * The certificate type.
      */
-    public readonly certType!: pulumi.Output<string>;
+    declare public readonly certType: pulumi.Output<string>;
     /**
      * The URL that is used for health checks.
      */
-    public readonly checkUrl!: pulumi.Output<string | undefined>;
+    declare public readonly checkUrl: pulumi.Output<string | undefined>;
     /**
      * The CNAME domain name corresponding to the accelerated domain name.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The time when the accelerated domain name was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
      */
-    public readonly env!: pulumi.Output<string | undefined>;
+    declare public readonly env: pulumi.Output<string | undefined>;
     /**
      * Computing service type. Valid values:
      */
-    public readonly functionType!: pulumi.Output<string | undefined>;
+    declare public readonly functionType: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The Acceleration scen. Supported:
      */
-    public readonly scene!: pulumi.Output<string | undefined>;
+    declare public readonly scene: pulumi.Output<string | undefined>;
     /**
      * The region where the acceleration service is deployed. Valid values:
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Source  See `sources` below.
      */
-    public readonly sources!: pulumi.Output<outputs.dcdn.DomainSource[] | undefined>;
+    declare public readonly sources: pulumi.Output<outputs.dcdn.DomainSource[] | undefined>;
     /**
      * The private key. Specify the private key only if you want to enable the SSL certificate.
      */
-    public readonly sslPri!: pulumi.Output<string | undefined>;
+    declare public readonly sslPri: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the SSL certificate. Valid values:
      */
-    public readonly sslProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly sslProtocol: pulumi.Output<string | undefined>;
     /**
      * The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
      */
-    public readonly sslPub!: pulumi.Output<string>;
+    declare public readonly sslPub: pulumi.Output<string>;
     /**
      * The status of the domain name. Valid values:
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The top-level domain.
      */
-    public readonly topLevelDomain!: pulumi.Output<string | undefined>;
+    declare public readonly topLevelDomain: pulumi.Output<string | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -175,49 +175,49 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["certId"] = state ? state.certId : undefined;
-            resourceInputs["certName"] = state ? state.certName : undefined;
-            resourceInputs["certRegion"] = state ? state.certRegion : undefined;
-            resourceInputs["certType"] = state ? state.certType : undefined;
-            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["env"] = state ? state.env : undefined;
-            resourceInputs["functionType"] = state ? state.functionType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scene"] = state ? state.scene : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["sslPri"] = state ? state.sslPri : undefined;
-            resourceInputs["sslProtocol"] = state ? state.sslProtocol : undefined;
-            resourceInputs["sslPub"] = state ? state.sslPub : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
+            resourceInputs["certId"] = state?.certId;
+            resourceInputs["certName"] = state?.certName;
+            resourceInputs["certRegion"] = state?.certRegion;
+            resourceInputs["certType"] = state?.certType;
+            resourceInputs["checkUrl"] = state?.checkUrl;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["env"] = state?.env;
+            resourceInputs["functionType"] = state?.functionType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scene"] = state?.scene;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["sslPri"] = state?.sslPri;
+            resourceInputs["sslProtocol"] = state?.sslProtocol;
+            resourceInputs["sslPub"] = state?.sslPub;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topLevelDomain"] = state?.topLevelDomain;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["certId"] = args ? args.certId : undefined;
-            resourceInputs["certName"] = args ? args.certName : undefined;
-            resourceInputs["certRegion"] = args ? args.certRegion : undefined;
-            resourceInputs["certType"] = args ? args.certType : undefined;
-            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["env"] = args ? args.env : undefined;
-            resourceInputs["functionType"] = args ? args.functionType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scene"] = args ? args.scene : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["certId"] = args?.certId;
+            resourceInputs["certName"] = args?.certName;
+            resourceInputs["certRegion"] = args?.certRegion;
+            resourceInputs["certType"] = args?.certType;
+            resourceInputs["checkUrl"] = args?.checkUrl;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["env"] = args?.env;
+            resourceInputs["functionType"] = args?.functionType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scene"] = args?.scene;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sources"] = args?.sources;
             resourceInputs["sslPri"] = args?.sslPri ? pulumi.secret(args.sslPri) : undefined;
-            resourceInputs["sslProtocol"] = args ? args.sslProtocol : undefined;
-            resourceInputs["sslPub"] = args ? args.sslPub : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
+            resourceInputs["sslProtocol"] = args?.sslProtocol;
+            resourceInputs["sslPub"] = args?.sslPub;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topLevelDomain"] = args?.topLevelDomain;
             resourceInputs["cname"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }

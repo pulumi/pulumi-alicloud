@@ -76,49 +76,49 @@ export class LayerVersion extends pulumi.CustomResource {
     /**
      * The access mode of Layer Version.
      */
-    public /*out*/ readonly acl!: pulumi.Output<string>;
+    declare public /*out*/ readonly acl: pulumi.Output<string>;
     /**
      * The arn of Layer Version.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The checksum of the layer code package.
      */
-    public /*out*/ readonly codeCheckSum!: pulumi.Output<string>;
+    declare public /*out*/ readonly codeCheckSum: pulumi.Output<string>;
     /**
      * The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
      */
-    public readonly compatibleRuntimes!: pulumi.Output<string[]>;
+    declare public readonly compatibleRuntimes: pulumi.Output<string[]>;
     /**
      * The description of the layer version.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the layer.
      */
-    public readonly layerName!: pulumi.Output<string>;
+    declare public readonly layerName: pulumi.Output<string>;
     /**
      * The name of the OSS bucket that stores the ZIP package of the function code.
      */
-    public readonly ossBucketName!: pulumi.Output<string | undefined>;
+    declare public readonly ossBucketName: pulumi.Output<string | undefined>;
     /**
      * The name of the OSS object (ZIP package) that contains the function code.
      */
-    public readonly ossObjectName!: pulumi.Output<string | undefined>;
+    declare public readonly ossObjectName: pulumi.Output<string | undefined>;
     /**
      * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
      */
-    public readonly skipDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The version of Layer Version.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      *
      * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
-    public readonly zipFile!: pulumi.Output<string | undefined>;
+    declare public readonly zipFile: pulumi.Output<string | undefined>;
 
     /**
      * Create a LayerVersion resource with the given unique name, arguments, and options.
@@ -133,32 +133,32 @@ export class LayerVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LayerVersionState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["codeCheckSum"] = state ? state.codeCheckSum : undefined;
-            resourceInputs["compatibleRuntimes"] = state ? state.compatibleRuntimes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["layerName"] = state ? state.layerName : undefined;
-            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            resourceInputs["ossObjectName"] = state ? state.ossObjectName : undefined;
-            resourceInputs["skipDestroy"] = state ? state.skipDestroy : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["zipFile"] = state ? state.zipFile : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["codeCheckSum"] = state?.codeCheckSum;
+            resourceInputs["compatibleRuntimes"] = state?.compatibleRuntimes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["layerName"] = state?.layerName;
+            resourceInputs["ossBucketName"] = state?.ossBucketName;
+            resourceInputs["ossObjectName"] = state?.ossObjectName;
+            resourceInputs["skipDestroy"] = state?.skipDestroy;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["zipFile"] = state?.zipFile;
         } else {
             const args = argsOrState as LayerVersionArgs | undefined;
-            if ((!args || args.compatibleRuntimes === undefined) && !opts.urn) {
+            if (args?.compatibleRuntimes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'compatibleRuntimes'");
             }
-            if ((!args || args.layerName === undefined) && !opts.urn) {
+            if (args?.layerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'layerName'");
             }
-            resourceInputs["compatibleRuntimes"] = args ? args.compatibleRuntimes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["layerName"] = args ? args.layerName : undefined;
-            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            resourceInputs["ossObjectName"] = args ? args.ossObjectName : undefined;
-            resourceInputs["skipDestroy"] = args ? args.skipDestroy : undefined;
-            resourceInputs["zipFile"] = args ? args.zipFile : undefined;
+            resourceInputs["compatibleRuntimes"] = args?.compatibleRuntimes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["layerName"] = args?.layerName;
+            resourceInputs["ossBucketName"] = args?.ossBucketName;
+            resourceInputs["ossObjectName"] = args?.ossObjectName;
+            resourceInputs["skipDestroy"] = args?.skipDestroy;
+            resourceInputs["zipFile"] = args?.zipFile;
             resourceInputs["acl"] = undefined /*out*/;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["codeCheckSum"] = undefined /*out*/;

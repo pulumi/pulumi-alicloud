@@ -75,31 +75,31 @@ export class ScheduledPreloadJob extends pulumi.CustomResource {
     /**
      * The time when the task was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The method to submit the URLs to be prefetched.
      */
-    public readonly insertWay!: pulumi.Output<string>;
+    declare public readonly insertWay: pulumi.Output<string>;
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
      */
-    public readonly ossUrl!: pulumi.Output<string | undefined>;
+    declare public readonly ossUrl: pulumi.Output<string | undefined>;
     /**
      * The ID of the prefetch task.
      */
-    public /*out*/ readonly scheduledPreloadJobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly scheduledPreloadJobId: pulumi.Output<string>;
     /**
      * The task name.
      */
-    public readonly scheduledPreloadJobName!: pulumi.Output<string>;
+    declare public readonly scheduledPreloadJobName: pulumi.Output<string>;
     /**
      * The site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
      */
-    public readonly urlList!: pulumi.Output<string | undefined>;
+    declare public readonly urlList: pulumi.Output<string | undefined>;
 
     /**
      * Create a ScheduledPreloadJob resource with the given unique name, arguments, and options.
@@ -114,29 +114,29 @@ export class ScheduledPreloadJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduledPreloadJobState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["insertWay"] = state ? state.insertWay : undefined;
-            resourceInputs["ossUrl"] = state ? state.ossUrl : undefined;
-            resourceInputs["scheduledPreloadJobId"] = state ? state.scheduledPreloadJobId : undefined;
-            resourceInputs["scheduledPreloadJobName"] = state ? state.scheduledPreloadJobName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["urlList"] = state ? state.urlList : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["insertWay"] = state?.insertWay;
+            resourceInputs["ossUrl"] = state?.ossUrl;
+            resourceInputs["scheduledPreloadJobId"] = state?.scheduledPreloadJobId;
+            resourceInputs["scheduledPreloadJobName"] = state?.scheduledPreloadJobName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["urlList"] = state?.urlList;
         } else {
             const args = argsOrState as ScheduledPreloadJobArgs | undefined;
-            if ((!args || args.insertWay === undefined) && !opts.urn) {
+            if (args?.insertWay === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insertWay'");
             }
-            if ((!args || args.scheduledPreloadJobName === undefined) && !opts.urn) {
+            if (args?.scheduledPreloadJobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduledPreloadJobName'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["insertWay"] = args ? args.insertWay : undefined;
-            resourceInputs["ossUrl"] = args ? args.ossUrl : undefined;
-            resourceInputs["scheduledPreloadJobName"] = args ? args.scheduledPreloadJobName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["urlList"] = args ? args.urlList : undefined;
+            resourceInputs["insertWay"] = args?.insertWay;
+            resourceInputs["ossUrl"] = args?.ossUrl;
+            resourceInputs["scheduledPreloadJobName"] = args?.scheduledPreloadJobName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["urlList"] = args?.urlList;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["scheduledPreloadJobId"] = undefined /*out*/;
         }

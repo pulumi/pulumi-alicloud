@@ -64,11 +64,11 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
     /**
      * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      */
-    public readonly sessionManagerStatusName!: pulumi.Output<string>;
+    declare public readonly sessionManagerStatusName: pulumi.Output<string>;
     /**
      * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a EcsSessionManagerStatus resource with the given unique name, arguments, and options.
@@ -83,18 +83,18 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsSessionManagerStatusState | undefined;
-            resourceInputs["sessionManagerStatusName"] = state ? state.sessionManagerStatusName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["sessionManagerStatusName"] = state?.sessionManagerStatusName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EcsSessionManagerStatusArgs | undefined;
-            if ((!args || args.sessionManagerStatusName === undefined) && !opts.urn) {
+            if (args?.sessionManagerStatusName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sessionManagerStatusName'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["sessionManagerStatusName"] = args ? args.sessionManagerStatusName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["sessionManagerStatusName"] = args?.sessionManagerStatusName;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsSessionManagerStatus.__pulumiType, name, resourceInputs, opts);

@@ -63,7 +63,7 @@ export class Tag extends pulumi.CustomResource {
     /**
      * The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
      */
-    public readonly tagName!: pulumi.Output<string>;
+    declare public readonly tagName: pulumi.Output<string>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -78,13 +78,13 @@ export class Tag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            resourceInputs["tagName"] = state ? state.tagName : undefined;
+            resourceInputs["tagName"] = state?.tagName;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if ((!args || args.tagName === undefined) && !opts.urn) {
+            if (args?.tagName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagName'");
             }
-            resourceInputs["tagName"] = args ? args.tagName : undefined;
+            resourceInputs["tagName"] = args?.tagName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tag.__pulumiType, name, resourceInputs, opts);

@@ -98,19 +98,19 @@ export class TransitRouterMulticastDomainAssociation extends pulumi.CustomResour
     /**
      * The status of the Transit Router Multicast Domain Association.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC connection.
      */
-    public readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * The ID of the multicast domain.
      */
-    public readonly transitRouterMulticastDomainId!: pulumi.Output<string>;
+    declare public readonly transitRouterMulticastDomainId: pulumi.Output<string>;
     /**
      * The ID of the vSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterMulticastDomainAssociation resource with the given unique name, arguments, and options.
@@ -125,24 +125,24 @@ export class TransitRouterMulticastDomainAssociation extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterMulticastDomainAssociationState | undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = state ? state.transitRouterMulticastDomainId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterMulticastDomainId"] = state?.transitRouterMulticastDomainId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as TransitRouterMulticastDomainAssociationArgs | undefined;
-            if ((!args || args.transitRouterAttachmentId === undefined) && !opts.urn) {
+            if (args?.transitRouterAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterAttachmentId'");
             }
-            if ((!args || args.transitRouterMulticastDomainId === undefined) && !opts.urn) {
+            if (args?.transitRouterMulticastDomainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterMulticastDomainId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = args ? args.transitRouterMulticastDomainId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["transitRouterAttachmentId"] = args?.transitRouterAttachmentId;
+            resourceInputs["transitRouterMulticastDomainId"] = args?.transitRouterMulticastDomainId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

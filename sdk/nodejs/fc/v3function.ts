@@ -129,147 +129,147 @@ export class V3Function extends pulumi.CustomResource {
     /**
      * Function code ZIP package. code and customContainerConfig. See `code` below.
      */
-    public readonly code!: pulumi.Output<outputs.fc.V3FunctionCode | undefined>;
+    declare public readonly code: pulumi.Output<outputs.fc.V3FunctionCode | undefined>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
      */
-    public /*out*/ readonly codeSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly codeSize: pulumi.Output<number>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    public readonly cpu!: pulumi.Output<number>;
+    declare public readonly cpu: pulumi.Output<number>;
     /**
      * The creation time of the function.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `customContainerConfig` below.
      */
-    public readonly customContainerConfig!: pulumi.Output<outputs.fc.V3FunctionCustomContainerConfig | undefined>;
+    declare public readonly customContainerConfig: pulumi.Output<outputs.fc.V3FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration See `customDns` below.
      */
-    public readonly customDns!: pulumi.Output<outputs.fc.V3FunctionCustomDns | undefined>;
+    declare public readonly customDns: pulumi.Output<outputs.fc.V3FunctionCustomDns | undefined>;
     /**
      * Customize the runtime configuration. See `customRuntimeConfig` below.
      */
-    public readonly customRuntimeConfig!: pulumi.Output<outputs.fc.V3FunctionCustomRuntimeConfig | undefined>;
+    declare public readonly customRuntimeConfig: pulumi.Output<outputs.fc.V3FunctionCustomRuntimeConfig | undefined>;
     /**
      * The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
      */
-    public readonly diskSize!: pulumi.Output<number>;
+    declare public readonly diskSize: pulumi.Output<number>;
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ARN of function
      */
-    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionArn: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly functionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionId: pulumi.Output<string>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * Function GPU configuration. See `gpuConfig` below.
      */
-    public readonly gpuConfig!: pulumi.Output<outputs.fc.V3FunctionGpuConfig | undefined>;
+    declare public readonly gpuConfig: pulumi.Output<outputs.fc.V3FunctionGpuConfig | undefined>;
     /**
      * Function Handler: the call entry for the function compute system to run your function.
      */
-    public readonly handler!: pulumi.Output<string>;
+    declare public readonly handler: pulumi.Output<string>;
     /**
      * Maximum instance concurrency.
      */
-    public readonly instanceConcurrency!: pulumi.Output<number>;
+    declare public readonly instanceConcurrency: pulumi.Output<number>;
     /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
-    public readonly instanceLifecycleConfig!: pulumi.Output<outputs.fc.V3FunctionInstanceLifecycleConfig | undefined>;
+    declare public readonly instanceLifecycleConfig: pulumi.Output<outputs.fc.V3FunctionInstanceLifecycleConfig | undefined>;
     /**
      * Allow function to access public network
      */
-    public readonly internetAccess!: pulumi.Output<boolean>;
+    declare public readonly internetAccess: pulumi.Output<boolean>;
     /**
      * Last time the function was Updated
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
      */
-    public /*out*/ readonly lastUpdateStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdateStatus: pulumi.Output<string>;
     /**
      * The reason that caused the last function to update the Operation State to the current value
      */
-    public /*out*/ readonly lastUpdateStatusReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdateStatusReason: pulumi.Output<string>;
     /**
      * Status code of the reason that caused the last function update operation status to the current value
      */
-    public /*out*/ readonly lastUpdateStatusReasonCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdateStatusReasonCode: pulumi.Output<string>;
     /**
      * The list of layers.
      */
-    public readonly layers!: pulumi.Output<string[] | undefined>;
+    declare public readonly layers: pulumi.Output<string[] | undefined>;
     /**
      * The logs generated by the function are written to the configured Logstore. See `logConfig` below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.fc.V3FunctionLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.fc.V3FunctionLogConfig | undefined>;
     /**
      * The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
      */
-    public readonly memorySize!: pulumi.Output<number>;
+    declare public readonly memorySize: pulumi.Output<number>;
     /**
      * NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nasConfig` below.
      */
-    public readonly nasConfig!: pulumi.Output<outputs.fc.V3FunctionNasConfig>;
+    declare public readonly nasConfig: pulumi.Output<outputs.fc.V3FunctionNasConfig>;
     /**
      * OSS mount configuration See `ossMountConfig` below.
      */
-    public readonly ossMountConfig!: pulumi.Output<outputs.fc.V3FunctionOssMountConfig>;
+    declare public readonly ossMountConfig: pulumi.Output<outputs.fc.V3FunctionOssMountConfig>;
     /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Function runtime type
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * Function Status
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The reason why the function is in the current state
      */
-    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
      * The status code of the reason the function is in the current state.
      */
-    public /*out*/ readonly stateReasonCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateReasonCode: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The maximum running time of the function, in seconds.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * Tracing configuration
      */
-    public /*out*/ readonly tracingConfig!: pulumi.Output<outputs.fc.V3FunctionTracingConfig>;
+    declare public /*out*/ readonly tracingConfig: pulumi.Output<outputs.fc.V3FunctionTracingConfig>;
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      */
-    public readonly vpcConfig!: pulumi.Output<outputs.fc.V3FunctionVpcConfig>;
+    declare public readonly vpcConfig: pulumi.Output<outputs.fc.V3FunctionVpcConfig>;
 
     /**
      * Create a V3Function resource with the given unique name, arguments, and options.
@@ -284,74 +284,74 @@ export class V3Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3FunctionState | undefined;
-            resourceInputs["code"] = state ? state.code : undefined;
-            resourceInputs["codeSize"] = state ? state.codeSize : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
-            resourceInputs["customDns"] = state ? state.customDns : undefined;
-            resourceInputs["customRuntimeConfig"] = state ? state.customRuntimeConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["functionId"] = state ? state.functionId : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["gpuConfig"] = state ? state.gpuConfig : undefined;
-            resourceInputs["handler"] = state ? state.handler : undefined;
-            resourceInputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
-            resourceInputs["instanceLifecycleConfig"] = state ? state.instanceLifecycleConfig : undefined;
-            resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["lastUpdateStatus"] = state ? state.lastUpdateStatus : undefined;
-            resourceInputs["lastUpdateStatusReason"] = state ? state.lastUpdateStatusReason : undefined;
-            resourceInputs["lastUpdateStatusReasonCode"] = state ? state.lastUpdateStatusReasonCode : undefined;
-            resourceInputs["layers"] = state ? state.layers : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["memorySize"] = state ? state.memorySize : undefined;
-            resourceInputs["nasConfig"] = state ? state.nasConfig : undefined;
-            resourceInputs["ossMountConfig"] = state ? state.ossMountConfig : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
-            resourceInputs["stateReasonCode"] = state ? state.stateReasonCode : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["tracingConfig"] = state ? state.tracingConfig : undefined;
-            resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["codeSize"] = state?.codeSize;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customContainerConfig"] = state?.customContainerConfig;
+            resourceInputs["customDns"] = state?.customDns;
+            resourceInputs["customRuntimeConfig"] = state?.customRuntimeConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["functionId"] = state?.functionId;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["gpuConfig"] = state?.gpuConfig;
+            resourceInputs["handler"] = state?.handler;
+            resourceInputs["instanceConcurrency"] = state?.instanceConcurrency;
+            resourceInputs["instanceLifecycleConfig"] = state?.instanceLifecycleConfig;
+            resourceInputs["internetAccess"] = state?.internetAccess;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["lastUpdateStatus"] = state?.lastUpdateStatus;
+            resourceInputs["lastUpdateStatusReason"] = state?.lastUpdateStatusReason;
+            resourceInputs["lastUpdateStatusReasonCode"] = state?.lastUpdateStatusReasonCode;
+            resourceInputs["layers"] = state?.layers;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["memorySize"] = state?.memorySize;
+            resourceInputs["nasConfig"] = state?.nasConfig;
+            resourceInputs["ossMountConfig"] = state?.ossMountConfig;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["stateReasonCode"] = state?.stateReasonCode;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["tracingConfig"] = state?.tracingConfig;
+            resourceInputs["vpcConfig"] = state?.vpcConfig;
         } else {
             const args = argsOrState as V3FunctionArgs | undefined;
-            if ((!args || args.handler === undefined) && !opts.urn) {
+            if (args?.handler === undefined && !opts.urn) {
                 throw new Error("Missing required property 'handler'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            resourceInputs["code"] = args ? args.code : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["customContainerConfig"] = args ? args.customContainerConfig : undefined;
-            resourceInputs["customDns"] = args ? args.customDns : undefined;
-            resourceInputs["customRuntimeConfig"] = args ? args.customRuntimeConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["gpuConfig"] = args ? args.gpuConfig : undefined;
-            resourceInputs["handler"] = args ? args.handler : undefined;
-            resourceInputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
-            resourceInputs["instanceLifecycleConfig"] = args ? args.instanceLifecycleConfig : undefined;
-            resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["customContainerConfig"] = args?.customContainerConfig;
+            resourceInputs["customDns"] = args?.customDns;
+            resourceInputs["customRuntimeConfig"] = args?.customRuntimeConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["gpuConfig"] = args?.gpuConfig;
+            resourceInputs["handler"] = args?.handler;
+            resourceInputs["instanceConcurrency"] = args?.instanceConcurrency;
+            resourceInputs["instanceLifecycleConfig"] = args?.instanceLifecycleConfig;
+            resourceInputs["internetAccess"] = args?.internetAccess;
             resourceInputs["layers"] = args?.layers ? pulumi.secret(args.layers) : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["memorySize"] = args ? args.memorySize : undefined;
-            resourceInputs["nasConfig"] = args ? args.nasConfig : undefined;
-            resourceInputs["ossMountConfig"] = args ? args.ossMountConfig : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["memorySize"] = args?.memorySize;
+            resourceInputs["nasConfig"] = args?.nasConfig;
+            resourceInputs["ossMountConfig"] = args?.ossMountConfig;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["vpcConfig"] = args?.vpcConfig;
             resourceInputs["codeSize"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["functionArn"] = undefined /*out*/;

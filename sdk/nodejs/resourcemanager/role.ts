@@ -78,31 +78,31 @@ export class Role extends pulumi.CustomResource {
     /**
      * The resource descriptor of the role.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The content of the permissions strategy that plays a role.
      */
-    public readonly assumeRolePolicyDocument!: pulumi.Output<string>;
+    declare public readonly assumeRolePolicyDocument: pulumi.Output<string>;
     /**
      * The description of the Resource Manager role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
-    public readonly maxSessionDuration!: pulumi.Output<number | undefined>;
+    declare public readonly maxSessionDuration: pulumi.Output<number | undefined>;
     /**
      * This ID of Resource Manager role. The value is set to `roleName`.
      */
-    public /*out*/ readonly roleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleId: pulumi.Output<string>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
     /**
      * Role update time.
      */
-    public /*out*/ readonly updateDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateDate: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -117,25 +117,25 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["assumeRolePolicyDocument"] = state ? state.assumeRolePolicyDocument : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["updateDate"] = state ? state.updateDate : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["assumeRolePolicyDocument"] = state?.assumeRolePolicyDocument;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["maxSessionDuration"] = state?.maxSessionDuration;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["updateDate"] = state?.updateDate;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            if ((!args || args.assumeRolePolicyDocument === undefined) && !opts.urn) {
+            if (args?.assumeRolePolicyDocument === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assumeRolePolicyDocument'");
             }
-            if ((!args || args.roleName === undefined) && !opts.urn) {
+            if (args?.roleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            resourceInputs["assumeRolePolicyDocument"] = args ? args.assumeRolePolicyDocument : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["assumeRolePolicyDocument"] = args?.assumeRolePolicyDocument;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["maxSessionDuration"] = args?.maxSessionDuration;
+            resourceInputs["roleName"] = args?.roleName;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["roleId"] = undefined /*out*/;
             resourceInputs["updateDate"] = undefined /*out*/;

@@ -80,23 +80,23 @@ export class ApiDestination extends pulumi.CustomResource {
     /**
      * The name of the API destination.
      */
-    public readonly apiDestinationName!: pulumi.Output<string>;
+    declare public readonly apiDestinationName: pulumi.Output<string>;
     /**
      * The name of the connection.
      */
-    public readonly connectionName!: pulumi.Output<string>;
+    declare public readonly connectionName: pulumi.Output<string>;
     /**
      * The creation time of the Api Destination.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The description of the API destination.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The parameters that are configured for the API destination. See `httpApiParameters` below.
      */
-    public readonly httpApiParameters!: pulumi.Output<outputs.eventbridge.ApiDestinationHttpApiParameters>;
+    declare public readonly httpApiParameters: pulumi.Output<outputs.eventbridge.ApiDestinationHttpApiParameters>;
 
     /**
      * Create a ApiDestination resource with the given unique name, arguments, and options.
@@ -111,26 +111,26 @@ export class ApiDestination extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiDestinationState | undefined;
-            resourceInputs["apiDestinationName"] = state ? state.apiDestinationName : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["httpApiParameters"] = state ? state.httpApiParameters : undefined;
+            resourceInputs["apiDestinationName"] = state?.apiDestinationName;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["httpApiParameters"] = state?.httpApiParameters;
         } else {
             const args = argsOrState as ApiDestinationArgs | undefined;
-            if ((!args || args.apiDestinationName === undefined) && !opts.urn) {
+            if (args?.apiDestinationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiDestinationName'");
             }
-            if ((!args || args.connectionName === undefined) && !opts.urn) {
+            if (args?.connectionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionName'");
             }
-            if ((!args || args.httpApiParameters === undefined) && !opts.urn) {
+            if (args?.httpApiParameters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'httpApiParameters'");
             }
-            resourceInputs["apiDestinationName"] = args ? args.apiDestinationName : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpApiParameters"] = args ? args.httpApiParameters : undefined;
+            resourceInputs["apiDestinationName"] = args?.apiDestinationName;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpApiParameters"] = args?.httpApiParameters;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

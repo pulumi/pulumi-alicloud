@@ -76,46 +76,46 @@ export class TemplateQuota extends pulumi.CustomResource {
     /**
      * Quota application value.
      */
-    public readonly desireValue!: pulumi.Output<number>;
+    declare public readonly desireValue: pulumi.Output<number>;
     /**
      * The Quota Dimensions. See `dimensions` below.
      */
-    public readonly dimensions!: pulumi.Output<outputs.quotas.TemplateQuotaDimension[] | undefined>;
+    declare public readonly dimensions: pulumi.Output<outputs.quotas.TemplateQuotaDimension[] | undefined>;
     /**
      * The UTC time when the quota takes effect.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * The language of the quota alert notification. Value:
      * - zh: Chinese.
      * - en: English.
      */
-    public readonly envLanguage!: pulumi.Output<string>;
+    declare public readonly envLanguage: pulumi.Output<string>;
     /**
      * The UTC time when the quota expires.
      */
-    public readonly expireTime!: pulumi.Output<string | undefined>;
+    declare public readonly expireTime: pulumi.Output<string | undefined>;
     /**
      * Whether to notify the result of quota promotion application. Value:
      * - 0: No.
      * - 3: Yes.
      */
-    public readonly noticeType!: pulumi.Output<number>;
+    declare public readonly noticeType: pulumi.Output<number>;
     /**
      * The abbreviation of the cloud service name.
      */
-    public readonly productCode!: pulumi.Output<string>;
+    declare public readonly productCode: pulumi.Output<string>;
     /**
      * The quota ID.
      */
-    public readonly quotaActionCode!: pulumi.Output<string>;
+    declare public readonly quotaActionCode: pulumi.Output<string>;
     /**
      * Type of quota. Value:
      * - CommonQuota : Generic quota.
      * - WhiteListLabel: Equity quota.
      * - FlowControl:API rate quota.
      */
-    public readonly quotaCategory!: pulumi.Output<string | undefined>;
+    declare public readonly quotaCategory: pulumi.Output<string | undefined>;
 
     /**
      * Create a TemplateQuota resource with the given unique name, arguments, and options.
@@ -130,35 +130,35 @@ export class TemplateQuota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateQuotaState | undefined;
-            resourceInputs["desireValue"] = state ? state.desireValue : undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = state ? state.envLanguage : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["noticeType"] = state ? state.noticeType : undefined;
-            resourceInputs["productCode"] = state ? state.productCode : undefined;
-            resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
-            resourceInputs["quotaCategory"] = state ? state.quotaCategory : undefined;
+            resourceInputs["desireValue"] = state?.desireValue;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["envLanguage"] = state?.envLanguage;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["noticeType"] = state?.noticeType;
+            resourceInputs["productCode"] = state?.productCode;
+            resourceInputs["quotaActionCode"] = state?.quotaActionCode;
+            resourceInputs["quotaCategory"] = state?.quotaCategory;
         } else {
             const args = argsOrState as TemplateQuotaArgs | undefined;
-            if ((!args || args.desireValue === undefined) && !opts.urn) {
+            if (args?.desireValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desireValue'");
             }
-            if ((!args || args.productCode === undefined) && !opts.urn) {
+            if (args?.productCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            if ((!args || args.quotaActionCode === undefined) && !opts.urn) {
+            if (args?.quotaActionCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quotaActionCode'");
             }
-            resourceInputs["desireValue"] = args ? args.desireValue : undefined;
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = args ? args.envLanguage : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["noticeType"] = args ? args.noticeType : undefined;
-            resourceInputs["productCode"] = args ? args.productCode : undefined;
-            resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
-            resourceInputs["quotaCategory"] = args ? args.quotaCategory : undefined;
+            resourceInputs["desireValue"] = args?.desireValue;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["envLanguage"] = args?.envLanguage;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["noticeType"] = args?.noticeType;
+            resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["quotaActionCode"] = args?.quotaActionCode;
+            resourceInputs["quotaCategory"] = args?.quotaCategory;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TemplateQuota.__pulumiType, name, resourceInputs, opts);

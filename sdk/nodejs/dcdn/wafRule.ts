@@ -104,71 +104,71 @@ export class WafRule extends pulumi.CustomResource {
     /**
      * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
      */
-    public readonly ccStatus!: pulumi.Output<string>;
+    declare public readonly ccStatus: pulumi.Output<string>;
     /**
      * The blocked regions in the Chinese mainland, separated by commas (,).
      */
-    public readonly cnRegionList!: pulumi.Output<string | undefined>;
+    declare public readonly cnRegionList: pulumi.Output<string | undefined>;
     /**
      * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
-    public readonly conditions!: pulumi.Output<outputs.dcdn.WafRuleCondition[] | undefined>;
+    declare public readonly conditions: pulumi.Output<outputs.dcdn.WafRuleCondition[] | undefined>;
     /**
      * The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
      */
-    public /*out*/ readonly defenseScene!: pulumi.Output<string>;
+    declare public /*out*/ readonly defenseScene: pulumi.Output<string>;
     /**
      * The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
      */
-    public readonly effect!: pulumi.Output<string | undefined>;
+    declare public readonly effect: pulumi.Output<string | undefined>;
     /**
      * Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
      * Blocked regions outside the Chinese mainland, separated by commas (,).
      */
-    public readonly otherRegionList!: pulumi.Output<string | undefined>;
+    declare public readonly otherRegionList: pulumi.Output<string | undefined>;
     /**
      * The protection policy ID.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
-    public readonly rateLimit!: pulumi.Output<outputs.dcdn.WafRuleRateLimit | undefined>;
+    declare public readonly rateLimit: pulumi.Output<outputs.dcdn.WafRuleRateLimit | undefined>;
     /**
      * The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      */
-    public readonly regularRules!: pulumi.Output<string[] | undefined>;
+    declare public readonly regularRules: pulumi.Output<string[] | undefined>;
     /**
      * Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "codeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
      */
-    public readonly regularTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly regularTypes: pulumi.Output<string[] | undefined>;
     /**
      * Filter by IP address.
      */
-    public readonly remoteAddrs!: pulumi.Output<string[] | undefined>;
+    declare public readonly remoteAddrs: pulumi.Output<string[] | undefined>;
     /**
      * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The types of the protection policies.
      */
-    public readonly scenes!: pulumi.Output<string[] | undefined>;
+    declare public readonly scenes: pulumi.Output<string[] | undefined>;
     /**
      * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
-    public readonly wafGroupIds!: pulumi.Output<string | undefined>;
+    declare public readonly wafGroupIds: pulumi.Output<string | undefined>;
 
     /**
      * Create a WafRule resource with the given unique name, arguments, and options.
@@ -183,46 +183,46 @@ export class WafRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["ccStatus"] = state ? state.ccStatus : undefined;
-            resourceInputs["cnRegionList"] = state ? state.cnRegionList : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["defenseScene"] = state ? state.defenseScene : undefined;
-            resourceInputs["effect"] = state ? state.effect : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
-            resourceInputs["otherRegionList"] = state ? state.otherRegionList : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["rateLimit"] = state ? state.rateLimit : undefined;
-            resourceInputs["regularRules"] = state ? state.regularRules : undefined;
-            resourceInputs["regularTypes"] = state ? state.regularTypes : undefined;
-            resourceInputs["remoteAddrs"] = state ? state.remoteAddrs : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["scenes"] = state ? state.scenes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["wafGroupIds"] = state ? state.wafGroupIds : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["ccStatus"] = state?.ccStatus;
+            resourceInputs["cnRegionList"] = state?.cnRegionList;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["defenseScene"] = state?.defenseScene;
+            resourceInputs["effect"] = state?.effect;
+            resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["otherRegionList"] = state?.otherRegionList;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["rateLimit"] = state?.rateLimit;
+            resourceInputs["regularRules"] = state?.regularRules;
+            resourceInputs["regularTypes"] = state?.regularTypes;
+            resourceInputs["remoteAddrs"] = state?.remoteAddrs;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["scenes"] = state?.scenes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["wafGroupIds"] = state?.wafGroupIds;
         } else {
             const args = argsOrState as WafRuleArgs | undefined;
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["ccStatus"] = args ? args.ccStatus : undefined;
-            resourceInputs["cnRegionList"] = args ? args.cnRegionList : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["effect"] = args ? args.effect : undefined;
-            resourceInputs["otherRegionList"] = args ? args.otherRegionList : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["rateLimit"] = args ? args.rateLimit : undefined;
-            resourceInputs["regularRules"] = args ? args.regularRules : undefined;
-            resourceInputs["regularTypes"] = args ? args.regularTypes : undefined;
-            resourceInputs["remoteAddrs"] = args ? args.remoteAddrs : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["scenes"] = args ? args.scenes : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["wafGroupIds"] = args ? args.wafGroupIds : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["ccStatus"] = args?.ccStatus;
+            resourceInputs["cnRegionList"] = args?.cnRegionList;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["effect"] = args?.effect;
+            resourceInputs["otherRegionList"] = args?.otherRegionList;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["rateLimit"] = args?.rateLimit;
+            resourceInputs["regularRules"] = args?.regularRules;
+            resourceInputs["regularTypes"] = args?.regularTypes;
+            resourceInputs["remoteAddrs"] = args?.remoteAddrs;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["scenes"] = args?.scenes;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["wafGroupIds"] = args?.wafGroupIds;
             resourceInputs["defenseScene"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
         }

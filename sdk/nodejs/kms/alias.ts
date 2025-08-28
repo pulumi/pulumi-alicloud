@@ -63,7 +63,7 @@ export class Alias extends pulumi.CustomResource {
     /**
      * The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
      */
-    public readonly aliasName!: pulumi.Output<string>;
+    declare public readonly aliasName: pulumi.Output<string>;
     /**
      * The id of the key.
      *
@@ -73,7 +73,7 @@ export class Alias extends pulumi.CustomResource {
      *
      * > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
 
     /**
      * Create a Alias resource with the given unique name, arguments, and options.
@@ -88,18 +88,18 @@ export class Alias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AliasState | undefined;
-            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["aliasName"] = state?.aliasName;
+            resourceInputs["keyId"] = state?.keyId;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.aliasName === undefined) && !opts.urn) {
+            if (args?.aliasName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["aliasName"] = args?.aliasName;
+            resourceInputs["keyId"] = args?.keyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alias.__pulumiType, name, resourceInputs, opts);

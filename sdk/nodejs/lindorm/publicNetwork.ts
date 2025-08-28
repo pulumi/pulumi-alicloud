@@ -44,19 +44,19 @@ export class PublicNetwork extends pulumi.CustomResource {
     /**
      * Open or close the public connection. Value:
      */
-    public readonly enablePublicNetwork!: pulumi.Output<number | undefined>;
+    declare public readonly enablePublicNetwork: pulumi.Output<number | undefined>;
     /**
      * Engine type, value:
      */
-    public readonly engineType!: pulumi.Output<string>;
+    declare public readonly engineType: pulumi.Output<string>;
     /**
      * Instance ID
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Instance status, returns:_EXPANDING`: Capacity-based cloud storage is being expanded._version_transing`: The minor version is being upgraded._CHANGING`: The specification is being upgraded or downgraded._SWITCHING`:SSL is being changed._OPENING`: The data subscription function is being activated._TRANSFER`: migrates data to the database._CREATING`: in the production disaster recovery instance._RECOVERING`: The backup is being restored._IMPORTING`: Data is being imported._MODIFYING`: The network is being changed._SWITCHING`: The internal network and the external network are being switched._CREATING`: creates a network link._DELETING`: deletes a network link.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a PublicNetwork resource with the given unique name, arguments, and options.
@@ -71,21 +71,21 @@ export class PublicNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicNetworkState | undefined;
-            resourceInputs["enablePublicNetwork"] = state ? state.enablePublicNetwork : undefined;
-            resourceInputs["engineType"] = state ? state.engineType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["enablePublicNetwork"] = state?.enablePublicNetwork;
+            resourceInputs["engineType"] = state?.engineType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as PublicNetworkArgs | undefined;
-            if ((!args || args.engineType === undefined) && !opts.urn) {
+            if (args?.engineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
-            resourceInputs["engineType"] = args ? args.engineType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["enablePublicNetwork"] = args?.enablePublicNetwork;
+            resourceInputs["engineType"] = args?.engineType;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -63,11 +63,11 @@ export class Group extends pulumi.CustomResource {
     /**
      * GroupId.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * GroupName.
      */
-    public readonly groupName!: pulumi.Output<string | undefined>;
+    declare public readonly groupName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -82,12 +82,12 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupName"] = state?.groupName;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["groupName"] = args?.groupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);

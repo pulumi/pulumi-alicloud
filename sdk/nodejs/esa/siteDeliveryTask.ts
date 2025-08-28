@@ -99,55 +99,55 @@ export class SiteDeliveryTask extends pulumi.CustomResource {
      * Real-time log type. Valid values:
      * - `dcdnLogAccessL1 (default)`: access log.
      */
-    public readonly businessType!: pulumi.Output<string>;
+    declare public readonly businessType: pulumi.Output<string>;
     /**
      * Data Center. Values:
      */
-    public readonly dataCenter!: pulumi.Output<string>;
+    declare public readonly dataCenter: pulumi.Output<string>;
     /**
      * Delivery Type:
      */
-    public readonly deliveryType!: pulumi.Output<string>;
+    declare public readonly deliveryType: pulumi.Output<string>;
     /**
      * If the discard rate is not filled, the default value is 0.
      */
-    public readonly discardRate!: pulumi.Output<number | undefined>;
+    declare public readonly discardRate: pulumi.Output<number | undefined>;
     /**
      * The list of delivery fields to be modified, separated by commas.
      */
-    public readonly fieldName!: pulumi.Output<string>;
+    declare public readonly fieldName: pulumi.Output<string>;
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
      */
-    public readonly httpDelivery!: pulumi.Output<outputs.esa.SiteDeliveryTaskHttpDelivery | undefined>;
+    declare public readonly httpDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskHttpDelivery | undefined>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      */
-    public readonly kafkaDelivery!: pulumi.Output<outputs.esa.SiteDeliveryTaskKafkaDelivery | undefined>;
+    declare public readonly kafkaDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskKafkaDelivery | undefined>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
      */
-    public readonly ossDelivery!: pulumi.Output<outputs.esa.SiteDeliveryTaskOssDelivery | undefined>;
+    declare public readonly ossDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskOssDelivery | undefined>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      */
-    public readonly s3Delivery!: pulumi.Output<outputs.esa.SiteDeliveryTaskS3Delivery | undefined>;
+    declare public readonly s3Delivery: pulumi.Output<outputs.esa.SiteDeliveryTaskS3Delivery | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * SLS delivery configuration. See `slsDelivery` below.
      */
-    public readonly slsDelivery!: pulumi.Output<outputs.esa.SiteDeliveryTaskSlsDelivery | undefined>;
+    declare public readonly slsDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskSlsDelivery | undefined>;
     /**
      * Task status, value:
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The task name.
      */
-    public readonly taskName!: pulumi.Output<string>;
+    declare public readonly taskName: pulumi.Output<string>;
 
     /**
      * Create a SiteDeliveryTask resource with the given unique name, arguments, and options.
@@ -162,52 +162,52 @@ export class SiteDeliveryTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SiteDeliveryTaskState | undefined;
-            resourceInputs["businessType"] = state ? state.businessType : undefined;
-            resourceInputs["dataCenter"] = state ? state.dataCenter : undefined;
-            resourceInputs["deliveryType"] = state ? state.deliveryType : undefined;
-            resourceInputs["discardRate"] = state ? state.discardRate : undefined;
-            resourceInputs["fieldName"] = state ? state.fieldName : undefined;
-            resourceInputs["httpDelivery"] = state ? state.httpDelivery : undefined;
-            resourceInputs["kafkaDelivery"] = state ? state.kafkaDelivery : undefined;
-            resourceInputs["ossDelivery"] = state ? state.ossDelivery : undefined;
-            resourceInputs["s3Delivery"] = state ? state.s3Delivery : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["slsDelivery"] = state ? state.slsDelivery : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["taskName"] = state ? state.taskName : undefined;
+            resourceInputs["businessType"] = state?.businessType;
+            resourceInputs["dataCenter"] = state?.dataCenter;
+            resourceInputs["deliveryType"] = state?.deliveryType;
+            resourceInputs["discardRate"] = state?.discardRate;
+            resourceInputs["fieldName"] = state?.fieldName;
+            resourceInputs["httpDelivery"] = state?.httpDelivery;
+            resourceInputs["kafkaDelivery"] = state?.kafkaDelivery;
+            resourceInputs["ossDelivery"] = state?.ossDelivery;
+            resourceInputs["s3Delivery"] = state?.s3Delivery;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["slsDelivery"] = state?.slsDelivery;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["taskName"] = state?.taskName;
         } else {
             const args = argsOrState as SiteDeliveryTaskArgs | undefined;
-            if ((!args || args.businessType === undefined) && !opts.urn) {
+            if (args?.businessType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'businessType'");
             }
-            if ((!args || args.dataCenter === undefined) && !opts.urn) {
+            if (args?.dataCenter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataCenter'");
             }
-            if ((!args || args.deliveryType === undefined) && !opts.urn) {
+            if (args?.deliveryType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryType'");
             }
-            if ((!args || args.fieldName === undefined) && !opts.urn) {
+            if (args?.fieldName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fieldName'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.taskName === undefined) && !opts.urn) {
+            if (args?.taskName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskName'");
             }
-            resourceInputs["businessType"] = args ? args.businessType : undefined;
-            resourceInputs["dataCenter"] = args ? args.dataCenter : undefined;
-            resourceInputs["deliveryType"] = args ? args.deliveryType : undefined;
-            resourceInputs["discardRate"] = args ? args.discardRate : undefined;
-            resourceInputs["fieldName"] = args ? args.fieldName : undefined;
-            resourceInputs["httpDelivery"] = args ? args.httpDelivery : undefined;
-            resourceInputs["kafkaDelivery"] = args ? args.kafkaDelivery : undefined;
-            resourceInputs["ossDelivery"] = args ? args.ossDelivery : undefined;
-            resourceInputs["s3Delivery"] = args ? args.s3Delivery : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["slsDelivery"] = args ? args.slsDelivery : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["taskName"] = args ? args.taskName : undefined;
+            resourceInputs["businessType"] = args?.businessType;
+            resourceInputs["dataCenter"] = args?.dataCenter;
+            resourceInputs["deliveryType"] = args?.deliveryType;
+            resourceInputs["discardRate"] = args?.discardRate;
+            resourceInputs["fieldName"] = args?.fieldName;
+            resourceInputs["httpDelivery"] = args?.httpDelivery;
+            resourceInputs["kafkaDelivery"] = args?.kafkaDelivery;
+            resourceInputs["ossDelivery"] = args?.ossDelivery;
+            resourceInputs["s3Delivery"] = args?.s3Delivery;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["slsDelivery"] = args?.slsDelivery;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["taskName"] = args?.taskName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SiteDeliveryTask.__pulumiType, name, resourceInputs, opts);

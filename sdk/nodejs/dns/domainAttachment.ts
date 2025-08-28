@@ -65,11 +65,11 @@ export class DomainAttachment extends pulumi.CustomResource {
     /**
      * The domain names bound to the DNS instance.
      */
-    public readonly domainNames!: pulumi.Output<string[]>;
+    declare public readonly domainNames: pulumi.Output<string[]>;
     /**
      * The id of the DNS instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a DomainAttachment resource with the given unique name, arguments, and options.
@@ -84,18 +84,18 @@ export class DomainAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainAttachmentState | undefined;
-            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["domainNames"] = state?.domainNames;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as DomainAttachmentArgs | undefined;
-            if ((!args || args.domainNames === undefined) && !opts.urn) {
+            if (args?.domainNames === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainNames'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["domainNames"] = args?.domainNames;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainAttachment.__pulumiType, name, resourceInputs, opts);

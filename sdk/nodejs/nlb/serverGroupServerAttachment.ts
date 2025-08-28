@@ -93,26 +93,26 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
      * The description of the servers.
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The port that is used by the backend server. Valid values: `1` to `65535`.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the server group.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The ID of the server.
      *
      * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
      * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
      */
-    public readonly serverIp!: pulumi.Output<string>;
+    declare public readonly serverIp: pulumi.Output<string>;
     /**
      * The type of the backend server. Valid values:
      *
@@ -121,19 +121,19 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
      * - `Eci`: an elastic container instance
      * - `Ip`: an IP address
      */
-    public readonly serverType!: pulumi.Output<string>;
+    declare public readonly serverType: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
     /**
      * The zone ID of the server.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ServerGroupServerAttachment resource with the given unique name, arguments, and options.
@@ -148,33 +148,33 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupServerAttachmentState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["serverIp"] = state ? state.serverIp : undefined;
-            resourceInputs["serverType"] = state ? state.serverType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["serverIp"] = state?.serverIp;
+            resourceInputs["serverType"] = state?.serverType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["weight"] = state?.weight;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ServerGroupServerAttachmentArgs | undefined;
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            if ((!args || args.serverType === undefined) && !opts.urn) {
+            if (args?.serverType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["serverIp"] = args ? args.serverIp : undefined;
-            resourceInputs["serverType"] = args ? args.serverType : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["serverIp"] = args?.serverIp;
+            resourceInputs["serverType"] = args?.serverType;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zoneId"] = undefined /*out*/;
         }

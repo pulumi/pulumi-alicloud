@@ -111,19 +111,19 @@ export class TransitRouterRouteTablePropagation extends pulumi.CustomResource {
      *
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The associating status of the network.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID the transit router attachment.
      */
-    public readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * The ID of the transit router route table.
      */
-    public readonly transitRouterRouteTableId!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteTableId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterRouteTablePropagation resource with the given unique name, arguments, and options.
@@ -138,21 +138,21 @@ export class TransitRouterRouteTablePropagation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterRouteTablePropagationState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterRouteTableId"] = state?.transitRouterRouteTableId;
         } else {
             const args = argsOrState as TransitRouterRouteTablePropagationArgs | undefined;
-            if ((!args || args.transitRouterAttachmentId === undefined) && !opts.urn) {
+            if (args?.transitRouterAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterAttachmentId'");
             }
-            if ((!args || args.transitRouterRouteTableId === undefined) && !opts.urn) {
+            if (args?.transitRouterRouteTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterRouteTableId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterRouteTableId"] = args ? args.transitRouterRouteTableId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["transitRouterAttachmentId"] = args?.transitRouterAttachmentId;
+            resourceInputs["transitRouterRouteTableId"] = args?.transitRouterRouteTableId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

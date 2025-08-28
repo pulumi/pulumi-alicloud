@@ -123,35 +123,35 @@ export class Custom extends pulumi.CustomResource {
     /**
      * Represents the number of instances created
      */
-    public readonly amount!: pulumi.Output<number | undefined>;
+    declare public readonly amount: pulumi.Output<number | undefined>;
     /**
      * Whether to pay automatically. Value range:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether the instance is automatically renewed. Valid values: true/false. The default is false.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    public readonly createExtraParam!: pulumi.Output<string | undefined>;
+    declare public readonly createExtraParam: pulumi.Output<string | undefined>;
     /**
      * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
      */
-    public readonly createMode!: pulumi.Output<string | undefined>;
+    declare public readonly createMode: pulumi.Output<string | undefined>;
     /**
      * Data disk See `dataDisk` below.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.rds.CustomDataDisk[] | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.rds.CustomDataDisk[] | undefined>;
     /**
      * The ID of the deployment set.
      */
-    public readonly deploymentSetId!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentSetId: pulumi.Output<string | undefined>;
     /**
      * Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Instance configuration type, value range:
      *
@@ -159,81 +159,81 @@ export class Custom extends pulumi.CustomResource {
      * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
      * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
      */
-    public readonly direction!: pulumi.Output<string | undefined>;
+    declare public readonly direction: pulumi.Output<string | undefined>;
     /**
      * Whether to pre-check the operation of creating an instance. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether to forcibly release the running instance. Value: true/false
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * Whether to force shutdown. Value range:
      */
-    public readonly forceStop!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceStop: pulumi.Output<boolean | undefined>;
     /**
      * The instance host name.
      */
-    public readonly hostName!: pulumi.Output<string | undefined>;
+    declare public readonly hostName: pulumi.Output<string | undefined>;
     /**
      * The ID of the image used by the instance.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * The type of the created RDS Custom dedicated host instance.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Reserved parameters are not supported.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    public readonly ioOptimized!: pulumi.Output<string | undefined>;
+    declare public readonly ioOptimized: pulumi.Output<string | undefined>;
     /**
      * The key pair name. Only flyer names are supported.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * The account and password of the instance.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Prepaid renewal duration, unit: Month/Year.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The unit of duration of the year-to-month billing method. Value range:
      * - `Year`: Year
      * - `Month` (default): Month
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region ID. Callable DescribeRegions to get.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Reserved parameters are not supported.
      */
-    public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly securityEnhancementStrategy: pulumi.Output<string | undefined>;
     /**
      * Security group list
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
      * - `NoSpot`: normal pay-as-you-go instances.
@@ -241,32 +241,32 @@ export class Custom extends pulumi.CustomResource {
      *
      * Default value: **NoSpot * *.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly spotStrategy: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
      */
-    public readonly supportCase!: pulumi.Output<string | undefined>;
+    declare public readonly supportCase: pulumi.Output<string | undefined>;
     /**
      * System disk specifications. See `systemDisk` below.
      */
-    public readonly systemDisk!: pulumi.Output<outputs.rds.CustomSystemDisk | undefined>;
+    declare public readonly systemDisk: pulumi.Output<outputs.rds.CustomSystemDisk | undefined>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
      * The network type InstanceNetworkType must be VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID  of the resource
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Custom resource with the given unique name, arguments, and options.
@@ -281,81 +281,81 @@ export class Custom extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomState | undefined;
-            resourceInputs["amount"] = state ? state.amount : undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["createExtraParam"] = state ? state.createExtraParam : undefined;
-            resourceInputs["createMode"] = state ? state.createMode : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["forceStop"] = state ? state.forceStop : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["supportCase"] = state ? state.supportCase : undefined;
-            resourceInputs["systemDisk"] = state ? state.systemDisk : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["amount"] = state?.amount;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["createExtraParam"] = state?.createExtraParam;
+            resourceInputs["createMode"] = state?.createMode;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["deploymentSetId"] = state?.deploymentSetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["forceStop"] = state?.forceStop;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = state?.ioOptimized;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityEnhancementStrategy"] = state?.securityEnhancementStrategy;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["supportCase"] = state?.supportCase;
+            resourceInputs["systemDisk"] = state?.systemDisk;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["amount"] = args ? args.amount : undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["createExtraParam"] = args ? args.createExtraParam : undefined;
-            resourceInputs["createMode"] = args ? args.createMode : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["forceStop"] = args ? args.forceStop : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = args ? args.ioOptimized : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["supportCase"] = args ? args.supportCase : undefined;
-            resourceInputs["systemDisk"] = args ? args.systemDisk : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["amount"] = args?.amount;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["createExtraParam"] = args?.createExtraParam;
+            resourceInputs["createMode"] = args?.createMode;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["deploymentSetId"] = args?.deploymentSetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["forceStop"] = args?.forceStop;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = args?.ioOptimized;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityEnhancementStrategy"] = args?.securityEnhancementStrategy;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["supportCase"] = args?.supportCase;
+            resourceInputs["systemDisk"] = args?.systemDisk;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

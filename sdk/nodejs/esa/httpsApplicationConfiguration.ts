@@ -86,69 +86,69 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
     /**
      * Function switch, default off. Value range:
      */
-    public readonly altSvc!: pulumi.Output<string | undefined>;
+    declare public readonly altSvc: pulumi.Output<string | undefined>;
     /**
      * Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
      */
-    public readonly altSvcClear!: pulumi.Output<string | undefined>;
+    declare public readonly altSvcClear: pulumi.Output<string | undefined>;
     /**
      * The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
      */
-    public readonly altSvcMa!: pulumi.Output<string | undefined>;
+    declare public readonly altSvcMa: pulumi.Output<string | undefined>;
     /**
      * Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
      */
-    public readonly altSvcPersist!: pulumi.Output<string | undefined>;
+    declare public readonly altSvcPersist: pulumi.Output<string | undefined>;
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Whether to enable HSTS. It is disabled by default. Value range:
      */
-    public readonly hsts!: pulumi.Output<string | undefined>;
+    declare public readonly hsts: pulumi.Output<string | undefined>;
     /**
      * Whether to include subdomains in HSTS is disabled by default. Value range:
      */
-    public readonly hstsIncludeSubdomains!: pulumi.Output<string | undefined>;
+    declare public readonly hstsIncludeSubdomains: pulumi.Output<string | undefined>;
     /**
      * The expiration time of HSTS, in seconds.
      */
-    public readonly hstsMaxAge!: pulumi.Output<string | undefined>;
+    declare public readonly hstsMaxAge: pulumi.Output<string | undefined>;
     /**
      * Whether to enable HSTS preloading. It is disabled by default. Value range:
      */
-    public readonly hstsPreload!: pulumi.Output<string | undefined>;
+    declare public readonly hstsPreload: pulumi.Output<string | undefined>;
     /**
      * Whether to enable forced HTTPS. It is disabled by default. Value range:
      */
-    public readonly httpsForce!: pulumi.Output<string | undefined>;
+    declare public readonly httpsForce: pulumi.Output<string | undefined>;
     /**
      * Forced HTTPS jump status code, value range:
      */
-    public readonly httpsForceCode!: pulumi.Output<string | undefined>;
+    declare public readonly httpsForceCode: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a HttpsApplicationConfiguration resource with the given unique name, arguments, and options.
@@ -163,42 +163,42 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpsApplicationConfigurationState | undefined;
-            resourceInputs["altSvc"] = state ? state.altSvc : undefined;
-            resourceInputs["altSvcClear"] = state ? state.altSvcClear : undefined;
-            resourceInputs["altSvcMa"] = state ? state.altSvcMa : undefined;
-            resourceInputs["altSvcPersist"] = state ? state.altSvcPersist : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["hsts"] = state ? state.hsts : undefined;
-            resourceInputs["hstsIncludeSubdomains"] = state ? state.hstsIncludeSubdomains : undefined;
-            resourceInputs["hstsMaxAge"] = state ? state.hstsMaxAge : undefined;
-            resourceInputs["hstsPreload"] = state ? state.hstsPreload : undefined;
-            resourceInputs["httpsForce"] = state ? state.httpsForce : undefined;
-            resourceInputs["httpsForceCode"] = state ? state.httpsForceCode : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
+            resourceInputs["altSvc"] = state?.altSvc;
+            resourceInputs["altSvcClear"] = state?.altSvcClear;
+            resourceInputs["altSvcMa"] = state?.altSvcMa;
+            resourceInputs["altSvcPersist"] = state?.altSvcPersist;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["hsts"] = state?.hsts;
+            resourceInputs["hstsIncludeSubdomains"] = state?.hstsIncludeSubdomains;
+            resourceInputs["hstsMaxAge"] = state?.hstsMaxAge;
+            resourceInputs["hstsPreload"] = state?.hstsPreload;
+            resourceInputs["httpsForce"] = state?.httpsForce;
+            resourceInputs["httpsForceCode"] = state?.httpsForceCode;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
             const args = argsOrState as HttpsApplicationConfigurationArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["altSvc"] = args ? args.altSvc : undefined;
-            resourceInputs["altSvcClear"] = args ? args.altSvcClear : undefined;
-            resourceInputs["altSvcMa"] = args ? args.altSvcMa : undefined;
-            resourceInputs["altSvcPersist"] = args ? args.altSvcPersist : undefined;
-            resourceInputs["hsts"] = args ? args.hsts : undefined;
-            resourceInputs["hstsIncludeSubdomains"] = args ? args.hstsIncludeSubdomains : undefined;
-            resourceInputs["hstsMaxAge"] = args ? args.hstsMaxAge : undefined;
-            resourceInputs["hstsPreload"] = args ? args.hstsPreload : undefined;
-            resourceInputs["httpsForce"] = args ? args.httpsForce : undefined;
-            resourceInputs["httpsForceCode"] = args ? args.httpsForceCode : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
+            resourceInputs["altSvc"] = args?.altSvc;
+            resourceInputs["altSvcClear"] = args?.altSvcClear;
+            resourceInputs["altSvcMa"] = args?.altSvcMa;
+            resourceInputs["altSvcPersist"] = args?.altSvcPersist;
+            resourceInputs["hsts"] = args?.hsts;
+            resourceInputs["hstsIncludeSubdomains"] = args?.hstsIncludeSubdomains;
+            resourceInputs["hstsMaxAge"] = args?.hstsMaxAge;
+            resourceInputs["hstsPreload"] = args?.hstsPreload;
+            resourceInputs["httpsForce"] = args?.httpsForce;
+            resourceInputs["httpsForceCode"] = args?.httpsForceCode;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

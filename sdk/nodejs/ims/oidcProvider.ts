@@ -76,36 +76,36 @@ export class OidcProvider extends pulumi.CustomResource {
     /**
      * ARN of OIDC identity provider.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * Client ID.
      */
-    public readonly clientIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly clientIds: pulumi.Output<string[] | undefined>;
     /**
      * Creation Time (UTC time).
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of OIDC identity provider.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The authentication fingerprint of the HTTPS CA certificate.
      */
-    public readonly fingerprints!: pulumi.Output<string[] | undefined>;
+    declare public readonly fingerprints: pulumi.Output<string[] | undefined>;
     /**
      * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
      * Unit: hours. Value range: 1~168.
      */
-    public readonly issuanceLimitTime!: pulumi.Output<number>;
+    declare public readonly issuanceLimitTime: pulumi.Output<number>;
     /**
      * The issuer URL of the OIDC identity provider.
      */
-    public readonly issuerUrl!: pulumi.Output<string>;
+    declare public readonly issuerUrl: pulumi.Output<string>;
     /**
      * The name of the OIDC identity provider.
      */
-    public readonly oidcProviderName!: pulumi.Output<string>;
+    declare public readonly oidcProviderName: pulumi.Output<string>;
 
     /**
      * Create a OidcProvider resource with the given unique name, arguments, and options.
@@ -120,28 +120,28 @@ export class OidcProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OidcProviderState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["clientIds"] = state ? state.clientIds : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprints"] = state ? state.fingerprints : undefined;
-            resourceInputs["issuanceLimitTime"] = state ? state.issuanceLimitTime : undefined;
-            resourceInputs["issuerUrl"] = state ? state.issuerUrl : undefined;
-            resourceInputs["oidcProviderName"] = state ? state.oidcProviderName : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["clientIds"] = state?.clientIds;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprints"] = state?.fingerprints;
+            resourceInputs["issuanceLimitTime"] = state?.issuanceLimitTime;
+            resourceInputs["issuerUrl"] = state?.issuerUrl;
+            resourceInputs["oidcProviderName"] = state?.oidcProviderName;
         } else {
             const args = argsOrState as OidcProviderArgs | undefined;
-            if ((!args || args.issuerUrl === undefined) && !opts.urn) {
+            if (args?.issuerUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuerUrl'");
             }
-            if ((!args || args.oidcProviderName === undefined) && !opts.urn) {
+            if (args?.oidcProviderName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oidcProviderName'");
             }
-            resourceInputs["clientIds"] = args ? args.clientIds : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fingerprints"] = args ? args.fingerprints : undefined;
-            resourceInputs["issuanceLimitTime"] = args ? args.issuanceLimitTime : undefined;
-            resourceInputs["issuerUrl"] = args ? args.issuerUrl : undefined;
-            resourceInputs["oidcProviderName"] = args ? args.oidcProviderName : undefined;
+            resourceInputs["clientIds"] = args?.clientIds;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fingerprints"] = args?.fingerprints;
+            resourceInputs["issuanceLimitTime"] = args?.issuanceLimitTime;
+            resourceInputs["issuerUrl"] = args?.issuerUrl;
+            resourceInputs["oidcProviderName"] = args?.oidcProviderName;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }

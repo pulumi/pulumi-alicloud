@@ -73,36 +73,36 @@ export class AddressBook extends pulumi.CustomResource {
     /**
      * The list of addresses.
      */
-    public readonly addressLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly addressLists: pulumi.Output<string[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
-    public readonly autoAddTagEcs!: pulumi.Output<number | undefined>;
+    declare public readonly autoAddTagEcs: pulumi.Output<number | undefined>;
     /**
      * The description of the Address Book.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A list of ECS tags. See `ecsTags` below.
      */
-    public readonly ecsTags!: pulumi.Output<outputs.cloudfirewall.AddressBookEcsTag[] | undefined>;
+    declare public readonly ecsTags: pulumi.Output<outputs.cloudfirewall.AddressBookEcsTag[] | undefined>;
     /**
      * The name of the Address Book.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
      * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
-    public readonly groupType!: pulumi.Output<string>;
+    declare public readonly groupType: pulumi.Output<string>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
-    public readonly tagRelation!: pulumi.Output<string>;
+    declare public readonly tagRelation: pulumi.Output<string>;
 
     /**
      * Create a AddressBook resource with the given unique name, arguments, and options.
@@ -117,33 +117,33 @@ export class AddressBook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressBookState | undefined;
-            resourceInputs["addressLists"] = state ? state.addressLists : undefined;
-            resourceInputs["autoAddTagEcs"] = state ? state.autoAddTagEcs : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ecsTags"] = state ? state.ecsTags : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["groupType"] = state ? state.groupType : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["tagRelation"] = state ? state.tagRelation : undefined;
+            resourceInputs["addressLists"] = state?.addressLists;
+            resourceInputs["autoAddTagEcs"] = state?.autoAddTagEcs;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ecsTags"] = state?.ecsTags;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["tagRelation"] = state?.tagRelation;
         } else {
             const args = argsOrState as AddressBookArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.groupType === undefined) && !opts.urn) {
+            if (args?.groupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupType'");
             }
-            resourceInputs["addressLists"] = args ? args.addressLists : undefined;
-            resourceInputs["autoAddTagEcs"] = args ? args.autoAddTagEcs : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ecsTags"] = args ? args.ecsTags : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["groupType"] = args ? args.groupType : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["tagRelation"] = args ? args.tagRelation : undefined;
+            resourceInputs["addressLists"] = args?.addressLists;
+            resourceInputs["autoAddTagEcs"] = args?.autoAddTagEcs;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ecsTags"] = args?.ecsTags;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["tagRelation"] = args?.tagRelation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressBook.__pulumiType, name, resourceInputs, opts);

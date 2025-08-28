@@ -66,19 +66,19 @@ export class Organization extends pulumi.CustomResource {
     /**
      * The desired member count.
      */
-    public readonly desiredMemberCount!: pulumi.Output<number | undefined>;
+    declare public readonly desiredMemberCount: pulumi.Output<number | undefined>;
     /**
      * Company name.
      */
-    public readonly organizationName!: pulumi.Output<string>;
+    declare public readonly organizationName: pulumi.Output<string>;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      */
-    public readonly realPk!: pulumi.Output<string | undefined>;
+    declare public readonly realPk: pulumi.Output<string | undefined>;
     /**
      * This is organization source information
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -93,22 +93,22 @@ export class Organization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            resourceInputs["desiredMemberCount"] = state ? state.desiredMemberCount : undefined;
-            resourceInputs["organizationName"] = state ? state.organizationName : undefined;
-            resourceInputs["realPk"] = state ? state.realPk : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["desiredMemberCount"] = state?.desiredMemberCount;
+            resourceInputs["organizationName"] = state?.organizationName;
+            resourceInputs["realPk"] = state?.realPk;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            if ((!args || args.organizationName === undefined) && !opts.urn) {
+            if (args?.organizationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationName'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["desiredMemberCount"] = args ? args.desiredMemberCount : undefined;
-            resourceInputs["organizationName"] = args ? args.organizationName : undefined;
-            resourceInputs["realPk"] = args ? args.realPk : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["desiredMemberCount"] = args?.desiredMemberCount;
+            resourceInputs["organizationName"] = args?.organizationName;
+            resourceInputs["realPk"] = args?.realPk;
+            resourceInputs["source"] = args?.source;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Organization.__pulumiType, name, resourceInputs, opts);

@@ -80,19 +80,19 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The endpoint service ID.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The whitelist in the format of ARN.
      */
-    public readonly userArn!: pulumi.Output<string | undefined>;
+    declare public readonly userArn: pulumi.Output<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a VpcEndpointServiceUser resource with the given unique name, arguments, and options.
@@ -107,22 +107,22 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceUserState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["userArn"] = state ? state.userArn : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["userArn"] = state?.userArn;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as VpcEndpointServiceUserArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["userArn"] = args ? args.userArn : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["userArn"] = args?.userArn;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcEndpointServiceUser.__pulumiType, name, resourceInputs, opts);

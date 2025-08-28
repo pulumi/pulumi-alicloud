@@ -82,41 +82,41 @@ export class Bundle extends pulumi.CustomResource {
     /**
      * The name of the bundle.
      */
-    public readonly bundleName!: pulumi.Output<string | undefined>;
+    declare public readonly bundleName: pulumi.Output<string | undefined>;
     /**
      * The description of the bundle.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
      */
-    public readonly desktopType!: pulumi.Output<string>;
+    declare public readonly desktopType: pulumi.Output<string>;
     /**
      * The ID of the image.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
      */
-    public readonly language!: pulumi.Output<string | undefined>;
+    declare public readonly language: pulumi.Output<string | undefined>;
     /**
      * The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    public readonly rootDiskPerformanceLevel!: pulumi.Output<string>;
+    declare public readonly rootDiskPerformanceLevel: pulumi.Output<string>;
     /**
      * The root disk size gib.
      */
-    public readonly rootDiskSizeGib!: pulumi.Output<number>;
+    declare public readonly rootDiskSizeGib: pulumi.Output<number>;
     /**
      * The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    public readonly userDiskPerformanceLevel!: pulumi.Output<string>;
+    declare public readonly userDiskPerformanceLevel: pulumi.Output<string>;
     /**
      * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      */
-    public readonly userDiskSizeGibs!: pulumi.Output<number[]>;
+    declare public readonly userDiskSizeGibs: pulumi.Output<number[]>;
 
     /**
      * Create a Bundle resource with the given unique name, arguments, and options.
@@ -131,38 +131,38 @@ export class Bundle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BundleState | undefined;
-            resourceInputs["bundleName"] = state ? state.bundleName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desktopType"] = state ? state.desktopType : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["rootDiskPerformanceLevel"] = state ? state.rootDiskPerformanceLevel : undefined;
-            resourceInputs["rootDiskSizeGib"] = state ? state.rootDiskSizeGib : undefined;
-            resourceInputs["userDiskPerformanceLevel"] = state ? state.userDiskPerformanceLevel : undefined;
-            resourceInputs["userDiskSizeGibs"] = state ? state.userDiskSizeGibs : undefined;
+            resourceInputs["bundleName"] = state?.bundleName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desktopType"] = state?.desktopType;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["rootDiskPerformanceLevel"] = state?.rootDiskPerformanceLevel;
+            resourceInputs["rootDiskSizeGib"] = state?.rootDiskSizeGib;
+            resourceInputs["userDiskPerformanceLevel"] = state?.userDiskPerformanceLevel;
+            resourceInputs["userDiskSizeGibs"] = state?.userDiskSizeGibs;
         } else {
             const args = argsOrState as BundleArgs | undefined;
-            if ((!args || args.desktopType === undefined) && !opts.urn) {
+            if (args?.desktopType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desktopType'");
             }
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.rootDiskSizeGib === undefined) && !opts.urn) {
+            if (args?.rootDiskSizeGib === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rootDiskSizeGib'");
             }
-            if ((!args || args.userDiskSizeGibs === undefined) && !opts.urn) {
+            if (args?.userDiskSizeGibs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userDiskSizeGibs'");
             }
-            resourceInputs["bundleName"] = args ? args.bundleName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desktopType"] = args ? args.desktopType : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["rootDiskPerformanceLevel"] = args ? args.rootDiskPerformanceLevel : undefined;
-            resourceInputs["rootDiskSizeGib"] = args ? args.rootDiskSizeGib : undefined;
-            resourceInputs["userDiskPerformanceLevel"] = args ? args.userDiskPerformanceLevel : undefined;
-            resourceInputs["userDiskSizeGibs"] = args ? args.userDiskSizeGibs : undefined;
+            resourceInputs["bundleName"] = args?.bundleName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desktopType"] = args?.desktopType;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["rootDiskPerformanceLevel"] = args?.rootDiskPerformanceLevel;
+            resourceInputs["rootDiskSizeGib"] = args?.rootDiskSizeGib;
+            resourceInputs["userDiskPerformanceLevel"] = args?.userDiskPerformanceLevel;
+            resourceInputs["userDiskSizeGibs"] = args?.userDiskSizeGibs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Bundle.__pulumiType, name, resourceInputs, opts);

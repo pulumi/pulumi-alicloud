@@ -109,15 +109,15 @@ export class RemoteWrite extends pulumi.CustomResource {
     /**
      * The ID of the Prometheus instance.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The name of the Remote Write configuration item.
      */
-    public /*out*/ readonly remoteWriteName!: pulumi.Output<string>;
+    declare public /*out*/ readonly remoteWriteName: pulumi.Output<string>;
     /**
      * The details of the Remote Write configuration item. Specify the value in the YAML format.
      */
-    public readonly remoteWriteYaml!: pulumi.Output<string>;
+    declare public readonly remoteWriteYaml: pulumi.Output<string>;
 
     /**
      * Create a RemoteWrite resource with the given unique name, arguments, and options.
@@ -132,19 +132,19 @@ export class RemoteWrite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RemoteWriteState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["remoteWriteName"] = state ? state.remoteWriteName : undefined;
-            resourceInputs["remoteWriteYaml"] = state ? state.remoteWriteYaml : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["remoteWriteName"] = state?.remoteWriteName;
+            resourceInputs["remoteWriteYaml"] = state?.remoteWriteYaml;
         } else {
             const args = argsOrState as RemoteWriteArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.remoteWriteYaml === undefined) && !opts.urn) {
+            if (args?.remoteWriteYaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteWriteYaml'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["remoteWriteYaml"] = args ? args.remoteWriteYaml : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["remoteWriteYaml"] = args?.remoteWriteYaml;
             resourceInputs["remoteWriteName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

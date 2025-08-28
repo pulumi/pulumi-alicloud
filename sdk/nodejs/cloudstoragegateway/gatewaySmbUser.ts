@@ -50,15 +50,15 @@ export class GatewaySmbUser extends pulumi.CustomResource {
     /**
      * The Gateway ID of the Gateway SMB User.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The password of the Gateway SMB User.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The username of the Gateway SMB User.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a GatewaySmbUser resource with the given unique name, arguments, and options.
@@ -73,23 +73,23 @@ export class GatewaySmbUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewaySmbUserState | undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as GatewaySmbUserArgs | undefined;
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

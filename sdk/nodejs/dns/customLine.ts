@@ -70,19 +70,19 @@ export class CustomLine extends pulumi.CustomResource {
     /**
      * The name of the Custom Line.
      */
-    public readonly customLineName!: pulumi.Output<string>;
+    declare public readonly customLineName: pulumi.Output<string>;
     /**
      * The Domain name.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The IP segment list. See `ipSegmentList` below for details.
      */
-    public readonly ipSegmentLists!: pulumi.Output<outputs.dns.CustomLineIpSegmentList[]>;
+    declare public readonly ipSegmentLists: pulumi.Output<outputs.dns.CustomLineIpSegmentList[]>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomLine resource with the given unique name, arguments, and options.
@@ -97,25 +97,25 @@ export class CustomLine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomLineState | undefined;
-            resourceInputs["customLineName"] = state ? state.customLineName : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["ipSegmentLists"] = state ? state.ipSegmentLists : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["customLineName"] = state?.customLineName;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["ipSegmentLists"] = state?.ipSegmentLists;
+            resourceInputs["lang"] = state?.lang;
         } else {
             const args = argsOrState as CustomLineArgs | undefined;
-            if ((!args || args.customLineName === undefined) && !opts.urn) {
+            if (args?.customLineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customLineName'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.ipSegmentLists === undefined) && !opts.urn) {
+            if (args?.ipSegmentLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipSegmentLists'");
             }
-            resourceInputs["customLineName"] = args ? args.customLineName : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["ipSegmentLists"] = args ? args.ipSegmentLists : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["customLineName"] = args?.customLineName;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["ipSegmentLists"] = args?.ipSegmentLists;
+            resourceInputs["lang"] = args?.lang;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomLine.__pulumiType, name, resourceInputs, opts);

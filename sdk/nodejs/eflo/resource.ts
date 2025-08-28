@@ -46,27 +46,27 @@ export class Resource extends pulumi.CustomResource {
     /**
      * Used to provide a description or comment on the compute cluster.
      */
-    public readonly clusterDesc!: pulumi.Output<string | undefined>;
+    declare public readonly clusterDesc: pulumi.Output<string | undefined>;
     /**
      * Used to uniquely identify a computing cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Represents the name of the compute cluster, usually including the model number.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      */
-    public readonly machineTypes!: pulumi.Output<outputs.eflo.ResourceMachineTypes>;
+    declare public readonly machineTypes: pulumi.Output<outputs.eflo.ResourceMachineTypes>;
     /**
      * The ID of the Resource.
      */
-    public /*out*/ readonly resourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceId: pulumi.Output<string>;
     /**
      * Used to define the access parameters for the user. See `userAccessParam` below.
      */
-    public readonly userAccessParam!: pulumi.Output<outputs.eflo.ResourceUserAccessParam>;
+    declare public readonly userAccessParam: pulumi.Output<outputs.eflo.ResourceUserAccessParam>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -81,31 +81,31 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
-            resourceInputs["clusterDesc"] = state ? state.clusterDesc : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["machineTypes"] = state ? state.machineTypes : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["userAccessParam"] = state ? state.userAccessParam : undefined;
+            resourceInputs["clusterDesc"] = state?.clusterDesc;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["machineTypes"] = state?.machineTypes;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["userAccessParam"] = state?.userAccessParam;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.machineTypes === undefined) && !opts.urn) {
+            if (args?.machineTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineTypes'");
             }
-            if ((!args || args.userAccessParam === undefined) && !opts.urn) {
+            if (args?.userAccessParam === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userAccessParam'");
             }
-            resourceInputs["clusterDesc"] = args ? args.clusterDesc : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["machineTypes"] = args ? args.machineTypes : undefined;
-            resourceInputs["userAccessParam"] = args ? args.userAccessParam : undefined;
+            resourceInputs["clusterDesc"] = args?.clusterDesc;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["machineTypes"] = args?.machineTypes;
+            resourceInputs["userAccessParam"] = args?.userAccessParam;
             resourceInputs["resourceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

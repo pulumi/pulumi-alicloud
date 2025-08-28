@@ -101,51 +101,51 @@ export class DataSource extends pulumi.CustomResource {
     /**
      * Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
      */
-    public readonly connectionProperties!: pulumi.Output<string>;
+    declare public readonly connectionProperties: pulumi.Output<string>;
     /**
      * The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
      */
-    public readonly connectionPropertiesMode!: pulumi.Output<string>;
+    declare public readonly connectionPropertiesMode: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Creator of the data source
      */
-    public /*out*/ readonly createUser!: pulumi.Output<string>;
+    declare public /*out*/ readonly createUser: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly dataSourceId!: pulumi.Output<number>;
+    declare public /*out*/ readonly dataSourceId: pulumi.Output<number>;
     /**
      * The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
      */
-    public readonly dataSourceName!: pulumi.Output<string>;
+    declare public readonly dataSourceName: pulumi.Output<string>;
     /**
      * Description of the data source
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Modification time
      */
-    public /*out*/ readonly modifyTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly modifyTime: pulumi.Output<number>;
     /**
      * Modifier of the data source
      */
-    public /*out*/ readonly modifyUser!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifyUser: pulumi.Output<string>;
     /**
      * The ID of the project to which the data source belongs.
      */
-    public readonly projectId!: pulumi.Output<number>;
+    declare public readonly projectId: pulumi.Output<number>;
     /**
      * Business Unique Key of Data Source
      */
-    public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
+    declare public /*out*/ readonly qualifiedName: pulumi.Output<string>;
     /**
      * The type of data source. For a list of data source types, see the values listed in the API documentation.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a DataSource resource with the given unique name, arguments, and options.
@@ -160,41 +160,41 @@ export class DataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataSourceState | undefined;
-            resourceInputs["connectionProperties"] = state ? state.connectionProperties : undefined;
-            resourceInputs["connectionPropertiesMode"] = state ? state.connectionPropertiesMode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createUser"] = state ? state.createUser : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dataSourceName"] = state ? state.dataSourceName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
-            resourceInputs["modifyUser"] = state ? state.modifyUser : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["connectionProperties"] = state?.connectionProperties;
+            resourceInputs["connectionPropertiesMode"] = state?.connectionPropertiesMode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createUser"] = state?.createUser;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dataSourceName"] = state?.dataSourceName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["modifyUser"] = state?.modifyUser;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["qualifiedName"] = state?.qualifiedName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DataSourceArgs | undefined;
-            if ((!args || args.connectionProperties === undefined) && !opts.urn) {
+            if (args?.connectionProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionProperties'");
             }
-            if ((!args || args.connectionPropertiesMode === undefined) && !opts.urn) {
+            if (args?.connectionPropertiesMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionPropertiesMode'");
             }
-            if ((!args || args.dataSourceName === undefined) && !opts.urn) {
+            if (args?.dataSourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceName'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["connectionProperties"] = args?.connectionProperties ? pulumi.secret(args.connectionProperties) : undefined;
-            resourceInputs["connectionPropertiesMode"] = args ? args.connectionPropertiesMode : undefined;
-            resourceInputs["dataSourceName"] = args ? args.dataSourceName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["connectionPropertiesMode"] = args?.connectionPropertiesMode;
+            resourceInputs["dataSourceName"] = args?.dataSourceName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createUser"] = undefined /*out*/;
             resourceInputs["dataSourceId"] = undefined /*out*/;

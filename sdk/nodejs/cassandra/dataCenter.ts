@@ -99,57 +99,57 @@ export class DataCenter extends pulumi.CustomResource {
     /**
      * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * Cassandra cluster id of dataCenter-2 belongs to.
      */
-    public readonly clusterId!: pulumi.Output<string>;
-    public /*out*/ readonly dataCenterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
+    declare public /*out*/ readonly dataCenterId: pulumi.Output<string>;
     /**
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    public readonly dataCenterName!: pulumi.Output<string | undefined>;
+    declare public readonly dataCenterName: pulumi.Output<string | undefined>;
     /**
      * User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [160, 2000].
      * - 80-GB increments.
      */
-    public readonly diskSize!: pulumi.Output<number | undefined>;
+    declare public readonly diskSize: pulumi.Output<number | undefined>;
     /**
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
-    public readonly diskType!: pulumi.Output<string | undefined>;
-    public readonly enablePublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly diskType: pulumi.Output<string | undefined>;
+    declare public readonly enablePublic: pulumi.Output<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The node count of Cassandra dataCenter-2, default to 2.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
-    public readonly payType!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly publicPoints!: pulumi.Output<string[]>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public readonly payType: pulumi.Output<string>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly publicPoints: pulumi.Output<string[]>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      *
      * > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DataCenter resource with the given unique name, arguments, and options.
@@ -164,54 +164,54 @@ export class DataCenter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataCenterState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["dataCenterId"] = state ? state.dataCenterId : undefined;
-            resourceInputs["dataCenterName"] = state ? state.dataCenterName : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["diskType"] = state ? state.diskType : undefined;
-            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["payType"] = state ? state.payType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["publicPoints"] = state ? state.publicPoints : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["dataCenterId"] = state?.dataCenterId;
+            resourceInputs["dataCenterName"] = state?.dataCenterName;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["diskType"] = state?.diskType;
+            resourceInputs["enablePublic"] = state?.enablePublic;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["payType"] = state?.payType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["publicPoints"] = state?.publicPoints;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DataCenterArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.nodeCount === undefined) && !opts.urn) {
+            if (args?.nodeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.payType === undefined) && !opts.urn) {
+            if (args?.payType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'payType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dataCenterName"] = args ? args.dataCenterName : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["diskType"] = args ? args.diskType : undefined;
-            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["payType"] = args ? args.payType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dataCenterName"] = args?.dataCenterName;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["diskType"] = args?.diskType;
+            resourceInputs["enablePublic"] = args?.enablePublic;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["payType"] = args?.payType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["dataCenterId"] = undefined /*out*/;
             resourceInputs["publicPoints"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -110,27 +110,27 @@ export class ScheduledSql extends pulumi.CustomResource {
     /**
      * Task Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Task Display Name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Log project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
      */
-    public readonly schedule!: pulumi.Output<outputs.sls.ScheduledSqlSchedule>;
+    declare public readonly schedule: pulumi.Output<outputs.sls.ScheduledSqlSchedule>;
     /**
      * Task Configuration. See `scheduledSqlConfiguration` below.
      */
-    public readonly scheduledSqlConfiguration!: pulumi.Output<outputs.sls.ScheduledSqlScheduledSqlConfiguration>;
+    declare public readonly scheduledSqlConfiguration: pulumi.Output<outputs.sls.ScheduledSqlScheduledSqlConfiguration>;
     /**
      * Timed SQL name.
      */
-    public readonly scheduledSqlName!: pulumi.Output<string>;
+    declare public readonly scheduledSqlName: pulumi.Output<string>;
 
     /**
      * Create a ScheduledSql resource with the given unique name, arguments, and options.
@@ -145,35 +145,35 @@ export class ScheduledSql extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduledSqlState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["scheduledSqlConfiguration"] = state ? state.scheduledSqlConfiguration : undefined;
-            resourceInputs["scheduledSqlName"] = state ? state.scheduledSqlName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["scheduledSqlConfiguration"] = state?.scheduledSqlConfiguration;
+            resourceInputs["scheduledSqlName"] = state?.scheduledSqlName;
         } else {
             const args = argsOrState as ScheduledSqlArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if ((!args || args.scheduledSqlConfiguration === undefined) && !opts.urn) {
+            if (args?.scheduledSqlConfiguration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduledSqlConfiguration'");
             }
-            if ((!args || args.scheduledSqlName === undefined) && !opts.urn) {
+            if (args?.scheduledSqlName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduledSqlName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["scheduledSqlConfiguration"] = args ? args.scheduledSqlConfiguration : undefined;
-            resourceInputs["scheduledSqlName"] = args ? args.scheduledSqlName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["scheduledSqlConfiguration"] = args?.scheduledSqlConfiguration;
+            resourceInputs["scheduledSqlName"] = args?.scheduledSqlName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScheduledSql.__pulumiType, name, resourceInputs, opts);

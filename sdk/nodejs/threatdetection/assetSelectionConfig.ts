@@ -44,15 +44,15 @@ export class AssetSelectionConfig extends pulumi.CustomResource {
     /**
      * The first ID of the resource
      */
-    public readonly businessType!: pulumi.Output<string>;
+    declare public readonly businessType: pulumi.Output<string>;
     /**
      * The operating system type.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    declare public readonly platform: pulumi.Output<string | undefined>;
     /**
      * Target object type.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a AssetSelectionConfig resource with the given unique name, arguments, and options.
@@ -67,20 +67,20 @@ export class AssetSelectionConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssetSelectionConfigState | undefined;
-            resourceInputs["businessType"] = state ? state.businessType : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["businessType"] = state?.businessType;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as AssetSelectionConfigArgs | undefined;
-            if ((!args || args.businessType === undefined) && !opts.urn) {
+            if (args?.businessType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'businessType'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["businessType"] = args ? args.businessType : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["businessType"] = args?.businessType;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["targetType"] = args?.targetType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AssetSelectionConfig.__pulumiType, name, resourceInputs, opts);

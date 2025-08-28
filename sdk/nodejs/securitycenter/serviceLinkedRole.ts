@@ -61,7 +61,7 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
     /**
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      */
-    public /*out*/ readonly status!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly status: pulumi.Output<boolean>;
 
     /**
      * Create a ServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -76,7 +76,7 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceLinkedRoleState | undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ServiceLinkedRoleArgs | undefined;
             resourceInputs["status"] = undefined /*out*/;

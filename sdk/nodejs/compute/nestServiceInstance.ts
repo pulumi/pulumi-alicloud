@@ -124,59 +124,59 @@ export class NestServiceInstance extends pulumi.CustomResource {
     /**
      * The order information of cloud market. See `commodity` below.
      */
-    public readonly commodity!: pulumi.Output<outputs.compute.NestServiceInstanceCommodity | undefined>;
+    declare public readonly commodity: pulumi.Output<outputs.compute.NestServiceInstanceCommodity | undefined>;
     /**
      * Whether the service instance has the O&M function. Default value: `false`. Valid values:
      */
-    public readonly enableInstanceOps!: pulumi.Output<boolean>;
+    declare public readonly enableInstanceOps: pulumi.Output<boolean>;
     /**
      * Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
      */
-    public readonly enableUserPrometheus!: pulumi.Output<boolean>;
+    declare public readonly enableUserPrometheus: pulumi.Output<boolean>;
     /**
      * The configuration of O&M. See `operationMetadata` below.
      */
-    public readonly operationMetadata!: pulumi.Output<outputs.compute.NestServiceInstanceOperationMetadata>;
+    declare public readonly operationMetadata: pulumi.Output<outputs.compute.NestServiceInstanceOperationMetadata>;
     /**
      * The parameters entered by the deployment service instance.
      */
-    public readonly parameters!: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<string | undefined>;
     /**
      * The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the service.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The name of the Service Instance.
      */
-    public readonly serviceInstanceName!: pulumi.Output<string>;
+    declare public readonly serviceInstanceName: pulumi.Output<string>;
     /**
      * The version of the service.
      */
-    public readonly serviceVersion!: pulumi.Output<string>;
+    declare public readonly serviceVersion: pulumi.Output<string>;
     /**
      * The name of the specification.
      */
-    public readonly specificationName!: pulumi.Output<string | undefined>;
+    declare public readonly specificationName: pulumi.Output<string | undefined>;
     /**
      * The status of the Service Instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the template.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
 
     /**
      * Create a NestServiceInstance resource with the given unique name, arguments, and options.
@@ -191,41 +191,41 @@ export class NestServiceInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NestServiceInstanceState | undefined;
-            resourceInputs["commodity"] = state ? state.commodity : undefined;
-            resourceInputs["enableInstanceOps"] = state ? state.enableInstanceOps : undefined;
-            resourceInputs["enableUserPrometheus"] = state ? state.enableUserPrometheus : undefined;
-            resourceInputs["operationMetadata"] = state ? state.operationMetadata : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["serviceInstanceName"] = state ? state.serviceInstanceName : undefined;
-            resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
-            resourceInputs["specificationName"] = state ? state.specificationName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["commodity"] = state?.commodity;
+            resourceInputs["enableInstanceOps"] = state?.enableInstanceOps;
+            resourceInputs["enableUserPrometheus"] = state?.enableUserPrometheus;
+            resourceInputs["operationMetadata"] = state?.operationMetadata;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["serviceInstanceName"] = state?.serviceInstanceName;
+            resourceInputs["serviceVersion"] = state?.serviceVersion;
+            resourceInputs["specificationName"] = state?.specificationName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateName"] = state?.templateName;
         } else {
             const args = argsOrState as NestServiceInstanceArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.serviceVersion === undefined) && !opts.urn) {
+            if (args?.serviceVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceVersion'");
             }
-            resourceInputs["commodity"] = args ? args.commodity : undefined;
-            resourceInputs["enableInstanceOps"] = args ? args.enableInstanceOps : undefined;
-            resourceInputs["enableUserPrometheus"] = args ? args.enableUserPrometheus : undefined;
-            resourceInputs["operationMetadata"] = args ? args.operationMetadata : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["serviceInstanceName"] = args ? args.serviceInstanceName : undefined;
-            resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
-            resourceInputs["specificationName"] = args ? args.specificationName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["commodity"] = args?.commodity;
+            resourceInputs["enableInstanceOps"] = args?.enableInstanceOps;
+            resourceInputs["enableUserPrometheus"] = args?.enableUserPrometheus;
+            resourceInputs["operationMetadata"] = args?.operationMetadata;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["serviceInstanceName"] = args?.serviceInstanceName;
+            resourceInputs["serviceVersion"] = args?.serviceVersion;
+            resourceInputs["specificationName"] = args?.specificationName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateName"] = args?.templateName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

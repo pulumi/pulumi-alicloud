@@ -69,19 +69,19 @@ export class CrossAccount extends pulumi.CustomResource {
     /**
      * Backup account alias
      */
-    public readonly alias!: pulumi.Output<string | undefined>;
+    declare public readonly alias: pulumi.Output<string | undefined>;
     /**
      * Timestamp of the creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The name of RAM role that the backup account authorizes the management account to manage its resources
      */
-    public readonly crossAccountRoleName!: pulumi.Output<string>;
+    declare public readonly crossAccountRoleName: pulumi.Output<string>;
     /**
      * The uid of the backup account.
      */
-    public readonly crossAccountUserId!: pulumi.Output<number>;
+    declare public readonly crossAccountUserId: pulumi.Output<number>;
 
     /**
      * Create a CrossAccount resource with the given unique name, arguments, and options.
@@ -96,21 +96,21 @@ export class CrossAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CrossAccountState | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossAccountRoleName"] = state?.crossAccountRoleName;
+            resourceInputs["crossAccountUserId"] = state?.crossAccountUserId;
         } else {
             const args = argsOrState as CrossAccountArgs | undefined;
-            if ((!args || args.crossAccountRoleName === undefined) && !opts.urn) {
+            if (args?.crossAccountRoleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'crossAccountRoleName'");
             }
-            if ((!args || args.crossAccountUserId === undefined) && !opts.urn) {
+            if (args?.crossAccountUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'crossAccountUserId'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["crossAccountRoleName"] = args?.crossAccountRoleName;
+            resourceInputs["crossAccountUserId"] = args?.crossAccountUserId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

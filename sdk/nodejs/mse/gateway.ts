@@ -52,51 +52,51 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * The backup vswitch id.
      */
-    public readonly backupVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly backupVswitchId: pulumi.Output<string | undefined>;
     /**
      * Whether to delete the SLB purchased on behalf of the gateway at the same time.
      */
-    public readonly deleteSlb!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteSlb: pulumi.Output<boolean | undefined>;
     /**
      * Whether the enterprise security group type.
      */
-    public readonly enterpriseSecurityGroup!: pulumi.Output<boolean | undefined>;
+    declare public readonly enterpriseSecurityGroup: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Gateway .
      */
-    public readonly gatewayName!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayName: pulumi.Output<string | undefined>;
     /**
      * Public network SLB specifications.
      */
-    public readonly internetSlbSpec!: pulumi.Output<string | undefined>;
+    declare public readonly internetSlbSpec: pulumi.Output<string | undefined>;
     /**
      * Number of Gateway Nodes.
      */
-    public readonly replica!: pulumi.Output<number>;
+    declare public readonly replica: pulumi.Output<number>;
     /**
      * A list of gateway Slb.
      */
-    public /*out*/ readonly slbLists!: pulumi.Output<outputs.mse.GatewaySlbList[]>;
+    declare public /*out*/ readonly slbLists: pulumi.Output<outputs.mse.GatewaySlbList[]>;
     /**
      * Private network SLB specifications.
      */
-    public readonly slbSpec!: pulumi.Output<string | undefined>;
+    declare public readonly slbSpec: pulumi.Output<string | undefined>;
     /**
      * Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
      */
-    public readonly spec!: pulumi.Output<string>;
+    declare public readonly spec: pulumi.Output<string>;
     /**
      * The status of the gateway.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the vpc.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the vswitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -111,42 +111,42 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["backupVswitchId"] = state ? state.backupVswitchId : undefined;
-            resourceInputs["deleteSlb"] = state ? state.deleteSlb : undefined;
-            resourceInputs["enterpriseSecurityGroup"] = state ? state.enterpriseSecurityGroup : undefined;
-            resourceInputs["gatewayName"] = state ? state.gatewayName : undefined;
-            resourceInputs["internetSlbSpec"] = state ? state.internetSlbSpec : undefined;
-            resourceInputs["replica"] = state ? state.replica : undefined;
-            resourceInputs["slbLists"] = state ? state.slbLists : undefined;
-            resourceInputs["slbSpec"] = state ? state.slbSpec : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["backupVswitchId"] = state?.backupVswitchId;
+            resourceInputs["deleteSlb"] = state?.deleteSlb;
+            resourceInputs["enterpriseSecurityGroup"] = state?.enterpriseSecurityGroup;
+            resourceInputs["gatewayName"] = state?.gatewayName;
+            resourceInputs["internetSlbSpec"] = state?.internetSlbSpec;
+            resourceInputs["replica"] = state?.replica;
+            resourceInputs["slbLists"] = state?.slbLists;
+            resourceInputs["slbSpec"] = state?.slbSpec;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.replica === undefined) && !opts.urn) {
+            if (args?.replica === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replica'");
             }
-            if ((!args || args.spec === undefined) && !opts.urn) {
+            if (args?.spec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["backupVswitchId"] = args ? args.backupVswitchId : undefined;
-            resourceInputs["deleteSlb"] = args ? args.deleteSlb : undefined;
-            resourceInputs["enterpriseSecurityGroup"] = args ? args.enterpriseSecurityGroup : undefined;
-            resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["internetSlbSpec"] = args ? args.internetSlbSpec : undefined;
-            resourceInputs["replica"] = args ? args.replica : undefined;
-            resourceInputs["slbSpec"] = args ? args.slbSpec : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["backupVswitchId"] = args?.backupVswitchId;
+            resourceInputs["deleteSlb"] = args?.deleteSlb;
+            resourceInputs["enterpriseSecurityGroup"] = args?.enterpriseSecurityGroup;
+            resourceInputs["gatewayName"] = args?.gatewayName;
+            resourceInputs["internetSlbSpec"] = args?.internetSlbSpec;
+            resourceInputs["replica"] = args?.replica;
+            resourceInputs["slbSpec"] = args?.slbSpec;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["slbLists"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

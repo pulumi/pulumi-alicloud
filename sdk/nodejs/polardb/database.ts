@@ -84,23 +84,23 @@ export class Database extends pulumi.CustomResource {
     /**
      * Account name authorized to access the database. Only supports PostgreSQL.
      */
-    public readonly accountName!: pulumi.Output<string | undefined>;
+    declare public readonly accountName: pulumi.Output<string | undefined>;
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */
-    public readonly characterSetName!: pulumi.Output<string | undefined>;
+    declare public readonly characterSetName: pulumi.Output<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
-    public readonly dbDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dbDescription: pulumi.Output<string | undefined>;
     /**
      * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      */
-    public readonly dbName!: pulumi.Output<string>;
+    declare public readonly dbName: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -115,24 +115,24 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["characterSetName"] = state ? state.characterSetName : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["dbDescription"] = state ? state.dbDescription : undefined;
-            resourceInputs["dbName"] = state ? state.dbName : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["characterSetName"] = state?.characterSetName;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dbDescription"] = state?.dbDescription;
+            resourceInputs["dbName"] = state?.dbName;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.dbName === undefined) && !opts.urn) {
+            if (args?.dbName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["characterSetName"] = args ? args.characterSetName : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["dbDescription"] = args ? args.dbDescription : undefined;
-            resourceInputs["dbName"] = args ? args.dbName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["characterSetName"] = args?.characterSetName;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["dbDescription"] = args?.dbDescription;
+            resourceInputs["dbName"] = args?.dbName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

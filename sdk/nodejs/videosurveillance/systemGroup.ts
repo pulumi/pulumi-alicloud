@@ -67,63 +67,63 @@ export class SystemGroup extends pulumi.CustomResource {
     /**
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      */
-    public readonly callback!: pulumi.Output<string | undefined>;
+    declare public readonly callback: pulumi.Output<string | undefined>;
     /**
      * The capture image.
      */
-    public /*out*/ readonly captureImage!: pulumi.Output<number>;
+    declare public /*out*/ readonly captureImage: pulumi.Output<number>;
     /**
      * The capture interval.
      */
-    public /*out*/ readonly captureInterval!: pulumi.Output<number>;
+    declare public /*out*/ readonly captureInterval: pulumi.Output<number>;
     /**
      * The capture oss bucket.
      */
-    public /*out*/ readonly captureOssBucket!: pulumi.Output<string>;
+    declare public /*out*/ readonly captureOssBucket: pulumi.Output<string>;
     /**
      * The capture oss path.
      */
-    public /*out*/ readonly captureOssPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly captureOssPath: pulumi.Output<string>;
     /**
      * The capture video.
      */
-    public /*out*/ readonly captureVideo!: pulumi.Output<number>;
+    declare public /*out*/ readonly captureVideo: pulumi.Output<number>;
     /**
      * The description of Group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether to open Group.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The Group Name.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
-    public readonly inProtocol!: pulumi.Output<string>;
+    declare public readonly inProtocol: pulumi.Output<string>;
     /**
      * Whether to enable on-demand streaming. Default value:`false`.
      */
-    public /*out*/ readonly lazyPull!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly lazyPull: pulumi.Output<boolean>;
     /**
      * The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
      */
-    public readonly outProtocol!: pulumi.Output<string>;
+    declare public readonly outProtocol: pulumi.Output<string>;
     /**
      * The domain name of plan streaming used by the group.
      */
-    public readonly playDomain!: pulumi.Output<string>;
+    declare public readonly playDomain: pulumi.Output<string>;
     /**
      * The domain name of push streaming used by the group.
      */
-    public readonly pushDomain!: pulumi.Output<string>;
+    declare public readonly pushDomain: pulumi.Output<string>;
     /**
      * Whether to open Group. Valid values: `on`,`off`.
      */
-    public /*out*/ readonly status!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly status: pulumi.Output<boolean>;
 
     /**
      * Create a SystemGroup resource with the given unique name, arguments, and options.
@@ -138,46 +138,46 @@ export class SystemGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemGroupState | undefined;
-            resourceInputs["callback"] = state ? state.callback : undefined;
-            resourceInputs["captureImage"] = state ? state.captureImage : undefined;
-            resourceInputs["captureInterval"] = state ? state.captureInterval : undefined;
-            resourceInputs["captureOssBucket"] = state ? state.captureOssBucket : undefined;
-            resourceInputs["captureOssPath"] = state ? state.captureOssPath : undefined;
-            resourceInputs["captureVideo"] = state ? state.captureVideo : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["inProtocol"] = state ? state.inProtocol : undefined;
-            resourceInputs["lazyPull"] = state ? state.lazyPull : undefined;
-            resourceInputs["outProtocol"] = state ? state.outProtocol : undefined;
-            resourceInputs["playDomain"] = state ? state.playDomain : undefined;
-            resourceInputs["pushDomain"] = state ? state.pushDomain : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["callback"] = state?.callback;
+            resourceInputs["captureImage"] = state?.captureImage;
+            resourceInputs["captureInterval"] = state?.captureInterval;
+            resourceInputs["captureOssBucket"] = state?.captureOssBucket;
+            resourceInputs["captureOssPath"] = state?.captureOssPath;
+            resourceInputs["captureVideo"] = state?.captureVideo;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["inProtocol"] = state?.inProtocol;
+            resourceInputs["lazyPull"] = state?.lazyPull;
+            resourceInputs["outProtocol"] = state?.outProtocol;
+            resourceInputs["playDomain"] = state?.playDomain;
+            resourceInputs["pushDomain"] = state?.pushDomain;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SystemGroupArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.inProtocol === undefined) && !opts.urn) {
+            if (args?.inProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'inProtocol'");
             }
-            if ((!args || args.outProtocol === undefined) && !opts.urn) {
+            if (args?.outProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'outProtocol'");
             }
-            if ((!args || args.playDomain === undefined) && !opts.urn) {
+            if (args?.playDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'playDomain'");
             }
-            if ((!args || args.pushDomain === undefined) && !opts.urn) {
+            if (args?.pushDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pushDomain'");
             }
-            resourceInputs["callback"] = args ? args.callback : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["inProtocol"] = args ? args.inProtocol : undefined;
-            resourceInputs["outProtocol"] = args ? args.outProtocol : undefined;
-            resourceInputs["playDomain"] = args ? args.playDomain : undefined;
-            resourceInputs["pushDomain"] = args ? args.pushDomain : undefined;
+            resourceInputs["callback"] = args?.callback;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["inProtocol"] = args?.inProtocol;
+            resourceInputs["outProtocol"] = args?.outProtocol;
+            resourceInputs["playDomain"] = args?.playDomain;
+            resourceInputs["pushDomain"] = args?.pushDomain;
             resourceInputs["captureImage"] = undefined /*out*/;
             resourceInputs["captureInterval"] = undefined /*out*/;
             resourceInputs["captureOssBucket"] = undefined /*out*/;

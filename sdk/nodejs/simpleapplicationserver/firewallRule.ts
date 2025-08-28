@@ -78,23 +78,23 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * The ID of the firewall rule.
      */
-    public /*out*/ readonly firewallRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly firewallRuleId: pulumi.Output<string>;
     /**
      * Alibaba Cloud simple application server instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
     /**
      * The remarks of the firewall rule.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
      */
-    public readonly ruleProtocol!: pulumi.Output<string>;
+    declare public readonly ruleProtocol: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -109,26 +109,26 @@ export class FirewallRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            resourceInputs["firewallRuleId"] = state ? state.firewallRuleId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["ruleProtocol"] = state ? state.ruleProtocol : undefined;
+            resourceInputs["firewallRuleId"] = state?.firewallRuleId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["ruleProtocol"] = state?.ruleProtocol;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.ruleProtocol === undefined) && !opts.urn) {
+            if (args?.ruleProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleProtocol'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["ruleProtocol"] = args ? args.ruleProtocol : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["ruleProtocol"] = args?.ruleProtocol;
             resourceInputs["firewallRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

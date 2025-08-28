@@ -165,19 +165,19 @@ export class MasterSlaveServerGroup extends pulumi.CustomResource {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * The Load Balancer ID which is used to launch a new master slave server group.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * Name of the master slave server group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
-    public readonly servers!: pulumi.Output<outputs.slb.MasterSlaveServerGroupServer[] | undefined>;
+    declare public readonly servers: pulumi.Output<outputs.slb.MasterSlaveServerGroupServer[] | undefined>;
 
     /**
      * Create a MasterSlaveServerGroup resource with the given unique name, arguments, and options.
@@ -192,19 +192,19 @@ export class MasterSlaveServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MasterSlaveServerGroupState | undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["servers"] = state?.servers;
         } else {
             const args = argsOrState as MasterSlaveServerGroupArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["servers"] = args?.servers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MasterSlaveServerGroup.__pulumiType, name, resourceInputs, opts);

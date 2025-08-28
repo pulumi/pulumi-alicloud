@@ -84,29 +84,29 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
      */
-    public readonly argocdEnabled!: pulumi.Output<boolean>;
+    declare public readonly argocdEnabled: pulumi.Output<boolean>;
     /**
      * Cluster name.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * Cluster creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Cluster network information. See `network` below.
      */
-    public readonly network!: pulumi.Output<outputs.ackone.ClusterNetwork>;
+    declare public readonly network: pulumi.Output<outputs.ackone.ClusterNetwork>;
     /**
      * Cluster attributes. Valid values: 'Default', 'XFlow'.
      *
      * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
-    public readonly profile!: pulumi.Output<string>;
+    declare public readonly profile: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -121,21 +121,21 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["argocdEnabled"] = state ? state.argocdEnabled : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["profile"] = state ? state.profile : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["argocdEnabled"] = state?.argocdEnabled;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["profile"] = state?.profile;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["argocdEnabled"] = args ? args.argocdEnabled : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["profile"] = args ? args.profile : undefined;
+            resourceInputs["argocdEnabled"] = args?.argocdEnabled;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["profile"] = args?.profile;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

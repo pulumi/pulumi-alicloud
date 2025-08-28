@@ -97,53 +97,53 @@ export class PolicyBinding extends pulumi.CustomResource {
     /**
      * Backup Advanced Options See `advancedOptions` below.
      */
-    public readonly advancedOptions!: pulumi.Output<outputs.hbr.PolicyBindingAdvancedOptions>;
+    declare public readonly advancedOptions: pulumi.Output<outputs.hbr.PolicyBindingAdvancedOptions>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
      */
-    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly crossAccountRoleName: pulumi.Output<string | undefined>;
     /**
      * Cross-account type, supported
      */
-    public readonly crossAccountType!: pulumi.Output<string>;
+    declare public readonly crossAccountType: pulumi.Output<string>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
      */
-    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    declare public readonly crossAccountUserId: pulumi.Output<number | undefined>;
     /**
      * The data source ID.
      */
-    public readonly dataSourceId!: pulumi.Output<string>;
+    declare public readonly dataSourceId: pulumi.Output<string>;
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
      * - false: not paused
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
      */
-    public readonly exclude!: pulumi.Output<string | undefined>;
+    declare public readonly exclude: pulumi.Output<string | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
      */
-    public readonly include!: pulumi.Output<string | undefined>;
+    declare public readonly include: pulumi.Output<string | undefined>;
     /**
      * Resource Description
      */
-    public readonly policyBindingDescription!: pulumi.Output<string | undefined>;
+    declare public readonly policyBindingDescription: pulumi.Output<string | undefined>;
     /**
      * The policy ID.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * Data source type, value range:
      * - `UDM_ECS`: indicates the ECS instance backup.
@@ -152,11 +152,11 @@ export class PolicyBinding extends pulumi.CustomResource {
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
      */
-    public readonly sourceType!: pulumi.Output<string>;
+    declare public readonly sourceType: pulumi.Output<string>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
      */
-    public readonly speedLimit!: pulumi.Output<string | undefined>;
+    declare public readonly speedLimit: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyBinding resource with the given unique name, arguments, and options.
@@ -171,35 +171,35 @@ export class PolicyBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyBindingState | undefined;
-            resourceInputs["advancedOptions"] = state ? state.advancedOptions : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["exclude"] = state ? state.exclude : undefined;
-            resourceInputs["include"] = state ? state.include : undefined;
-            resourceInputs["policyBindingDescription"] = state ? state.policyBindingDescription : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["speedLimit"] = state ? state.speedLimit : undefined;
+            resourceInputs["advancedOptions"] = state?.advancedOptions;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossAccountRoleName"] = state?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = state?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = state?.crossAccountUserId;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["exclude"] = state?.exclude;
+            resourceInputs["include"] = state?.include;
+            resourceInputs["policyBindingDescription"] = state?.policyBindingDescription;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["speedLimit"] = state?.speedLimit;
         } else {
             const args = argsOrState as PolicyBindingArgs | undefined;
-            resourceInputs["advancedOptions"] = args ? args.advancedOptions : undefined;
-            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["exclude"] = args ? args.exclude : undefined;
-            resourceInputs["include"] = args ? args.include : undefined;
-            resourceInputs["policyBindingDescription"] = args ? args.policyBindingDescription : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["speedLimit"] = args ? args.speedLimit : undefined;
+            resourceInputs["advancedOptions"] = args?.advancedOptions;
+            resourceInputs["crossAccountRoleName"] = args?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = args?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = args?.crossAccountUserId;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["exclude"] = args?.exclude;
+            resourceInputs["include"] = args?.include;
+            resourceInputs["policyBindingDescription"] = args?.policyBindingDescription;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["speedLimit"] = args?.speedLimit;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

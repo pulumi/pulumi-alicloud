@@ -84,27 +84,27 @@ export class EditingProject extends pulumi.CustomResource {
     /**
      * The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
      */
-    public readonly coverUrl!: pulumi.Output<string | undefined>;
+    declare public readonly coverUrl: pulumi.Output<string | undefined>;
     /**
      * The region where you want to create the online editing project.
      */
-    public readonly division!: pulumi.Output<string | undefined>;
+    declare public readonly division: pulumi.Output<string | undefined>;
     /**
      * The description of the online editing project.
      */
-    public readonly editingProjectName!: pulumi.Output<string>;
+    declare public readonly editingProjectName: pulumi.Output<string>;
     /**
      * The Status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
      */
-    public readonly timeline!: pulumi.Output<string>;
+    declare public readonly timeline: pulumi.Output<string>;
     /**
      * The title of the online editing project.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a EditingProject resource with the given unique name, arguments, and options.
@@ -119,22 +119,22 @@ export class EditingProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EditingProjectState | undefined;
-            resourceInputs["coverUrl"] = state ? state.coverUrl : undefined;
-            resourceInputs["division"] = state ? state.division : undefined;
-            resourceInputs["editingProjectName"] = state ? state.editingProjectName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeline"] = state ? state.timeline : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["coverUrl"] = state?.coverUrl;
+            resourceInputs["division"] = state?.division;
+            resourceInputs["editingProjectName"] = state?.editingProjectName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeline"] = state?.timeline;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as EditingProjectArgs | undefined;
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["coverUrl"] = args ? args.coverUrl : undefined;
-            resourceInputs["division"] = args ? args.division : undefined;
-            resourceInputs["editingProjectName"] = args ? args.editingProjectName : undefined;
-            resourceInputs["timeline"] = args ? args.timeline : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["coverUrl"] = args?.coverUrl;
+            resourceInputs["division"] = args?.division;
+            resourceInputs["editingProjectName"] = args?.editingProjectName;
+            resourceInputs["timeline"] = args?.timeline;
+            resourceInputs["title"] = args?.title;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

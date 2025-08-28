@@ -82,19 +82,19 @@ export class InstanceAttachment extends pulumi.CustomResource {
     /**
      * The name of the OTS instance.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The ID of attaching VPC to instance.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      */
-    public readonly vpcName!: pulumi.Output<string>;
+    declare public readonly vpcName: pulumi.Output<string>;
     /**
      * The ID of attaching VSwitch to instance.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -109,24 +109,24 @@ export class InstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcName"] = state?.vpcName;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.vpcName === undefined) && !opts.urn) {
+            if (args?.vpcName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcName'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["vpcName"] = args ? args.vpcName : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["vpcName"] = args?.vpcName;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["vpcId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

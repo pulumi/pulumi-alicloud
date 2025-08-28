@@ -34,24 +34,24 @@ export class ApplicationInfo extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationInfo.__pulumiType;
     }
 
-    public /*out*/ readonly approveValue!: pulumi.Output<string>;
-    public readonly auditMode!: pulumi.Output<string>;
-    public /*out*/ readonly auditReason!: pulumi.Output<string>;
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly desireValue!: pulumi.Output<number>;
-    public readonly dimensions!: pulumi.Output<outputs.quotas.ApplicationInfoDimension[] | undefined>;
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
-    public readonly envLanguage!: pulumi.Output<string | undefined>;
-    public readonly expireTime!: pulumi.Output<string | undefined>;
-    public readonly noticeType!: pulumi.Output<number>;
-    public readonly productCode!: pulumi.Output<string>;
-    public readonly quotaActionCode!: pulumi.Output<string>;
-    public readonly quotaCategory!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly quotaDescription!: pulumi.Output<string>;
-    public /*out*/ readonly quotaName!: pulumi.Output<string>;
-    public /*out*/ readonly quotaUnit!: pulumi.Output<string>;
-    public readonly reason!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly approveValue: pulumi.Output<string>;
+    declare public readonly auditMode: pulumi.Output<string>;
+    declare public /*out*/ readonly auditReason: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly desireValue: pulumi.Output<number>;
+    declare public readonly dimensions: pulumi.Output<outputs.quotas.ApplicationInfoDimension[] | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
+    declare public readonly envLanguage: pulumi.Output<string | undefined>;
+    declare public readonly expireTime: pulumi.Output<string | undefined>;
+    declare public readonly noticeType: pulumi.Output<number>;
+    declare public readonly productCode: pulumi.Output<string>;
+    declare public readonly quotaActionCode: pulumi.Output<string>;
+    declare public readonly quotaCategory: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly quotaDescription: pulumi.Output<string>;
+    declare public /*out*/ readonly quotaName: pulumi.Output<string>;
+    declare public /*out*/ readonly quotaUnit: pulumi.Output<string>;
+    declare public readonly reason: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ApplicationInfo resource with the given unique name, arguments, and options.
@@ -66,49 +66,49 @@ export class ApplicationInfo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationInfoState | undefined;
-            resourceInputs["approveValue"] = state ? state.approveValue : undefined;
-            resourceInputs["auditMode"] = state ? state.auditMode : undefined;
-            resourceInputs["auditReason"] = state ? state.auditReason : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["desireValue"] = state ? state.desireValue : undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = state ? state.envLanguage : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["noticeType"] = state ? state.noticeType : undefined;
-            resourceInputs["productCode"] = state ? state.productCode : undefined;
-            resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
-            resourceInputs["quotaCategory"] = state ? state.quotaCategory : undefined;
-            resourceInputs["quotaDescription"] = state ? state.quotaDescription : undefined;
-            resourceInputs["quotaName"] = state ? state.quotaName : undefined;
-            resourceInputs["quotaUnit"] = state ? state.quotaUnit : undefined;
-            resourceInputs["reason"] = state ? state.reason : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["approveValue"] = state?.approveValue;
+            resourceInputs["auditMode"] = state?.auditMode;
+            resourceInputs["auditReason"] = state?.auditReason;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["desireValue"] = state?.desireValue;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["envLanguage"] = state?.envLanguage;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["noticeType"] = state?.noticeType;
+            resourceInputs["productCode"] = state?.productCode;
+            resourceInputs["quotaActionCode"] = state?.quotaActionCode;
+            resourceInputs["quotaCategory"] = state?.quotaCategory;
+            resourceInputs["quotaDescription"] = state?.quotaDescription;
+            resourceInputs["quotaName"] = state?.quotaName;
+            resourceInputs["quotaUnit"] = state?.quotaUnit;
+            resourceInputs["reason"] = state?.reason;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ApplicationInfoArgs | undefined;
-            if ((!args || args.desireValue === undefined) && !opts.urn) {
+            if (args?.desireValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desireValue'");
             }
-            if ((!args || args.productCode === undefined) && !opts.urn) {
+            if (args?.productCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            if ((!args || args.quotaActionCode === undefined) && !opts.urn) {
+            if (args?.quotaActionCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quotaActionCode'");
             }
-            if ((!args || args.reason === undefined) && !opts.urn) {
+            if (args?.reason === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
-            resourceInputs["auditMode"] = args ? args.auditMode : undefined;
-            resourceInputs["desireValue"] = args ? args.desireValue : undefined;
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = args ? args.envLanguage : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["noticeType"] = args ? args.noticeType : undefined;
-            resourceInputs["productCode"] = args ? args.productCode : undefined;
-            resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
-            resourceInputs["quotaCategory"] = args ? args.quotaCategory : undefined;
-            resourceInputs["reason"] = args ? args.reason : undefined;
+            resourceInputs["auditMode"] = args?.auditMode;
+            resourceInputs["desireValue"] = args?.desireValue;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["envLanguage"] = args?.envLanguage;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["noticeType"] = args?.noticeType;
+            resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["quotaActionCode"] = args?.quotaActionCode;
+            resourceInputs["quotaCategory"] = args?.quotaCategory;
+            resourceInputs["reason"] = args?.reason;
             resourceInputs["approveValue"] = undefined /*out*/;
             resourceInputs["auditReason"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

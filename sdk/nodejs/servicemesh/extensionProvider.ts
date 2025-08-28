@@ -50,19 +50,19 @@ export class ExtensionProvider extends pulumi.CustomResource {
     /**
      * The config of the Service Mesh Extension Provider. The `config` format is json.
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
      */
-    public readonly extensionProviderName!: pulumi.Output<string>;
+    declare public readonly extensionProviderName: pulumi.Output<string>;
     /**
      * The ID of the Service Mesh.
      */
-    public readonly serviceMeshId!: pulumi.Output<string>;
+    declare public readonly serviceMeshId: pulumi.Output<string>;
     /**
      * The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ExtensionProvider resource with the given unique name, arguments, and options.
@@ -77,28 +77,28 @@ export class ExtensionProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExtensionProviderState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["extensionProviderName"] = state ? state.extensionProviderName : undefined;
-            resourceInputs["serviceMeshId"] = state ? state.serviceMeshId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["extensionProviderName"] = state?.extensionProviderName;
+            resourceInputs["serviceMeshId"] = state?.serviceMeshId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ExtensionProviderArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.extensionProviderName === undefined) && !opts.urn) {
+            if (args?.extensionProviderName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extensionProviderName'");
             }
-            if ((!args || args.serviceMeshId === undefined) && !opts.urn) {
+            if (args?.serviceMeshId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceMeshId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["extensionProviderName"] = args ? args.extensionProviderName : undefined;
-            resourceInputs["serviceMeshId"] = args ? args.serviceMeshId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["extensionProviderName"] = args?.extensionProviderName;
+            resourceInputs["serviceMeshId"] = args?.serviceMeshId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExtensionProvider.__pulumiType, name, resourceInputs, opts);

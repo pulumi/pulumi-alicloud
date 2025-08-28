@@ -52,11 +52,11 @@ export class K8sSlbAttachment extends pulumi.CustomResource {
     /**
      * The ID of the EDAS k8s application to which you want to bind SLB instances.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
-    public readonly slbConfigs!: pulumi.Output<outputs.edas.K8sSlbAttachmentSlbConfig[]>;
+    declare public readonly slbConfigs: pulumi.Output<outputs.edas.K8sSlbAttachmentSlbConfig[]>;
 
     /**
      * Create a K8sSlbAttachment resource with the given unique name, arguments, and options.
@@ -71,15 +71,15 @@ export class K8sSlbAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sSlbAttachmentState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["slbConfigs"] = state ? state.slbConfigs : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["slbConfigs"] = state?.slbConfigs;
         } else {
             const args = argsOrState as K8sSlbAttachmentArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["slbConfigs"] = args ? args.slbConfigs : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["slbConfigs"] = args?.slbConfigs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(K8sSlbAttachment.__pulumiType, name, resourceInputs, opts);

@@ -80,23 +80,23 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The app key.
      */
-    public readonly appKey!: pulumi.Output<string | undefined>;
+    declare public readonly appKey: pulumi.Output<string | undefined>;
     /**
      * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    public readonly diskCategory!: pulumi.Output<string | undefined>;
+    declare public readonly diskCategory: pulumi.Output<string | undefined>;
     /**
      * The duration.
      */
-    public readonly duration!: pulumi.Output<string | undefined>;
+    declare public readonly duration: pulumi.Output<string | undefined>;
     /**
      * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    public readonly engineType!: pulumi.Output<string | undefined>;
+    declare public readonly engineType: pulumi.Output<string | undefined>;
     /**
      * The alias of the instance.
      */
-    public readonly instanceAlias!: pulumi.Output<string | undefined>;
+    declare public readonly instanceAlias: pulumi.Output<string | undefined>;
     /**
      * The specification of the instance. 
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -122,27 +122,27 @@ export class Instance extends pulumi.CustomResource {
      * - `tsdb.48x.large` refers to ultimate edition I;
      * - `tsdb.96x.large` refers to ultimate edition II.
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
      */
-    public readonly instanceStorage!: pulumi.Output<string>;
+    declare public readonly instanceStorage: pulumi.Output<string>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The vswitch id.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -157,41 +157,41 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["appKey"] = state ? state.appKey : undefined;
-            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["engineType"] = state ? state.engineType : undefined;
-            resourceInputs["instanceAlias"] = state ? state.instanceAlias : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["appKey"] = state?.appKey;
+            resourceInputs["diskCategory"] = state?.diskCategory;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["engineType"] = state?.engineType;
+            resourceInputs["instanceAlias"] = state?.instanceAlias;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["instanceStorage"] = state?.instanceStorage;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceClass === undefined) && !opts.urn) {
+            if (args?.instanceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if ((!args || args.instanceStorage === undefined) && !opts.urn) {
+            if (args?.instanceStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["appKey"] = args ? args.appKey : undefined;
-            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["engineType"] = args ? args.engineType : undefined;
-            resourceInputs["instanceAlias"] = args ? args.instanceAlias : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["appKey"] = args?.appKey;
+            resourceInputs["diskCategory"] = args?.diskCategory;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["engineType"] = args?.engineType;
+            resourceInputs["instanceAlias"] = args?.instanceAlias;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["instanceStorage"] = args?.instanceStorage;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -90,31 +90,31 @@ export class Flow extends pulumi.CustomResource {
     /**
      * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      */
-    public readonly definition!: pulumi.Output<string>;
+    declare public readonly definition: pulumi.Output<string>;
     /**
      * The description of the flow.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The unique ID of the flow.
      */
-    public /*out*/ readonly flowId!: pulumi.Output<string>;
+    declare public /*out*/ readonly flowId: pulumi.Output<string>;
     /**
      * The time when the flow was last modified.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    declare public readonly roleArn: pulumi.Output<string | undefined>;
     /**
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Flow resource with the given unique name, arguments, and options.
@@ -129,29 +129,29 @@ export class Flow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowState | undefined;
-            resourceInputs["definition"] = state ? state.definition : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["flowId"] = state ? state.flowId : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["definition"] = state?.definition;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["flowId"] = state?.flowId;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as FlowArgs | undefined;
-            if ((!args || args.definition === undefined) && !opts.urn) {
+            if (args?.definition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'definition'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["definition"] = args ? args.definition : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["definition"] = args?.definition;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["type"] = args?.type;
             resourceInputs["flowId"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

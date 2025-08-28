@@ -111,15 +111,15 @@ export class HostAccountShareKeyAttachment extends pulumi.CustomResource {
     /**
      * The ID list of the host account.
      */
-    public readonly hostAccountId!: pulumi.Output<string>;
+    declare public readonly hostAccountId: pulumi.Output<string>;
     /**
      * The ID of the host shared key.
      */
-    public readonly hostShareKeyId!: pulumi.Output<string>;
+    declare public readonly hostShareKeyId: pulumi.Output<string>;
     /**
      * The ID of the Bastion machine instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a HostAccountShareKeyAttachment resource with the given unique name, arguments, and options.
@@ -134,23 +134,23 @@ export class HostAccountShareKeyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAccountShareKeyAttachmentState | undefined;
-            resourceInputs["hostAccountId"] = state ? state.hostAccountId : undefined;
-            resourceInputs["hostShareKeyId"] = state ? state.hostShareKeyId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["hostAccountId"] = state?.hostAccountId;
+            resourceInputs["hostShareKeyId"] = state?.hostShareKeyId;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as HostAccountShareKeyAttachmentArgs | undefined;
-            if ((!args || args.hostAccountId === undefined) && !opts.urn) {
+            if (args?.hostAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostAccountId'");
             }
-            if ((!args || args.hostShareKeyId === undefined) && !opts.urn) {
+            if (args?.hostShareKeyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostShareKeyId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["hostAccountId"] = args ? args.hostAccountId : undefined;
-            resourceInputs["hostShareKeyId"] = args ? args.hostShareKeyId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostAccountId"] = args?.hostAccountId;
+            resourceInputs["hostShareKeyId"] = args?.hostShareKeyId;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostAccountShareKeyAttachment.__pulumiType, name, resourceInputs, opts);

@@ -78,35 +78,35 @@ export class Domain extends pulumi.CustomResource {
      *
      * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
-    public readonly bizName!: pulumi.Output<string | undefined>;
+    declare public readonly bizName: pulumi.Output<string | undefined>;
     /**
      * Certificate Information. See the following `Block certInfos`.
      */
-    public readonly certInfos!: pulumi.Output<outputs.scdn.DomainCertInfo[] | undefined>;
+    declare public readonly certInfos: pulumi.Output<outputs.scdn.DomainCertInfo[] | undefined>;
     /**
      * The health check url.
      */
-    public readonly checkUrl!: pulumi.Output<string | undefined>;
+    declare public readonly checkUrl: pulumi.Output<string | undefined>;
     /**
      * The name of domain.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Whether to set certificate forcibly.
      */
-    public readonly forceSet!: pulumi.Output<string | undefined>;
+    declare public readonly forceSet: pulumi.Output<string | undefined>;
     /**
      * The resource group id.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * the Origin Server Information. See the following `Block sources`.
      */
-    public readonly sources!: pulumi.Output<outputs.scdn.DomainSource[]>;
+    declare public readonly sources: pulumi.Output<outputs.scdn.DomainSource[]>;
     /**
      * The status of the resource. Valid values: `offline`, `online`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -121,30 +121,30 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["bizName"] = state ? state.bizName : undefined;
-            resourceInputs["certInfos"] = state ? state.certInfos : undefined;
-            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["forceSet"] = state ? state.forceSet : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bizName"] = state?.bizName;
+            resourceInputs["certInfos"] = state?.certInfos;
+            resourceInputs["checkUrl"] = state?.checkUrl;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["forceSet"] = state?.forceSet;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !opts.urn) {
+            if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            resourceInputs["bizName"] = args ? args.bizName : undefined;
-            resourceInputs["certInfos"] = args ? args.certInfos : undefined;
-            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["forceSet"] = args ? args.forceSet : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["bizName"] = args?.bizName;
+            resourceInputs["certInfos"] = args?.certInfos;
+            resourceInputs["checkUrl"] = args?.checkUrl;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["forceSet"] = args?.forceSet;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Domain.__pulumiType, name, resourceInputs, opts);

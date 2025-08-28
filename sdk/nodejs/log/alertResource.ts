@@ -62,15 +62,15 @@ export class AlertResource extends pulumi.CustomResource {
     /**
      * The lang of alert center resource when type is user.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The project of alert resource when type is project.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string | undefined>;
     /**
      * The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AlertResource resource with the given unique name, arguments, and options.
@@ -85,17 +85,17 @@ export class AlertResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertResourceState | undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AlertResourceArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertResource.__pulumiType, name, resourceInputs, opts);

@@ -142,159 +142,159 @@ export class SubscriptionJob extends pulumi.CustomResource {
     /**
      * Subscription start time in Unix timestamp format.
      */
-    public readonly checkpoint!: pulumi.Output<string>;
+    declare public readonly checkpoint: pulumi.Output<string>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    public readonly computeUnit!: pulumi.Output<number | undefined>;
+    declare public readonly computeUnit: pulumi.Output<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    public readonly databaseCount!: pulumi.Output<number | undefined>;
+    declare public readonly databaseCount: pulumi.Output<number | undefined>;
     /**
      * Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
      */
-    public readonly dbList!: pulumi.Output<string | undefined>;
+    declare public readonly dbList: pulumi.Output<string | undefined>;
     /**
      * This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
      */
-    public readonly delayNotice!: pulumi.Output<boolean | undefined>;
+    declare public readonly delayNotice: pulumi.Output<boolean | undefined>;
     /**
      * The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    public readonly delayPhone!: pulumi.Output<string | undefined>;
+    declare public readonly delayPhone: pulumi.Output<string | undefined>;
     /**
      * When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      */
-    public readonly delayRuleTime!: pulumi.Output<string | undefined>;
+    declare public readonly delayRuleTime: pulumi.Output<string | undefined>;
     /**
      * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      */
-    public readonly destinationEndpointEngineName!: pulumi.Output<string | undefined>;
+    declare public readonly destinationEndpointEngineName: pulumi.Output<string | undefined>;
     /**
      * The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    public readonly destinationRegion!: pulumi.Output<string | undefined>;
+    declare public readonly destinationRegion: pulumi.Output<string | undefined>;
     /**
      * The ID of subscription instance.
      */
-    public readonly dtsInstanceId!: pulumi.Output<string>;
+    declare public readonly dtsInstanceId: pulumi.Output<string>;
     /**
      * The name of subscription task.
      */
-    public readonly dtsJobName!: pulumi.Output<string | undefined>;
+    declare public readonly dtsJobName: pulumi.Output<string | undefined>;
     /**
      * This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
      */
-    public readonly errorNotice!: pulumi.Output<boolean | undefined>;
+    declare public readonly errorNotice: pulumi.Output<boolean | undefined>;
     /**
      * The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    public readonly errorPhone!: pulumi.Output<string | undefined>;
+    declare public readonly errorPhone: pulumi.Output<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      */
-    public readonly instanceClass!: pulumi.Output<string | undefined>;
+    declare public readonly instanceClass: pulumi.Output<string | undefined>;
     /**
      * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    public readonly paymentDuration!: pulumi.Output<number | undefined>;
+    declare public readonly paymentDuration: pulumi.Output<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    public readonly paymentDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly paymentDurationUnit: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
      */
-    public readonly reserve!: pulumi.Output<string | undefined>;
+    declare public readonly reserve: pulumi.Output<string | undefined>;
     /**
      * To subscribe to the name of the database.
      */
-    public readonly sourceEndpointDatabaseName!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointDatabaseName: pulumi.Output<string | undefined>;
     /**
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      */
-    public readonly sourceEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      */
-    public readonly sourceEndpointInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointInstanceId: pulumi.Output<string | undefined>;
     /**
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      */
-    public readonly sourceEndpointInstanceType!: pulumi.Output<string>;
+    declare public readonly sourceEndpointInstanceType: pulumi.Output<string>;
     /**
      * The IP of source endpoint.
      */
-    public readonly sourceEndpointIp!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointIp: pulumi.Output<string | undefined>;
     /**
      * The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      */
-    public readonly sourceEndpointOracleSid!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointOracleSid: pulumi.Output<string | undefined>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
      */
-    public readonly sourceEndpointOwnerId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointOwnerId: pulumi.Output<string | undefined>;
     /**
      * The password of source database instance account.
      */
-    public readonly sourceEndpointPassword!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointPassword: pulumi.Output<string | undefined>;
     /**
      * The port of source database.
      */
-    public readonly sourceEndpointPort!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointPort: pulumi.Output<string | undefined>;
     /**
      * The region of source database.
      */
-    public readonly sourceEndpointRegion!: pulumi.Output<string>;
+    declare public readonly sourceEndpointRegion: pulumi.Output<string>;
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
-    public readonly sourceEndpointRole!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
     /**
      * The username of source database instance account.
      */
-    public readonly sourceEndpointUserName!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointUserName: pulumi.Output<string | undefined>;
     /**
      * The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
      */
-    public readonly subscriptionDataTypeDdl!: pulumi.Output<boolean>;
+    declare public readonly subscriptionDataTypeDdl: pulumi.Output<boolean>;
     /**
      * Whether to subscribe the DML type of data. Valid values: `true`, `false`.
      */
-    public readonly subscriptionDataTypeDml!: pulumi.Output<boolean>;
+    declare public readonly subscriptionDataTypeDml: pulumi.Output<boolean>;
     /**
      * Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
      */
-    public readonly subscriptionInstanceNetworkType!: pulumi.Output<string | undefined>;
+    declare public readonly subscriptionInstanceNetworkType: pulumi.Output<string | undefined>;
     /**
      * The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    public readonly subscriptionInstanceVpcId!: pulumi.Output<string | undefined>;
+    declare public readonly subscriptionInstanceVpcId: pulumi.Output<string | undefined>;
     /**
      * The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    public readonly subscriptionInstanceVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly subscriptionInstanceVswitchId: pulumi.Output<string | undefined>;
     /**
      * The sync architecture. Valid values: `bidirectional`, `oneway`.
      */
-    public readonly syncArchitecture!: pulumi.Output<string | undefined>;
+    declare public readonly syncArchitecture: pulumi.Output<string | undefined>;
     /**
      * The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
      */
-    public readonly synchronizationDirection!: pulumi.Output<string | undefined>;
+    declare public readonly synchronizationDirection: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SubscriptionJob resource with the given unique name, arguments, and options.
@@ -309,98 +309,98 @@ export class SubscriptionJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionJobState | undefined;
-            resourceInputs["checkpoint"] = state ? state.checkpoint : undefined;
-            resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
-            resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
-            resourceInputs["dbList"] = state ? state.dbList : undefined;
-            resourceInputs["delayNotice"] = state ? state.delayNotice : undefined;
-            resourceInputs["delayPhone"] = state ? state.delayPhone : undefined;
-            resourceInputs["delayRuleTime"] = state ? state.delayRuleTime : undefined;
-            resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationRegion"] = state ? state.destinationRegion : undefined;
-            resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
-            resourceInputs["dtsJobName"] = state ? state.dtsJobName : undefined;
-            resourceInputs["errorNotice"] = state ? state.errorNotice : undefined;
-            resourceInputs["errorPhone"] = state ? state.errorPhone : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["reserve"] = state ? state.reserve : undefined;
-            resourceInputs["sourceEndpointDatabaseName"] = state ? state.sourceEndpointDatabaseName : undefined;
-            resourceInputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointInstanceId"] = state ? state.sourceEndpointInstanceId : undefined;
-            resourceInputs["sourceEndpointInstanceType"] = state ? state.sourceEndpointInstanceType : undefined;
-            resourceInputs["sourceEndpointIp"] = state ? state.sourceEndpointIp : undefined;
-            resourceInputs["sourceEndpointOracleSid"] = state ? state.sourceEndpointOracleSid : undefined;
-            resourceInputs["sourceEndpointOwnerId"] = state ? state.sourceEndpointOwnerId : undefined;
-            resourceInputs["sourceEndpointPassword"] = state ? state.sourceEndpointPassword : undefined;
-            resourceInputs["sourceEndpointPort"] = state ? state.sourceEndpointPort : undefined;
-            resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
-            resourceInputs["sourceEndpointRole"] = state ? state.sourceEndpointRole : undefined;
-            resourceInputs["sourceEndpointUserName"] = state ? state.sourceEndpointUserName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subscriptionDataTypeDdl"] = state ? state.subscriptionDataTypeDdl : undefined;
-            resourceInputs["subscriptionDataTypeDml"] = state ? state.subscriptionDataTypeDml : undefined;
-            resourceInputs["subscriptionInstanceNetworkType"] = state ? state.subscriptionInstanceNetworkType : undefined;
-            resourceInputs["subscriptionInstanceVpcId"] = state ? state.subscriptionInstanceVpcId : undefined;
-            resourceInputs["subscriptionInstanceVswitchId"] = state ? state.subscriptionInstanceVswitchId : undefined;
-            resourceInputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
-            resourceInputs["synchronizationDirection"] = state ? state.synchronizationDirection : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["checkpoint"] = state?.checkpoint;
+            resourceInputs["computeUnit"] = state?.computeUnit;
+            resourceInputs["databaseCount"] = state?.databaseCount;
+            resourceInputs["dbList"] = state?.dbList;
+            resourceInputs["delayNotice"] = state?.delayNotice;
+            resourceInputs["delayPhone"] = state?.delayPhone;
+            resourceInputs["delayRuleTime"] = state?.delayRuleTime;
+            resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
+            resourceInputs["destinationRegion"] = state?.destinationRegion;
+            resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
+            resourceInputs["dtsJobName"] = state?.dtsJobName;
+            resourceInputs["errorNotice"] = state?.errorNotice;
+            resourceInputs["errorPhone"] = state?.errorPhone;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["paymentDuration"] = state?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = state?.paymentDurationUnit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["reserve"] = state?.reserve;
+            resourceInputs["sourceEndpointDatabaseName"] = state?.sourceEndpointDatabaseName;
+            resourceInputs["sourceEndpointEngineName"] = state?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointInstanceId"] = state?.sourceEndpointInstanceId;
+            resourceInputs["sourceEndpointInstanceType"] = state?.sourceEndpointInstanceType;
+            resourceInputs["sourceEndpointIp"] = state?.sourceEndpointIp;
+            resourceInputs["sourceEndpointOracleSid"] = state?.sourceEndpointOracleSid;
+            resourceInputs["sourceEndpointOwnerId"] = state?.sourceEndpointOwnerId;
+            resourceInputs["sourceEndpointPassword"] = state?.sourceEndpointPassword;
+            resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
+            resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
+            resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subscriptionDataTypeDdl"] = state?.subscriptionDataTypeDdl;
+            resourceInputs["subscriptionDataTypeDml"] = state?.subscriptionDataTypeDml;
+            resourceInputs["subscriptionInstanceNetworkType"] = state?.subscriptionInstanceNetworkType;
+            resourceInputs["subscriptionInstanceVpcId"] = state?.subscriptionInstanceVpcId;
+            resourceInputs["subscriptionInstanceVswitchId"] = state?.subscriptionInstanceVswitchId;
+            resourceInputs["syncArchitecture"] = state?.syncArchitecture;
+            resourceInputs["synchronizationDirection"] = state?.synchronizationDirection;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as SubscriptionJobArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.sourceEndpointEngineName === undefined) && !opts.urn) {
+            if (args?.sourceEndpointEngineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointEngineName'");
             }
-            if ((!args || args.sourceEndpointInstanceType === undefined) && !opts.urn) {
+            if (args?.sourceEndpointInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointInstanceType'");
             }
-            if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
+            if (args?.sourceEndpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointRegion'");
             }
-            resourceInputs["checkpoint"] = args ? args.checkpoint : undefined;
-            resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
-            resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
-            resourceInputs["dbList"] = args ? args.dbList : undefined;
-            resourceInputs["delayNotice"] = args ? args.delayNotice : undefined;
-            resourceInputs["delayPhone"] = args ? args.delayPhone : undefined;
-            resourceInputs["delayRuleTime"] = args ? args.delayRuleTime : undefined;
-            resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationRegion"] = args ? args.destinationRegion : undefined;
-            resourceInputs["dtsInstanceId"] = args ? args.dtsInstanceId : undefined;
-            resourceInputs["dtsJobName"] = args ? args.dtsJobName : undefined;
-            resourceInputs["errorNotice"] = args ? args.errorNotice : undefined;
-            resourceInputs["errorPhone"] = args ? args.errorPhone : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["reserve"] = args ? args.reserve : undefined;
-            resourceInputs["sourceEndpointDatabaseName"] = args ? args.sourceEndpointDatabaseName : undefined;
-            resourceInputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointInstanceId"] = args ? args.sourceEndpointInstanceId : undefined;
-            resourceInputs["sourceEndpointInstanceType"] = args ? args.sourceEndpointInstanceType : undefined;
-            resourceInputs["sourceEndpointIp"] = args ? args.sourceEndpointIp : undefined;
-            resourceInputs["sourceEndpointOracleSid"] = args ? args.sourceEndpointOracleSid : undefined;
-            resourceInputs["sourceEndpointOwnerId"] = args ? args.sourceEndpointOwnerId : undefined;
-            resourceInputs["sourceEndpointPassword"] = args ? args.sourceEndpointPassword : undefined;
-            resourceInputs["sourceEndpointPort"] = args ? args.sourceEndpointPort : undefined;
-            resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
-            resourceInputs["sourceEndpointRole"] = args ? args.sourceEndpointRole : undefined;
-            resourceInputs["sourceEndpointUserName"] = args ? args.sourceEndpointUserName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["subscriptionDataTypeDdl"] = args ? args.subscriptionDataTypeDdl : undefined;
-            resourceInputs["subscriptionDataTypeDml"] = args ? args.subscriptionDataTypeDml : undefined;
-            resourceInputs["subscriptionInstanceNetworkType"] = args ? args.subscriptionInstanceNetworkType : undefined;
-            resourceInputs["subscriptionInstanceVpcId"] = args ? args.subscriptionInstanceVpcId : undefined;
-            resourceInputs["subscriptionInstanceVswitchId"] = args ? args.subscriptionInstanceVswitchId : undefined;
-            resourceInputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
-            resourceInputs["synchronizationDirection"] = args ? args.synchronizationDirection : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["checkpoint"] = args?.checkpoint;
+            resourceInputs["computeUnit"] = args?.computeUnit;
+            resourceInputs["databaseCount"] = args?.databaseCount;
+            resourceInputs["dbList"] = args?.dbList;
+            resourceInputs["delayNotice"] = args?.delayNotice;
+            resourceInputs["delayPhone"] = args?.delayPhone;
+            resourceInputs["delayRuleTime"] = args?.delayRuleTime;
+            resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
+            resourceInputs["destinationRegion"] = args?.destinationRegion;
+            resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
+            resourceInputs["dtsJobName"] = args?.dtsJobName;
+            resourceInputs["errorNotice"] = args?.errorNotice;
+            resourceInputs["errorPhone"] = args?.errorPhone;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["paymentDuration"] = args?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = args?.paymentDurationUnit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["reserve"] = args?.reserve;
+            resourceInputs["sourceEndpointDatabaseName"] = args?.sourceEndpointDatabaseName;
+            resourceInputs["sourceEndpointEngineName"] = args?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointInstanceId"] = args?.sourceEndpointInstanceId;
+            resourceInputs["sourceEndpointInstanceType"] = args?.sourceEndpointInstanceType;
+            resourceInputs["sourceEndpointIp"] = args?.sourceEndpointIp;
+            resourceInputs["sourceEndpointOracleSid"] = args?.sourceEndpointOracleSid;
+            resourceInputs["sourceEndpointOwnerId"] = args?.sourceEndpointOwnerId;
+            resourceInputs["sourceEndpointPassword"] = args?.sourceEndpointPassword;
+            resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
+            resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
+            resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["subscriptionDataTypeDdl"] = args?.subscriptionDataTypeDdl;
+            resourceInputs["subscriptionDataTypeDml"] = args?.subscriptionDataTypeDml;
+            resourceInputs["subscriptionInstanceNetworkType"] = args?.subscriptionInstanceNetworkType;
+            resourceInputs["subscriptionInstanceVpcId"] = args?.subscriptionInstanceVpcId;
+            resourceInputs["subscriptionInstanceVswitchId"] = args?.subscriptionInstanceVswitchId;
+            resourceInputs["syncArchitecture"] = args?.syncArchitecture;
+            resourceInputs["synchronizationDirection"] = args?.synchronizationDirection;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SubscriptionJob.__pulumiType, name, resourceInputs, opts);

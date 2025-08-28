@@ -65,19 +65,19 @@ export class ShortUrl extends pulumi.CustomResource {
     /**
      * Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
      */
-    public readonly effectiveDays!: pulumi.Output<number>;
+    declare public readonly effectiveDays: pulumi.Output<number>;
     /**
      * The name of the resource.
      */
-    public readonly shortUrlName!: pulumi.Output<string>;
+    declare public readonly shortUrlName: pulumi.Output<string>;
     /**
      * The original link address.
      */
-    public readonly sourceUrl!: pulumi.Output<string>;
+    declare public readonly sourceUrl: pulumi.Output<string>;
     /**
      * Short chain status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ShortUrl resource with the given unique name, arguments, and options.
@@ -92,24 +92,24 @@ export class ShortUrl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShortUrlState | undefined;
-            resourceInputs["effectiveDays"] = state ? state.effectiveDays : undefined;
-            resourceInputs["shortUrlName"] = state ? state.shortUrlName : undefined;
-            resourceInputs["sourceUrl"] = state ? state.sourceUrl : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["effectiveDays"] = state?.effectiveDays;
+            resourceInputs["shortUrlName"] = state?.shortUrlName;
+            resourceInputs["sourceUrl"] = state?.sourceUrl;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ShortUrlArgs | undefined;
-            if ((!args || args.effectiveDays === undefined) && !opts.urn) {
+            if (args?.effectiveDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'effectiveDays'");
             }
-            if ((!args || args.shortUrlName === undefined) && !opts.urn) {
+            if (args?.shortUrlName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortUrlName'");
             }
-            if ((!args || args.sourceUrl === undefined) && !opts.urn) {
+            if (args?.sourceUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceUrl'");
             }
-            resourceInputs["effectiveDays"] = args ? args.effectiveDays : undefined;
-            resourceInputs["shortUrlName"] = args ? args.shortUrlName : undefined;
-            resourceInputs["sourceUrl"] = args ? args.sourceUrl : undefined;
+            resourceInputs["effectiveDays"] = args?.effectiveDays;
+            resourceInputs["shortUrlName"] = args?.shortUrlName;
+            resourceInputs["sourceUrl"] = args?.sourceUrl;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

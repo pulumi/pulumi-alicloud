@@ -73,53 +73,53 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
-    public readonly cenId!: pulumi.Output<string | undefined>;
+    declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
      * The cen owner id.
      */
-    public readonly cenOwnerId!: pulumi.Output<string | undefined>;
+    declare public readonly cenOwnerId: pulumi.Output<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      */
-    public readonly desktopAccessType!: pulumi.Output<string>;
+    declare public readonly desktopAccessType: pulumi.Output<string>;
     /**
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      */
-    public readonly enableAdminAccess!: pulumi.Output<boolean>;
+    declare public readonly enableAdminAccess: pulumi.Output<boolean>;
     /**
      * Enable Cross-Desktop Access.
      */
-    public readonly enableCrossDesktopAccess!: pulumi.Output<boolean>;
+    declare public readonly enableCrossDesktopAccess: pulumi.Output<boolean>;
     /**
      * Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
-    public readonly enableInternetAccess!: pulumi.Output<boolean>;
+    declare public readonly enableInternetAccess: pulumi.Output<boolean>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
-    public readonly mfaEnabled!: pulumi.Output<boolean>;
+    declare public readonly mfaEnabled: pulumi.Output<boolean>;
     /**
      * The office site name.
      */
-    public readonly officeSiteName!: pulumi.Output<string | undefined>;
+    declare public readonly officeSiteName: pulumi.Output<string | undefined>;
     /**
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      */
-    public readonly ssoEnabled!: pulumi.Output<boolean>;
+    declare public readonly ssoEnabled: pulumi.Output<boolean>;
     /**
      * Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a SimpleOfficeSite resource with the given unique name, arguments, and options.
@@ -134,34 +134,34 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SimpleOfficeSiteState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["desktopAccessType"] = state ? state.desktopAccessType : undefined;
-            resourceInputs["enableAdminAccess"] = state ? state.enableAdminAccess : undefined;
-            resourceInputs["enableCrossDesktopAccess"] = state ? state.enableCrossDesktopAccess : undefined;
-            resourceInputs["enableInternetAccess"] = state ? state.enableInternetAccess : undefined;
-            resourceInputs["mfaEnabled"] = state ? state.mfaEnabled : undefined;
-            resourceInputs["officeSiteName"] = state ? state.officeSiteName : undefined;
-            resourceInputs["ssoEnabled"] = state ? state.ssoEnabled : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["desktopAccessType"] = state?.desktopAccessType;
+            resourceInputs["enableAdminAccess"] = state?.enableAdminAccess;
+            resourceInputs["enableCrossDesktopAccess"] = state?.enableCrossDesktopAccess;
+            resourceInputs["enableInternetAccess"] = state?.enableInternetAccess;
+            resourceInputs["mfaEnabled"] = state?.mfaEnabled;
+            resourceInputs["officeSiteName"] = state?.officeSiteName;
+            resourceInputs["ssoEnabled"] = state?.ssoEnabled;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SimpleOfficeSiteArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["desktopAccessType"] = args ? args.desktopAccessType : undefined;
-            resourceInputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
-            resourceInputs["enableCrossDesktopAccess"] = args ? args.enableCrossDesktopAccess : undefined;
-            resourceInputs["enableInternetAccess"] = args ? args.enableInternetAccess : undefined;
-            resourceInputs["mfaEnabled"] = args ? args.mfaEnabled : undefined;
-            resourceInputs["officeSiteName"] = args ? args.officeSiteName : undefined;
-            resourceInputs["ssoEnabled"] = args ? args.ssoEnabled : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenOwnerId"] = args?.cenOwnerId;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["desktopAccessType"] = args?.desktopAccessType;
+            resourceInputs["enableAdminAccess"] = args?.enableAdminAccess;
+            resourceInputs["enableCrossDesktopAccess"] = args?.enableCrossDesktopAccess;
+            resourceInputs["enableInternetAccess"] = args?.enableInternetAccess;
+            resourceInputs["mfaEnabled"] = args?.mfaEnabled;
+            resourceInputs["officeSiteName"] = args?.officeSiteName;
+            resourceInputs["ssoEnabled"] = args?.ssoEnabled;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

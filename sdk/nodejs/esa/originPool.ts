@@ -126,23 +126,23 @@ export class OriginPool extends pulumi.CustomResource {
     /**
      * Whether the source address pool is enabled:
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * OriginPool Id
      */
-    public /*out*/ readonly originPoolId!: pulumi.Output<number>;
+    declare public /*out*/ readonly originPoolId: pulumi.Output<number>;
     /**
      * The source address pool name.
      */
-    public readonly originPoolName!: pulumi.Output<string>;
+    declare public readonly originPoolName: pulumi.Output<string>;
     /**
      * The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
      */
-    public readonly origins!: pulumi.Output<outputs.esa.OriginPoolOrigin[] | undefined>;
+    declare public readonly origins: pulumi.Output<outputs.esa.OriginPoolOrigin[] | undefined>;
     /**
      * The site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
 
     /**
      * Create a OriginPool resource with the given unique name, arguments, and options.
@@ -157,23 +157,23 @@ export class OriginPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OriginPoolState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["originPoolId"] = state ? state.originPoolId : undefined;
-            resourceInputs["originPoolName"] = state ? state.originPoolName : undefined;
-            resourceInputs["origins"] = state ? state.origins : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["originPoolId"] = state?.originPoolId;
+            resourceInputs["originPoolName"] = state?.originPoolName;
+            resourceInputs["origins"] = state?.origins;
+            resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as OriginPoolArgs | undefined;
-            if ((!args || args.originPoolName === undefined) && !opts.urn) {
+            if (args?.originPoolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'originPoolName'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["originPoolName"] = args ? args.originPoolName : undefined;
-            resourceInputs["origins"] = args ? args.origins : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["originPoolName"] = args?.originPoolName;
+            resourceInputs["origins"] = args?.origins;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["originPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

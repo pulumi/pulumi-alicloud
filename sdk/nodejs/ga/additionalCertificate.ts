@@ -50,19 +50,19 @@ export class AdditionalCertificate extends pulumi.CustomResource {
     /**
      * The ID of the GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      */
-    public readonly certificateId!: pulumi.Output<string>;
+    declare public readonly certificateId: pulumi.Output<string>;
     /**
      * The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
 
     /**
      * Create a AdditionalCertificate resource with the given unique name, arguments, and options.
@@ -77,28 +77,28 @@ export class AdditionalCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdditionalCertificateState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["listenerId"] = state?.listenerId;
         } else {
             const args = argsOrState as AdditionalCertificateArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.certificateId === undefined) && !opts.urn) {
+            if (args?.certificateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateId'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["listenerId"] = args?.listenerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AdditionalCertificate.__pulumiType, name, resourceInputs, opts);

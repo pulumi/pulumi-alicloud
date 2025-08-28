@@ -120,94 +120,94 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The trigger conditions for multiple metrics. See `compositeExpression` below.
      */
-    public readonly compositeExpression!: pulumi.Output<outputs.cms.AlarmCompositeExpression | undefined>;
+    declare public readonly compositeExpression: pulumi.Output<outputs.cms.AlarmCompositeExpression | undefined>;
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
-    public readonly contactGroups!: pulumi.Output<string[]>;
+    declare public readonly contactGroups: pulumi.Output<string[]>;
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dimensions: pulumi.Output<{[key: string]: string}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
-    public readonly effectiveInterval!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveInterval: pulumi.Output<string | undefined>;
     /**
      * Whether to enable alarm rule. Default value: `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * A configuration of critical alarm. See `escalationsCritical` below.
      */
-    public readonly escalationsCritical!: pulumi.Output<outputs.cms.AlarmEscalationsCritical>;
+    declare public readonly escalationsCritical: pulumi.Output<outputs.cms.AlarmEscalationsCritical>;
     /**
      * A configuration of critical info. See `escalationsInfo` below.
      */
-    public readonly escalationsInfo!: pulumi.Output<outputs.cms.AlarmEscalationsInfo>;
+    declare public readonly escalationsInfo: pulumi.Output<outputs.cms.AlarmEscalationsInfo>;
     /**
      * A configuration of critical warn. See `escalationsWarn` below.
      */
-    public readonly escalationsWarn!: pulumi.Output<outputs.cms.AlarmEscalationsWarn>;
+    declare public readonly escalationsWarn: pulumi.Output<outputs.cms.AlarmEscalationsWarn>;
     /**
      * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly metric!: pulumi.Output<string>;
+    declare public readonly metric: pulumi.Output<string>;
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly metricDimensions!: pulumi.Output<string>;
+    declare public readonly metricDimensions: pulumi.Output<string>;
     /**
      * The name of the alert rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
-    public readonly prometheuses!: pulumi.Output<outputs.cms.AlarmPrometheus[]>;
+    declare public readonly prometheuses: pulumi.Output<outputs.cms.AlarmPrometheus[]>;
     /**
      * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
-    public readonly silenceTime!: pulumi.Output<number | undefined>;
+    declare public readonly silenceTime: pulumi.Output<number | undefined>;
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * The status of the Alarm.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
-    public readonly targets!: pulumi.Output<outputs.cms.AlarmTarget[]>;
+    declare public readonly targets: pulumi.Output<outputs.cms.AlarmTarget[]>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    public readonly webhook!: pulumi.Output<string | undefined>;
+    declare public readonly webhook: pulumi.Output<string | undefined>;
 
     /**
      * Create a Alarm resource with the given unique name, arguments, and options.
@@ -222,58 +222,58 @@ export class Alarm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
-            resourceInputs["compositeExpression"] = state ? state.compositeExpression : undefined;
-            resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["escalationsCritical"] = state ? state.escalationsCritical : undefined;
-            resourceInputs["escalationsInfo"] = state ? state.escalationsInfo : undefined;
-            resourceInputs["escalationsWarn"] = state ? state.escalationsWarn : undefined;
-            resourceInputs["metric"] = state ? state.metric : undefined;
-            resourceInputs["metricDimensions"] = state ? state.metricDimensions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["prometheuses"] = state ? state.prometheuses : undefined;
-            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
-            resourceInputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["compositeExpression"] = state?.compositeExpression;
+            resourceInputs["contactGroups"] = state?.contactGroups;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["effectiveInterval"] = state?.effectiveInterval;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["escalationsCritical"] = state?.escalationsCritical;
+            resourceInputs["escalationsInfo"] = state?.escalationsInfo;
+            resourceInputs["escalationsWarn"] = state?.escalationsWarn;
+            resourceInputs["metric"] = state?.metric;
+            resourceInputs["metricDimensions"] = state?.metricDimensions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["prometheuses"] = state?.prometheuses;
+            resourceInputs["silenceTime"] = state?.silenceTime;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targets"] = state?.targets;
+            resourceInputs["webhook"] = state?.webhook;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if ((!args || args.contactGroups === undefined) && !opts.urn) {
+            if (args?.contactGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactGroups'");
             }
-            if ((!args || args.metric === undefined) && !opts.urn) {
+            if (args?.metric === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["compositeExpression"] = args ? args.compositeExpression : undefined;
-            resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["escalationsCritical"] = args ? args.escalationsCritical : undefined;
-            resourceInputs["escalationsInfo"] = args ? args.escalationsInfo : undefined;
-            resourceInputs["escalationsWarn"] = args ? args.escalationsWarn : undefined;
-            resourceInputs["metric"] = args ? args.metric : undefined;
-            resourceInputs["metricDimensions"] = args ? args.metricDimensions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["prometheuses"] = args ? args.prometheuses : undefined;
-            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
-            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["compositeExpression"] = args?.compositeExpression;
+            resourceInputs["contactGroups"] = args?.contactGroups;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["effectiveInterval"] = args?.effectiveInterval;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["escalationsCritical"] = args?.escalationsCritical;
+            resourceInputs["escalationsInfo"] = args?.escalationsInfo;
+            resourceInputs["escalationsWarn"] = args?.escalationsWarn;
+            resourceInputs["metric"] = args?.metric;
+            resourceInputs["metricDimensions"] = args?.metricDimensions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["prometheuses"] = args?.prometheuses;
+            resourceInputs["silenceTime"] = args?.silenceTime;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targets"] = args?.targets;
+            resourceInputs["webhook"] = args?.webhook;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -64,33 +64,33 @@ export class AlarmContact extends pulumi.CustomResource {
     /**
      * The name of the alarm contact. The length should between 2 and 40 characters.
      */
-    public readonly alarmContactName!: pulumi.Output<string>;
+    declare public readonly alarmContactName: pulumi.Output<string>;
     /**
      * The TradeManager ID of the alarm contact.
      */
-    public readonly channelsAliim!: pulumi.Output<string | undefined>;
+    declare public readonly channelsAliim: pulumi.Output<string | undefined>;
     /**
      * The webhook URL of the DingTalk chatbot.
      */
-    public readonly channelsDingWebHook!: pulumi.Output<string | undefined>;
+    declare public readonly channelsDingWebHook: pulumi.Output<string | undefined>;
     /**
      * The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    public readonly channelsMail!: pulumi.Output<string | undefined>;
+    declare public readonly channelsMail: pulumi.Output<string | undefined>;
     /**
      * The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      */
-    public readonly channelsSms!: pulumi.Output<string | undefined>;
+    declare public readonly channelsSms: pulumi.Output<string | undefined>;
     /**
      * The description of the alarm contact.
      */
-    public readonly describe!: pulumi.Output<string>;
+    declare public readonly describe: pulumi.Output<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
      *
      * > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
 
     /**
      * Create a AlarmContact resource with the given unique name, arguments, and options.
@@ -105,28 +105,28 @@ export class AlarmContact extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmContactState | undefined;
-            resourceInputs["alarmContactName"] = state ? state.alarmContactName : undefined;
-            resourceInputs["channelsAliim"] = state ? state.channelsAliim : undefined;
-            resourceInputs["channelsDingWebHook"] = state ? state.channelsDingWebHook : undefined;
-            resourceInputs["channelsMail"] = state ? state.channelsMail : undefined;
-            resourceInputs["channelsSms"] = state ? state.channelsSms : undefined;
-            resourceInputs["describe"] = state ? state.describe : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["alarmContactName"] = state?.alarmContactName;
+            resourceInputs["channelsAliim"] = state?.channelsAliim;
+            resourceInputs["channelsDingWebHook"] = state?.channelsDingWebHook;
+            resourceInputs["channelsMail"] = state?.channelsMail;
+            resourceInputs["channelsSms"] = state?.channelsSms;
+            resourceInputs["describe"] = state?.describe;
+            resourceInputs["lang"] = state?.lang;
         } else {
             const args = argsOrState as AlarmContactArgs | undefined;
-            if ((!args || args.alarmContactName === undefined) && !opts.urn) {
+            if (args?.alarmContactName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alarmContactName'");
             }
-            if ((!args || args.describe === undefined) && !opts.urn) {
+            if (args?.describe === undefined && !opts.urn) {
                 throw new Error("Missing required property 'describe'");
             }
-            resourceInputs["alarmContactName"] = args ? args.alarmContactName : undefined;
-            resourceInputs["channelsAliim"] = args ? args.channelsAliim : undefined;
-            resourceInputs["channelsDingWebHook"] = args ? args.channelsDingWebHook : undefined;
-            resourceInputs["channelsMail"] = args ? args.channelsMail : undefined;
-            resourceInputs["channelsSms"] = args ? args.channelsSms : undefined;
-            resourceInputs["describe"] = args ? args.describe : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["alarmContactName"] = args?.alarmContactName;
+            resourceInputs["channelsAliim"] = args?.channelsAliim;
+            resourceInputs["channelsDingWebHook"] = args?.channelsDingWebHook;
+            resourceInputs["channelsMail"] = args?.channelsMail;
+            resourceInputs["channelsSms"] = args?.channelsSms;
+            resourceInputs["describe"] = args?.describe;
+            resourceInputs["lang"] = args?.lang;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlarmContact.__pulumiType, name, resourceInputs, opts);

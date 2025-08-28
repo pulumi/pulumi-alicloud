@@ -67,19 +67,19 @@ export class SavedQuery extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Query Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Query Expression.
      */
-    public readonly expression!: pulumi.Output<string>;
+    declare public readonly expression: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly savedQueryName!: pulumi.Output<string>;
+    declare public readonly savedQueryName: pulumi.Output<string>;
 
     /**
      * Create a SavedQuery resource with the given unique name, arguments, and options.
@@ -94,21 +94,21 @@ export class SavedQuery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SavedQueryState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["savedQueryName"] = state ? state.savedQueryName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["savedQueryName"] = state?.savedQueryName;
         } else {
             const args = argsOrState as SavedQueryArgs | undefined;
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            if ((!args || args.savedQueryName === undefined) && !opts.urn) {
+            if (args?.savedQueryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'savedQueryName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["savedQueryName"] = args ? args.savedQueryName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expression"] = args?.expression;
+            resourceInputs["savedQueryName"] = args?.savedQueryName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -92,46 +92,46 @@ export class HanaBackupPlan extends pulumi.CustomResource {
     /**
      * The backup prefix.
      */
-    public readonly backupPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly backupPrefix: pulumi.Output<string | undefined>;
     /**
      * The backup type. Valid values:
      * - `COMPLETE`: full backup.
      * - `INCREMENTAL`: incremental backup.
      * - `DIFFERENTIAL`: differential backup.
      */
-    public readonly backupType!: pulumi.Output<string>;
+    declare public readonly backupType: pulumi.Output<string>;
     /**
      * The ID of the SAP HANA instance.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The name of the database.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * The id of the plan.
      */
-    public /*out*/ readonly planId!: pulumi.Output<string>;
+    declare public /*out*/ readonly planId: pulumi.Output<string>;
     /**
      * The name of the backup plan.
      */
-    public readonly planName!: pulumi.Output<string>;
+    declare public readonly planName: pulumi.Output<string>;
     /**
      * The resource attribute field that represents the resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
      */
-    public readonly schedule!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `Enabled`, `Disabled`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID of the backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string>;
+    declare public readonly vaultId: pulumi.Output<string>;
 
     /**
      * Create a HanaBackupPlan resource with the given unique name, arguments, and options.
@@ -146,45 +146,45 @@ export class HanaBackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HanaBackupPlanState | undefined;
-            resourceInputs["backupPrefix"] = state ? state.backupPrefix : undefined;
-            resourceInputs["backupType"] = state ? state.backupType : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["planId"] = state ? state.planId : undefined;
-            resourceInputs["planName"] = state ? state.planName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupPrefix"] = state?.backupPrefix;
+            resourceInputs["backupType"] = state?.backupType;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["planId"] = state?.planId;
+            resourceInputs["planName"] = state?.planName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vaultId"] = state?.vaultId;
         } else {
             const args = argsOrState as HanaBackupPlanArgs | undefined;
-            if ((!args || args.backupType === undefined) && !opts.urn) {
+            if (args?.backupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupType'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.planName === undefined) && !opts.urn) {
+            if (args?.planName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planName'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if ((!args || args.vaultId === undefined) && !opts.urn) {
+            if (args?.vaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["backupPrefix"] = args ? args.backupPrefix : undefined;
-            resourceInputs["backupType"] = args ? args.backupType : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["planName"] = args ? args.planName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupPrefix"] = args?.backupPrefix;
+            resourceInputs["backupType"] = args?.backupType;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["planName"] = args?.planName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vaultId"] = args?.vaultId;
             resourceInputs["planId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

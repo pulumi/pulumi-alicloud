@@ -112,145 +112,145 @@ export class ShardingInstance extends pulumi.CustomResource {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    public readonly accountPassword!: pulumi.Output<string | undefined>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
-    public readonly backupInterval!: pulumi.Output<string>;
+    declare public readonly backupInterval: pulumi.Output<string>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
-    public readonly backupPeriods!: pulumi.Output<string[]>;
+    declare public readonly backupPeriods: pulumi.Output<string[]>;
     /**
      * The backup retention policy configured for the instance. Valid values:
      */
-    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<number | undefined>;
+    declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<number | undefined>;
     /**
      * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    public readonly backupTime!: pulumi.Output<string>;
+    declare public readonly backupTime: pulumi.Output<string>;
     /**
      * The ConfigServer nodes of the instance. See `configServerList` below.
      */
-    public readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
+    declare public readonly configServerLists: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
-    public readonly dbInstanceReleaseProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly dbInstanceReleaseProtection: pulumi.Output<boolean | undefined>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      */
-    public readonly hiddenZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly hiddenZoneId: pulumi.Output<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
-    public readonly mongoLists!: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
+    declare public readonly mongoLists: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
     /**
      * The name of DB instance. It must be 2 to 256 characters in length.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network type of the instance. Valid values:`Classic` or `VPC`.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
      * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
-    public readonly orderType!: pulumi.Output<string | undefined>;
+    declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
      */
-    public readonly protocolType!: pulumi.Output<string>;
+    declare public readonly protocolType: pulumi.Output<string>;
     /**
      * The provisioned IOPS. Valid values: `0` to `50000`.
      */
-    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    declare public readonly provisionedIops: pulumi.Output<number | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * (Available since v1.42.0) Instance data backup retention days.
      */
-    public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
+    declare public /*out*/ readonly retentionPeriod: pulumi.Output<number>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      */
-    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
     /**
      * The Security Group ID of ECS.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    declare public readonly securityIpLists: pulumi.Output<string[]>;
     /**
      * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
-    public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
+    declare public readonly shardLists: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
      * - `Flash `: Single-digit second backup.
      */
-    public readonly snapshotBackupType!: pulumi.Output<string>;
+    declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
-    public readonly storageEngine!: pulumi.Output<string>;
+    declare public readonly storageEngine: pulumi.Output<string>;
     /**
      * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      */
-    public readonly tdeStatus!: pulumi.Output<string>;
+    declare public readonly tdeStatus: pulumi.Output<string>;
     /**
      * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ShardingInstance resource with the given unique name, arguments, and options.
@@ -265,84 +265,84 @@ export class ShardingInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShardingInstanceState | undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
-            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
-            resourceInputs["configServerLists"] = state ? state.configServerLists : undefined;
-            resourceInputs["dbInstanceReleaseProtection"] = state ? state.dbInstanceReleaseProtection : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["hiddenZoneId"] = state ? state.hiddenZoneId : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["mongoLists"] = state ? state.mongoLists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["orderType"] = state ? state.orderType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            resourceInputs["shardLists"] = state ? state.shardLists : undefined;
-            resourceInputs["snapshotBackupType"] = state ? state.snapshotBackupType : undefined;
-            resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["backupInterval"] = state?.backupInterval;
+            resourceInputs["backupPeriods"] = state?.backupPeriods;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["configServerLists"] = state?.configServerLists;
+            resourceInputs["dbInstanceReleaseProtection"] = state?.dbInstanceReleaseProtection;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["mongoLists"] = state?.mongoLists;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["provisionedIops"] = state?.provisionedIops;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionPeriod"] = state?.retentionPeriod;
+            resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
+            resourceInputs["shardLists"] = state?.shardLists;
+            resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
+            resourceInputs["storageEngine"] = state?.storageEngine;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tdeStatus"] = state?.tdeStatus;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ShardingInstanceArgs | undefined;
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.mongoLists === undefined) && !opts.urn) {
+            if (args?.mongoLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mongoLists'");
             }
-            if ((!args || args.shardLists === undefined) && !opts.urn) {
+            if (args?.shardLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardLists'");
             }
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
-            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
-            resourceInputs["configServerLists"] = args ? args.configServerLists : undefined;
-            resourceInputs["dbInstanceReleaseProtection"] = args ? args.dbInstanceReleaseProtection : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["hiddenZoneId"] = args ? args.hiddenZoneId : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["mongoLists"] = args ? args.mongoLists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["orderType"] = args ? args.orderType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            resourceInputs["shardLists"] = args ? args.shardLists : undefined;
-            resourceInputs["snapshotBackupType"] = args ? args.snapshotBackupType : undefined;
-            resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["backupInterval"] = args?.backupInterval;
+            resourceInputs["backupPeriods"] = args?.backupPeriods;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["configServerLists"] = args?.configServerLists;
+            resourceInputs["dbInstanceReleaseProtection"] = args?.dbInstanceReleaseProtection;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["mongoLists"] = args?.mongoLists;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["orderType"] = args?.orderType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["provisionedIops"] = args?.provisionedIops;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityIpLists"] = args?.securityIpLists;
+            resourceInputs["shardLists"] = args?.shardLists;
+            resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
+            resourceInputs["storageEngine"] = args?.storageEngine;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tdeStatus"] = args?.tdeStatus;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["retentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

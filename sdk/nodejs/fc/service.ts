@@ -62,59 +62,59 @@ export class Service extends pulumi.CustomResource {
     /**
      * The Function Compute Service description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether to allow the Service to access Internet. Default to "true".
      */
-    public readonly internetAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly internetAccess: pulumi.Output<boolean | undefined>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     /**
      * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.fc.ServiceLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.fc.ServiceLogConfig | undefined>;
     /**
      * The Function Compute Service name. It is the only in one Alicloud account and is conflict with `namePrefix`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Setting a prefix to get a only name. It is conflict with `name`.
      */
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
      */
-    public readonly nasConfig!: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
+    declare public readonly nasConfig: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
     /**
      * Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
      */
-    public readonly publish!: pulumi.Output<boolean | undefined>;
+    declare public readonly publish: pulumi.Output<boolean | undefined>;
     /**
      * RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * The Function Compute Service ID.
      */
-    public /*out*/ readonly serviceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceId: pulumi.Output<string>;
     /**
      * Map for tagging resources.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
      */
-    public readonly tracingConfig!: pulumi.Output<outputs.fc.ServiceTracingConfig | undefined>;
+    declare public readonly tracingConfig: pulumi.Output<outputs.fc.ServiceTracingConfig | undefined>;
     /**
      * The latest published version of your Function Compute Service.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
      * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
      */
-    public readonly vpcConfig!: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
+    declare public readonly vpcConfig: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -129,33 +129,33 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["nasConfig"] = state ? state.nasConfig : undefined;
-            resourceInputs["publish"] = state ? state.publish : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tracingConfig"] = state ? state.tracingConfig : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["internetAccess"] = state?.internetAccess;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["nasConfig"] = state?.nasConfig;
+            resourceInputs["publish"] = state?.publish;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tracingConfig"] = state?.tracingConfig;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcConfig"] = state?.vpcConfig;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["nasConfig"] = args ? args.nasConfig : undefined;
-            resourceInputs["publish"] = args ? args.publish : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tracingConfig"] = args ? args.tracingConfig : undefined;
-            resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["internetAccess"] = args?.internetAccess;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["nasConfig"] = args?.nasConfig;
+            resourceInputs["publish"] = args?.publish;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tracingConfig"] = args?.tracingConfig;
+            resourceInputs["vpcConfig"] = args?.vpcConfig;
             resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

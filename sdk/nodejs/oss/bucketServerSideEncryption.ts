@@ -86,19 +86,19 @@ export class BucketServerSideEncryption extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
      */
-    public readonly kmsDataEncryption!: pulumi.Output<string | undefined>;
+    declare public readonly kmsDataEncryption: pulumi.Output<string | undefined>;
     /**
      * The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
      */
-    public readonly kmsMasterKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsMasterKeyId: pulumi.Output<string | undefined>;
     /**
      * The server-side encryption method. Valid Values: KMS, AES256.
      */
-    public readonly sseAlgorithm!: pulumi.Output<string>;
+    declare public readonly sseAlgorithm: pulumi.Output<string>;
 
     /**
      * Create a BucketServerSideEncryption resource with the given unique name, arguments, and options.
@@ -113,22 +113,22 @@ export class BucketServerSideEncryption extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketServerSideEncryptionState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["kmsDataEncryption"] = state ? state.kmsDataEncryption : undefined;
-            resourceInputs["kmsMasterKeyId"] = state ? state.kmsMasterKeyId : undefined;
-            resourceInputs["sseAlgorithm"] = state ? state.sseAlgorithm : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["kmsDataEncryption"] = state?.kmsDataEncryption;
+            resourceInputs["kmsMasterKeyId"] = state?.kmsMasterKeyId;
+            resourceInputs["sseAlgorithm"] = state?.sseAlgorithm;
         } else {
             const args = argsOrState as BucketServerSideEncryptionArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.sseAlgorithm === undefined) && !opts.urn) {
+            if (args?.sseAlgorithm === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sseAlgorithm'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["kmsDataEncryption"] = args ? args.kmsDataEncryption : undefined;
-            resourceInputs["kmsMasterKeyId"] = args ? args.kmsMasterKeyId : undefined;
-            resourceInputs["sseAlgorithm"] = args ? args.sseAlgorithm : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["kmsDataEncryption"] = args?.kmsDataEncryption;
+            resourceInputs["kmsMasterKeyId"] = args?.kmsMasterKeyId;
+            resourceInputs["sseAlgorithm"] = args?.sseAlgorithm;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketServerSideEncryption.__pulumiType, name, resourceInputs, opts);

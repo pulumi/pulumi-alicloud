@@ -72,31 +72,31 @@ export class Kv extends pulumi.CustomResource {
     /**
      * The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
      */
-    public readonly expiration!: pulumi.Output<number | undefined>;
+    declare public readonly expiration: pulumi.Output<number | undefined>;
     /**
      * The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    public readonly expirationTtl!: pulumi.Output<number | undefined>;
+    declare public readonly expirationTtl: pulumi.Output<number | undefined>;
     /**
      * The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    public readonly isbase!: pulumi.Output<boolean | undefined>;
+    declare public readonly isbase: pulumi.Output<boolean | undefined>;
     /**
      * kv
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
     /**
      * The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a Kv resource with the given unique name, arguments, and options.
@@ -111,28 +111,28 @@ export class Kv extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KvState | undefined;
-            resourceInputs["expiration"] = state ? state.expiration : undefined;
-            resourceInputs["expirationTtl"] = state ? state.expirationTtl : undefined;
-            resourceInputs["isbase"] = state ? state.isbase : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["expiration"] = state?.expiration;
+            resourceInputs["expirationTtl"] = state?.expirationTtl;
+            resourceInputs["isbase"] = state?.isbase;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as KvArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["expirationTtl"] = args ? args.expirationTtl : undefined;
-            resourceInputs["isbase"] = args ? args.isbase : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["expirationTtl"] = args?.expirationTtl;
+            resourceInputs["isbase"] = args?.isbase;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Kv.__pulumiType, name, resourceInputs, opts);

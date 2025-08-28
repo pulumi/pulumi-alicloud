@@ -144,55 +144,55 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * Firewall description.
      */
-    public readonly firewallDescription!: pulumi.Output<string | undefined>;
+    declare public readonly firewallDescription: pulumi.Output<string | undefined>;
     /**
      * The name of Cloud Firewall.
      */
-    public readonly firewallName!: pulumi.Output<string>;
+    declare public readonly firewallName: pulumi.Output<string>;
     /**
      * Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
      */
-    public readonly firewallSubnetCidr!: pulumi.Output<string>;
+    declare public readonly firewallSubnetCidr: pulumi.Output<string>;
     /**
      * Required in automatic mode,  th CIDR of firewall VPC.
      */
-    public readonly firewallVpcCidr!: pulumi.Output<string>;
+    declare public readonly firewallVpcCidr: pulumi.Output<string>;
     /**
      * The region ID of the transit router instance.
      */
-    public readonly regionNo!: pulumi.Output<string>;
+    declare public readonly regionNo: pulumi.Output<string>;
     /**
      * The routing pattern. Value: managed: indicates automatic mode
      */
-    public readonly routeMode!: pulumi.Output<string>;
+    declare public readonly routeMode: pulumi.Output<string>;
     /**
      * Firewall status. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
      */
-    public readonly trAttachmentMasterCidr!: pulumi.Output<string>;
+    declare public readonly trAttachmentMasterCidr: pulumi.Output<string>;
     /**
      * The primary zone of the switch.
      */
-    public readonly trAttachmentMasterZone!: pulumi.Output<string | undefined>;
+    declare public readonly trAttachmentMasterZone: pulumi.Output<string | undefined>;
     /**
      * Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
      */
-    public readonly trAttachmentSlaveCidr!: pulumi.Output<string>;
+    declare public readonly trAttachmentSlaveCidr: pulumi.Output<string>;
     /**
      * Switch standby area.
      */
-    public readonly trAttachmentSlaveZone!: pulumi.Output<string | undefined>;
+    declare public readonly trAttachmentSlaveZone: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router instance.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
 
     /**
      * Create a VpcCenTrFirewall resource with the given unique name, arguments, and options.
@@ -207,60 +207,60 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcCenTrFirewallState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["firewallDescription"] = state ? state.firewallDescription : undefined;
-            resourceInputs["firewallName"] = state ? state.firewallName : undefined;
-            resourceInputs["firewallSubnetCidr"] = state ? state.firewallSubnetCidr : undefined;
-            resourceInputs["firewallVpcCidr"] = state ? state.firewallVpcCidr : undefined;
-            resourceInputs["regionNo"] = state ? state.regionNo : undefined;
-            resourceInputs["routeMode"] = state ? state.routeMode : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trAttachmentMasterCidr"] = state ? state.trAttachmentMasterCidr : undefined;
-            resourceInputs["trAttachmentMasterZone"] = state ? state.trAttachmentMasterZone : undefined;
-            resourceInputs["trAttachmentSlaveCidr"] = state ? state.trAttachmentSlaveCidr : undefined;
-            resourceInputs["trAttachmentSlaveZone"] = state ? state.trAttachmentSlaveZone : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["firewallDescription"] = state?.firewallDescription;
+            resourceInputs["firewallName"] = state?.firewallName;
+            resourceInputs["firewallSubnetCidr"] = state?.firewallSubnetCidr;
+            resourceInputs["firewallVpcCidr"] = state?.firewallVpcCidr;
+            resourceInputs["regionNo"] = state?.regionNo;
+            resourceInputs["routeMode"] = state?.routeMode;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trAttachmentMasterCidr"] = state?.trAttachmentMasterCidr;
+            resourceInputs["trAttachmentMasterZone"] = state?.trAttachmentMasterZone;
+            resourceInputs["trAttachmentSlaveCidr"] = state?.trAttachmentSlaveCidr;
+            resourceInputs["trAttachmentSlaveZone"] = state?.trAttachmentSlaveZone;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as VpcCenTrFirewallArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.firewallName === undefined) && !opts.urn) {
+            if (args?.firewallName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallName'");
             }
-            if ((!args || args.firewallSubnetCidr === undefined) && !opts.urn) {
+            if (args?.firewallSubnetCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallSubnetCidr'");
             }
-            if ((!args || args.firewallVpcCidr === undefined) && !opts.urn) {
+            if (args?.firewallVpcCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallVpcCidr'");
             }
-            if ((!args || args.regionNo === undefined) && !opts.urn) {
+            if (args?.regionNo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionNo'");
             }
-            if ((!args || args.routeMode === undefined) && !opts.urn) {
+            if (args?.routeMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeMode'");
             }
-            if ((!args || args.trAttachmentMasterCidr === undefined) && !opts.urn) {
+            if (args?.trAttachmentMasterCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trAttachmentMasterCidr'");
             }
-            if ((!args || args.trAttachmentSlaveCidr === undefined) && !opts.urn) {
+            if (args?.trAttachmentSlaveCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trAttachmentSlaveCidr'");
             }
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["firewallDescription"] = args ? args.firewallDescription : undefined;
-            resourceInputs["firewallName"] = args ? args.firewallName : undefined;
-            resourceInputs["firewallSubnetCidr"] = args ? args.firewallSubnetCidr : undefined;
-            resourceInputs["firewallVpcCidr"] = args ? args.firewallVpcCidr : undefined;
-            resourceInputs["regionNo"] = args ? args.regionNo : undefined;
-            resourceInputs["routeMode"] = args ? args.routeMode : undefined;
-            resourceInputs["trAttachmentMasterCidr"] = args ? args.trAttachmentMasterCidr : undefined;
-            resourceInputs["trAttachmentMasterZone"] = args ? args.trAttachmentMasterZone : undefined;
-            resourceInputs["trAttachmentSlaveCidr"] = args ? args.trAttachmentSlaveCidr : undefined;
-            resourceInputs["trAttachmentSlaveZone"] = args ? args.trAttachmentSlaveZone : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["firewallDescription"] = args?.firewallDescription;
+            resourceInputs["firewallName"] = args?.firewallName;
+            resourceInputs["firewallSubnetCidr"] = args?.firewallSubnetCidr;
+            resourceInputs["firewallVpcCidr"] = args?.firewallVpcCidr;
+            resourceInputs["regionNo"] = args?.regionNo;
+            resourceInputs["routeMode"] = args?.routeMode;
+            resourceInputs["trAttachmentMasterCidr"] = args?.trAttachmentMasterCidr;
+            resourceInputs["trAttachmentMasterZone"] = args?.trAttachmentMasterZone;
+            resourceInputs["trAttachmentSlaveCidr"] = args?.trAttachmentSlaveCidr;
+            resourceInputs["trAttachmentSlaveZone"] = args?.trAttachmentSlaveZone;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

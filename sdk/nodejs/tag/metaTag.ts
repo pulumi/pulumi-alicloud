@@ -67,11 +67,11 @@ export class MetaTag extends pulumi.CustomResource {
     /**
      * The key of the tag meta tag. key must be 1 to 128 characters in length.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The values of the tag meta tag.
      */
-    public readonly values!: pulumi.Output<string[]>;
+    declare public readonly values: pulumi.Output<string[]>;
 
     /**
      * Create a MetaTag resource with the given unique name, arguments, and options.
@@ -86,18 +86,18 @@ export class MetaTag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetaTagState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["values"] = state ? state.values : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["values"] = state?.values;
         } else {
             const args = argsOrState as MetaTagArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.values === undefined) && !opts.urn) {
+            if (args?.values === undefined && !opts.urn) {
                 throw new Error("Missing required property 'values'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["values"] = args ? args.values : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["values"] = args?.values;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetaTag.__pulumiType, name, resourceInputs, opts);

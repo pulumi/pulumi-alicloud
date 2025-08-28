@@ -113,31 +113,31 @@ export class SaslAcl extends pulumi.CustomResource {
     /**
      * Operation type for this acl. The operation type can only be "Write" and "Read".
      */
-    public readonly aclOperationType!: pulumi.Output<string>;
+    declare public readonly aclOperationType: pulumi.Output<string>;
     /**
      * Resource name for this acl. The resource name should be a topic or consumer group name.
      */
-    public readonly aclResourceName!: pulumi.Output<string>;
+    declare public readonly aclResourceName: pulumi.Output<string>;
     /**
      * Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
      */
-    public readonly aclResourcePatternType!: pulumi.Output<string>;
+    declare public readonly aclResourcePatternType: pulumi.Output<string>;
     /**
      * Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
      */
-    public readonly aclResourceType!: pulumi.Output<string>;
+    declare public readonly aclResourceType: pulumi.Output<string>;
     /**
      * The host of the acl.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a SaslAcl resource with the given unique name, arguments, and options.
@@ -152,39 +152,39 @@ export class SaslAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SaslAclState | undefined;
-            resourceInputs["aclOperationType"] = state ? state.aclOperationType : undefined;
-            resourceInputs["aclResourceName"] = state ? state.aclResourceName : undefined;
-            resourceInputs["aclResourcePatternType"] = state ? state.aclResourcePatternType : undefined;
-            resourceInputs["aclResourceType"] = state ? state.aclResourceType : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["aclOperationType"] = state?.aclOperationType;
+            resourceInputs["aclResourceName"] = state?.aclResourceName;
+            resourceInputs["aclResourcePatternType"] = state?.aclResourcePatternType;
+            resourceInputs["aclResourceType"] = state?.aclResourceType;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as SaslAclArgs | undefined;
-            if ((!args || args.aclOperationType === undefined) && !opts.urn) {
+            if (args?.aclOperationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclOperationType'");
             }
-            if ((!args || args.aclResourceName === undefined) && !opts.urn) {
+            if (args?.aclResourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceName'");
             }
-            if ((!args || args.aclResourcePatternType === undefined) && !opts.urn) {
+            if (args?.aclResourcePatternType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclResourcePatternType'");
             }
-            if ((!args || args.aclResourceType === undefined) && !opts.urn) {
+            if (args?.aclResourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["aclOperationType"] = args ? args.aclOperationType : undefined;
-            resourceInputs["aclResourceName"] = args ? args.aclResourceName : undefined;
-            resourceInputs["aclResourcePatternType"] = args ? args.aclResourcePatternType : undefined;
-            resourceInputs["aclResourceType"] = args ? args.aclResourceType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["aclOperationType"] = args?.aclOperationType;
+            resourceInputs["aclResourceName"] = args?.aclResourceName;
+            resourceInputs["aclResourcePatternType"] = args?.aclResourcePatternType;
+            resourceInputs["aclResourceType"] = args?.aclResourceType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

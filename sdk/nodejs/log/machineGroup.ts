@@ -81,23 +81,23 @@ export class MachineGroup extends pulumi.CustomResource {
     /**
      * The specific machine identification, which can be an IP address or user-defined identity.
      */
-    public readonly identifyLists!: pulumi.Output<string[]>;
+    declare public readonly identifyLists: pulumi.Output<string[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
      */
-    public readonly identifyType!: pulumi.Output<string | undefined>;
+    declare public readonly identifyType: pulumi.Output<string | undefined>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project name to the machine group belongs.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The topic of a machine group.
      */
-    public readonly topic!: pulumi.Output<string | undefined>;
+    declare public readonly topic: pulumi.Output<string | undefined>;
 
     /**
      * Create a MachineGroup resource with the given unique name, arguments, and options.
@@ -112,24 +112,24 @@ export class MachineGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineGroupState | undefined;
-            resourceInputs["identifyLists"] = state ? state.identifyLists : undefined;
-            resourceInputs["identifyType"] = state ? state.identifyType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["identifyLists"] = state?.identifyLists;
+            resourceInputs["identifyType"] = state?.identifyType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as MachineGroupArgs | undefined;
-            if ((!args || args.identifyLists === undefined) && !opts.urn) {
+            if (args?.identifyLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifyLists'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["identifyLists"] = args ? args.identifyLists : undefined;
-            resourceInputs["identifyType"] = args ? args.identifyType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["identifyLists"] = args?.identifyLists;
+            resourceInputs["identifyType"] = args?.identifyType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["topic"] = args?.topic;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MachineGroup.__pulumiType, name, resourceInputs, opts);

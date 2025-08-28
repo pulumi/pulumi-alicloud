@@ -80,23 +80,23 @@ export class RdsParameterGroup extends pulumi.CustomResource {
     /**
      * The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Parameter list. See `paramDetail` below.
      */
-    public readonly paramDetails!: pulumi.Output<outputs.rds.RdsParameterGroupParamDetail[]>;
+    declare public readonly paramDetails: pulumi.Output<outputs.rds.RdsParameterGroupParamDetail[]>;
     /**
      * The description of the parameter template.
      */
-    public readonly parameterGroupDesc!: pulumi.Output<string | undefined>;
+    declare public readonly parameterGroupDesc: pulumi.Output<string | undefined>;
     /**
      * The name of the parameter template.
      */
-    public readonly parameterGroupName!: pulumi.Output<string>;
+    declare public readonly parameterGroupName: pulumi.Output<string>;
 
     /**
      * Create a RdsParameterGroup resource with the given unique name, arguments, and options.
@@ -111,30 +111,30 @@ export class RdsParameterGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsParameterGroupState | undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["paramDetails"] = state ? state.paramDetails : undefined;
-            resourceInputs["parameterGroupDesc"] = state ? state.parameterGroupDesc : undefined;
-            resourceInputs["parameterGroupName"] = state ? state.parameterGroupName : undefined;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["paramDetails"] = state?.paramDetails;
+            resourceInputs["parameterGroupDesc"] = state?.parameterGroupDesc;
+            resourceInputs["parameterGroupName"] = state?.parameterGroupName;
         } else {
             const args = argsOrState as RdsParameterGroupArgs | undefined;
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.paramDetails === undefined) && !opts.urn) {
+            if (args?.paramDetails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paramDetails'");
             }
-            if ((!args || args.parameterGroupName === undefined) && !opts.urn) {
+            if (args?.parameterGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterGroupName'");
             }
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["paramDetails"] = args ? args.paramDetails : undefined;
-            resourceInputs["parameterGroupDesc"] = args ? args.parameterGroupDesc : undefined;
-            resourceInputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["paramDetails"] = args?.paramDetails;
+            resourceInputs["parameterGroupDesc"] = args?.parameterGroupDesc;
+            resourceInputs["parameterGroupName"] = args?.parameterGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RdsParameterGroup.__pulumiType, name, resourceInputs, opts);

@@ -50,19 +50,19 @@ export class GatewayLogging extends pulumi.CustomResource {
     /**
      * The ID of the Gateway.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The name of the Log Store.
      */
-    public readonly slsLogstore!: pulumi.Output<string>;
+    declare public readonly slsLogstore: pulumi.Output<string>;
     /**
      * The name of the Project.
      */
-    public readonly slsProject!: pulumi.Output<string>;
+    declare public readonly slsProject: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `Enabled`, `Disable`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a GatewayLogging resource with the given unique name, arguments, and options.
@@ -77,25 +77,25 @@ export class GatewayLogging extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayLoggingState | undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["slsLogstore"] = state ? state.slsLogstore : undefined;
-            resourceInputs["slsProject"] = state ? state.slsProject : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["slsLogstore"] = state?.slsLogstore;
+            resourceInputs["slsProject"] = state?.slsProject;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayLoggingArgs | undefined;
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.slsLogstore === undefined) && !opts.urn) {
+            if (args?.slsLogstore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsLogstore'");
             }
-            if ((!args || args.slsProject === undefined) && !opts.urn) {
+            if (args?.slsProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsProject'");
             }
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["slsLogstore"] = args ? args.slsLogstore : undefined;
-            resourceInputs["slsProject"] = args ? args.slsProject : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["slsLogstore"] = args?.slsLogstore;
+            resourceInputs["slsProject"] = args?.slsProject;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GatewayLogging.__pulumiType, name, resourceInputs, opts);

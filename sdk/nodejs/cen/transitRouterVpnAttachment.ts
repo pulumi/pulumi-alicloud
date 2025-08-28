@@ -227,63 +227,63 @@ export class TransitRouterVpnAttachment extends pulumi.CustomResource {
     /**
      * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
      */
-    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The billing method.
      * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
      */
-    public readonly chargeType!: pulumi.Output<string>;
+    declare public readonly chargeType: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the region where the transit router is deployed.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The new description of the VPN attachment.
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the VPN attachment.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
-    public readonly transitRouterAttachmentName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentName: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterId: pulumi.Output<string | undefined>;
     /**
      * The ID of the IPsec-VPN attachment.
      */
-    public readonly vpnId!: pulumi.Output<string>;
+    declare public readonly vpnId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
      *
      * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
      * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      */
-    public readonly vpnOwnerId!: pulumi.Output<string>;
+    declare public readonly vpnOwnerId: pulumi.Output<string>;
     /**
      * The Zone ID in the current region.
      * System will create resources under the Zone that you specify.
      * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      */
-    public readonly zones!: pulumi.Output<outputs.cen.TransitRouterVpnAttachmentZone[] | undefined>;
+    declare public readonly zones: pulumi.Output<outputs.cen.TransitRouterVpnAttachmentZone[] | undefined>;
 
     /**
      * Create a TransitRouterVpnAttachment resource with the given unique name, arguments, and options.
@@ -298,34 +298,34 @@ export class TransitRouterVpnAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterVpnAttachmentState | undefined;
-            resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["vpnId"] = state ? state.vpnId : undefined;
-            resourceInputs["vpnOwnerId"] = state ? state.vpnOwnerId : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = state?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["chargeType"] = state?.chargeType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = state?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentName"] = state?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["vpnId"] = state?.vpnId;
+            resourceInputs["vpnOwnerId"] = state?.vpnOwnerId;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as TransitRouterVpnAttachmentArgs | undefined;
-            if ((!args || args.vpnId === undefined) && !opts.urn) {
+            if (args?.vpnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnId'");
             }
-            resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["vpnId"] = args ? args.vpnId : undefined;
-            resourceInputs["vpnOwnerId"] = args ? args.vpnOwnerId : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = args?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["chargeType"] = args?.chargeType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = args?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentName"] = args?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["vpnId"] = args?.vpnId;
+            resourceInputs["vpnOwnerId"] = args?.vpnOwnerId;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

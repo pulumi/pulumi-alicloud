@@ -47,63 +47,63 @@ export class TemplateApplications extends pulumi.CustomResource {
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
      * > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      */
-    public readonly aliyunUids!: pulumi.Output<string[]>;
+    declare public readonly aliyunUids: pulumi.Output<string[]>;
     /**
      * The value of the quota request.
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
-    public readonly desireValue!: pulumi.Output<number>;
+    declare public readonly desireValue: pulumi.Output<number>;
     /**
      * Quota dimension. See `dimensions` below.
      */
-    public readonly dimensions!: pulumi.Output<outputs.quotas.TemplateApplicationsDimension[] | undefined>;
+    declare public readonly dimensions: pulumi.Output<outputs.quotas.TemplateApplicationsDimension[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * The language of the quota application result notification. Value:
      * - zh (default): Chinese.
      * - en: English.
      */
-    public readonly envLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly envLanguage: pulumi.Output<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
-    public readonly expireTime!: pulumi.Output<string | undefined>;
+    declare public readonly expireTime: pulumi.Output<string | undefined>;
     /**
      * Whether to send notification of quota application result. Value:
      * - 0 (default): No.
      * - 3: Yes.
      */
-    public readonly noticeType!: pulumi.Output<number | undefined>;
+    declare public readonly noticeType: pulumi.Output<number | undefined>;
     /**
      * Cloud service name abbreviation.
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
-    public readonly productCode!: pulumi.Output<string>;
+    declare public readonly productCode: pulumi.Output<string>;
     /**
      * The quota ID.
      */
-    public readonly quotaActionCode!: pulumi.Output<string>;
+    declare public readonly quotaActionCode: pulumi.Output<string>;
     /**
      * List of quota application details.
      */
-    public /*out*/ readonly quotaApplicationDetails!: pulumi.Output<outputs.quotas.TemplateApplicationsQuotaApplicationDetail[]>;
+    declare public /*out*/ readonly quotaApplicationDetails: pulumi.Output<outputs.quotas.TemplateApplicationsQuotaApplicationDetail[]>;
     /**
      * The quota type. Value:
      * - CommonQuota (default): Generic quota.
      * - FlowControl:API rate quota.
      * - WhiteListLabel: Equity quota.
      */
-    public readonly quotaCategory!: pulumi.Output<string>;
+    declare public readonly quotaCategory: pulumi.Output<string>;
     /**
      * Reason for quota application.
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
-    public readonly reason!: pulumi.Output<string>;
+    declare public readonly reason: pulumi.Output<string>;
 
     /**
      * Create a TemplateApplications resource with the given unique name, arguments, and options.
@@ -118,49 +118,49 @@ export class TemplateApplications extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateApplicationsState | undefined;
-            resourceInputs["aliyunUids"] = state ? state.aliyunUids : undefined;
-            resourceInputs["desireValue"] = state ? state.desireValue : undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = state ? state.envLanguage : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["noticeType"] = state ? state.noticeType : undefined;
-            resourceInputs["productCode"] = state ? state.productCode : undefined;
-            resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
-            resourceInputs["quotaApplicationDetails"] = state ? state.quotaApplicationDetails : undefined;
-            resourceInputs["quotaCategory"] = state ? state.quotaCategory : undefined;
-            resourceInputs["reason"] = state ? state.reason : undefined;
+            resourceInputs["aliyunUids"] = state?.aliyunUids;
+            resourceInputs["desireValue"] = state?.desireValue;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["envLanguage"] = state?.envLanguage;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["noticeType"] = state?.noticeType;
+            resourceInputs["productCode"] = state?.productCode;
+            resourceInputs["quotaActionCode"] = state?.quotaActionCode;
+            resourceInputs["quotaApplicationDetails"] = state?.quotaApplicationDetails;
+            resourceInputs["quotaCategory"] = state?.quotaCategory;
+            resourceInputs["reason"] = state?.reason;
         } else {
             const args = argsOrState as TemplateApplicationsArgs | undefined;
-            if ((!args || args.aliyunUids === undefined) && !opts.urn) {
+            if (args?.aliyunUids === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aliyunUids'");
             }
-            if ((!args || args.desireValue === undefined) && !opts.urn) {
+            if (args?.desireValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desireValue'");
             }
-            if ((!args || args.productCode === undefined) && !opts.urn) {
+            if (args?.productCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            if ((!args || args.quotaActionCode === undefined) && !opts.urn) {
+            if (args?.quotaActionCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quotaActionCode'");
             }
-            if ((!args || args.quotaCategory === undefined) && !opts.urn) {
+            if (args?.quotaCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quotaCategory'");
             }
-            if ((!args || args.reason === undefined) && !opts.urn) {
+            if (args?.reason === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
-            resourceInputs["aliyunUids"] = args ? args.aliyunUids : undefined;
-            resourceInputs["desireValue"] = args ? args.desireValue : undefined;
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["envLanguage"] = args ? args.envLanguage : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["noticeType"] = args ? args.noticeType : undefined;
-            resourceInputs["productCode"] = args ? args.productCode : undefined;
-            resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
-            resourceInputs["quotaCategory"] = args ? args.quotaCategory : undefined;
-            resourceInputs["reason"] = args ? args.reason : undefined;
+            resourceInputs["aliyunUids"] = args?.aliyunUids;
+            resourceInputs["desireValue"] = args?.desireValue;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["envLanguage"] = args?.envLanguage;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["noticeType"] = args?.noticeType;
+            resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["quotaActionCode"] = args?.quotaActionCode;
+            resourceInputs["quotaCategory"] = args?.quotaCategory;
+            resourceInputs["reason"] = args?.reason;
             resourceInputs["quotaApplicationDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

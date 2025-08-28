@@ -44,19 +44,19 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
      */
-    public /*out*/ readonly backupRetentionPeriod!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupRetentionPeriod: pulumi.Output<string>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
+    declare public readonly preferredBackupPeriods: pulumi.Output<string[]>;
     /**
      * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    public readonly preferredBackupTime!: pulumi.Output<string>;
+    declare public readonly preferredBackupTime: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -71,24 +71,24 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
-            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["preferredBackupPeriods"] = state?.preferredBackupPeriods;
+            resourceInputs["preferredBackupTime"] = state?.preferredBackupTime;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.preferredBackupPeriods === undefined) && !opts.urn) {
+            if (args?.preferredBackupPeriods === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupPeriods'");
             }
-            if ((!args || args.preferredBackupTime === undefined) && !opts.urn) {
+            if (args?.preferredBackupTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupTime'");
             }
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
-            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["preferredBackupPeriods"] = args?.preferredBackupPeriods;
+            resourceInputs["preferredBackupTime"] = args?.preferredBackupTime;
             resourceInputs["backupRetentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

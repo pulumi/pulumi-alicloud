@@ -70,11 +70,11 @@ export class AlertContactGroup extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly alertContactGroupName!: pulumi.Output<string>;
+    declare public readonly alertContactGroupName: pulumi.Output<string>;
     /**
      * The list id of alert contact.
      */
-    public readonly contactIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly contactIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AlertContactGroup resource with the given unique name, arguments, and options.
@@ -89,15 +89,15 @@ export class AlertContactGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertContactGroupState | undefined;
-            resourceInputs["alertContactGroupName"] = state ? state.alertContactGroupName : undefined;
-            resourceInputs["contactIds"] = state ? state.contactIds : undefined;
+            resourceInputs["alertContactGroupName"] = state?.alertContactGroupName;
+            resourceInputs["contactIds"] = state?.contactIds;
         } else {
             const args = argsOrState as AlertContactGroupArgs | undefined;
-            if ((!args || args.alertContactGroupName === undefined) && !opts.urn) {
+            if (args?.alertContactGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertContactGroupName'");
             }
-            resourceInputs["alertContactGroupName"] = args ? args.alertContactGroupName : undefined;
-            resourceInputs["contactIds"] = args ? args.contactIds : undefined;
+            resourceInputs["alertContactGroupName"] = args?.alertContactGroupName;
+            resourceInputs["contactIds"] = args?.contactIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertContactGroup.__pulumiType, name, resourceInputs, opts);

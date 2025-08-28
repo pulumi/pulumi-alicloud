@@ -81,36 +81,36 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
      * - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
      * - The value of this parameter is empty by default.
      */
-    public readonly autoSnapshotPolicyName!: pulumi.Output<string | undefined>;
+    declare public readonly autoSnapshotPolicyName: pulumi.Output<string | undefined>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The file system type.
      */
-    public readonly fileSystemType!: pulumi.Output<string>;
+    declare public readonly fileSystemType: pulumi.Output<string>;
     /**
      * The day on which an auto snapshot is created.
      * - A maximum of 7 time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
-    public readonly repeatWeekdays!: pulumi.Output<string[]>;
+    declare public readonly repeatWeekdays: pulumi.Output<string[]>;
     /**
      * The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
      * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
-    public readonly retentionDays!: pulumi.Output<number>;
+    declare public readonly retentionDays: pulumi.Output<number>;
     /**
      * The status of the automatic snapshot policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The point in time at which an auto snapshot is created.
      * - A maximum of 24 time points can be selected.
      * - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
      */
-    public readonly timePoints!: pulumi.Output<string[]>;
+    declare public readonly timePoints: pulumi.Output<string[]>;
 
     /**
      * Create a AutoSnapshotPolicy resource with the given unique name, arguments, and options.
@@ -125,26 +125,26 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoSnapshotPolicyState | undefined;
-            resourceInputs["autoSnapshotPolicyName"] = state ? state.autoSnapshotPolicyName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timePoints"] = state ? state.timePoints : undefined;
+            resourceInputs["autoSnapshotPolicyName"] = state?.autoSnapshotPolicyName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["fileSystemType"] = state?.fileSystemType;
+            resourceInputs["repeatWeekdays"] = state?.repeatWeekdays;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timePoints"] = state?.timePoints;
         } else {
             const args = argsOrState as AutoSnapshotPolicyArgs | undefined;
-            if ((!args || args.repeatWeekdays === undefined) && !opts.urn) {
+            if (args?.repeatWeekdays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repeatWeekdays'");
             }
-            if ((!args || args.timePoints === undefined) && !opts.urn) {
+            if (args?.timePoints === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
-            resourceInputs["autoSnapshotPolicyName"] = args ? args.autoSnapshotPolicyName : undefined;
-            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["autoSnapshotPolicyName"] = args?.autoSnapshotPolicyName;
+            resourceInputs["fileSystemType"] = args?.fileSystemType;
+            resourceInputs["repeatWeekdays"] = args?.repeatWeekdays;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["timePoints"] = args?.timePoints;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -112,19 +112,19 @@ export class HostAccountUserAttachment extends pulumi.CustomResource {
     /**
      * A list IDs of the host account.
      */
-    public readonly hostAccountIds!: pulumi.Output<string[]>;
+    declare public readonly hostAccountIds: pulumi.Output<string[]>;
     /**
      * The ID of the host.
      */
-    public readonly hostId!: pulumi.Output<string>;
+    declare public readonly hostId: pulumi.Output<string>;
     /**
      * The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the user that you want to authorize to manage the specified hosts and host accounts.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a HostAccountUserAttachment resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class HostAccountUserAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAccountUserAttachmentState | undefined;
-            resourceInputs["hostAccountIds"] = state ? state.hostAccountIds : undefined;
-            resourceInputs["hostId"] = state ? state.hostId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["hostAccountIds"] = state?.hostAccountIds;
+            resourceInputs["hostId"] = state?.hostId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as HostAccountUserAttachmentArgs | undefined;
-            if ((!args || args.hostAccountIds === undefined) && !opts.urn) {
+            if (args?.hostAccountIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostAccountIds'");
             }
-            if ((!args || args.hostId === undefined) && !opts.urn) {
+            if (args?.hostId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["hostAccountIds"] = args ? args.hostAccountIds : undefined;
-            resourceInputs["hostId"] = args ? args.hostId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["hostAccountIds"] = args?.hostAccountIds;
+            resourceInputs["hostId"] = args?.hostId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostAccountUserAttachment.__pulumiType, name, resourceInputs, opts);

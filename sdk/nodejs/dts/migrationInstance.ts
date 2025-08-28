@@ -72,51 +72,51 @@ export class MigrationInstance extends pulumi.CustomResource {
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    public readonly computeUnit!: pulumi.Output<number | undefined>;
+    declare public readonly computeUnit: pulumi.Output<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    public readonly databaseCount!: pulumi.Output<number | undefined>;
+    declare public readonly databaseCount: pulumi.Output<number | undefined>;
     /**
      * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    public readonly destinationEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
      * The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    public readonly destinationEndpointRegion!: pulumi.Output<string>;
+    declare public readonly destinationEndpointRegion: pulumi.Output<string>;
     /**
      * The ID of the Migration Instance.
      */
-    public /*out*/ readonly dtsInstanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dtsInstanceId: pulumi.Output<string>;
     /**
      * The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    public readonly sourceEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
      * The region of source instance.
      */
-    public readonly sourceEndpointRegion!: pulumi.Output<string>;
+    declare public readonly sourceEndpointRegion: pulumi.Output<string>;
     /**
      * The status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The sync architecture. Valid values: `oneway`.
      */
-    public readonly syncArchitecture!: pulumi.Output<string | undefined>;
+    declare public readonly syncArchitecture: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a MigrationInstance resource with the given unique name, arguments, and options.
@@ -131,45 +131,45 @@ export class MigrationInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MigrationInstanceState | undefined;
-            resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
-            resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationEndpointRegion"] = state ? state.destinationEndpointRegion : undefined;
-            resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["computeUnit"] = state?.computeUnit;
+            resourceInputs["databaseCount"] = state?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
+            resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
+            resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["sourceEndpointEngineName"] = state?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syncArchitecture"] = state?.syncArchitecture;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MigrationInstanceArgs | undefined;
-            if ((!args || args.destinationEndpointEngineName === undefined) && !opts.urn) {
+            if (args?.destinationEndpointEngineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationEndpointEngineName'");
             }
-            if ((!args || args.destinationEndpointRegion === undefined) && !opts.urn) {
+            if (args?.destinationEndpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationEndpointRegion'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.sourceEndpointEngineName === undefined) && !opts.urn) {
+            if (args?.sourceEndpointEngineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointEngineName'");
             }
-            if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
+            if (args?.sourceEndpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointRegion'");
             }
-            resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
-            resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationEndpointRegion"] = args ? args.destinationEndpointRegion : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
-            resourceInputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["computeUnit"] = args?.computeUnit;
+            resourceInputs["databaseCount"] = args?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
+            resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["sourceEndpointEngineName"] = args?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
+            resourceInputs["syncArchitecture"] = args?.syncArchitecture;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["dtsInstanceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -149,7 +149,7 @@ export class Listener extends pulumi.CustomResource {
     /**
      * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
      */
-    public readonly alpnEnabled!: pulumi.Output<boolean>;
+    declare public readonly alpnEnabled: pulumi.Output<boolean>;
     /**
      * The ALPN policy. Valid values:
      * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -161,78 +161,78 @@ export class Listener extends pulumi.CustomResource {
      *
      * > **NOTE:**  Effective only for TCPSSL listener.
      */
-    public readonly alpnPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly alpnPolicy: pulumi.Output<string | undefined>;
     /**
      * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
-    public readonly caCertificateIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly caCertificateIds: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether to enable mutual authentication. Valid values:
      */
-    public readonly caEnabled!: pulumi.Output<boolean>;
+    declare public readonly caEnabled: pulumi.Output<boolean>;
     /**
      * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */
-    public readonly certificateIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly certificateIds: pulumi.Output<string[] | undefined>;
     /**
      * The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
      */
-    public readonly cps!: pulumi.Output<number | undefined>;
+    declare public readonly cps: pulumi.Output<number | undefined>;
     /**
      * The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    public readonly endPort!: pulumi.Output<number | undefined>;
+    declare public readonly endPort: pulumi.Output<number | undefined>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      */
-    public readonly idleTimeout!: pulumi.Output<number>;
+    declare public readonly idleTimeout: pulumi.Output<number>;
     /**
      * Enter a name for the listener.
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    public readonly listenerDescription!: pulumi.Output<string | undefined>;
+    declare public readonly listenerDescription: pulumi.Output<string | undefined>;
     /**
      * The listener port. Valid values: `0` to `65535`.
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      */
-    public readonly listenerPort!: pulumi.Output<number>;
+    declare public readonly listenerPort: pulumi.Output<number>;
     /**
      * The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
      */
-    public readonly listenerProtocol!: pulumi.Output<string>;
+    declare public readonly listenerProtocol: pulumi.Output<string>;
     /**
      * The ID of the Network Load Balancer (NLB) instance.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
      *
      * > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      */
-    public readonly mss!: pulumi.Output<number | undefined>;
+    declare public readonly mss: pulumi.Output<number | undefined>;
     /**
      * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      */
-    public readonly proxyProtocolConfig!: pulumi.Output<outputs.nlb.ListenerProxyProtocolConfig>;
+    declare public readonly proxyProtocolConfig: pulumi.Output<outputs.nlb.ListenerProxyProtocolConfig>;
     /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */
-    public readonly proxyProtocolEnabled!: pulumi.Output<boolean>;
+    declare public readonly proxyProtocolEnabled: pulumi.Output<boolean>;
     /**
      * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
      * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:
      */
-    public readonly secSensorEnabled!: pulumi.Output<boolean>;
+    declare public readonly secSensorEnabled: pulumi.Output<boolean>;
     /**
      * The security policy ID. System security policies and custom security policies are supported.
      *
@@ -240,25 +240,25 @@ export class Listener extends pulumi.CustomResource {
      *
      * > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      */
-    public readonly securityPolicyId!: pulumi.Output<string>;
+    declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
      * The ID of the server group.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The first port in the listener port range. Valid values: `0` to `65535`.
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    public readonly startPort!: pulumi.Output<number | undefined>;
+    declare public readonly startPort: pulumi.Output<number | undefined>;
     /**
      * The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -273,63 +273,63 @@ export class Listener extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            resourceInputs["alpnEnabled"] = state ? state.alpnEnabled : undefined;
-            resourceInputs["alpnPolicy"] = state ? state.alpnPolicy : undefined;
-            resourceInputs["caCertificateIds"] = state ? state.caCertificateIds : undefined;
-            resourceInputs["caEnabled"] = state ? state.caEnabled : undefined;
-            resourceInputs["certificateIds"] = state ? state.certificateIds : undefined;
-            resourceInputs["cps"] = state ? state.cps : undefined;
-            resourceInputs["endPort"] = state ? state.endPort : undefined;
-            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            resourceInputs["listenerDescription"] = state ? state.listenerDescription : undefined;
-            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
-            resourceInputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["mss"] = state ? state.mss : undefined;
-            resourceInputs["proxyProtocolConfig"] = state ? state.proxyProtocolConfig : undefined;
-            resourceInputs["proxyProtocolEnabled"] = state ? state.proxyProtocolEnabled : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["secSensorEnabled"] = state ? state.secSensorEnabled : undefined;
-            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["startPort"] = state ? state.startPort : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["alpnEnabled"] = state?.alpnEnabled;
+            resourceInputs["alpnPolicy"] = state?.alpnPolicy;
+            resourceInputs["caCertificateIds"] = state?.caCertificateIds;
+            resourceInputs["caEnabled"] = state?.caEnabled;
+            resourceInputs["certificateIds"] = state?.certificateIds;
+            resourceInputs["cps"] = state?.cps;
+            resourceInputs["endPort"] = state?.endPort;
+            resourceInputs["idleTimeout"] = state?.idleTimeout;
+            resourceInputs["listenerDescription"] = state?.listenerDescription;
+            resourceInputs["listenerPort"] = state?.listenerPort;
+            resourceInputs["listenerProtocol"] = state?.listenerProtocol;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["mss"] = state?.mss;
+            resourceInputs["proxyProtocolConfig"] = state?.proxyProtocolConfig;
+            resourceInputs["proxyProtocolEnabled"] = state?.proxyProtocolEnabled;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["secSensorEnabled"] = state?.secSensorEnabled;
+            resourceInputs["securityPolicyId"] = state?.securityPolicyId;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["startPort"] = state?.startPort;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.listenerPort === undefined) && !opts.urn) {
+            if (args?.listenerPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerPort'");
             }
-            if ((!args || args.listenerProtocol === undefined) && !opts.urn) {
+            if (args?.listenerProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerProtocol'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            resourceInputs["alpnEnabled"] = args ? args.alpnEnabled : undefined;
-            resourceInputs["alpnPolicy"] = args ? args.alpnPolicy : undefined;
-            resourceInputs["caCertificateIds"] = args ? args.caCertificateIds : undefined;
-            resourceInputs["caEnabled"] = args ? args.caEnabled : undefined;
-            resourceInputs["certificateIds"] = args ? args.certificateIds : undefined;
-            resourceInputs["cps"] = args ? args.cps : undefined;
-            resourceInputs["endPort"] = args ? args.endPort : undefined;
-            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            resourceInputs["listenerDescription"] = args ? args.listenerDescription : undefined;
-            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
-            resourceInputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["mss"] = args ? args.mss : undefined;
-            resourceInputs["proxyProtocolConfig"] = args ? args.proxyProtocolConfig : undefined;
-            resourceInputs["proxyProtocolEnabled"] = args ? args.proxyProtocolEnabled : undefined;
-            resourceInputs["secSensorEnabled"] = args ? args.secSensorEnabled : undefined;
-            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["startPort"] = args ? args.startPort : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["alpnEnabled"] = args?.alpnEnabled;
+            resourceInputs["alpnPolicy"] = args?.alpnPolicy;
+            resourceInputs["caCertificateIds"] = args?.caCertificateIds;
+            resourceInputs["caEnabled"] = args?.caEnabled;
+            resourceInputs["certificateIds"] = args?.certificateIds;
+            resourceInputs["cps"] = args?.cps;
+            resourceInputs["endPort"] = args?.endPort;
+            resourceInputs["idleTimeout"] = args?.idleTimeout;
+            resourceInputs["listenerDescription"] = args?.listenerDescription;
+            resourceInputs["listenerPort"] = args?.listenerPort;
+            resourceInputs["listenerProtocol"] = args?.listenerProtocol;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["mss"] = args?.mss;
+            resourceInputs["proxyProtocolConfig"] = args?.proxyProtocolConfig;
+            resourceInputs["proxyProtocolEnabled"] = args?.proxyProtocolEnabled;
+            resourceInputs["secSensorEnabled"] = args?.secSensorEnabled;
+            resourceInputs["securityPolicyId"] = args?.securityPolicyId;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["startPort"] = args?.startPort;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

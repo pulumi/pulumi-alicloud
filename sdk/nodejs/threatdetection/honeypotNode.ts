@@ -67,27 +67,27 @@ export class HoneypotNode extends pulumi.CustomResource {
     /**
      * Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      */
-    public readonly allowHoneypotAccessInternet!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowHoneypotAccessInternet: pulumi.Output<boolean | undefined>;
     /**
      * Number of probes available.
      */
-    public readonly availableProbeNum!: pulumi.Output<number>;
+    declare public readonly availableProbeNum: pulumi.Output<number>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Management node name.
      */
-    public readonly nodeName!: pulumi.Output<string>;
+    declare public readonly nodeName: pulumi.Output<string>;
     /**
      * Release the collection of network segments.
      */
-    public readonly securityGroupProbeIpLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupProbeIpLists: pulumi.Output<string[] | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
 
     /**
      * Create a HoneypotNode resource with the given unique name, arguments, and options.
@@ -102,24 +102,24 @@ export class HoneypotNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HoneypotNodeState | undefined;
-            resourceInputs["allowHoneypotAccessInternet"] = state ? state.allowHoneypotAccessInternet : undefined;
-            resourceInputs["availableProbeNum"] = state ? state.availableProbeNum : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["nodeName"] = state ? state.nodeName : undefined;
-            resourceInputs["securityGroupProbeIpLists"] = state ? state.securityGroupProbeIpLists : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["allowHoneypotAccessInternet"] = state?.allowHoneypotAccessInternet;
+            resourceInputs["availableProbeNum"] = state?.availableProbeNum;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["securityGroupProbeIpLists"] = state?.securityGroupProbeIpLists;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as HoneypotNodeArgs | undefined;
-            if ((!args || args.availableProbeNum === undefined) && !opts.urn) {
+            if (args?.availableProbeNum === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availableProbeNum'");
             }
-            if ((!args || args.nodeName === undefined) && !opts.urn) {
+            if (args?.nodeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeName'");
             }
-            resourceInputs["allowHoneypotAccessInternet"] = args ? args.allowHoneypotAccessInternet : undefined;
-            resourceInputs["availableProbeNum"] = args ? args.availableProbeNum : undefined;
-            resourceInputs["nodeName"] = args ? args.nodeName : undefined;
-            resourceInputs["securityGroupProbeIpLists"] = args ? args.securityGroupProbeIpLists : undefined;
+            resourceInputs["allowHoneypotAccessInternet"] = args?.allowHoneypotAccessInternet;
+            resourceInputs["availableProbeNum"] = args?.availableProbeNum;
+            resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["securityGroupProbeIpLists"] = args?.securityGroupProbeIpLists;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

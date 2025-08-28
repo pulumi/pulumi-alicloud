@@ -120,65 +120,65 @@ export class EcsSnapshot extends pulumi.CustomResource {
     /**
      * The category of the snapshot. Valid values:
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * (Available since v1.239.0) The time when the snapshot was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the snapshot.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the disk.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * Field `instantAccess` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
-    public readonly instantAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly instantAccess: pulumi.Output<boolean | undefined>;
     /**
      * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
-    public readonly instantAccessRetentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly instantAccessRetentionDays: pulumi.Output<number | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Available since v1.239.0) The region ID of the snapshot.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
     /**
      * The name of the snapshot.
      */
-    public readonly snapshotName!: pulumi.Output<string>;
+    declare public readonly snapshotName: pulumi.Output<string>;
     /**
      * The status of the Snapshot.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsSnapshot resource with the given unique name, arguments, and options.
@@ -193,36 +193,36 @@ export class EcsSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsSnapshotState | undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["instantAccess"] = state ? state.instantAccess : undefined;
-            resourceInputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instantAccess"] = state?.instantAccess;
+            resourceInputs["instantAccessRetentionDays"] = state?.instantAccessRetentionDays;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as EcsSnapshotArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["instantAccess"] = args ? args.instantAccess : undefined;
-            resourceInputs["instantAccessRetentionDays"] = args ? args.instantAccessRetentionDays : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instantAccess"] = args?.instantAccess;
+            resourceInputs["instantAccessRetentionDays"] = args?.instantAccessRetentionDays;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["snapshotName"] = args?.snapshotName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

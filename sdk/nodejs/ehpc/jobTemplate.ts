@@ -64,71 +64,71 @@ export class JobTemplate extends pulumi.CustomResource {
     /**
      * Queue Jobs, Is of the Form: 1-10:2.
      */
-    public readonly arrayRequest!: pulumi.Output<string | undefined>;
+    declare public readonly arrayRequest: pulumi.Output<string | undefined>;
     /**
      * Job Maximum Run Time.
      */
-    public readonly clockTime!: pulumi.Output<string | undefined>;
+    declare public readonly clockTime: pulumi.Output<string | undefined>;
     /**
      * Job Commands.
      */
-    public readonly commandLine!: pulumi.Output<string>;
+    declare public readonly commandLine: pulumi.Output<string>;
     /**
      * A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
      */
-    public readonly gpu!: pulumi.Output<number | undefined>;
+    declare public readonly gpu: pulumi.Output<number | undefined>;
     /**
      * A Job Template Name.
      */
-    public readonly jobTemplateName!: pulumi.Output<string>;
+    declare public readonly jobTemplateName: pulumi.Output<string>;
     /**
      * A Single Compute Node Maximum Memory.
      */
-    public readonly mem!: pulumi.Output<string | undefined>;
+    declare public readonly mem: pulumi.Output<string | undefined>;
     /**
      * Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
      */
-    public readonly node!: pulumi.Output<number | undefined>;
+    declare public readonly node: pulumi.Output<number | undefined>;
     /**
      * Job Commands the Directory.
      */
-    public readonly packagePath!: pulumi.Output<string | undefined>;
+    declare public readonly packagePath: pulumi.Output<string | undefined>;
     /**
      * The Job Priority.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The Job Queue.
      */
-    public readonly queue!: pulumi.Output<string | undefined>;
+    declare public readonly queue: pulumi.Output<string | undefined>;
     /**
      * If the Job Is Support for the Re-Run.
      */
-    public readonly reRunable!: pulumi.Output<boolean>;
+    declare public readonly reRunable: pulumi.Output<boolean>;
     /**
      * The name of the user who performed the job.
      */
-    public readonly runasUser!: pulumi.Output<string | undefined>;
+    declare public readonly runasUser: pulumi.Output<string | undefined>;
     /**
      * Error Output Path.
      */
-    public readonly stderrRedirectPath!: pulumi.Output<string | undefined>;
+    declare public readonly stderrRedirectPath: pulumi.Output<string | undefined>;
     /**
      * Standard Output Path and.
      */
-    public readonly stdoutRedirectPath!: pulumi.Output<string | undefined>;
+    declare public readonly stdoutRedirectPath: pulumi.Output<string | undefined>;
     /**
      * A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
      */
-    public readonly task!: pulumi.Output<number | undefined>;
+    declare public readonly task: pulumi.Output<number | undefined>;
     /**
      * A Single Task and the Number of Required Threads.
      */
-    public readonly thread!: pulumi.Output<number | undefined>;
+    declare public readonly thread: pulumi.Output<number | undefined>;
     /**
      * The Job of the Environment Variable.
      */
-    public readonly variables!: pulumi.Output<string | undefined>;
+    declare public readonly variables: pulumi.Output<string | undefined>;
 
     /**
      * Create a JobTemplate resource with the given unique name, arguments, and options.
@@ -143,48 +143,48 @@ export class JobTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobTemplateState | undefined;
-            resourceInputs["arrayRequest"] = state ? state.arrayRequest : undefined;
-            resourceInputs["clockTime"] = state ? state.clockTime : undefined;
-            resourceInputs["commandLine"] = state ? state.commandLine : undefined;
-            resourceInputs["gpu"] = state ? state.gpu : undefined;
-            resourceInputs["jobTemplateName"] = state ? state.jobTemplateName : undefined;
-            resourceInputs["mem"] = state ? state.mem : undefined;
-            resourceInputs["node"] = state ? state.node : undefined;
-            resourceInputs["packagePath"] = state ? state.packagePath : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["queue"] = state ? state.queue : undefined;
-            resourceInputs["reRunable"] = state ? state.reRunable : undefined;
-            resourceInputs["runasUser"] = state ? state.runasUser : undefined;
-            resourceInputs["stderrRedirectPath"] = state ? state.stderrRedirectPath : undefined;
-            resourceInputs["stdoutRedirectPath"] = state ? state.stdoutRedirectPath : undefined;
-            resourceInputs["task"] = state ? state.task : undefined;
-            resourceInputs["thread"] = state ? state.thread : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["arrayRequest"] = state?.arrayRequest;
+            resourceInputs["clockTime"] = state?.clockTime;
+            resourceInputs["commandLine"] = state?.commandLine;
+            resourceInputs["gpu"] = state?.gpu;
+            resourceInputs["jobTemplateName"] = state?.jobTemplateName;
+            resourceInputs["mem"] = state?.mem;
+            resourceInputs["node"] = state?.node;
+            resourceInputs["packagePath"] = state?.packagePath;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["queue"] = state?.queue;
+            resourceInputs["reRunable"] = state?.reRunable;
+            resourceInputs["runasUser"] = state?.runasUser;
+            resourceInputs["stderrRedirectPath"] = state?.stderrRedirectPath;
+            resourceInputs["stdoutRedirectPath"] = state?.stdoutRedirectPath;
+            resourceInputs["task"] = state?.task;
+            resourceInputs["thread"] = state?.thread;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as JobTemplateArgs | undefined;
-            if ((!args || args.commandLine === undefined) && !opts.urn) {
+            if (args?.commandLine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commandLine'");
             }
-            if ((!args || args.jobTemplateName === undefined) && !opts.urn) {
+            if (args?.jobTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplateName'");
             }
-            resourceInputs["arrayRequest"] = args ? args.arrayRequest : undefined;
-            resourceInputs["clockTime"] = args ? args.clockTime : undefined;
-            resourceInputs["commandLine"] = args ? args.commandLine : undefined;
-            resourceInputs["gpu"] = args ? args.gpu : undefined;
-            resourceInputs["jobTemplateName"] = args ? args.jobTemplateName : undefined;
-            resourceInputs["mem"] = args ? args.mem : undefined;
-            resourceInputs["node"] = args ? args.node : undefined;
-            resourceInputs["packagePath"] = args ? args.packagePath : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["queue"] = args ? args.queue : undefined;
-            resourceInputs["reRunable"] = args ? args.reRunable : undefined;
-            resourceInputs["runasUser"] = args ? args.runasUser : undefined;
-            resourceInputs["stderrRedirectPath"] = args ? args.stderrRedirectPath : undefined;
-            resourceInputs["stdoutRedirectPath"] = args ? args.stdoutRedirectPath : undefined;
-            resourceInputs["task"] = args ? args.task : undefined;
-            resourceInputs["thread"] = args ? args.thread : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["arrayRequest"] = args?.arrayRequest;
+            resourceInputs["clockTime"] = args?.clockTime;
+            resourceInputs["commandLine"] = args?.commandLine;
+            resourceInputs["gpu"] = args?.gpu;
+            resourceInputs["jobTemplateName"] = args?.jobTemplateName;
+            resourceInputs["mem"] = args?.mem;
+            resourceInputs["node"] = args?.node;
+            resourceInputs["packagePath"] = args?.packagePath;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["queue"] = args?.queue;
+            resourceInputs["reRunable"] = args?.reRunable;
+            resourceInputs["runasUser"] = args?.runasUser;
+            resourceInputs["stderrRedirectPath"] = args?.stderrRedirectPath;
+            resourceInputs["stdoutRedirectPath"] = args?.stdoutRedirectPath;
+            resourceInputs["task"] = args?.task;
+            resourceInputs["thread"] = args?.thread;
+            resourceInputs["variables"] = args?.variables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JobTemplate.__pulumiType, name, resourceInputs, opts);

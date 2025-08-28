@@ -86,70 +86,70 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * The name of the bucket to put the file in.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly cacheControl!: pulumi.Output<string | undefined>;
+    declare public readonly cacheControl: pulumi.Output<string | undefined>;
     /**
      * The literal content being uploaded to the bucket.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly contentDisposition!: pulumi.Output<string | undefined>;
+    declare public readonly contentDisposition: pulumi.Output<string | undefined>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly contentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly contentEncoding: pulumi.Output<string | undefined>;
     /**
      * the content length of request.
      */
-    public /*out*/ readonly contentLength!: pulumi.Output<string>;
+    declare public /*out*/ readonly contentLength: pulumi.Output<string>;
     /**
      * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
      */
-    public readonly contentMd5!: pulumi.Output<string | undefined>;
+    declare public readonly contentMd5: pulumi.Output<string | undefined>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * the ETag generated for the object (an MD5 sum of the object content).
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly expires!: pulumi.Output<string | undefined>;
+    declare public readonly expires: pulumi.Output<string | undefined>;
     /**
      * The name of the object once it is in the bucket.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      *
      * Either `source` or `content` must be provided to specify the bucket content.
      * These two arguments are mutually-exclusive.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */
-    public readonly serverSideEncryption!: pulumi.Output<string | undefined>;
+    declare public readonly serverSideEncryption: pulumi.Output<string | undefined>;
     /**
      * The path to the source file being uploaded to the bucket.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * A unique version ID value for the object, if bucket versioning is enabled.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -164,43 +164,43 @@ export class BucketObject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            resourceInputs["contentLength"] = state ? state.contentLength : undefined;
-            resourceInputs["contentMd5"] = state ? state.contentMd5 : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["expires"] = state ? state.expires : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["serverSideEncryption"] = state ? state.serverSideEncryption : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["cacheControl"] = state?.cacheControl;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentDisposition"] = state?.contentDisposition;
+            resourceInputs["contentEncoding"] = state?.contentEncoding;
+            resourceInputs["contentLength"] = state?.contentLength;
+            resourceInputs["contentMd5"] = state?.contentMd5;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["expires"] = state?.expires;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["serverSideEncryption"] = state?.serverSideEncryption;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            resourceInputs["contentMd5"] = args ? args.contentMd5 : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["expires"] = args ? args.expires : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["serverSideEncryption"] = args ? args.serverSideEncryption : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["cacheControl"] = args?.cacheControl;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentDisposition"] = args?.contentDisposition;
+            resourceInputs["contentEncoding"] = args?.contentEncoding;
+            resourceInputs["contentMd5"] = args?.contentMd5;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["expires"] = args?.expires;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["serverSideEncryption"] = args?.serverSideEncryption;
+            resourceInputs["source"] = args?.source;
             resourceInputs["contentLength"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;

@@ -77,23 +77,23 @@ export class Alias extends pulumi.CustomResource {
     /**
      * Name for the alias you are creating.
      */
-    public readonly aliasName!: pulumi.Output<string>;
+    declare public readonly aliasName: pulumi.Output<string>;
     /**
      * Description of the alias.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
-    public readonly routingConfig!: pulumi.Output<outputs.fc.AliasRoutingConfig | undefined>;
+    declare public readonly routingConfig: pulumi.Output<outputs.fc.AliasRoutingConfig | undefined>;
     /**
      * The Function Compute service name.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
      */
-    public readonly serviceVersion!: pulumi.Output<string>;
+    declare public readonly serviceVersion: pulumi.Output<string>;
 
     /**
      * Create a Alias resource with the given unique name, arguments, and options.
@@ -108,27 +108,27 @@ export class Alias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AliasState | undefined;
-            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["routingConfig"] = state ? state.routingConfig : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
+            resourceInputs["aliasName"] = state?.aliasName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["routingConfig"] = state?.routingConfig;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["serviceVersion"] = state?.serviceVersion;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.aliasName === undefined) && !opts.urn) {
+            if (args?.aliasName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.serviceVersion === undefined) && !opts.urn) {
+            if (args?.serviceVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceVersion'");
             }
-            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
+            resourceInputs["aliasName"] = args?.aliasName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["routingConfig"] = args?.routingConfig;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["serviceVersion"] = args?.serviceVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alias.__pulumiType, name, resourceInputs, opts);

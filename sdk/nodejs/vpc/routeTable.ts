@@ -73,47 +73,47 @@ export class RouteTable extends pulumi.CustomResource {
      * - `VSwitch`: switch.
      * - `Gateway`:IPv4 Gateway.
      */
-    public readonly associateType!: pulumi.Output<string>;
+    declare public readonly associateType: pulumi.Output<string>;
     /**
      * The creation time of the routing table
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the routing table.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Resource group ID.
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Route Table Receive Propagate Route State
      */
-    public readonly routePropagationEnable!: pulumi.Output<boolean>;
+    declare public readonly routePropagationEnable: pulumi.Output<boolean>;
     /**
      * The name of the routing table.
      */
-    public readonly routeTableName!: pulumi.Output<string>;
+    declare public readonly routeTableName: pulumi.Output<string>;
     /**
      * Routing table state
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of VPC.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a RouteTable resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class RouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
-            resourceInputs["associateType"] = state ? state.associateType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["routePropagationEnable"] = state ? state.routePropagationEnable : undefined;
-            resourceInputs["routeTableName"] = state ? state.routeTableName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["associateType"] = state?.associateType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["routePropagationEnable"] = state?.routePropagationEnable;
+            resourceInputs["routeTableName"] = state?.routeTableName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as RouteTableArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["associateType"] = args ? args.associateType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["routePropagationEnable"] = args ? args.routePropagationEnable : undefined;
-            resourceInputs["routeTableName"] = args ? args.routeTableName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["associateType"] = args?.associateType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["routePropagationEnable"] = args?.routePropagationEnable;
+            resourceInputs["routeTableName"] = args?.routeTableName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

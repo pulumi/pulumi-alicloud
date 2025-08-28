@@ -75,39 +75,39 @@ export class TemplateScratch extends pulumi.CustomResource {
     /**
      * The Description of the Template Scratch.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The execution mode. Valid Values: `Async` or `Sync`.
      */
-    public readonly executionMode!: pulumi.Output<string | undefined>;
+    declare public readonly executionMode: pulumi.Output<string | undefined>;
     /**
      * Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
      */
-    public readonly logicalIdStrategy!: pulumi.Output<string>;
+    declare public readonly logicalIdStrategy: pulumi.Output<string>;
     /**
      * Priority parameter. See the following `Block preferenceParameters`.
      */
-    public readonly preferenceParameters!: pulumi.Output<outputs.ros.TemplateScratchPreferenceParameter[]>;
+    declare public readonly preferenceParameters: pulumi.Output<outputs.ros.TemplateScratchPreferenceParameter[]>;
     /**
      * Source resource grouping. See the following `Block sourceResourceGroup`.
      */
-    public readonly sourceResourceGroup!: pulumi.Output<outputs.ros.TemplateScratchSourceResourceGroup | undefined>;
+    declare public readonly sourceResourceGroup: pulumi.Output<outputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
      * Source resource. See the following `Block sourceResources`.
      */
-    public readonly sourceResources!: pulumi.Output<outputs.ros.TemplateScratchSourceResource[] | undefined>;
+    declare public readonly sourceResources: pulumi.Output<outputs.ros.TemplateScratchSourceResource[] | undefined>;
     /**
      * Source tag. See the following `Block sourceTag`.
      */
-    public readonly sourceTag!: pulumi.Output<outputs.ros.TemplateScratchSourceTag | undefined>;
+    declare public readonly sourceTag: pulumi.Output<outputs.ros.TemplateScratchSourceTag | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
      */
-    public readonly templateScratchType!: pulumi.Output<string>;
+    declare public readonly templateScratchType: pulumi.Output<string>;
 
     /**
      * Create a TemplateScratch resource with the given unique name, arguments, and options.
@@ -122,28 +122,28 @@ export class TemplateScratch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateScratchState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executionMode"] = state ? state.executionMode : undefined;
-            resourceInputs["logicalIdStrategy"] = state ? state.logicalIdStrategy : undefined;
-            resourceInputs["preferenceParameters"] = state ? state.preferenceParameters : undefined;
-            resourceInputs["sourceResourceGroup"] = state ? state.sourceResourceGroup : undefined;
-            resourceInputs["sourceResources"] = state ? state.sourceResources : undefined;
-            resourceInputs["sourceTag"] = state ? state.sourceTag : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["templateScratchType"] = state ? state.templateScratchType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executionMode"] = state?.executionMode;
+            resourceInputs["logicalIdStrategy"] = state?.logicalIdStrategy;
+            resourceInputs["preferenceParameters"] = state?.preferenceParameters;
+            resourceInputs["sourceResourceGroup"] = state?.sourceResourceGroup;
+            resourceInputs["sourceResources"] = state?.sourceResources;
+            resourceInputs["sourceTag"] = state?.sourceTag;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["templateScratchType"] = state?.templateScratchType;
         } else {
             const args = argsOrState as TemplateScratchArgs | undefined;
-            if ((!args || args.templateScratchType === undefined) && !opts.urn) {
+            if (args?.templateScratchType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateScratchType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executionMode"] = args ? args.executionMode : undefined;
-            resourceInputs["logicalIdStrategy"] = args ? args.logicalIdStrategy : undefined;
-            resourceInputs["preferenceParameters"] = args ? args.preferenceParameters : undefined;
-            resourceInputs["sourceResourceGroup"] = args ? args.sourceResourceGroup : undefined;
-            resourceInputs["sourceResources"] = args ? args.sourceResources : undefined;
-            resourceInputs["sourceTag"] = args ? args.sourceTag : undefined;
-            resourceInputs["templateScratchType"] = args ? args.templateScratchType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executionMode"] = args?.executionMode;
+            resourceInputs["logicalIdStrategy"] = args?.logicalIdStrategy;
+            resourceInputs["preferenceParameters"] = args?.preferenceParameters;
+            resourceInputs["sourceResourceGroup"] = args?.sourceResourceGroup;
+            resourceInputs["sourceResources"] = args?.sourceResources;
+            resourceInputs["sourceTag"] = args?.sourceTag;
+            resourceInputs["templateScratchType"] = args?.templateScratchType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

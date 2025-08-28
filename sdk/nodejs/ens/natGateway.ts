@@ -84,27 +84,27 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the ENS node.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * NAT specifications. Value: `enat.default`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
      */
-    public readonly natName!: pulumi.Output<string | undefined>;
+    declare public readonly natName: pulumi.Output<string | undefined>;
     /**
      * The network ID.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The vSwitch ID.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a NatGateway resource with the given unique name, arguments, and options.
@@ -119,28 +119,28 @@ export class NatGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["natName"] = state ? state.natName : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["natName"] = state?.natName;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as NatGatewayArgs | undefined;
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["natName"] = args ? args.natName : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["natName"] = args?.natName;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

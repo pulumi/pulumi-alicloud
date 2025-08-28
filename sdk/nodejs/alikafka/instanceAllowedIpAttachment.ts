@@ -97,15 +97,15 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     /**
      * The IP address whitelist. It can be a CIDR block.
      */
-    public readonly allowedIp!: pulumi.Output<string>;
+    declare public readonly allowedIp: pulumi.Output<string>;
     /**
      * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
      */
-    public readonly allowedType!: pulumi.Output<string>;
+    declare public readonly allowedType: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`. From version 1.219.0, `portRange` can be set to `9094/9094`, `9095/9095`.
      * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
@@ -113,7 +113,7 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
      * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
      * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      */
-    public readonly portRange!: pulumi.Output<string>;
+    declare public readonly portRange: pulumi.Output<string>;
 
     /**
      * Create a InstanceAllowedIpAttachment resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAllowedIpAttachmentState | undefined;
-            resourceInputs["allowedIp"] = state ? state.allowedIp : undefined;
-            resourceInputs["allowedType"] = state ? state.allowedType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["allowedIp"] = state?.allowedIp;
+            resourceInputs["allowedType"] = state?.allowedType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["portRange"] = state?.portRange;
         } else {
             const args = argsOrState as InstanceAllowedIpAttachmentArgs | undefined;
-            if ((!args || args.allowedIp === undefined) && !opts.urn) {
+            if (args?.allowedIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedIp'");
             }
-            if ((!args || args.allowedType === undefined) && !opts.urn) {
+            if (args?.allowedType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.portRange === undefined) && !opts.urn) {
+            if (args?.portRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portRange'");
             }
-            resourceInputs["allowedIp"] = args ? args.allowedIp : undefined;
-            resourceInputs["allowedType"] = args ? args.allowedType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["allowedIp"] = args?.allowedIp;
+            resourceInputs["allowedType"] = args?.allowedType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["portRange"] = args?.portRange;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceAllowedIpAttachment.__pulumiType, name, resourceInputs, opts);

@@ -74,15 +74,15 @@ export class RecycleBin extends pulumi.CustomResource {
     /**
      * The ID of the file system for which you want to enable the recycle bin feature.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
      */
-    public readonly reservedDays!: pulumi.Output<number>;
+    declare public readonly reservedDays: pulumi.Output<number>;
     /**
      * The status of the recycle bin.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a RecycleBin resource with the given unique name, arguments, and options.
@@ -97,16 +97,16 @@ export class RecycleBin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecycleBinState | undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["reservedDays"] = state ? state.reservedDays : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["reservedDays"] = state?.reservedDays;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RecycleBinArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["reservedDays"] = args ? args.reservedDays : undefined;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["reservedDays"] = args?.reservedDays;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -118,15 +118,15 @@ export class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
     /**
      * Specifies whether only to precheck the request. Valid values:
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * The ID of the EIP bandwidth plan.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a LoadbalancerCommonBandwidthPackageAttachment resource with the given unique name, arguments, and options.
@@ -141,19 +141,19 @@ export class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadbalancerCommonBandwidthPackageAttachmentState | undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as LoadbalancerCommonBandwidthPackageAttachmentArgs | undefined;
-            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
+            if (args?.bandwidthPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -70,49 +70,49 @@ export class TransitRouter extends pulumi.CustomResource {
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * (Available since v1.247.0) The time when the transit router was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The status of the transit router.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      */
-    public readonly supportMulticast!: pulumi.Output<boolean | undefined>;
+    declare public readonly supportMulticast: pulumi.Output<boolean | undefined>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the Enterprise Edition transit router instance.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    public readonly transitRouterDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    public /*out*/ readonly transitRouterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterId: pulumi.Output<string>;
     /**
      * The name of the Enterprise Edition transit router.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    public readonly transitRouterName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterName: pulumi.Output<string | undefined>;
     /**
      * The edition of the transit router.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a TransitRouter resource with the given unique name, arguments, and options.
@@ -127,28 +127,28 @@ export class TransitRouter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["supportMulticast"] = state ? state.supportMulticast : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterDescription"] = state ? state.transitRouterDescription : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterName"] = state ? state.transitRouterName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["supportMulticast"] = state?.supportMulticast;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterDescription"] = state?.transitRouterDescription;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterName"] = state?.transitRouterName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TransitRouterArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["supportMulticast"] = args ? args.supportMulticast : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterDescription"] = args ? args.transitRouterDescription : undefined;
-            resourceInputs["transitRouterName"] = args ? args.transitRouterName : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["supportMulticast"] = args?.supportMulticast;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterDescription"] = args?.transitRouterDescription;
+            resourceInputs["transitRouterName"] = args?.transitRouterName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

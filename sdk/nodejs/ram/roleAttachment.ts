@@ -126,11 +126,11 @@ export class RoleAttachment extends pulumi.CustomResource {
     /**
      * The list of ECS instance's IDs.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
 
     /**
      * Create a RoleAttachment resource with the given unique name, arguments, and options.
@@ -145,18 +145,18 @@ export class RoleAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleAttachmentState | undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["roleName"] = state?.roleName;
         } else {
             const args = argsOrState as RoleAttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.roleName === undefined) && !opts.urn) {
+            if (args?.roleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["roleName"] = args?.roleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RoleAttachment.__pulumiType, name, resourceInputs, opts);

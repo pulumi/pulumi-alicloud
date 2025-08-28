@@ -103,27 +103,27 @@ export class HostShareKey extends pulumi.CustomResource {
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly hostShareKeyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostShareKeyId: pulumi.Output<string>;
     /**
      * The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
      */
-    public readonly hostShareKeyName!: pulumi.Output<string>;
+    declare public readonly hostShareKeyName: pulumi.Output<string>;
     /**
      * The ID of the Bastion instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The password of the private key. The value is a Base64-encoded string.
      */
-    public readonly passPhrase!: pulumi.Output<string | undefined>;
+    declare public readonly passPhrase: pulumi.Output<string | undefined>;
     /**
      * The private key. The value is a Base64-encoded string.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * The fingerprint of the private key.
      */
-    public /*out*/ readonly privateKeyFingerPrint!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateKeyFingerPrint: pulumi.Output<string>;
 
     /**
      * Create a HostShareKey resource with the given unique name, arguments, and options.
@@ -138,25 +138,25 @@ export class HostShareKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostShareKeyState | undefined;
-            resourceInputs["hostShareKeyId"] = state ? state.hostShareKeyId : undefined;
-            resourceInputs["hostShareKeyName"] = state ? state.hostShareKeyName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["passPhrase"] = state ? state.passPhrase : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["privateKeyFingerPrint"] = state ? state.privateKeyFingerPrint : undefined;
+            resourceInputs["hostShareKeyId"] = state?.hostShareKeyId;
+            resourceInputs["hostShareKeyName"] = state?.hostShareKeyName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["passPhrase"] = state?.passPhrase;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["privateKeyFingerPrint"] = state?.privateKeyFingerPrint;
         } else {
             const args = argsOrState as HostShareKeyArgs | undefined;
-            if ((!args || args.hostShareKeyName === undefined) && !opts.urn) {
+            if (args?.hostShareKeyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostShareKeyName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            resourceInputs["hostShareKeyName"] = args ? args.hostShareKeyName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostShareKeyName"] = args?.hostShareKeyName;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["passPhrase"] = args?.passPhrase ? pulumi.secret(args.passPhrase) : undefined;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["hostShareKeyId"] = undefined /*out*/;

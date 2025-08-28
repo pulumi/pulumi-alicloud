@@ -66,51 +66,51 @@ export class SmartagFlowLog extends pulumi.CustomResource {
     /**
      * The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
      */
-    public readonly activeAging!: pulumi.Output<number>;
+    declare public readonly activeAging: pulumi.Output<number>;
     /**
      * The description of the flow log.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the flow log.
      */
-    public readonly flowLogName!: pulumi.Output<string | undefined>;
+    declare public readonly flowLogName: pulumi.Output<string | undefined>;
     /**
      * The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
      */
-    public readonly inactiveAging!: pulumi.Output<number>;
+    declare public readonly inactiveAging: pulumi.Output<number>;
     /**
      * The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    public readonly logstoreName!: pulumi.Output<string | undefined>;
+    declare public readonly logstoreName: pulumi.Output<string | undefined>;
     /**
      * The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    public readonly netflowServerIp!: pulumi.Output<string | undefined>;
+    declare public readonly netflowServerIp: pulumi.Output<string | undefined>;
     /**
      * The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    public readonly netflowServerPort!: pulumi.Output<number>;
+    declare public readonly netflowServerPort: pulumi.Output<number>;
     /**
      * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    public readonly netflowVersion!: pulumi.Output<string>;
+    declare public readonly netflowVersion: pulumi.Output<string>;
     /**
      * The location where the flow log is stored. Valid values:
      */
-    public readonly outputType!: pulumi.Output<string>;
+    declare public readonly outputType: pulumi.Output<string>;
     /**
      * The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    public readonly projectName!: pulumi.Output<string | undefined>;
+    declare public readonly projectName: pulumi.Output<string | undefined>;
     /**
      * The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    public readonly slsRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly slsRegionId: pulumi.Output<string | undefined>;
     /**
      * The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a SmartagFlowLog resource with the given unique name, arguments, and options.
@@ -125,35 +125,35 @@ export class SmartagFlowLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmartagFlowLogState | undefined;
-            resourceInputs["activeAging"] = state ? state.activeAging : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
-            resourceInputs["inactiveAging"] = state ? state.inactiveAging : undefined;
-            resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
-            resourceInputs["netflowServerIp"] = state ? state.netflowServerIp : undefined;
-            resourceInputs["netflowServerPort"] = state ? state.netflowServerPort : undefined;
-            resourceInputs["netflowVersion"] = state ? state.netflowVersion : undefined;
-            resourceInputs["outputType"] = state ? state.outputType : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["slsRegionId"] = state ? state.slsRegionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["activeAging"] = state?.activeAging;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["flowLogName"] = state?.flowLogName;
+            resourceInputs["inactiveAging"] = state?.inactiveAging;
+            resourceInputs["logstoreName"] = state?.logstoreName;
+            resourceInputs["netflowServerIp"] = state?.netflowServerIp;
+            resourceInputs["netflowServerPort"] = state?.netflowServerPort;
+            resourceInputs["netflowVersion"] = state?.netflowVersion;
+            resourceInputs["outputType"] = state?.outputType;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["slsRegionId"] = state?.slsRegionId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SmartagFlowLogArgs | undefined;
-            if ((!args || args.outputType === undefined) && !opts.urn) {
+            if (args?.outputType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'outputType'");
             }
-            resourceInputs["activeAging"] = args ? args.activeAging : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
-            resourceInputs["inactiveAging"] = args ? args.inactiveAging : undefined;
-            resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
-            resourceInputs["netflowServerIp"] = args ? args.netflowServerIp : undefined;
-            resourceInputs["netflowServerPort"] = args ? args.netflowServerPort : undefined;
-            resourceInputs["netflowVersion"] = args ? args.netflowVersion : undefined;
-            resourceInputs["outputType"] = args ? args.outputType : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["slsRegionId"] = args ? args.slsRegionId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["activeAging"] = args?.activeAging;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["flowLogName"] = args?.flowLogName;
+            resourceInputs["inactiveAging"] = args?.inactiveAging;
+            resourceInputs["logstoreName"] = args?.logstoreName;
+            resourceInputs["netflowServerIp"] = args?.netflowServerIp;
+            resourceInputs["netflowServerPort"] = args?.netflowServerPort;
+            resourceInputs["netflowVersion"] = args?.netflowVersion;
+            resourceInputs["outputType"] = args?.outputType;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["slsRegionId"] = args?.slsRegionId;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SmartagFlowLog.__pulumiType, name, resourceInputs, opts);

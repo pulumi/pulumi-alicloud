@@ -87,19 +87,19 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Backup retention time.
      */
-    public readonly backupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly backupRetentionPeriod: pulumi.Output<number>;
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Backup period.
      */
-    public readonly preferredBackupPeriod!: pulumi.Output<string>;
+    declare public readonly preferredBackupPeriod: pulumi.Output<string>;
     /**
      * Backup time.
      */
-    public readonly preferredBackupTime!: pulumi.Output<string>;
+    declare public readonly preferredBackupTime: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -114,28 +114,28 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["preferredBackupPeriod"] = state ? state.preferredBackupPeriod : undefined;
-            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["preferredBackupPeriod"] = state?.preferredBackupPeriod;
+            resourceInputs["preferredBackupTime"] = state?.preferredBackupTime;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.backupRetentionPeriod === undefined) && !opts.urn) {
+            if (args?.backupRetentionPeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupRetentionPeriod'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.preferredBackupPeriod === undefined) && !opts.urn) {
+            if (args?.preferredBackupPeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupPeriod'");
             }
-            if ((!args || args.preferredBackupTime === undefined) && !opts.urn) {
+            if (args?.preferredBackupTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupTime'");
             }
-            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["preferredBackupPeriod"] = args ? args.preferredBackupPeriod : undefined;
-            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["preferredBackupPeriod"] = args?.preferredBackupPeriod;
+            resourceInputs["preferredBackupTime"] = args?.preferredBackupTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupPolicy.__pulumiType, name, resourceInputs, opts);

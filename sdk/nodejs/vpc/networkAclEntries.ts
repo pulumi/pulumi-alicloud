@@ -105,15 +105,15 @@ export class NetworkAclEntries extends pulumi.CustomResource {
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
      */
-    public readonly egresses!: pulumi.Output<outputs.vpc.NetworkAclEntriesEgress[] | undefined>;
+    declare public readonly egresses: pulumi.Output<outputs.vpc.NetworkAclEntriesEgress[] | undefined>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
      */
-    public readonly ingresses!: pulumi.Output<outputs.vpc.NetworkAclEntriesIngress[] | undefined>;
+    declare public readonly ingresses: pulumi.Output<outputs.vpc.NetworkAclEntriesIngress[] | undefined>;
     /**
      * The id of the network acl, the field can't be changed.
      */
-    public readonly networkAclId!: pulumi.Output<string>;
+    declare public readonly networkAclId: pulumi.Output<string>;
 
     /**
      * Create a NetworkAclEntries resource with the given unique name, arguments, and options.
@@ -128,17 +128,17 @@ export class NetworkAclEntries extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclEntriesState | undefined;
-            resourceInputs["egresses"] = state ? state.egresses : undefined;
-            resourceInputs["ingresses"] = state ? state.ingresses : undefined;
-            resourceInputs["networkAclId"] = state ? state.networkAclId : undefined;
+            resourceInputs["egresses"] = state?.egresses;
+            resourceInputs["ingresses"] = state?.ingresses;
+            resourceInputs["networkAclId"] = state?.networkAclId;
         } else {
             const args = argsOrState as NetworkAclEntriesArgs | undefined;
-            if ((!args || args.networkAclId === undefined) && !opts.urn) {
+            if (args?.networkAclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAclId'");
             }
-            resourceInputs["egresses"] = args ? args.egresses : undefined;
-            resourceInputs["ingresses"] = args ? args.ingresses : undefined;
-            resourceInputs["networkAclId"] = args ? args.networkAclId : undefined;
+            resourceInputs["egresses"] = args?.egresses;
+            resourceInputs["ingresses"] = args?.ingresses;
+            resourceInputs["networkAclId"] = args?.networkAclId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkAclEntries.__pulumiType, name, resourceInputs, opts);

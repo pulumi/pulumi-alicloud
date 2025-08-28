@@ -75,29 +75,29 @@ export class RouterGrantAssociation extends pulumi.CustomResource {
     /**
      * The ID of the associated Leased Line Gateway instance.
      */
-    public readonly ecrId!: pulumi.Output<string>;
+    declare public readonly ecrId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
      */
-    public readonly ecrOwnerAliUid!: pulumi.Output<number>;
+    declare public readonly ecrOwnerAliUid: pulumi.Output<number>;
     /**
      * The ID of the network instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the region where the authorized network instance is located.
      */
-    public readonly instanceRegionId!: pulumi.Output<string>;
+    declare public readonly instanceRegionId: pulumi.Output<string>;
     /**
      * The type of the network instance. Value:
      * - `VBR`: the VBR instance.
      * - `VPC`: VPC instance.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a RouterGrantAssociation resource with the given unique name, arguments, and options.
@@ -112,34 +112,34 @@ export class RouterGrantAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterGrantAssociationState | undefined;
-            resourceInputs["ecrId"] = state ? state.ecrId : undefined;
-            resourceInputs["ecrOwnerAliUid"] = state ? state.ecrOwnerAliUid : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceRegionId"] = state ? state.instanceRegionId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["ecrId"] = state?.ecrId;
+            resourceInputs["ecrOwnerAliUid"] = state?.ecrOwnerAliUid;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceRegionId"] = state?.instanceRegionId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RouterGrantAssociationArgs | undefined;
-            if ((!args || args.ecrId === undefined) && !opts.urn) {
+            if (args?.ecrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrId'");
             }
-            if ((!args || args.ecrOwnerAliUid === undefined) && !opts.urn) {
+            if (args?.ecrOwnerAliUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrOwnerAliUid'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instanceRegionId === undefined) && !opts.urn) {
+            if (args?.instanceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceRegionId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            resourceInputs["ecrId"] = args ? args.ecrId : undefined;
-            resourceInputs["ecrOwnerAliUid"] = args ? args.ecrOwnerAliUid : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceRegionId"] = args ? args.instanceRegionId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["ecrId"] = args?.ecrId;
+            resourceInputs["ecrOwnerAliUid"] = args?.ecrOwnerAliUid;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceRegionId"] = args?.instanceRegionId;
+            resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

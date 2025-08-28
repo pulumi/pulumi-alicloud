@@ -86,47 +86,47 @@ export class NetworkOptimization extends pulumi.CustomResource {
     /**
      * ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Whether to enable GRPC, default is disabled. Value range:
      */
-    public readonly grpc!: pulumi.Output<string | undefined>;
+    declare public readonly grpc: pulumi.Output<string | undefined>;
     /**
      * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
-    public readonly http2Origin!: pulumi.Output<string | undefined>;
+    declare public readonly http2Origin: pulumi.Output<string | undefined>;
     /**
      * Rule content.
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. Values:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * Site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Site version number.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Whether to enable smart routing service, default is disabled. Value range:
      */
-    public readonly smartRouting!: pulumi.Output<string | undefined>;
+    declare public readonly smartRouting: pulumi.Output<string | undefined>;
     /**
      * Maximum upload file size, in MB, value range: 100～500.
      */
-    public readonly uploadMaxFilesize!: pulumi.Output<string | undefined>;
+    declare public readonly uploadMaxFilesize: pulumi.Output<string | undefined>;
     /**
      * Whether to enable Websocket, default is enabled. Value range:
      */
-    public readonly websocket!: pulumi.Output<string | undefined>;
+    declare public readonly websocket: pulumi.Output<string | undefined>;
 
     /**
      * Create a NetworkOptimization resource with the given unique name, arguments, and options.
@@ -141,32 +141,32 @@ export class NetworkOptimization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkOptimizationState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["grpc"] = state ? state.grpc : undefined;
-            resourceInputs["http2Origin"] = state ? state.http2Origin : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["smartRouting"] = state ? state.smartRouting : undefined;
-            resourceInputs["uploadMaxFilesize"] = state ? state.uploadMaxFilesize : undefined;
-            resourceInputs["websocket"] = state ? state.websocket : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["grpc"] = state?.grpc;
+            resourceInputs["http2Origin"] = state?.http2Origin;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["smartRouting"] = state?.smartRouting;
+            resourceInputs["uploadMaxFilesize"] = state?.uploadMaxFilesize;
+            resourceInputs["websocket"] = state?.websocket;
         } else {
             const args = argsOrState as NetworkOptimizationArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["grpc"] = args ? args.grpc : undefined;
-            resourceInputs["http2Origin"] = args ? args.http2Origin : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["smartRouting"] = args ? args.smartRouting : undefined;
-            resourceInputs["uploadMaxFilesize"] = args ? args.uploadMaxFilesize : undefined;
-            resourceInputs["websocket"] = args ? args.websocket : undefined;
+            resourceInputs["grpc"] = args?.grpc;
+            resourceInputs["http2Origin"] = args?.http2Origin;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["smartRouting"] = args?.smartRouting;
+            resourceInputs["uploadMaxFilesize"] = args?.uploadMaxFilesize;
+            resourceInputs["websocket"] = args?.websocket;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

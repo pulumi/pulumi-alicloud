@@ -73,27 +73,27 @@ export class DynamicTagGroup extends pulumi.CustomResource {
     /**
      * The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      */
-    public readonly contactGroupLists!: pulumi.Output<string[]>;
+    declare public readonly contactGroupLists: pulumi.Output<string[]>;
     /**
      * The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      */
-    public readonly matchExpressFilterRelation!: pulumi.Output<string>;
+    declare public readonly matchExpressFilterRelation: pulumi.Output<string>;
     /**
      * The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      */
-    public readonly matchExpresses!: pulumi.Output<outputs.cms.DynamicTagGroupMatchExpress[]>;
+    declare public readonly matchExpresses: pulumi.Output<outputs.cms.DynamicTagGroupMatchExpress[]>;
     /**
      * The status of the Dynamic Tag Group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag keys of the cloud resources.
      */
-    public readonly tagKey!: pulumi.Output<string>;
+    declare public readonly tagKey: pulumi.Output<string>;
     /**
      * The IDs of the alert templates.
      */
-    public readonly templateIdLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly templateIdLists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DynamicTagGroup resource with the given unique name, arguments, and options.
@@ -108,28 +108,28 @@ export class DynamicTagGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DynamicTagGroupState | undefined;
-            resourceInputs["contactGroupLists"] = state ? state.contactGroupLists : undefined;
-            resourceInputs["matchExpressFilterRelation"] = state ? state.matchExpressFilterRelation : undefined;
-            resourceInputs["matchExpresses"] = state ? state.matchExpresses : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagKey"] = state ? state.tagKey : undefined;
-            resourceInputs["templateIdLists"] = state ? state.templateIdLists : undefined;
+            resourceInputs["contactGroupLists"] = state?.contactGroupLists;
+            resourceInputs["matchExpressFilterRelation"] = state?.matchExpressFilterRelation;
+            resourceInputs["matchExpresses"] = state?.matchExpresses;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagKey"] = state?.tagKey;
+            resourceInputs["templateIdLists"] = state?.templateIdLists;
         } else {
             const args = argsOrState as DynamicTagGroupArgs | undefined;
-            if ((!args || args.contactGroupLists === undefined) && !opts.urn) {
+            if (args?.contactGroupLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactGroupLists'");
             }
-            if ((!args || args.matchExpresses === undefined) && !opts.urn) {
+            if (args?.matchExpresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchExpresses'");
             }
-            if ((!args || args.tagKey === undefined) && !opts.urn) {
+            if (args?.tagKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagKey'");
             }
-            resourceInputs["contactGroupLists"] = args ? args.contactGroupLists : undefined;
-            resourceInputs["matchExpressFilterRelation"] = args ? args.matchExpressFilterRelation : undefined;
-            resourceInputs["matchExpresses"] = args ? args.matchExpresses : undefined;
-            resourceInputs["tagKey"] = args ? args.tagKey : undefined;
-            resourceInputs["templateIdLists"] = args ? args.templateIdLists : undefined;
+            resourceInputs["contactGroupLists"] = args?.contactGroupLists;
+            resourceInputs["matchExpressFilterRelation"] = args?.matchExpressFilterRelation;
+            resourceInputs["matchExpresses"] = args?.matchExpresses;
+            resourceInputs["tagKey"] = args?.tagKey;
+            resourceInputs["templateIdLists"] = args?.templateIdLists;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

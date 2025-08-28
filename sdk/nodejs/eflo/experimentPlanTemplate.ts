@@ -86,29 +86,29 @@ export class ExperimentPlanTemplate extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Used to indicate the privacy level of the content or information. It can have the following optional parameters:
      * - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
      * - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
      */
-    public readonly privacyLevel!: pulumi.Output<string>;
+    declare public readonly privacyLevel: pulumi.Output<string>;
     /**
      * Describe the purpose of this template.
      */
-    public readonly templateDescription!: pulumi.Output<string | undefined>;
+    declare public readonly templateDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the template.
      */
-    public /*out*/ readonly templateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateId: pulumi.Output<string>;
     /**
      * Help users identify and select specific templates.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * Representative Template Pipeline. See `templatePipeline` below.
      */
-    public readonly templatePipelines!: pulumi.Output<outputs.eflo.ExperimentPlanTemplateTemplatePipeline[]>;
+    declare public readonly templatePipelines: pulumi.Output<outputs.eflo.ExperimentPlanTemplateTemplatePipeline[]>;
 
     /**
      * Create a ExperimentPlanTemplate resource with the given unique name, arguments, and options.
@@ -123,27 +123,27 @@ export class ExperimentPlanTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExperimentPlanTemplateState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["privacyLevel"] = state ? state.privacyLevel : undefined;
-            resourceInputs["templateDescription"] = state ? state.templateDescription : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templatePipelines"] = state ? state.templatePipelines : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["privacyLevel"] = state?.privacyLevel;
+            resourceInputs["templateDescription"] = state?.templateDescription;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templatePipelines"] = state?.templatePipelines;
         } else {
             const args = argsOrState as ExperimentPlanTemplateArgs | undefined;
-            if ((!args || args.privacyLevel === undefined) && !opts.urn) {
+            if (args?.privacyLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privacyLevel'");
             }
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            if ((!args || args.templatePipelines === undefined) && !opts.urn) {
+            if (args?.templatePipelines === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templatePipelines'");
             }
-            resourceInputs["privacyLevel"] = args ? args.privacyLevel : undefined;
-            resourceInputs["templateDescription"] = args ? args.templateDescription : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["templatePipelines"] = args ? args.templatePipelines : undefined;
+            resourceInputs["privacyLevel"] = args?.privacyLevel;
+            resourceInputs["templateDescription"] = args?.templateDescription;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["templatePipelines"] = args?.templatePipelines;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["templateId"] = undefined /*out*/;
         }

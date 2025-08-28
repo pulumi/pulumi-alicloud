@@ -24,16 +24,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * @return The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -41,16 +39,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-     * Alibaba Cloud console.
+     * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-     * Alibaba Cloud console.
+     * @return The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -131,16 +127,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-     * of the Alibaba Cloud console.
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
      * 
      */
     @Import(name="ecsRoleName")
     private @Nullable Output<String> ecsRoleName;
 
     /**
-     * @return The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-     * of the Alibaba Cloud console.
+     * @return The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
      * 
      */
     public Optional<Output<String>> ecsRoleName() {
@@ -283,16 +277,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * @return The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -359,16 +351,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-     * that are not public (yet).
+     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
      * 
      */
     @Import(name="skipRegionValidation", json=true)
     private @Nullable Output<Boolean> skipRegionValidation;
 
     /**
-     * @return Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-     * that are not public (yet).
+     * @return Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
      * 
      */
     public Optional<Output<Boolean>> skipRegionValidation() {
@@ -441,8 +431,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-         * console.
+         * @param accessKey The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -453,8 +442,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-         * console.
+         * @param accessKey The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -464,8 +452,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-         * Alibaba Cloud console.
+         * @param accountId The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -476,8 +463,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-         * Alibaba Cloud console.
+         * @param accountId The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -586,8 +572,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsRoleName The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-         * of the Alibaba Cloud console.
+         * @param ecsRoleName The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -598,8 +583,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsRoleName The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-         * of the Alibaba Cloud console.
+         * @param ecsRoleName The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -794,8 +778,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-         * console.
+         * @param secretKey The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -806,8 +789,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-         * console.
+         * @param secretKey The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
          * 
          * @return builder
          * 
@@ -898,8 +880,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-         * that are not public (yet).
+         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
          * 
          * @return builder
          * 
@@ -910,8 +891,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-         * that are not public (yet).
+         * @param skipRegionValidation Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
          * 
          * @return builder
          * 

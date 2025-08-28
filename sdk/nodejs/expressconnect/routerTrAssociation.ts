@@ -83,39 +83,39 @@ export class RouterTrAssociation extends pulumi.CustomResource {
     /**
      * List of allowed route prefixes.
      */
-    public readonly allowedPrefixes!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrefixes: pulumi.Output<string[] | undefined>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly associationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly associationId: pulumi.Output<string>;
     /**
      * The region to which the VPC or TR belongs.
      */
-    public readonly associationRegionId!: pulumi.Output<string>;
+    declare public readonly associationRegionId: pulumi.Output<string>;
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string | undefined>;
+    declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the leased line gateway instance.
      */
-    public readonly ecrId!: pulumi.Output<string>;
+    declare public readonly ecrId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the forwarding router instance.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account to which the forwarding router belongs.
      */
-    public readonly transitRouterOwnerId!: pulumi.Output<number | undefined>;
+    declare public readonly transitRouterOwnerId: pulumi.Output<number | undefined>;
 
     /**
      * Create a RouterTrAssociation resource with the given unique name, arguments, and options.
@@ -130,29 +130,29 @@ export class RouterTrAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterTrAssociationState | undefined;
-            resourceInputs["allowedPrefixes"] = state ? state.allowedPrefixes : undefined;
-            resourceInputs["associationId"] = state ? state.associationId : undefined;
-            resourceInputs["associationRegionId"] = state ? state.associationRegionId : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ecrId"] = state ? state.ecrId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterOwnerId"] = state ? state.transitRouterOwnerId : undefined;
+            resourceInputs["allowedPrefixes"] = state?.allowedPrefixes;
+            resourceInputs["associationId"] = state?.associationId;
+            resourceInputs["associationRegionId"] = state?.associationRegionId;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ecrId"] = state?.ecrId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterOwnerId"] = state?.transitRouterOwnerId;
         } else {
             const args = argsOrState as RouterTrAssociationArgs | undefined;
-            if ((!args || args.associationRegionId === undefined) && !opts.urn) {
+            if (args?.associationRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'associationRegionId'");
             }
-            if ((!args || args.ecrId === undefined) && !opts.urn) {
+            if (args?.ecrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrId'");
             }
-            resourceInputs["allowedPrefixes"] = args ? args.allowedPrefixes : undefined;
-            resourceInputs["associationRegionId"] = args ? args.associationRegionId : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["ecrId"] = args ? args.ecrId : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterOwnerId"] = args ? args.transitRouterOwnerId : undefined;
+            resourceInputs["allowedPrefixes"] = args?.allowedPrefixes;
+            resourceInputs["associationRegionId"] = args?.associationRegionId;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["ecrId"] = args?.ecrId;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterOwnerId"] = args?.transitRouterOwnerId;
             resourceInputs["associationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

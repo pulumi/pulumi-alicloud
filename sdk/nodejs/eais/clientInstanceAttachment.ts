@@ -44,31 +44,31 @@ export class ClientInstanceAttachment extends pulumi.CustomResource {
     /**
      * EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
      */
-    public readonly category!: pulumi.Output<string | undefined>;
+    declare public readonly category: pulumi.Output<string | undefined>;
     /**
      * The ID of the ECS or ECI instance bound to the EAIS instance.
      */
-    public readonly clientInstanceId!: pulumi.Output<string>;
+    declare public readonly clientInstanceId: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The Ei instance specification, which is used to filter matching specifications for updating.
      */
-    public readonly eiInstanceType!: pulumi.Output<string>;
+    declare public readonly eiInstanceType: pulumi.Output<string>;
     /**
      * The EAIS instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The region ID of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a ClientInstanceAttachment resource with the given unique name, arguments, and options.
@@ -83,26 +83,26 @@ export class ClientInstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientInstanceAttachmentState | undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["clientInstanceId"] = state ? state.clientInstanceId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["eiInstanceType"] = state ? state.eiInstanceType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["clientInstanceId"] = state?.clientInstanceId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["eiInstanceType"] = state?.eiInstanceType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ClientInstanceAttachmentArgs | undefined;
-            if ((!args || args.clientInstanceId === undefined) && !opts.urn) {
+            if (args?.clientInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientInstanceId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["clientInstanceId"] = args ? args.clientInstanceId : undefined;
-            resourceInputs["eiInstanceType"] = args ? args.eiInstanceType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["clientInstanceId"] = args?.clientInstanceId;
+            resourceInputs["eiInstanceType"] = args?.eiInstanceType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
         }

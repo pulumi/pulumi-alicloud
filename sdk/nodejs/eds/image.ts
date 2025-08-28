@@ -107,19 +107,19 @@ export class Image extends pulumi.CustomResource {
     /**
      * The description of the image.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The desktop id of the desktop.
      */
-    public readonly desktopId!: pulumi.Output<string>;
+    declare public readonly desktopId: pulumi.Output<string>;
     /**
      * The name of the image.
      */
-    public readonly imageName!: pulumi.Output<string | undefined>;
+    declare public readonly imageName: pulumi.Output<string | undefined>;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -134,18 +134,18 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desktopId"] = state ? state.desktopId : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desktopId"] = state?.desktopId;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.desktopId === undefined) && !opts.urn) {
+            if (args?.desktopId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desktopId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desktopId"] = args ? args.desktopId : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desktopId"] = args?.desktopId;
+            resourceInputs["imageName"] = args?.imageName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

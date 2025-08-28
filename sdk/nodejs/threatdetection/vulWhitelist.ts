@@ -65,15 +65,15 @@ export class VulWhitelist extends pulumi.CustomResource {
     /**
      * Reason for adding whitelist.
      */
-    public readonly reason!: pulumi.Output<string | undefined>;
+    declare public readonly reason: pulumi.Output<string | undefined>;
     /**
      * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */
-    public readonly targetInfo!: pulumi.Output<string | undefined>;
+    declare public readonly targetInfo: pulumi.Output<string | undefined>;
     /**
      * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */
-    public readonly whitelist!: pulumi.Output<string>;
+    declare public readonly whitelist: pulumi.Output<string>;
 
     /**
      * Create a VulWhitelist resource with the given unique name, arguments, and options.
@@ -88,17 +88,17 @@ export class VulWhitelist extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VulWhitelistState | undefined;
-            resourceInputs["reason"] = state ? state.reason : undefined;
-            resourceInputs["targetInfo"] = state ? state.targetInfo : undefined;
-            resourceInputs["whitelist"] = state ? state.whitelist : undefined;
+            resourceInputs["reason"] = state?.reason;
+            resourceInputs["targetInfo"] = state?.targetInfo;
+            resourceInputs["whitelist"] = state?.whitelist;
         } else {
             const args = argsOrState as VulWhitelistArgs | undefined;
-            if ((!args || args.whitelist === undefined) && !opts.urn) {
+            if (args?.whitelist === undefined && !opts.urn) {
                 throw new Error("Missing required property 'whitelist'");
             }
-            resourceInputs["reason"] = args ? args.reason : undefined;
-            resourceInputs["targetInfo"] = args ? args.targetInfo : undefined;
-            resourceInputs["whitelist"] = args ? args.whitelist : undefined;
+            resourceInputs["reason"] = args?.reason;
+            resourceInputs["targetInfo"] = args?.targetInfo;
+            resourceInputs["whitelist"] = args?.whitelist;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VulWhitelist.__pulumiType, name, resourceInputs, opts);

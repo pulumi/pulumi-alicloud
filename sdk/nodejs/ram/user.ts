@@ -75,27 +75,27 @@ export class User extends pulumi.CustomResource {
     /**
      * Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
      */
-    public readonly comments!: pulumi.Output<string | undefined>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
     /**
      * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Email of the RAM user.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * This parameter is used for resource destroy. Default value: `false`.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
      */
-    public readonly mobile!: pulumi.Output<string | undefined>;
+    declare public readonly mobile: pulumi.Output<string | undefined>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -110,20 +110,20 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["mobile"] = state ? state.mobile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["mobile"] = args ? args.mobile : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);

@@ -88,15 +88,15 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The ID of the disk.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    public readonly snapshotName!: pulumi.Output<string>;
+    declare public readonly snapshotName: pulumi.Output<string>;
     /**
      * The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -111,19 +111,19 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.snapshotName === undefined) && !opts.urn) {
+            if (args?.snapshotName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snapshotName'");
             }
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["snapshotName"] = args?.snapshotName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

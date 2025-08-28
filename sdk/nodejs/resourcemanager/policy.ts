@@ -75,23 +75,23 @@ export class Policy extends pulumi.CustomResource {
      *
      * @deprecated Field 'default_version' has been deprecated from provider version 1.90.0
      */
-    public readonly defaultVersion!: pulumi.Output<string>;
+    declare public readonly defaultVersion: pulumi.Output<string>;
     /**
      * The description of the policy. The description must be 1 to 1,024 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The content of the policy. The content must be 1 to 2,048 characters in length.
      */
-    public readonly policyDocument!: pulumi.Output<string>;
+    declare public readonly policyDocument: pulumi.Output<string>;
     /**
      * The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The type of the policy. Valid values: `Custom`, `System`.
      */
-    public /*out*/ readonly policyType!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyType: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
+            resourceInputs["defaultVersion"] = state?.defaultVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.policyDocument === undefined) && !opts.urn) {
+            if (args?.policyDocument === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyDocument'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["defaultVersion"] = args?.defaultVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["policyName"] = args?.policyName;
             resourceInputs["policyType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -126,31 +126,31 @@ export class DbInstanceEndpointAddress extends pulumi.CustomResource {
     /**
      * The endpoint of the instance.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The prefix of the public endpoint.
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string>;
     /**
      * The Endpoint ID of the instance.
      */
-    public readonly dbInstanceEndpointId!: pulumi.Output<string>;
+    declare public readonly dbInstanceEndpointId: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The IP address of the endpoint.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * The type of the IP address.
      */
-    public /*out*/ readonly ipType!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipType: pulumi.Output<string>;
     /**
      * The port number of the public endpoint.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
 
     /**
      * Create a DbInstanceEndpointAddress resource with the given unique name, arguments, and options.
@@ -165,31 +165,31 @@ export class DbInstanceEndpointAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceEndpointAddressState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceEndpointId"] = state ? state.dbInstanceEndpointId : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipType"] = state ? state.ipType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["dbInstanceEndpointId"] = state?.dbInstanceEndpointId;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipType"] = state?.ipType;
+            resourceInputs["port"] = state?.port;
         } else {
             const args = argsOrState as DbInstanceEndpointAddressArgs | undefined;
-            if ((!args || args.connectionStringPrefix === undefined) && !opts.urn) {
+            if (args?.connectionStringPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionStringPrefix'");
             }
-            if ((!args || args.dbInstanceEndpointId === undefined) && !opts.urn) {
+            if (args?.dbInstanceEndpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceEndpointId'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceEndpointId"] = args ? args.dbInstanceEndpointId : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["dbInstanceEndpointId"] = args?.dbInstanceEndpointId;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["port"] = args?.port;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["ipType"] = undefined /*out*/;

@@ -86,37 +86,37 @@ export class RoutineRoute extends pulumi.CustomResource {
      * - on: Open
      * - off: off
      */
-    public readonly bypass!: pulumi.Output<string | undefined>;
+    declare public readonly bypass: pulumi.Output<string | undefined>;
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
      */
-    public readonly routeEnable!: pulumi.Output<string | undefined>;
+    declare public readonly routeEnable: pulumi.Output<string | undefined>;
     /**
      * The route name.
      */
-    public readonly routeName!: pulumi.Output<string | undefined>;
+    declare public readonly routeName: pulumi.Output<string | undefined>;
     /**
      * The edge function Routine name.
      */
-    public readonly routineName!: pulumi.Output<string>;
+    declare public readonly routineName: pulumi.Output<string>;
     /**
      * The rule content.
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule execution order.
      */
-    public readonly sequence!: pulumi.Output<number | undefined>;
+    declare public readonly sequence: pulumi.Output<number | undefined>;
     /**
      * Site Id
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
 
     /**
      * Create a RoutineRoute resource with the given unique name, arguments, and options.
@@ -131,29 +131,29 @@ export class RoutineRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutineRouteState | undefined;
-            resourceInputs["bypass"] = state ? state.bypass : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["routeEnable"] = state ? state.routeEnable : undefined;
-            resourceInputs["routeName"] = state ? state.routeName : undefined;
-            resourceInputs["routineName"] = state ? state.routineName : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["sequence"] = state ? state.sequence : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["bypass"] = state?.bypass;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["routeEnable"] = state?.routeEnable;
+            resourceInputs["routeName"] = state?.routeName;
+            resourceInputs["routineName"] = state?.routineName;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["sequence"] = state?.sequence;
+            resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as RoutineRouteArgs | undefined;
-            if ((!args || args.routineName === undefined) && !opts.urn) {
+            if (args?.routineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routineName'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["bypass"] = args ? args.bypass : undefined;
-            resourceInputs["routeEnable"] = args ? args.routeEnable : undefined;
-            resourceInputs["routeName"] = args ? args.routeName : undefined;
-            resourceInputs["routineName"] = args ? args.routineName : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["sequence"] = args ? args.sequence : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["bypass"] = args?.bypass;
+            resourceInputs["routeEnable"] = args?.routeEnable;
+            resourceInputs["routeName"] = args?.routeName;
+            resourceInputs["routineName"] = args?.routineName;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["sequence"] = args?.sequence;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

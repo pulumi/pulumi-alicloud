@@ -78,31 +78,31 @@ export class StaticAccount extends pulumi.CustomResource {
     /**
      * Access key.
      */
-    public readonly accessKey!: pulumi.Output<string>;
+    declare public readonly accessKey: pulumi.Output<string>;
     /**
      * The timestamp that indicates when the pair of static username and password was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Amqp instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the user's primary account.
      */
-    public /*out*/ readonly masterUid!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterUid: pulumi.Output<string>;
     /**
      * The static password.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * Secret key.
      */
-    public readonly secretKey!: pulumi.Output<string>;
+    declare public readonly secretKey: pulumi.Output<string>;
     /**
      * The static username.
      */
-    public /*out*/ readonly userName!: pulumi.Output<string>;
+    declare public /*out*/ readonly userName: pulumi.Output<string>;
 
     /**
      * Create a StaticAccount resource with the given unique name, arguments, and options.
@@ -117,26 +117,26 @@ export class StaticAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StaticAccountState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["masterUid"] = state ? state.masterUid : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["masterUid"] = state?.masterUid;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as StaticAccountArgs | undefined;
-            if ((!args || args.accessKey === undefined) && !opts.urn) {
+            if (args?.accessKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessKey'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.secretKey === undefined) && !opts.urn) {
+            if (args?.secretKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["accessKey"] = args?.accessKey;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["masterUid"] = undefined /*out*/;

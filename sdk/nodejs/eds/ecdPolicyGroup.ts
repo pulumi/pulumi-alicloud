@@ -82,83 +82,83 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
     /**
      * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
-    public readonly authorizeAccessPolicyRules!: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule[] | undefined>;
+    declare public readonly authorizeAccessPolicyRules: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule[] | undefined>;
     /**
      * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
-    public readonly authorizeSecurityPolicyRules!: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule[] | undefined>;
+    declare public readonly authorizeSecurityPolicyRules: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule[] | undefined>;
     /**
      * Whether to enable local camera redirection. Valid values: `on`, `off`.
      */
-    public readonly cameraRedirect!: pulumi.Output<string>;
+    declare public readonly cameraRedirect: pulumi.Output<string>;
     /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
-    public readonly clipboard!: pulumi.Output<string>;
+    declare public readonly clipboard: pulumi.Output<string>;
     /**
      * The list of domain.
      */
-    public readonly domainList!: pulumi.Output<string | undefined>;
+    declare public readonly domainList: pulumi.Output<string | undefined>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
-    public readonly htmlAccess!: pulumi.Output<string>;
+    declare public readonly htmlAccess: pulumi.Output<string>;
     /**
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      */
-    public readonly htmlFileTransfer!: pulumi.Output<string>;
+    declare public readonly htmlFileTransfer: pulumi.Output<string>;
     /**
      * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
      */
-    public readonly localDrive!: pulumi.Output<string>;
+    declare public readonly localDrive: pulumi.Output<string>;
     /**
      * The name of policy group.
      */
-    public readonly policyGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly policyGroupName: pulumi.Output<string | undefined>;
     /**
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
-    public readonly recording!: pulumi.Output<string>;
+    declare public readonly recording: pulumi.Output<string>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    public readonly recordingEndTime!: pulumi.Output<string | undefined>;
+    declare public readonly recordingEndTime: pulumi.Output<string | undefined>;
     /**
      * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
-    public readonly recordingExpires!: pulumi.Output<number>;
+    declare public readonly recordingExpires: pulumi.Output<number>;
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */
-    public readonly recordingFps!: pulumi.Output<number>;
+    declare public readonly recordingFps: pulumi.Output<number>;
     /**
      * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    public readonly recordingStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly recordingStartTime: pulumi.Output<string | undefined>;
     /**
      * The status of policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */
-    public readonly usbRedirect!: pulumi.Output<string>;
+    declare public readonly usbRedirect: pulumi.Output<string>;
     /**
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      */
-    public readonly visualQuality!: pulumi.Output<string>;
+    declare public readonly visualQuality: pulumi.Output<string>;
     /**
      * The watermark policy. Valid values: `off`, `on`.
      */
-    public readonly watermark!: pulumi.Output<string>;
+    declare public readonly watermark: pulumi.Output<string>;
     /**
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      */
-    public readonly watermarkTransparency!: pulumi.Output<string>;
+    declare public readonly watermarkTransparency: pulumi.Output<string>;
     /**
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      */
-    public readonly watermarkType!: pulumi.Output<string>;
+    declare public readonly watermarkType: pulumi.Output<string>;
 
     /**
      * Create a EcdPolicyGroup resource with the given unique name, arguments, and options.
@@ -173,47 +173,47 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcdPolicyGroupState | undefined;
-            resourceInputs["authorizeAccessPolicyRules"] = state ? state.authorizeAccessPolicyRules : undefined;
-            resourceInputs["authorizeSecurityPolicyRules"] = state ? state.authorizeSecurityPolicyRules : undefined;
-            resourceInputs["cameraRedirect"] = state ? state.cameraRedirect : undefined;
-            resourceInputs["clipboard"] = state ? state.clipboard : undefined;
-            resourceInputs["domainList"] = state ? state.domainList : undefined;
-            resourceInputs["htmlAccess"] = state ? state.htmlAccess : undefined;
-            resourceInputs["htmlFileTransfer"] = state ? state.htmlFileTransfer : undefined;
-            resourceInputs["localDrive"] = state ? state.localDrive : undefined;
-            resourceInputs["policyGroupName"] = state ? state.policyGroupName : undefined;
-            resourceInputs["recording"] = state ? state.recording : undefined;
-            resourceInputs["recordingEndTime"] = state ? state.recordingEndTime : undefined;
-            resourceInputs["recordingExpires"] = state ? state.recordingExpires : undefined;
-            resourceInputs["recordingFps"] = state ? state.recordingFps : undefined;
-            resourceInputs["recordingStartTime"] = state ? state.recordingStartTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["usbRedirect"] = state ? state.usbRedirect : undefined;
-            resourceInputs["visualQuality"] = state ? state.visualQuality : undefined;
-            resourceInputs["watermark"] = state ? state.watermark : undefined;
-            resourceInputs["watermarkTransparency"] = state ? state.watermarkTransparency : undefined;
-            resourceInputs["watermarkType"] = state ? state.watermarkType : undefined;
+            resourceInputs["authorizeAccessPolicyRules"] = state?.authorizeAccessPolicyRules;
+            resourceInputs["authorizeSecurityPolicyRules"] = state?.authorizeSecurityPolicyRules;
+            resourceInputs["cameraRedirect"] = state?.cameraRedirect;
+            resourceInputs["clipboard"] = state?.clipboard;
+            resourceInputs["domainList"] = state?.domainList;
+            resourceInputs["htmlAccess"] = state?.htmlAccess;
+            resourceInputs["htmlFileTransfer"] = state?.htmlFileTransfer;
+            resourceInputs["localDrive"] = state?.localDrive;
+            resourceInputs["policyGroupName"] = state?.policyGroupName;
+            resourceInputs["recording"] = state?.recording;
+            resourceInputs["recordingEndTime"] = state?.recordingEndTime;
+            resourceInputs["recordingExpires"] = state?.recordingExpires;
+            resourceInputs["recordingFps"] = state?.recordingFps;
+            resourceInputs["recordingStartTime"] = state?.recordingStartTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["usbRedirect"] = state?.usbRedirect;
+            resourceInputs["visualQuality"] = state?.visualQuality;
+            resourceInputs["watermark"] = state?.watermark;
+            resourceInputs["watermarkTransparency"] = state?.watermarkTransparency;
+            resourceInputs["watermarkType"] = state?.watermarkType;
         } else {
             const args = argsOrState as EcdPolicyGroupArgs | undefined;
-            resourceInputs["authorizeAccessPolicyRules"] = args ? args.authorizeAccessPolicyRules : undefined;
-            resourceInputs["authorizeSecurityPolicyRules"] = args ? args.authorizeSecurityPolicyRules : undefined;
-            resourceInputs["cameraRedirect"] = args ? args.cameraRedirect : undefined;
-            resourceInputs["clipboard"] = args ? args.clipboard : undefined;
-            resourceInputs["domainList"] = args ? args.domainList : undefined;
-            resourceInputs["htmlAccess"] = args ? args.htmlAccess : undefined;
-            resourceInputs["htmlFileTransfer"] = args ? args.htmlFileTransfer : undefined;
-            resourceInputs["localDrive"] = args ? args.localDrive : undefined;
-            resourceInputs["policyGroupName"] = args ? args.policyGroupName : undefined;
-            resourceInputs["recording"] = args ? args.recording : undefined;
-            resourceInputs["recordingEndTime"] = args ? args.recordingEndTime : undefined;
-            resourceInputs["recordingExpires"] = args ? args.recordingExpires : undefined;
-            resourceInputs["recordingFps"] = args ? args.recordingFps : undefined;
-            resourceInputs["recordingStartTime"] = args ? args.recordingStartTime : undefined;
-            resourceInputs["usbRedirect"] = args ? args.usbRedirect : undefined;
-            resourceInputs["visualQuality"] = args ? args.visualQuality : undefined;
-            resourceInputs["watermark"] = args ? args.watermark : undefined;
-            resourceInputs["watermarkTransparency"] = args ? args.watermarkTransparency : undefined;
-            resourceInputs["watermarkType"] = args ? args.watermarkType : undefined;
+            resourceInputs["authorizeAccessPolicyRules"] = args?.authorizeAccessPolicyRules;
+            resourceInputs["authorizeSecurityPolicyRules"] = args?.authorizeSecurityPolicyRules;
+            resourceInputs["cameraRedirect"] = args?.cameraRedirect;
+            resourceInputs["clipboard"] = args?.clipboard;
+            resourceInputs["domainList"] = args?.domainList;
+            resourceInputs["htmlAccess"] = args?.htmlAccess;
+            resourceInputs["htmlFileTransfer"] = args?.htmlFileTransfer;
+            resourceInputs["localDrive"] = args?.localDrive;
+            resourceInputs["policyGroupName"] = args?.policyGroupName;
+            resourceInputs["recording"] = args?.recording;
+            resourceInputs["recordingEndTime"] = args?.recordingEndTime;
+            resourceInputs["recordingExpires"] = args?.recordingExpires;
+            resourceInputs["recordingFps"] = args?.recordingFps;
+            resourceInputs["recordingStartTime"] = args?.recordingStartTime;
+            resourceInputs["usbRedirect"] = args?.usbRedirect;
+            resourceInputs["visualQuality"] = args?.visualQuality;
+            resourceInputs["watermark"] = args?.watermark;
+            resourceInputs["watermarkTransparency"] = args?.watermarkTransparency;
+            resourceInputs["watermarkType"] = args?.watermarkType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

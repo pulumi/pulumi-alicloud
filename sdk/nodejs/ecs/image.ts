@@ -117,7 +117,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      */
-    public readonly architecture!: pulumi.Output<string | undefined>;
+    declare public readonly architecture: pulumi.Output<string | undefined>;
     /**
      * The new boot mode of the image. Valid values:
      *
@@ -131,33 +131,33 @@ export class Image extends pulumi.CustomResource {
      *
      * > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
      */
-    public readonly bootMode!: pulumi.Output<string>;
+    declare public readonly bootMode: pulumi.Output<string>;
     /**
      * The create time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
      */
-    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteAutoSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
      *
      * > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
      */
-    public readonly detectionStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly detectionStrategy: pulumi.Output<string | undefined>;
     /**
      * Snapshot information for the image See `diskDeviceMapping` below.
      */
-    public readonly diskDeviceMappings!: pulumi.Output<outputs.ecs.ImageDiskDeviceMapping[]>;
+    declare public readonly diskDeviceMappings: pulumi.Output<outputs.ecs.ImageDiskDeviceMapping[]>;
     /**
      * Features See `features` below.
      */
-    public readonly features!: pulumi.Output<outputs.ecs.ImageFeatures>;
+    declare public readonly features: pulumi.Output<outputs.ecs.ImageFeatures>;
     /**
      * Whether to perform forced deletion. Value range:
      * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
@@ -165,59 +165,59 @@ export class Image extends pulumi.CustomResource {
      *
      * Default value: false
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
      */
-    public readonly imageFamily!: pulumi.Output<string | undefined>;
+    declare public readonly imageFamily: pulumi.Output<string | undefined>;
     /**
      * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      */
-    public readonly imageName!: pulumi.Output<string>;
+    declare public readonly imageName: pulumi.Output<string>;
     /**
      * The image version.
      *
      * > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
      */
-    public readonly imageVersion!: pulumi.Output<string | undefined>;
+    declare public readonly imageVersion: pulumi.Output<string | undefined>;
     /**
      * The instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceId: pulumi.Output<string | undefined>;
     /**
      * The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
      */
-    public readonly licenseType!: pulumi.Output<string | undefined>;
+    declare public readonly licenseType: pulumi.Output<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
     /**
      * The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
      *
      * > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the snapshot that you want to use to create the custom image.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -232,46 +232,46 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["architecture"] = state ? state.architecture : undefined;
-            resourceInputs["bootMode"] = state ? state.bootMode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detectionStrategy"] = state ? state.detectionStrategy : undefined;
-            resourceInputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["imageFamily"] = state ? state.imageFamily : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["imageVersion"] = state ? state.imageVersion : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["licenseType"] = state ? state.licenseType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["architecture"] = state?.architecture;
+            resourceInputs["bootMode"] = state?.bootMode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteAutoSnapshot"] = state?.deleteAutoSnapshot;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detectionStrategy"] = state?.detectionStrategy;
+            resourceInputs["diskDeviceMappings"] = state?.diskDeviceMappings;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["imageFamily"] = state?.imageFamily;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["imageVersion"] = state?.imageVersion;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["licenseType"] = state?.licenseType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            resourceInputs["architecture"] = args ? args.architecture : undefined;
-            resourceInputs["bootMode"] = args ? args.bootMode : undefined;
-            resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detectionStrategy"] = args ? args.detectionStrategy : undefined;
-            resourceInputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
-            resourceInputs["features"] = args ? args.features : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["imageFamily"] = args ? args.imageFamily : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["imageVersion"] = args ? args.imageVersion : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["licenseType"] = args ? args.licenseType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["architecture"] = args?.architecture;
+            resourceInputs["bootMode"] = args?.bootMode;
+            resourceInputs["deleteAutoSnapshot"] = args?.deleteAutoSnapshot;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detectionStrategy"] = args?.detectionStrategy;
+            resourceInputs["diskDeviceMappings"] = args?.diskDeviceMappings;
+            resourceInputs["features"] = args?.features;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["imageFamily"] = args?.imageFamily;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["imageVersion"] = args?.imageVersion;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["licenseType"] = args?.licenseType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

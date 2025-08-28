@@ -97,23 +97,23 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
     /**
      * The ID of the cluster that you want to create the application.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      */
-    public /*out*/ readonly clusterMemberIds!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly clusterMemberIds: pulumi.Output<{[key: string]: string}>;
     /**
      * The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      */
-    public /*out*/ readonly ecuMap!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly ecuMap: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of instance. Type: list.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      */
-    public /*out*/ readonly statusMap!: pulumi.Output<{[key: string]: number}>;
+    declare public /*out*/ readonly statusMap: pulumi.Output<{[key: string]: number}>;
 
     /**
      * Create a InstanceClusterAttachment resource with the given unique name, arguments, and options.
@@ -128,21 +128,21 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceClusterAttachmentState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterMemberIds"] = state ? state.clusterMemberIds : undefined;
-            resourceInputs["ecuMap"] = state ? state.ecuMap : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["statusMap"] = state ? state.statusMap : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterMemberIds"] = state?.clusterMemberIds;
+            resourceInputs["ecuMap"] = state?.ecuMap;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["statusMap"] = state?.statusMap;
         } else {
             const args = argsOrState as InstanceClusterAttachmentArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["instanceIds"] = args?.instanceIds;
             resourceInputs["clusterMemberIds"] = undefined /*out*/;
             resourceInputs["ecuMap"] = undefined /*out*/;
             resourceInputs["statusMap"] = undefined /*out*/;

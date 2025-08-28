@@ -82,15 +82,15 @@ export class InstanceGrant extends pulumi.CustomResource {
     /**
      * The ID of the CEN.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The owner UID of the  CEN which the child instance granted to.
      */
-    public readonly cenOwnerId!: pulumi.Output<string>;
+    declare public readonly cenOwnerId: pulumi.Output<string>;
     /**
      * The ID of the child instance to grant.
      */
-    public readonly childInstanceId!: pulumi.Output<string>;
+    declare public readonly childInstanceId: pulumi.Output<string>;
 
     /**
      * Create a InstanceGrant resource with the given unique name, arguments, and options.
@@ -105,23 +105,23 @@ export class InstanceGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGrantState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            resourceInputs["childInstanceId"] = state ? state.childInstanceId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["childInstanceId"] = state?.childInstanceId;
         } else {
             const args = argsOrState as InstanceGrantArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenOwnerId === undefined) && !opts.urn) {
+            if (args?.cenOwnerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenOwnerId'");
             }
-            if ((!args || args.childInstanceId === undefined) && !opts.urn) {
+            if (args?.childInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            resourceInputs["childInstanceId"] = args ? args.childInstanceId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenOwnerId"] = args?.cenOwnerId;
+            resourceInputs["childInstanceId"] = args?.childInstanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceGrant.__pulumiType, name, resourceInputs, opts);

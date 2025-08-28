@@ -86,19 +86,19 @@ export class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
     /**
      * The ID of the global acceleration instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
      */
-    public readonly spareIp!: pulumi.Output<string>;
+    declare public readonly spareIp: pulumi.Output<string>;
     /**
      * The status of the standby CNAME IP address.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AcceleratorSpareIpAttachment resource with the given unique name, arguments, and options.
@@ -113,21 +113,21 @@ export class AcceleratorSpareIpAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AcceleratorSpareIpAttachmentState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["spareIp"] = state ? state.spareIp : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["spareIp"] = state?.spareIp;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AcceleratorSpareIpAttachmentArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.spareIp === undefined) && !opts.urn) {
+            if (args?.spareIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spareIp'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["spareIp"] = args ? args.spareIp : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["spareIp"] = args?.spareIp;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

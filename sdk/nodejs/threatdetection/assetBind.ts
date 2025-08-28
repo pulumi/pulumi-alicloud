@@ -44,11 +44,11 @@ export class AssetBind extends pulumi.CustomResource {
     /**
      * Bind version.
      */
-    public readonly authVersion!: pulumi.Output<number | undefined>;
+    declare public readonly authVersion: pulumi.Output<number | undefined>;
     /**
      * The first ID of the resource
      */
-    public readonly uuid!: pulumi.Output<string>;
+    declare public readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a AssetBind resource with the given unique name, arguments, and options.
@@ -63,12 +63,12 @@ export class AssetBind extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssetBindState | undefined;
-            resourceInputs["authVersion"] = state ? state.authVersion : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["authVersion"] = state?.authVersion;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as AssetBindArgs | undefined;
-            resourceInputs["authVersion"] = args ? args.authVersion : undefined;
-            resourceInputs["uuid"] = args ? args.uuid : undefined;
+            resourceInputs["authVersion"] = args?.authVersion;
+            resourceInputs["uuid"] = args?.uuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AssetBind.__pulumiType, name, resourceInputs, opts);

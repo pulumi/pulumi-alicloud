@@ -85,39 +85,39 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The list of backend servers. See `backendServers` below.
      */
-    public readonly backendServers!: pulumi.Output<outputs.ens.LoadBalancerBackendServer[] | undefined>;
+    declare public readonly backendServers: pulumi.Output<outputs.ens.LoadBalancerBackendServer[] | undefined>;
     /**
      * The creation Time (UTC) of the load balancing instance.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the ENS node.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
-    public readonly loadBalancerName!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancerName: pulumi.Output<string | undefined>;
     /**
      * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
      * The network ID of the created edge load balancing (ELB) instance.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The status of the SLB instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the vSwitch to which the VPC instance belongs.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -132,39 +132,39 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["backendServers"] = state?.backendServers;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            if ((!args || args.loadBalancerSpec === undefined) && !opts.urn) {
+            if (args?.loadBalancerSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerSpec'");
             }
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["backendServers"] = args?.backendServers;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

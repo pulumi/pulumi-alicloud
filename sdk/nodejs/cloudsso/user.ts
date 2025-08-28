@@ -52,39 +52,39 @@ export class User extends pulumi.CustomResource {
     /**
      * The description of user. The description can be up to `1024` characters long.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The display name of user. The display name can be up to `256` characters long.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The User's Contact Email Address. The email can be up to `128` characters long.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * The first name of user. The firstName can be up to `64` characters long.
      */
-    public readonly firstName!: pulumi.Output<string | undefined>;
+    declare public readonly firstName: pulumi.Output<string | undefined>;
     /**
      * The last name of user. The lastName can be up to `64` characters long.
      */
-    public readonly lastName!: pulumi.Output<string | undefined>;
+    declare public readonly lastName: pulumi.Output<string | undefined>;
     /**
      * The status of user. Valid values: `Disabled`, `Enabled`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The User ID of the group.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -99,31 +99,31 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

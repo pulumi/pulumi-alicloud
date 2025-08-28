@@ -61,15 +61,15 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * The description of Gateway.
      */
-    public readonly gatewayDesc!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayDesc: pulumi.Output<string | undefined>;
     /**
      * The name of the Gateway.
      */
-    public readonly gatewayName!: pulumi.Output<string>;
+    declare public readonly gatewayName: pulumi.Output<string>;
     /**
      * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -84,16 +84,16 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["gatewayDesc"] = state ? state.gatewayDesc : undefined;
-            resourceInputs["gatewayName"] = state ? state.gatewayName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["gatewayDesc"] = state?.gatewayDesc;
+            resourceInputs["gatewayName"] = state?.gatewayName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.gatewayName === undefined) && !opts.urn) {
+            if (args?.gatewayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayName'");
             }
-            resourceInputs["gatewayDesc"] = args ? args.gatewayDesc : undefined;
-            resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
+            resourceInputs["gatewayDesc"] = args?.gatewayDesc;
+            resourceInputs["gatewayName"] = args?.gatewayName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

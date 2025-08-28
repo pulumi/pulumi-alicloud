@@ -76,24 +76,24 @@ export class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
     /**
      * The CIDR block.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
-    public readonly cidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly cidrMask: pulumi.Output<number | undefined>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the VPC Public IP address pool.
      */
-    public readonly publicIpAddressPoolId!: pulumi.Output<string>;
+    declare public readonly publicIpAddressPoolId: pulumi.Output<string>;
     /**
      * The status of the VPC Public Ip Address Pool Cidr Block.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a PublicIpAddressPoolCidrBlock resource with the given unique name, arguments, and options.
@@ -108,19 +108,19 @@ export class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpAddressPoolCidrBlockState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["cidrMask"] = state ? state.cidrMask : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["cidrMask"] = state?.cidrMask;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["publicIpAddressPoolId"] = state?.publicIpAddressPoolId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as PublicIpAddressPoolCidrBlockArgs | undefined;
-            if ((!args || args.publicIpAddressPoolId === undefined) && !opts.urn) {
+            if (args?.publicIpAddressPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicIpAddressPoolId'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["cidrMask"] = args ? args.cidrMask : undefined;
-            resourceInputs["publicIpAddressPoolId"] = args ? args.publicIpAddressPoolId : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["cidrMask"] = args?.cidrMask;
+            resourceInputs["publicIpAddressPoolId"] = args?.publicIpAddressPoolId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -24,16 +24,14 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def access_key(self) -> Optional[str]:
         """
-        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return __config__.get('accessKey')
 
     @_builtins.property
     def account_id(self) -> Optional[str]:
         """
-        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        Alibaba Cloud console.
+        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         """
         return __config__.get('accountId')
 
@@ -77,8 +75,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def ecs_role_name(self) -> Optional[str]:
         """
-        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        of the Alibaba Cloud console.
+        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         """
         return __config__.get('ecsRoleName') or _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
 
@@ -130,8 +127,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def secret_key(self) -> Optional[str]:
         """
-        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return __config__.get('secretKey')
 
@@ -167,8 +163,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def skip_region_validation(self) -> Optional[bool]:
         """
-        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-        that are not public (yet).
+        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         """
         return __config__.get_bool('skipRegionValidation')
 

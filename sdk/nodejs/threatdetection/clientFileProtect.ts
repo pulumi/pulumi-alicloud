@@ -72,35 +72,35 @@ export class ClientFileProtect extends pulumi.CustomResource {
     /**
      * 0 no alert 1 info 2 suspicious 3 critical.
      */
-    public readonly alertLevel!: pulumi.Output<number | undefined>;
+    declare public readonly alertLevel: pulumi.Output<number | undefined>;
     /**
      * file operation.
      */
-    public readonly fileOps!: pulumi.Output<string[]>;
+    declare public readonly fileOps: pulumi.Output<string[]>;
     /**
      * file path.
      */
-    public readonly filePaths!: pulumi.Output<string[]>;
+    declare public readonly filePaths: pulumi.Output<string[]>;
     /**
      * process path.
      */
-    public readonly procPaths!: pulumi.Output<string[]>;
+    declare public readonly procPaths: pulumi.Output<string[]>;
     /**
      * rule action, pass or alert.
      */
-    public readonly ruleAction!: pulumi.Output<string>;
+    declare public readonly ruleAction: pulumi.Output<string>;
     /**
      * ruleName.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * rule status 0 is disable 1 is enable.
      */
-    public readonly status!: pulumi.Output<number>;
+    declare public readonly status: pulumi.Output<number>;
     /**
      * switch id.
      */
-    public readonly switchId!: pulumi.Output<string | undefined>;
+    declare public readonly switchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClientFileProtect resource with the given unique name, arguments, and options.
@@ -115,39 +115,39 @@ export class ClientFileProtect extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientFileProtectState | undefined;
-            resourceInputs["alertLevel"] = state ? state.alertLevel : undefined;
-            resourceInputs["fileOps"] = state ? state.fileOps : undefined;
-            resourceInputs["filePaths"] = state ? state.filePaths : undefined;
-            resourceInputs["procPaths"] = state ? state.procPaths : undefined;
-            resourceInputs["ruleAction"] = state ? state.ruleAction : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["switchId"] = state ? state.switchId : undefined;
+            resourceInputs["alertLevel"] = state?.alertLevel;
+            resourceInputs["fileOps"] = state?.fileOps;
+            resourceInputs["filePaths"] = state?.filePaths;
+            resourceInputs["procPaths"] = state?.procPaths;
+            resourceInputs["ruleAction"] = state?.ruleAction;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["switchId"] = state?.switchId;
         } else {
             const args = argsOrState as ClientFileProtectArgs | undefined;
-            if ((!args || args.fileOps === undefined) && !opts.urn) {
+            if (args?.fileOps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileOps'");
             }
-            if ((!args || args.filePaths === undefined) && !opts.urn) {
+            if (args?.filePaths === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filePaths'");
             }
-            if ((!args || args.procPaths === undefined) && !opts.urn) {
+            if (args?.procPaths === undefined && !opts.urn) {
                 throw new Error("Missing required property 'procPaths'");
             }
-            if ((!args || args.ruleAction === undefined) && !opts.urn) {
+            if (args?.ruleAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleAction'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["alertLevel"] = args ? args.alertLevel : undefined;
-            resourceInputs["fileOps"] = args ? args.fileOps : undefined;
-            resourceInputs["filePaths"] = args ? args.filePaths : undefined;
-            resourceInputs["procPaths"] = args ? args.procPaths : undefined;
-            resourceInputs["ruleAction"] = args ? args.ruleAction : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["switchId"] = args ? args.switchId : undefined;
+            resourceInputs["alertLevel"] = args?.alertLevel;
+            resourceInputs["fileOps"] = args?.fileOps;
+            resourceInputs["filePaths"] = args?.filePaths;
+            resourceInputs["procPaths"] = args?.procPaths;
+            resourceInputs["ruleAction"] = args?.ruleAction;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["switchId"] = args?.switchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClientFileProtect.__pulumiType, name, resourceInputs, opts);

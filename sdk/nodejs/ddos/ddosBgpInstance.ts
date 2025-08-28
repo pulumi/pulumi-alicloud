@@ -69,35 +69,35 @@ export class DdosBgpInstance extends pulumi.CustomResource {
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
      */
-    public readonly baseBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly baseBandwidth: pulumi.Output<number | undefined>;
     /**
      * IP count of the instance. Valid values: 100.
      */
-    public readonly ipCount!: pulumi.Output<number>;
+    declare public readonly ipCount: pulumi.Output<number>;
     /**
      * IP version of the instance. Valid values: IPv4,IPv6.
      */
-    public readonly ipType!: pulumi.Output<string>;
+    declare public readonly ipType: pulumi.Output<string>;
     /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Normal defend bandwidth of the instance. The unit is Gbps.
      */
-    public readonly normalBandwidth!: pulumi.Output<number>;
+    declare public readonly normalBandwidth: pulumi.Output<number>;
     /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a DdosBgpInstance resource with the given unique name, arguments, and options.
@@ -112,36 +112,36 @@ export class DdosBgpInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdosBgpInstanceState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
-            resourceInputs["ipCount"] = state ? state.ipCount : undefined;
-            resourceInputs["ipType"] = state ? state.ipType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["normalBandwidth"] = state ? state.normalBandwidth : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["baseBandwidth"] = state?.baseBandwidth;
+            resourceInputs["ipCount"] = state?.ipCount;
+            resourceInputs["ipType"] = state?.ipType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["normalBandwidth"] = state?.normalBandwidth;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DdosBgpInstanceArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.ipCount === undefined) && !opts.urn) {
+            if (args?.ipCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipCount'");
             }
-            if ((!args || args.ipType === undefined) && !opts.urn) {
+            if (args?.ipType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipType'");
             }
-            if ((!args || args.normalBandwidth === undefined) && !opts.urn) {
+            if (args?.normalBandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'normalBandwidth'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
-            resourceInputs["ipCount"] = args ? args.ipCount : undefined;
-            resourceInputs["ipType"] = args ? args.ipType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["normalBandwidth"] = args ? args.normalBandwidth : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["baseBandwidth"] = args?.baseBandwidth;
+            resourceInputs["ipCount"] = args?.ipCount;
+            resourceInputs["ipType"] = args?.ipType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["normalBandwidth"] = args?.normalBandwidth;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:dns/ddosBgpInstance:DdosBgpInstance" }] };

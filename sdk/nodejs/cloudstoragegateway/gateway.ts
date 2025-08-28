@@ -90,55 +90,55 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * The description of the gateway.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
      */
-    public readonly gatewayClass!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayClass: pulumi.Output<string | undefined>;
     /**
      * The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
-    public readonly gatewayName!: pulumi.Output<string>;
+    declare public readonly gatewayName: pulumi.Output<string>;
     /**
      * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
      */
-    public readonly publicNetworkBandwidth!: pulumi.Output<number>;
+    declare public readonly publicNetworkBandwidth: pulumi.Output<number>;
     /**
      * The detailed reason why you want to delete the gateway.
      */
-    public readonly reasonDetail!: pulumi.Output<string | undefined>;
+    declare public readonly reasonDetail: pulumi.Output<string | undefined>;
     /**
      * The type of the reason why you want to delete the gateway.
      */
-    public readonly reasonType!: pulumi.Output<string | undefined>;
+    declare public readonly reasonType: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to release the gateway after the subscription expires. Valid values:
      */
-    public readonly releaseAfterExpiration!: pulumi.Output<boolean | undefined>;
+    declare public readonly releaseAfterExpiration: pulumi.Output<boolean | undefined>;
     /**
      * The status of the Gateway.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the gateway cluster.
      */
-    public readonly storageBundleId!: pulumi.Output<string>;
+    declare public readonly storageBundleId: pulumi.Output<string>;
     /**
      * The type of the gateway. Valid values: `File`, `Iscsi`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -153,45 +153,45 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gatewayClass"] = state ? state.gatewayClass : undefined;
-            resourceInputs["gatewayName"] = state ? state.gatewayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["publicNetworkBandwidth"] = state ? state.publicNetworkBandwidth : undefined;
-            resourceInputs["reasonDetail"] = state ? state.reasonDetail : undefined;
-            resourceInputs["reasonType"] = state ? state.reasonType : undefined;
-            resourceInputs["releaseAfterExpiration"] = state ? state.releaseAfterExpiration : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageBundleId"] = state ? state.storageBundleId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gatewayClass"] = state?.gatewayClass;
+            resourceInputs["gatewayName"] = state?.gatewayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["publicNetworkBandwidth"] = state?.publicNetworkBandwidth;
+            resourceInputs["reasonDetail"] = state?.reasonDetail;
+            resourceInputs["reasonType"] = state?.reasonType;
+            resourceInputs["releaseAfterExpiration"] = state?.releaseAfterExpiration;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageBundleId"] = state?.storageBundleId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.gatewayName === undefined) && !opts.urn) {
+            if (args?.gatewayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.storageBundleId === undefined) && !opts.urn) {
+            if (args?.storageBundleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageBundleId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gatewayClass"] = args ? args.gatewayClass : undefined;
-            resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["publicNetworkBandwidth"] = args ? args.publicNetworkBandwidth : undefined;
-            resourceInputs["reasonDetail"] = args ? args.reasonDetail : undefined;
-            resourceInputs["reasonType"] = args ? args.reasonType : undefined;
-            resourceInputs["releaseAfterExpiration"] = args ? args.releaseAfterExpiration : undefined;
-            resourceInputs["storageBundleId"] = args ? args.storageBundleId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gatewayClass"] = args?.gatewayClass;
+            resourceInputs["gatewayName"] = args?.gatewayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["publicNetworkBandwidth"] = args?.publicNetworkBandwidth;
+            resourceInputs["reasonDetail"] = args?.reasonDetail;
+            resourceInputs["reasonType"] = args?.reasonType;
+            resourceInputs["releaseAfterExpiration"] = args?.releaseAfterExpiration;
+            resourceInputs["storageBundleId"] = args?.storageBundleId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

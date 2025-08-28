@@ -100,15 +100,15 @@ export class InstanceAttachment extends pulumi.CustomResource {
     /**
      * The ID of the ECS instance.
      */
-    public readonly ecsId!: pulumi.Output<string>;
+    declare public readonly ecsId: pulumi.Output<string>;
     /**
      * The ID of the Database File System.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The status of Instance Attachment.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -123,19 +123,19 @@ export class InstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            resourceInputs["ecsId"] = state ? state.ecsId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["ecsId"] = state?.ecsId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if ((!args || args.ecsId === undefined) && !opts.urn) {
+            if (args?.ecsId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecsId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["ecsId"] = args ? args.ecsId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ecsId"] = args?.ecsId;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

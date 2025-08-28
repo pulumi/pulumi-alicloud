@@ -86,74 +86,74 @@ export class Listener extends pulumi.CustomResource {
     /**
      * The accelerator id.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The certificates of the listener. See `certificates` below.
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
-    public readonly certificates!: pulumi.Output<outputs.ga.ListenerCertificate[] | undefined>;
+    declare public readonly certificates: pulumi.Output<outputs.ga.ListenerCertificate[] | undefined>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
      * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
-    public readonly clientAffinity!: pulumi.Output<string | undefined>;
+    declare public readonly clientAffinity: pulumi.Output<string | undefined>;
     /**
      * The description of the listener.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The XForward headers. See `forwardedForConfig` below.
      */
-    public readonly forwardedForConfig!: pulumi.Output<outputs.ga.ListenerForwardedForConfig | undefined>;
+    declare public readonly forwardedForConfig: pulumi.Output<outputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
-    public readonly httpVersion!: pulumi.Output<string>;
+    declare public readonly httpVersion: pulumi.Output<string>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values:
      * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
      * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
      * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
      */
-    public readonly idleTimeout!: pulumi.Output<number>;
+    declare public readonly idleTimeout: pulumi.Output<number>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
      */
-    public readonly listenerType!: pulumi.Output<string | undefined>;
+    declare public readonly listenerType: pulumi.Output<string | undefined>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The portRanges of the listener. See `portRanges` below.
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
-    public readonly portRanges!: pulumi.Output<outputs.ga.ListenerPortRange[]>;
+    declare public readonly portRanges: pulumi.Output<outputs.ga.ListenerPortRange[]>;
     /**
      * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
-    public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
+    declare public readonly proxyProtocol: pulumi.Output<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
-    public readonly requestTimeout!: pulumi.Output<number>;
+    declare public readonly requestTimeout: pulumi.Output<number>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */
-    public readonly securityPolicyId!: pulumi.Output<string>;
+    declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
      * The status of the listener.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -168,43 +168,43 @@ export class Listener extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["certificates"] = state ? state.certificates : undefined;
-            resourceInputs["clientAffinity"] = state ? state.clientAffinity : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["forwardedForConfig"] = state ? state.forwardedForConfig : undefined;
-            resourceInputs["httpVersion"] = state ? state.httpVersion : undefined;
-            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            resourceInputs["listenerType"] = state ? state.listenerType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["portRanges"] = state ? state.portRanges : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
-            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["certificates"] = state?.certificates;
+            resourceInputs["clientAffinity"] = state?.clientAffinity;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["forwardedForConfig"] = state?.forwardedForConfig;
+            resourceInputs["httpVersion"] = state?.httpVersion;
+            resourceInputs["idleTimeout"] = state?.idleTimeout;
+            resourceInputs["listenerType"] = state?.listenerType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["portRanges"] = state?.portRanges;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["proxyProtocol"] = state?.proxyProtocol;
+            resourceInputs["requestTimeout"] = state?.requestTimeout;
+            resourceInputs["securityPolicyId"] = state?.securityPolicyId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.portRanges === undefined) && !opts.urn) {
+            if (args?.portRanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portRanges'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["certificates"] = args ? args.certificates : undefined;
-            resourceInputs["clientAffinity"] = args ? args.clientAffinity : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forwardedForConfig"] = args ? args.forwardedForConfig : undefined;
-            resourceInputs["httpVersion"] = args ? args.httpVersion : undefined;
-            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            resourceInputs["listenerType"] = args ? args.listenerType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["portRanges"] = args ? args.portRanges : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
-            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["certificates"] = args?.certificates;
+            resourceInputs["clientAffinity"] = args?.clientAffinity;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forwardedForConfig"] = args?.forwardedForConfig;
+            resourceInputs["httpVersion"] = args?.httpVersion;
+            resourceInputs["idleTimeout"] = args?.idleTimeout;
+            resourceInputs["listenerType"] = args?.listenerType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["portRanges"] = args?.portRanges;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["proxyProtocol"] = args?.proxyProtocol;
+            resourceInputs["requestTimeout"] = args?.requestTimeout;
+            resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

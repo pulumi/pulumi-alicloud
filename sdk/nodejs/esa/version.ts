@@ -77,27 +77,27 @@ export class Version extends pulumi.CustomResource {
     /**
      * The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The Site version's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly originVersion!: pulumi.Output<number>;
+    declare public readonly originVersion: pulumi.Output<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration.
      */
-    public /*out*/ readonly siteVersion!: pulumi.Output<number>;
+    declare public /*out*/ readonly siteVersion: pulumi.Output<number>;
     /**
      * Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Version resource with the given unique name, arguments, and options.
@@ -112,23 +112,23 @@ export class Version extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["originVersion"] = state ? state.originVersion : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["originVersion"] = state?.originVersion;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as VersionArgs | undefined;
-            if ((!args || args.originVersion === undefined) && !opts.urn) {
+            if (args?.originVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'originVersion'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["originVersion"] = args ? args.originVersion : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["originVersion"] = args?.originVersion;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["siteVersion"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

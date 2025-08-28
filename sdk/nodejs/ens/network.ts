@@ -68,27 +68,27 @@ export class Network extends pulumi.CustomResource {
     /**
      * The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * Creation time, timestamp (MS).
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Ens node IDExample value: cn-beijing-telecom.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    public readonly networkName!: pulumi.Output<string | undefined>;
+    declare public readonly networkName: pulumi.Output<string | undefined>;
     /**
      * The status of the network instance. Pending: Configuring, Available: Available.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -103,24 +103,24 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["networkName"] = state ? state.networkName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["networkName"] = state?.networkName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["networkName"] = args ? args.networkName : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["networkName"] = args?.networkName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

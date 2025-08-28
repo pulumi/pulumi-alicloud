@@ -69,21 +69,21 @@ export class BaselineStrategy extends pulumi.CustomResource {
     /**
      * The ID of the baseline check policy.
      */
-    public /*out*/ readonly baselineStrategyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly baselineStrategyId: pulumi.Output<string>;
     /**
      * Policy name.
      */
-    public readonly baselineStrategyName!: pulumi.Output<string>;
+    declare public readonly baselineStrategyName: pulumi.Output<string>;
     /**
      * The type of policy. Value:
      * * **common**: standard policy
      * * **custom**: custom policy
      */
-    public readonly customType!: pulumi.Output<string>;
+    declare public readonly customType: pulumi.Output<string>;
     /**
      * The detection period of the policy.
      */
-    public readonly cycleDays!: pulumi.Output<number>;
+    declare public readonly cycleDays: pulumi.Output<number>;
     /**
      * The detection period of the policy. Value:
      * * **0**: 0:00~06:00
@@ -91,25 +91,25 @@ export class BaselineStrategy extends pulumi.CustomResource {
      * * **12**: 12:00~18:00
      * * **18**: 18:00~24:00
      */
-    public readonly cycleStartTime!: pulumi.Output<number>;
+    declare public readonly cycleStartTime: pulumi.Output<number>;
     /**
      * The baseline check policy execution end time.
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * Detection item subtype.
      */
-    public readonly riskSubTypeName!: pulumi.Output<string>;
+    declare public readonly riskSubTypeName: pulumi.Output<string>;
     /**
      * The baseline check policy start time.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * The method of adding assets that take effect from the policy. Value:
      * * **groupId**: Added by asset group.
      * * **uuid**: Add by single asset.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a BaselineStrategy resource with the given unique name, arguments, and options.
@@ -124,46 +124,46 @@ export class BaselineStrategy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BaselineStrategyState | undefined;
-            resourceInputs["baselineStrategyId"] = state ? state.baselineStrategyId : undefined;
-            resourceInputs["baselineStrategyName"] = state ? state.baselineStrategyName : undefined;
-            resourceInputs["customType"] = state ? state.customType : undefined;
-            resourceInputs["cycleDays"] = state ? state.cycleDays : undefined;
-            resourceInputs["cycleStartTime"] = state ? state.cycleStartTime : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["riskSubTypeName"] = state ? state.riskSubTypeName : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["baselineStrategyId"] = state?.baselineStrategyId;
+            resourceInputs["baselineStrategyName"] = state?.baselineStrategyName;
+            resourceInputs["customType"] = state?.customType;
+            resourceInputs["cycleDays"] = state?.cycleDays;
+            resourceInputs["cycleStartTime"] = state?.cycleStartTime;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["riskSubTypeName"] = state?.riskSubTypeName;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as BaselineStrategyArgs | undefined;
-            if ((!args || args.baselineStrategyName === undefined) && !opts.urn) {
+            if (args?.baselineStrategyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baselineStrategyName'");
             }
-            if ((!args || args.customType === undefined) && !opts.urn) {
+            if (args?.customType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customType'");
             }
-            if ((!args || args.cycleDays === undefined) && !opts.urn) {
+            if (args?.cycleDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cycleDays'");
             }
-            if ((!args || args.endTime === undefined) && !opts.urn) {
+            if (args?.endTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endTime'");
             }
-            if ((!args || args.riskSubTypeName === undefined) && !opts.urn) {
+            if (args?.riskSubTypeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'riskSubTypeName'");
             }
-            if ((!args || args.startTime === undefined) && !opts.urn) {
+            if (args?.startTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["baselineStrategyName"] = args ? args.baselineStrategyName : undefined;
-            resourceInputs["customType"] = args ? args.customType : undefined;
-            resourceInputs["cycleDays"] = args ? args.cycleDays : undefined;
-            resourceInputs["cycleStartTime"] = args ? args.cycleStartTime : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["riskSubTypeName"] = args ? args.riskSubTypeName : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["baselineStrategyName"] = args?.baselineStrategyName;
+            resourceInputs["customType"] = args?.customType;
+            resourceInputs["cycleDays"] = args?.cycleDays;
+            resourceInputs["cycleStartTime"] = args?.cycleStartTime;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["riskSubTypeName"] = args?.riskSubTypeName;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["targetType"] = args?.targetType;
             resourceInputs["baselineStrategyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

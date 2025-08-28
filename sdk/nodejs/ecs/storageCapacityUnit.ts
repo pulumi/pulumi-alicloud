@@ -65,33 +65,33 @@ export class StorageCapacityUnit extends pulumi.CustomResource {
     /**
      * The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
      */
-    public readonly capacity!: pulumi.Output<number>;
+    declare public readonly capacity: pulumi.Output<number>;
     /**
      * The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The validity period of the Storage Capacity Unit. Default value: `1`.
      * * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
      * * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    public readonly periodUnit!: pulumi.Output<string>;
+    declare public readonly periodUnit: pulumi.Output<string>;
     /**
      * The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * The status of Storage Capacity Unit.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the Storage Capacity Unit.
      */
-    public readonly storageCapacityUnitName!: pulumi.Output<string>;
+    declare public readonly storageCapacityUnitName: pulumi.Output<string>;
 
     /**
      * Create a StorageCapacityUnit resource with the given unique name, arguments, and options.
@@ -106,24 +106,24 @@ export class StorageCapacityUnit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageCapacityUnitState | undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageCapacityUnitName"] = state ? state.storageCapacityUnitName : undefined;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageCapacityUnitName"] = state?.storageCapacityUnitName;
         } else {
             const args = argsOrState as StorageCapacityUnitArgs | undefined;
-            if ((!args || args.capacity === undefined) && !opts.urn) {
+            if (args?.capacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacity'");
             }
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["storageCapacityUnitName"] = args ? args.storageCapacityUnitName : undefined;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["storageCapacityUnitName"] = args?.storageCapacityUnitName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

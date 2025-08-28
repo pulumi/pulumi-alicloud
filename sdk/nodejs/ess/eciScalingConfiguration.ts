@@ -112,24 +112,24 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
     /**
      * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
-    public readonly acrRegistryInfos!: pulumi.Output<outputs.ess.EciScalingConfigurationAcrRegistryInfo[] | undefined>;
+    declare public readonly acrRegistryInfos: pulumi.Output<outputs.ess.EciScalingConfigurationAcrRegistryInfo[] | undefined>;
     /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    declare public readonly active: pulumi.Output<boolean | undefined>;
     /**
      * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
      */
-    public readonly activeDeadlineSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly activeDeadlineSeconds: pulumi.Output<number | undefined>;
     /**
      * Whether create eip automatically.
      */
-    public readonly autoCreateEip!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoCreateEip: pulumi.Output<boolean | undefined>;
     /**
      * Whether to automatically match the image cache.
      */
-    public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoMatchImageCache: pulumi.Output<boolean | undefined>;
     /**
      * The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
      * name_prefix: the prefix of the hostname.
@@ -138,149 +138,149 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      */
-    public readonly containerGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly containerGroupName: pulumi.Output<string | undefined>;
     /**
      * The list of containers. See `containers` below for details.
      */
-    public readonly containers!: pulumi.Output<outputs.ess.EciScalingConfigurationContainer[] | undefined>;
+    declare public readonly containers: pulumi.Output<outputs.ess.EciScalingConfigurationContainer[] | undefined>;
     /**
      * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
      */
-    public readonly costOptimization!: pulumi.Output<boolean | undefined>;
+    declare public readonly costOptimization: pulumi.Output<boolean | undefined>;
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    public readonly cpu!: pulumi.Output<number | undefined>;
+    declare public readonly cpu: pulumi.Output<number | undefined>;
     /**
      * The number of physical CPU cores. You can specify this parameter for only specific instance types.
      */
-    public readonly cpuOptionsCore!: pulumi.Output<number | undefined>;
+    declare public readonly cpuOptionsCore: pulumi.Output<number | undefined>;
     /**
      * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
      */
-    public readonly cpuOptionsThreadsPerCore!: pulumi.Output<number | undefined>;
+    declare public readonly cpuOptionsThreadsPerCore: pulumi.Output<number | undefined>;
     /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      */
-    public readonly dnsConfigOptions!: pulumi.Output<outputs.ess.EciScalingConfigurationDnsConfigOption[] | undefined>;
+    declare public readonly dnsConfigOptions: pulumi.Output<outputs.ess.EciScalingConfigurationDnsConfigOption[] | undefined>;
     /**
      * dns policy of contain group.
      */
-    public readonly dnsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly dnsPolicy: pulumi.Output<string | undefined>;
     /**
      * egress bandwidth.
      */
-    public readonly egressBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly egressBandwidth: pulumi.Output<number | undefined>;
     /**
      * Eip bandwidth.
      */
-    public readonly eipBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly eipBandwidth: pulumi.Output<number | undefined>;
     /**
      * Enable sls log service.
      */
-    public readonly enableSls!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSls: pulumi.Output<boolean | undefined>;
     /**
      * The size of ephemeral storage.
      */
-    public readonly ephemeralStorage!: pulumi.Output<number | undefined>;
+    declare public readonly ephemeralStorage: pulumi.Output<number | undefined>;
     /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    public readonly hostAliases!: pulumi.Output<outputs.ess.EciScalingConfigurationHostAlias[] | undefined>;
+    declare public readonly hostAliases: pulumi.Output<outputs.ess.EciScalingConfigurationHostAlias[] | undefined>;
     /**
      * Hostname of an ECI instance.
      */
-    public readonly hostName!: pulumi.Output<string | undefined>;
+    declare public readonly hostName: pulumi.Output<string | undefined>;
     /**
      * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
-    public readonly imageRegistryCredentials!: pulumi.Output<outputs.ess.EciScalingConfigurationImageRegistryCredential[] | undefined>;
+    declare public readonly imageRegistryCredentials: pulumi.Output<outputs.ess.EciScalingConfigurationImageRegistryCredential[] | undefined>;
     /**
      * The ID of image cache.
      */
-    public readonly imageSnapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly imageSnapshotId: pulumi.Output<string | undefined>;
     /**
      * Ingress bandwidth.
      */
-    public readonly ingressBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly ingressBandwidth: pulumi.Output<number | undefined>;
     /**
      * The list of initContainers. See `initContainers` below for details.
      */
-    public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
+    declare public readonly initContainers: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
     /**
      * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
      */
-    public readonly instanceFamilyLevel!: pulumi.Output<string | undefined>;
+    declare public readonly instanceFamilyLevel: pulumi.Output<string | undefined>;
     /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
-    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceTypes: pulumi.Output<string[] | undefined>;
     /**
      * Number of IPv6 addresses.
      */
-    public readonly ipv6AddressCount!: pulumi.Output<number | undefined>;
+    declare public readonly ipv6AddressCount: pulumi.Output<number | undefined>;
     /**
      * The weight of an ECI instance attached to the Server Group.
      */
-    public readonly loadBalancerWeight!: pulumi.Output<number | undefined>;
+    declare public readonly loadBalancerWeight: pulumi.Output<number | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    public readonly memory!: pulumi.Output<number | undefined>;
+    declare public readonly memory: pulumi.Output<number | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    public readonly ramRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly ramRoleName: pulumi.Output<string | undefined>;
     /**
      * ID of resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The restart policy of the container group. Default to `Always`.
      */
-    public readonly restartPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly restartPolicy: pulumi.Output<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (
      * English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
      * underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
      * EciScalingConfigurationId.
      */
-    public readonly scalingConfigurationName!: pulumi.Output<string>;
+    declare public readonly scalingConfigurationName: pulumi.Output<string>;
     /**
      * ID of the scaling group of a eci scaling configuration.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      */
-    public readonly securityContextSysctls!: pulumi.Output<outputs.ess.EciScalingConfigurationSecurityContextSysctl[] | undefined>;
+    declare public readonly securityContextSysctls: pulumi.Output<outputs.ess.EciScalingConfigurationSecurityContextSysctl[] | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * The maximum price hourly for spot instance.
      */
-    public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
+    declare public readonly spotPriceLimit: pulumi.Output<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
      * , `SpotWithPriceLimit`.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly spotStrategy: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
@@ -288,15 +288,15 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
      * a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The program's buffering time before closing.
      */
-    public readonly terminationGracePeriodSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly terminationGracePeriodSeconds: pulumi.Output<number | undefined>;
     /**
      * The list of volumes. See `volumes` below for details.
      */
-    public readonly volumes!: pulumi.Output<outputs.ess.EciScalingConfigurationVolume[] | undefined>;
+    declare public readonly volumes: pulumi.Output<outputs.ess.EciScalingConfigurationVolume[] | undefined>;
 
     /**
      * Create a EciScalingConfiguration resource with the given unique name, arguments, and options.
@@ -311,95 +311,95 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EciScalingConfigurationState | undefined;
-            resourceInputs["acrRegistryInfos"] = state ? state.acrRegistryInfos : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["activeDeadlineSeconds"] = state ? state.activeDeadlineSeconds : undefined;
-            resourceInputs["autoCreateEip"] = state ? state.autoCreateEip : undefined;
-            resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
-            resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
-            resourceInputs["containers"] = state ? state.containers : undefined;
-            resourceInputs["costOptimization"] = state ? state.costOptimization : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["cpuOptionsCore"] = state ? state.cpuOptionsCore : undefined;
-            resourceInputs["cpuOptionsThreadsPerCore"] = state ? state.cpuOptionsThreadsPerCore : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsConfigOptions"] = state ? state.dnsConfigOptions : undefined;
-            resourceInputs["dnsPolicy"] = state ? state.dnsPolicy : undefined;
-            resourceInputs["egressBandwidth"] = state ? state.egressBandwidth : undefined;
-            resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
-            resourceInputs["enableSls"] = state ? state.enableSls : undefined;
-            resourceInputs["ephemeralStorage"] = state ? state.ephemeralStorage : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            resourceInputs["imageSnapshotId"] = state ? state.imageSnapshotId : undefined;
-            resourceInputs["ingressBandwidth"] = state ? state.ingressBandwidth : undefined;
-            resourceInputs["initContainers"] = state ? state.initContainers : undefined;
-            resourceInputs["instanceFamilyLevel"] = state ? state.instanceFamilyLevel : undefined;
-            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
-            resourceInputs["loadBalancerWeight"] = state ? state.loadBalancerWeight : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
-            resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["securityContextSysctls"] = state ? state.securityContextSysctls : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
-            resourceInputs["volumes"] = state ? state.volumes : undefined;
+            resourceInputs["acrRegistryInfos"] = state?.acrRegistryInfos;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["activeDeadlineSeconds"] = state?.activeDeadlineSeconds;
+            resourceInputs["autoCreateEip"] = state?.autoCreateEip;
+            resourceInputs["autoMatchImageCache"] = state?.autoMatchImageCache;
+            resourceInputs["containerGroupName"] = state?.containerGroupName;
+            resourceInputs["containers"] = state?.containers;
+            resourceInputs["costOptimization"] = state?.costOptimization;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["cpuOptionsCore"] = state?.cpuOptionsCore;
+            resourceInputs["cpuOptionsThreadsPerCore"] = state?.cpuOptionsThreadsPerCore;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsConfigOptions"] = state?.dnsConfigOptions;
+            resourceInputs["dnsPolicy"] = state?.dnsPolicy;
+            resourceInputs["egressBandwidth"] = state?.egressBandwidth;
+            resourceInputs["eipBandwidth"] = state?.eipBandwidth;
+            resourceInputs["enableSls"] = state?.enableSls;
+            resourceInputs["ephemeralStorage"] = state?.ephemeralStorage;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["hostAliases"] = state?.hostAliases;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["imageRegistryCredentials"] = state?.imageRegistryCredentials;
+            resourceInputs["imageSnapshotId"] = state?.imageSnapshotId;
+            resourceInputs["ingressBandwidth"] = state?.ingressBandwidth;
+            resourceInputs["initContainers"] = state?.initContainers;
+            resourceInputs["instanceFamilyLevel"] = state?.instanceFamilyLevel;
+            resourceInputs["instanceTypes"] = state?.instanceTypes;
+            resourceInputs["ipv6AddressCount"] = state?.ipv6AddressCount;
+            resourceInputs["loadBalancerWeight"] = state?.loadBalancerWeight;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restartPolicy"] = state?.restartPolicy;
+            resourceInputs["scalingConfigurationName"] = state?.scalingConfigurationName;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["securityContextSysctls"] = state?.securityContextSysctls;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["spotPriceLimit"] = state?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = state?.terminationGracePeriodSeconds;
+            resourceInputs["volumes"] = state?.volumes;
         } else {
             const args = argsOrState as EciScalingConfigurationArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["acrRegistryInfos"] = args ? args.acrRegistryInfos : undefined;
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["activeDeadlineSeconds"] = args ? args.activeDeadlineSeconds : undefined;
-            resourceInputs["autoCreateEip"] = args ? args.autoCreateEip : undefined;
-            resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
-            resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
-            resourceInputs["containers"] = args ? args.containers : undefined;
-            resourceInputs["costOptimization"] = args ? args.costOptimization : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["cpuOptionsCore"] = args ? args.cpuOptionsCore : undefined;
-            resourceInputs["cpuOptionsThreadsPerCore"] = args ? args.cpuOptionsThreadsPerCore : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsConfigOptions"] = args ? args.dnsConfigOptions : undefined;
-            resourceInputs["dnsPolicy"] = args ? args.dnsPolicy : undefined;
-            resourceInputs["egressBandwidth"] = args ? args.egressBandwidth : undefined;
-            resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
-            resourceInputs["enableSls"] = args ? args.enableSls : undefined;
-            resourceInputs["ephemeralStorage"] = args ? args.ephemeralStorage : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            resourceInputs["imageSnapshotId"] = args ? args.imageSnapshotId : undefined;
-            resourceInputs["ingressBandwidth"] = args ? args.ingressBandwidth : undefined;
-            resourceInputs["initContainers"] = args ? args.initContainers : undefined;
-            resourceInputs["instanceFamilyLevel"] = args ? args.instanceFamilyLevel : undefined;
-            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
-            resourceInputs["loadBalancerWeight"] = args ? args.loadBalancerWeight : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
-            resourceInputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["securityContextSysctls"] = args ? args.securityContextSysctls : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
-            resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["acrRegistryInfos"] = args?.acrRegistryInfos;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["activeDeadlineSeconds"] = args?.activeDeadlineSeconds;
+            resourceInputs["autoCreateEip"] = args?.autoCreateEip;
+            resourceInputs["autoMatchImageCache"] = args?.autoMatchImageCache;
+            resourceInputs["containerGroupName"] = args?.containerGroupName;
+            resourceInputs["containers"] = args?.containers;
+            resourceInputs["costOptimization"] = args?.costOptimization;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["cpuOptionsCore"] = args?.cpuOptionsCore;
+            resourceInputs["cpuOptionsThreadsPerCore"] = args?.cpuOptionsThreadsPerCore;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsConfigOptions"] = args?.dnsConfigOptions;
+            resourceInputs["dnsPolicy"] = args?.dnsPolicy;
+            resourceInputs["egressBandwidth"] = args?.egressBandwidth;
+            resourceInputs["eipBandwidth"] = args?.eipBandwidth;
+            resourceInputs["enableSls"] = args?.enableSls;
+            resourceInputs["ephemeralStorage"] = args?.ephemeralStorage;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["hostAliases"] = args?.hostAliases;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
+            resourceInputs["imageSnapshotId"] = args?.imageSnapshotId;
+            resourceInputs["ingressBandwidth"] = args?.ingressBandwidth;
+            resourceInputs["initContainers"] = args?.initContainers;
+            resourceInputs["instanceFamilyLevel"] = args?.instanceFamilyLevel;
+            resourceInputs["instanceTypes"] = args?.instanceTypes;
+            resourceInputs["ipv6AddressCount"] = args?.ipv6AddressCount;
+            resourceInputs["loadBalancerWeight"] = args?.loadBalancerWeight;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restartPolicy"] = args?.restartPolicy;
+            resourceInputs["scalingConfigurationName"] = args?.scalingConfigurationName;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["securityContextSysctls"] = args?.securityContextSysctls;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["spotPriceLimit"] = args?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = args?.terminationGracePeriodSeconds;
+            resourceInputs["volumes"] = args?.volumes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EciScalingConfiguration.__pulumiType, name, resourceInputs, opts);

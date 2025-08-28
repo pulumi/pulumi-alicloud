@@ -97,31 +97,31 @@ export class ExternalDataService extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Instance ID
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Service Description
      */
-    public readonly serviceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly serviceDescription: pulumi.Output<string | undefined>;
     /**
      * Service ID
      */
-    public /*out*/ readonly serviceId!: pulumi.Output<number>;
+    declare public /*out*/ readonly serviceId: pulumi.Output<number>;
     /**
      * Service Name
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Service Specifications
      */
-    public readonly serviceSpec!: pulumi.Output<string>;
+    declare public readonly serviceSpec: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ExternalDataService resource with the given unique name, arguments, and options.
@@ -136,28 +136,28 @@ export class ExternalDataService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalDataServiceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["serviceDescription"] = state ? state.serviceDescription : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["serviceSpec"] = state ? state.serviceSpec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["serviceDescription"] = state?.serviceDescription;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["serviceSpec"] = state?.serviceSpec;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ExternalDataServiceArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.serviceSpec === undefined) && !opts.urn) {
+            if (args?.serviceSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceSpec'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["serviceDescription"] = args ? args.serviceDescription : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["serviceSpec"] = args ? args.serviceSpec : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["serviceDescription"] = args?.serviceDescription;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["serviceSpec"] = args?.serviceSpec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

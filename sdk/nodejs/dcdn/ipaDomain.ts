@@ -81,23 +81,23 @@ export class IpaDomain extends pulumi.CustomResource {
     /**
      * The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The accelerated region. Valid values: `domestic`, `global`, `overseas`.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * Sources. See `sources` below.
      */
-    public readonly sources!: pulumi.Output<outputs.dcdn.IpaDomainSource[]>;
+    declare public readonly sources: pulumi.Output<outputs.dcdn.IpaDomainSource[]>;
     /**
      * The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a IpaDomain resource with the given unique name, arguments, and options.
@@ -112,24 +112,24 @@ export class IpaDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpaDomainState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IpaDomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !opts.urn) {
+            if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpaDomain.__pulumiType, name, resourceInputs, opts);

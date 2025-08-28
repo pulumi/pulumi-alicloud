@@ -99,35 +99,35 @@ export class BasicEndpointGroup extends pulumi.CustomResource {
     /**
      * The ID of the basic GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    public readonly basicEndpointGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly basicEndpointGroupName: pulumi.Output<string | undefined>;
     /**
      * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The address of the endpoint.
      */
-    public readonly endpointAddress!: pulumi.Output<string>;
+    declare public readonly endpointAddress: pulumi.Output<string>;
     /**
      * The ID of the region where you want to create the endpoint group.
      */
-    public readonly endpointGroupRegion!: pulumi.Output<string>;
+    declare public readonly endpointGroupRegion: pulumi.Output<string>;
     /**
      * The sub address of the endpoint.
      */
-    public readonly endpointSubAddress!: pulumi.Output<string>;
+    declare public readonly endpointSubAddress: pulumi.Output<string>;
     /**
      * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * The status of the Basic Endpoint Group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BasicEndpointGroup resource with the given unique name, arguments, and options.
@@ -142,29 +142,29 @@ export class BasicEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicEndpointGroupState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["basicEndpointGroupName"] = state ? state.basicEndpointGroupName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointAddress"] = state ? state.endpointAddress : undefined;
-            resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
-            resourceInputs["endpointSubAddress"] = state ? state.endpointSubAddress : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["basicEndpointGroupName"] = state?.basicEndpointGroupName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointAddress"] = state?.endpointAddress;
+            resourceInputs["endpointGroupRegion"] = state?.endpointGroupRegion;
+            resourceInputs["endpointSubAddress"] = state?.endpointSubAddress;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BasicEndpointGroupArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointGroupRegion === undefined) && !opts.urn) {
+            if (args?.endpointGroupRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupRegion'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["basicEndpointGroupName"] = args ? args.basicEndpointGroupName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointAddress"] = args ? args.endpointAddress : undefined;
-            resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
-            resourceInputs["endpointSubAddress"] = args ? args.endpointSubAddress : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["basicEndpointGroupName"] = args?.basicEndpointGroupName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointAddress"] = args?.endpointAddress;
+            resourceInputs["endpointGroupRegion"] = args?.endpointGroupRegion;
+            resourceInputs["endpointSubAddress"] = args?.endpointSubAddress;
+            resourceInputs["endpointType"] = args?.endpointType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

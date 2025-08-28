@@ -87,27 +87,27 @@ export class NatIpCidr extends pulumi.CustomResource {
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean>;
+    declare public readonly dryRun: pulumi.Output<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
      */
-    public readonly natGatewayId!: pulumi.Output<string>;
+    declare public readonly natGatewayId: pulumi.Output<string>;
     /**
      * The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
      */
-    public readonly natIpCidr!: pulumi.Output<string | undefined>;
+    declare public readonly natIpCidr: pulumi.Output<string | undefined>;
     /**
      * The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly natIpCidrDescription!: pulumi.Output<string | undefined>;
+    declare public readonly natIpCidrDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly natIpCidrName!: pulumi.Output<string | undefined>;
+    declare public readonly natIpCidrName: pulumi.Output<string | undefined>;
     /**
      * The status of the CIDR block of the NAT gateway. Valid values: `Available`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a NatIpCidr resource with the given unique name, arguments, and options.
@@ -122,22 +122,22 @@ export class NatIpCidr extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatIpCidrState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["natIpCidr"] = state ? state.natIpCidr : undefined;
-            resourceInputs["natIpCidrDescription"] = state ? state.natIpCidrDescription : undefined;
-            resourceInputs["natIpCidrName"] = state ? state.natIpCidrName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["natIpCidr"] = state?.natIpCidr;
+            resourceInputs["natIpCidrDescription"] = state?.natIpCidrDescription;
+            resourceInputs["natIpCidrName"] = state?.natIpCidrName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NatIpCidrArgs | undefined;
-            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
+            if (args?.natGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            resourceInputs["natIpCidr"] = args ? args.natIpCidr : undefined;
-            resourceInputs["natIpCidrDescription"] = args ? args.natIpCidrDescription : undefined;
-            resourceInputs["natIpCidrName"] = args ? args.natIpCidrName : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["natGatewayId"] = args?.natGatewayId;
+            resourceInputs["natIpCidr"] = args?.natIpCidr;
+            resourceInputs["natIpCidrDescription"] = args?.natIpCidrDescription;
+            resourceInputs["natIpCidrName"] = args?.natIpCidrName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

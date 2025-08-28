@@ -111,43 +111,43 @@ export class JdbcDataSource extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Data Source Description
      */
-    public readonly dataSourceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceDescription: pulumi.Output<string | undefined>;
     /**
      * The data source ID.
      */
-    public /*out*/ readonly dataSourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataSourceId: pulumi.Output<string>;
     /**
      * Data Source Name
      */
-    public readonly dataSourceName!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceName: pulumi.Output<string | undefined>;
     /**
      * Data Source Type
      */
-    public readonly dataSourceType!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceType: pulumi.Output<string | undefined>;
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The JDBC connection string.
      */
-    public readonly jdbcConnectionString!: pulumi.Output<string | undefined>;
+    declare public readonly jdbcConnectionString: pulumi.Output<string | undefined>;
     /**
      * The password of the database account.
      */
-    public readonly jdbcPassword!: pulumi.Output<string | undefined>;
+    declare public readonly jdbcPassword: pulumi.Output<string | undefined>;
     /**
      * The name of the database account.
      */
-    public readonly jdbcUserName!: pulumi.Output<string>;
+    declare public readonly jdbcUserName: pulumi.Output<string>;
     /**
      * Data Source Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a JdbcDataSource resource with the given unique name, arguments, and options.
@@ -162,31 +162,31 @@ export class JdbcDataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JdbcDataSourceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSourceDescription"] = state ? state.dataSourceDescription : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dataSourceName"] = state ? state.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = state ? state.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["jdbcConnectionString"] = state ? state.jdbcConnectionString : undefined;
-            resourceInputs["jdbcPassword"] = state ? state.jdbcPassword : undefined;
-            resourceInputs["jdbcUserName"] = state ? state.jdbcUserName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSourceDescription"] = state?.dataSourceDescription;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dataSourceName"] = state?.dataSourceName;
+            resourceInputs["dataSourceType"] = state?.dataSourceType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["jdbcConnectionString"] = state?.jdbcConnectionString;
+            resourceInputs["jdbcPassword"] = state?.jdbcPassword;
+            resourceInputs["jdbcUserName"] = state?.jdbcUserName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as JdbcDataSourceArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.jdbcUserName === undefined) && !opts.urn) {
+            if (args?.jdbcUserName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jdbcUserName'");
             }
-            resourceInputs["dataSourceDescription"] = args ? args.dataSourceDescription : undefined;
-            resourceInputs["dataSourceName"] = args ? args.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = args ? args.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["jdbcConnectionString"] = args ? args.jdbcConnectionString : undefined;
-            resourceInputs["jdbcPassword"] = args ? args.jdbcPassword : undefined;
-            resourceInputs["jdbcUserName"] = args ? args.jdbcUserName : undefined;
+            resourceInputs["dataSourceDescription"] = args?.dataSourceDescription;
+            resourceInputs["dataSourceName"] = args?.dataSourceName;
+            resourceInputs["dataSourceType"] = args?.dataSourceType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["jdbcConnectionString"] = args?.jdbcConnectionString;
+            resourceInputs["jdbcPassword"] = args?.jdbcPassword;
+            resourceInputs["jdbcUserName"] = args?.jdbcUserName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSourceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

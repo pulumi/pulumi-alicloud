@@ -52,43 +52,43 @@ export class DbInstancePlan extends pulumi.CustomResource {
     /**
      * The ID of the GPDB instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The name of the Plan.
      */
-    public readonly dbInstancePlanName!: pulumi.Output<string>;
+    declare public readonly dbInstancePlanName: pulumi.Output<string>;
     /**
      * The execution information of the plan. See `planConfig` below.
      */
-    public readonly planConfigs!: pulumi.Output<outputs.gpdb.DbInstancePlanPlanConfig[]>;
+    declare public readonly planConfigs: pulumi.Output<outputs.gpdb.DbInstancePlanPlanConfig[]>;
     /**
      * The description of the Plan.
      */
-    public readonly planDesc!: pulumi.Output<string | undefined>;
+    declare public readonly planDesc: pulumi.Output<string | undefined>;
     /**
      * The end time of the Plan.
      */
-    public readonly planEndDate!: pulumi.Output<string | undefined>;
+    declare public readonly planEndDate: pulumi.Output<string | undefined>;
     /**
      * The ID of the plan.
      */
-    public /*out*/ readonly planId!: pulumi.Output<string>;
+    declare public /*out*/ readonly planId: pulumi.Output<string>;
     /**
      * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
-    public readonly planScheduleType!: pulumi.Output<string>;
+    declare public readonly planScheduleType: pulumi.Output<string>;
     /**
      * The start time of the Plan.
      */
-    public readonly planStartDate!: pulumi.Output<string>;
+    declare public readonly planStartDate: pulumi.Output<string>;
     /**
      * The type of the Plan. Valid values: `PauseResume`, `Resize`.
      */
-    public readonly planType!: pulumi.Output<string>;
+    declare public readonly planType: pulumi.Output<string>;
     /**
      * The Status of the Plan. Valid values: `active`, `cancel`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a DbInstancePlan resource with the given unique name, arguments, and options.
@@ -103,42 +103,42 @@ export class DbInstancePlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstancePlanState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["dbInstancePlanName"] = state ? state.dbInstancePlanName : undefined;
-            resourceInputs["planConfigs"] = state ? state.planConfigs : undefined;
-            resourceInputs["planDesc"] = state ? state.planDesc : undefined;
-            resourceInputs["planEndDate"] = state ? state.planEndDate : undefined;
-            resourceInputs["planId"] = state ? state.planId : undefined;
-            resourceInputs["planScheduleType"] = state ? state.planScheduleType : undefined;
-            resourceInputs["planStartDate"] = state ? state.planStartDate : undefined;
-            resourceInputs["planType"] = state ? state.planType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["dbInstancePlanName"] = state?.dbInstancePlanName;
+            resourceInputs["planConfigs"] = state?.planConfigs;
+            resourceInputs["planDesc"] = state?.planDesc;
+            resourceInputs["planEndDate"] = state?.planEndDate;
+            resourceInputs["planId"] = state?.planId;
+            resourceInputs["planScheduleType"] = state?.planScheduleType;
+            resourceInputs["planStartDate"] = state?.planStartDate;
+            resourceInputs["planType"] = state?.planType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DbInstancePlanArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.dbInstancePlanName === undefined) && !opts.urn) {
+            if (args?.dbInstancePlanName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstancePlanName'");
             }
-            if ((!args || args.planConfigs === undefined) && !opts.urn) {
+            if (args?.planConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planConfigs'");
             }
-            if ((!args || args.planScheduleType === undefined) && !opts.urn) {
+            if (args?.planScheduleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planScheduleType'");
             }
-            if ((!args || args.planType === undefined) && !opts.urn) {
+            if (args?.planType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planType'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["dbInstancePlanName"] = args ? args.dbInstancePlanName : undefined;
-            resourceInputs["planConfigs"] = args ? args.planConfigs : undefined;
-            resourceInputs["planDesc"] = args ? args.planDesc : undefined;
-            resourceInputs["planEndDate"] = args ? args.planEndDate : undefined;
-            resourceInputs["planScheduleType"] = args ? args.planScheduleType : undefined;
-            resourceInputs["planStartDate"] = args ? args.planStartDate : undefined;
-            resourceInputs["planType"] = args ? args.planType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["dbInstancePlanName"] = args?.dbInstancePlanName;
+            resourceInputs["planConfigs"] = args?.planConfigs;
+            resourceInputs["planDesc"] = args?.planDesc;
+            resourceInputs["planEndDate"] = args?.planEndDate;
+            resourceInputs["planScheduleType"] = args?.planScheduleType;
+            resourceInputs["planStartDate"] = args?.planStartDate;
+            resourceInputs["planType"] = args?.planType;
+            resourceInputs["status"] = args?.status;
             resourceInputs["planId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

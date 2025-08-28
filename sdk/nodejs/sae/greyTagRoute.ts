@@ -136,23 +136,23 @@ export class GreyTagRoute extends pulumi.CustomResource {
     /**
      * The ID  of the SAE Application.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The description of GreyTagRoute.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The grayscale rule created for Dubbo Application. See `dubboRules` below.
      */
-    public readonly dubboRules!: pulumi.Output<outputs.sae.GreyTagRouteDubboRule[] | undefined>;
+    declare public readonly dubboRules: pulumi.Output<outputs.sae.GreyTagRouteDubboRule[] | undefined>;
     /**
      * The name of GreyTagRoute.
      */
-    public readonly greyTagRouteName!: pulumi.Output<string>;
+    declare public readonly greyTagRouteName: pulumi.Output<string>;
     /**
      * The grayscale rule created for SpringCloud Application. See `scRules` below.
      */
-    public readonly scRules!: pulumi.Output<outputs.sae.GreyTagRouteScRule[] | undefined>;
+    declare public readonly scRules: pulumi.Output<outputs.sae.GreyTagRouteScRule[] | undefined>;
 
     /**
      * Create a GreyTagRoute resource with the given unique name, arguments, and options.
@@ -167,24 +167,24 @@ export class GreyTagRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GreyTagRouteState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dubboRules"] = state ? state.dubboRules : undefined;
-            resourceInputs["greyTagRouteName"] = state ? state.greyTagRouteName : undefined;
-            resourceInputs["scRules"] = state ? state.scRules : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dubboRules"] = state?.dubboRules;
+            resourceInputs["greyTagRouteName"] = state?.greyTagRouteName;
+            resourceInputs["scRules"] = state?.scRules;
         } else {
             const args = argsOrState as GreyTagRouteArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.greyTagRouteName === undefined) && !opts.urn) {
+            if (args?.greyTagRouteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'greyTagRouteName'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dubboRules"] = args ? args.dubboRules : undefined;
-            resourceInputs["greyTagRouteName"] = args ? args.greyTagRouteName : undefined;
-            resourceInputs["scRules"] = args ? args.scRules : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dubboRules"] = args?.dubboRules;
+            resourceInputs["greyTagRouteName"] = args?.greyTagRouteName;
+            resourceInputs["scRules"] = args?.scRules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GreyTagRoute.__pulumiType, name, resourceInputs, opts);

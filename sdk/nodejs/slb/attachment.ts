@@ -106,27 +106,27 @@ export class Attachment extends pulumi.CustomResource {
     /**
      * The backend servers of the load balancer.
      */
-    public readonly backendServers!: pulumi.Output<string>;
+    declare public readonly backendServers: pulumi.Output<string>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * ID of the load balancer.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    public readonly serverType!: pulumi.Output<string | undefined>;
+    declare public readonly serverType: pulumi.Output<string | undefined>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    public readonly weight!: pulumi.Output<number | undefined>;
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a Attachment resource with the given unique name, arguments, and options.
@@ -141,26 +141,26 @@ export class Attachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
-            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["serverType"] = state ? state.serverType : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["backendServers"] = state?.backendServers;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["serverType"] = state?.serverType;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["serverType"] = args ? args.serverType : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["backendServers"] = args?.backendServers;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["serverType"] = args?.serverType;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Attachment.__pulumiType, name, resourceInputs, opts);

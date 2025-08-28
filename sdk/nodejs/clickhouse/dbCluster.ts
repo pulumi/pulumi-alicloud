@@ -92,114 +92,114 @@ export class DbCluster extends pulumi.CustomResource {
     /**
      * Whether to enable public connection. Value options: `true`, `false`.
      */
-    public readonly allocatePublicConnection!: pulumi.Output<boolean | undefined>;
+    declare public readonly allocatePublicConnection: pulumi.Output<boolean | undefined>;
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
      */
-    public readonly coldStorage!: pulumi.Output<string>;
+    declare public readonly coldStorage: pulumi.Output<string>;
     /**
      * (Available since v1.196.0) - The connection string of the cluster.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
-    public readonly dbClusterAccessWhiteLists!: pulumi.Output<outputs.clickhouse.DbClusterDbClusterAccessWhiteList[] | undefined>;
+    declare public readonly dbClusterAccessWhiteLists: pulumi.Output<outputs.clickhouse.DbClusterDbClusterAccessWhiteList[] | undefined>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
      */
-    public readonly dbClusterClass!: pulumi.Output<string>;
+    declare public readonly dbClusterClass: pulumi.Output<string>;
     /**
      * The DBCluster description.
      */
-    public readonly dbClusterDescription!: pulumi.Output<string>;
+    declare public readonly dbClusterDescription: pulumi.Output<string>;
     /**
      * The DBCluster network type. Valid values: `vpc`.
      */
-    public readonly dbClusterNetworkType!: pulumi.Output<string>;
+    declare public readonly dbClusterNetworkType: pulumi.Output<string>;
     /**
      * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
-    public readonly dbClusterVersion!: pulumi.Output<string>;
+    declare public readonly dbClusterVersion: pulumi.Output<string>;
     /**
      * The db node group count. The number should between 1 and 48.
      */
-    public readonly dbNodeGroupCount!: pulumi.Output<number>;
+    declare public readonly dbNodeGroupCount: pulumi.Output<number>;
     /**
      * The db node storage.
      */
-    public readonly dbNodeStorage!: pulumi.Output<string>;
+    declare public readonly dbNodeStorage: pulumi.Output<string>;
     /**
      * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      */
-    public readonly encryptionType!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionType: pulumi.Output<string | undefined>;
     /**
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
-    public readonly maintainTime!: pulumi.Output<string>;
+    declare public readonly maintainTime: pulumi.Output<string>;
     /**
      * The zone IDs and 
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
-    public readonly multiZoneVswitchLists!: pulumi.Output<outputs.clickhouse.DbClusterMultiZoneVswitchList[] | undefined>;
+    declare public readonly multiZoneVswitchLists: pulumi.Output<outputs.clickhouse.DbClusterMultiZoneVswitchList[] | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the cluster.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
      */
-    public /*out*/ readonly publicConnectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicConnectionString: pulumi.Output<string>;
     /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
-    public readonly usedTime!: pulumi.Output<string | undefined>;
+    declare public readonly usedTime: pulumi.Output<string | undefined>;
     /**
      * The id of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitch id of DBCluster.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DbCluster resource with the given unique name, arguments, and options.
@@ -214,83 +214,83 @@ export class DbCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
-            resourceInputs["allocatePublicConnection"] = state ? state.allocatePublicConnection : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["coldStorage"] = state ? state.coldStorage : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
-            resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
-            resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
-            resourceInputs["dbClusterNetworkType"] = state ? state.dbClusterNetworkType : undefined;
-            resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
-            resourceInputs["dbNodeGroupCount"] = state ? state.dbNodeGroupCount : undefined;
-            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
-            resourceInputs["multiZoneVswitchLists"] = state ? state.multiZoneVswitchLists : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["publicConnectionString"] = state ? state.publicConnectionString : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["allocatePublicConnection"] = state?.allocatePublicConnection;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["coldStorage"] = state?.coldStorage;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbClusterAccessWhiteLists"] = state?.dbClusterAccessWhiteLists;
+            resourceInputs["dbClusterClass"] = state?.dbClusterClass;
+            resourceInputs["dbClusterDescription"] = state?.dbClusterDescription;
+            resourceInputs["dbClusterNetworkType"] = state?.dbClusterNetworkType;
+            resourceInputs["dbClusterVersion"] = state?.dbClusterVersion;
+            resourceInputs["dbNodeGroupCount"] = state?.dbNodeGroupCount;
+            resourceInputs["dbNodeStorage"] = state?.dbNodeStorage;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["maintainTime"] = state?.maintainTime;
+            resourceInputs["multiZoneVswitchLists"] = state?.multiZoneVswitchLists;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["publicConnectionString"] = state?.publicConnectionString;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["usedTime"] = state?.usedTime;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DbClusterArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.dbClusterClass === undefined) && !opts.urn) {
+            if (args?.dbClusterClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterClass'");
             }
-            if ((!args || args.dbClusterNetworkType === undefined) && !opts.urn) {
+            if (args?.dbClusterNetworkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterNetworkType'");
             }
-            if ((!args || args.dbClusterVersion === undefined) && !opts.urn) {
+            if (args?.dbClusterVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterVersion'");
             }
-            if ((!args || args.dbNodeGroupCount === undefined) && !opts.urn) {
+            if (args?.dbNodeGroupCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeGroupCount'");
             }
-            if ((!args || args.dbNodeStorage === undefined) && !opts.urn) {
+            if (args?.dbNodeStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeStorage'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.storageType === undefined) && !opts.urn) {
+            if (args?.storageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            resourceInputs["allocatePublicConnection"] = args ? args.allocatePublicConnection : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["coldStorage"] = args ? args.coldStorage : undefined;
-            resourceInputs["dbClusterAccessWhiteLists"] = args ? args.dbClusterAccessWhiteLists : undefined;
-            resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
-            resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
-            resourceInputs["dbClusterNetworkType"] = args ? args.dbClusterNetworkType : undefined;
-            resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
-            resourceInputs["dbNodeGroupCount"] = args ? args.dbNodeGroupCount : undefined;
-            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
-            resourceInputs["multiZoneVswitchLists"] = args ? args.multiZoneVswitchLists : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["allocatePublicConnection"] = args?.allocatePublicConnection;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["coldStorage"] = args?.coldStorage;
+            resourceInputs["dbClusterAccessWhiteLists"] = args?.dbClusterAccessWhiteLists;
+            resourceInputs["dbClusterClass"] = args?.dbClusterClass;
+            resourceInputs["dbClusterDescription"] = args?.dbClusterDescription;
+            resourceInputs["dbClusterNetworkType"] = args?.dbClusterNetworkType;
+            resourceInputs["dbClusterVersion"] = args?.dbClusterVersion;
+            resourceInputs["dbNodeGroupCount"] = args?.dbNodeGroupCount;
+            resourceInputs["dbNodeStorage"] = args?.dbNodeStorage;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["maintainTime"] = args?.maintainTime;
+            resourceInputs["multiZoneVswitchLists"] = args?.multiZoneVswitchLists;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["usedTime"] = args?.usedTime;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["publicConnectionString"] = undefined /*out*/;

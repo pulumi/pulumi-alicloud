@@ -76,19 +76,19 @@ export class DhcpOptionsSetAttachment extends pulumi.CustomResource {
     /**
      * The ID of the DHCP options set.
      */
-    public readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    declare public readonly dhcpOptionsSetId: pulumi.Output<string>;
     /**
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC network that is to be associated with the DHCP options set..
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a DhcpOptionsSetAttachment resource with the given unique name, arguments, and options.
@@ -103,21 +103,21 @@ export class DhcpOptionsSetAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DhcpOptionsSetAttachmentState | undefined;
-            resourceInputs["dhcpOptionsSetId"] = state ? state.dhcpOptionsSetId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["dhcpOptionsSetId"] = state?.dhcpOptionsSetId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as DhcpOptionsSetAttachmentArgs | undefined;
-            if ((!args || args.dhcpOptionsSetId === undefined) && !opts.urn) {
+            if (args?.dhcpOptionsSetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dhcpOptionsSetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["dhcpOptionsSetId"] = args ? args.dhcpOptionsSetId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["dhcpOptionsSetId"] = args?.dhcpOptionsSetId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

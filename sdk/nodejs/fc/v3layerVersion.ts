@@ -75,47 +75,47 @@ export class V3LayerVersion extends pulumi.CustomResource {
     /**
      * The access permission of the layer, 1: public, 0: private, default is private
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * Layer code configuration See `code` below.
      */
-    public readonly code!: pulumi.Output<outputs.fc.V3LayerVersionCode | undefined>;
+    declare public readonly code: pulumi.Output<outputs.fc.V3LayerVersionCode | undefined>;
     /**
      * (Available since v1.234.0) The code package size of the layer, in bytes.
      */
-    public /*out*/ readonly codeSize!: pulumi.Output<string>;
+    declare public /*out*/ readonly codeSize: pulumi.Output<string>;
     /**
      * List of runtime environments supported by the layer
      */
-    public readonly compatibleRuntimes!: pulumi.Output<string[]>;
+    declare public readonly compatibleRuntimes: pulumi.Output<string[]>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the version
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the layer
      */
-    public readonly layerName!: pulumi.Output<string>;
+    declare public readonly layerName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
      */
-    public /*out*/ readonly layerVersionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly layerVersionArn: pulumi.Output<string>;
     /**
      * Layer License Agreement
      */
-    public readonly license!: pulumi.Output<string | undefined>;
+    declare public readonly license: pulumi.Output<string | undefined>;
     /**
      * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
      */
-    public readonly public!: pulumi.Output<string | undefined>;
+    declare public readonly public: pulumi.Output<string | undefined>;
     /**
      * The version of the layer
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a V3LayerVersion resource with the given unique name, arguments, and options.
@@ -130,29 +130,29 @@ export class V3LayerVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3LayerVersionState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["code"] = state ? state.code : undefined;
-            resourceInputs["codeSize"] = state ? state.codeSize : undefined;
-            resourceInputs["compatibleRuntimes"] = state ? state.compatibleRuntimes : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["layerName"] = state ? state.layerName : undefined;
-            resourceInputs["layerVersionArn"] = state ? state.layerVersionArn : undefined;
-            resourceInputs["license"] = state ? state.license : undefined;
-            resourceInputs["public"] = state ? state.public : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["codeSize"] = state?.codeSize;
+            resourceInputs["compatibleRuntimes"] = state?.compatibleRuntimes;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["layerName"] = state?.layerName;
+            resourceInputs["layerVersionArn"] = state?.layerVersionArn;
+            resourceInputs["license"] = state?.license;
+            resourceInputs["public"] = state?.public;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as V3LayerVersionArgs | undefined;
-            if ((!args || args.layerName === undefined) && !opts.urn) {
+            if (args?.layerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'layerName'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["code"] = args ? args.code : undefined;
-            resourceInputs["compatibleRuntimes"] = args ? args.compatibleRuntimes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["layerName"] = args ? args.layerName : undefined;
-            resourceInputs["license"] = args ? args.license : undefined;
-            resourceInputs["public"] = args ? args.public : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["compatibleRuntimes"] = args?.compatibleRuntimes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["layerName"] = args?.layerName;
+            resourceInputs["license"] = args?.license;
+            resourceInputs["public"] = args?.public;
             resourceInputs["codeSize"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["layerVersionArn"] = undefined /*out*/;

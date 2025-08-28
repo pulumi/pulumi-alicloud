@@ -87,27 +87,27 @@ export class Fileset extends pulumi.CustomResource {
     /**
      * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The path of the fileset.
      */
-    public readonly fileSystemPath!: pulumi.Output<string>;
+    declare public readonly fileSystemPath: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly filesetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly filesetId: pulumi.Output<string>;
     /**
      * The status of the fileset.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Fileset resource with the given unique name, arguments, and options.
@@ -122,24 +122,24 @@ export class Fileset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilesetState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["fileSystemPath"] = state ? state.fileSystemPath : undefined;
-            resourceInputs["filesetId"] = state ? state.filesetId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["fileSystemPath"] = state?.fileSystemPath;
+            resourceInputs["filesetId"] = state?.filesetId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as FilesetArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.fileSystemPath === undefined) && !opts.urn) {
+            if (args?.fileSystemPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemPath'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["fileSystemPath"] = args ? args.fileSystemPath : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["fileSystemPath"] = args?.fileSystemPath;
             resourceInputs["filesetId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -91,75 +91,75 @@ export class DbCluster extends pulumi.CustomResource {
     /**
      * The desired cache size on creating cluster. The number should be divided by 100.
      */
-    public readonly cacheSize!: pulumi.Output<number>;
+    declare public readonly cacheSize: pulumi.Output<number>;
     /**
      * The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      */
-    public /*out*/ readonly cpu!: pulumi.Output<number>;
+    declare public /*out*/ readonly cpu: pulumi.Output<number>;
     /**
      * The time when DBCluster is created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      */
-    public readonly dbClusterClass!: pulumi.Output<string>;
+    declare public readonly dbClusterClass: pulumi.Output<string>;
     /**
      * The DBCluster description.
      */
-    public readonly dbClusterDescription!: pulumi.Output<string>;
+    declare public readonly dbClusterDescription: pulumi.Output<string>;
     /**
      * The id of the cluster.
      */
-    public /*out*/ readonly dbClusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbClusterId: pulumi.Output<string>;
     /**
      * The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The modified parameter in DBCluster. See `desiredParams` below.
      */
-    public readonly desiredParams!: pulumi.Output<outputs.selectdb.DbClusterDesiredParam[] | undefined>;
+    declare public readonly desiredParams: pulumi.Output<outputs.selectdb.DbClusterDesiredParam[] | undefined>;
     /**
      * The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
-    public readonly desiredStatus!: pulumi.Output<string | undefined>;
+    declare public readonly desiredStatus: pulumi.Output<string | undefined>;
     /**
      * The engine of DBCluster. Always `selectdb`.
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * The version of DBCluster.
      */
-    public /*out*/ readonly engineVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly engineVersion: pulumi.Output<string>;
     /**
      * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      */
-    public /*out*/ readonly memory!: pulumi.Output<number>;
+    declare public /*out*/ readonly memory: pulumi.Output<number>;
     /**
      * The details about parameter changelogs in DBCluster returned.
      */
-    public /*out*/ readonly paramChangeLogs!: pulumi.Output<outputs.selectdb.DbClusterParamChangeLog[]>;
+    declare public /*out*/ readonly paramChangeLogs: pulumi.Output<outputs.selectdb.DbClusterParamChangeLog[]>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The ID of region for the cluster.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The current status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC for the cluster.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of zone for the cluster.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DbCluster resource with the given unique name, arguments, and options.
@@ -174,48 +174,48 @@ export class DbCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
-            resourceInputs["cacheSize"] = state ? state.cacheSize : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
-            resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["desiredParams"] = state ? state.desiredParams : undefined;
-            resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["paramChangeLogs"] = state ? state.paramChangeLogs : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["cacheSize"] = state?.cacheSize;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbClusterClass"] = state?.dbClusterClass;
+            resourceInputs["dbClusterDescription"] = state?.dbClusterDescription;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["desiredParams"] = state?.desiredParams;
+            resourceInputs["desiredStatus"] = state?.desiredStatus;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["paramChangeLogs"] = state?.paramChangeLogs;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DbClusterArgs | undefined;
-            if ((!args || args.cacheSize === undefined) && !opts.urn) {
+            if (args?.cacheSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cacheSize'");
             }
-            if ((!args || args.dbClusterClass === undefined) && !opts.urn) {
+            if (args?.dbClusterClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterClass'");
             }
-            if ((!args || args.dbClusterDescription === undefined) && !opts.urn) {
+            if (args?.dbClusterDescription === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterDescription'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["cacheSize"] = args ? args.cacheSize : undefined;
-            resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
-            resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["desiredParams"] = args ? args.desiredParams : undefined;
-            resourceInputs["desiredStatus"] = args ? args.desiredStatus : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["cacheSize"] = args?.cacheSize;
+            resourceInputs["dbClusterClass"] = args?.dbClusterClass;
+            resourceInputs["dbClusterDescription"] = args?.dbClusterDescription;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["desiredParams"] = args?.desiredParams;
+            resourceInputs["desiredStatus"] = args?.desiredStatus;
+            resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbClusterId"] = undefined /*out*/;

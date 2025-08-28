@@ -84,11 +84,11 @@ export class V3VpcBinding extends pulumi.CustomResource {
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * VPC instance ID
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a V3VpcBinding resource with the given unique name, arguments, and options.
@@ -103,15 +103,15 @@ export class V3VpcBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3VpcBindingState | undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as V3VpcBindingArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["vpcId"] = args?.vpcId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3VpcBinding.__pulumiType, name, resourceInputs, opts);

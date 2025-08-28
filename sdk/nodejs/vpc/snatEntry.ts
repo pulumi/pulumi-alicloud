@@ -96,35 +96,35 @@ export class SnatEntry extends pulumi.CustomResource {
     /**
      * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
      */
-    public readonly eipAffinity!: pulumi.Output<number | undefined>;
+    declare public readonly eipAffinity: pulumi.Output<number | undefined>;
     /**
      * The id of the snat entry on the server.
      */
-    public /*out*/ readonly snatEntryId!: pulumi.Output<string>;
+    declare public /*out*/ readonly snatEntryId: pulumi.Output<string>;
     /**
      * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly snatEntryName!: pulumi.Output<string | undefined>;
+    declare public readonly snatEntryName: pulumi.Output<string | undefined>;
     /**
      * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
-    public readonly snatIp!: pulumi.Output<string>;
+    declare public readonly snatIp: pulumi.Output<string>;
     /**
      * The ID of the SNAT table.
      */
-    public readonly snatTableId!: pulumi.Output<string>;
+    declare public readonly snatTableId: pulumi.Output<string>;
     /**
      * The source CIDR block specified in the SNAT entry.
      */
-    public readonly sourceCidr!: pulumi.Output<string>;
+    declare public readonly sourceCidr: pulumi.Output<string>;
     /**
      * The ID of the vSwitch.
      */
-    public readonly sourceVswitchId!: pulumi.Output<string>;
+    declare public readonly sourceVswitchId: pulumi.Output<string>;
     /**
      * (Available since v1.119.1) The ID of the SNAT entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class SnatEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
-            resourceInputs["eipAffinity"] = state ? state.eipAffinity : undefined;
-            resourceInputs["snatEntryId"] = state ? state.snatEntryId : undefined;
-            resourceInputs["snatEntryName"] = state ? state.snatEntryName : undefined;
-            resourceInputs["snatIp"] = state ? state.snatIp : undefined;
-            resourceInputs["snatTableId"] = state ? state.snatTableId : undefined;
-            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            resourceInputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["eipAffinity"] = state?.eipAffinity;
+            resourceInputs["snatEntryId"] = state?.snatEntryId;
+            resourceInputs["snatEntryName"] = state?.snatEntryName;
+            resourceInputs["snatIp"] = state?.snatIp;
+            resourceInputs["snatTableId"] = state?.snatTableId;
+            resourceInputs["sourceCidr"] = state?.sourceCidr;
+            resourceInputs["sourceVswitchId"] = state?.sourceVswitchId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
-            if ((!args || args.snatIp === undefined) && !opts.urn) {
+            if (args?.snatIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snatIp'");
             }
-            if ((!args || args.snatTableId === undefined) && !opts.urn) {
+            if (args?.snatTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snatTableId'");
             }
-            resourceInputs["eipAffinity"] = args ? args.eipAffinity : undefined;
-            resourceInputs["snatEntryName"] = args ? args.snatEntryName : undefined;
-            resourceInputs["snatIp"] = args ? args.snatIp : undefined;
-            resourceInputs["snatTableId"] = args ? args.snatTableId : undefined;
-            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            resourceInputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
+            resourceInputs["eipAffinity"] = args?.eipAffinity;
+            resourceInputs["snatEntryName"] = args?.snatEntryName;
+            resourceInputs["snatIp"] = args?.snatIp;
+            resourceInputs["snatTableId"] = args?.snatTableId;
+            resourceInputs["sourceCidr"] = args?.sourceCidr;
+            resourceInputs["sourceVswitchId"] = args?.sourceVswitchId;
             resourceInputs["snatEntryId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

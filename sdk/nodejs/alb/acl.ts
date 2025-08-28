@@ -70,27 +70,27 @@ export class Acl extends pulumi.CustomResource {
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
-    public readonly aclEntries!: pulumi.Output<outputs.alb.AclAclEntry[]>;
+    declare public readonly aclEntries: pulumi.Output<outputs.alb.AclAclEntry[]>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
-    public readonly aclName!: pulumi.Output<string | undefined>;
+    declare public readonly aclName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to precheck the API request.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -105,19 +105,19 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["aclEntries"] = state ? state.aclEntries : undefined;
-            resourceInputs["aclName"] = state ? state.aclName : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aclEntries"] = state?.aclEntries;
+            resourceInputs["aclName"] = state?.aclName;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            resourceInputs["aclEntries"] = args ? args.aclEntries : undefined;
-            resourceInputs["aclName"] = args ? args.aclName : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aclEntries"] = args?.aclEntries;
+            resourceInputs["aclName"] = args?.aclName;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

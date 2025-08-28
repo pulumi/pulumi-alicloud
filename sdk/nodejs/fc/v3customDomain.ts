@@ -226,51 +226,51 @@ export class V3CustomDomain extends pulumi.CustomResource {
     /**
      * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) API version of Function Compute
      */
-    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiVersion: pulumi.Output<string>;
     /**
      * Permission authentication configuration See `authConfig` below.
      */
-    public readonly authConfig!: pulumi.Output<outputs.fc.V3CustomDomainAuthConfig | undefined>;
+    declare public readonly authConfig: pulumi.Output<outputs.fc.V3CustomDomainAuthConfig | undefined>;
     /**
      * HTTPS certificate information See `certConfig` below.
      */
-    public readonly certConfig!: pulumi.Output<outputs.fc.V3CustomDomainCertConfig>;
+    declare public readonly certConfig: pulumi.Output<outputs.fc.V3CustomDomainCertConfig>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly customDomainName!: pulumi.Output<string>;
+    declare public readonly customDomainName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) The last time the custom domain name was Updated
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * Route matching rule configuration See `routeConfig` below.
      */
-    public readonly routeConfig!: pulumi.Output<outputs.fc.V3CustomDomainRouteConfig | undefined>;
+    declare public readonly routeConfig: pulumi.Output<outputs.fc.V3CustomDomainRouteConfig | undefined>;
     /**
      * (Available since v1.234.0) Number of subdomains
      */
-    public /*out*/ readonly subdomainCount!: pulumi.Output<string>;
+    declare public /*out*/ readonly subdomainCount: pulumi.Output<string>;
     /**
      * TLS configuration information See `tlsConfig` below.
      */
-    public readonly tlsConfig!: pulumi.Output<outputs.fc.V3CustomDomainTlsConfig>;
+    declare public readonly tlsConfig: pulumi.Output<outputs.fc.V3CustomDomainTlsConfig>;
     /**
      * Web application firewall configuration information See `wafConfig` below.
      */
-    public readonly wafConfig!: pulumi.Output<outputs.fc.V3CustomDomainWafConfig | undefined>;
+    declare public readonly wafConfig: pulumi.Output<outputs.fc.V3CustomDomainWafConfig | undefined>;
 
     /**
      * Create a V3CustomDomain resource with the given unique name, arguments, and options.
@@ -285,27 +285,27 @@ export class V3CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3CustomDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
-            resourceInputs["authConfig"] = state ? state.authConfig : undefined;
-            resourceInputs["certConfig"] = state ? state.certConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customDomainName"] = state ? state.customDomainName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["routeConfig"] = state ? state.routeConfig : undefined;
-            resourceInputs["subdomainCount"] = state ? state.subdomainCount : undefined;
-            resourceInputs["tlsConfig"] = state ? state.tlsConfig : undefined;
-            resourceInputs["wafConfig"] = state ? state.wafConfig : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["apiVersion"] = state?.apiVersion;
+            resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["certConfig"] = state?.certConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customDomainName"] = state?.customDomainName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["routeConfig"] = state?.routeConfig;
+            resourceInputs["subdomainCount"] = state?.subdomainCount;
+            resourceInputs["tlsConfig"] = state?.tlsConfig;
+            resourceInputs["wafConfig"] = state?.wafConfig;
         } else {
             const args = argsOrState as V3CustomDomainArgs | undefined;
-            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
-            resourceInputs["certConfig"] = args ? args.certConfig : undefined;
-            resourceInputs["customDomainName"] = args ? args.customDomainName : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["routeConfig"] = args ? args.routeConfig : undefined;
-            resourceInputs["tlsConfig"] = args ? args.tlsConfig : undefined;
-            resourceInputs["wafConfig"] = args ? args.wafConfig : undefined;
+            resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["certConfig"] = args?.certConfig;
+            resourceInputs["customDomainName"] = args?.customDomainName;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["routeConfig"] = args?.routeConfig;
+            resourceInputs["tlsConfig"] = args?.tlsConfig;
+            resourceInputs["wafConfig"] = args?.wafConfig;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

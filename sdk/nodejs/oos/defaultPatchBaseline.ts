@@ -67,11 +67,11 @@ export class DefaultPatchBaseline extends pulumi.CustomResource {
     /**
      * The ID of the patch baseline.
      */
-    public /*out*/ readonly patchBaselineId!: pulumi.Output<string>;
+    declare public /*out*/ readonly patchBaselineId: pulumi.Output<string>;
     /**
      * The name of the patch baseline.
      */
-    public readonly patchBaselineName!: pulumi.Output<string>;
+    declare public readonly patchBaselineName: pulumi.Output<string>;
 
     /**
      * Create a DefaultPatchBaseline resource with the given unique name, arguments, and options.
@@ -86,14 +86,14 @@ export class DefaultPatchBaseline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultPatchBaselineState | undefined;
-            resourceInputs["patchBaselineId"] = state ? state.patchBaselineId : undefined;
-            resourceInputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
+            resourceInputs["patchBaselineId"] = state?.patchBaselineId;
+            resourceInputs["patchBaselineName"] = state?.patchBaselineName;
         } else {
             const args = argsOrState as DefaultPatchBaselineArgs | undefined;
-            if ((!args || args.patchBaselineName === undefined) && !opts.urn) {
+            if (args?.patchBaselineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'patchBaselineName'");
             }
-            resourceInputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
+            resourceInputs["patchBaselineName"] = args?.patchBaselineName;
             resourceInputs["patchBaselineId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

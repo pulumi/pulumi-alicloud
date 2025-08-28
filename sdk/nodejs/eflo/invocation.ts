@@ -49,11 +49,11 @@ export class Invocation extends pulumi.CustomResource {
      * - Custom parameter names can a-zA-Z0-9 a combination of-_. Other characters are not supported. Parameter names are not case-sensitive.
      * - A single custom parameter name cannot exceed 64 bytes.
      */
-    public readonly commandContent!: pulumi.Output<string | undefined>;
+    declare public readonly commandContent: pulumi.Output<string | undefined>;
     /**
      * Command ID
      */
-    public readonly commandId!: pulumi.Output<string | undefined>;
+    declare public readonly commandId: pulumi.Output<string | undefined>;
     /**
      * The encoding of the script content. Value range:
      * - PlainText: no encoding, using PlainText transmission.
@@ -61,16 +61,16 @@ export class Invocation extends pulumi.CustomResource {
      *
      * Default value: PlainText. If you fill it randomly or wrongly, the value will be treated as a PlainText.
      */
-    public readonly contentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly contentEncoding: pulumi.Output<string | undefined>;
     /**
      * The command description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether custom parameters are included in the command.
      * Default value: false.
      */
-    public readonly enableParameter!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableParameter: pulumi.Output<boolean | undefined>;
     /**
      * The execution time of the scheduled execution command. Currently, three scheduled execution methods are supported: fixed interval execution (based on Rate expression), only once at a specified time, and timed execution based on clock (based on Cron expression).
      * - Fixed time interval execution: Based on the Rate expression, the command is executed at the set time interval. Time intervals can be selected by seconds (s), minutes (m), hours (h), and days (d), which is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate( ). If the execution is performed every 5 minutes, the format is rate(5m). Executing with a fixed time interval has the following limitations:
@@ -86,19 +86,19 @@ export class Invocation extends pulumi.CustomResource {
      *
      * For example, in China/Shanghai time, the command will be executed once every day at 10:15 am in 2022 in the format 0 15 10? * * 2022 Asia/Shanghai; In the eastern 8th District time, it will be executed every half hour from 10:00 a.m. to 11:30 a.m. every day in 2022, in the format of 0 0/30 10-11 * *? 2022 GMT +8:00; In UTC time, starting from 2022, it will be executed every 5 minutes from 14:00 P.M. to 14:55 p. M. Every two years in October, in the format of 0 0/5 14*10? 2022/2 UTC.
      */
-    public readonly frequency!: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string | undefined>;
     /**
      * The bootstrapper for script execution. The length cannot exceed 1KB.
      */
-    public readonly launcher!: pulumi.Output<string | undefined>;
+    declare public readonly launcher: pulumi.Output<string | undefined>;
     /**
      * The command name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of nodes.
      */
-    public readonly nodeIdLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly nodeIdLists: pulumi.Output<string[] | undefined>;
     /**
      * When the command contains custom parameters, the key-value pair of the custom parameters passed in when the command is executed. For example, if the command content is 'echo {{name}}', the key-value pair'{"name":"Jack"}'can be passed through the 'Parameter' parameter'. The custom parameter will automatically replace the variable value 'name' to get a new command that actually executes 'echo Jack '.
      *
@@ -110,7 +110,7 @@ export class Invocation extends pulumi.CustomResource {
      *
      * The default value is empty, which means that the parameter is unset and the custom parameter is disabled.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly parameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Sets the way the command is executed. Value range:
      * - Once: Execute the command immediately.
@@ -122,27 +122,27 @@ export class Invocation extends pulumi.CustomResource {
      * - When the'frequency' parameter is not specified, the default value is'once '.
      * - When the'frequency' parameter is specified, regardless of whether the parameter value has been set or not, it will be processed according to'period.
      */
-    public readonly repeatMode!: pulumi.Output<string | undefined>;
+    declare public readonly repeatMode: pulumi.Output<string | undefined>;
     /**
      * The mode when the task is stopped (manually stopped or execution time-out interrupted). Possible values:
      * Process: Stops the current script Process.
      * ProcessTree: Stops the current process tree (the script process and the collection of all child processes it created)
      */
-    public readonly terminationMode!: pulumi.Output<string | undefined>;
+    declare public readonly terminationMode: pulumi.Output<string | undefined>;
     /**
      * The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
      */
-    public readonly timeout!: pulumi.Output<number | undefined>;
+    declare public readonly timeout: pulumi.Output<number | undefined>;
     /**
      * The name of the user who executed the command in the instance. The length must not exceed 255 characters.
      * The instance of the Linux system. By default, the root user runs commands.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * You can customize the command execution path. The default path is as follows:
      * Linux instance: the execution path is in the/home directory of the root user by default.
      */
-    public readonly workingDir!: pulumi.Output<string | undefined>;
+    declare public readonly workingDir: pulumi.Output<string | undefined>;
 
     /**
      * Create a Invocation resource with the given unique name, arguments, and options.
@@ -157,38 +157,38 @@ export class Invocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InvocationState | undefined;
-            resourceInputs["commandContent"] = state ? state.commandContent : undefined;
-            resourceInputs["commandId"] = state ? state.commandId : undefined;
-            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableParameter"] = state ? state.enableParameter : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["launcher"] = state ? state.launcher : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeIdLists"] = state ? state.nodeIdLists : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["repeatMode"] = state ? state.repeatMode : undefined;
-            resourceInputs["terminationMode"] = state ? state.terminationMode : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["workingDir"] = state ? state.workingDir : undefined;
+            resourceInputs["commandContent"] = state?.commandContent;
+            resourceInputs["commandId"] = state?.commandId;
+            resourceInputs["contentEncoding"] = state?.contentEncoding;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableParameter"] = state?.enableParameter;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["launcher"] = state?.launcher;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeIdLists"] = state?.nodeIdLists;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["repeatMode"] = state?.repeatMode;
+            resourceInputs["terminationMode"] = state?.terminationMode;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["workingDir"] = state?.workingDir;
         } else {
             const args = argsOrState as InvocationArgs | undefined;
-            resourceInputs["commandContent"] = args ? args.commandContent : undefined;
-            resourceInputs["commandId"] = args ? args.commandId : undefined;
-            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableParameter"] = args ? args.enableParameter : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["launcher"] = args ? args.launcher : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeIdLists"] = args ? args.nodeIdLists : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["repeatMode"] = args ? args.repeatMode : undefined;
-            resourceInputs["terminationMode"] = args ? args.terminationMode : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["workingDir"] = args ? args.workingDir : undefined;
+            resourceInputs["commandContent"] = args?.commandContent;
+            resourceInputs["commandId"] = args?.commandId;
+            resourceInputs["contentEncoding"] = args?.contentEncoding;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableParameter"] = args?.enableParameter;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["launcher"] = args?.launcher;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeIdLists"] = args?.nodeIdLists;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["repeatMode"] = args?.repeatMode;
+            resourceInputs["terminationMode"] = args?.terminationMode;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["workingDir"] = args?.workingDir;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Invocation.__pulumiType, name, resourceInputs, opts);

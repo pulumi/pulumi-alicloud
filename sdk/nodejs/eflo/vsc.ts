@@ -69,27 +69,27 @@ export class Vsc extends pulumi.CustomResource {
     /**
      * The ID of the Node.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the Vsc.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the Vsc.
      */
-    public readonly vscName!: pulumi.Output<string | undefined>;
+    declare public readonly vscName: pulumi.Output<string | undefined>;
     /**
      * The type of the Vsc. Default value: `primary`. Valid values: `primary`.
      */
-    public readonly vscType!: pulumi.Output<string>;
+    declare public readonly vscType: pulumi.Output<string>;
 
     /**
      * Create a Vsc resource with the given unique name, arguments, and options.
@@ -104,22 +104,22 @@ export class Vsc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VscState | undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vscName"] = state ? state.vscName : undefined;
-            resourceInputs["vscType"] = state ? state.vscType : undefined;
+            resourceInputs["nodeId"] = state?.nodeId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vscName"] = state?.vscName;
+            resourceInputs["vscType"] = state?.vscType;
         } else {
             const args = argsOrState as VscArgs | undefined;
-            if ((!args || args.nodeId === undefined) && !opts.urn) {
+            if (args?.nodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vscName"] = args ? args.vscName : undefined;
-            resourceInputs["vscType"] = args ? args.vscType : undefined;
+            resourceInputs["nodeId"] = args?.nodeId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vscName"] = args?.vscName;
+            resourceInputs["vscType"] = args?.vscType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

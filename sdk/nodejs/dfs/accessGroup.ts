@@ -69,19 +69,19 @@ export class AccessGroup extends pulumi.CustomResource {
     /**
      * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
-    public readonly accessGroupName!: pulumi.Output<string>;
+    declare public readonly accessGroupName: pulumi.Output<string>;
     /**
      * The creation time of the permission group resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The permission group description.  No more than 32 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The permission group type. Only VPC (VPC) is supported.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
 
     /**
      * Create a AccessGroup resource with the given unique name, arguments, and options.
@@ -96,21 +96,21 @@ export class AccessGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
-            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["accessGroupName"] = state?.accessGroupName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["networkType"] = state?.networkType;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            if ((!args || args.accessGroupName === undefined) && !opts.urn) {
+            if (args?.accessGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            if ((!args || args.networkType === undefined) && !opts.urn) {
+            if (args?.networkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["accessGroupName"] = args?.accessGroupName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["networkType"] = args?.networkType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

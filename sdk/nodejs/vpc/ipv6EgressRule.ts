@@ -125,31 +125,31 @@ export class Ipv6EgressRule extends pulumi.CustomResource {
     /**
      * The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the IPv6 address to which you want to apply the egress-only rule.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The ID of the IPv6 EgressRule.
      */
-    public /*out*/ readonly ipv6EgressRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6EgressRuleId: pulumi.Output<string>;
     /**
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly ipv6EgressRuleName!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6EgressRuleName: pulumi.Output<string | undefined>;
     /**
      * The ID of the IPv6 gateway.
      */
-    public readonly ipv6GatewayId!: pulumi.Output<string>;
+    declare public readonly ipv6GatewayId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Ipv6EgressRule resource with the given unique name, arguments, and options.
@@ -164,26 +164,26 @@ export class Ipv6EgressRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6EgressRuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipv6EgressRuleId"] = state ? state.ipv6EgressRuleId : undefined;
-            resourceInputs["ipv6EgressRuleName"] = state ? state.ipv6EgressRuleName : undefined;
-            resourceInputs["ipv6GatewayId"] = state ? state.ipv6GatewayId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipv6EgressRuleId"] = state?.ipv6EgressRuleId;
+            resourceInputs["ipv6EgressRuleName"] = state?.ipv6EgressRuleName;
+            resourceInputs["ipv6GatewayId"] = state?.ipv6GatewayId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as Ipv6EgressRuleArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.ipv6GatewayId === undefined) && !opts.urn) {
+            if (args?.ipv6GatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipv6GatewayId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ipv6EgressRuleName"] = args ? args.ipv6EgressRuleName : undefined;
-            resourceInputs["ipv6GatewayId"] = args ? args.ipv6GatewayId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ipv6EgressRuleName"] = args?.ipv6EgressRuleName;
+            resourceInputs["ipv6GatewayId"] = args?.ipv6GatewayId;
             resourceInputs["ipv6EgressRuleId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

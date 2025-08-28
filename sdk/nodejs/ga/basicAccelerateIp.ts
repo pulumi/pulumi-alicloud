@@ -80,19 +80,19 @@ export class BasicAccelerateIp extends pulumi.CustomResource {
     /**
      * The address of the Basic Accelerate IP.
      */
-    public /*out*/ readonly accelerateIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly accelerateIpAddress: pulumi.Output<string>;
     /**
      * The ID of the Basic GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the Basic Ip Set.
      */
-    public readonly ipSetId!: pulumi.Output<string>;
+    declare public readonly ipSetId: pulumi.Output<string>;
     /**
      * The status of the Basic Accelerate IP instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BasicAccelerateIp resource with the given unique name, arguments, and options.
@@ -107,20 +107,20 @@ export class BasicAccelerateIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicAccelerateIpState | undefined;
-            resourceInputs["accelerateIpAddress"] = state ? state.accelerateIpAddress : undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["ipSetId"] = state ? state.ipSetId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accelerateIpAddress"] = state?.accelerateIpAddress;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["ipSetId"] = state?.ipSetId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BasicAccelerateIpArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.ipSetId === undefined) && !opts.urn) {
+            if (args?.ipSetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipSetId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["ipSetId"] = args ? args.ipSetId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["ipSetId"] = args?.ipSetId;
             resourceInputs["accelerateIpAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

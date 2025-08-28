@@ -113,24 +113,24 @@ export class Dashboard extends pulumi.CustomResource {
     /**
      * Dashboard attribute.
      */
-    public readonly attribute!: pulumi.Output<string>;
+    declare public readonly attribute: pulumi.Output<string>;
     /**
      * Configuration of charts in the dashboard.
      * **Note:** From version 1.164.0, `charList` can set parameter "action".
      */
-    public readonly charList!: pulumi.Output<string>;
+    declare public readonly charList: pulumi.Output<string>;
     /**
      * The name of the Log Dashboard.
      */
-    public readonly dashboardName!: pulumi.Output<string>;
+    declare public readonly dashboardName: pulumi.Output<string>;
     /**
      * Dashboard alias.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -145,27 +145,27 @@ export class Dashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            resourceInputs["attribute"] = state ? state.attribute : undefined;
-            resourceInputs["charList"] = state ? state.charList : undefined;
-            resourceInputs["dashboardName"] = state ? state.dashboardName : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["attribute"] = state?.attribute;
+            resourceInputs["charList"] = state?.charList;
+            resourceInputs["dashboardName"] = state?.dashboardName;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["projectName"] = state?.projectName;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.charList === undefined) && !opts.urn) {
+            if (args?.charList === undefined && !opts.urn) {
                 throw new Error("Missing required property 'charList'");
             }
-            if ((!args || args.dashboardName === undefined) && !opts.urn) {
+            if (args?.dashboardName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardName'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["attribute"] = args ? args.attribute : undefined;
-            resourceInputs["charList"] = args ? args.charList : undefined;
-            resourceInputs["dashboardName"] = args ? args.dashboardName : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["attribute"] = args?.attribute;
+            resourceInputs["charList"] = args?.charList;
+            resourceInputs["dashboardName"] = args?.dashboardName;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["projectName"] = args?.projectName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);

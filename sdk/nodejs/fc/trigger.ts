@@ -579,43 +579,43 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    public readonly config!: pulumi.Output<string | undefined>;
+    declare public readonly config: pulumi.Output<string | undefined>;
     /**
      * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
      */
-    public readonly configMns!: pulumi.Output<string | undefined>;
+    declare public readonly configMns: pulumi.Output<string | undefined>;
     /**
      * The Function Compute function name.
      */
-    public readonly function!: pulumi.Output<string>;
+    declare public readonly function: pulumi.Output<string>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     /**
      * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * The Function Compute service name.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    public readonly sourceArn!: pulumi.Output<string | undefined>;
+    declare public readonly sourceArn: pulumi.Output<string | undefined>;
     /**
      * The Function Compute trigger ID.
      */
-    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly triggerId: pulumi.Output<string>;
     /**
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *
@@ -623,7 +623,7 @@ export class Trigger extends pulumi.CustomResource {
      * > **NOTE:** type = cdn_events, available in 1.47.0+.
      * > **NOTE:** type = eventbridge, available in 1.173.0+.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -638,37 +638,37 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["configMns"] = state ? state.configMns : undefined;
-            resourceInputs["function"] = state ? state.function : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["sourceArn"] = state ? state.sourceArn : undefined;
-            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["configMns"] = state?.configMns;
+            resourceInputs["function"] = state?.function;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["sourceArn"] = state?.sourceArn;
+            resourceInputs["triggerId"] = state?.triggerId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if ((!args || args.function === undefined) && !opts.urn) {
+            if (args?.function === undefined && !opts.urn) {
                 throw new Error("Missing required property 'function'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["configMns"] = args ? args.configMns : undefined;
-            resourceInputs["function"] = args ? args.function : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["sourceArn"] = args ? args.sourceArn : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["configMns"] = args?.configMns;
+            resourceInputs["function"] = args?.function;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["sourceArn"] = args?.sourceArn;
+            resourceInputs["type"] = args?.type;
             resourceInputs["lastModified"] = undefined /*out*/;
             resourceInputs["triggerId"] = undefined /*out*/;
         }

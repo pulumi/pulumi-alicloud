@@ -71,15 +71,15 @@ export class NetworkRule extends pulumi.CustomResource {
     /**
      * Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Network Rule Name.
      */
-    public readonly networkRuleName!: pulumi.Output<string>;
+    declare public readonly networkRuleName: pulumi.Output<string>;
     /**
      * Allowed private network addresses.
      */
-    public readonly sourcePrivateIps!: pulumi.Output<string[]>;
+    declare public readonly sourcePrivateIps: pulumi.Output<string[]>;
 
     /**
      * Create a NetworkRule resource with the given unique name, arguments, and options.
@@ -94,17 +94,17 @@ export class NetworkRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkRuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["networkRuleName"] = state ? state.networkRuleName : undefined;
-            resourceInputs["sourcePrivateIps"] = state ? state.sourcePrivateIps : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["networkRuleName"] = state?.networkRuleName;
+            resourceInputs["sourcePrivateIps"] = state?.sourcePrivateIps;
         } else {
             const args = argsOrState as NetworkRuleArgs | undefined;
-            if ((!args || args.sourcePrivateIps === undefined) && !opts.urn) {
+            if (args?.sourcePrivateIps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourcePrivateIps'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["networkRuleName"] = args ? args.networkRuleName : undefined;
-            resourceInputs["sourcePrivateIps"] = args ? args.sourcePrivateIps : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["networkRuleName"] = args?.networkRuleName;
+            resourceInputs["sourcePrivateIps"] = args?.sourcePrivateIps;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkRule.__pulumiType, name, resourceInputs, opts);

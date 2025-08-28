@@ -61,11 +61,11 @@ export class IndustrialPidOrganization extends pulumi.CustomResource {
     /**
      * The ID of parent pid organization.
      */
-    public readonly parentPidOrganizationId!: pulumi.Output<string | undefined>;
+    declare public readonly parentPidOrganizationId: pulumi.Output<string | undefined>;
     /**
      * The name of pid organization.
      */
-    public readonly pidOrganizationName!: pulumi.Output<string>;
+    declare public readonly pidOrganizationName: pulumi.Output<string>;
 
     /**
      * Create a IndustrialPidOrganization resource with the given unique name, arguments, and options.
@@ -80,15 +80,15 @@ export class IndustrialPidOrganization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidOrganizationState | undefined;
-            resourceInputs["parentPidOrganizationId"] = state ? state.parentPidOrganizationId : undefined;
-            resourceInputs["pidOrganizationName"] = state ? state.pidOrganizationName : undefined;
+            resourceInputs["parentPidOrganizationId"] = state?.parentPidOrganizationId;
+            resourceInputs["pidOrganizationName"] = state?.pidOrganizationName;
         } else {
             const args = argsOrState as IndustrialPidOrganizationArgs | undefined;
-            if ((!args || args.pidOrganizationName === undefined) && !opts.urn) {
+            if (args?.pidOrganizationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidOrganizationName'");
             }
-            resourceInputs["parentPidOrganizationId"] = args ? args.parentPidOrganizationId : undefined;
-            resourceInputs["pidOrganizationName"] = args ? args.pidOrganizationName : undefined;
+            resourceInputs["parentPidOrganizationId"] = args?.parentPidOrganizationId;
+            resourceInputs["pidOrganizationName"] = args?.pidOrganizationName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IndustrialPidOrganization.__pulumiType, name, resourceInputs, opts);

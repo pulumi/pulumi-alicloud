@@ -101,83 +101,83 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    public readonly autoProvisioningGroupName!: pulumi.Output<string>;
+    declare public readonly autoProvisioningGroupName: pulumi.Output<string>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
-    public readonly autoProvisioningGroupType!: pulumi.Output<string | undefined>;
+    declare public readonly autoProvisioningGroupType: pulumi.Output<string | undefined>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      */
-    public readonly defaultTargetCapacityType!: pulumi.Output<string | undefined>;
+    declare public readonly defaultTargetCapacityType: pulumi.Output<string | undefined>;
     /**
      * The description of the auto provisioning group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      */
-    public readonly excessCapacityTerminationPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly excessCapacityTerminationPolicy: pulumi.Output<string | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
-    public readonly launchTemplateConfigs!: pulumi.Output<outputs.ecs.AutoProvisioningGroupLaunchTemplateConfig[]>;
+    declare public readonly launchTemplateConfigs: pulumi.Output<outputs.ecs.AutoProvisioningGroupLaunchTemplateConfig[]>;
     /**
      * The ID of the instance launch template associated with the auto provisioning group.
      */
-    public readonly launchTemplateId!: pulumi.Output<string>;
+    declare public readonly launchTemplateId: pulumi.Output<string>;
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    public readonly launchTemplateVersion!: pulumi.Output<string>;
+    declare public readonly launchTemplateVersion: pulumi.Output<string>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    public readonly maxSpotPrice!: pulumi.Output<number>;
+    declare public readonly maxSpotPrice: pulumi.Output<number>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
-    public readonly payAsYouGoAllocationStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly payAsYouGoAllocationStrategy: pulumi.Output<string | undefined>;
     /**
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      */
-    public readonly payAsYouGoTargetCapacity!: pulumi.Output<string | undefined>;
+    declare public readonly payAsYouGoTargetCapacity: pulumi.Output<string | undefined>;
     /**
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      */
-    public readonly spotAllocationStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly spotAllocationStrategy: pulumi.Output<string | undefined>;
     /**
      * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
-    public readonly spotInstanceInterruptionBehavior!: pulumi.Output<string | undefined>;
+    declare public readonly spotInstanceInterruptionBehavior: pulumi.Output<string | undefined>;
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    public readonly spotInstancePoolsToUseCount!: pulumi.Output<number>;
+    declare public readonly spotInstancePoolsToUseCount: pulumi.Output<number>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
-    public readonly spotTargetCapacity!: pulumi.Output<string | undefined>;
+    declare public readonly spotTargetCapacity: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      */
-    public readonly terminateInstances!: pulumi.Output<boolean | undefined>;
+    declare public readonly terminateInstances: pulumi.Output<boolean | undefined>;
     /**
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      */
-    public readonly terminateInstancesWithExpiration!: pulumi.Output<boolean | undefined>;
+    declare public readonly terminateInstancesWithExpiration: pulumi.Output<boolean | undefined>;
     /**
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      */
-    public readonly totalTargetCapacity!: pulumi.Output<string>;
+    declare public readonly totalTargetCapacity: pulumi.Output<string>;
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    public readonly validFrom!: pulumi.Output<string>;
+    declare public readonly validFrom: pulumi.Output<string>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    public readonly validUntil!: pulumi.Output<string>;
+    declare public readonly validUntil: pulumi.Output<string>;
 
     /**
      * Create a AutoProvisioningGroup resource with the given unique name, arguments, and options.
@@ -192,57 +192,57 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoProvisioningGroupState | undefined;
-            resourceInputs["autoProvisioningGroupName"] = state ? state.autoProvisioningGroupName : undefined;
-            resourceInputs["autoProvisioningGroupType"] = state ? state.autoProvisioningGroupType : undefined;
-            resourceInputs["defaultTargetCapacityType"] = state ? state.defaultTargetCapacityType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["excessCapacityTerminationPolicy"] = state ? state.excessCapacityTerminationPolicy : undefined;
-            resourceInputs["launchTemplateConfigs"] = state ? state.launchTemplateConfigs : undefined;
-            resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
-            resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
-            resourceInputs["maxSpotPrice"] = state ? state.maxSpotPrice : undefined;
-            resourceInputs["payAsYouGoAllocationStrategy"] = state ? state.payAsYouGoAllocationStrategy : undefined;
-            resourceInputs["payAsYouGoTargetCapacity"] = state ? state.payAsYouGoTargetCapacity : undefined;
-            resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
-            resourceInputs["spotInstanceInterruptionBehavior"] = state ? state.spotInstanceInterruptionBehavior : undefined;
-            resourceInputs["spotInstancePoolsToUseCount"] = state ? state.spotInstancePoolsToUseCount : undefined;
-            resourceInputs["spotTargetCapacity"] = state ? state.spotTargetCapacity : undefined;
-            resourceInputs["terminateInstances"] = state ? state.terminateInstances : undefined;
-            resourceInputs["terminateInstancesWithExpiration"] = state ? state.terminateInstancesWithExpiration : undefined;
-            resourceInputs["totalTargetCapacity"] = state ? state.totalTargetCapacity : undefined;
-            resourceInputs["validFrom"] = state ? state.validFrom : undefined;
-            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["autoProvisioningGroupName"] = state?.autoProvisioningGroupName;
+            resourceInputs["autoProvisioningGroupType"] = state?.autoProvisioningGroupType;
+            resourceInputs["defaultTargetCapacityType"] = state?.defaultTargetCapacityType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["excessCapacityTerminationPolicy"] = state?.excessCapacityTerminationPolicy;
+            resourceInputs["launchTemplateConfigs"] = state?.launchTemplateConfigs;
+            resourceInputs["launchTemplateId"] = state?.launchTemplateId;
+            resourceInputs["launchTemplateVersion"] = state?.launchTemplateVersion;
+            resourceInputs["maxSpotPrice"] = state?.maxSpotPrice;
+            resourceInputs["payAsYouGoAllocationStrategy"] = state?.payAsYouGoAllocationStrategy;
+            resourceInputs["payAsYouGoTargetCapacity"] = state?.payAsYouGoTargetCapacity;
+            resourceInputs["spotAllocationStrategy"] = state?.spotAllocationStrategy;
+            resourceInputs["spotInstanceInterruptionBehavior"] = state?.spotInstanceInterruptionBehavior;
+            resourceInputs["spotInstancePoolsToUseCount"] = state?.spotInstancePoolsToUseCount;
+            resourceInputs["spotTargetCapacity"] = state?.spotTargetCapacity;
+            resourceInputs["terminateInstances"] = state?.terminateInstances;
+            resourceInputs["terminateInstancesWithExpiration"] = state?.terminateInstancesWithExpiration;
+            resourceInputs["totalTargetCapacity"] = state?.totalTargetCapacity;
+            resourceInputs["validFrom"] = state?.validFrom;
+            resourceInputs["validUntil"] = state?.validUntil;
         } else {
             const args = argsOrState as AutoProvisioningGroupArgs | undefined;
-            if ((!args || args.launchTemplateConfigs === undefined) && !opts.urn) {
+            if (args?.launchTemplateConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'launchTemplateConfigs'");
             }
-            if ((!args || args.launchTemplateId === undefined) && !opts.urn) {
+            if (args?.launchTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'launchTemplateId'");
             }
-            if ((!args || args.totalTargetCapacity === undefined) && !opts.urn) {
+            if (args?.totalTargetCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'totalTargetCapacity'");
             }
-            resourceInputs["autoProvisioningGroupName"] = args ? args.autoProvisioningGroupName : undefined;
-            resourceInputs["autoProvisioningGroupType"] = args ? args.autoProvisioningGroupType : undefined;
-            resourceInputs["defaultTargetCapacityType"] = args ? args.defaultTargetCapacityType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excessCapacityTerminationPolicy"] = args ? args.excessCapacityTerminationPolicy : undefined;
-            resourceInputs["launchTemplateConfigs"] = args ? args.launchTemplateConfigs : undefined;
-            resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
-            resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
-            resourceInputs["maxSpotPrice"] = args ? args.maxSpotPrice : undefined;
-            resourceInputs["payAsYouGoAllocationStrategy"] = args ? args.payAsYouGoAllocationStrategy : undefined;
-            resourceInputs["payAsYouGoTargetCapacity"] = args ? args.payAsYouGoTargetCapacity : undefined;
-            resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
-            resourceInputs["spotInstanceInterruptionBehavior"] = args ? args.spotInstanceInterruptionBehavior : undefined;
-            resourceInputs["spotInstancePoolsToUseCount"] = args ? args.spotInstancePoolsToUseCount : undefined;
-            resourceInputs["spotTargetCapacity"] = args ? args.spotTargetCapacity : undefined;
-            resourceInputs["terminateInstances"] = args ? args.terminateInstances : undefined;
-            resourceInputs["terminateInstancesWithExpiration"] = args ? args.terminateInstancesWithExpiration : undefined;
-            resourceInputs["totalTargetCapacity"] = args ? args.totalTargetCapacity : undefined;
-            resourceInputs["validFrom"] = args ? args.validFrom : undefined;
-            resourceInputs["validUntil"] = args ? args.validUntil : undefined;
+            resourceInputs["autoProvisioningGroupName"] = args?.autoProvisioningGroupName;
+            resourceInputs["autoProvisioningGroupType"] = args?.autoProvisioningGroupType;
+            resourceInputs["defaultTargetCapacityType"] = args?.defaultTargetCapacityType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excessCapacityTerminationPolicy"] = args?.excessCapacityTerminationPolicy;
+            resourceInputs["launchTemplateConfigs"] = args?.launchTemplateConfigs;
+            resourceInputs["launchTemplateId"] = args?.launchTemplateId;
+            resourceInputs["launchTemplateVersion"] = args?.launchTemplateVersion;
+            resourceInputs["maxSpotPrice"] = args?.maxSpotPrice;
+            resourceInputs["payAsYouGoAllocationStrategy"] = args?.payAsYouGoAllocationStrategy;
+            resourceInputs["payAsYouGoTargetCapacity"] = args?.payAsYouGoTargetCapacity;
+            resourceInputs["spotAllocationStrategy"] = args?.spotAllocationStrategy;
+            resourceInputs["spotInstanceInterruptionBehavior"] = args?.spotInstanceInterruptionBehavior;
+            resourceInputs["spotInstancePoolsToUseCount"] = args?.spotInstancePoolsToUseCount;
+            resourceInputs["spotTargetCapacity"] = args?.spotTargetCapacity;
+            resourceInputs["terminateInstances"] = args?.terminateInstances;
+            resourceInputs["terminateInstancesWithExpiration"] = args?.terminateInstancesWithExpiration;
+            resourceInputs["totalTargetCapacity"] = args?.totalTargetCapacity;
+            resourceInputs["validFrom"] = args?.validFrom;
+            resourceInputs["validUntil"] = args?.validUntil;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutoProvisioningGroup.__pulumiType, name, resourceInputs, opts);

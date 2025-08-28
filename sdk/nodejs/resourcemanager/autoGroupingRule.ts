@@ -101,51 +101,51 @@ export class AutoGroupingRule extends pulumi.CustomResource {
     /**
      * The IDs of regions to be excluded. Separate multiple IDs with commas (,).
      */
-    public readonly excludeRegionIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeRegionIdsScope: pulumi.Output<string | undefined>;
     /**
      * The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
      */
-    public readonly excludeResourceGroupIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeResourceGroupIdsScope: pulumi.Output<string | undefined>;
     /**
      * The IDs of resources to be excluded. Separate multiple IDs with commas (,).
      */
-    public readonly excludeResourceIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeResourceIdsScope: pulumi.Output<string | undefined>;
     /**
      * The resource types to be excluded. Separate multiple resource types with commas (,).
      */
-    public readonly excludeResourceTypesScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeResourceTypesScope: pulumi.Output<string | undefined>;
     /**
      * The IDs of regions. Separate multiple IDs with commas (,).
      */
-    public readonly regionIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly regionIdsScope: pulumi.Output<string | undefined>;
     /**
      * The IDs of resource groups. Separate multiple IDs with commas (,).
      */
-    public readonly resourceGroupIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupIdsScope: pulumi.Output<string | undefined>;
     /**
      * The IDs of resources. Separate multiple IDs with commas (,).
      */
-    public readonly resourceIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly resourceIdsScope: pulumi.Output<string | undefined>;
     /**
      * The resource types. Separate multiple resource types with commas (,).
      */
-    public readonly resourceTypesScope!: pulumi.Output<string | undefined>;
+    declare public readonly resourceTypesScope: pulumi.Output<string | undefined>;
     /**
      * The content records of the rule. See `ruleContents` below.
      */
-    public readonly ruleContents!: pulumi.Output<outputs.resourcemanager.AutoGroupingRuleRuleContent[]>;
+    declare public readonly ruleContents: pulumi.Output<outputs.resourcemanager.AutoGroupingRuleRuleContent[]>;
     /**
      * The description of the rule.
      */
-    public readonly ruleDesc!: pulumi.Output<string | undefined>;
+    declare public readonly ruleDesc: pulumi.Output<string | undefined>;
     /**
      * The name of the rule.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The type of the rule. Valid values:
      */
-    public readonly ruleType!: pulumi.Output<string>;
+    declare public readonly ruleType: pulumi.Output<string>;
 
     /**
      * Create a AutoGroupingRule resource with the given unique name, arguments, and options.
@@ -160,41 +160,41 @@ export class AutoGroupingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoGroupingRuleState | undefined;
-            resourceInputs["excludeRegionIdsScope"] = state ? state.excludeRegionIdsScope : undefined;
-            resourceInputs["excludeResourceGroupIdsScope"] = state ? state.excludeResourceGroupIdsScope : undefined;
-            resourceInputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
-            resourceInputs["excludeResourceTypesScope"] = state ? state.excludeResourceTypesScope : undefined;
-            resourceInputs["regionIdsScope"] = state ? state.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = state ? state.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceIdsScope"] = state ? state.resourceIdsScope : undefined;
-            resourceInputs["resourceTypesScope"] = state ? state.resourceTypesScope : undefined;
-            resourceInputs["ruleContents"] = state ? state.ruleContents : undefined;
-            resourceInputs["ruleDesc"] = state ? state.ruleDesc : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
+            resourceInputs["excludeRegionIdsScope"] = state?.excludeRegionIdsScope;
+            resourceInputs["excludeResourceGroupIdsScope"] = state?.excludeResourceGroupIdsScope;
+            resourceInputs["excludeResourceIdsScope"] = state?.excludeResourceIdsScope;
+            resourceInputs["excludeResourceTypesScope"] = state?.excludeResourceTypesScope;
+            resourceInputs["regionIdsScope"] = state?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = state?.resourceGroupIdsScope;
+            resourceInputs["resourceIdsScope"] = state?.resourceIdsScope;
+            resourceInputs["resourceTypesScope"] = state?.resourceTypesScope;
+            resourceInputs["ruleContents"] = state?.ruleContents;
+            resourceInputs["ruleDesc"] = state?.ruleDesc;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["ruleType"] = state?.ruleType;
         } else {
             const args = argsOrState as AutoGroupingRuleArgs | undefined;
-            if ((!args || args.ruleContents === undefined) && !opts.urn) {
+            if (args?.ruleContents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleContents'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.ruleType === undefined) && !opts.urn) {
+            if (args?.ruleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleType'");
             }
-            resourceInputs["excludeRegionIdsScope"] = args ? args.excludeRegionIdsScope : undefined;
-            resourceInputs["excludeResourceGroupIdsScope"] = args ? args.excludeResourceGroupIdsScope : undefined;
-            resourceInputs["excludeResourceIdsScope"] = args ? args.excludeResourceIdsScope : undefined;
-            resourceInputs["excludeResourceTypesScope"] = args ? args.excludeResourceTypesScope : undefined;
-            resourceInputs["regionIdsScope"] = args ? args.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = args ? args.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceIdsScope"] = args ? args.resourceIdsScope : undefined;
-            resourceInputs["resourceTypesScope"] = args ? args.resourceTypesScope : undefined;
-            resourceInputs["ruleContents"] = args ? args.ruleContents : undefined;
-            resourceInputs["ruleDesc"] = args ? args.ruleDesc : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
+            resourceInputs["excludeRegionIdsScope"] = args?.excludeRegionIdsScope;
+            resourceInputs["excludeResourceGroupIdsScope"] = args?.excludeResourceGroupIdsScope;
+            resourceInputs["excludeResourceIdsScope"] = args?.excludeResourceIdsScope;
+            resourceInputs["excludeResourceTypesScope"] = args?.excludeResourceTypesScope;
+            resourceInputs["regionIdsScope"] = args?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = args?.resourceGroupIdsScope;
+            resourceInputs["resourceIdsScope"] = args?.resourceIdsScope;
+            resourceInputs["resourceTypesScope"] = args?.resourceTypesScope;
+            resourceInputs["ruleContents"] = args?.ruleContents;
+            resourceInputs["ruleDesc"] = args?.ruleDesc;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["ruleType"] = args?.ruleType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutoGroupingRule.__pulumiType, name, resourceInputs, opts);

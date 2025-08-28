@@ -78,23 +78,23 @@ export class BgpIp extends pulumi.CustomResource {
     /**
      * The ID of the native protection enterprise instance to be operated.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The IP address.
      */
-    public readonly ip!: pulumi.Output<string>;
+    declare public readonly ip: pulumi.Output<string>;
     /**
      * The member account id of the IP address.
      */
-    public readonly memberUid!: pulumi.Output<string>;
+    declare public readonly memberUid: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The current state of the IP address. Valid Value: `normal`, `holeBegin`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BgpIp resource with the given unique name, arguments, and options.
@@ -109,23 +109,23 @@ export class BgpIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpIpState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["memberUid"] = state?.memberUid;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BgpIpArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.ip === undefined) && !opts.urn) {
+            if (args?.ip === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ip'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
-            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["ip"] = args?.ip;
+            resourceInputs["memberUid"] = args?.memberUid;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

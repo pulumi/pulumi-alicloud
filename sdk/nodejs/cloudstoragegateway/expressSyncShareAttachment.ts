@@ -50,15 +50,15 @@ export class ExpressSyncShareAttachment extends pulumi.CustomResource {
     /**
      * The ID of the ExpressSync.
      */
-    public readonly expressSyncId!: pulumi.Output<string>;
+    declare public readonly expressSyncId: pulumi.Output<string>;
     /**
      * The ID of the Gateway.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
      */
-    public readonly shareName!: pulumi.Output<string>;
+    declare public readonly shareName: pulumi.Output<string>;
 
     /**
      * Create a ExpressSyncShareAttachment resource with the given unique name, arguments, and options.
@@ -73,23 +73,23 @@ export class ExpressSyncShareAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExpressSyncShareAttachmentState | undefined;
-            resourceInputs["expressSyncId"] = state ? state.expressSyncId : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["shareName"] = state ? state.shareName : undefined;
+            resourceInputs["expressSyncId"] = state?.expressSyncId;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["shareName"] = state?.shareName;
         } else {
             const args = argsOrState as ExpressSyncShareAttachmentArgs | undefined;
-            if ((!args || args.expressSyncId === undefined) && !opts.urn) {
+            if (args?.expressSyncId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expressSyncId'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.shareName === undefined) && !opts.urn) {
+            if (args?.shareName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareName'");
             }
-            resourceInputs["expressSyncId"] = args ? args.expressSyncId : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["shareName"] = args ? args.shareName : undefined;
+            resourceInputs["expressSyncId"] = args?.expressSyncId;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["shareName"] = args?.shareName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExpressSyncShareAttachment.__pulumiType, name, resourceInputs, opts);

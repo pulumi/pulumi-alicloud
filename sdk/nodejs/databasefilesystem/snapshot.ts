@@ -69,27 +69,27 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to force delete the snapshot. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Database File System.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The retention period of the snapshot. Valid values: `1` to `65536`.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
     /**
      * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      */
-    public readonly snapshotName!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotName: pulumi.Output<string | undefined>;
     /**
      * The status of the Snapshot.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -104,22 +104,22 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["snapshotName"] = args?.snapshotName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

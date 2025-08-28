@@ -4,6 +4,7 @@ title: Alibaba Cloud Provider
 meta_desc: Provides an overview on how to configure the Pulumi Alibaba Cloud provider.
 layout: package
 ---
+
 ## Installation
 
 The Alibaba Cloud provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Alibaba Cloud provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud`](https://github.com/pulumi/pulumi-alicloud)
 * .NET: [`Pulumi.Alicloud`](https://www.nuget.org/packages/Pulumi.Alicloud)
 * Java: [`com.pulumi/alicloud`](https://central.sonatype.com/artifact/com.pulumi/alicloud)
+
 ## Overview
 
 The Alibaba Cloud provider is used to interact with the
@@ -43,7 +45,7 @@ import * as alicloud from "@pulumi/alicloud";
 
 const config = new pulumi.Config();
 const name = config.get("name") || "pulumi-example";
-const default = alicloud.getZones({
+const _default = alicloud.getZones({
     availableDiskCategory: "cloud_efficiency",
     availableResourceCreation: "VSwitch",
 });
@@ -452,7 +454,7 @@ public class App {
         // Create a kms to encrypt the disk
         var key = new Key("key", KeyArgs.builder()
             .description("Hello KMS")
-            .pendingWindowInDays("7")
+            .pendingWindowInDays(7)
             .status("Enabled")
             .build());
 
@@ -501,12 +503,10 @@ alicloud provider configuration:
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     alicloud:accessKey:
         value: 'TODO: var.access_key'
@@ -516,151 +516,18 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    alicloud:accessKey:
-        value: 'TODO: var.access_key'
-    alicloud:region:
-        value: 'TODO: var.region'
-    alicloud:secretKey:
-        value: 'TODO: var.secret_key'
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    alicloud:accessKey:
-        value: 'TODO: var.access_key'
-    alicloud:region:
-        value: 'TODO: var.region'
-    alicloud:secretKey:
-        value: 'TODO: var.secret_key'
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    alicloud:accessKey:
-        value: 'TODO: var.access_key'
-    alicloud:region:
-        value: 'TODO: var.region'
-    alicloud:secretKey:
-        value: 'TODO: var.secret_key'
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    alicloud:accessKey:
-        value: 'TODO: var.access_key'
-    alicloud:region:
-        value: 'TODO: var.region'
-    alicloud:secretKey:
-        value: 'TODO: var.secret_key'
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    alicloud:accessKey:
-        value: 'TODO: var.access_key'
-    alicloud:region:
-        value: 'TODO: var.region'
-    alicloud:secretKey:
-        value: 'TODO: var.secret_key'
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### Environment variables
 
 You can provide your credentials via `ALIBABA_CLOUD_ACCESS_KEY_ID`, `ALIBABA_CLOUD_ACCESS_KEY_SECRET` and optionally
 `ALIBABA_CLOUD_SECURITY_TOKEN` environment variables. The Region can be set using the `ALIBABA_CLOUD_REGION` environment variables.
 
 Usage:
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 ```shell
 $ export ALIBABA_CLOUD_ACCESS_KEY_ID="<Your-Access-Key-ID>"
@@ -678,12 +545,10 @@ This method also supports a `profile` configuration and matching `ALIBABA_CLOUD_
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     alicloud:profile:
         value: customprofile
@@ -693,89 +558,6 @@ config:
         value: /Users/tf_user/.aliyun/creds
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    alicloud:profile:
-        value: customprofile
-    alicloud:region:
-        value: cn-hangzhou
-    alicloud:sharedCredentialsFile:
-        value: /Users/tf_user/.aliyun/creds
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    alicloud:profile:
-        value: customprofile
-    alicloud:region:
-        value: cn-hangzhou
-    alicloud:sharedCredentialsFile:
-        value: /Users/tf_user/.aliyun/creds
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    alicloud:profile:
-        value: customprofile
-    alicloud:region:
-        value: cn-hangzhou
-    alicloud:sharedCredentialsFile:
-        value: /Users/tf_user/.aliyun/creds
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    alicloud:profile:
-        value: customprofile
-    alicloud:region:
-        value: cn-hangzhou
-    alicloud:sharedCredentialsFile:
-        value: /Users/tf_user/.aliyun/creds
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    alicloud:profile:
-        value: customprofile
-    alicloud:region:
-        value: cn-hangzhou
-    alicloud:sharedCredentialsFile:
-        value: /Users/tf_user/.aliyun/creds
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### ECS Instance Role
 
 If you're running Pulumi from an ECS instance with RAM Instance using RAM Role,
@@ -792,12 +574,10 @@ The ECS Instance Role can be set using the `ALIBABA_CLOUD_ECS_METADATA` environm
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     alicloud:ecsRoleName:
         value: pulumi-provider-alicloud
@@ -805,79 +585,6 @@ config:
         value: 'TODO: var.region'
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    alicloud:ecsRoleName:
-        value: pulumi-provider-alicloud
-    alicloud:region:
-        value: 'TODO: var.region'
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    alicloud:ecsRoleName:
-        value: pulumi-provider-alicloud
-    alicloud:region:
-        value: 'TODO: var.region'
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    alicloud:ecsRoleName:
-        value: pulumi-provider-alicloud
-    alicloud:region:
-        value: 'TODO: var.region'
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    alicloud:ecsRoleName:
-        value: pulumi-provider-alicloud
-    alicloud:region:
-        value: 'TODO: var.region'
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    alicloud:ecsRoleName:
-        value: pulumi-provider-alicloud
-    alicloud:region:
-        value: 'TODO: var.region'
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### Assuming A RAM Role
 
 If provided with a role ARN, Pulumi will attempt to assume this role using the supplied credentials.
@@ -886,12 +593,10 @@ and the role session name using the `ALIBABA_CLOUD_ROLE_SESSION_NAME` environmen
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     alicloud:accessKey:
         value: <One-AccessKeyId-With-AssumeRole-Policy>
@@ -899,79 +604,6 @@ config:
         value: <One-AccessKeySecret-With-AssumeRole-Policy>
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    alicloud:accessKey:
-        value: <One-AccessKeyId-With-AssumeRole-Policy>
-    alicloud:secretKey:
-        value: <One-AccessKeySecret-With-AssumeRole-Policy>
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    alicloud:accessKey:
-        value: <One-AccessKeyId-With-AssumeRole-Policy>
-    alicloud:secretKey:
-        value: <One-AccessKeySecret-With-AssumeRole-Policy>
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    alicloud:accessKey:
-        value: <One-AccessKeyId-With-AssumeRole-Policy>
-    alicloud:secretKey:
-        value: <One-AccessKeySecret-With-AssumeRole-Policy>
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    alicloud:accessKey:
-        value: <One-AccessKeyId-With-AssumeRole-Policy>
-    alicloud:secretKey:
-        value: <One-AccessKeySecret-With-AssumeRole-Policy>
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    alicloud:accessKey:
-        value: <One-AccessKeyId-With-AssumeRole-Policy>
-    alicloud:secretKey:
-        value: <One-AccessKeySecret-With-AssumeRole-Policy>
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### Assuming A RAM Role With OIDC
 
 If provided with a role ARN and a token from a service account OpenID Connect (OIDC),
@@ -981,62 +613,12 @@ the Alibaba CLoud Provider will attempt to assume this role using the supplied c
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### Sidecar Credentials
 
 You can deploy a sidecar to storage alibaba cloud credentials.
@@ -1046,12 +628,10 @@ The Sidecar Credentials is available since v1.141.0.
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     alicloud:credentialsUri:
         value: <Your-Credential-URI>
@@ -1059,79 +639,6 @@ config:
         value: cn-hangzhou
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    alicloud:credentialsUri:
-        value: <Your-Credential-URI>
-    alicloud:region:
-        value: cn-hangzhou
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    alicloud:credentialsUri:
-        value: <Your-Credential-URI>
-    alicloud:region:
-        value: cn-hangzhou
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    alicloud:credentialsUri:
-        value: <Your-Credential-URI>
-    alicloud:region:
-        value: cn-hangzhou
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    alicloud:credentialsUri:
-        value: <Your-Credential-URI>
-    alicloud:region:
-        value: cn-hangzhou
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    alicloud:credentialsUri:
-        value: <Your-Credential-URI>
-    alicloud:region:
-        value: cn-hangzhou
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ## Configuration Reference
 
 In addition to generic `provider` arguments
@@ -1165,6 +672,11 @@ provider configuration:
   If not provided, the provider will attempt to retrieve it automatically with [STS GetCallerIdentity](https://www.alibabacloud.com/help/doc-detail/43767.htm).
   Can also be set with the `ALIBABA_CLOUD_ACCOUNT_ID` environment variable since v1.228.0.
   Environment variable `ALICLOUD_ACCOUNT_ID` has been deprecated since v1.228.0.
+
+* `accountType` - (Optional, Available since 1.240.0) Alibaba Cloud Account Type.
+  It used to indicate caller identity's account type. Can also be set with the `ALIBABA_CLOUD_ACCOUNT_TYPE` environment variable. Valid values:
+  - `Domestic`(Default): China-Site Account.
+  - `International`: International-Site Account.
 
 * `sharedCredentialsFile` - (Optional, Available since 1.49.0) This is the path to the shared credentials file.
   Can also be set with the `ALIBABA_CLOUD_CREDENTIALS_FILE` environment variable since v1.228.0.
@@ -1220,6 +732,7 @@ The `assumeRoleWithOidc` configuration block supports the following arguments:
 * `oidcProviderArn` - (Required) ARN of the OIDC IdP. Can also be set with the `ALIBABA_CLOUD_OIDC_PROVIDER_ARN` environment variable.
 * `roleArn` - (Required) ARN of the RAM Role to assume. Can also be set with the `ALIBABA_CLOUD_ROLE_ARN` environment variable.
 * `oidcToken` - (Optional) Value of a RRSA security token from an OIDC Idp. One of `oidcToken` or `oidcTokenFile` is required.
+  Can also be set with the `ALIBABA_CLOUD_OIDC_TOKEN` environment variable.
 * `oidcTokenFile` - (Optional) File containing a RRSA security token from an OIDC. One of `oidcTokenFile` or `oidcToken` is required.
   Can also be set with the `ALIBABA_CLOUD_OIDC_TOKEN_FILE` environment variable.
 * `roleSessionName` - (Optional) The session name to use when assuming the role. If omitted, 'pulumi' is passed to the AssumeRoleWithOIDC call as session name.

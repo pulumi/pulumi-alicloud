@@ -86,101 +86,101 @@ export class Site extends pulumi.CustomResource {
      * - `NS`
      * - `CNAME`
      */
-    public readonly accessType!: pulumi.Output<string | undefined>;
+    declare public readonly accessType: pulumi.Output<string | undefined>;
     /**
      * Add visitor geolocation header. Value range:
      */
-    public readonly addClientGeolocationHeader!: pulumi.Output<string | undefined>;
+    declare public readonly addClientGeolocationHeader: pulumi.Output<string | undefined>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
      */
-    public readonly addRealClientIpHeader!: pulumi.Output<string | undefined>;
+    declare public readonly addRealClientIpHeader: pulumi.Output<string | undefined>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
-    public readonly cacheArchitectureMode!: pulumi.Output<string>;
+    declare public readonly cacheArchitectureMode: pulumi.Output<string>;
     /**
      * Site cache hold switch. Value:
      */
-    public readonly cacheReserveEnable!: pulumi.Output<string | undefined>;
+    declare public readonly cacheReserveEnable: pulumi.Output<string | undefined>;
     /**
      * The ID of the cache instance.
      */
-    public readonly cacheReserveInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly cacheReserveInstanceId: pulumi.Output<string | undefined>;
     /**
      * Whether the custom CacheTag name ignores case. Value range:
      */
-    public readonly caseInsensitive!: pulumi.Output<string | undefined>;
+    declare public readonly caseInsensitive: pulumi.Output<string | undefined>;
     /**
      * The service location. Valid values:
      */
-    public readonly coverage!: pulumi.Output<string | undefined>;
+    declare public readonly coverage: pulumi.Output<string | undefined>;
     /**
      * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to enable mainland China network access optimization, the default is off. Value range:
      */
-    public readonly crossBorderOptimization!: pulumi.Output<string | undefined>;
+    declare public readonly crossBorderOptimization: pulumi.Output<string | undefined>;
     /**
      * Development mode configuration function switch. Value range:
      */
-    public readonly developmentMode!: pulumi.Output<string | undefined>;
+    declare public readonly developmentMode: pulumi.Output<string | undefined>;
     /**
      * CNAME flattening mode. Possible values:
      */
-    public readonly flattenMode!: pulumi.Output<string | undefined>;
+    declare public readonly flattenMode: pulumi.Output<string | undefined>;
     /**
      * The ID of the associated package instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies whether to enable IPv6. Valid values:
      */
-    public readonly ipv6Enable!: pulumi.Output<string>;
+    declare public readonly ipv6Enable: pulumi.Output<string>;
     /**
      * The region in which Ipv6 is enabled. The default value is x.x:
      * - 'x.x': Global.
      * - 'Cn.cn ': Mainland China.
      */
-    public readonly ipv6Region!: pulumi.Output<string>;
+    declare public readonly ipv6Region: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Release the search engine crawler configuration. Value:
      */
-    public readonly seoBypass!: pulumi.Output<string | undefined>;
+    declare public readonly seoBypass: pulumi.Output<string | undefined>;
     /**
      * The website name.
      */
-    public readonly siteName!: pulumi.Output<string>;
+    declare public readonly siteName: pulumi.Output<string>;
     /**
      * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
      */
-    public readonly siteNameExclusive!: pulumi.Output<string | undefined>;
+    declare public readonly siteNameExclusive: pulumi.Output<string | undefined>;
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Custom CacheTag name.
      */
-    public readonly tagName!: pulumi.Output<string | undefined>;
+    declare public readonly tagName: pulumi.Output<string | undefined>;
     /**
      * Resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Version management enabled. When true, version management is turned on for the table site.
      */
-    public readonly versionManagement!: pulumi.Output<boolean | undefined>;
+    declare public readonly versionManagement: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Site resource with the given unique name, arguments, and options.
@@ -195,60 +195,60 @@ export class Site extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SiteState | undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["addClientGeolocationHeader"] = state ? state.addClientGeolocationHeader : undefined;
-            resourceInputs["addRealClientIpHeader"] = state ? state.addRealClientIpHeader : undefined;
-            resourceInputs["cacheArchitectureMode"] = state ? state.cacheArchitectureMode : undefined;
-            resourceInputs["cacheReserveEnable"] = state ? state.cacheReserveEnable : undefined;
-            resourceInputs["cacheReserveInstanceId"] = state ? state.cacheReserveInstanceId : undefined;
-            resourceInputs["caseInsensitive"] = state ? state.caseInsensitive : undefined;
-            resourceInputs["coverage"] = state ? state.coverage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossBorderOptimization"] = state ? state.crossBorderOptimization : undefined;
-            resourceInputs["developmentMode"] = state ? state.developmentMode : undefined;
-            resourceInputs["flattenMode"] = state ? state.flattenMode : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
-            resourceInputs["ipv6Region"] = state ? state.ipv6Region : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["seoBypass"] = state ? state.seoBypass : undefined;
-            resourceInputs["siteName"] = state ? state.siteName : undefined;
-            resourceInputs["siteNameExclusive"] = state ? state.siteNameExclusive : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagName"] = state ? state.tagName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["versionManagement"] = state ? state.versionManagement : undefined;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["addClientGeolocationHeader"] = state?.addClientGeolocationHeader;
+            resourceInputs["addRealClientIpHeader"] = state?.addRealClientIpHeader;
+            resourceInputs["cacheArchitectureMode"] = state?.cacheArchitectureMode;
+            resourceInputs["cacheReserveEnable"] = state?.cacheReserveEnable;
+            resourceInputs["cacheReserveInstanceId"] = state?.cacheReserveInstanceId;
+            resourceInputs["caseInsensitive"] = state?.caseInsensitive;
+            resourceInputs["coverage"] = state?.coverage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossBorderOptimization"] = state?.crossBorderOptimization;
+            resourceInputs["developmentMode"] = state?.developmentMode;
+            resourceInputs["flattenMode"] = state?.flattenMode;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
+            resourceInputs["ipv6Region"] = state?.ipv6Region;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["seoBypass"] = state?.seoBypass;
+            resourceInputs["siteName"] = state?.siteName;
+            resourceInputs["siteNameExclusive"] = state?.siteNameExclusive;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagName"] = state?.tagName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["versionManagement"] = state?.versionManagement;
         } else {
             const args = argsOrState as SiteArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.siteName === undefined) && !opts.urn) {
+            if (args?.siteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteName'");
             }
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["addClientGeolocationHeader"] = args ? args.addClientGeolocationHeader : undefined;
-            resourceInputs["addRealClientIpHeader"] = args ? args.addRealClientIpHeader : undefined;
-            resourceInputs["cacheArchitectureMode"] = args ? args.cacheArchitectureMode : undefined;
-            resourceInputs["cacheReserveEnable"] = args ? args.cacheReserveEnable : undefined;
-            resourceInputs["cacheReserveInstanceId"] = args ? args.cacheReserveInstanceId : undefined;
-            resourceInputs["caseInsensitive"] = args ? args.caseInsensitive : undefined;
-            resourceInputs["coverage"] = args ? args.coverage : undefined;
-            resourceInputs["crossBorderOptimization"] = args ? args.crossBorderOptimization : undefined;
-            resourceInputs["developmentMode"] = args ? args.developmentMode : undefined;
-            resourceInputs["flattenMode"] = args ? args.flattenMode : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
-            resourceInputs["ipv6Region"] = args ? args.ipv6Region : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["seoBypass"] = args ? args.seoBypass : undefined;
-            resourceInputs["siteName"] = args ? args.siteName : undefined;
-            resourceInputs["siteNameExclusive"] = args ? args.siteNameExclusive : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["tagName"] = args ? args.tagName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["versionManagement"] = args ? args.versionManagement : undefined;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["addClientGeolocationHeader"] = args?.addClientGeolocationHeader;
+            resourceInputs["addRealClientIpHeader"] = args?.addRealClientIpHeader;
+            resourceInputs["cacheArchitectureMode"] = args?.cacheArchitectureMode;
+            resourceInputs["cacheReserveEnable"] = args?.cacheReserveEnable;
+            resourceInputs["cacheReserveInstanceId"] = args?.cacheReserveInstanceId;
+            resourceInputs["caseInsensitive"] = args?.caseInsensitive;
+            resourceInputs["coverage"] = args?.coverage;
+            resourceInputs["crossBorderOptimization"] = args?.crossBorderOptimization;
+            resourceInputs["developmentMode"] = args?.developmentMode;
+            resourceInputs["flattenMode"] = args?.flattenMode;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
+            resourceInputs["ipv6Region"] = args?.ipv6Region;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["seoBypass"] = args?.seoBypass;
+            resourceInputs["siteName"] = args?.siteName;
+            resourceInputs["siteNameExclusive"] = args?.siteNameExclusive;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["tagName"] = args?.tagName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["versionManagement"] = args?.versionManagement;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

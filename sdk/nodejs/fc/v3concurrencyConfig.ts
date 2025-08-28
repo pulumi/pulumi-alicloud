@@ -82,15 +82,15 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
     /**
      * (Available since v1.234.0) Resource identity of the function
      */
-    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionArn: pulumi.Output<string>;
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
      */
-    public readonly reservedConcurrency!: pulumi.Output<number | undefined>;
+    declare public readonly reservedConcurrency: pulumi.Output<number | undefined>;
 
     /**
      * Create a V3ConcurrencyConfig resource with the given unique name, arguments, and options.
@@ -105,16 +105,16 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3ConcurrencyConfigState | undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["reservedConcurrency"] = state ? state.reservedConcurrency : undefined;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["reservedConcurrency"] = state?.reservedConcurrency;
         } else {
             const args = argsOrState as V3ConcurrencyConfigArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["reservedConcurrency"] = args ? args.reservedConcurrency : undefined;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["reservedConcurrency"] = args?.reservedConcurrency;
             resourceInputs["functionArn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

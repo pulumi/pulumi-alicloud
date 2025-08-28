@@ -119,41 +119,41 @@ export class StreamingDataSource extends pulumi.CustomResource {
     /**
      * Creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The configurations of the data source.
      */
-    public readonly dataSourceConfig!: pulumi.Output<string>;
+    declare public readonly dataSourceConfig: pulumi.Output<string>;
     /**
      * The description of the data source.
      */
-    public readonly dataSourceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceDescription: pulumi.Output<string | undefined>;
     /**
      * The data source ID.
      */
-    public /*out*/ readonly dataSourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataSourceId: pulumi.Output<string>;
     /**
      * Data Source Name
      */
-    public readonly dataSourceName!: pulumi.Output<string>;
+    declare public readonly dataSourceName: pulumi.Output<string>;
     /**
      * Data Source Type
      */
-    public readonly dataSourceType!: pulumi.Output<string>;
+    declare public readonly dataSourceType: pulumi.Output<string>;
     /**
      * The instance ID.
      *
      * > **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The real-time data service ID.
      */
-    public readonly serviceId!: pulumi.Output<number>;
+    declare public readonly serviceId: pulumi.Output<number>;
     /**
      * Service Status:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a StreamingDataSource resource with the given unique name, arguments, and options.
@@ -168,38 +168,38 @@ export class StreamingDataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamingDataSourceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSourceConfig"] = state ? state.dataSourceConfig : undefined;
-            resourceInputs["dataSourceDescription"] = state ? state.dataSourceDescription : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dataSourceName"] = state ? state.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = state ? state.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSourceConfig"] = state?.dataSourceConfig;
+            resourceInputs["dataSourceDescription"] = state?.dataSourceDescription;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dataSourceName"] = state?.dataSourceName;
+            resourceInputs["dataSourceType"] = state?.dataSourceType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as StreamingDataSourceArgs | undefined;
-            if ((!args || args.dataSourceConfig === undefined) && !opts.urn) {
+            if (args?.dataSourceConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceConfig'");
             }
-            if ((!args || args.dataSourceName === undefined) && !opts.urn) {
+            if (args?.dataSourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceName'");
             }
-            if ((!args || args.dataSourceType === undefined) && !opts.urn) {
+            if (args?.dataSourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceType'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["dataSourceConfig"] = args ? args.dataSourceConfig : undefined;
-            resourceInputs["dataSourceDescription"] = args ? args.dataSourceDescription : undefined;
-            resourceInputs["dataSourceName"] = args ? args.dataSourceName : undefined;
-            resourceInputs["dataSourceType"] = args ? args.dataSourceType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["dataSourceConfig"] = args?.dataSourceConfig;
+            resourceInputs["dataSourceDescription"] = args?.dataSourceDescription;
+            resourceInputs["dataSourceName"] = args?.dataSourceName;
+            resourceInputs["dataSourceType"] = args?.dataSourceType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["serviceId"] = args?.serviceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSourceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

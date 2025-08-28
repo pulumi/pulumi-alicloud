@@ -77,31 +77,31 @@ export class InstanceAttachment extends pulumi.CustomResource {
      *
      * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
-    public readonly cenOwnerId!: pulumi.Output<number | undefined>;
+    declare public readonly cenOwnerId: pulumi.Output<number | undefined>;
     /**
      * The ID of the child instance to attach.
      */
-    public readonly childInstanceId!: pulumi.Output<string>;
+    declare public readonly childInstanceId: pulumi.Output<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    public readonly childInstanceOwnerId!: pulumi.Output<number>;
+    declare public readonly childInstanceOwnerId: pulumi.Output<number>;
     /**
      * The region ID of the child instance to attach.
      */
-    public readonly childInstanceRegionId!: pulumi.Output<string>;
+    declare public readonly childInstanceRegionId: pulumi.Output<string>;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    public readonly childInstanceType!: pulumi.Output<string>;
+    declare public readonly childInstanceType: pulumi.Output<string>;
     /**
      * The ID of the CEN.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The associating status of the network.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -116,33 +116,33 @@ export class InstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            resourceInputs["childInstanceId"] = state ? state.childInstanceId : undefined;
-            resourceInputs["childInstanceOwnerId"] = state ? state.childInstanceOwnerId : undefined;
-            resourceInputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
-            resourceInputs["childInstanceType"] = state ? state.childInstanceType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["childInstanceId"] = state?.childInstanceId;
+            resourceInputs["childInstanceOwnerId"] = state?.childInstanceOwnerId;
+            resourceInputs["childInstanceRegionId"] = state?.childInstanceRegionId;
+            resourceInputs["childInstanceType"] = state?.childInstanceType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if ((!args || args.childInstanceId === undefined) && !opts.urn) {
+            if (args?.childInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            if ((!args || args.childInstanceRegionId === undefined) && !opts.urn) {
+            if (args?.childInstanceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceRegionId'");
             }
-            if ((!args || args.childInstanceType === undefined) && !opts.urn) {
+            if (args?.childInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            resourceInputs["childInstanceId"] = args ? args.childInstanceId : undefined;
-            resourceInputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
-            resourceInputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
-            resourceInputs["childInstanceType"] = args ? args.childInstanceType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["cenOwnerId"] = args?.cenOwnerId;
+            resourceInputs["childInstanceId"] = args?.childInstanceId;
+            resourceInputs["childInstanceOwnerId"] = args?.childInstanceOwnerId;
+            resourceInputs["childInstanceRegionId"] = args?.childInstanceRegionId;
+            resourceInputs["childInstanceType"] = args?.childInstanceType;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

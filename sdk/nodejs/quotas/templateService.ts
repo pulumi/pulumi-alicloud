@@ -45,7 +45,7 @@ export class TemplateService extends pulumi.CustomResource {
      * Status of the quota template. Valid values:
      * - `-1`: disabled.
      */
-    public readonly serviceStatus!: pulumi.Output<number>;
+    declare public readonly serviceStatus: pulumi.Output<number>;
 
     /**
      * Create a TemplateService resource with the given unique name, arguments, and options.
@@ -60,13 +60,13 @@ export class TemplateService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateServiceState | undefined;
-            resourceInputs["serviceStatus"] = state ? state.serviceStatus : undefined;
+            resourceInputs["serviceStatus"] = state?.serviceStatus;
         } else {
             const args = argsOrState as TemplateServiceArgs | undefined;
-            if ((!args || args.serviceStatus === undefined) && !opts.urn) {
+            if (args?.serviceStatus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceStatus'");
             }
-            resourceInputs["serviceStatus"] = args ? args.serviceStatus : undefined;
+            resourceInputs["serviceStatus"] = args?.serviceStatus;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TemplateService.__pulumiType, name, resourceInputs, opts);

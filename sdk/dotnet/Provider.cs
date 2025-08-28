@@ -19,15 +19,13 @@ namespace Pulumi.AliCloud
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        /// Alibaba Cloud console.
+        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -45,8 +43,7 @@ namespace Pulumi.AliCloud
         public Output<string?> CredentialsUri { get; private set; } = null!;
 
         /// <summary>
-        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        /// of the Alibaba Cloud console.
+        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         /// </summary>
         [Output("ecsRoleName")]
         public Output<string?> EcsRoleName { get; private set; } = null!;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
@@ -147,15 +143,13 @@ namespace Pulumi.AliCloud
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        /// Alibaba Cloud console.
+        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -191,8 +185,7 @@ namespace Pulumi.AliCloud
         public Input<string>? CredentialsUri { get; set; }
 
         /// <summary>
-        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        /// of the Alibaba Cloud console.
+        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         /// </summary>
         [Input("ecsRoleName")]
         public Input<string>? EcsRoleName { get; set; }
@@ -239,8 +232,7 @@ namespace Pulumi.AliCloud
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
@@ -270,8 +262,7 @@ namespace Pulumi.AliCloud
         public Input<Inputs.ProviderSignVersionArgs>? SignVersion { get; set; }
 
         /// <summary>
-        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-        /// that are not public (yet).
+        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         /// </summary>
         [Input("skipRegionValidation", json: true)]
         public Input<bool>? SkipRegionValidation { get; set; }

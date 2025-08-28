@@ -76,27 +76,27 @@ export class ClientKey extends pulumi.CustomResource {
     /**
      * ClientKey's parent Application Access Point name.
      */
-    public readonly aapName!: pulumi.Output<string>;
+    declare public readonly aapName: pulumi.Output<string>;
     /**
      * Create timestamp, e.g. "2022-08-10T08:03:30Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
      */
-    public readonly notAfter!: pulumi.Output<string | undefined>;
+    declare public readonly notAfter: pulumi.Output<string | undefined>;
     /**
      * The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
      */
-    public readonly notBefore!: pulumi.Output<string | undefined>;
+    declare public readonly notBefore: pulumi.Output<string | undefined>;
     /**
      * To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    public readonly privateKeyDataFile!: pulumi.Output<string | undefined>;
+    declare public readonly privateKeyDataFile: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClientKey resource with the given unique name, arguments, and options.
@@ -111,25 +111,25 @@ export class ClientKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientKeyState | undefined;
-            resourceInputs["aapName"] = state ? state.aapName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["notAfter"] = state ? state.notAfter : undefined;
-            resourceInputs["notBefore"] = state ? state.notBefore : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["privateKeyDataFile"] = state ? state.privateKeyDataFile : undefined;
+            resourceInputs["aapName"] = state?.aapName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["notAfter"] = state?.notAfter;
+            resourceInputs["notBefore"] = state?.notBefore;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["privateKeyDataFile"] = state?.privateKeyDataFile;
         } else {
             const args = argsOrState as ClientKeyArgs | undefined;
-            if ((!args || args.aapName === undefined) && !opts.urn) {
+            if (args?.aapName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aapName'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["aapName"] = args ? args.aapName : undefined;
-            resourceInputs["notAfter"] = args ? args.notAfter : undefined;
-            resourceInputs["notBefore"] = args ? args.notBefore : undefined;
+            resourceInputs["aapName"] = args?.aapName;
+            resourceInputs["notAfter"] = args?.notAfter;
+            resourceInputs["notBefore"] = args?.notBefore;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["privateKeyDataFile"] = args ? args.privateKeyDataFile : undefined;
+            resourceInputs["privateKeyDataFile"] = args?.privateKeyDataFile;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

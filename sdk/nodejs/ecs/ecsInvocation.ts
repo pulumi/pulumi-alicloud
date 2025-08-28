@@ -123,45 +123,45 @@ export class EcsInvocation extends pulumi.CustomResource {
     /**
      * The ID of the command.
      */
-    public readonly commandId!: pulumi.Output<string>;
+    declare public readonly commandId: pulumi.Output<string>;
     /**
      * The schedule on which the recurring execution of the command takes place. Take note of the following items:
      * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
      * * When you set Timed to true, you must specify Frequency.
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      */
-    public readonly frequency!: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string | undefined>;
     /**
      * The list of instances to execute the command. You can specify up to 50 instance IDs.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly parameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
      */
-    public readonly repeatMode!: pulumi.Output<string>;
+    declare public readonly repeatMode: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies whether to periodically run the command. Default value: `false`.
      */
-    public readonly timed!: pulumi.Output<boolean>;
+    declare public readonly timed: pulumi.Output<boolean>;
     /**
      * The username that is used to run the command on the ECS instance. 
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * The name of the password used to run the command on a Windows instance.
      */
-    public readonly windowsPasswordName!: pulumi.Output<string | undefined>;
+    declare public readonly windowsPasswordName: pulumi.Output<string | undefined>;
 
     /**
      * Create a EcsInvocation resource with the given unique name, arguments, and options.
@@ -176,31 +176,31 @@ export class EcsInvocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsInvocationState | undefined;
-            resourceInputs["commandId"] = state ? state.commandId : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["repeatMode"] = state ? state.repeatMode : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timed"] = state ? state.timed : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["windowsPasswordName"] = state ? state.windowsPasswordName : undefined;
+            resourceInputs["commandId"] = state?.commandId;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["repeatMode"] = state?.repeatMode;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timed"] = state?.timed;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["windowsPasswordName"] = state?.windowsPasswordName;
         } else {
             const args = argsOrState as EcsInvocationArgs | undefined;
-            if ((!args || args.commandId === undefined) && !opts.urn) {
+            if (args?.commandId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commandId'");
             }
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            resourceInputs["commandId"] = args ? args.commandId : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["repeatMode"] = args ? args.repeatMode : undefined;
-            resourceInputs["timed"] = args ? args.timed : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["windowsPasswordName"] = args ? args.windowsPasswordName : undefined;
+            resourceInputs["commandId"] = args?.commandId;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["repeatMode"] = args?.repeatMode;
+            resourceInputs["timed"] = args?.timed;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["windowsPasswordName"] = args?.windowsPasswordName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

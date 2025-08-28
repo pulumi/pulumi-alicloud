@@ -77,11 +77,11 @@ export class DelegatedAdministrator extends pulumi.CustomResource {
     /**
      * The ID of the member account in the resource directory.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
      */
-    public readonly servicePrincipal!: pulumi.Output<string>;
+    declare public readonly servicePrincipal: pulumi.Output<string>;
 
     /**
      * Create a DelegatedAdministrator resource with the given unique name, arguments, and options.
@@ -96,18 +96,18 @@ export class DelegatedAdministrator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DelegatedAdministratorState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["servicePrincipal"] = state ? state.servicePrincipal : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["servicePrincipal"] = state?.servicePrincipal;
         } else {
             const args = argsOrState as DelegatedAdministratorArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.servicePrincipal === undefined) && !opts.urn) {
+            if (args?.servicePrincipal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipal'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["servicePrincipal"] = args ? args.servicePrincipal : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["servicePrincipal"] = args?.servicePrincipal;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DelegatedAdministrator.__pulumiType, name, resourceInputs, opts);

@@ -143,47 +143,47 @@ export class BucketReplication extends pulumi.CustomResource {
     /**
      * The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies the destination for the rule. See `destination` below.
      */
-    public readonly destination!: pulumi.Output<outputs.oss.BucketReplicationDestination>;
+    declare public readonly destination: pulumi.Output<outputs.oss.BucketReplicationDestination>;
     /**
      * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
-    public readonly encryptionConfiguration!: pulumi.Output<outputs.oss.BucketReplicationEncryptionConfiguration | undefined>;
+    declare public readonly encryptionConfiguration: pulumi.Output<outputs.oss.BucketReplicationEncryptionConfiguration | undefined>;
     /**
      * Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
      */
-    public readonly historicalObjectReplication!: pulumi.Output<string | undefined>;
+    declare public readonly historicalObjectReplication: pulumi.Output<string | undefined>;
     /**
      * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
-    public readonly prefixSet!: pulumi.Output<outputs.oss.BucketReplicationPrefixSet | undefined>;
+    declare public readonly prefixSet: pulumi.Output<outputs.oss.BucketReplicationPrefixSet | undefined>;
     /**
      * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
-    public readonly progress!: pulumi.Output<outputs.oss.BucketReplicationProgress>;
+    declare public readonly progress: pulumi.Output<outputs.oss.BucketReplicationProgress>;
     /**
      * The ID of the data replication rule.
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
-    public readonly sourceSelectionCriteria!: pulumi.Output<outputs.oss.BucketReplicationSourceSelectionCriteria | undefined>;
+    declare public readonly sourceSelectionCriteria: pulumi.Output<outputs.oss.BucketReplicationSourceSelectionCriteria | undefined>;
     /**
      * The status of the data replication task. Can be starting, doing and closing.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
      */
-    public readonly syncRole!: pulumi.Output<string | undefined>;
+    declare public readonly syncRole: pulumi.Output<string | undefined>;
 
     /**
      * Create a BucketReplication resource with the given unique name, arguments, and options.
@@ -198,34 +198,34 @@ export class BucketReplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketReplicationState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
-            resourceInputs["historicalObjectReplication"] = state ? state.historicalObjectReplication : undefined;
-            resourceInputs["prefixSet"] = state ? state.prefixSet : undefined;
-            resourceInputs["progress"] = state ? state.progress : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["sourceSelectionCriteria"] = state ? state.sourceSelectionCriteria : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syncRole"] = state ? state.syncRole : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["encryptionConfiguration"] = state?.encryptionConfiguration;
+            resourceInputs["historicalObjectReplication"] = state?.historicalObjectReplication;
+            resourceInputs["prefixSet"] = state?.prefixSet;
+            resourceInputs["progress"] = state?.progress;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["sourceSelectionCriteria"] = state?.sourceSelectionCriteria;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syncRole"] = state?.syncRole;
         } else {
             const args = argsOrState as BucketReplicationArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
-            resourceInputs["historicalObjectReplication"] = args ? args.historicalObjectReplication : undefined;
-            resourceInputs["prefixSet"] = args ? args.prefixSet : undefined;
-            resourceInputs["progress"] = args ? args.progress : undefined;
-            resourceInputs["sourceSelectionCriteria"] = args ? args.sourceSelectionCriteria : undefined;
-            resourceInputs["syncRole"] = args ? args.syncRole : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["encryptionConfiguration"] = args?.encryptionConfiguration;
+            resourceInputs["historicalObjectReplication"] = args?.historicalObjectReplication;
+            resourceInputs["prefixSet"] = args?.prefixSet;
+            resourceInputs["progress"] = args?.progress;
+            resourceInputs["sourceSelectionCriteria"] = args?.sourceSelectionCriteria;
+            resourceInputs["syncRole"] = args?.syncRole;
             resourceInputs["ruleId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

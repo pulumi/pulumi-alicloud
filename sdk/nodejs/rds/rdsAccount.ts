@@ -96,7 +96,7 @@ export class RdsAccount extends pulumi.CustomResource {
      *
      * > **NOTE:** The name cannot start with http:// or https://.
      */
-    public readonly accountDescription!: pulumi.Output<string>;
+    declare public readonly accountDescription: pulumi.Output<string>;
     /**
      * The name of the database account.
      * * The name must be unique.
@@ -112,14 +112,14 @@ export class RdsAccount extends pulumi.CustomResource {
      * * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
      * * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The password of the account.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * The account type. Valid values:
      * * Normal: standard account (default).
@@ -128,51 +128,51 @@ export class RdsAccount extends pulumi.CustomResource {
      *
      * > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    public readonly accountType!: pulumi.Output<string>;
+    declare public readonly accountType: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
      */
-    public readonly resetPermissionFlag!: pulumi.Output<boolean | undefined>;
+    declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
     /**
      * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
@@ -180,7 +180,7 @@ export class RdsAccount extends pulumi.CustomResource {
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a RdsAccount resource with the given unique name, arguments, and options.
@@ -195,35 +195,35 @@ export class RdsAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsAccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["resetPermissionFlag"] = state ? state.resetPermissionFlag : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["resetPermissionFlag"] = state?.resetPermissionFlag;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RdsAccountArgs | undefined;
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["resetPermissionFlag"] = args ? args.resetPermissionFlag : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["resetPermissionFlag"] = args?.resetPermissionFlag;
+            resourceInputs["type"] = args?.type;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

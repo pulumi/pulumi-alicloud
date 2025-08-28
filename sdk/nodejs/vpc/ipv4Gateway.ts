@@ -76,51 +76,51 @@ export class Ipv4Gateway extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
      */
-    public readonly internetMode!: pulumi.Output<string | undefined>;
+    declare public readonly internetMode: pulumi.Output<string | undefined>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */
-    public readonly ipv4GatewayDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4GatewayDescription: pulumi.Output<string | undefined>;
     /**
      * Resource primary key field.
      */
-    public /*out*/ readonly ipv4GatewayId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4GatewayId: pulumi.Output<string>;
     /**
      * The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
-    public readonly ipv4GatewayName!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4GatewayName: pulumi.Output<string | undefined>;
     /**
      * ID of the route table associated with IPv4 Gateway
      */
-    public /*out*/ readonly ipv4GatewayRouteTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4GatewayRouteTableId: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of the current resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Ipv4Gateway resource with the given unique name, arguments, and options.
@@ -135,31 +135,31 @@ export class Ipv4Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv4GatewayState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["internetMode"] = state ? state.internetMode : undefined;
-            resourceInputs["ipv4GatewayDescription"] = state ? state.ipv4GatewayDescription : undefined;
-            resourceInputs["ipv4GatewayId"] = state ? state.ipv4GatewayId : undefined;
-            resourceInputs["ipv4GatewayName"] = state ? state.ipv4GatewayName : undefined;
-            resourceInputs["ipv4GatewayRouteTableId"] = state ? state.ipv4GatewayRouteTableId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["internetMode"] = state?.internetMode;
+            resourceInputs["ipv4GatewayDescription"] = state?.ipv4GatewayDescription;
+            resourceInputs["ipv4GatewayId"] = state?.ipv4GatewayId;
+            resourceInputs["ipv4GatewayName"] = state?.ipv4GatewayName;
+            resourceInputs["ipv4GatewayRouteTableId"] = state?.ipv4GatewayRouteTableId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as Ipv4GatewayArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["internetMode"] = args ? args.internetMode : undefined;
-            resourceInputs["ipv4GatewayDescription"] = args ? args.ipv4GatewayDescription : undefined;
-            resourceInputs["ipv4GatewayName"] = args ? args.ipv4GatewayName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["internetMode"] = args?.internetMode;
+            resourceInputs["ipv4GatewayDescription"] = args?.ipv4GatewayDescription;
+            resourceInputs["ipv4GatewayName"] = args?.ipv4GatewayName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipv4GatewayId"] = undefined /*out*/;
             resourceInputs["ipv4GatewayRouteTableId"] = undefined /*out*/;

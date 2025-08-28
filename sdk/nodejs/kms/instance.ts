@@ -52,89 +52,89 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
-    public readonly bindVpcs!: pulumi.Output<outputs.kms.InstanceBindVpc[] | undefined>;
+    declare public readonly bindVpcs: pulumi.Output<outputs.kms.InstanceBindVpc[] | undefined>;
     /**
      * KMS instance certificate chain in PEM format.
      */
-    public /*out*/ readonly caCertificateChainPem!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCertificateChainPem: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * (Available since v1.233.1) Instance expiration time.
      */
-    public /*out*/ readonly endDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly endDate: pulumi.Output<string>;
     /**
      * Whether to force deletion even without backup.
      */
-    public readonly forceDeleteWithoutBackup!: pulumi.Output<string | undefined>;
+    declare public readonly forceDeleteWithoutBackup: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly keyNum!: pulumi.Output<number | undefined>;
+    declare public readonly keyNum: pulumi.Output<number | undefined>;
     /**
      * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly log!: pulumi.Output<string>;
+    declare public readonly log: pulumi.Output<string>;
     /**
      * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly logStorage!: pulumi.Output<number>;
+    declare public readonly logStorage: pulumi.Output<number>;
     /**
      * Payment type,valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
-    public readonly productVersion!: pulumi.Output<string | undefined>;
+    declare public readonly productVersion: pulumi.Output<string | undefined>;
     /**
      * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly renewStatus!: pulumi.Output<string | undefined>;
+    declare public readonly renewStatus: pulumi.Output<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly secretNum!: pulumi.Output<number | undefined>;
+    declare public readonly secretNum: pulumi.Output<number | undefined>;
     /**
      * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly spec!: pulumi.Output<number | undefined>;
+    declare public readonly spec: pulumi.Output<number | undefined>;
     /**
      * Instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Instance VPC id
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly vpcNum!: pulumi.Output<number | undefined>;
+    declare public readonly vpcNum: pulumi.Output<number | undefined>;
     /**
      * Instance bind vswitches
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
      * zone id
      */
-    public readonly zoneIds!: pulumi.Output<string[]>;
+    declare public readonly zoneIds: pulumi.Output<string[]>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -149,55 +149,55 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["bindVpcs"] = state ? state.bindVpcs : undefined;
-            resourceInputs["caCertificateChainPem"] = state ? state.caCertificateChainPem : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["endDate"] = state ? state.endDate : undefined;
-            resourceInputs["forceDeleteWithoutBackup"] = state ? state.forceDeleteWithoutBackup : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["keyNum"] = state ? state.keyNum : undefined;
-            resourceInputs["log"] = state ? state.log : undefined;
-            resourceInputs["logStorage"] = state ? state.logStorage : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["productVersion"] = state ? state.productVersion : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewStatus"] = state ? state.renewStatus : undefined;
-            resourceInputs["secretNum"] = state ? state.secretNum : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcNum"] = state ? state.vpcNum : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
+            resourceInputs["bindVpcs"] = state?.bindVpcs;
+            resourceInputs["caCertificateChainPem"] = state?.caCertificateChainPem;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["endDate"] = state?.endDate;
+            resourceInputs["forceDeleteWithoutBackup"] = state?.forceDeleteWithoutBackup;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["keyNum"] = state?.keyNum;
+            resourceInputs["log"] = state?.log;
+            resourceInputs["logStorage"] = state?.logStorage;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["productVersion"] = state?.productVersion;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewStatus"] = state?.renewStatus;
+            resourceInputs["secretNum"] = state?.secretNum;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcNum"] = state?.vpcNum;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
+            resourceInputs["zoneIds"] = state?.zoneIds;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchIds === undefined) && !opts.urn) {
+            if (args?.vswitchIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
-            if ((!args || args.zoneIds === undefined) && !opts.urn) {
+            if (args?.zoneIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneIds'");
             }
-            resourceInputs["bindVpcs"] = args ? args.bindVpcs : undefined;
-            resourceInputs["forceDeleteWithoutBackup"] = args ? args.forceDeleteWithoutBackup : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["keyNum"] = args ? args.keyNum : undefined;
-            resourceInputs["log"] = args ? args.log : undefined;
-            resourceInputs["logStorage"] = args ? args.logStorage : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["productVersion"] = args ? args.productVersion : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewStatus"] = args ? args.renewStatus : undefined;
-            resourceInputs["secretNum"] = args ? args.secretNum : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcNum"] = args ? args.vpcNum : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
+            resourceInputs["bindVpcs"] = args?.bindVpcs;
+            resourceInputs["forceDeleteWithoutBackup"] = args?.forceDeleteWithoutBackup;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["keyNum"] = args?.keyNum;
+            resourceInputs["log"] = args?.log;
+            resourceInputs["logStorage"] = args?.logStorage;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["productVersion"] = args?.productVersion;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewStatus"] = args?.renewStatus;
+            resourceInputs["secretNum"] = args?.secretNum;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcNum"] = args?.vpcNum;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
+            resourceInputs["zoneIds"] = args?.zoneIds;
             resourceInputs["caCertificateChainPem"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endDate"] = undefined /*out*/;

@@ -50,15 +50,15 @@ export class DdrInstance extends pulumi.CustomResource {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    public readonly acl!: pulumi.Output<string>;
+    declare public readonly acl: pulumi.Output<string>;
     /**
      * Whether to renewal a DB instance automatically or not. It is valid when paymentType is `Subscription`. Default to `false`.
      */
-    public readonly autoRenew!: pulumi.Output<boolean>;
+    declare public readonly autoRenew: pulumi.Output<boolean>;
     /**
      * Auto-renewal period of an instance, in the unit of the month. It is valid when paymentType is `Subscription`. Valid value:[1~12], Default to 1.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number>;
     /**
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
@@ -66,62 +66,62 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
      */
-    public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
+    declare public readonly autoUpgradeMinorVersion: pulumi.Output<string>;
     /**
      * The ID of the backup set that is used for the restoration. You can call the DescribeCrossRegionBackups operation to query the ID of the backup set.
      */
-    public readonly backupSetId!: pulumi.Output<string | undefined>;
+    declare public readonly backupSetId: pulumi.Output<string | undefined>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    public readonly caType!: pulumi.Output<string>;
+    declare public readonly caType: pulumi.Output<string>;
     /**
      * The RDS edition of the instance.
      */
-    public /*out*/ readonly category!: pulumi.Output<string>;
+    declare public /*out*/ readonly category: pulumi.Output<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
-    public readonly clientCaCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCaCert: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      */
-    public readonly clientCaEnabled!: pulumi.Output<number | undefined>;
+    declare public readonly clientCaEnabled: pulumi.Output<number | undefined>;
     /**
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
      */
-    public readonly clientCertRevocationList!: pulumi.Output<string | undefined>;
+    declare public readonly clientCertRevocationList: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      */
-    public readonly clientCrlEnabled!: pulumi.Output<number | undefined>;
+    declare public readonly clientCrlEnabled: pulumi.Output<number | undefined>;
     /**
      * RDS database connection string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      *
      * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
-    public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceIpArrayAttribute: pulumi.Output<string | undefined>;
     /**
      * The name of the IP address whitelist. Default value: Default.
      *
      * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
-    public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceIpArrayName: pulumi.Output<string | undefined>;
     /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -132,7 +132,7 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
-    public readonly dbInstanceStorageType!: pulumi.Output<string>;
+    declare public readonly dbInstanceStorageType: pulumi.Output<string>;
     /**
      * The switch of delete protection. Valid values: 
      * - true: delete protect.
@@ -140,37 +140,37 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean>;
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
      * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer.
      *
      * > **NOTE:** When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDdrInstance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/restore-data-to-a-new-instance-across-regions) `EngineVersion`.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    public readonly forceRestart!: pulumi.Output<boolean>;
+    declare public readonly forceRestart: pulumi.Output<boolean>;
     /**
      * The read-only instances to which you want to synchronize the IP address whitelist.
      * * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
      * * If the instance is not attached with a read-only instance, this parameter is empty.
      */
-    public readonly freshWhiteListReadins!: pulumi.Output<string | undefined>;
+    declare public readonly freshWhiteListReadins: pulumi.Output<string | undefined>;
     /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
@@ -178,69 +178,69 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      */
-    public readonly haConfig!: pulumi.Output<string>;
+    declare public readonly haConfig: pulumi.Output<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * The storage capacity of the destination instance. Valid values: 5 to 2000. Unit: GB.
      *
      * This value must be a multiple of 5 GB. For more information, see Primary ApsaraDB RDS instance types.
      */
-    public readonly instanceStorage!: pulumi.Output<number>;
+    declare public readonly instanceStorage: pulumi.Output<number>;
     /**
      * DB Instance type.
      *
      * > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    public readonly maintainTime!: pulumi.Output<string>;
+    declare public readonly maintainTime: pulumi.Output<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      *
      * > **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      */
-    public readonly manualHaTime!: pulumi.Output<string | undefined>;
+    declare public readonly manualHaTime: pulumi.Output<string | undefined>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
      * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
      * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
      */
-    public readonly modifyMode!: pulumi.Output<string | undefined>;
+    declare public readonly modifyMode: pulumi.Output<string | undefined>;
     /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
-    public readonly monitoringPeriod!: pulumi.Output<number>;
+    declare public readonly monitoringPeriod: pulumi.Output<number>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
-    public readonly parameters!: pulumi.Output<outputs.rds.DdrInstanceParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.rds.DdrInstanceParameter[]>;
     /**
      * Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
-    public readonly pgHbaConfs!: pulumi.Output<outputs.rds.DdrInstancePgHbaConf[]>;
+    declare public readonly pgHbaConfs: pulumi.Output<outputs.rds.DdrInstancePgHbaConf[]>;
     /**
      * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
-    public readonly privateIpAddress!: pulumi.Output<string>;
+    declare public readonly privateIpAddress: pulumi.Output<string>;
     /**
      * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
      * - None: No archived backup files are retained.
@@ -249,7 +249,7 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      */
-    public readonly releasedKeepPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly releasedKeepPolicy: pulumi.Output<string | undefined>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -257,69 +257,69 @@ export class DdrInstance extends pulumi.CustomResource {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    public readonly replicationAcl!: pulumi.Output<string>;
+    declare public readonly replicationAcl: pulumi.Output<string>;
     /**
      * The ID of resource group which the DB instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    public readonly restoreTime!: pulumi.Output<string | undefined>;
+    declare public readonly restoreTime: pulumi.Output<string | undefined>;
     /**
      * The method that is used to restore data. Valid values:
      * - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
      * - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
      */
-    public readonly restoreType!: pulumi.Output<string>;
+    declare public readonly restoreType: pulumi.Output<string>;
     /**
      * ) The list IDs to join ECS Security Group. At most supports three security groups.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
      */
-    public readonly securityIpMode!: pulumi.Output<string>;
+    declare public readonly securityIpMode: pulumi.Output<string>;
     /**
      * The type of IP address in the IP address whitelist.
      */
-    public readonly securityIpType!: pulumi.Output<string | undefined>;
+    declare public readonly securityIpType: pulumi.Output<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    public readonly securityIps!: pulumi.Output<string[]>;
+    declare public readonly securityIps: pulumi.Output<string[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    public readonly serverCert!: pulumi.Output<string>;
+    declare public readonly serverCert: pulumi.Output<string>;
     /**
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    public readonly serverKey!: pulumi.Output<string>;
+    declare public readonly serverKey: pulumi.Output<string>;
     /**
      * The ID of the source instance if you want to restore data to a point in time.
      */
-    public readonly sourceDbInstanceName!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDbInstanceName: pulumi.Output<string | undefined>;
     /**
      * The region ID of the source instance if you want to restore data to a point in time.
      */
-    public readonly sourceRegion!: pulumi.Output<string | undefined>;
+    declare public readonly sourceRegion: pulumi.Output<string | undefined>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
-    public readonly sqlCollectorConfigValue!: pulumi.Output<number>;
+    declare public readonly sqlCollectorConfigValue: pulumi.Output<number>;
     /**
      * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
      */
-    public readonly sqlCollectorStatus!: pulumi.Output<string>;
+    declare public readonly sqlCollectorStatus: pulumi.Output<string>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
-    public readonly sslAction!: pulumi.Output<string>;
+    declare public readonly sslAction: pulumi.Output<string>;
     /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
-    public /*out*/ readonly sslStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslStatus: pulumi.Output<string>;
     /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
@@ -327,7 +327,7 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      */
-    public readonly storageAutoScale!: pulumi.Output<string | undefined>;
+    declare public readonly storageAutoScale: pulumi.Output<string | undefined>;
     /**
      * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
      * - 10
@@ -338,25 +338,25 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
      */
-    public readonly storageThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly storageThreshold: pulumi.Output<number | undefined>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
      *
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
-    public readonly storageUpperBound!: pulumi.Output<number | undefined>;
+    declare public readonly storageUpperBound: pulumi.Output<number | undefined>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      *
      * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
-    public readonly switchTime!: pulumi.Output<string | undefined>;
+    declare public readonly switchTime: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -368,40 +368,40 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
-    public readonly targetMinorVersion!: pulumi.Output<string>;
+    declare public readonly targetMinorVersion: pulumi.Output<string>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      */
-    public readonly tcpConnectionType!: pulumi.Output<string>;
+    declare public readonly tcpConnectionType: pulumi.Output<string>;
     /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
-    public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    declare public readonly tdeStatus: pulumi.Output<string | undefined>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      */
-    public readonly upgradeDbInstanceKernelVersion!: pulumi.Output<boolean | undefined>;
+    declare public readonly upgradeDbInstanceKernelVersion: pulumi.Output<boolean | undefined>;
     /**
      * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
-    public readonly upgradeTime!: pulumi.Output<string | undefined>;
+    declare public readonly upgradeTime: pulumi.Output<string | undefined>;
     /**
      * The VPC ID of the instance.
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The network type of the IP address whitelist. Default value: MIX. Valid values:
      * - Classic: classic network in enhanced whitelist mode
@@ -410,21 +410,21 @@ export class DdrInstance extends pulumi.CustomResource {
      *
      * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
-    public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
+    declare public readonly whitelistNetworkType: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB instance. It supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * The region ID of the secondary instance if you create a secondary instance.
      */
-    public /*out*/ readonly zoneIdSlaveA!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneIdSlaveA: pulumi.Output<string>;
     /**
      * The region ID of the log instance if you create a log instance.
      */
-    public /*out*/ readonly zoneIdSlaveB!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneIdSlaveB: pulumi.Output<string>;
 
     /**
      * Create a DdrInstance resource with the given unique name, arguments, and options.
@@ -439,161 +439,161 @@ export class DdrInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdrInstanceState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["autoUpgradeMinorVersion"] = state ? state.autoUpgradeMinorVersion : undefined;
-            resourceInputs["backupSetId"] = state ? state.backupSetId : undefined;
-            resourceInputs["caType"] = state ? state.caType : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
-            resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
-            resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
-            resourceInputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
-            resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
-            resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
-            resourceInputs["freshWhiteListReadins"] = state ? state.freshWhiteListReadins : undefined;
-            resourceInputs["haConfig"] = state ? state.haConfig : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
-            resourceInputs["manualHaTime"] = state ? state.manualHaTime : undefined;
-            resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
-            resourceInputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["pgHbaConfs"] = state ? state.pgHbaConfs : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
-            resourceInputs["replicationAcl"] = state ? state.replicationAcl : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["restoreTime"] = state ? state.restoreTime : undefined;
-            resourceInputs["restoreType"] = state ? state.restoreType : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityIpMode"] = state ? state.securityIpMode : undefined;
-            resourceInputs["securityIpType"] = state ? state.securityIpType : undefined;
-            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
-            resourceInputs["serverCert"] = state ? state.serverCert : undefined;
-            resourceInputs["serverKey"] = state ? state.serverKey : undefined;
-            resourceInputs["sourceDbInstanceName"] = state ? state.sourceDbInstanceName : undefined;
-            resourceInputs["sourceRegion"] = state ? state.sourceRegion : undefined;
-            resourceInputs["sqlCollectorConfigValue"] = state ? state.sqlCollectorConfigValue : undefined;
-            resourceInputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
-            resourceInputs["sslAction"] = state ? state.sslAction : undefined;
-            resourceInputs["sslStatus"] = state ? state.sslStatus : undefined;
-            resourceInputs["storageAutoScale"] = state ? state.storageAutoScale : undefined;
-            resourceInputs["storageThreshold"] = state ? state.storageThreshold : undefined;
-            resourceInputs["storageUpperBound"] = state ? state.storageUpperBound : undefined;
-            resourceInputs["switchTime"] = state ? state.switchTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
-            resourceInputs["tcpConnectionType"] = state ? state.tcpConnectionType : undefined;
-            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
-            resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneIdSlaveA"] = state ? state.zoneIdSlaveA : undefined;
-            resourceInputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["autoUpgradeMinorVersion"] = state?.autoUpgradeMinorVersion;
+            resourceInputs["backupSetId"] = state?.backupSetId;
+            resourceInputs["caType"] = state?.caType;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["clientCaCert"] = state?.clientCaCert;
+            resourceInputs["clientCaEnabled"] = state?.clientCaEnabled;
+            resourceInputs["clientCertRevocationList"] = state?.clientCertRevocationList;
+            resourceInputs["clientCrlEnabled"] = state?.clientCrlEnabled;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["dbInstanceIpArrayAttribute"] = state?.dbInstanceIpArrayAttribute;
+            resourceInputs["dbInstanceIpArrayName"] = state?.dbInstanceIpArrayName;
+            resourceInputs["dbInstanceStorageType"] = state?.dbInstanceStorageType;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["forceRestart"] = state?.forceRestart;
+            resourceInputs["freshWhiteListReadins"] = state?.freshWhiteListReadins;
+            resourceInputs["haConfig"] = state?.haConfig;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceStorage"] = state?.instanceStorage;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["maintainTime"] = state?.maintainTime;
+            resourceInputs["manualHaTime"] = state?.manualHaTime;
+            resourceInputs["modifyMode"] = state?.modifyMode;
+            resourceInputs["monitoringPeriod"] = state?.monitoringPeriod;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["pgHbaConfs"] = state?.pgHbaConfs;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["releasedKeepPolicy"] = state?.releasedKeepPolicy;
+            resourceInputs["replicationAcl"] = state?.replicationAcl;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restoreTime"] = state?.restoreTime;
+            resourceInputs["restoreType"] = state?.restoreType;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityIpMode"] = state?.securityIpMode;
+            resourceInputs["securityIpType"] = state?.securityIpType;
+            resourceInputs["securityIps"] = state?.securityIps;
+            resourceInputs["serverCert"] = state?.serverCert;
+            resourceInputs["serverKey"] = state?.serverKey;
+            resourceInputs["sourceDbInstanceName"] = state?.sourceDbInstanceName;
+            resourceInputs["sourceRegion"] = state?.sourceRegion;
+            resourceInputs["sqlCollectorConfigValue"] = state?.sqlCollectorConfigValue;
+            resourceInputs["sqlCollectorStatus"] = state?.sqlCollectorStatus;
+            resourceInputs["sslAction"] = state?.sslAction;
+            resourceInputs["sslStatus"] = state?.sslStatus;
+            resourceInputs["storageAutoScale"] = state?.storageAutoScale;
+            resourceInputs["storageThreshold"] = state?.storageThreshold;
+            resourceInputs["storageUpperBound"] = state?.storageUpperBound;
+            resourceInputs["switchTime"] = state?.switchTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetMinorVersion"] = state?.targetMinorVersion;
+            resourceInputs["tcpConnectionType"] = state?.tcpConnectionType;
+            resourceInputs["tdeStatus"] = state?.tdeStatus;
+            resourceInputs["upgradeDbInstanceKernelVersion"] = state?.upgradeDbInstanceKernelVersion;
+            resourceInputs["upgradeTime"] = state?.upgradeTime;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["whitelistNetworkType"] = state?.whitelistNetworkType;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneIdSlaveA"] = state?.zoneIdSlaveA;
+            resourceInputs["zoneIdSlaveB"] = state?.zoneIdSlaveB;
         } else {
             const args = argsOrState as DdrInstanceArgs | undefined;
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.instanceStorage === undefined) && !opts.urn) {
+            if (args?.instanceStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.restoreType === undefined) && !opts.urn) {
+            if (args?.restoreType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restoreType'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
-            resourceInputs["backupSetId"] = args ? args.backupSetId : undefined;
-            resourceInputs["caType"] = args ? args.caType : undefined;
-            resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
-            resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
-            resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
-            resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
-            resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
-            resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
-            resourceInputs["freshWhiteListReadins"] = args ? args.freshWhiteListReadins : undefined;
-            resourceInputs["haConfig"] = args ? args.haConfig : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
-            resourceInputs["manualHaTime"] = args ? args.manualHaTime : undefined;
-            resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
-            resourceInputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["pgHbaConfs"] = args ? args.pgHbaConfs : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
-            resourceInputs["replicationAcl"] = args ? args.replicationAcl : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["restoreTime"] = args ? args.restoreTime : undefined;
-            resourceInputs["restoreType"] = args ? args.restoreType : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["securityIpMode"] = args ? args.securityIpMode : undefined;
-            resourceInputs["securityIpType"] = args ? args.securityIpType : undefined;
-            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["serverCert"] = args ? args.serverCert : undefined;
-            resourceInputs["serverKey"] = args ? args.serverKey : undefined;
-            resourceInputs["sourceDbInstanceName"] = args ? args.sourceDbInstanceName : undefined;
-            resourceInputs["sourceRegion"] = args ? args.sourceRegion : undefined;
-            resourceInputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
-            resourceInputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
-            resourceInputs["sslAction"] = args ? args.sslAction : undefined;
-            resourceInputs["storageAutoScale"] = args ? args.storageAutoScale : undefined;
-            resourceInputs["storageThreshold"] = args ? args.storageThreshold : undefined;
-            resourceInputs["storageUpperBound"] = args ? args.storageUpperBound : undefined;
-            resourceInputs["switchTime"] = args ? args.switchTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
-            resourceInputs["tcpConnectionType"] = args ? args.tcpConnectionType : undefined;
-            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
-            resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["autoUpgradeMinorVersion"] = args?.autoUpgradeMinorVersion;
+            resourceInputs["backupSetId"] = args?.backupSetId;
+            resourceInputs["caType"] = args?.caType;
+            resourceInputs["clientCaCert"] = args?.clientCaCert;
+            resourceInputs["clientCaEnabled"] = args?.clientCaEnabled;
+            resourceInputs["clientCertRevocationList"] = args?.clientCertRevocationList;
+            resourceInputs["clientCrlEnabled"] = args?.clientCrlEnabled;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["dbInstanceIpArrayAttribute"] = args?.dbInstanceIpArrayAttribute;
+            resourceInputs["dbInstanceIpArrayName"] = args?.dbInstanceIpArrayName;
+            resourceInputs["dbInstanceStorageType"] = args?.dbInstanceStorageType;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["forceRestart"] = args?.forceRestart;
+            resourceInputs["freshWhiteListReadins"] = args?.freshWhiteListReadins;
+            resourceInputs["haConfig"] = args?.haConfig;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceStorage"] = args?.instanceStorage;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["maintainTime"] = args?.maintainTime;
+            resourceInputs["manualHaTime"] = args?.manualHaTime;
+            resourceInputs["modifyMode"] = args?.modifyMode;
+            resourceInputs["monitoringPeriod"] = args?.monitoringPeriod;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["pgHbaConfs"] = args?.pgHbaConfs;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["releasedKeepPolicy"] = args?.releasedKeepPolicy;
+            resourceInputs["replicationAcl"] = args?.replicationAcl;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restoreTime"] = args?.restoreTime;
+            resourceInputs["restoreType"] = args?.restoreType;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["securityIpMode"] = args?.securityIpMode;
+            resourceInputs["securityIpType"] = args?.securityIpType;
+            resourceInputs["securityIps"] = args?.securityIps;
+            resourceInputs["serverCert"] = args?.serverCert;
+            resourceInputs["serverKey"] = args?.serverKey;
+            resourceInputs["sourceDbInstanceName"] = args?.sourceDbInstanceName;
+            resourceInputs["sourceRegion"] = args?.sourceRegion;
+            resourceInputs["sqlCollectorConfigValue"] = args?.sqlCollectorConfigValue;
+            resourceInputs["sqlCollectorStatus"] = args?.sqlCollectorStatus;
+            resourceInputs["sslAction"] = args?.sslAction;
+            resourceInputs["storageAutoScale"] = args?.storageAutoScale;
+            resourceInputs["storageThreshold"] = args?.storageThreshold;
+            resourceInputs["storageUpperBound"] = args?.storageUpperBound;
+            resourceInputs["switchTime"] = args?.switchTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetMinorVersion"] = args?.targetMinorVersion;
+            resourceInputs["tcpConnectionType"] = args?.tcpConnectionType;
+            resourceInputs["tdeStatus"] = args?.tdeStatus;
+            resourceInputs["upgradeDbInstanceKernelVersion"] = args?.upgradeDbInstanceKernelVersion;
+            resourceInputs["upgradeTime"] = args?.upgradeTime;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["whitelistNetworkType"] = args?.whitelistNetworkType;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["category"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["sslStatus"] = undefined /*out*/;

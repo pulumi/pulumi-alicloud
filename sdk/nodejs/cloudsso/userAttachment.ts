@@ -52,15 +52,15 @@ export class UserAttachment extends pulumi.CustomResource {
     /**
      * The ID of the directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The ID of the group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The ID of the user.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserAttachment resource with the given unique name, arguments, and options.
@@ -75,23 +75,23 @@ export class UserAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserAttachmentState | undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserAttachmentArgs | undefined;
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserAttachment.__pulumiType, name, resourceInputs, opts);

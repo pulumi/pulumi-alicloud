@@ -50,23 +50,23 @@ export class TransitRouterMulticastDomainSource extends pulumi.CustomResource {
     /**
      * The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
      */
-    public readonly groupIpAddress!: pulumi.Output<string>;
+    declare public readonly groupIpAddress: pulumi.Output<string>;
     /**
      * ENI ID of the multicast source.
      */
-    public readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the multicast domain to which the multicast source belongs.
      */
-    public readonly transitRouterMulticastDomainId!: pulumi.Output<string>;
+    declare public readonly transitRouterMulticastDomainId: pulumi.Output<string>;
     /**
      * The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterMulticastDomainSource resource with the given unique name, arguments, and options.
@@ -81,26 +81,26 @@ export class TransitRouterMulticastDomainSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterMulticastDomainSourceState | undefined;
-            resourceInputs["groupIpAddress"] = state ? state.groupIpAddress : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = state ? state.transitRouterMulticastDomainId : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["groupIpAddress"] = state?.groupIpAddress;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterMulticastDomainId"] = state?.transitRouterMulticastDomainId;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as TransitRouterMulticastDomainSourceArgs | undefined;
-            if ((!args || args.groupIpAddress === undefined) && !opts.urn) {
+            if (args?.groupIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupIpAddress'");
             }
-            if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
+            if (args?.networkInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            if ((!args || args.transitRouterMulticastDomainId === undefined) && !opts.urn) {
+            if (args?.transitRouterMulticastDomainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterMulticastDomainId'");
             }
-            resourceInputs["groupIpAddress"] = args ? args.groupIpAddress : undefined;
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = args ? args.transitRouterMulticastDomainId : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["groupIpAddress"] = args?.groupIpAddress;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["transitRouterMulticastDomainId"] = args?.transitRouterMulticastDomainId;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

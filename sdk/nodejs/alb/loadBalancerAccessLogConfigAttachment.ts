@@ -52,19 +52,19 @@ export class LoadBalancerAccessLogConfigAttachment extends pulumi.CustomResource
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the load balancing instance.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The log items shipped by the access log.
      */
-    public readonly logProject!: pulumi.Output<string>;
+    declare public readonly logProject: pulumi.Output<string>;
     /**
      * Logstore for log delivery.
      */
-    public readonly logStore!: pulumi.Output<string>;
+    declare public readonly logStore: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancerAccessLogConfigAttachment resource with the given unique name, arguments, and options.
@@ -79,24 +79,24 @@ export class LoadBalancerAccessLogConfigAttachment extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerAccessLogConfigAttachmentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["logProject"] = state ? state.logProject : undefined;
-            resourceInputs["logStore"] = state ? state.logStore : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["logProject"] = state?.logProject;
+            resourceInputs["logStore"] = state?.logStore;
         } else {
             const args = argsOrState as LoadBalancerAccessLogConfigAttachmentArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.logProject === undefined) && !opts.urn) {
+            if (args?.logProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logProject'");
             }
-            if ((!args || args.logStore === undefined) && !opts.urn) {
+            if (args?.logStore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logStore'");
             }
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["logProject"] = args ? args.logProject : undefined;
-            resourceInputs["logStore"] = args ? args.logStore : undefined;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["logProject"] = args?.logProject;
+            resourceInputs["logStore"] = args?.logStore;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -144,31 +144,31 @@ export class RouteEntry extends pulumi.CustomResource {
     /**
      * The next hop of the destination route.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    public readonly publishVpc!: pulumi.Output<boolean>;
+    declare public readonly publishVpc: pulumi.Output<boolean>;
     /**
      * The destination network segment of the destination route.
      */
-    public readonly routeDest!: pulumi.Output<string>;
+    declare public readonly routeDest: pulumi.Output<string>;
     /**
      * (Available since v1.161.0) The type of the vpn route entry.
      */
-    public /*out*/ readonly routeEntryType!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeEntryType: pulumi.Output<string>;
     /**
      * (Available since v1.161.0) The status of the vpn route entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The id of the vpn gateway.
      */
-    public readonly vpnGatewayId!: pulumi.Output<string>;
+    declare public readonly vpnGatewayId: pulumi.Output<string>;
     /**
      * The value should be 0 or 100.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a RouteEntry resource with the given unique name, arguments, and options.
@@ -183,35 +183,35 @@ export class RouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["publishVpc"] = state ? state.publishVpc : undefined;
-            resourceInputs["routeDest"] = state ? state.routeDest : undefined;
-            resourceInputs["routeEntryType"] = state ? state.routeEntryType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["publishVpc"] = state?.publishVpc;
+            resourceInputs["routeDest"] = state?.routeDest;
+            resourceInputs["routeEntryType"] = state?.routeEntryType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpnGatewayId"] = state?.vpnGatewayId;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.publishVpc === undefined) && !opts.urn) {
+            if (args?.publishVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publishVpc'");
             }
-            if ((!args || args.routeDest === undefined) && !opts.urn) {
+            if (args?.routeDest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeDest'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
+            if (args?.vpnGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            if ((!args || args.weight === undefined) && !opts.urn) {
+            if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["publishVpc"] = args ? args.publishVpc : undefined;
-            resourceInputs["routeDest"] = args ? args.routeDest : undefined;
-            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["publishVpc"] = args?.publishVpc;
+            resourceInputs["routeDest"] = args?.routeDest;
+            resourceInputs["vpnGatewayId"] = args?.vpnGatewayId;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["routeEntryType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

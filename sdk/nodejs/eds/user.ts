@@ -66,23 +66,23 @@ export class User extends pulumi.CustomResource {
     /**
      * The email of the user email.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
      */
-    public readonly endUserId!: pulumi.Output<string>;
+    declare public readonly endUserId: pulumi.Output<string>;
     /**
      * The password of the user password.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The phone of the mobile phone number.
      */
-    public readonly phone!: pulumi.Output<string | undefined>;
+    declare public readonly phone: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Unlocked`, `Locked`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -97,24 +97,24 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["endUserId"] = state ? state.endUserId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["endUserId"] = state?.endUserId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.endUserId === undefined) && !opts.urn) {
+            if (args?.endUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endUserId'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["endUserId"] = args ? args.endUserId : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["endUserId"] = args?.endUserId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

@@ -212,23 +212,23 @@ export class Audit extends pulumi.CustomResource {
     /**
      * Aliuid value of your account.
      */
-    public readonly aliuid!: pulumi.Output<string>;
+    declare public readonly aliuid: pulumi.Output<string>;
     /**
      * Name of SLS log audit.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Multi-account configuration, please fill in multiple aliuid.
      */
-    public readonly multiAccounts!: pulumi.Output<string[] | undefined>;
+    declare public readonly multiAccounts: pulumi.Output<string[] | undefined>;
     /**
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      */
-    public readonly resourceDirectoryType!: pulumi.Output<string | undefined>;
+    declare public readonly resourceDirectoryType: pulumi.Output<string | undefined>;
     /**
      * Log audit detailed configuration.
      */
-    public readonly variableMap!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly variableMap: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Audit resource with the given unique name, arguments, and options.
@@ -243,24 +243,24 @@ export class Audit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditState | undefined;
-            resourceInputs["aliuid"] = state ? state.aliuid : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["multiAccounts"] = state ? state.multiAccounts : undefined;
-            resourceInputs["resourceDirectoryType"] = state ? state.resourceDirectoryType : undefined;
-            resourceInputs["variableMap"] = state ? state.variableMap : undefined;
+            resourceInputs["aliuid"] = state?.aliuid;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["multiAccounts"] = state?.multiAccounts;
+            resourceInputs["resourceDirectoryType"] = state?.resourceDirectoryType;
+            resourceInputs["variableMap"] = state?.variableMap;
         } else {
             const args = argsOrState as AuditArgs | undefined;
-            if ((!args || args.aliuid === undefined) && !opts.urn) {
+            if (args?.aliuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aliuid'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["aliuid"] = args ? args.aliuid : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["multiAccounts"] = args ? args.multiAccounts : undefined;
-            resourceInputs["resourceDirectoryType"] = args ? args.resourceDirectoryType : undefined;
-            resourceInputs["variableMap"] = args ? args.variableMap : undefined;
+            resourceInputs["aliuid"] = args?.aliuid;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["multiAccounts"] = args?.multiAccounts;
+            resourceInputs["resourceDirectoryType"] = args?.resourceDirectoryType;
+            resourceInputs["variableMap"] = args?.variableMap;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Audit.__pulumiType, name, resourceInputs, opts);

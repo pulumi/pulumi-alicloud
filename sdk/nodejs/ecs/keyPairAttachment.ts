@@ -42,18 +42,18 @@ export class KeyPairAttachment extends pulumi.CustomResource {
     /**
      * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The list of ECS instance's IDs.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * The name of key pair used to bind.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    public readonly keyName!: pulumi.Output<string>;
-    public readonly keyPairName!: pulumi.Output<string>;
+    declare public readonly keyName: pulumi.Output<string>;
+    declare public readonly keyPairName: pulumi.Output<string>;
 
     /**
      * Create a KeyPairAttachment resource with the given unique name, arguments, and options.
@@ -68,19 +68,19 @@ export class KeyPairAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairAttachmentState | undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["keyPairName"] = state?.keyPairName;
         } else {
             const args = argsOrState as KeyPairAttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["keyPairName"] = args?.keyPairName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KeyPairAttachment.__pulumiType, name, resourceInputs, opts);

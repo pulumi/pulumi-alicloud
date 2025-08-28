@@ -112,15 +112,15 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the NLB instance to be associated with the security group.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The ID of the security group to be disassociated.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancerSecurityGroupAttachment resource with the given unique name, arguments, and options.
@@ -135,20 +135,20 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerSecurityGroupAttachmentState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
         } else {
             const args = argsOrState as LoadBalancerSecurityGroupAttachmentArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancerSecurityGroupAttachment.__pulumiType, name, resourceInputs, opts);

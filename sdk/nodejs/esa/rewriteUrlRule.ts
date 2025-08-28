@@ -93,48 +93,48 @@ export class RewriteUrlRule extends pulumi.CustomResource {
     /**
      * ConfigId
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * The desired query string to which you want to rewrite the query string in the original request.
      */
-    public readonly queryString!: pulumi.Output<string | undefined>;
+    declare public readonly queryString: pulumi.Output<string | undefined>;
     /**
      * Query string rewrite type. Value range:
      */
-    public readonly rewriteQueryStringType!: pulumi.Output<string | undefined>;
+    declare public readonly rewriteQueryStringType: pulumi.Output<string | undefined>;
     /**
      * URI rewrite type. Value range:
      */
-    public readonly rewriteUriType!: pulumi.Output<string | undefined>;
+    declare public readonly rewriteUriType: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * ● Match all incoming requests: value set to true
      * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the rule is enabled. Valid values:
      *
      * - on
      * - off
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * The rule name. You do not need to set this parameter when adding a global configuration.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * The desired URI to which you want to rewrite the path in the original request.
      */
-    public readonly uri!: pulumi.Output<string | undefined>;
+    declare public readonly uri: pulumi.Output<string | undefined>;
 
     /**
      * Create a RewriteUrlRule resource with the given unique name, arguments, and options.
@@ -149,30 +149,30 @@ export class RewriteUrlRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RewriteUrlRuleState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["queryString"] = state ? state.queryString : undefined;
-            resourceInputs["rewriteQueryStringType"] = state ? state.rewriteQueryStringType : undefined;
-            resourceInputs["rewriteUriType"] = state ? state.rewriteUriType : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["queryString"] = state?.queryString;
+            resourceInputs["rewriteQueryStringType"] = state?.rewriteQueryStringType;
+            resourceInputs["rewriteUriType"] = state?.rewriteUriType;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["uri"] = state?.uri;
         } else {
             const args = argsOrState as RewriteUrlRuleArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["queryString"] = args ? args.queryString : undefined;
-            resourceInputs["rewriteQueryStringType"] = args ? args.rewriteQueryStringType : undefined;
-            resourceInputs["rewriteUriType"] = args ? args.rewriteUriType : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["uri"] = args ? args.uri : undefined;
+            resourceInputs["queryString"] = args?.queryString;
+            resourceInputs["rewriteQueryStringType"] = args?.rewriteQueryStringType;
+            resourceInputs["rewriteUriType"] = args?.rewriteUriType;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["uri"] = args?.uri;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

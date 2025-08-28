@@ -52,27 +52,27 @@ export class BackupPlan extends pulumi.CustomResource {
     /**
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      */
-    public readonly backupPeriod!: pulumi.Output<string>;
+    declare public readonly backupPeriod: pulumi.Output<string>;
     /**
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      */
-    public readonly backupTime!: pulumi.Output<string>;
+    declare public readonly backupTime: pulumi.Output<string>;
     /**
      * The ID of the cluster for the backup.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The ID of the data center for the backup in the cluster.
      */
-    public readonly dataCenterId!: pulumi.Output<string>;
+    declare public readonly dataCenterId: pulumi.Output<string>;
     /**
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      */
-    public readonly retentionPeriod!: pulumi.Output<number>;
+    declare public readonly retentionPeriod: pulumi.Output<number>;
 
     /**
      * Create a BackupPlan resource with the given unique name, arguments, and options.
@@ -87,29 +87,29 @@ export class BackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["backupPeriod"] = state ? state.backupPeriod : undefined;
-            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["dataCenterId"] = state ? state.dataCenterId : undefined;
-            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["backupPeriod"] = state?.backupPeriod;
+            resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["dataCenterId"] = state?.dataCenterId;
+            resourceInputs["retentionPeriod"] = state?.retentionPeriod;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
-            if ((!args || args.backupTime === undefined) && !opts.urn) {
+            if (args?.backupTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupTime'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.dataCenterId === undefined) && !opts.urn) {
+            if (args?.dataCenterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataCenterId'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["backupPeriod"] = args ? args.backupPeriod : undefined;
-            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dataCenterId"] = args ? args.dataCenterId : undefined;
-            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["backupPeriod"] = args?.backupPeriod;
+            resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dataCenterId"] = args?.dataCenterId;
+            resourceInputs["retentionPeriod"] = args?.retentionPeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupPlan.__pulumiType, name, resourceInputs, opts);

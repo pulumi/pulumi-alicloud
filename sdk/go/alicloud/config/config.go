@@ -11,14 +11,12 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-// console.
+// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 func GetAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:accessKey")
 }
 
-// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-// Alibaba Cloud console.
+// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:accountId")
 }
@@ -50,8 +48,7 @@ func GetCredentialsUri(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:credentialsUri")
 }
 
-// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-// of the Alibaba Cloud console.
+// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 func GetEcsRoleName(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:ecsRoleName")
 	if err == nil {
@@ -121,8 +118,7 @@ func GetRegion(ctx *pulumi.Context) string {
 	return value
 }
 
-// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-// console.
+// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 func GetSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:secretKey")
 }
@@ -148,8 +144,7 @@ func GetSignVersion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:signVersion")
 }
 
-// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-// that are not public (yet).
+// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
 func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "alicloud:skipRegionValidation")
 }

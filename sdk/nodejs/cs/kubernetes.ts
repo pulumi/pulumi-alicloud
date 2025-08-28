@@ -82,29 +82,29 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    public readonly addons!: pulumi.Output<outputs.cs.KubernetesAddon[] | undefined>;
+    declare public readonly addons: pulumi.Output<outputs.cs.KubernetesAddon[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    public readonly apiAudiences!: pulumi.Output<string[] | undefined>;
+    declare public readonly apiAudiences: pulumi.Output<string[] | undefined>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.KubernetesCertificateAuthority>;
+    declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.cs.KubernetesCertificateAuthority>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    public readonly clientCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCert: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -112,198 +112,198 @@ export class Kubernetes extends pulumi.CustomResource {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    declare public readonly clusterCaCert: pulumi.Output<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    public readonly clusterDomain!: pulumi.Output<string | undefined>;
+    declare public readonly clusterDomain: pulumi.Output<string | undefined>;
     /**
      * (Map) Map of kubernetes cluster connection information.
      */
-    public /*out*/ readonly connections!: pulumi.Output<outputs.cs.KubernetesConnections>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.KubernetesConnections>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
-    public readonly customSan!: pulumi.Output<string | undefined>;
+    declare public readonly customSan: pulumi.Output<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    public readonly deleteOptions!: pulumi.Output<outputs.cs.KubernetesDeleteOption[] | undefined>;
+    declare public readonly deleteOptions: pulumi.Output<outputs.cs.KubernetesDeleteOption[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Enable login to the node through SSH. Default to `false`.
      */
-    public readonly enableSsh!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSsh: pulumi.Output<boolean | undefined>;
     /**
      * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * Install cloud monitor agent on ECS. Default to `true`.
      */
-    public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
+    declare public readonly installCloudMonitor: pulumi.Output<boolean | undefined>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
-    public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
+    declare public readonly isEnterpriseSecurityGroup: pulumi.Output<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    public readonly keyName!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string | undefined>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
-    public readonly masterAutoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly masterAutoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      */
-    public readonly masterAutoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly masterAutoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    public readonly masterDiskCategory!: pulumi.Output<string | undefined>;
+    declare public readonly masterDiskCategory: pulumi.Output<string | undefined>;
     /**
      * Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    public readonly masterDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly masterDiskPerformanceLevel: pulumi.Output<string | undefined>;
     /**
      * The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
      */
-    public readonly masterDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly masterDiskSize: pulumi.Output<number | undefined>;
     /**
      * Master node system disk auto snapshot policy.
      *
      * *Computed params*
      */
-    public readonly masterDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly masterDiskSnapshotPolicyId: pulumi.Output<string | undefined>;
     /**
      * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      */
-    public readonly masterInstanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly masterInstanceChargeType: pulumi.Output<string | undefined>;
     /**
      * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    public readonly masterInstanceTypes!: pulumi.Output<string[]>;
+    declare public readonly masterInstanceTypes: pulumi.Output<string[]>;
     /**
      * (Optional) The master nodes. See `masterNodes` below.
      */
-    public /*out*/ readonly masterNodes!: pulumi.Output<outputs.cs.KubernetesMasterNode[]>;
+    declare public /*out*/ readonly masterNodes: pulumi.Output<outputs.cs.KubernetesMasterNode[]>;
     /**
      * Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
-    public readonly masterPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly masterPeriod: pulumi.Output<number | undefined>;
     /**
      * Master payment period unit, the valid value is `Month`.
      */
-    public readonly masterPeriodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly masterPeriodUnit: pulumi.Output<string | undefined>;
     /**
      * The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
      */
-    public readonly masterVswitchIds!: pulumi.Output<string[]>;
+    declare public readonly masterVswitchIds: pulumi.Output<string[]>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    public /*out*/ readonly natGatewayId!: pulumi.Output<string>;
+    declare public /*out*/ readonly natGatewayId: pulumi.Output<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
-    public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
+    declare public readonly newNatGateway: pulumi.Output<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCidrMask: pulumi.Output<number | undefined>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
-    public readonly nodeNameMode!: pulumi.Output<string>;
+    declare public readonly nodeNameMode: pulumi.Output<string>;
     /**
      * The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    public readonly podCidr!: pulumi.Output<string | undefined>;
+    declare public readonly podCidr: pulumi.Output<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly podVswitchIds: pulumi.Output<string[] | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
-    public readonly proxyMode!: pulumi.Output<string | undefined>;
+    declare public readonly proxyMode: pulumi.Output<string | undefined>;
     /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
-    public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
+    declare public readonly rdsInstances: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
-    public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    public readonly runtime!: pulumi.Output<outputs.cs.KubernetesRuntime | undefined>;
+    declare public readonly runtime: pulumi.Output<outputs.cs.KubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    public readonly serviceAccountIssuer!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountIssuer: pulumi.Output<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    declare public readonly serviceCidr: pulumi.Output<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    public readonly skipSetCertificateAuthority!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
     /**
      * The ID of APIServer load balancer.
      */
-    public /*out*/ readonly slbId!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbId: pulumi.Output<string>;
     /**
      * The public ip of load balancer.
      */
-    public /*out*/ readonly slbInternet!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbInternet: pulumi.Output<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
@@ -312,35 +312,35 @@ export class Kubernetes extends pulumi.CustomResource {
      *
      * *Master params*
      */
-    public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly slbInternetEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbIntranet: pulumi.Output<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    public readonly userCa!: pulumi.Output<string | undefined>;
+    declare public readonly userCa: pulumi.Output<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The RamRole Name attached to worker node.
      */
-    public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly workerRamRoleName: pulumi.Output<string>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -355,127 +355,127 @@ export class Kubernetes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesState | undefined;
-            resourceInputs["addons"] = state ? state.addons : undefined;
-            resourceInputs["apiAudiences"] = state ? state.apiAudiences : undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
-            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
-            resourceInputs["clusterDomain"] = state ? state.clusterDomain : undefined;
-            resourceInputs["connections"] = state ? state.connections : undefined;
-            resourceInputs["customSan"] = state ? state.customSan : undefined;
-            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["enableSsh"] = state ? state.enableSsh : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
-            resourceInputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            resourceInputs["masterAutoRenew"] = state ? state.masterAutoRenew : undefined;
-            resourceInputs["masterAutoRenewPeriod"] = state ? state.masterAutoRenewPeriod : undefined;
-            resourceInputs["masterDiskCategory"] = state ? state.masterDiskCategory : undefined;
-            resourceInputs["masterDiskPerformanceLevel"] = state ? state.masterDiskPerformanceLevel : undefined;
-            resourceInputs["masterDiskSize"] = state ? state.masterDiskSize : undefined;
-            resourceInputs["masterDiskSnapshotPolicyId"] = state ? state.masterDiskSnapshotPolicyId : undefined;
-            resourceInputs["masterInstanceChargeType"] = state ? state.masterInstanceChargeType : undefined;
-            resourceInputs["masterInstanceTypes"] = state ? state.masterInstanceTypes : undefined;
-            resourceInputs["masterNodes"] = state ? state.masterNodes : undefined;
-            resourceInputs["masterPeriod"] = state ? state.masterPeriod : undefined;
-            resourceInputs["masterPeriodUnit"] = state ? state.masterPeriodUnit : undefined;
-            resourceInputs["masterVswitchIds"] = state ? state.masterVswitchIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
-            resourceInputs["nodeCidrMask"] = state ? state.nodeCidrMask : undefined;
-            resourceInputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["podCidr"] = state ? state.podCidr : undefined;
-            resourceInputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
-            resourceInputs["proxyMode"] = state ? state.proxyMode : undefined;
-            resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
-            resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
-            resourceInputs["skipSetCertificateAuthority"] = state ? state.skipSetCertificateAuthority : undefined;
-            resourceInputs["slbId"] = state ? state.slbId : undefined;
-            resourceInputs["slbInternet"] = state ? state.slbInternet : undefined;
-            resourceInputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
-            resourceInputs["slbIntranet"] = state ? state.slbIntranet : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["userCa"] = state ? state.userCa : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
+            resourceInputs["addons"] = state?.addons;
+            resourceInputs["apiAudiences"] = state?.apiAudiences;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["clientCert"] = state?.clientCert;
+            resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["clusterCaCert"] = state?.clusterCaCert;
+            resourceInputs["clusterDomain"] = state?.clusterDomain;
+            resourceInputs["connections"] = state?.connections;
+            resourceInputs["customSan"] = state?.customSan;
+            resourceInputs["deleteOptions"] = state?.deleteOptions;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["enableSsh"] = state?.enableSsh;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["installCloudMonitor"] = state?.installCloudMonitor;
+            resourceInputs["isEnterpriseSecurityGroup"] = state?.isEnterpriseSecurityGroup;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
+            resourceInputs["masterAutoRenew"] = state?.masterAutoRenew;
+            resourceInputs["masterAutoRenewPeriod"] = state?.masterAutoRenewPeriod;
+            resourceInputs["masterDiskCategory"] = state?.masterDiskCategory;
+            resourceInputs["masterDiskPerformanceLevel"] = state?.masterDiskPerformanceLevel;
+            resourceInputs["masterDiskSize"] = state?.masterDiskSize;
+            resourceInputs["masterDiskSnapshotPolicyId"] = state?.masterDiskSnapshotPolicyId;
+            resourceInputs["masterInstanceChargeType"] = state?.masterInstanceChargeType;
+            resourceInputs["masterInstanceTypes"] = state?.masterInstanceTypes;
+            resourceInputs["masterNodes"] = state?.masterNodes;
+            resourceInputs["masterPeriod"] = state?.masterPeriod;
+            resourceInputs["masterPeriodUnit"] = state?.masterPeriodUnit;
+            resourceInputs["masterVswitchIds"] = state?.masterVswitchIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["newNatGateway"] = state?.newNatGateway;
+            resourceInputs["nodeCidrMask"] = state?.nodeCidrMask;
+            resourceInputs["nodeNameMode"] = state?.nodeNameMode;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["podCidr"] = state?.podCidr;
+            resourceInputs["podVswitchIds"] = state?.podVswitchIds;
+            resourceInputs["proxyMode"] = state?.proxyMode;
+            resourceInputs["rdsInstances"] = state?.rdsInstances;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retainResources"] = state?.retainResources;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["serviceAccountIssuer"] = state?.serviceAccountIssuer;
+            resourceInputs["serviceCidr"] = state?.serviceCidr;
+            resourceInputs["skipSetCertificateAuthority"] = state?.skipSetCertificateAuthority;
+            resourceInputs["slbId"] = state?.slbId;
+            resourceInputs["slbInternet"] = state?.slbInternet;
+            resourceInputs["slbInternetEnabled"] = state?.slbInternetEnabled;
+            resourceInputs["slbIntranet"] = state?.slbIntranet;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["userCa"] = state?.userCa;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["workerRamRoleName"] = state?.workerRamRoleName;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
-            if ((!args || args.masterInstanceTypes === undefined) && !opts.urn) {
+            if (args?.masterInstanceTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'masterInstanceTypes'");
             }
-            if ((!args || args.masterVswitchIds === undefined) && !opts.urn) {
+            if (args?.masterVswitchIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'masterVswitchIds'");
             }
-            resourceInputs["addons"] = args ? args.addons : undefined;
-            resourceInputs["apiAudiences"] = args ? args.apiAudiences : undefined;
-            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
-            resourceInputs["clusterDomain"] = args ? args.clusterDomain : undefined;
-            resourceInputs["customSan"] = args ? args.customSan : undefined;
-            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["enableSsh"] = args ? args.enableSsh : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
-            resourceInputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            resourceInputs["masterAutoRenew"] = args ? args.masterAutoRenew : undefined;
-            resourceInputs["masterAutoRenewPeriod"] = args ? args.masterAutoRenewPeriod : undefined;
-            resourceInputs["masterDiskCategory"] = args ? args.masterDiskCategory : undefined;
-            resourceInputs["masterDiskPerformanceLevel"] = args ? args.masterDiskPerformanceLevel : undefined;
-            resourceInputs["masterDiskSize"] = args ? args.masterDiskSize : undefined;
-            resourceInputs["masterDiskSnapshotPolicyId"] = args ? args.masterDiskSnapshotPolicyId : undefined;
-            resourceInputs["masterInstanceChargeType"] = args ? args.masterInstanceChargeType : undefined;
-            resourceInputs["masterInstanceTypes"] = args ? args.masterInstanceTypes : undefined;
-            resourceInputs["masterPeriod"] = args ? args.masterPeriod : undefined;
-            resourceInputs["masterPeriodUnit"] = args ? args.masterPeriodUnit : undefined;
-            resourceInputs["masterVswitchIds"] = args ? args.masterVswitchIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
-            resourceInputs["nodeCidrMask"] = args ? args.nodeCidrMask : undefined;
-            resourceInputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["addons"] = args?.addons;
+            resourceInputs["apiAudiences"] = args?.apiAudiences;
+            resourceInputs["clientCert"] = args?.clientCert;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["clusterCaCert"] = args?.clusterCaCert;
+            resourceInputs["clusterDomain"] = args?.clusterDomain;
+            resourceInputs["customSan"] = args?.customSan;
+            resourceInputs["deleteOptions"] = args?.deleteOptions;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enableSsh"] = args?.enableSsh;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["installCloudMonitor"] = args?.installCloudMonitor;
+            resourceInputs["isEnterpriseSecurityGroup"] = args?.isEnterpriseSecurityGroup;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
+            resourceInputs["masterAutoRenew"] = args?.masterAutoRenew;
+            resourceInputs["masterAutoRenewPeriod"] = args?.masterAutoRenewPeriod;
+            resourceInputs["masterDiskCategory"] = args?.masterDiskCategory;
+            resourceInputs["masterDiskPerformanceLevel"] = args?.masterDiskPerformanceLevel;
+            resourceInputs["masterDiskSize"] = args?.masterDiskSize;
+            resourceInputs["masterDiskSnapshotPolicyId"] = args?.masterDiskSnapshotPolicyId;
+            resourceInputs["masterInstanceChargeType"] = args?.masterInstanceChargeType;
+            resourceInputs["masterInstanceTypes"] = args?.masterInstanceTypes;
+            resourceInputs["masterPeriod"] = args?.masterPeriod;
+            resourceInputs["masterPeriodUnit"] = args?.masterPeriodUnit;
+            resourceInputs["masterVswitchIds"] = args?.masterVswitchIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["newNatGateway"] = args?.newNatGateway;
+            resourceInputs["nodeCidrMask"] = args?.nodeCidrMask;
+            resourceInputs["nodeNameMode"] = args?.nodeNameMode;
+            resourceInputs["osType"] = args?.osType;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["podCidr"] = args ? args.podCidr : undefined;
-            resourceInputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
-            resourceInputs["proxyMode"] = args ? args.proxyMode : undefined;
-            resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
-            resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
-            resourceInputs["skipSetCertificateAuthority"] = args ? args.skipSetCertificateAuthority : undefined;
-            resourceInputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["userCa"] = args ? args.userCa : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["podCidr"] = args?.podCidr;
+            resourceInputs["podVswitchIds"] = args?.podVswitchIds;
+            resourceInputs["proxyMode"] = args?.proxyMode;
+            resourceInputs["rdsInstances"] = args?.rdsInstances;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retainResources"] = args?.retainResources;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["serviceAccountIssuer"] = args?.serviceAccountIssuer;
+            resourceInputs["serviceCidr"] = args?.serviceCidr;
+            resourceInputs["skipSetCertificateAuthority"] = args?.skipSetCertificateAuthority;
+            resourceInputs["slbInternetEnabled"] = args?.slbInternetEnabled;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["userCa"] = args?.userCa;
+            resourceInputs["version"] = args?.version;
             resourceInputs["certificateAuthority"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["masterNodes"] = undefined /*out*/;

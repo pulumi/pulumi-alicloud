@@ -67,23 +67,23 @@ export class Template extends pulumi.CustomResource {
     /**
      * The description of the template. The description can be up to 256 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
      */
-    public readonly templateBody!: pulumi.Output<string | undefined>;
+    declare public readonly templateBody: pulumi.Output<string | undefined>;
     /**
      * The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * The template url.
      */
-    public readonly templateUrl!: pulumi.Output<string | undefined>;
+    declare public readonly templateUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Template resource with the given unique name, arguments, and options.
@@ -98,21 +98,21 @@ export class Template extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateBody"] = state?.templateBody;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templateUrl"] = state?.templateUrl;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateBody"] = args?.templateBody;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["templateUrl"] = args?.templateUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Template.__pulumiType, name, resourceInputs, opts);

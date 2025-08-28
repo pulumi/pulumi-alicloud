@@ -67,43 +67,43 @@ export class EnterpriseLogicDatabase extends pulumi.CustomResource {
     /**
      * Logical Library alias.
      */
-    public readonly alias!: pulumi.Output<string>;
+    declare public readonly alias: pulumi.Output<string>;
     /**
      * Sub-Database ID
      */
-    public readonly databaseIds!: pulumi.Output<string[]>;
+    declare public readonly databaseIds: pulumi.Output<string[]>;
     /**
      * Database type.
      */
-    public /*out*/ readonly dbType!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbType: pulumi.Output<string>;
     /**
      * Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
      */
-    public /*out*/ readonly envType!: pulumi.Output<string>;
+    declare public /*out*/ readonly envType: pulumi.Output<string>;
     /**
      * Whether it is a logical Library, the return value is true.
      */
-    public /*out*/ readonly logic!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly logic: pulumi.Output<boolean>;
     /**
      * The ID of the logical Library.
      */
-    public readonly logicDatabaseId!: pulumi.Output<string>;
+    declare public readonly logicDatabaseId: pulumi.Output<string>;
     /**
      * The user ID list of the logical library Owner.
      */
-    public /*out*/ readonly ownerIdLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ownerIdLists: pulumi.Output<string[]>;
     /**
      * The nickname list of the logical library Owner.
      */
-    public /*out*/ readonly ownerNameLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ownerNameLists: pulumi.Output<string[]>;
     /**
      * Logical Library name.
      */
-    public /*out*/ readonly schemaName!: pulumi.Output<string>;
+    declare public /*out*/ readonly schemaName: pulumi.Output<string>;
     /**
      * Logical library search name.
      */
-    public /*out*/ readonly searchName!: pulumi.Output<string>;
+    declare public /*out*/ readonly searchName: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseLogicDatabase resource with the given unique name, arguments, and options.
@@ -118,27 +118,27 @@ export class EnterpriseLogicDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseLogicDatabaseState | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["databaseIds"] = state ? state.databaseIds : undefined;
-            resourceInputs["dbType"] = state ? state.dbType : undefined;
-            resourceInputs["envType"] = state ? state.envType : undefined;
-            resourceInputs["logic"] = state ? state.logic : undefined;
-            resourceInputs["logicDatabaseId"] = state ? state.logicDatabaseId : undefined;
-            resourceInputs["ownerIdLists"] = state ? state.ownerIdLists : undefined;
-            resourceInputs["ownerNameLists"] = state ? state.ownerNameLists : undefined;
-            resourceInputs["schemaName"] = state ? state.schemaName : undefined;
-            resourceInputs["searchName"] = state ? state.searchName : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["databaseIds"] = state?.databaseIds;
+            resourceInputs["dbType"] = state?.dbType;
+            resourceInputs["envType"] = state?.envType;
+            resourceInputs["logic"] = state?.logic;
+            resourceInputs["logicDatabaseId"] = state?.logicDatabaseId;
+            resourceInputs["ownerIdLists"] = state?.ownerIdLists;
+            resourceInputs["ownerNameLists"] = state?.ownerNameLists;
+            resourceInputs["schemaName"] = state?.schemaName;
+            resourceInputs["searchName"] = state?.searchName;
         } else {
             const args = argsOrState as EnterpriseLogicDatabaseArgs | undefined;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.databaseIds === undefined) && !opts.urn) {
+            if (args?.databaseIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseIds'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["databaseIds"] = args ? args.databaseIds : undefined;
-            resourceInputs["logicDatabaseId"] = args ? args.logicDatabaseId : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["databaseIds"] = args?.databaseIds;
+            resourceInputs["logicDatabaseId"] = args?.logicDatabaseId;
             resourceInputs["dbType"] = undefined /*out*/;
             resourceInputs["envType"] = undefined /*out*/;
             resourceInputs["logic"] = undefined /*out*/;

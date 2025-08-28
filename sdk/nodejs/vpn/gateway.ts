@@ -44,109 +44,109 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
      */
-    public readonly autoPropagate!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPropagate: pulumi.Output<boolean | undefined>;
     /**
      * The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The business status of the VPN gateway.
      */
-    public /*out*/ readonly businessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly businessStatus: pulumi.Output<string>;
     /**
      * The time when the VPN gateway was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The description of the VPN gateway.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
      */
-    public /*out*/ readonly disasterRecoveryInternetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly disasterRecoveryInternetIp: pulumi.Output<string>;
     /**
      * The ID of the backup VSwitch to which the VPN gateway is attached.
      */
-    public readonly disasterRecoveryVswitchId!: pulumi.Output<string>;
+    declare public readonly disasterRecoveryVswitchId: pulumi.Output<string>;
     /**
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
      */
-    public readonly enableIpsec!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpsec: pulumi.Output<boolean | undefined>;
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSsl: pulumi.Output<boolean | undefined>;
     /**
      * . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * The internet ip of the VPN.
      */
-    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly internetIp: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Maximum number of clients.
      */
-    public readonly sslConnections!: pulumi.Output<number>;
+    declare public readonly sslConnections: pulumi.Output<number>;
     /**
      * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
      */
-    public /*out*/ readonly sslVpnInternetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslVpnInternetIp: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The Tag of.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC to which the VPN gateway belongs.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The name of the VPN gateway.
      */
-    public readonly vpnGatewayName!: pulumi.Output<string>;
+    declare public readonly vpnGatewayName: pulumi.Output<string>;
     /**
      * The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
      */
-    public readonly vpnType!: pulumi.Output<string>;
+    declare public readonly vpnType: pulumi.Output<string>;
     /**
      * The ID of the VSwitch to which the VPN gateway is attached.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -161,58 +161,58 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoPropagate"] = state ? state.autoPropagate : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disasterRecoveryInternetIp"] = state ? state.disasterRecoveryInternetIp : undefined;
-            resourceInputs["disasterRecoveryVswitchId"] = state ? state.disasterRecoveryVswitchId : undefined;
-            resourceInputs["enableIpsec"] = state ? state.enableIpsec : undefined;
-            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sslConnections"] = state ? state.sslConnections : undefined;
-            resourceInputs["sslVpnInternetIp"] = state ? state.sslVpnInternetIp : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpnGatewayName"] = state ? state.vpnGatewayName : undefined;
-            resourceInputs["vpnType"] = state ? state.vpnType : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoPropagate"] = state?.autoPropagate;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["businessStatus"] = state?.businessStatus;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disasterRecoveryInternetIp"] = state?.disasterRecoveryInternetIp;
+            resourceInputs["disasterRecoveryVswitchId"] = state?.disasterRecoveryVswitchId;
+            resourceInputs["enableIpsec"] = state?.enableIpsec;
+            resourceInputs["enableSsl"] = state?.enableSsl;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sslConnections"] = state?.sslConnections;
+            resourceInputs["sslVpnInternetIp"] = state?.sslVpnInternetIp;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpnGatewayName"] = state?.vpnGatewayName;
+            resourceInputs["vpnType"] = state?.vpnType;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoPropagate"] = args ? args.autoPropagate : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disasterRecoveryVswitchId"] = args ? args.disasterRecoveryVswitchId : undefined;
-            resourceInputs["enableIpsec"] = args ? args.enableIpsec : undefined;
-            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sslConnections"] = args ? args.sslConnections : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpnGatewayName"] = args ? args.vpnGatewayName : undefined;
-            resourceInputs["vpnType"] = args ? args.vpnType : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoPropagate"] = args?.autoPropagate;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disasterRecoveryVswitchId"] = args?.disasterRecoveryVswitchId;
+            resourceInputs["enableIpsec"] = args?.enableIpsec;
+            resourceInputs["enableSsl"] = args?.enableSsl;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sslConnections"] = args?.sslConnections;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpnGatewayName"] = args?.vpnGatewayName;
+            resourceInputs["vpnType"] = args?.vpnType;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["disasterRecoveryInternetIp"] = undefined /*out*/;

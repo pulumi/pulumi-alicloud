@@ -149,40 +149,40 @@ export class SearchIndex extends pulumi.CustomResource {
     /**
      * The search index create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The timestamp for sync phase.
      */
-    public /*out*/ readonly currentSyncTimestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly currentSyncTimestamp: pulumi.Output<number>;
     /**
      * The index id of the search index which could not be changed.
      */
-    public /*out*/ readonly indexId!: pulumi.Output<string>;
+    declare public /*out*/ readonly indexId: pulumi.Output<string>;
     /**
      * The index name of the OTS Table. If changed, a new index would be created.
      */
-    public readonly indexName!: pulumi.Output<string>;
+    declare public readonly indexName: pulumi.Output<string>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The schema of the search index. If changed, a new index would be created. See `schema` below.
      */
-    public readonly schemas!: pulumi.Output<outputs.ots.SearchIndexSchema[]>;
+    declare public readonly schemas: pulumi.Output<outputs.ots.SearchIndexSchema[]>;
     /**
      * The search index sync phase. possible values: `Full`, `Incr`.
      */
-    public /*out*/ readonly syncPhase!: pulumi.Output<string>;
+    declare public /*out*/ readonly syncPhase: pulumi.Output<string>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
     /**
      * The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
      * If the retention period exceeds the TTL value, OTS automatically deletes expired data.
      */
-    public readonly timeToLive!: pulumi.Output<number | undefined>;
+    declare public readonly timeToLive: pulumi.Output<number | undefined>;
 
     /**
      * Create a SearchIndex resource with the given unique name, arguments, and options.
@@ -197,34 +197,34 @@ export class SearchIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SearchIndexState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["currentSyncTimestamp"] = state ? state.currentSyncTimestamp : undefined;
-            resourceInputs["indexId"] = state ? state.indexId : undefined;
-            resourceInputs["indexName"] = state ? state.indexName : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["schemas"] = state ? state.schemas : undefined;
-            resourceInputs["syncPhase"] = state ? state.syncPhase : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
-            resourceInputs["timeToLive"] = state ? state.timeToLive : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["currentSyncTimestamp"] = state?.currentSyncTimestamp;
+            resourceInputs["indexId"] = state?.indexId;
+            resourceInputs["indexName"] = state?.indexName;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["schemas"] = state?.schemas;
+            resourceInputs["syncPhase"] = state?.syncPhase;
+            resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["timeToLive"] = state?.timeToLive;
         } else {
             const args = argsOrState as SearchIndexArgs | undefined;
-            if ((!args || args.indexName === undefined) && !opts.urn) {
+            if (args?.indexName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'indexName'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.schemas === undefined) && !opts.urn) {
+            if (args?.schemas === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemas'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            resourceInputs["indexName"] = args ? args.indexName : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["schemas"] = args ? args.schemas : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
-            resourceInputs["timeToLive"] = args ? args.timeToLive : undefined;
+            resourceInputs["indexName"] = args?.indexName;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["schemas"] = args?.schemas;
+            resourceInputs["tableName"] = args?.tableName;
+            resourceInputs["timeToLive"] = args?.timeToLive;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncTimestamp"] = undefined /*out*/;
             resourceInputs["indexId"] = undefined /*out*/;

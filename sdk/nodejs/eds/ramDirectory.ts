@@ -81,27 +81,27 @@ export class RamDirectory extends pulumi.CustomResource {
     /**
      * The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
      */
-    public readonly desktopAccessType!: pulumi.Output<string>;
+    declare public readonly desktopAccessType: pulumi.Output<string>;
     /**
      * Whether to enable public network access.
      */
-    public readonly enableAdminAccess!: pulumi.Output<boolean>;
+    declare public readonly enableAdminAccess: pulumi.Output<boolean>;
     /**
      * Whether to grant local administrator rights to users who use cloud desktops.
      */
-    public readonly enableInternetAccess!: pulumi.Output<boolean>;
+    declare public readonly enableInternetAccess: pulumi.Output<boolean>;
     /**
      * The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    public readonly ramDirectoryName!: pulumi.Output<string>;
+    declare public readonly ramDirectoryName: pulumi.Output<string>;
     /**
      * The status of directory.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * List of VSwitch IDs in the directory.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
 
     /**
      * Create a RamDirectory resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class RamDirectory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RamDirectoryState | undefined;
-            resourceInputs["desktopAccessType"] = state ? state.desktopAccessType : undefined;
-            resourceInputs["enableAdminAccess"] = state ? state.enableAdminAccess : undefined;
-            resourceInputs["enableInternetAccess"] = state ? state.enableInternetAccess : undefined;
-            resourceInputs["ramDirectoryName"] = state ? state.ramDirectoryName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            resourceInputs["desktopAccessType"] = state?.desktopAccessType;
+            resourceInputs["enableAdminAccess"] = state?.enableAdminAccess;
+            resourceInputs["enableInternetAccess"] = state?.enableInternetAccess;
+            resourceInputs["ramDirectoryName"] = state?.ramDirectoryName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
         } else {
             const args = argsOrState as RamDirectoryArgs | undefined;
-            if ((!args || args.ramDirectoryName === undefined) && !opts.urn) {
+            if (args?.ramDirectoryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ramDirectoryName'");
             }
-            if ((!args || args.vswitchIds === undefined) && !opts.urn) {
+            if (args?.vswitchIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
-            resourceInputs["desktopAccessType"] = args ? args.desktopAccessType : undefined;
-            resourceInputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
-            resourceInputs["enableInternetAccess"] = args ? args.enableInternetAccess : undefined;
-            resourceInputs["ramDirectoryName"] = args ? args.ramDirectoryName : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            resourceInputs["desktopAccessType"] = args?.desktopAccessType;
+            resourceInputs["enableAdminAccess"] = args?.enableAdminAccess;
+            resourceInputs["enableInternetAccess"] = args?.enableInternetAccess;
+            resourceInputs["ramDirectoryName"] = args?.ramDirectoryName;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

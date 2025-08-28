@@ -149,35 +149,35 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * The account id.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * The api version of Function Compute.
      */
-    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiVersion: pulumi.Output<string>;
     /**
      * The configuration of HTTPS certificate.See `certConfig` below.
      */
-    public readonly certConfig!: pulumi.Output<outputs.fc.CustomDomainCertConfig | undefined>;
+    declare public readonly certConfig: pulumi.Output<outputs.fc.CustomDomainCertConfig | undefined>;
     /**
      * The date this resource was created.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * The custom domain name. For example, "example.com".
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The protocol, `HTTP` or `HTTP,HTTPS`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
-    public readonly routeConfigs!: pulumi.Output<outputs.fc.CustomDomainRouteConfig[] | undefined>;
+    declare public readonly routeConfigs: pulumi.Output<outputs.fc.CustomDomainRouteConfig[] | undefined>;
 
     /**
      * Create a CustomDomain resource with the given unique name, arguments, and options.
@@ -192,26 +192,26 @@ export class CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
-            resourceInputs["certConfig"] = state ? state.certConfig : undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["routeConfigs"] = state ? state.routeConfigs : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["apiVersion"] = state?.apiVersion;
+            resourceInputs["certConfig"] = state?.certConfig;
+            resourceInputs["createdTime"] = state?.createdTime;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["routeConfigs"] = state?.routeConfigs;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["certConfig"] = args ? args.certConfig : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["routeConfigs"] = args ? args.routeConfigs : undefined;
+            resourceInputs["certConfig"] = args?.certConfig;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["routeConfigs"] = args?.routeConfigs;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;

@@ -109,15 +109,15 @@ export class BandwidthLimit extends pulumi.CustomResource {
      *
      * ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
      */
-    public readonly bandwidthLimit!: pulumi.Output<number>;
+    declare public readonly bandwidthLimit: pulumi.Output<number>;
     /**
      * The ID of the CEN.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * List of the two regions to interconnect. Must be two different regions.
      */
-    public readonly regionIds!: pulumi.Output<string[]>;
+    declare public readonly regionIds: pulumi.Output<string[]>;
 
     /**
      * Create a BandwidthLimit resource with the given unique name, arguments, and options.
@@ -132,23 +132,23 @@ export class BandwidthLimit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthLimitState | undefined;
-            resourceInputs["bandwidthLimit"] = state ? state.bandwidthLimit : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["regionIds"] = state ? state.regionIds : undefined;
+            resourceInputs["bandwidthLimit"] = state?.bandwidthLimit;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["regionIds"] = state?.regionIds;
         } else {
             const args = argsOrState as BandwidthLimitArgs | undefined;
-            if ((!args || args.bandwidthLimit === undefined) && !opts.urn) {
+            if (args?.bandwidthLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthLimit'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.regionIds === undefined) && !opts.urn) {
+            if (args?.regionIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionIds'");
             }
-            resourceInputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["regionIds"] = args ? args.regionIds : undefined;
+            resourceInputs["bandwidthLimit"] = args?.bandwidthLimit;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["regionIds"] = args?.regionIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BandwidthLimit.__pulumiType, name, resourceInputs, opts);

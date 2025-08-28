@@ -111,39 +111,39 @@ export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The list of multi-zone information. See `multiZones` below.
      */
-    public readonly multiZones!: pulumi.Output<outputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone[]>;
+    declare public readonly multiZones: pulumi.Output<outputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone[]>;
     /**
      * The region ID of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The maximum value of serverless auto scaling.
      */
-    public readonly scaleMax!: pulumi.Output<string | undefined>;
+    declare public readonly scaleMax: pulumi.Output<string | undefined>;
     /**
      * The minimum value of serverless auto scaling.
      */
-    public readonly scaleMin!: pulumi.Output<string | undefined>;
+    declare public readonly scaleMin: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zone ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClickHouseEnterpriseDbCluster resource with the given unique name, arguments, and options.
@@ -158,23 +158,23 @@ export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickHouseEnterpriseDbClusterState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["multiZones"] = state ? state.multiZones : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["scaleMax"] = state ? state.scaleMax : undefined;
-            resourceInputs["scaleMin"] = state ? state.scaleMin : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["multiZones"] = state?.multiZones;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["scaleMax"] = state?.scaleMax;
+            resourceInputs["scaleMin"] = state?.scaleMin;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClickHouseEnterpriseDbClusterArgs | undefined;
-            resourceInputs["multiZones"] = args ? args.multiZones : undefined;
-            resourceInputs["scaleMax"] = args ? args.scaleMax : undefined;
-            resourceInputs["scaleMin"] = args ? args.scaleMin : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["multiZones"] = args?.multiZones;
+            resourceInputs["scaleMax"] = args?.scaleMax;
+            resourceInputs["scaleMin"] = args?.scaleMin;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

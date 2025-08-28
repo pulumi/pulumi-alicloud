@@ -123,15 +123,15 @@ export class RouteEntry extends pulumi.CustomResource {
      *
      * ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The ID of the CEN.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The route table of the attached VBR or VPC.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
 
     /**
      * Create a RouteEntry resource with the given unique name, arguments, and options.
@@ -146,23 +146,23 @@ export class RouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["routeTableId"] = args?.routeTableId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouteEntry.__pulumiType, name, resourceInputs, opts);

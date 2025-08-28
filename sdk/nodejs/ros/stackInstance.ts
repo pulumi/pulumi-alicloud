@@ -94,7 +94,7 @@ export class StackInstance extends pulumi.CustomResource {
     /**
      * The operation description.
      */
-    public readonly operationDescription!: pulumi.Output<string | undefined>;
+    declare public readonly operationDescription: pulumi.Output<string | undefined>;
     /**
      * The operation preferences. The operation settings. The following fields are supported:
      * * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -102,27 +102,27 @@ export class StackInstance extends pulumi.CustomResource {
      * * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
      * * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
      */
-    public readonly operationPreferences!: pulumi.Output<string | undefined>;
+    declare public readonly operationPreferences: pulumi.Output<string | undefined>;
     /**
      * ParameterOverrides. See the following `Block parameterOverrides`.
      */
-    public readonly parameterOverrides!: pulumi.Output<outputs.ros.StackInstanceParameterOverride[] | undefined>;
+    declare public readonly parameterOverrides: pulumi.Output<outputs.ros.StackInstanceParameterOverride[] | undefined>;
     /**
      * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      */
-    public readonly retainStacks!: pulumi.Output<boolean | undefined>;
+    declare public readonly retainStacks: pulumi.Output<boolean | undefined>;
     /**
      * The name of the stack group.
      */
-    public readonly stackGroupName!: pulumi.Output<string>;
+    declare public readonly stackGroupName: pulumi.Output<string>;
     /**
      * The account to which the stack instance belongs.
      */
-    public readonly stackInstanceAccountId!: pulumi.Output<string>;
+    declare public readonly stackInstanceAccountId: pulumi.Output<string>;
     /**
      * The region of the stack instance.
      */
-    public readonly stackInstanceRegionId!: pulumi.Output<string>;
+    declare public readonly stackInstanceRegionId: pulumi.Output<string>;
     /**
      * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
@@ -131,11 +131,11 @@ export class StackInstance extends pulumi.CustomResource {
      * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
      * * The create or update operation is not complete.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
      */
-    public readonly timeoutInMinutes!: pulumi.Output<string | undefined>;
+    declare public readonly timeoutInMinutes: pulumi.Output<string | undefined>;
 
     /**
      * Create a StackInstance resource with the given unique name, arguments, and options.
@@ -150,34 +150,34 @@ export class StackInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackInstanceState | undefined;
-            resourceInputs["operationDescription"] = state ? state.operationDescription : undefined;
-            resourceInputs["operationPreferences"] = state ? state.operationPreferences : undefined;
-            resourceInputs["parameterOverrides"] = state ? state.parameterOverrides : undefined;
-            resourceInputs["retainStacks"] = state ? state.retainStacks : undefined;
-            resourceInputs["stackGroupName"] = state ? state.stackGroupName : undefined;
-            resourceInputs["stackInstanceAccountId"] = state ? state.stackInstanceAccountId : undefined;
-            resourceInputs["stackInstanceRegionId"] = state ? state.stackInstanceRegionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
+            resourceInputs["operationDescription"] = state?.operationDescription;
+            resourceInputs["operationPreferences"] = state?.operationPreferences;
+            resourceInputs["parameterOverrides"] = state?.parameterOverrides;
+            resourceInputs["retainStacks"] = state?.retainStacks;
+            resourceInputs["stackGroupName"] = state?.stackGroupName;
+            resourceInputs["stackInstanceAccountId"] = state?.stackInstanceAccountId;
+            resourceInputs["stackInstanceRegionId"] = state?.stackInstanceRegionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeoutInMinutes"] = state?.timeoutInMinutes;
         } else {
             const args = argsOrState as StackInstanceArgs | undefined;
-            if ((!args || args.stackGroupName === undefined) && !opts.urn) {
+            if (args?.stackGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackGroupName'");
             }
-            if ((!args || args.stackInstanceAccountId === undefined) && !opts.urn) {
+            if (args?.stackInstanceAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackInstanceAccountId'");
             }
-            if ((!args || args.stackInstanceRegionId === undefined) && !opts.urn) {
+            if (args?.stackInstanceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackInstanceRegionId'");
             }
-            resourceInputs["operationDescription"] = args ? args.operationDescription : undefined;
-            resourceInputs["operationPreferences"] = args ? args.operationPreferences : undefined;
+            resourceInputs["operationDescription"] = args?.operationDescription;
+            resourceInputs["operationPreferences"] = args?.operationPreferences;
             resourceInputs["parameterOverrides"] = args?.parameterOverrides ? pulumi.secret(args.parameterOverrides) : undefined;
-            resourceInputs["retainStacks"] = args ? args.retainStacks : undefined;
-            resourceInputs["stackGroupName"] = args ? args.stackGroupName : undefined;
-            resourceInputs["stackInstanceAccountId"] = args ? args.stackInstanceAccountId : undefined;
-            resourceInputs["stackInstanceRegionId"] = args ? args.stackInstanceRegionId : undefined;
-            resourceInputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
+            resourceInputs["retainStacks"] = args?.retainStacks;
+            resourceInputs["stackGroupName"] = args?.stackGroupName;
+            resourceInputs["stackInstanceAccountId"] = args?.stackInstanceAccountId;
+            resourceInputs["stackInstanceRegionId"] = args?.stackInstanceRegionId;
+            resourceInputs["timeoutInMinutes"] = args?.timeoutInMinutes;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

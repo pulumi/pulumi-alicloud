@@ -138,155 +138,155 @@ export class BackupPlan extends pulumi.CustomResource {
     /**
      * The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      */
-    public readonly backupGatewayId!: pulumi.Output<string>;
+    declare public readonly backupGatewayId: pulumi.Output<string>;
     /**
      * The backup log interval seconds.
      */
-    public readonly backupLogIntervalSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly backupLogIntervalSeconds: pulumi.Output<number | undefined>;
     /**
      * Backup method. Valid values: `duplication`, `logical`, `physical`.
      */
-    public readonly backupMethod!: pulumi.Output<string>;
+    declare public readonly backupMethod: pulumi.Output<string>;
     /**
      * The backup object.
      */
-    public readonly backupObjects!: pulumi.Output<string>;
+    declare public readonly backupObjects: pulumi.Output<string>;
     /**
      * Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
      */
-    public readonly backupPeriod!: pulumi.Output<string>;
+    declare public readonly backupPeriod: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly backupPlanName!: pulumi.Output<string>;
+    declare public readonly backupPlanName: pulumi.Output<string>;
     /**
      * The backup rate limit.
      */
-    public readonly backupRateLimit!: pulumi.Output<string | undefined>;
+    declare public readonly backupRateLimit: pulumi.Output<string | undefined>;
     /**
      * The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
      */
-    public readonly backupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly backupRetentionPeriod: pulumi.Output<number>;
     /**
      * The backup speed limit.
      */
-    public readonly backupSpeedLimit!: pulumi.Output<string | undefined>;
+    declare public readonly backupSpeedLimit: pulumi.Output<string | undefined>;
     /**
      * The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
      */
-    public readonly backupStartTime!: pulumi.Output<string>;
+    declare public readonly backupStartTime: pulumi.Output<string>;
     /**
      * Built-in storage type, Valid values: `system`.
      */
-    public readonly backupStorageType!: pulumi.Output<string>;
+    declare public readonly backupStorageType: pulumi.Output<string>;
     /**
      * The backup strategy type. Valid values: `simple`, `manual`.
      */
-    public readonly backupStrategyType!: pulumi.Output<string | undefined>;
+    declare public readonly backupStrategyType: pulumi.Output<string | undefined>;
     /**
      * The UID that is backed up across Alibaba cloud accounts.
      */
-    public readonly crossAliyunId!: pulumi.Output<string>;
+    declare public readonly crossAliyunId: pulumi.Output<string>;
     /**
      * The name of the RAM role that is backed up across Alibaba cloud accounts.
      */
-    public readonly crossRoleName!: pulumi.Output<string>;
+    declare public readonly crossRoleName: pulumi.Output<string>;
     /**
      * The database region.
      */
-    public readonly databaseRegion!: pulumi.Output<string | undefined>;
+    declare public readonly databaseRegion: pulumi.Output<string | undefined>;
     /**
      * Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
      */
-    public readonly databaseType!: pulumi.Output<string>;
+    declare public readonly databaseType: pulumi.Output<string>;
     /**
      * The storage time for conversion to archive cold standby is 365 days by default.
      */
-    public readonly duplicationArchivePeriod!: pulumi.Output<number>;
+    declare public readonly duplicationArchivePeriod: pulumi.Output<number>;
     /**
      * The storage time is converted to low-frequency access. The default time is 180 days.
      */
-    public readonly duplicationInfrequentAccessPeriod!: pulumi.Output<number>;
+    declare public readonly duplicationInfrequentAccessPeriod: pulumi.Output<number>;
     /**
      * Whether to enable incremental log Backup.
      */
-    public readonly enableBackupLog!: pulumi.Output<boolean>;
+    declare public readonly enableBackupLog: pulumi.Output<boolean>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * The OSS Bucket name. The system automatically generates a new name by default.
      */
-    public readonly ossBucketName!: pulumi.Output<string>;
+    declare public readonly ossBucketName: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      */
-    public readonly sourceEndpointDatabaseName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointDatabaseName: pulumi.Output<string>;
     /**
      * The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      */
-    public readonly sourceEndpointInstanceId!: pulumi.Output<string>;
+    declare public readonly sourceEndpointInstanceId: pulumi.Output<string>;
     /**
      * The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
      */
-    public readonly sourceEndpointInstanceType!: pulumi.Output<string>;
+    declare public readonly sourceEndpointInstanceType: pulumi.Output<string>;
     /**
      * The source endpoint ip.
      */
-    public readonly sourceEndpointIp!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointIp: pulumi.Output<string | undefined>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    public readonly sourceEndpointOracleSid!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointOracleSid: pulumi.Output<string | undefined>;
     /**
      * The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    public readonly sourceEndpointPassword!: pulumi.Output<string | undefined>;
+    declare public readonly sourceEndpointPassword: pulumi.Output<string | undefined>;
     /**
      * The source endpoint port.
      */
-    public readonly sourceEndpointPort!: pulumi.Output<number | undefined>;
+    declare public readonly sourceEndpointPort: pulumi.Output<number | undefined>;
     /**
      * The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      */
-    public readonly sourceEndpointRegion!: pulumi.Output<string>;
+    declare public readonly sourceEndpointRegion: pulumi.Output<string>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    public readonly sourceEndpointSid!: pulumi.Output<string>;
+    declare public readonly sourceEndpointSid: pulumi.Output<string>;
     /**
      * The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    public readonly sourceEndpointUserName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointUserName: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `pause`, `running`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The storage region.
      */
-    public readonly storageRegion!: pulumi.Output<string | undefined>;
+    declare public readonly storageRegion: pulumi.Output<string | undefined>;
     /**
      * Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      */
-    public readonly usedTime!: pulumi.Output<number | undefined>;
+    declare public readonly usedTime: pulumi.Output<number | undefined>;
 
     /**
      * Create a BackupPlan resource with the given unique name, arguments, and options.
@@ -301,99 +301,99 @@ export class BackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanState | undefined;
-            resourceInputs["backupGatewayId"] = state ? state.backupGatewayId : undefined;
-            resourceInputs["backupLogIntervalSeconds"] = state ? state.backupLogIntervalSeconds : undefined;
-            resourceInputs["backupMethod"] = state ? state.backupMethod : undefined;
-            resourceInputs["backupObjects"] = state ? state.backupObjects : undefined;
-            resourceInputs["backupPeriod"] = state ? state.backupPeriod : undefined;
-            resourceInputs["backupPlanName"] = state ? state.backupPlanName : undefined;
-            resourceInputs["backupRateLimit"] = state ? state.backupRateLimit : undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["backupSpeedLimit"] = state ? state.backupSpeedLimit : undefined;
-            resourceInputs["backupStartTime"] = state ? state.backupStartTime : undefined;
-            resourceInputs["backupStorageType"] = state ? state.backupStorageType : undefined;
-            resourceInputs["backupStrategyType"] = state ? state.backupStrategyType : undefined;
-            resourceInputs["crossAliyunId"] = state ? state.crossAliyunId : undefined;
-            resourceInputs["crossRoleName"] = state ? state.crossRoleName : undefined;
-            resourceInputs["databaseRegion"] = state ? state.databaseRegion : undefined;
-            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
-            resourceInputs["duplicationArchivePeriod"] = state ? state.duplicationArchivePeriod : undefined;
-            resourceInputs["duplicationInfrequentAccessPeriod"] = state ? state.duplicationInfrequentAccessPeriod : undefined;
-            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sourceEndpointDatabaseName"] = state ? state.sourceEndpointDatabaseName : undefined;
-            resourceInputs["sourceEndpointInstanceId"] = state ? state.sourceEndpointInstanceId : undefined;
-            resourceInputs["sourceEndpointInstanceType"] = state ? state.sourceEndpointInstanceType : undefined;
-            resourceInputs["sourceEndpointIp"] = state ? state.sourceEndpointIp : undefined;
-            resourceInputs["sourceEndpointOracleSid"] = state ? state.sourceEndpointOracleSid : undefined;
-            resourceInputs["sourceEndpointPassword"] = state ? state.sourceEndpointPassword : undefined;
-            resourceInputs["sourceEndpointPort"] = state ? state.sourceEndpointPort : undefined;
-            resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
-            resourceInputs["sourceEndpointSid"] = state ? state.sourceEndpointSid : undefined;
-            resourceInputs["sourceEndpointUserName"] = state ? state.sourceEndpointUserName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageRegion"] = state ? state.storageRegion : undefined;
-            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["backupGatewayId"] = state?.backupGatewayId;
+            resourceInputs["backupLogIntervalSeconds"] = state?.backupLogIntervalSeconds;
+            resourceInputs["backupMethod"] = state?.backupMethod;
+            resourceInputs["backupObjects"] = state?.backupObjects;
+            resourceInputs["backupPeriod"] = state?.backupPeriod;
+            resourceInputs["backupPlanName"] = state?.backupPlanName;
+            resourceInputs["backupRateLimit"] = state?.backupRateLimit;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["backupSpeedLimit"] = state?.backupSpeedLimit;
+            resourceInputs["backupStartTime"] = state?.backupStartTime;
+            resourceInputs["backupStorageType"] = state?.backupStorageType;
+            resourceInputs["backupStrategyType"] = state?.backupStrategyType;
+            resourceInputs["crossAliyunId"] = state?.crossAliyunId;
+            resourceInputs["crossRoleName"] = state?.crossRoleName;
+            resourceInputs["databaseRegion"] = state?.databaseRegion;
+            resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["duplicationArchivePeriod"] = state?.duplicationArchivePeriod;
+            resourceInputs["duplicationInfrequentAccessPeriod"] = state?.duplicationInfrequentAccessPeriod;
+            resourceInputs["enableBackupLog"] = state?.enableBackupLog;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ossBucketName"] = state?.ossBucketName;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sourceEndpointDatabaseName"] = state?.sourceEndpointDatabaseName;
+            resourceInputs["sourceEndpointInstanceId"] = state?.sourceEndpointInstanceId;
+            resourceInputs["sourceEndpointInstanceType"] = state?.sourceEndpointInstanceType;
+            resourceInputs["sourceEndpointIp"] = state?.sourceEndpointIp;
+            resourceInputs["sourceEndpointOracleSid"] = state?.sourceEndpointOracleSid;
+            resourceInputs["sourceEndpointPassword"] = state?.sourceEndpointPassword;
+            resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
+            resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
+            resourceInputs["sourceEndpointSid"] = state?.sourceEndpointSid;
+            resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageRegion"] = state?.storageRegion;
+            resourceInputs["usedTime"] = state?.usedTime;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
-            if ((!args || args.backupMethod === undefined) && !opts.urn) {
+            if (args?.backupMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupMethod'");
             }
-            if ((!args || args.backupPlanName === undefined) && !opts.urn) {
+            if (args?.backupPlanName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPlanName'");
             }
-            if ((!args || args.databaseType === undefined) && !opts.urn) {
+            if (args?.databaseType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseType'");
             }
-            if ((!args || args.instanceClass === undefined) && !opts.urn) {
+            if (args?.instanceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if ((!args || args.sourceEndpointInstanceType === undefined) && !opts.urn) {
+            if (args?.sourceEndpointInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointInstanceType'");
             }
-            resourceInputs["backupGatewayId"] = args ? args.backupGatewayId : undefined;
-            resourceInputs["backupLogIntervalSeconds"] = args ? args.backupLogIntervalSeconds : undefined;
-            resourceInputs["backupMethod"] = args ? args.backupMethod : undefined;
-            resourceInputs["backupObjects"] = args ? args.backupObjects : undefined;
-            resourceInputs["backupPeriod"] = args ? args.backupPeriod : undefined;
-            resourceInputs["backupPlanName"] = args ? args.backupPlanName : undefined;
-            resourceInputs["backupRateLimit"] = args ? args.backupRateLimit : undefined;
-            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            resourceInputs["backupSpeedLimit"] = args ? args.backupSpeedLimit : undefined;
-            resourceInputs["backupStartTime"] = args ? args.backupStartTime : undefined;
-            resourceInputs["backupStorageType"] = args ? args.backupStorageType : undefined;
-            resourceInputs["backupStrategyType"] = args ? args.backupStrategyType : undefined;
-            resourceInputs["crossAliyunId"] = args ? args.crossAliyunId : undefined;
-            resourceInputs["crossRoleName"] = args ? args.crossRoleName : undefined;
-            resourceInputs["databaseRegion"] = args ? args.databaseRegion : undefined;
-            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
-            resourceInputs["duplicationArchivePeriod"] = args ? args.duplicationArchivePeriod : undefined;
-            resourceInputs["duplicationInfrequentAccessPeriod"] = args ? args.duplicationInfrequentAccessPeriod : undefined;
-            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sourceEndpointDatabaseName"] = args ? args.sourceEndpointDatabaseName : undefined;
-            resourceInputs["sourceEndpointInstanceId"] = args ? args.sourceEndpointInstanceId : undefined;
-            resourceInputs["sourceEndpointInstanceType"] = args ? args.sourceEndpointInstanceType : undefined;
-            resourceInputs["sourceEndpointIp"] = args ? args.sourceEndpointIp : undefined;
-            resourceInputs["sourceEndpointOracleSid"] = args ? args.sourceEndpointOracleSid : undefined;
+            resourceInputs["backupGatewayId"] = args?.backupGatewayId;
+            resourceInputs["backupLogIntervalSeconds"] = args?.backupLogIntervalSeconds;
+            resourceInputs["backupMethod"] = args?.backupMethod;
+            resourceInputs["backupObjects"] = args?.backupObjects;
+            resourceInputs["backupPeriod"] = args?.backupPeriod;
+            resourceInputs["backupPlanName"] = args?.backupPlanName;
+            resourceInputs["backupRateLimit"] = args?.backupRateLimit;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
+            resourceInputs["backupSpeedLimit"] = args?.backupSpeedLimit;
+            resourceInputs["backupStartTime"] = args?.backupStartTime;
+            resourceInputs["backupStorageType"] = args?.backupStorageType;
+            resourceInputs["backupStrategyType"] = args?.backupStrategyType;
+            resourceInputs["crossAliyunId"] = args?.crossAliyunId;
+            resourceInputs["crossRoleName"] = args?.crossRoleName;
+            resourceInputs["databaseRegion"] = args?.databaseRegion;
+            resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["duplicationArchivePeriod"] = args?.duplicationArchivePeriod;
+            resourceInputs["duplicationInfrequentAccessPeriod"] = args?.duplicationInfrequentAccessPeriod;
+            resourceInputs["enableBackupLog"] = args?.enableBackupLog;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ossBucketName"] = args?.ossBucketName;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sourceEndpointDatabaseName"] = args?.sourceEndpointDatabaseName;
+            resourceInputs["sourceEndpointInstanceId"] = args?.sourceEndpointInstanceId;
+            resourceInputs["sourceEndpointInstanceType"] = args?.sourceEndpointInstanceType;
+            resourceInputs["sourceEndpointIp"] = args?.sourceEndpointIp;
+            resourceInputs["sourceEndpointOracleSid"] = args?.sourceEndpointOracleSid;
             resourceInputs["sourceEndpointPassword"] = args?.sourceEndpointPassword ? pulumi.secret(args.sourceEndpointPassword) : undefined;
-            resourceInputs["sourceEndpointPort"] = args ? args.sourceEndpointPort : undefined;
-            resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
-            resourceInputs["sourceEndpointSid"] = args ? args.sourceEndpointSid : undefined;
-            resourceInputs["sourceEndpointUserName"] = args ? args.sourceEndpointUserName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["storageRegion"] = args ? args.storageRegion : undefined;
-            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
+            resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
+            resourceInputs["sourceEndpointSid"] = args?.sourceEndpointSid;
+            resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["storageRegion"] = args?.storageRegion;
+            resourceInputs["usedTime"] = args?.usedTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["sourceEndpointPassword"] };

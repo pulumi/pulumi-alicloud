@@ -53,24 +53,24 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
      * - **drop**: Refused
      * - **log**: Observation.
      */
-    public readonly aclAction!: pulumi.Output<string>;
+    declare public readonly aclAction: pulumi.Output<string>;
     /**
      * The unique ID of the security access control policy.
      * > **NOTE:**  To modify a security access control policy, you need to provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy interface to obtain the ID.
      */
-    public /*out*/ readonly aclUuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly aclUuid: pulumi.Output<string>;
     /**
      * The list of application types supported by the access control policy.
      */
-    public readonly applicationNameLists!: pulumi.Output<string[]>;
+    declare public readonly applicationNameLists: pulumi.Output<string[]>;
     /**
      * The time when the policy was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The description of the access control policy.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The destination port of traffic access in the access control policy. Value:
      * - When the protocol type is set to ICMP, the value of DestPort is null.
@@ -79,18 +79,18 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
      * > **NOTE:**  When you select group (destination port address book) for the destination port type of the access control policy, you do not need to set a specific destination port number. All ports that need to be controlled by this access control policy are included in the destination port address book.
      * - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
      */
-    public readonly destPort!: pulumi.Output<string>;
+    declare public readonly destPort: pulumi.Output<string>;
     /**
      * The address book name of the destination port of the access traffic in the access control policy.
      * > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
      */
-    public readonly destPortGroup!: pulumi.Output<string | undefined>;
+    declare public readonly destPortGroup: pulumi.Output<string | undefined>;
     /**
      * The destination port type of the access traffic in the security access control policy.
      * - **port**: port
      * - **group**: Port Address Book.
      */
-    public readonly destPortType!: pulumi.Output<string>;
+    declare public readonly destPortType: pulumi.Output<string>;
     /**
      * The destination address segment in the access control policy. Valid values:
      * - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
@@ -98,44 +98,44 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
      * - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
      * - When DestinationType is location, Destination is the Destination region. For example: \["BJ11", "ZB"\].
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * The destination address type in the access control policy. Valid values:
      * - **net**: Destination Network segment (CIDR address)
      * - **group**: Destination Address Book
      * - **domain**: the destination domain name.
      */
-    public readonly destinationType!: pulumi.Output<string>;
+    declare public readonly destinationType: pulumi.Output<string>;
     /**
      * The traffic direction of the access control policy. Valid values:
      * - **out**: Internal and external traffic access control.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
      * - **0**: Based on FQDN
      * - **1**: DNS-based dynamic resolution
      * - **2**: dynamic resolution based on FQDN and DNS.
      */
-    public readonly domainResolveType!: pulumi.Output<number | undefined>;
+    declare public readonly domainResolveType: pulumi.Output<number | undefined>;
     /**
      * The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
      * > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * Supported IP address version. Value:
      * - **4** (default): indicates the IPv4 address.
      */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    declare public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
      * The ID of the NAT gateway instance.
      */
-    public readonly natGatewayId!: pulumi.Output<string>;
+    declare public readonly natGatewayId: pulumi.Output<string>;
     /**
      * The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority.
      */
-    public readonly newOrder!: pulumi.Output<string>;
+    declare public readonly newOrder: pulumi.Output<string>;
     /**
      * The security protocol type for traffic access in the access control policy. Valid values:
      * - ANY (indicates that all protocol types are queried)
@@ -143,30 +143,30 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
      * - UDP
      * - ICMP.
      */
-    public readonly proto!: pulumi.Output<string>;
+    declare public readonly proto: pulumi.Output<string>;
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
      * - **true**: Enable access control policy
      * - **false**: Do not enable access control policies.
      */
-    public readonly release!: pulumi.Output<string>;
+    declare public readonly release: pulumi.Output<string>;
     /**
      * Collection of recurring dates for the policy validity period of the access control policy.
      * - When RepeatType is 'Permanent', 'None', 'Daily', RepeatDays is an empty collection. For example:[]
      * - When RepeatType is Weekly, RepeatDays cannot be empty. For example:["0", "6"]. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
      * - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:[1, 31]. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
      */
-    public readonly repeatDays!: pulumi.Output<number[] | undefined>;
+    declare public readonly repeatDays: pulumi.Output<number[] | undefined>;
     /**
      * The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
      * > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
      */
-    public readonly repeatEndTime!: pulumi.Output<string | undefined>;
+    declare public readonly repeatEndTime: pulumi.Output<string | undefined>;
     /**
      * The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
      * > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
      */
-    public readonly repeatStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly repeatStartTime: pulumi.Output<string | undefined>;
     /**
      * The type of repetition for the policy validity period of the access control policy. Value:
      * - **Permit** (default): Always
@@ -175,24 +175,24 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
      * - **Weekly**: Weekly
      * - **Monthly**: Monthly.
      */
-    public readonly repeatType!: pulumi.Output<string>;
+    declare public readonly repeatType: pulumi.Output<string>;
     /**
      * The source address in the access control policy. Valid values:
      * - When **SourceType** is set to 'net', Source is the Source CIDR address. For example: 10.2.4.0/24
      * - When **SourceType** is set to 'group', Source is the name of the Source address book. For example: db_group.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * The source address type in the access control policy. Valid values:
      * - **net**: the source network segment (CIDR address)
      * - **group**: source address book
      */
-    public readonly sourceType!: pulumi.Output<string>;
+    declare public readonly sourceType: pulumi.Output<string>;
     /**
      * The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
      * > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
 
     /**
      * Create a NatFirewallControlPolicy resource with the given unique name, arguments, and options.
@@ -207,89 +207,89 @@ export class NatFirewallControlPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatFirewallControlPolicyState | undefined;
-            resourceInputs["aclAction"] = state ? state.aclAction : undefined;
-            resourceInputs["aclUuid"] = state ? state.aclUuid : undefined;
-            resourceInputs["applicationNameLists"] = state ? state.applicationNameLists : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destPort"] = state ? state.destPort : undefined;
-            resourceInputs["destPortGroup"] = state ? state.destPortGroup : undefined;
-            resourceInputs["destPortType"] = state ? state.destPortType : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["destinationType"] = state ? state.destinationType : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["domainResolveType"] = state ? state.domainResolveType : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["newOrder"] = state ? state.newOrder : undefined;
-            resourceInputs["proto"] = state ? state.proto : undefined;
-            resourceInputs["release"] = state ? state.release : undefined;
-            resourceInputs["repeatDays"] = state ? state.repeatDays : undefined;
-            resourceInputs["repeatEndTime"] = state ? state.repeatEndTime : undefined;
-            resourceInputs["repeatStartTime"] = state ? state.repeatStartTime : undefined;
-            resourceInputs["repeatType"] = state ? state.repeatType : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["aclAction"] = state?.aclAction;
+            resourceInputs["aclUuid"] = state?.aclUuid;
+            resourceInputs["applicationNameLists"] = state?.applicationNameLists;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destPort"] = state?.destPort;
+            resourceInputs["destPortGroup"] = state?.destPortGroup;
+            resourceInputs["destPortType"] = state?.destPortType;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["destinationType"] = state?.destinationType;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["domainResolveType"] = state?.domainResolveType;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["newOrder"] = state?.newOrder;
+            resourceInputs["proto"] = state?.proto;
+            resourceInputs["release"] = state?.release;
+            resourceInputs["repeatDays"] = state?.repeatDays;
+            resourceInputs["repeatEndTime"] = state?.repeatEndTime;
+            resourceInputs["repeatStartTime"] = state?.repeatStartTime;
+            resourceInputs["repeatType"] = state?.repeatType;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["startTime"] = state?.startTime;
         } else {
             const args = argsOrState as NatFirewallControlPolicyArgs | undefined;
-            if ((!args || args.aclAction === undefined) && !opts.urn) {
+            if (args?.aclAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclAction'");
             }
-            if ((!args || args.applicationNameLists === undefined) && !opts.urn) {
+            if (args?.applicationNameLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationNameLists'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.destinationType === undefined) && !opts.urn) {
+            if (args?.destinationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationType'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
+            if (args?.natGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            if ((!args || args.newOrder === undefined) && !opts.urn) {
+            if (args?.newOrder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'newOrder'");
             }
-            if ((!args || args.proto === undefined) && !opts.urn) {
+            if (args?.proto === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proto'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            if ((!args || args.sourceType === undefined) && !opts.urn) {
+            if (args?.sourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceType'");
             }
-            resourceInputs["aclAction"] = args ? args.aclAction : undefined;
-            resourceInputs["applicationNameLists"] = args ? args.applicationNameLists : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destPort"] = args ? args.destPort : undefined;
-            resourceInputs["destPortGroup"] = args ? args.destPortGroup : undefined;
-            resourceInputs["destPortType"] = args ? args.destPortType : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["destinationType"] = args ? args.destinationType : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["domainResolveType"] = args ? args.domainResolveType : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            resourceInputs["newOrder"] = args ? args.newOrder : undefined;
-            resourceInputs["proto"] = args ? args.proto : undefined;
-            resourceInputs["release"] = args ? args.release : undefined;
-            resourceInputs["repeatDays"] = args ? args.repeatDays : undefined;
-            resourceInputs["repeatEndTime"] = args ? args.repeatEndTime : undefined;
-            resourceInputs["repeatStartTime"] = args ? args.repeatStartTime : undefined;
-            resourceInputs["repeatType"] = args ? args.repeatType : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["aclAction"] = args?.aclAction;
+            resourceInputs["applicationNameLists"] = args?.applicationNameLists;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destPort"] = args?.destPort;
+            resourceInputs["destPortGroup"] = args?.destPortGroup;
+            resourceInputs["destPortType"] = args?.destPortType;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["destinationType"] = args?.destinationType;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["domainResolveType"] = args?.domainResolveType;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["natGatewayId"] = args?.natGatewayId;
+            resourceInputs["newOrder"] = args?.newOrder;
+            resourceInputs["proto"] = args?.proto;
+            resourceInputs["release"] = args?.release;
+            resourceInputs["repeatDays"] = args?.repeatDays;
+            resourceInputs["repeatEndTime"] = args?.repeatEndTime;
+            resourceInputs["repeatStartTime"] = args?.repeatStartTime;
+            resourceInputs["repeatType"] = args?.repeatType;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["aclUuid"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }

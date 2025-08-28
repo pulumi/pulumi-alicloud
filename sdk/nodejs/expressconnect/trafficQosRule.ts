@@ -96,12 +96,12 @@ export class TrafficQosRule extends pulumi.CustomResource {
      * The traffic of the QoS rule matches the Destination IPv4 network segment.
      * > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
      */
-    public readonly dstCidr!: pulumi.Output<string | undefined>;
+    declare public readonly dstCidr: pulumi.Output<string | undefined>;
     /**
      * The QoS rule traffic matches the Destination IPv6 network segment.
      * > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
      */
-    public readonly dstIpv6Cidr!: pulumi.Output<string | undefined>;
+    declare public readonly dstIpv6Cidr: pulumi.Output<string | undefined>;
     /**
      * QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
      * - **ALL**:-1/-1, not editable.
@@ -121,15 +121,15 @@ export class TrafficQosRule extends pulumi.CustomResource {
      * - **PostgreSQL**:5432/5432, non-editable.
      * - **Redis**:6379/6379, non-editable.
      */
-    public readonly dstPortRange!: pulumi.Output<string>;
+    declare public readonly dstPortRange: pulumi.Output<string>;
     /**
      * The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
      */
-    public readonly matchDscp!: pulumi.Output<number>;
+    declare public readonly matchDscp: pulumi.Output<number>;
     /**
      * QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * QoS rule protocol type, value:
      * - **ALL**
@@ -149,49 +149,49 @@ export class TrafficQosRule extends pulumi.CustomResource {
      * - **PostgreSQL**
      * - **Redis**.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The QoS policy ID.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
     /**
      * The QoS queue ID.
      */
-    public readonly queueId!: pulumi.Output<string>;
+    declare public readonly queueId: pulumi.Output<string>;
     /**
      * Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
      */
-    public readonly remarkingDscp!: pulumi.Output<number>;
+    declare public readonly remarkingDscp: pulumi.Output<number>;
     /**
      * The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly ruleDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ruleDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the QoS rule.
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv4 CIDR block.
      * > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
      */
-    public readonly srcCidr!: pulumi.Output<string | undefined>;
+    declare public readonly srcCidr: pulumi.Output<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv6 network segment.
      * > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
      */
-    public readonly srcIpv6Cidr!: pulumi.Output<string | undefined>;
+    declare public readonly srcIpv6Cidr: pulumi.Output<string | undefined>;
     /**
      * The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      */
-    public readonly srcPortRange!: pulumi.Output<string>;
+    declare public readonly srcPortRange: pulumi.Output<string>;
     /**
      * The status of the QoS rule. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a TrafficQosRule resource with the given unique name, arguments, and options.
@@ -206,50 +206,50 @@ export class TrafficQosRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficQosRuleState | undefined;
-            resourceInputs["dstCidr"] = state ? state.dstCidr : undefined;
-            resourceInputs["dstIpv6Cidr"] = state ? state.dstIpv6Cidr : undefined;
-            resourceInputs["dstPortRange"] = state ? state.dstPortRange : undefined;
-            resourceInputs["matchDscp"] = state ? state.matchDscp : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
-            resourceInputs["queueId"] = state ? state.queueId : undefined;
-            resourceInputs["remarkingDscp"] = state ? state.remarkingDscp : undefined;
-            resourceInputs["ruleDescription"] = state ? state.ruleDescription : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["srcCidr"] = state ? state.srcCidr : undefined;
-            resourceInputs["srcIpv6Cidr"] = state ? state.srcIpv6Cidr : undefined;
-            resourceInputs["srcPortRange"] = state ? state.srcPortRange : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dstCidr"] = state?.dstCidr;
+            resourceInputs["dstIpv6Cidr"] = state?.dstIpv6Cidr;
+            resourceInputs["dstPortRange"] = state?.dstPortRange;
+            resourceInputs["matchDscp"] = state?.matchDscp;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["qosId"] = state?.qosId;
+            resourceInputs["queueId"] = state?.queueId;
+            resourceInputs["remarkingDscp"] = state?.remarkingDscp;
+            resourceInputs["ruleDescription"] = state?.ruleDescription;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["srcCidr"] = state?.srcCidr;
+            resourceInputs["srcIpv6Cidr"] = state?.srcIpv6Cidr;
+            resourceInputs["srcPortRange"] = state?.srcPortRange;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as TrafficQosRuleArgs | undefined;
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            if ((!args || args.queueId === undefined) && !opts.urn) {
+            if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
-            resourceInputs["dstCidr"] = args ? args.dstCidr : undefined;
-            resourceInputs["dstIpv6Cidr"] = args ? args.dstIpv6Cidr : undefined;
-            resourceInputs["dstPortRange"] = args ? args.dstPortRange : undefined;
-            resourceInputs["matchDscp"] = args ? args.matchDscp : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
-            resourceInputs["queueId"] = args ? args.queueId : undefined;
-            resourceInputs["remarkingDscp"] = args ? args.remarkingDscp : undefined;
-            resourceInputs["ruleDescription"] = args ? args.ruleDescription : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["srcCidr"] = args ? args.srcCidr : undefined;
-            resourceInputs["srcIpv6Cidr"] = args ? args.srcIpv6Cidr : undefined;
-            resourceInputs["srcPortRange"] = args ? args.srcPortRange : undefined;
+            resourceInputs["dstCidr"] = args?.dstCidr;
+            resourceInputs["dstIpv6Cidr"] = args?.dstIpv6Cidr;
+            resourceInputs["dstPortRange"] = args?.dstPortRange;
+            resourceInputs["matchDscp"] = args?.matchDscp;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["qosId"] = args?.qosId;
+            resourceInputs["queueId"] = args?.queueId;
+            resourceInputs["remarkingDscp"] = args?.remarkingDscp;
+            resourceInputs["ruleDescription"] = args?.ruleDescription;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["srcCidr"] = args?.srcCidr;
+            resourceInputs["srcIpv6Cidr"] = args?.srcIpv6Cidr;
+            resourceInputs["srcPortRange"] = args?.srcPortRange;
             resourceInputs["ruleId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

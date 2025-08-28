@@ -78,87 +78,87 @@ export class Stack extends pulumi.CustomResource {
     /**
      * Specifies whether to delete the stack after it is created.
      */
-    public readonly createOption!: pulumi.Output<string | undefined>;
+    declare public readonly createOption: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
      */
-    public readonly deletionProtection!: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to disable rollback on stack creation failure. Default to: `false`.
      */
-    public readonly disableRollback!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableRollback: pulumi.Output<boolean | undefined>;
     /**
      * The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
      */
-    public readonly notificationUrls!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationUrls: pulumi.Output<string[] | undefined>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    public readonly parameters!: pulumi.Output<outputs.ros.StackParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.ros.StackParameter[] | undefined>;
     /**
      * The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
      */
-    public readonly ramRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly ramRoleName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
      */
-    public readonly replacementOption!: pulumi.Output<string | undefined>;
+    declare public readonly replacementOption: pulumi.Output<string | undefined>;
     /**
      * The retain all resources.
      */
-    public readonly retainAllResources!: pulumi.Output<boolean | undefined>;
+    declare public readonly retainAllResources: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to retain the resources in the stack.
      */
-    public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    public readonly stackName!: pulumi.Output<string>;
+    declare public readonly stackName: pulumi.Output<string>;
     /**
      * The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    public readonly stackPolicyBody!: pulumi.Output<string | undefined>;
+    declare public readonly stackPolicyBody: pulumi.Output<string | undefined>;
     /**
      * The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    public readonly stackPolicyDuringUpdateBody!: pulumi.Output<string | undefined>;
+    declare public readonly stackPolicyDuringUpdateBody: pulumi.Output<string | undefined>;
     /**
      * The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    public readonly stackPolicyDuringUpdateUrl!: pulumi.Output<string | undefined>;
+    declare public readonly stackPolicyDuringUpdateUrl: pulumi.Output<string | undefined>;
     /**
      * The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    public readonly stackPolicyUrl!: pulumi.Output<string | undefined>;
+    declare public readonly stackPolicyUrl: pulumi.Output<string | undefined>;
     /**
      * The status of Stack.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    public readonly templateBody!: pulumi.Output<string | undefined>;
+    declare public readonly templateBody: pulumi.Output<string | undefined>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    public readonly templateUrl!: pulumi.Output<string | undefined>;
+    declare public readonly templateUrl: pulumi.Output<string | undefined>;
     /**
      * The version of the template.
      */
-    public readonly templateVersion!: pulumi.Output<string | undefined>;
+    declare public readonly templateVersion: pulumi.Output<string | undefined>;
     /**
      * The timeout period that is specified for the stack creation request. Default to: `60`.
      */
-    public readonly timeoutInMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutInMinutes: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
      */
-    public readonly usePreviousParameters!: pulumi.Output<boolean | undefined>;
+    declare public readonly usePreviousParameters: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Stack resource with the given unique name, arguments, and options.
@@ -173,52 +173,52 @@ export class Stack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackState | undefined;
-            resourceInputs["createOption"] = state ? state.createOption : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["disableRollback"] = state ? state.disableRollback : undefined;
-            resourceInputs["notificationUrls"] = state ? state.notificationUrls : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["replacementOption"] = state ? state.replacementOption : undefined;
-            resourceInputs["retainAllResources"] = state ? state.retainAllResources : undefined;
-            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
-            resourceInputs["stackName"] = state ? state.stackName : undefined;
-            resourceInputs["stackPolicyBody"] = state ? state.stackPolicyBody : undefined;
-            resourceInputs["stackPolicyDuringUpdateBody"] = state ? state.stackPolicyDuringUpdateBody : undefined;
-            resourceInputs["stackPolicyDuringUpdateUrl"] = state ? state.stackPolicyDuringUpdateUrl : undefined;
-            resourceInputs["stackPolicyUrl"] = state ? state.stackPolicyUrl : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
-            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
-            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
-            resourceInputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
-            resourceInputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
+            resourceInputs["createOption"] = state?.createOption;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["disableRollback"] = state?.disableRollback;
+            resourceInputs["notificationUrls"] = state?.notificationUrls;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["replacementOption"] = state?.replacementOption;
+            resourceInputs["retainAllResources"] = state?.retainAllResources;
+            resourceInputs["retainResources"] = state?.retainResources;
+            resourceInputs["stackName"] = state?.stackName;
+            resourceInputs["stackPolicyBody"] = state?.stackPolicyBody;
+            resourceInputs["stackPolicyDuringUpdateBody"] = state?.stackPolicyDuringUpdateBody;
+            resourceInputs["stackPolicyDuringUpdateUrl"] = state?.stackPolicyDuringUpdateUrl;
+            resourceInputs["stackPolicyUrl"] = state?.stackPolicyUrl;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateBody"] = state?.templateBody;
+            resourceInputs["templateUrl"] = state?.templateUrl;
+            resourceInputs["templateVersion"] = state?.templateVersion;
+            resourceInputs["timeoutInMinutes"] = state?.timeoutInMinutes;
+            resourceInputs["usePreviousParameters"] = state?.usePreviousParameters;
         } else {
             const args = argsOrState as StackArgs | undefined;
-            if ((!args || args.stackName === undefined) && !opts.urn) {
+            if (args?.stackName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackName'");
             }
-            resourceInputs["createOption"] = args ? args.createOption : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["disableRollback"] = args ? args.disableRollback : undefined;
-            resourceInputs["notificationUrls"] = args ? args.notificationUrls : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["replacementOption"] = args ? args.replacementOption : undefined;
-            resourceInputs["retainAllResources"] = args ? args.retainAllResources : undefined;
-            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
-            resourceInputs["stackName"] = args ? args.stackName : undefined;
-            resourceInputs["stackPolicyBody"] = args ? args.stackPolicyBody : undefined;
-            resourceInputs["stackPolicyDuringUpdateBody"] = args ? args.stackPolicyDuringUpdateBody : undefined;
-            resourceInputs["stackPolicyDuringUpdateUrl"] = args ? args.stackPolicyDuringUpdateUrl : undefined;
-            resourceInputs["stackPolicyUrl"] = args ? args.stackPolicyUrl : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
-            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
-            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
-            resourceInputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
-            resourceInputs["usePreviousParameters"] = args ? args.usePreviousParameters : undefined;
+            resourceInputs["createOption"] = args?.createOption;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["disableRollback"] = args?.disableRollback;
+            resourceInputs["notificationUrls"] = args?.notificationUrls;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["replacementOption"] = args?.replacementOption;
+            resourceInputs["retainAllResources"] = args?.retainAllResources;
+            resourceInputs["retainResources"] = args?.retainResources;
+            resourceInputs["stackName"] = args?.stackName;
+            resourceInputs["stackPolicyBody"] = args?.stackPolicyBody;
+            resourceInputs["stackPolicyDuringUpdateBody"] = args?.stackPolicyDuringUpdateBody;
+            resourceInputs["stackPolicyDuringUpdateUrl"] = args?.stackPolicyDuringUpdateUrl;
+            resourceInputs["stackPolicyUrl"] = args?.stackPolicyUrl;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateBody"] = args?.templateBody;
+            resourceInputs["templateUrl"] = args?.templateUrl;
+            resourceInputs["templateVersion"] = args?.templateVersion;
+            resourceInputs["timeoutInMinutes"] = args?.timeoutInMinutes;
+            resourceInputs["usePreviousParameters"] = args?.usePreviousParameters;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

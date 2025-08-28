@@ -106,27 +106,27 @@ export class DbNode extends pulumi.CustomResource {
     /**
      * The specification information of the node.
      */
-    public readonly classCode!: pulumi.Output<string>;
+    declare public readonly classCode: pulumi.Output<string>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The ID of the node.
      */
-    public /*out*/ readonly nodeId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeId: pulumi.Output<string>;
     /**
      * The region ID of the node.
      */
-    public /*out*/ readonly nodeRegionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeRegionId: pulumi.Output<string>;
     /**
      * The role of node.
      */
-    public /*out*/ readonly nodeRole!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeRole: pulumi.Output<string>;
     /**
      * The zone ID of the node.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DbNode resource with the given unique name, arguments, and options.
@@ -141,26 +141,26 @@ export class DbNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbNodeState | undefined;
-            resourceInputs["classCode"] = state ? state.classCode : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
-            resourceInputs["nodeRegionId"] = state ? state.nodeRegionId : undefined;
-            resourceInputs["nodeRole"] = state ? state.nodeRole : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["classCode"] = state?.classCode;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["nodeId"] = state?.nodeId;
+            resourceInputs["nodeRegionId"] = state?.nodeRegionId;
+            resourceInputs["nodeRole"] = state?.nodeRole;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DbNodeArgs | undefined;
-            if ((!args || args.classCode === undefined) && !opts.urn) {
+            if (args?.classCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'classCode'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["classCode"] = args ? args.classCode : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["classCode"] = args?.classCode;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["nodeId"] = undefined /*out*/;
             resourceInputs["nodeRegionId"] = undefined /*out*/;
             resourceInputs["nodeRole"] = undefined /*out*/;

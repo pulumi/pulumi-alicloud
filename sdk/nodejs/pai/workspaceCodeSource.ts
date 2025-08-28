@@ -81,47 +81,47 @@ export class WorkspaceCodeSource extends pulumi.CustomResource {
      * - PRIVATE: In this workspace, it is only visible to you and the administrator.
      * - PUBLIC: In this workspace, it is visible to everyone.
      */
-    public readonly accessibility!: pulumi.Output<string>;
+    declare public readonly accessibility: pulumi.Output<string>;
     /**
      * Code repository branch.
      */
-    public readonly codeBranch!: pulumi.Output<string | undefined>;
+    declare public readonly codeBranch: pulumi.Output<string | undefined>;
     /**
      * The code CommitId.
      */
-    public readonly codeCommit!: pulumi.Output<string | undefined>;
+    declare public readonly codeCommit: pulumi.Output<string | undefined>;
     /**
      * Code repository address.
      */
-    public readonly codeRepo!: pulumi.Output<string>;
+    declare public readonly codeRepo: pulumi.Output<string>;
     /**
      * The Token used to access the code repository.
      */
-    public readonly codeRepoAccessToken!: pulumi.Output<string | undefined>;
+    declare public readonly codeRepoAccessToken: pulumi.Output<string | undefined>;
     /**
      * The user name of the code repository.
      */
-    public readonly codeRepoUserName!: pulumi.Output<string | undefined>;
+    declare public readonly codeRepoUserName: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A detailed description of the code configuration.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Code source configuration name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The local Mount Directory of the code.
      */
-    public readonly mountPath!: pulumi.Output<string>;
+    declare public readonly mountPath: pulumi.Output<string>;
     /**
      * The ID of the workspace.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceCodeSource resource with the given unique name, arguments, and options.
@@ -136,44 +136,44 @@ export class WorkspaceCodeSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceCodeSourceState | undefined;
-            resourceInputs["accessibility"] = state ? state.accessibility : undefined;
-            resourceInputs["codeBranch"] = state ? state.codeBranch : undefined;
-            resourceInputs["codeCommit"] = state ? state.codeCommit : undefined;
-            resourceInputs["codeRepo"] = state ? state.codeRepo : undefined;
-            resourceInputs["codeRepoAccessToken"] = state ? state.codeRepoAccessToken : undefined;
-            resourceInputs["codeRepoUserName"] = state ? state.codeRepoUserName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["mountPath"] = state ? state.mountPath : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["accessibility"] = state?.accessibility;
+            resourceInputs["codeBranch"] = state?.codeBranch;
+            resourceInputs["codeCommit"] = state?.codeCommit;
+            resourceInputs["codeRepo"] = state?.codeRepo;
+            resourceInputs["codeRepoAccessToken"] = state?.codeRepoAccessToken;
+            resourceInputs["codeRepoUserName"] = state?.codeRepoUserName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["mountPath"] = state?.mountPath;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceCodeSourceArgs | undefined;
-            if ((!args || args.accessibility === undefined) && !opts.urn) {
+            if (args?.accessibility === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessibility'");
             }
-            if ((!args || args.codeRepo === undefined) && !opts.urn) {
+            if (args?.codeRepo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'codeRepo'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.mountPath === undefined) && !opts.urn) {
+            if (args?.mountPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mountPath'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["accessibility"] = args ? args.accessibility : undefined;
-            resourceInputs["codeBranch"] = args ? args.codeBranch : undefined;
-            resourceInputs["codeCommit"] = args ? args.codeCommit : undefined;
-            resourceInputs["codeRepo"] = args ? args.codeRepo : undefined;
-            resourceInputs["codeRepoAccessToken"] = args ? args.codeRepoAccessToken : undefined;
-            resourceInputs["codeRepoUserName"] = args ? args.codeRepoUserName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["mountPath"] = args ? args.mountPath : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["accessibility"] = args?.accessibility;
+            resourceInputs["codeBranch"] = args?.codeBranch;
+            resourceInputs["codeCommit"] = args?.codeCommit;
+            resourceInputs["codeRepo"] = args?.codeRepo;
+            resourceInputs["codeRepoAccessToken"] = args?.codeRepoAccessToken;
+            resourceInputs["codeRepoUserName"] = args?.codeRepoUserName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["mountPath"] = args?.mountPath;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

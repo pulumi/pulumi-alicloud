@@ -101,27 +101,27 @@ export class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
      * - Disabled
      * - Enable
      */
-    public /*out*/ readonly backupEnabled!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupEnabled: pulumi.Output<string>;
     /**
      * The time when cross-region backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly backupEnabledTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupEnabledTime: pulumi.Output<string>;
     /**
      * The ID of the destination region where the cross-region backup files of the instance are stored.
      */
-    public readonly crossBackupRegion!: pulumi.Output<string>;
+    declare public readonly crossBackupRegion: pulumi.Output<string>;
     /**
      * The policy that is used to save cross-region backups of the instance. Default value: 1. The default value 1 indicates that all cross-region backups are saved.
      */
-    public /*out*/ readonly crossBackupType!: pulumi.Output<string>;
+    declare public /*out*/ readonly crossBackupType: pulumi.Output<string>;
     /**
      * The state of the instance. For more information, see Instance status.
      */
-    public /*out*/ readonly dbInstanceStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbInstanceStatus: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The lock status of the instance. Valid values:
      * - Unlock: The instance is not locked.
@@ -130,25 +130,25 @@ export class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
      * - LockByRestoration: The instance is automatically locked before a rollback.
      * - LockByDiskQuota: The instance is automatically locked because its storage space is exhausted. In this situation, the instance is inaccessible.
      */
-    public /*out*/ readonly lockMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly lockMode: pulumi.Output<string>;
     /**
      * The status of the cross-region log backup feature on the instance. Valid values:
      * - Enable: Enables the feature.
      * - Disabled: Disables the feature.
      */
-    public readonly logBackupEnabled!: pulumi.Output<string>;
+    declare public readonly logBackupEnabled: pulumi.Output<string>;
     /**
      * The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly logBackupEnabledTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly logBackupEnabledTime: pulumi.Output<string>;
     /**
      * The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
      */
-    public /*out*/ readonly retentType!: pulumi.Output<string>;
+    declare public /*out*/ readonly retentType: pulumi.Output<string>;
     /**
      * The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
      */
-    public readonly retention!: pulumi.Output<number>;
+    declare public readonly retention: pulumi.Output<number>;
 
     /**
      * Create a RdsInstanceCrossBackupPolicy resource with the given unique name, arguments, and options.
@@ -163,29 +163,29 @@ export class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsInstanceCrossBackupPolicyState | undefined;
-            resourceInputs["backupEnabled"] = state ? state.backupEnabled : undefined;
-            resourceInputs["backupEnabledTime"] = state ? state.backupEnabledTime : undefined;
-            resourceInputs["crossBackupRegion"] = state ? state.crossBackupRegion : undefined;
-            resourceInputs["crossBackupType"] = state ? state.crossBackupType : undefined;
-            resourceInputs["dbInstanceStatus"] = state ? state.dbInstanceStatus : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["lockMode"] = state ? state.lockMode : undefined;
-            resourceInputs["logBackupEnabled"] = state ? state.logBackupEnabled : undefined;
-            resourceInputs["logBackupEnabledTime"] = state ? state.logBackupEnabledTime : undefined;
-            resourceInputs["retentType"] = state ? state.retentType : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["backupEnabled"] = state?.backupEnabled;
+            resourceInputs["backupEnabledTime"] = state?.backupEnabledTime;
+            resourceInputs["crossBackupRegion"] = state?.crossBackupRegion;
+            resourceInputs["crossBackupType"] = state?.crossBackupType;
+            resourceInputs["dbInstanceStatus"] = state?.dbInstanceStatus;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["lockMode"] = state?.lockMode;
+            resourceInputs["logBackupEnabled"] = state?.logBackupEnabled;
+            resourceInputs["logBackupEnabledTime"] = state?.logBackupEnabledTime;
+            resourceInputs["retentType"] = state?.retentType;
+            resourceInputs["retention"] = state?.retention;
         } else {
             const args = argsOrState as RdsInstanceCrossBackupPolicyArgs | undefined;
-            if ((!args || args.crossBackupRegion === undefined) && !opts.urn) {
+            if (args?.crossBackupRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'crossBackupRegion'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["crossBackupRegion"] = args ? args.crossBackupRegion : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["logBackupEnabled"] = args ? args.logBackupEnabled : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["crossBackupRegion"] = args?.crossBackupRegion;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["logBackupEnabled"] = args?.logBackupEnabled;
+            resourceInputs["retention"] = args?.retention;
             resourceInputs["backupEnabled"] = undefined /*out*/;
             resourceInputs["backupEnabledTime"] = undefined /*out*/;
             resourceInputs["crossBackupType"] = undefined /*out*/;

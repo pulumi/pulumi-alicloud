@@ -78,91 +78,91 @@ export class ProvisionedProduct extends pulumi.CustomResource {
     /**
      * The creation time of the product instance
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the last instance operation task
      */
-    public /*out*/ readonly lastProvisioningTaskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastProvisioningTaskId: pulumi.Output<string>;
     /**
      * The ID of the last successful instance operation task
      */
-    public /*out*/ readonly lastSuccessfulProvisioningTaskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSuccessfulProvisioningTaskId: pulumi.Output<string>;
     /**
      * The ID of the last task
      */
-    public /*out*/ readonly lastTaskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastTaskId: pulumi.Output<string>;
     /**
      * The output value of the template.
      */
-    public /*out*/ readonly outputs!: pulumi.Output<outputs.servicecatalog.ProvisionedProductOutput[]>;
+    declare public /*out*/ readonly outputs: pulumi.Output<outputs.servicecatalog.ProvisionedProductOutput[]>;
     /**
      * The RAM entity ID of the owner
      */
-    public /*out*/ readonly ownerPrincipalId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerPrincipalId: pulumi.Output<string>;
     /**
      * The RAM entity type of the owner
      */
-    public /*out*/ readonly ownerPrincipalType!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerPrincipalType: pulumi.Output<string>;
     /**
      * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
      */
-    public readonly parameters!: pulumi.Output<outputs.servicecatalog.ProvisionedProductParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.servicecatalog.ProvisionedProductParameter[] | undefined>;
     /**
      * Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
      */
-    public readonly portfolioId!: pulumi.Output<string | undefined>;
+    declare public readonly portfolioId: pulumi.Output<string | undefined>;
     /**
      * Product ID.
      */
-    public readonly productId!: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string>;
     /**
      * The name of the product
      */
-    public /*out*/ readonly productName!: pulumi.Output<string>;
+    declare public /*out*/ readonly productName: pulumi.Output<string>;
     /**
      * Product version ID.
      */
-    public readonly productVersionId!: pulumi.Output<string>;
+    declare public readonly productVersionId: pulumi.Output<string>;
     /**
      * The name of the product version
      */
-    public /*out*/ readonly productVersionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly productVersionName: pulumi.Output<string>;
     /**
      * The ARN of the product instance
      */
-    public /*out*/ readonly provisionedProductArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisionedProductArn: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly provisionedProductId!: pulumi.Output<string>;
+    declare public readonly provisionedProductId: pulumi.Output<string>;
     /**
      * The name of the instance.The length is 1~128 characters.
      */
-    public readonly provisionedProductName!: pulumi.Output<string>;
+    declare public readonly provisionedProductName: pulumi.Output<string>;
     /**
      * Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
      */
-    public /*out*/ readonly provisionedProductType!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisionedProductType: pulumi.Output<string>;
     /**
      * The ID of the ROS stack
      */
-    public /*out*/ readonly stackId!: pulumi.Output<string>;
+    declare public /*out*/ readonly stackId: pulumi.Output<string>;
     /**
      * The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
      */
-    public readonly stackRegionId!: pulumi.Output<string>;
+    declare public readonly stackRegionId: pulumi.Output<string>;
     /**
      * Instance status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The status message of the product instance
      */
-    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly statusMessage: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ProvisionedProduct resource with the given unique name, arguments, and options.
@@ -177,50 +177,50 @@ export class ProvisionedProduct extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProvisionedProductState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["lastProvisioningTaskId"] = state ? state.lastProvisioningTaskId : undefined;
-            resourceInputs["lastSuccessfulProvisioningTaskId"] = state ? state.lastSuccessfulProvisioningTaskId : undefined;
-            resourceInputs["lastTaskId"] = state ? state.lastTaskId : undefined;
-            resourceInputs["outputs"] = state ? state.outputs : undefined;
-            resourceInputs["ownerPrincipalId"] = state ? state.ownerPrincipalId : undefined;
-            resourceInputs["ownerPrincipalType"] = state ? state.ownerPrincipalType : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["portfolioId"] = state ? state.portfolioId : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
-            resourceInputs["productVersionId"] = state ? state.productVersionId : undefined;
-            resourceInputs["productVersionName"] = state ? state.productVersionName : undefined;
-            resourceInputs["provisionedProductArn"] = state ? state.provisionedProductArn : undefined;
-            resourceInputs["provisionedProductId"] = state ? state.provisionedProductId : undefined;
-            resourceInputs["provisionedProductName"] = state ? state.provisionedProductName : undefined;
-            resourceInputs["provisionedProductType"] = state ? state.provisionedProductType : undefined;
-            resourceInputs["stackId"] = state ? state.stackId : undefined;
-            resourceInputs["stackRegionId"] = state ? state.stackRegionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["lastProvisioningTaskId"] = state?.lastProvisioningTaskId;
+            resourceInputs["lastSuccessfulProvisioningTaskId"] = state?.lastSuccessfulProvisioningTaskId;
+            resourceInputs["lastTaskId"] = state?.lastTaskId;
+            resourceInputs["outputs"] = state?.outputs;
+            resourceInputs["ownerPrincipalId"] = state?.ownerPrincipalId;
+            resourceInputs["ownerPrincipalType"] = state?.ownerPrincipalType;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["portfolioId"] = state?.portfolioId;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["productName"] = state?.productName;
+            resourceInputs["productVersionId"] = state?.productVersionId;
+            resourceInputs["productVersionName"] = state?.productVersionName;
+            resourceInputs["provisionedProductArn"] = state?.provisionedProductArn;
+            resourceInputs["provisionedProductId"] = state?.provisionedProductId;
+            resourceInputs["provisionedProductName"] = state?.provisionedProductName;
+            resourceInputs["provisionedProductType"] = state?.provisionedProductType;
+            resourceInputs["stackId"] = state?.stackId;
+            resourceInputs["stackRegionId"] = state?.stackRegionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusMessage"] = state?.statusMessage;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProvisionedProductArgs | undefined;
-            if ((!args || args.productId === undefined) && !opts.urn) {
+            if (args?.productId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.productVersionId === undefined) && !opts.urn) {
+            if (args?.productVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productVersionId'");
             }
-            if ((!args || args.provisionedProductName === undefined) && !opts.urn) {
+            if (args?.provisionedProductName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'provisionedProductName'");
             }
-            if ((!args || args.stackRegionId === undefined) && !opts.urn) {
+            if (args?.stackRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackRegionId'");
             }
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["portfolioId"] = args ? args.portfolioId : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["productVersionId"] = args ? args.productVersionId : undefined;
-            resourceInputs["provisionedProductId"] = args ? args.provisionedProductId : undefined;
-            resourceInputs["provisionedProductName"] = args ? args.provisionedProductName : undefined;
-            resourceInputs["stackRegionId"] = args ? args.stackRegionId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["portfolioId"] = args?.portfolioId;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["productVersionId"] = args?.productVersionId;
+            resourceInputs["provisionedProductId"] = args?.provisionedProductId;
+            resourceInputs["provisionedProductName"] = args?.provisionedProductName;
+            resourceInputs["stackRegionId"] = args?.stackRegionId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastProvisioningTaskId"] = undefined /*out*/;
             resourceInputs["lastSuccessfulProvisioningTaskId"] = undefined /*out*/;

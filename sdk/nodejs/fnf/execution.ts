@@ -98,19 +98,19 @@ export class Execution extends pulumi.CustomResource {
     /**
      * The name of the execution.
      */
-    public readonly executionName!: pulumi.Output<string>;
+    declare public readonly executionName: pulumi.Output<string>;
     /**
      * The name of the flow.
      */
-    public readonly flowName!: pulumi.Output<string>;
+    declare public readonly flowName: pulumi.Output<string>;
     /**
      * The Input information for this execution.
      */
-    public readonly input!: pulumi.Output<string | undefined>;
+    declare public readonly input: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Stopped`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a Execution resource with the given unique name, arguments, and options.
@@ -125,22 +125,22 @@ export class Execution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExecutionState | undefined;
-            resourceInputs["executionName"] = state ? state.executionName : undefined;
-            resourceInputs["flowName"] = state ? state.flowName : undefined;
-            resourceInputs["input"] = state ? state.input : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["executionName"] = state?.executionName;
+            resourceInputs["flowName"] = state?.flowName;
+            resourceInputs["input"] = state?.input;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
-            if ((!args || args.executionName === undefined) && !opts.urn) {
+            if (args?.executionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executionName'");
             }
-            if ((!args || args.flowName === undefined) && !opts.urn) {
+            if (args?.flowName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flowName'");
             }
-            resourceInputs["executionName"] = args ? args.executionName : undefined;
-            resourceInputs["flowName"] = args ? args.flowName : undefined;
-            resourceInputs["input"] = args ? args.input : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["executionName"] = args?.executionName;
+            resourceInputs["flowName"] = args?.flowName;
+            resourceInputs["input"] = args?.input;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Execution.__pulumiType, name, resourceInputs, opts);

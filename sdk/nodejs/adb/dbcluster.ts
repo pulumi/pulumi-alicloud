@@ -44,127 +44,127 @@ export class DBCluster extends pulumi.CustomResource {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
      */
-    public readonly computeResource!: pulumi.Output<string | undefined>;
+    declare public readonly computeResource: pulumi.Output<string | undefined>;
     /**
      * The connection string of the cluster.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      */
-    public readonly dbClusterCategory!: pulumi.Output<string>;
+    declare public readonly dbClusterCategory: pulumi.Output<string>;
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
-    public readonly dbClusterClass!: pulumi.Output<string | undefined>;
+    declare public readonly dbClusterClass: pulumi.Output<string | undefined>;
     /**
      * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
-    public readonly dbClusterVersion!: pulumi.Output<string | undefined>;
+    declare public readonly dbClusterVersion: pulumi.Output<string | undefined>;
     /**
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
-    public readonly dbNodeClass!: pulumi.Output<string>;
+    declare public readonly dbNodeClass: pulumi.Output<string>;
     /**
      * The db node count.
      */
-    public readonly dbNodeCount!: pulumi.Output<number>;
+    declare public readonly dbNodeCount: pulumi.Output<number>;
     /**
      * The db node storage.
      */
-    public readonly dbNodeStorage!: pulumi.Output<number>;
+    declare public readonly dbNodeStorage: pulumi.Output<number>;
     /**
      * The description of DBCluster.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    public readonly diskEncryption!: pulumi.Output<boolean | undefined>;
+    declare public readonly diskEncryption: pulumi.Output<boolean | undefined>;
     /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
-    public readonly diskPerformanceLevel!: pulumi.Output<string>;
+    declare public readonly diskPerformanceLevel: pulumi.Output<string>;
     /**
      * The elastic io resource.
      */
-    public readonly elasticIoResource!: pulumi.Output<number>;
+    declare public readonly elasticIoResource: pulumi.Output<number>;
     /**
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
      * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
-    public readonly elasticIoResourceSize!: pulumi.Output<string>;
+    declare public readonly elasticIoResourceSize: pulumi.Output<string>;
     /**
      * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSsl: pulumi.Output<boolean | undefined>;
     /**
      * The minor version to which you want to update.
      */
-    public readonly kernelVersion!: pulumi.Output<string>;
+    declare public readonly kernelVersion: pulumi.Output<string>;
     /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    public readonly kmsId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsId: pulumi.Output<string | undefined>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
-    public readonly maintainTime!: pulumi.Output<string>;
+    declare public readonly maintainTime: pulumi.Output<string>;
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The modify type.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
-    public readonly payType!: pulumi.Output<string>;
+    declare public readonly payType: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the ADB cluster.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    public readonly securityIps!: pulumi.Output<string[]>;
+    declare public readonly securityIps: pulumi.Output<string[]>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The time when to perform the update. Valid values:
      */
-    public readonly switchMode!: pulumi.Output<number | undefined>;
+    declare public readonly switchMode: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -172,19 +172,19 @@ export class DBCluster extends pulumi.CustomResource {
      *
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The vpc ID of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitch id.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DBCluster resource with the given unique name, arguments, and options.
@@ -199,77 +199,77 @@ export class DBCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DBClusterState | undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["computeResource"] = state ? state.computeResource : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbClusterCategory"] = state ? state.dbClusterCategory : undefined;
-            resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
-            resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
-            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
-            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
-            resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
-            resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
-            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
-            resourceInputs["kernelVersion"] = state ? state.kernelVersion : undefined;
-            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
-            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["payType"] = state ? state.payType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["switchMode"] = state ? state.switchMode : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["computeResource"] = state?.computeResource;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbClusterCategory"] = state?.dbClusterCategory;
+            resourceInputs["dbClusterClass"] = state?.dbClusterClass;
+            resourceInputs["dbClusterVersion"] = state?.dbClusterVersion;
+            resourceInputs["dbNodeClass"] = state?.dbNodeClass;
+            resourceInputs["dbNodeCount"] = state?.dbNodeCount;
+            resourceInputs["dbNodeStorage"] = state?.dbNodeStorage;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["diskPerformanceLevel"] = state?.diskPerformanceLevel;
+            resourceInputs["elasticIoResource"] = state?.elasticIoResource;
+            resourceInputs["elasticIoResourceSize"] = state?.elasticIoResourceSize;
+            resourceInputs["enableSsl"] = state?.enableSsl;
+            resourceInputs["kernelVersion"] = state?.kernelVersion;
+            resourceInputs["kmsId"] = state?.kmsId;
+            resourceInputs["maintainTime"] = state?.maintainTime;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["payType"] = state?.payType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityIps"] = state?.securityIps;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["switchMode"] = state?.switchMode;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DBClusterArgs | undefined;
-            if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
+            if (args?.dbClusterCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterCategory'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["computeResource"] = args ? args.computeResource : undefined;
-            resourceInputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
-            resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
-            resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
-            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
-            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
-            resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
-            resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
-            resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
-            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
-            resourceInputs["kernelVersion"] = args ? args.kernelVersion : undefined;
-            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
-            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["payType"] = args ? args.payType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["switchMode"] = args ? args.switchMode : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["computeResource"] = args?.computeResource;
+            resourceInputs["dbClusterCategory"] = args?.dbClusterCategory;
+            resourceInputs["dbClusterClass"] = args?.dbClusterClass;
+            resourceInputs["dbClusterVersion"] = args?.dbClusterVersion;
+            resourceInputs["dbNodeClass"] = args?.dbNodeClass;
+            resourceInputs["dbNodeCount"] = args?.dbNodeCount;
+            resourceInputs["dbNodeStorage"] = args?.dbNodeStorage;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskEncryption"] = args?.diskEncryption;
+            resourceInputs["diskPerformanceLevel"] = args?.diskPerformanceLevel;
+            resourceInputs["elasticIoResource"] = args?.elasticIoResource;
+            resourceInputs["elasticIoResourceSize"] = args?.elasticIoResourceSize;
+            resourceInputs["enableSsl"] = args?.enableSsl;
+            resourceInputs["kernelVersion"] = args?.kernelVersion;
+            resourceInputs["kmsId"] = args?.kmsId;
+            resourceInputs["maintainTime"] = args?.maintainTime;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["payType"] = args?.payType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityIps"] = args?.securityIps;
+            resourceInputs["switchMode"] = args?.switchMode;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

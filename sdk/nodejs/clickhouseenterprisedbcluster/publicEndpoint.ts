@@ -86,16 +86,16 @@ export class PublicEndpoint extends pulumi.CustomResource {
     /**
      * The public network connection string prefix of the instance.
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string>;
     /**
      * The cluster ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Network type of the connection address. Valid values:
      * - Public: Public network.
      */
-    public readonly netType!: pulumi.Output<string>;
+    declare public readonly netType: pulumi.Output<string>;
 
     /**
      * Create a PublicEndpoint resource with the given unique name, arguments, and options.
@@ -110,23 +110,23 @@ export class PublicEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicEndpointState | undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["netType"] = state ? state.netType : undefined;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["netType"] = state?.netType;
         } else {
             const args = argsOrState as PublicEndpointArgs | undefined;
-            if ((!args || args.connectionStringPrefix === undefined) && !opts.urn) {
+            if (args?.connectionStringPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionStringPrefix'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.netType === undefined) && !opts.urn) {
+            if (args?.netType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netType'");
             }
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["netType"] = args?.netType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PublicEndpoint.__pulumiType, name, resourceInputs, opts);

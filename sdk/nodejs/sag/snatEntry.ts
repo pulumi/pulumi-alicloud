@@ -69,15 +69,15 @@ export class SnatEntry extends pulumi.CustomResource {
     /**
      * The destination CIDR block.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The ID of the SAG instance.
      */
-    public readonly sagId!: pulumi.Output<string>;
+    declare public readonly sagId: pulumi.Output<string>;
     /**
      * The public IP address.
      */
-    public readonly snatIp!: pulumi.Output<string>;
+    declare public readonly snatIp: pulumi.Output<string>;
 
     /**
      * Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -92,23 +92,23 @@ export class SnatEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["sagId"] = state ? state.sagId : undefined;
-            resourceInputs["snatIp"] = state ? state.snatIp : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["sagId"] = state?.sagId;
+            resourceInputs["snatIp"] = state?.snatIp;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.sagId === undefined) && !opts.urn) {
+            if (args?.sagId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if ((!args || args.snatIp === undefined) && !opts.urn) {
+            if (args?.snatIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snatIp'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["sagId"] = args ? args.sagId : undefined;
-            resourceInputs["snatIp"] = args ? args.snatIp : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["sagId"] = args?.sagId;
+            resourceInputs["snatIp"] = args?.snatIp;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:rocketmq/snatEntry:SnatEntry" }] };

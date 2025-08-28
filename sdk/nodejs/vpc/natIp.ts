@@ -95,39 +95,39 @@ export class NatIp extends pulumi.CustomResource {
     /**
      * Specifies whether to check the validity of the request without actually making the request.
      */
-    public readonly dryRun!: pulumi.Output<boolean>;
+    declare public readonly dryRun: pulumi.Output<boolean>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
-    public readonly natGatewayId!: pulumi.Output<string>;
+    declare public readonly natGatewayId: pulumi.Output<string>;
     /**
      * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      */
-    public readonly natIp!: pulumi.Output<string>;
+    declare public readonly natIp: pulumi.Output<string>;
     /**
      * NAT IP ADDRESS of the address segment.
      */
-    public readonly natIpCidr!: pulumi.Output<string | undefined>;
+    declare public readonly natIpCidr: pulumi.Output<string | undefined>;
     /**
      * The ID of the CIDR block to which the NAT IP address belongs.
      */
-    public readonly natIpCidrId!: pulumi.Output<string | undefined>;
+    declare public readonly natIpCidrId: pulumi.Output<string | undefined>;
     /**
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
      */
-    public readonly natIpDescription!: pulumi.Output<string | undefined>;
+    declare public readonly natIpDescription: pulumi.Output<string | undefined>;
     /**
      * Ihe ID of the Nat Ip.
      */
-    public /*out*/ readonly natIpId!: pulumi.Output<string>;
+    declare public /*out*/ readonly natIpId: pulumi.Output<string>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
-    public readonly natIpName!: pulumi.Output<string | undefined>;
+    declare public readonly natIpName: pulumi.Output<string | undefined>;
     /**
      * The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a NatIp resource with the given unique name, arguments, and options.
@@ -142,27 +142,27 @@ export class NatIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatIpState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["natIp"] = state ? state.natIp : undefined;
-            resourceInputs["natIpCidr"] = state ? state.natIpCidr : undefined;
-            resourceInputs["natIpCidrId"] = state ? state.natIpCidrId : undefined;
-            resourceInputs["natIpDescription"] = state ? state.natIpDescription : undefined;
-            resourceInputs["natIpId"] = state ? state.natIpId : undefined;
-            resourceInputs["natIpName"] = state ? state.natIpName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["natIp"] = state?.natIp;
+            resourceInputs["natIpCidr"] = state?.natIpCidr;
+            resourceInputs["natIpCidrId"] = state?.natIpCidrId;
+            resourceInputs["natIpDescription"] = state?.natIpDescription;
+            resourceInputs["natIpId"] = state?.natIpId;
+            resourceInputs["natIpName"] = state?.natIpName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NatIpArgs | undefined;
-            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
+            if (args?.natGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            resourceInputs["natIp"] = args ? args.natIp : undefined;
-            resourceInputs["natIpCidr"] = args ? args.natIpCidr : undefined;
-            resourceInputs["natIpCidrId"] = args ? args.natIpCidrId : undefined;
-            resourceInputs["natIpDescription"] = args ? args.natIpDescription : undefined;
-            resourceInputs["natIpName"] = args ? args.natIpName : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["natGatewayId"] = args?.natGatewayId;
+            resourceInputs["natIp"] = args?.natIp;
+            resourceInputs["natIpCidr"] = args?.natIpCidr;
+            resourceInputs["natIpCidrId"] = args?.natIpCidrId;
+            resourceInputs["natIpDescription"] = args?.natIpDescription;
+            resourceInputs["natIpName"] = args?.natIpName;
             resourceInputs["natIpId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

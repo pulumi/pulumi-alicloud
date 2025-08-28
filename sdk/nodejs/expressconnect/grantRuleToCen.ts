@@ -88,15 +88,15 @@ export class GrantRuleToCen extends pulumi.CustomResource {
     /**
      * The ID of the CEN instance to which you want to grant permissions.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      */
-    public readonly cenOwnerId!: pulumi.Output<number>;
+    declare public readonly cenOwnerId: pulumi.Output<number>;
     /**
      * The ID of the VBR.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a GrantRuleToCen resource with the given unique name, arguments, and options.
@@ -111,23 +111,23 @@ export class GrantRuleToCen extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantRuleToCenState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as GrantRuleToCenArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenOwnerId === undefined) && !opts.urn) {
+            if (args?.cenOwnerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenOwnerId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenOwnerId"] = args?.cenOwnerId;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GrantRuleToCen.__pulumiType, name, resourceInputs, opts);

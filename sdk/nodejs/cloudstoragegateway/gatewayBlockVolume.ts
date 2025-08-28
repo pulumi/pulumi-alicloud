@@ -50,71 +50,71 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
     /**
      * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
-    public readonly cacheMode!: pulumi.Output<string>;
+    declare public readonly cacheMode: pulumi.Output<string>;
     /**
      * Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
      */
-    public readonly chapEnabled!: pulumi.Output<boolean>;
+    declare public readonly chapEnabled: pulumi.Output<boolean>;
     /**
      * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    public readonly chapInPassword!: pulumi.Output<string | undefined>;
+    declare public readonly chapInPassword: pulumi.Output<string | undefined>;
     /**
      * The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    public readonly chapInUser!: pulumi.Output<string | undefined>;
+    declare public readonly chapInUser: pulumi.Output<string | undefined>;
     /**
      * The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
      */
-    public readonly chunkSize!: pulumi.Output<number>;
+    declare public readonly chunkSize: pulumi.Output<number>;
     /**
      * The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
      */
-    public readonly gatewayBlockVolumeName!: pulumi.Output<string>;
+    declare public readonly gatewayBlockVolumeName: pulumi.Output<string>;
     /**
      * The Gateway ID.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The ID of the index.
      */
-    public /*out*/ readonly indexId!: pulumi.Output<string>;
+    declare public /*out*/ readonly indexId: pulumi.Output<string>;
     /**
      * Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      */
-    public readonly isSourceDeletion!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSourceDeletion: pulumi.Output<boolean | undefined>;
     /**
      * The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      */
-    public readonly localPath!: pulumi.Output<string | undefined>;
+    declare public readonly localPath: pulumi.Output<string | undefined>;
     /**
      * The name of the OSS Bucket.
      */
-    public readonly ossBucketName!: pulumi.Output<string>;
+    declare public readonly ossBucketName: pulumi.Output<string>;
     /**
      * Whether to enable SSL access your OSS Buckets. Default value: `true`.
      */
-    public readonly ossBucketSsl!: pulumi.Output<boolean>;
+    declare public readonly ossBucketSsl: pulumi.Output<boolean>;
     /**
      * The endpoint of the OSS Bucket.
      */
-    public readonly ossEndpoint!: pulumi.Output<string>;
+    declare public readonly ossEndpoint: pulumi.Output<string>;
     /**
      * The Protocol. Valid values: `iSCSI`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The recovery.
      */
-    public readonly recovery!: pulumi.Output<boolean | undefined>;
+    declare public readonly recovery: pulumi.Output<boolean | undefined>;
     /**
      * The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The status of volume. Valid values:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a GatewayBlockVolume resource with the given unique name, arguments, and options.
@@ -129,55 +129,55 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayBlockVolumeState | undefined;
-            resourceInputs["cacheMode"] = state ? state.cacheMode : undefined;
-            resourceInputs["chapEnabled"] = state ? state.chapEnabled : undefined;
-            resourceInputs["chapInPassword"] = state ? state.chapInPassword : undefined;
-            resourceInputs["chapInUser"] = state ? state.chapInUser : undefined;
-            resourceInputs["chunkSize"] = state ? state.chunkSize : undefined;
-            resourceInputs["gatewayBlockVolumeName"] = state ? state.gatewayBlockVolumeName : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["indexId"] = state ? state.indexId : undefined;
-            resourceInputs["isSourceDeletion"] = state ? state.isSourceDeletion : undefined;
-            resourceInputs["localPath"] = state ? state.localPath : undefined;
-            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            resourceInputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
-            resourceInputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["recovery"] = state ? state.recovery : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cacheMode"] = state?.cacheMode;
+            resourceInputs["chapEnabled"] = state?.chapEnabled;
+            resourceInputs["chapInPassword"] = state?.chapInPassword;
+            resourceInputs["chapInUser"] = state?.chapInUser;
+            resourceInputs["chunkSize"] = state?.chunkSize;
+            resourceInputs["gatewayBlockVolumeName"] = state?.gatewayBlockVolumeName;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["indexId"] = state?.indexId;
+            resourceInputs["isSourceDeletion"] = state?.isSourceDeletion;
+            resourceInputs["localPath"] = state?.localPath;
+            resourceInputs["ossBucketName"] = state?.ossBucketName;
+            resourceInputs["ossBucketSsl"] = state?.ossBucketSsl;
+            resourceInputs["ossEndpoint"] = state?.ossEndpoint;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["recovery"] = state?.recovery;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayBlockVolumeArgs | undefined;
-            if ((!args || args.gatewayBlockVolumeName === undefined) && !opts.urn) {
+            if (args?.gatewayBlockVolumeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayBlockVolumeName'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.ossBucketName === undefined) && !opts.urn) {
+            if (args?.ossBucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossBucketName'");
             }
-            if ((!args || args.ossEndpoint === undefined) && !opts.urn) {
+            if (args?.ossEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossEndpoint'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["cacheMode"] = args ? args.cacheMode : undefined;
-            resourceInputs["chapEnabled"] = args ? args.chapEnabled : undefined;
-            resourceInputs["chapInPassword"] = args ? args.chapInPassword : undefined;
-            resourceInputs["chapInUser"] = args ? args.chapInUser : undefined;
-            resourceInputs["chunkSize"] = args ? args.chunkSize : undefined;
-            resourceInputs["gatewayBlockVolumeName"] = args ? args.gatewayBlockVolumeName : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["isSourceDeletion"] = args ? args.isSourceDeletion : undefined;
-            resourceInputs["localPath"] = args ? args.localPath : undefined;
-            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            resourceInputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
-            resourceInputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["recovery"] = args ? args.recovery : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["cacheMode"] = args?.cacheMode;
+            resourceInputs["chapEnabled"] = args?.chapEnabled;
+            resourceInputs["chapInPassword"] = args?.chapInPassword;
+            resourceInputs["chapInUser"] = args?.chapInUser;
+            resourceInputs["chunkSize"] = args?.chunkSize;
+            resourceInputs["gatewayBlockVolumeName"] = args?.gatewayBlockVolumeName;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["isSourceDeletion"] = args?.isSourceDeletion;
+            resourceInputs["localPath"] = args?.localPath;
+            resourceInputs["ossBucketName"] = args?.ossBucketName;
+            resourceInputs["ossBucketSsl"] = args?.ossBucketSsl;
+            resourceInputs["ossEndpoint"] = args?.ossEndpoint;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["recovery"] = args?.recovery;
+            resourceInputs["size"] = args?.size;
             resourceInputs["indexId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

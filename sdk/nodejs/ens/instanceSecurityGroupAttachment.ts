@@ -88,11 +88,11 @@ export class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
     /**
      * Instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
 
     /**
      * Create a InstanceSecurityGroupAttachment resource with the given unique name, arguments, and options.
@@ -107,15 +107,15 @@ export class InstanceSecurityGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceSecurityGroupAttachmentState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
         } else {
             const args = argsOrState as InstanceSecurityGroupAttachmentArgs | undefined;
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceSecurityGroupAttachment.__pulumiType, name, resourceInputs, opts);

@@ -68,19 +68,19 @@ export class AclEntryAttachment extends pulumi.CustomResource {
     /**
      * The ID of the Acl.
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * The description of the entry.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The CIDR blocks.
      */
-    public readonly entry!: pulumi.Output<string>;
+    declare public readonly entry: pulumi.Output<string>;
     /**
      * The Status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AclEntryAttachment resource with the given unique name, arguments, and options.
@@ -95,21 +95,21 @@ export class AclEntryAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclEntryAttachmentState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["entry"] = state ? state.entry : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["entry"] = state?.entry;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AclEntryAttachmentArgs | undefined;
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.entry === undefined) && !opts.urn) {
+            if (args?.entry === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entry'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["entry"] = args ? args.entry : undefined;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["entry"] = args?.entry;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

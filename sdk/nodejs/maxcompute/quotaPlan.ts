@@ -93,19 +93,19 @@ export class QuotaPlan extends pulumi.CustomResource {
      * Whether to take effect immediately. “Valid values: true”  
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
-    public readonly isEffective!: pulumi.Output<boolean | undefined>;
+    declare public readonly isEffective: pulumi.Output<boolean | undefined>;
     /**
      * Quota Name
      */
-    public readonly nickname!: pulumi.Output<string>;
+    declare public readonly nickname: pulumi.Output<string>;
     /**
      * The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
      */
-    public readonly planName!: pulumi.Output<string>;
+    declare public readonly planName: pulumi.Output<string>;
     /**
      * Quota property See `quota` below.
      */
-    public readonly quota!: pulumi.Output<outputs.maxcompute.QuotaPlanQuota | undefined>;
+    declare public readonly quota: pulumi.Output<outputs.maxcompute.QuotaPlanQuota | undefined>;
 
     /**
      * Create a QuotaPlan resource with the given unique name, arguments, and options.
@@ -120,22 +120,22 @@ export class QuotaPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaPlanState | undefined;
-            resourceInputs["isEffective"] = state ? state.isEffective : undefined;
-            resourceInputs["nickname"] = state ? state.nickname : undefined;
-            resourceInputs["planName"] = state ? state.planName : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
+            resourceInputs["isEffective"] = state?.isEffective;
+            resourceInputs["nickname"] = state?.nickname;
+            resourceInputs["planName"] = state?.planName;
+            resourceInputs["quota"] = state?.quota;
         } else {
             const args = argsOrState as QuotaPlanArgs | undefined;
-            if ((!args || args.nickname === undefined) && !opts.urn) {
+            if (args?.nickname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nickname'");
             }
-            if ((!args || args.planName === undefined) && !opts.urn) {
+            if (args?.planName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planName'");
             }
-            resourceInputs["isEffective"] = args ? args.isEffective : undefined;
-            resourceInputs["nickname"] = args ? args.nickname : undefined;
-            resourceInputs["planName"] = args ? args.planName : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["isEffective"] = args?.isEffective;
+            resourceInputs["nickname"] = args?.nickname;
+            resourceInputs["planName"] = args?.planName;
+            resourceInputs["quota"] = args?.quota;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaPlan.__pulumiType, name, resourceInputs, opts);

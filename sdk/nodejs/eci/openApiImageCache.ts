@@ -34,18 +34,18 @@ export class OpenApiImageCache extends pulumi.CustomResource {
         return obj['__pulumiType'] === OpenApiImageCache.__pulumiType;
     }
 
-    public /*out*/ readonly containerGroupId!: pulumi.Output<string>;
-    public readonly eipInstanceId!: pulumi.Output<string | undefined>;
-    public readonly imageCacheName!: pulumi.Output<string>;
-    public readonly imageCacheSize!: pulumi.Output<number | undefined>;
-    public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.OpenApiImageCacheImageRegistryCredential[] | undefined>;
-    public readonly images!: pulumi.Output<string[]>;
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
-    public readonly securityGroupId!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly vswitchId!: pulumi.Output<string>;
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly containerGroupId: pulumi.Output<string>;
+    declare public readonly eipInstanceId: pulumi.Output<string | undefined>;
+    declare public readonly imageCacheName: pulumi.Output<string>;
+    declare public readonly imageCacheSize: pulumi.Output<number | undefined>;
+    declare public readonly imageRegistryCredentials: pulumi.Output<outputs.eci.OpenApiImageCacheImageRegistryCredential[] | undefined>;
+    declare public readonly images: pulumi.Output<string[]>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a OpenApiImageCache resource with the given unique name, arguments, and options.
@@ -60,42 +60,42 @@ export class OpenApiImageCache extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpenApiImageCacheState | undefined;
-            resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
-            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            resourceInputs["imageCacheName"] = state ? state.imageCacheName : undefined;
-            resourceInputs["imageCacheSize"] = state ? state.imageCacheSize : undefined;
-            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            resourceInputs["images"] = state ? state.images : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["containerGroupId"] = state?.containerGroupId;
+            resourceInputs["eipInstanceId"] = state?.eipInstanceId;
+            resourceInputs["imageCacheName"] = state?.imageCacheName;
+            resourceInputs["imageCacheSize"] = state?.imageCacheSize;
+            resourceInputs["imageRegistryCredentials"] = state?.imageRegistryCredentials;
+            resourceInputs["images"] = state?.images;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as OpenApiImageCacheArgs | undefined;
-            if ((!args || args.imageCacheName === undefined) && !opts.urn) {
+            if (args?.imageCacheName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageCacheName'");
             }
-            if ((!args || args.images === undefined) && !opts.urn) {
+            if (args?.images === undefined && !opts.urn) {
                 throw new Error("Missing required property 'images'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            resourceInputs["imageCacheName"] = args ? args.imageCacheName : undefined;
-            resourceInputs["imageCacheSize"] = args ? args.imageCacheSize : undefined;
-            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            resourceInputs["images"] = args ? args.images : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["eipInstanceId"] = args?.eipInstanceId;
+            resourceInputs["imageCacheName"] = args?.imageCacheName;
+            resourceInputs["imageCacheSize"] = args?.imageCacheSize;
+            resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
+            resourceInputs["images"] = args?.images;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["containerGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

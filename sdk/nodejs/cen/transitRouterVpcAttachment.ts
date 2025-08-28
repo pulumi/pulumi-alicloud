@@ -107,95 +107,95 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
      * - **false:** (default)
      */
-    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    public readonly cenId!: pulumi.Output<string | undefined>;
+    declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether to forcibly delete the VPC connection. The value is:
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      */
-    public readonly routeTableAssociationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTableAssociationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
-    public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTablePropagationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the VPC connection.
      *
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the Transit Router Attachment.
      */
-    public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      */
-    public readonly transitRouterAttachmentName!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentName: pulumi.Output<string>;
     /**
      * The ID of the Enterprise Edition transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The name of the VPC connection.
      *
      * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
-    public readonly transitRouterVpcAttachmentName!: pulumi.Output<string>;
+    declare public readonly transitRouterVpcAttachmentName: pulumi.Output<string>;
     /**
      * TransitRouterVpcAttachmentOptions
      */
-    public readonly transitRouterVpcAttachmentOptions!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly transitRouterVpcAttachmentOptions: pulumi.Output<{[key: string]: string}>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * VpcOwnerId
      */
-    public readonly vpcOwnerId!: pulumi.Output<number>;
+    declare public readonly vpcOwnerId: pulumi.Output<number>;
     /**
      * ZoneMappingss See `zoneMappings` below.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly zoneMappings!: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
+    declare public readonly zoneMappings: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
 
     /**
      * Create a TransitRouterVpcAttachment resource with the given unique name, arguments, and options.
@@ -210,51 +210,51 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterVpcAttachmentState | undefined;
-            resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterVpcAttachmentName"] = state ? state.transitRouterVpcAttachmentName : undefined;
-            resourceInputs["transitRouterVpcAttachmentOptions"] = state ? state.transitRouterVpcAttachmentOptions : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcOwnerId"] = state ? state.vpcOwnerId : undefined;
-            resourceInputs["zoneMappings"] = state ? state.zoneMappings : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = state?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = state?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = state?.routeTablePropagationEnabled;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = state?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterAttachmentName"] = state?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterVpcAttachmentName"] = state?.transitRouterVpcAttachmentName;
+            resourceInputs["transitRouterVpcAttachmentOptions"] = state?.transitRouterVpcAttachmentOptions;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcOwnerId"] = state?.vpcOwnerId;
+            resourceInputs["zoneMappings"] = state?.zoneMappings;
         } else {
             const args = argsOrState as TransitRouterVpcAttachmentArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.zoneMappings === undefined) && !opts.urn) {
+            if (args?.zoneMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterVpcAttachmentName"] = args ? args.transitRouterVpcAttachmentName : undefined;
-            resourceInputs["transitRouterVpcAttachmentOptions"] = args ? args.transitRouterVpcAttachmentOptions : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcOwnerId"] = args ? args.vpcOwnerId : undefined;
-            resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = args?.autoPublishRouteEnabled;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = args?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = args?.routeTablePropagationEnabled;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = args?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentName"] = args?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterVpcAttachmentName"] = args?.transitRouterVpcAttachmentName;
+            resourceInputs["transitRouterVpcAttachmentOptions"] = args?.transitRouterVpcAttachmentOptions;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcOwnerId"] = args?.vpcOwnerId;
+            resourceInputs["zoneMappings"] = args?.zoneMappings;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
